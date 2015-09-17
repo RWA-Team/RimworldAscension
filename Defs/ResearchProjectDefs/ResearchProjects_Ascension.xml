@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResearchProjectDefs>
+
+
+	<!--used to hide buldings-->
+    <ResearchProjectDef>
+		<defName>Blocked</defName>
+		<prerequisites>
+			<li>Blocked</li>
+		</prerequisites>		
+	</ResearchProjectDef>
+	
+
+	<!-- ========================= Neolithic Tech Level ==========================-->
+	
+
+    <ResearchProjectDef>
+		<defName>StoneWorks</defName>
+		<label>stone works</label>
+		<description>Allows you to build stony building, crafts and weapon variations.</description>
+		<totalCost>1000</totalCost>
+	</ResearchProjectDef>
+	
+	
+    <ResearchProjectDef>
+		<defName>LeatherWorks</defName>
+		<label>leather works</label>
+		<description>Allows you to craft apparel from animals' hides.</description>
+		<totalCost>1000</totalCost>
+	</ResearchProjectDef>
+	
+	
+    <ResearchProjectDef>
+		<defName>MedievalTech</defName>
+		<label>medieval tech</label>
+		<description>Take a next step to the future.</description>
+		<totalCost>10000</totalCost>
+		<prerequisites>
+			<li>StoneWorks</li>
+			<li>LeatherWorks</li>
+		</prerequisites>		
+		<researchMods>
+			<li>
+				<specialAction>GlobalMod.TechUpgrades.ToMedieval</specialAction>
+			</li>
+		</researchMods>
+	</ResearchProjectDef>	
+	
+	
+    <ResearchProjectDef>
+		<defName>MedievalTech</defName>
+		<label>medieval tech</label>
+		<description>Take a next step to the future.</description>
+		<totalCost>10000</totalCost>
+		<prerequisites>
+			<li>StoneWorks</li>
+			<li>LeatherWorks</li>
+		</prerequisites>		
+		<researchMods>
+			<li>
+				<specialAction>GlobalMod.TechUpgrades.ToMedieval</specialAction>
+			</li>
+		</researchMods>
+	</ResearchProjectDef>
+	
+
+	<!-- ========================= Medieval Tech Level ==========================-->
+	
+	
+    <ResearchProjectDef>
+		<defName>MetalWorks</defName>
+		<label>metal works</label>
+		<description>Allows you to build metallic buildings, crafts and weapon variations.</description>
+		<totalCost>1000</totalCost>
+		<prerequisites>
+			<li>MedievalTech</li>
+		</prerequisites>		
+	</ResearchProjectDef>
+	
+	
+    <ResearchProjectDef>
+		<defName>Tailoring</defName>
+		<label>tailoring</label>
+		<description>Allows you to craft apparel from cloth.</description>
+		<totalCost>1000</totalCost>
+		<prerequisites>
+			<li>MedievalTech</li>
+		</prerequisites>		
+	</ResearchProjectDef>
+	
+
+</ResearchProjectDefs>
