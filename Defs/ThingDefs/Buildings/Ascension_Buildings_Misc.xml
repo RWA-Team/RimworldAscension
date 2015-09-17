@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+
+
+	<ThingDef Name="BuildingBase" Abstract="True">
+		<category>Building</category>
+		<thingClass>Building</thingClass>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+		<researchPrerequisite>Blocked</researchPrerequisite>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>Grave</defName>
+		<label>grave</label>
+		<thingClass>Building_Grave</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Misc/GraveEmpty</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
+		<constructEffect>ConstructDirt</constructEffect>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<description>Place the dead in graves to give them a decent final resting place.</description>
+		<size>(1,2)</size>
+		<statBases>
+			<WorkToMake>650</WorkToMake>
+		</statBases>
+		<passability>PassThroughOnly</passability>
+		<building>
+			<isInert>true</isInert>
+			<fullGraveGraphicData>
+				<texPath>Things/Building/Misc/GraveFull</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(3,4)</drawSize>
+			</fullGraveGraphicData>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Corpses</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<filter>
+					<categories>
+						<li>CorpsesHumanlike</li>
+					</categories>
+				</filter>
+			</defaultStorageSettings>
+		</building>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
+		<designationCategory>Misc</designationCategory>
+		<designationHotkey>G</designationHotkey>
+	</ThingDef>
+
+
+</Buildings>

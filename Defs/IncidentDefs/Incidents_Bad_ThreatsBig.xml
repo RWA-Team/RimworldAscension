@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<IncidentDef>
+		<defName>RaidEnemy</defName>
+		<workerClass>GlobalMod.Incidents.IncidentWorker_RaidEnemy</workerClass>
+		<chance>9.0</chance>
+		<category>ThreatBig</category>
+		<pointsScaleable>true</pointsScaleable>
+	</IncidentDef>
+	
+</Defs>
