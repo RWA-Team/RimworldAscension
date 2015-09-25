@@ -3,11 +3,11 @@ using System.Linq;
 using UnityEngine;
 using Verse;
 
-namespace GlobalMod.PreGame
+namespace RimworldAscension.PreGame
 {
 	internal class ModController : MonoBehaviour
 	{
-		public static readonly string ModName = "Global Mod";
+		public static readonly string ModName = "Rimworld Ascension";
 
 		private Window currentLayer;
 
@@ -64,11 +64,10 @@ namespace GlobalMod.PreGame
 						component.enabled = false;
 						UnityEngine.Object.DestroyImmediate(component);
 						this.replacementRootMap = GameObject.Find("GameCoreDummy").AddComponent<RootMap>();
-						Log.Message("Replaced original RootMap with EdB Prepare Carefully RootMap");
 					}
 					catch (Exception ex)
 					{
-						Log.Error("Failed to start the game with the EdB Prepare Carefully mod");
+						Log.Error("Failed to start the game with the Rimworld Ascension mod");
 						Log.Error(ex.ToString());
 						throw ex;
 					}
@@ -112,12 +111,11 @@ namespace GlobalMod.PreGame
 					this.ResetTextures();
 					Find.WindowStack.TryRemove(topLayer, true);
                     Find.WindowStack.Add(new Page_CharMaker(true));
-					Log.Message("Swapped in EdB Prepare Carefully Character Creation Page");
 					return;
 				}
 				if (flag)
 				{
-					Log.Message("EdB Prepare Carefully not enabled.  Did not replace Character Creation Page");
+					Log.Message("Rimworld Ascension mod not enabled.  Did not replace Character Creation Page");
 				}
 			}
 		}

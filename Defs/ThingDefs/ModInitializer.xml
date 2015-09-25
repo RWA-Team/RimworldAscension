@@ -2,13 +2,13 @@
 <ThingDefs>
 
 	<ThingDef>
-		<defName>EdBPrepareCarefully</defName>
+		<defName>ModInitializer</defName>
 		<category>Building</category>
 		<menuHidden>true</menuHidden>
-		<label>EdBPrepareCarefully_Initializer</label>
-		<thingClass>GlobalMod.PreGame.ModInitializer</thingClass>
+		<label>RimworldAscension_Initializer</label>
+		<thingClass>RimworldAscension.PreGame.ModInitializer</thingClass>
 		<inspectorTabs>
-			<li>GlobalMod.PreGame.ModInitializer</li>
+			<li>RimworldAscension.PreGame.ModInitializer</li>
 		</inspectorTabs>
 	</ThingDef>
 	

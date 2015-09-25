@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Verse;
 
-namespace GlobalMod.PreGame
+namespace RimworldAscension.PreGame
 {
 	public class ModInitializer : ITab
 	{
@@ -10,8 +10,7 @@ namespace GlobalMod.PreGame
 
 		public ModInitializer()
 		{
-			Log.Message("Initialized the EdB Prepare Carefully mod");
-			this.gameObject = new GameObject("EdBPrepareCarefullyController");
+			this.gameObject = new GameObject("RimworldAscensionController");
 			this.gameObject.AddComponent<ModController>();
 			UnityEngine.Object.DontDestroyOnLoad(this.gameObject);
 		}

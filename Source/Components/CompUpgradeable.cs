@@ -7,7 +7,7 @@ using RimWorld;
 using Verse;
 using UnityEngine;
 
-namespace GlobalMod.Components
+namespace RimworldAscension.Components
 {
     public class CompUpgradeable : ThingComp
     {

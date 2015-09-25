@@ -192,7 +192,6 @@
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 		</building>
 		<constructEffect>ConstructMetal</constructEffect>
-		<designationHotKey>I</designationHotKey>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>

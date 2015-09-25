@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Verse;
 
-namespace GlobalMod.PreGame
+namespace RimworldAscension.PreGame
 {
 	public class Page_CharMaker : Window
 	{

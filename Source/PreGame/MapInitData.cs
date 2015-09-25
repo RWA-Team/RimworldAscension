@@ -6,7 +6,7 @@ using System.Text;
 using RimWorld;
 using Verse;
 
-namespace GlobalMod.PreGame
+namespace RimworldAscension.PreGame
 {
     public static class MapInitData
     {

@@ -6,7 +6,7 @@ using System.Text;
 using RimWorld;
 using Verse;
 
-namespace GlobalMod
+namespace RimworldAscension
 {
     public static class TechUpgrades
     {

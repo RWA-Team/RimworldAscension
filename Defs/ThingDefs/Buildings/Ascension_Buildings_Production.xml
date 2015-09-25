@@ -12,337 +12,166 @@
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
 	</ThingDef>
-
-
-	<!-- ========================= Work tables ==========================-->
 	
 
 	<ThingDef Name="BenchBase" ParentName="BuildingBase" Abstract="True">
+		<ThingClass>Building_WorkTable</ThingClass>
 		<castEdgeShadows>true</castEdgeShadows>
 		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<AltitudeLayer>Waist</AltitudeLayer>
+		<surfaceType>Item</surfaceType>
+		<Size>(3,1)</Size>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>30</costStuffCount>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<passability>PassThroughOnly</passability>
+		<DesignationCategory>Production</DesignationCategory>
+		<pathCost>70</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li>
+				<compClass>CompAffectedByFacilities</compClass>
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+	</ThingDef>
+	
+
+	<!-- ========================= Work Tables ==========================-->
+	
+	
+	<ThingDef ParentName="BenchBase">
+		<DefName>CraftingTable_Neolithic</DefName>
+		<label>crafting table</label>
+		<Description>A table and tools to craft various stuff.</Description>
+		<graphicData>
+			<texPath>Things/Building/Production/TableSculpting</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3.5,1.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<WorkToMake>3000</WorkToMake>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Cleanliness>-2</Cleanliness>
+		</statBases>
+		<!-- recipes and visibility added via researchMod -->
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
 
 	<ThingDef ParentName="BenchBase">
 		<DefName>TableButcher</DefName>
 		<label>butcher table</label>
-		<ThingClass>Building_WorkTable</ThingClass>
 		<Description>A heavy table for butchering dead creatures into pieces of raw meat.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableButcher</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(3.5,1.5)</drawSize>
 		</graphicData>
-		<costStuffCount>75</costStuffCount>
-		<CostList>
-			<WoodLog>20</WoodLog>
-		</CostList>
-		<stuffCategories>
-			<li>Woody</li>
-		</stuffCategories>
-		<AltitudeLayer>Waist</AltitudeLayer>
-		<fillPercent>0.5</fillPercent>
-		<useHitPoints>True</useHitPoints>
 		<statBases>
 			<WorkToMake>2000</WorkToMake>
 			<MaxHitPoints>180</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 			<Cleanliness>-15</Cleanliness>
 		</statBases>
-		<Size>(3,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
-		<Passability>PassThroughOnly</Passability>
-		<pathCost>60</pathCost>
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
-		<surfaceType>Item</surfaceType>
 		<recipes>
 			<li>ButcherCorpseFlesh</li>
 		</recipes>
-		<inspectorTabs>
-			<li>ITab_Bills</li>
-		</inspectorTabs>
-		<building>
-			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-		</building>
-		<comps>
-			<li>
-				<compClass>CompAffectedByFacilities</compClass>
-				<linkableFacilities>
-					<li>ToolCabinet</li>
-				</linkableFacilities>
-			</li>
-		</comps>
-		<designationHotKey>B</designationHotKey>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
+		<researchPrerequisite>ExamineFauna</researchPrerequisite>
 	</ThingDef>
 
 
 	<ThingDef ParentName="BenchBase">
-		<DefName>TableTailor</DefName>
+		<DefName>TailorTable_Neolithic</DefName>
 		<label>tailor's workbench</label>
-		<ThingClass>Building_WorkTable</ThingClass>
-		<Description>A workbench equipped for cloth refinement and clothing production.</Description>
+		<Description>A workbench for crafting leather clothings from raw hides.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableTailor</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(3.5,1.5)</drawSize>
 		</graphicData>
-		<costStuffCount>75</costStuffCount>
-		<CostList>
-			<WoodLog>40</WoodLog>
-		</CostList>
-		<stuffCategories>
-			<li>Woody</li>
-		</stuffCategories>
-		<AltitudeLayer>Waist</AltitudeLayer>
-		<fillPercent>0.5</fillPercent>
-		<useHitPoints>True</useHitPoints>
 		<statBases>
 			<WorkToMake>2500</WorkToMake>
 			<MaxHitPoints>180</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<Size>(3,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
-		<Passability>PassThroughOnly</Passability>
-		<pathCost>70</pathCost>
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
-		<surfaceType>Item</surfaceType>
-		<inspectorTabs>
-			<li>ITab_Bills</li>
-		</inspectorTabs>
-		<building>
-			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-		</building>
-		<comps>
-			<li>
-				<compClass>CompAffectedByFacilities</compClass>
-				<linkableFacilities>
-					<li>ToolCabinet</li>
-				</linkableFacilities>
-			</li>
-		</comps>
-		<designationHotKey>P</designationHotKey>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
-		<researchPrerequisite>Tailoring</researchPrerequisite>
+		<researchPrerequisite>LeatherWorking</researchPrerequisite>
 	</ThingDef>
 
 
 	<ThingDef ParentName="BenchBase">
-		<DefName>TableSmithing</DefName>
+		<DefName>MeleeWeaponTable_Neolithic</DefName>
 		<label>smithing bench</label>
-		<ThingClass>Building_WorkTable</ThingClass>
 		<Description>A workbench equipped for weapons and tools production.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableSmithing</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(3.5,1.5)</drawSize>
 		</graphicData>
-		<CostList>
-			<WoodLog>40</WoodLog>
-		</CostList>
-		<constructEffect>ConstructWood</constructEffect>
-		<AltitudeLayer>Waist</AltitudeLayer>
-		<fillPercent>0.5</fillPercent>
-		<useHitPoints>True</useHitPoints>
 		<statBases>
 			<WorkToMake>3000</WorkToMake>
 			<MaxHitPoints>180</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 			<Cleanliness>-3</Cleanliness>
 		</statBases>
-		<Size>(3,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
-		<Passability>PassThroughOnly</Passability>
-		<pathCost>70</pathCost>
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
-		<surfaceType>Item</surfaceType>
-		<inspectorTabs>
-			<li>ITab_Bills</li>
-		</inspectorTabs>
-		<building>
-			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-		</building>
-		<comps>
-			<li>
-				<compClass>CompAffectedByFacilities</compClass>
-				<linkableFacilities>
-					<li>ToolCabinet</li>
-				</linkableFacilities>
-			</li>
-		</comps>
-		<designationHotKey>M</designationHotKey>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
+		<!-- Changed via research mod-->
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
 
 	<ThingDef ParentName="BenchBase">
-		<DefName>TableSculpting</DefName>
-		<label>sculptor's table</label>
-		<ThingClass>Building_WorkTable</ThingClass>
-		<Description>A workbench equipped for artistic sculpting.</Description>
+		<DefName>RangedWeaponTable_Neolithic</DefName>
+		<label>smithing bench</label>
+		<Description>A workbench equipped for weapons and tools production.</Description>
 		<graphicData>
-			<texPath>Things/Building/Production/TableSculpting</texPath>
+			<texPath>Things/Building/Production/TableSmithing</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(3.5,1.5)</drawSize>
 		</graphicData>
-		<CostList>
-			<WoodLog>40</WoodLog>
-		</CostList>
-		<stuffCategories>
-			<li>Woody</li>
-		</stuffCategories>
-		<costStuffCount>75</costStuffCount>
-		<AltitudeLayer>Waist</AltitudeLayer>
-		<fillPercent>0.5</fillPercent>
-		<useHitPoints>True</useHitPoints>
 		<statBases>
-			<WorkToMake>2500</WorkToMake>
+			<WorkToMake>3000</WorkToMake>
 			<MaxHitPoints>180</MaxHitPoints>
 			<Flammability>1.0</Flammability>
-			<Cleanliness>-5</Cleanliness>
+			<Cleanliness>-3</Cleanliness>
 		</statBases>
-		<Size>(3,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
-		<Passability>PassThroughOnly</Passability>
-		<pathCost>70</pathCost>
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
-		<surfaceType>Item</surfaceType>
-		<inspectorTabs>
-			<li>ITab_Bills</li>
-		</inspectorTabs>
-		<building>
-			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-		</building>
-		<comps>
-			<li>
-				<compClass>CompAffectedByFacilities</compClass>
-				<linkableFacilities>
-					<li>ToolCabinet</li>
-				</linkableFacilities>
-			</li>
-		</comps>
-		<designationHotKey>J</designationHotKey>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
+		<!-- Changed via research mod-->
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
 
 	<ThingDef ParentName="BenchBase">
 		<DefName>TableStonecutter</DefName>
 		<label>stonecutter's table</label>
-		<ThingClass>Building_WorkTable_HeatPush</ThingClass>
 		<Description>A work table equipped to cut rough stone into usable blocks.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableStonecutter</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(3.5,1.5)</drawSize>
 		</graphicData>
-		<costStuffCount>75</costStuffCount>
-		<CostList>
-			<WoodLog>40</WoodLog>
-		</CostList>
-		<stuffCategories>
-			<li>Woody</li>
-		</stuffCategories>
-		<AltitudeLayer>Waist</AltitudeLayer>
-		<fillPercent>0.5</fillPercent>
-		<useHitPoints>True</useHitPoints>
 		<statBases>
 			<WorkToMake>2000</WorkToMake>
 			<MaxHitPoints>180</MaxHitPoints>
 			<Flammability>1.0</Flammability>
 			<Cleanliness>-5</Cleanliness>
 		</statBases>
-		<Size>(3,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
-		<Passability>PassThroughOnly</Passability>
-		<pathCost>70</pathCost>
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
-		<surfaceType>Item</surfaceType>
 		<recipes>
 			<li>MakeStoneBlocks</li>
 		</recipes>
-		<inspectorTabs>
-			<li>ITab_Bills</li>
-		</inspectorTabs>
-		<building>
-			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-		</building>
-		<comps>
-			<li>
-				<compClass>CompAffectedByFacilities</compClass>
-				<linkableFacilities>
-					<li>ToolCabinet</li>
-				</linkableFacilities>
-			</li>
-		</comps>
-		<designationHotKey>U</designationHotKey>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
-		<researchPrerequisite>StoneWorks</researchPrerequisite>
-	</ThingDef>
-
-
-	<!-- ========== Non-standard work benches ==============-->
-	
-
-	<ThingDef ParentName="BenchBase">
-		<defName>ResearchBench</defName>
-		<label>research bench</label>
-		<thingClass>Building_ResearchBench</thingClass>
-		<graphicData>
-			<texPath>Things/Building/Production/ResearchBench</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<shaderType>CutoutComplex</shaderType>
-			<drawSize>(7,4)</drawSize>
-		</graphicData>
-		<altitudeLayer>Waist</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<pathCost>70</pathCost>
-		<statBases>
-			<MaxHitPoints>250</MaxHitPoints>
-			<WorkToMake>2800</WorkToMake>
-			<Flammability>1.0</Flammability>
-			<ResearchSpeedFactor>1.0</ResearchSpeedFactor>
-		</statBases>
-		<description>Researchers work here to discover new things.</description>
-		<size>(5,2)</size>
-		<stuffCategories>
-			<li>Woody</li>
-		</stuffCategories>
-		<costStuffCount>75</costStuffCount>
-		<comps>
-			<li>
-				<compClass>CompAffectedByFacilities</compClass>
-				<linkableFacilities>
-					<li>MultiAnalyzer</li>
-				</linkableFacilities>
-			</li>
-		</comps>
-		<fillPercent>0.5</fillPercent>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
-		<hasInteractionCell>true</hasInteractionCell>
-		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
-		<surfaceType>Item</surfaceType>
-		<designationHotKey>R</designationHotKey>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
+		<researchPrerequisite>StoneWorking</researchPrerequisite>
 	</ThingDef>
 
 

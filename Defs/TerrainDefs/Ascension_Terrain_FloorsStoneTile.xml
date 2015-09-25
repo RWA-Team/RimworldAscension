@@ -17,7 +17,6 @@
 		<constructEffect>ConstructDirt</constructEffect>
 		<AcceptTerrainSourceFilth>True</AcceptTerrainSourceFilth>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<researchPrerequisite>StoneWorks</researchPrerequisite>
 	</TerrainDef>
 
 

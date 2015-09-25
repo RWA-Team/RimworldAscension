@@ -6,7 +6,7 @@ using System.Text;
 using RimWorld;
 using Verse;
 
-namespace GlobalMod.Components
+namespace RimworldAscension.Components
 {
     public class CompUpgradeable_Properties: CompProperties
     {

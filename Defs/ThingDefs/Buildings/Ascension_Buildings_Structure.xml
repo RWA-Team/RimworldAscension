@@ -20,7 +20,6 @@
 	<ThingDef ParentName="BuildingBase" Name="DoorBase" Abstract="True">
 		<thingClass>Building_Door</thingClass>
 		<blueprintClass>Blueprint_Door</blueprintClass>
-		<category>Building</category>
 		<blueprintGraphicData>
 			<texPath>Things/Building/Door/Door_Blueprint</texPath>
 		</blueprintGraphicData>
@@ -29,6 +28,7 @@
 		<useHitPoints>true</useHitPoints>
 		<stuffCategories>
 			<li>Woody</li>
+			<li>Stony</li>			
 		</stuffCategories>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
@@ -38,8 +38,6 @@
 		<selectable>true</selectable>
 		<tickerType>Normal</tickerType>
 		<rotatable>false</rotatable>
-		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<designationCategory>Structure</designationCategory>
 		<holdsRoof>true</holdsRoof>
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>

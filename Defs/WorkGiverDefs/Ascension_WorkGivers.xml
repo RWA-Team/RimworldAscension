@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WorkGivers>
+	
+
+	<WorkGiverDef>
+		<defName>Research</defName>
+		<giverClass>RimworldAscension.WorkGivers.WorkGiver_DoBill_Research</giverClass>
+		<workType>Research</workType>
+		<verb>research</verb>
+		<gerund>researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	
+
+</WorkGivers>

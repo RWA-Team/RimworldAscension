@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+
+	<ThingDef Name="BuildingBase" Abstract="True">
+		<category>Building</category>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+	</ThingDef>
+
+
+	<!-- ========================= Work tables ==========================-->
+
+
+	<ThingDef Name="ResearchBenchBase" ParentName="BuildingBase" Abstract="True">
+		<ThingClass>Building_WorkTable</ThingClass>
+		<label>research bench</label>
+		<description>Researchers work here to discover new things.</description>
+		<size>(5,2)</size>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<AltitudeLayer>Waist</AltitudeLayer>
+		<surfaceType>Item</surfaceType>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<passability>PassThroughOnly</passability>
+		<DesignationCategory>Misc</DesignationCategory>
+		<pathCost>70</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<designationHotKey>R</designationHotKey>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ResearchBenchBase">
+		<defName>ResearchBench</defName>
+		<graphicData>
+			<texPath>Things/Building/Production/ResearchBench</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(7,4)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToMake>2800</WorkToMake>
+			<Flammability>1.0</Flammability>
+			<ResearchSpeedFactor>1.0</ResearchSpeedFactor>
+		</statBases>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>75</costStuffCount>
+		<comps>
+			<li>
+				<compClass>CompAffectedByFacilities</compClass>
+				<linkableFacilities>
+					<li>MultiAnalyzer</li>
+				</linkableFacilities>
+			</li>
+			<li Class="RimworldAscension.Components.CompResearcher_Properties">
+				<compClass>RimworldAscension.Components.CompResearcher</compClass>
+				<researchRecipes>
+					<li>
+						<key>ExamineFlora</key>
+						<value>ExamineFlora</value>
+					</li>
+					<li>
+						<key>BasicFarming</key>
+						<value>BasicFarming</value>
+					</li>
+					<li>
+						<key>ExamineFauna</key>
+						<value>ExamineFauna</value>
+					</li>
+					<li>
+						<key>AnimalHusbandry</key>
+						<value>AnimalHusbandry</value>
+					</li>
+					<li>
+						<key>WoodWorking</key>
+						<value>WoodWorking</value>
+					</li>
+					<li>
+						<key>StoneWorking</key>
+						<value>StoneWorking</value>
+					</li>
+					<li>
+						<key>LeatherWorking</key>
+						<value>ExamineFlora</value>
+					</li>
+				</researchRecipes>
+			</li>
+		</comps>
+	</ThingDef>
+
+
+</ThingDefs>
