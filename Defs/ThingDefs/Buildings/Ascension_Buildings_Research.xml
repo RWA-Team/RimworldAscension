@@ -66,8 +66,8 @@
 					<li>MultiAnalyzer</li>
 				</linkableFacilities>
 			</li>
-			<li Class="RimworldAscension.Components.CompResearcher_Properties">
-				<compClass>RimworldAscension.Components.CompResearcher</compClass>
+			<li Class="RimworldAscension.CompResearcher_Properties">
+				<compClass>RimworldAscension.CompResearcher</compClass>
 				<researchRecipes>
 					<li>
 						<key>ExamineFlora</key>

@@ -88,7 +88,7 @@
 		<Description>A makeshift bed, made from logs and leaves.</Description>
 		<ThingClass>Building_Bed</ThingClass>
 		<graphicData>
-			<texPath>Things/Building/Furniture/Bed/LeafBed</texPath>
+			<texPath>Things/Furniture/Bed/LeafBed</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 			<drawSize>(3,4)</drawSize>

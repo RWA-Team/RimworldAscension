@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <WorkGivers>
-	
+
 
 	<WorkGiverDef>
 		<defName>Research</defName>
@@ -12,6 +12,19 @@
 			<li>Manipulation</li>
 		</requiredCapacities>
 	</WorkGiverDef>
-	
+
+
+	<WorkGiverDef>
+		<defName>HaulToTrade</defName>
+		<giverClass>RimworldAscension.WorkGiver_HaulToTrade</giverClass>
+		<workType>Hauling</workType>
+		<verb>haul</verb>
+		<gerund>hauling</gerund>
+		<priorityInType>500</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
 
 </WorkGivers>

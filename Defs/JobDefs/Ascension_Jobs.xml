@@ -8,6 +8,20 @@
 		<reportString>Doing research at TargetA.</reportString>
 		<suspendable>false</suspendable>
 	</JobDef>
+
+
+	<JobDef>
+		<defName>GoTrading</defName>
+		<driverClass>RimworldAscension.JobDriver_GoTrading</driverClass>
+		<reportString>Trading.</reportString>
+	</JobDef>
 	
+	
+	<JobDef>
+		<defName>HaulToTrade</defName>
+		<driverClass>RimworldAscension.JobDriver_HaulToTrade</driverClass>
+		<reportString>Hauling TargetA.</reportString>
+	</JobDef>
+
 
 </Defs>

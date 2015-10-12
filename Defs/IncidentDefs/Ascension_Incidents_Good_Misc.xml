@@ -12,8 +12,8 @@
 
 	<IncidentDef>
 		<defName>TraderArrival</defName>
-		<workerClass>IncidentWorker_TraderArrival</workerClass>
-		<chance>0</chance>
+		<workerClass>RimworldAscension.IncidentWorker_TraderArrival</workerClass>
+		<chance>9</chance>
 	</IncidentDef>
 	
 
