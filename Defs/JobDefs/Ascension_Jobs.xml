@@ -3,8 +3,15 @@
 
 
 	<JobDef>
+		<defName>HaulToCell</defName>
+		<driverClass>RA.JobDriver_HaulToCell</driverClass>
+		<reportString>Hauling TargetA.</reportString>
+	</JobDef>
+	
+	
+	<JobDef>
 		<defName>Research</defName>
-		<driverClass>RimworldAscension.JobDrivers.JobDriver_DoBill_Research</driverClass>
+		<driverClass>RA.JobDrivers.JobDriver_DoBill_Research</driverClass>
 		<reportString>Doing research at TargetA.</reportString>
 		<suspendable>false</suspendable>
 	</JobDef>
@@ -12,15 +19,22 @@
 
 	<JobDef>
 		<defName>GoTrading</defName>
-		<driverClass>RimworldAscension.JobDriver_GoTrading</driverClass>
+		<driverClass>RA.JobDriver_GoTrading</driverClass>
 		<reportString>Trading.</reportString>
 	</JobDef>
-	
-	
+
+
 	<JobDef>
 		<defName>HaulToTrade</defName>
-		<driverClass>RimworldAscension.JobDriver_HaulToTrade</driverClass>
+		<driverClass>RA.JobDriver_HaulToTrade</driverClass>
 		<reportString>Hauling TargetA.</reportString>
+	</JobDef>
+
+
+	<JobDef>
+		<defName>UseSurvivalGuide</defName>
+		<driverClass>JobDriver_UseItem</driverClass>
+		<reportString>Using TargetA.</reportString>
 	</JobDef>
 
 

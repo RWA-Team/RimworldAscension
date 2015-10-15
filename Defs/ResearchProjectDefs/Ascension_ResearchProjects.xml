@@ -32,7 +32,7 @@
 				</prerequisites>
 				<researchMods>
 					<li>
-						<specialAction>RimworldAscension.ResearchMods.BasicFarming</specialAction>
+						<specialAction>RA.ResearchMods.BasicFarming</specialAction>
 					</li>
 				</researchMods>
 			</ResearchProjectDef>
@@ -102,7 +102,7 @@
 		</prerequisites>
 		<researchMods>
 			<li>
-				<specialAction>RimworldAscension.TechUpgrades.Medieval</specialAction>
+				<specialAction>RA.TechUpgrades.Medieval</specialAction>
 			</li>
 		</researchMods>
 	</ResearchProjectDef>

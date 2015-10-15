@@ -57,7 +57,7 @@
 		<label>leaf bundle</label>
 		<description>A bundle of leaves.</description>
 		<graphicData>
-			<texPath>Things/Resource/LeafBundle</texPath>
+			<texPath>Things/Resources/LeafBundle</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>

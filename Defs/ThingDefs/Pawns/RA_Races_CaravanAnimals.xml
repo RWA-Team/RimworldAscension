@@ -81,9 +81,10 @@
 				<shearIntervalDays>60</shearIntervalDays>
 				<woolAmount>100</woolAmount>
 			</li>
-			<li Class="RimworldAscension.CompCaravan_Properties">
-				<compClass>RimworldAscension.CompCaravan</compClass>
-				<cartTexturePath>Things/Various/CaravanCart/Cart</cartTexturePath>
+			<li Class="RA.CompCaravan_Properties">
+				<compClass>RA.CompCaravan</compClass>
+				<cartEmptyTexturePath>Things/Various/CaravanCart/CartEmpty</cartEmptyTexturePath>
+				<cartFullTexturePath>Things/Various/CaravanCart/CartFull</cartFullTexturePath>
 				<wheelTexturePath>Things/Various/CaravanCart/Wheel</wheelTexturePath>
 				<harnessTexturePath>Things/Various/CaravanCart/Harness</harnessTexturePath>
 			</li>

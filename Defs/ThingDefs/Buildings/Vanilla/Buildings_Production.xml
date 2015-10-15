@@ -54,9 +54,7 @@
 		<interactionCellOffset>(0,0,3)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
 		<constructEffect>ConstructMetal</constructEffect>
-		<designationHotKey>N</designationHotKey>
 	</ThingDef>
 
 
@@ -112,26 +110,24 @@
 		<tickerType>Never</tickerType>
 		<rotatable>true</rotatable>
 		<neverMultiSelect>true</neverMultiSelect>
-		<designationCategory>Production</designationCategory>
 		<staticSunShadowHeight>0.3</staticSunShadowHeight>
 		<surfaceType>Item</surfaceType>
 		<placeWorkers>
 			<li>PlaceWorker_NextToHopperAccepter</li>
 		</placeWorkers>
 		<constructEffect>ConstructMetal</constructEffect>
-		<designationHotKey>H</designationHotKey>
 	</ThingDef>
 
 
 	<!-- ========================= Work tables ==========================-->
-	
+
 
 	<ThingDef Name="BenchBase" ParentName="BuildingBase" Abstract="True">
 		<castEdgeShadows>true</castEdgeShadows>
 		<staticSunShadowHeight>0.20</staticSunShadowHeight>
 	</ThingDef>
-	
-	
+
+
 	<ThingDef ParentName="BenchBase">
 		<DefName>TableMachining</DefName>
 		<label>machining table</label>
@@ -155,7 +151,6 @@
 			<Cleanliness>-2</Cleanliness>
 		</statBases>
 		<Size>(3,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
 		<Passability>PassThroughOnly</Passability>
 		<pathCost>70</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -221,7 +216,6 @@
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<Size>(3,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
 		<Passability>PassThroughOnly</Passability>
 		<pathCost>70</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -249,10 +243,9 @@
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 			<heatPerTickWhileWorking>0.25</heatPerTickWhileWorking>
 		</building>
-		<designationHotKey>O</designationHotKey>
 	</ThingDef>
-	
-	
+
+
 	<ThingDef ParentName="BenchBase">
 		<DefName>Brewery</DefName>
 		<label>brewery</label>
@@ -277,7 +270,6 @@
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<Size>(3,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
 		<Passability>PassThroughOnly</Passability>
 		<pathCost>70</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -318,7 +310,6 @@
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<Size>(3,1)</Size>
-		<DesignationCategory>Production</DesignationCategory>
 		<Passability>PassThroughOnly</Passability>
 		<pathCost>70</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -352,13 +343,182 @@
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 			<heatPerTickWhileWorking>0.5</heatPerTickWhileWorking>
 		</building>
-		<designationHotKey>L</designationHotKey>
+	</ThingDef>
+
+
+
+	<ThingDef ParentName="BenchBase">
+		<DefName>TableTailor</DefName>
+		<label>tailor's workbench</label>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<Description>A workbench equipped for cloth refinement and clothing production.</Description>
+		<graphicData>
+			<texPath>Things/Building/Production/TableTailor</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3.5,1.5)</drawSize>
+		</graphicData>
+		<costStuffCount>75</costStuffCount>
+		<CostList>
+			<Steel>50</Steel>
+		</CostList>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+		</stuffCategories>
+		<AltitudeLayer>Waist</AltitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToMake>2500</WorkToMake>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<Size>(3,1)</Size>
+		<Passability>PassThroughOnly</Passability>
+		<pathCost>70</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<comps>
+			<li>
+				<compClass>CompPowerTrader</compClass>
+				<startElectricalFires>true</startElectricalFires>
+				<basePowerConsumption>120</basePowerConsumption>
+				<soundPowerOn>PowerOnSmall</soundPowerOn>
+				<soundPowerOff>PowerOffSmall</soundPowerOff>
+			</li>
+			<li>
+				<compClass>CompAffectedByFacilities</compClass>
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BenchBase">
+		<DefName>TableSmithing</DefName>
+		<label>smithing bench</label>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<Description>A workbench equipped for weapons and tools production.</Description>
+		<graphicData>
+			<texPath>Things/Building/Production/TableSmithing</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3.5,1.5)</drawSize>
+		</graphicData>
+		<CostList>
+			<WoodLog>40</WoodLog>
+			<Steel>100</Steel>
+		</CostList>
+		<constructEffect>ConstructWood</constructEffect>
+		<AltitudeLayer>Waist</AltitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToMake>3000</WorkToMake>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Cleanliness>-3</Cleanliness>
+		</statBases>
+		<Size>(3,1)</Size>
+		<Passability>PassThroughOnly</Passability>
+		<pathCost>70</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<comps>
+			<li>
+				<compClass>CompPowerTrader</compClass>
+				<startElectricalFires>true</startElectricalFires>
+				<basePowerConsumption>210</basePowerConsumption>
+				<soundPowerOn>PowerOnSmall</soundPowerOn>
+				<soundPowerOff>PowerOffSmall</soundPowerOff>
+			</li>
+			<li>
+				<compClass>CompAffectedByFacilities</compClass>
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BenchBase">
+		<DefName>TableSculpting</DefName>
+		<label>sculptor's table</label>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<Description>A workbench equipped for artistic sculpting.</Description>
+		<graphicData>
+			<texPath>Things/Building/Production/TableSculpting</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3.5,1.5)</drawSize>
+		</graphicData>
+		<CostList>
+			<Steel>75</Steel>
+		</CostList>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+		</stuffCategories>
+		<costStuffCount>75</costStuffCount>
+		<AltitudeLayer>Waist</AltitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToMake>2500</WorkToMake>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Cleanliness>-5</Cleanliness>
+		</statBases>
+		<Size>(3,1)</Size>
+		<Passability>PassThroughOnly</Passability>
+		<pathCost>70</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<comps>
+			<li>
+				<compClass>CompAffectedByFacilities</compClass>
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
 	</ThingDef>
 
 
 	<!-- ========== Non-standard work benches ==============-->
-	
-	
+
+
 	<ThingDef ParentName="BuildingBase">
 		<DefName>Crematorium</DefName>
 		<label>crematorium</label>
@@ -386,7 +546,6 @@
 			<Cleanliness>-20</Cleanliness>
 		</statBases>
 		<Size>(3,2)</Size>
-		<DesignationCategory>Production</DesignationCategory>
 		<fillPercent>1</fillPercent>
 		<Passability>Impassable</Passability>
 		<hasInteractionCell>True</hasInteractionCell>
@@ -422,12 +581,11 @@
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 			<heatPerTickWhileWorking>0.6</heatPerTickWhileWorking>
 		</building>
-		<designationHotKey>K</designationHotKey>
 	</ThingDef>
 
 
 	<!-- ========== Hydroponics ==============-->
-	
+
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>HydroponicsBasin</defName>
@@ -475,8 +633,6 @@
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
-		<designationHotKey>Y</designationHotKey>
 	</ThingDef>
 
 

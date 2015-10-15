@@ -22,7 +22,7 @@
 
 
 	<!-- ================= Misc ================= -->
-	
+
 
 	<TerrainDef ParentName="FloorBase">
 		<DefName>MetalTile</DefName>
@@ -40,7 +40,7 @@
 		</CostList>
 		<constructEffect>ConstructMetal</constructEffect>
 	</TerrainDef>
-	
+
 
 	<TerrainDef ParentName="FloorBase">
 		<DefName>SilverTile</DefName>
@@ -58,7 +58,7 @@
 		</CostList>
 		<constructEffect>ConstructMetal</constructEffect>
 	</TerrainDef>
-	
+
 
 	<TerrainDef ParentName="FloorBase">
 		<DefName>GoldTile</DefName>
@@ -76,7 +76,7 @@
 		</CostList>
 		<constructEffect>ConstructMetal</constructEffect>
 	</TerrainDef>
-	
+
 
 	<TerrainDef ParentName="FloorBase">
 		<DefName>SterileTile</DefName>
@@ -95,7 +95,7 @@
 		</CostList>
 		<constructEffect>ConstructMetal</constructEffect>
 	</TerrainDef>
-	
+
 
 	<TerrainDef ParentName="FloorBase">
 		<DefName>PavedTile</DefName>
@@ -110,7 +110,7 @@
 			<Steel>2</Steel>
 		</CostList>
 	</TerrainDef>
-	
+
 
 	<TerrainDef ParentName="FloorBase">
 		<defName>Concrete</defName>
@@ -127,10 +127,26 @@
 			<Steel>1</Steel>
 		</CostList>
 	</TerrainDef>
+	
+
+	<TerrainDef  ParentName="FloorBase">
+		<DefName>WoodPlankFloor</DefName>
+		<label>wood floor</label>
+		<RenderPrecedence>250</RenderPrecedence>
+		<Description>Wood plank flooring. For that warm, homey feeling.</Description>
+		<texturePath>Terrain/Surfaces/WoodFloor</texturePath>
+		<statBases>
+			<WorkToMake>85</WorkToMake>
+		</statBases>
+		<CostList>
+			<WoodLog>3</WoodLog>
+		</CostList>
+		<constructEffect>ConstructWood</constructEffect>
+	</TerrainDef>
 
 
 	<!-- ================= Carpets ================= -->
-	
+
 
 	<TerrainDef Name="CarpetBase" ParentName="FloorBase" Abstract="True">
 		<texturePath>Terrain/Surfaces/Carpet</texturePath>
@@ -142,7 +158,7 @@
 			<Beauty>2</Beauty>
 		</statBases>
 	</TerrainDef>
-	
+
 
 	<TerrainDef ParentName="CarpetBase">
 		<DefName>CarpetRed</DefName>
@@ -151,7 +167,7 @@
 		<Description>Plush carpet in a lovely rose hue.</Description>
 		<color>(118,49,57)</color>
 	</TerrainDef>
-	
+
 
 	<TerrainDef ParentName="CarpetBase">
 		<DefName>CarpetGreen</DefName>
@@ -160,7 +176,7 @@
 		<Description>Naturalistic-feeling green carpet.</Description>
 		<color>(89,105,62)</color>
 	</TerrainDef>
-	
+
 
 	<TerrainDef ParentName="CarpetBase">
 		<DefName>CarpetBlue</DefName>
@@ -169,7 +185,7 @@
 		<Description>Toe-hugging plush carpet in a cool blue color.</Description>
 		<color>(24,65,121)</color>
 	</TerrainDef>
-	
+
 
 	<TerrainDef ParentName="CarpetBase">
 		<DefName>CarpetCream</DefName>
@@ -178,7 +194,7 @@
 		<Description>Inviting cream-colored carpet.</Description>
 		<color>(195,192,176)</color>
 	</TerrainDef>
-	
+
 
 	<TerrainDef ParentName="CarpetBase">
 		<DefName>CarpetDark</DefName>

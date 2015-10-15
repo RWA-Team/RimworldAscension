@@ -65,9 +65,7 @@
 		<neverMultiSelect>true</neverMultiSelect>
 		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Power</designationCategory>
 		<constructEffect>ConstructMetal</constructEffect>
-		<designationHotKey>U</designationHotKey>
 	</ThingDef>
 
 
@@ -109,7 +107,6 @@
 		<selectable>true</selectable>
 		<neverMultiSelect>false</neverMultiSelect>
 		<tickerType>Normal</tickerType>
-		<designationCategory>Power</designationCategory>
 		<constructEffect>ConstructMetal</constructEffect>
 	</ThingDef>
 
@@ -151,9 +148,7 @@
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Power</designationCategory>
 		<staticSunShadowHeight>0.20</staticSunShadowHeight>
-		<designationHotkey>L</designationHotkey>
 		<constructEffect>ConstructMetal</constructEffect>
 	</ThingDef>
 
@@ -194,7 +189,6 @@
 		</comps>
 		<rotatable>false</rotatable>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Power</designationCategory>
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<placeWorkers>
 			<li>PlaceWorker_OnSteamGeyser</li>
@@ -204,7 +198,6 @@
 			<ignoreNeedsPower>true</ignoreNeedsPower>
 		</building>
 		<constructEffect>ConstructMetal</constructEffect>
-		<designationHotkey>G</designationHotkey>
 		<researchPrerequisite>GeothermalPower</researchPrerequisite>
 	</ThingDef>
 
@@ -249,10 +242,8 @@
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Power</designationCategory>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
-		<designationHotkey>B</designationHotkey>
 	</ThingDef>
 
 

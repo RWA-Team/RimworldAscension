@@ -13,6 +13,7 @@
 			<li>Designator_Haul</li>
 			<li>Designator_PlantsCut</li>
 			<li>Designator_PlantsHarvest</li>
+			<li>Designator_PlantsHarvestWood</li>
 			<li>Designator_Uninstall</li>
 			<li>Designator_Claim</li>
 			<li>Designator_Strip</li>

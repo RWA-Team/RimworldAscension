@@ -12,6 +12,8 @@
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
+		<designationCategory>Furniture</designationCategory>
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 	
 
@@ -25,7 +27,6 @@
 				<compClass>CompQuality</compClass>
 			</li>
 		</comps>
-		<DesignationCategory>Furniture</DesignationCategory>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 	</ThingDef>
 	
@@ -49,37 +50,6 @@
 
 
 	<!--============================== Beds ==============================-->
-
-
-	<ThingDef ParentName="BuildingBase">
-		<defName>SleepingSpot</defName>
-		<ThingClass>Building_Bed</ThingClass>
-		<label>sleeping spot</label>
-		<description>Designates a spot on the ground where people should sleep. Not comfortable.</description>
-		<graphicData>
-			<texPath>Things/Building/Furniture/Bed/SleepSpot</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(3,4)</drawSize>
-		</graphicData>
-		<AltitudeLayer>FloorEmplacement</AltitudeLayer>
-		<statBases>
-			<BedRestEffectiveness>0.8</BedRestEffectiveness>
-			<WorkToMake>0</WorkToMake>
-			<Beauty>-2</Beauty>
-			<Comfort>0.4</Comfort>
-		</statBases>
-		<useHitPoints>False</useHitPoints>
-		<Size>(1,2)</Size>
-		<Passability>Standable</Passability>
-		<DrawGUIOverlay>True</DrawGUIOverlay>
-		<building>
-			<Bed_ShowSleeperBody>True</Bed_ShowSleeperBody>
-			<Bed_HealTickInterval>3000</Bed_HealTickInterval>
-			<sowTag>SupportPlantsOnly</sowTag>
-			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
-		</building>
-		<designationHotkey>C</designationHotkey>
-	</ThingDef>
 	
 	
 	<ThingDef ParentName="BuildingBase">
@@ -88,7 +58,7 @@
 		<Description>A makeshift bed, made from logs and leaves.</Description>
 		<ThingClass>Building_Bed</ThingClass>
 		<graphicData>
-			<texPath>Things/Furniture/Bed/LeafBed</texPath>
+			<texPath>Things/Furnitures/Beds/LeafBed/LeafBed</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 			<drawSize>(3,4)</drawSize>
@@ -122,7 +92,6 @@
 		</comps>
 		<PathCost>20</PathCost>
 		<Passability>Standable</Passability>
-		<DesignationCategory>Furniture</DesignationCategory>
 		<DrawGUIOverlay>True</DrawGUIOverlay>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
@@ -176,7 +145,6 @@
 		<PathCost>60</PathCost>
 		<StaticSunShadowHeight>0.17</StaticSunShadowHeight>
 		<CastEdgeShadows>True</CastEdgeShadows>
-		<designationHotKey>B</designationHotKey>
 		<Passability>PassThroughOnly</Passability>
 		<DrawGUIOverlay>True</DrawGUIOverlay>
 		<placeWorkers>
@@ -187,32 +155,8 @@
 	
 	<!--=========================== Animal beds ===============================-->
 	
-
-	<ThingDef ParentName="BuildingBase">
-		<defName>AnimalSleepingSpot</defName>
-		<ThingClass>Building_Bed</ThingClass>
-		<label>animal sleeping spot</label>
-		<description>Designates a spot on the ground where animals should sleep.</description>
-		<size>(1,1)</size>
-		<Passability>Standable</Passability>
-		<designationCategory>Furniture</designationCategory>
-		<useHitPoints>False</useHitPoints>
-		<AltitudeLayer>FloorEmplacement</AltitudeLayer>
-		<graphicData>
-			<texPath>Things/Building/Misc/AnimalBed/AnimalSleepSpot</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<statBases>
-			<WorkToMake>0</WorkToMake>
-		</statBases>
-		<building>
-			<bed_humanlike>false</bed_humanlike>
-			<Bed_ShowSleeperBody>True</Bed_ShowSleeperBody>
-			<Bed_HealTickInterval>3000</Bed_HealTickInterval>
-			<sowTag>SupportPlantsOnly</sowTag>
-			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
-		</building>
-	</ThingDef>
+	
+	
 	
 	
 	<!--======================= Basic domestic furniture ==============================-->
@@ -240,7 +184,6 @@
 		<costStuffCount>15</costStuffCount>
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<pathCost>30</pathCost>
-		<designationHotKey>T</designationHotKey>
 		<fillPercent>0.30</fillPercent>
 		<building>
 			<isSittable>true</isSittable>
@@ -344,7 +287,6 @@
 			</li>
 		</comps>
 		<fertility>1.0</fertility>
-		<designationHotKey>P</designationHotKey>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<building>
 			<defaultPlantToGrow>PlantDaylily</defaultPlantToGrow>

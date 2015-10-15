@@ -41,7 +41,6 @@
 		<selectable>true</selectable>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<rotatable>true</rotatable>
-		<designationCategory>Power</designationCategory>
 		<building>
 			<ignoreNeedsPower>true</ignoreNeedsPower>
 		</building>

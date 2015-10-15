@@ -11,6 +11,8 @@
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
+		<designationCategory>Misc</designationCategory>
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
 
@@ -29,11 +31,9 @@
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>True</useHitPoints>
 		<passability>PassThroughOnly</passability>
-		<DesignationCategory>Misc</DesignationCategory>
 		<pathCost>70</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
-		<designationHotKey>R</designationHotKey>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
@@ -66,8 +66,8 @@
 					<li>MultiAnalyzer</li>
 				</linkableFacilities>
 			</li>
-			<li Class="RimworldAscension.CompResearcher_Properties">
-				<compClass>RimworldAscension.CompResearcher</compClass>
+			<li Class="RA.CompResearcher_Properties">
+				<compClass>RA.CompResearcher</compClass>
 				<researchRecipes>
 					<li>
 						<key>ExamineFlora</key>

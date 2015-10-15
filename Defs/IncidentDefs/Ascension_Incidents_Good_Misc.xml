@@ -12,7 +12,7 @@
 
 	<IncidentDef>
 		<defName>TraderArrival</defName>
-		<workerClass>RimworldAscension.IncidentWorker_TraderArrival</workerClass>
+		<workerClass>RA.IncidentWorker_TraderArrival</workerClass>
 		<chance>9</chance>
 	</IncidentDef>
 	

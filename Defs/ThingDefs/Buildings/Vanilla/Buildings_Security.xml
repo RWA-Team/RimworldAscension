@@ -56,11 +56,9 @@
 		<selectable>true</selectable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Security</designationCategory>
 		<staticSunShadowHeight>0.20</staticSunShadowHeight>
 		<constructEffect>ConstructDirt</constructEffect>
 		<repairEffect>ConstructDirt</repairEffect>
-		<designationHotKey>B</designationHotKey>
 	</ThingDef>
 
 
@@ -113,7 +111,6 @@
 		</costList>
 		<combatTargetBuilding>true</combatTargetBuilding>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Security</designationCategory>
 		<specialDisplayRadius>25.9</specialDisplayRadius>
 		<building>
 			<ai_combatDangerous>true</ai_combatDangerous>
@@ -121,7 +118,6 @@
 			<turretBurstCooldownTicks>400</turretBurstCooldownTicks>
 			<turretTopgraphicPath>Things/Building/Security/TurretImprovised_Top</turretTopgraphicPath>
 		</building>
-		<designationHotKey>U</designationHotKey>
 	</ThingDef>
 
 
@@ -176,7 +172,6 @@
 		</costList>
 		<combatTargetBuilding>true</combatTargetBuilding>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Security</designationCategory>
 		<building>
 			<turretGunDef>Artillery_MortarBomb</turretGunDef>
 			<turretShellDef>ArtilleryShell</turretShellDef>
@@ -188,7 +183,6 @@
 				<li>Artillery_BaseDestroyer</li>
 			</buildingTags>
 		</building>
-		<designationHotKey>I</designationHotKey>
 		<placeWorkers>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
@@ -247,7 +241,6 @@
 		</costList>
 		<combatTargetBuilding>true</combatTargetBuilding>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Security</designationCategory>
 		<building>
 			<turretGunDef>Artillery_MortarIncendiary</turretGunDef>
 			<turretShellDef>ArtilleryShell</turretShellDef>
@@ -259,7 +252,6 @@
 				<li>Artillery_BaseDestroyer</li>
 			</buildingTags>
 		</building>
-		<designationHotKey>O</designationHotKey>
 		<placeWorkers>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
@@ -318,7 +310,6 @@
 		</costList>
 		<combatTargetBuilding>true</combatTargetBuilding>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Security</designationCategory>
 		<building>
 			<turretGunDef>Artillery_MortarEMP</turretGunDef>
 			<turretShellDef>ArtilleryShell</turretShellDef>
@@ -329,7 +320,6 @@
 				<li>Artillery</li>
 			</buildingTags>
 		</building>
-		<designationHotkey>P</designationHotkey>
 		<placeWorkers>
 			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
@@ -363,8 +353,6 @@
 			<ArtilleryShell>1</ArtilleryShell>
 			<Steel>50</Steel>
 		</costList>
-		<designationCategory>Security</designationCategory>
-		<designationHotKey>M</designationHotKey>
 		<building>
 			<isTrap>true</isTrap>
 		</building>
@@ -407,8 +395,6 @@
 			<ArtilleryShell>1</ArtilleryShell>
 			<Steel>50</Steel>
 		</costList>
-		<designationCategory>Security</designationCategory>
-		<designationHotKey>N</designationHotKey>
 		<building>
 			<isTrap>true</isTrap>
 		</building>

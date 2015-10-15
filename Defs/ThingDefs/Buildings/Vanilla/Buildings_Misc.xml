@@ -22,7 +22,6 @@
 				<compClass>CompQuality</compClass>
 			</li>
 		</comps>
-		<DesignationCategory>Furniture</DesignationCategory>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 	</ThingDef>
 
@@ -74,9 +73,7 @@
     This value isn't perfect because these radii use different algorithms
     but it matches in this case-->
 		<specialDisplayRadius>5.8</specialDisplayRadius>
-		<designationCategory>Misc</designationCategory>
 		<rotatable>false</rotatable>
-		<designationHotKey>U</designationHotKey>
 	</ThingDef>
 
 
@@ -106,12 +103,10 @@
 		</costList>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<pathCost>20</pathCost>
-		<designationCategory>Misc</designationCategory>
 		<rotatable>false</rotatable>
 		<!--<placeWorkers>
       <li>PlaceWorker_NotUnderRoof</li>
     </placeWorkers>-->
-		<designationHotKey>O</designationHotKey>
 	</ThingDef>
 
 
@@ -141,7 +136,6 @@
 		<interactionCellOffset>(0,0,2)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Misc</designationCategory>
 		<comps>
 			<li>
 				<compClass>CompPowerTrader</compClass>
@@ -150,7 +144,6 @@
 			</li>
 		</comps>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
-		<designationHotkey>M</designationHotkey>
 	</ThingDef>
 
 
@@ -172,8 +165,6 @@
 		<passability>Impassable</passability>
 		<castEdgeShadows>true</castEdgeShadows>
 		<fillPercent>1</fillPercent>
-		<designationHotkey>N</designationHotkey>
-		<designationCategory>Misc</designationCategory>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
@@ -229,7 +220,6 @@
 		<costList>
 			<Steel>180</Steel>
 		</costList>
-		<designationCategory>Misc</designationCategory>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<comps>
 			<li>
@@ -248,7 +238,6 @@
 				<canLinkToMedBedsOnly>true</canLinkToMedBedsOnly>
 			</li>
 		</comps>
-		<designationHotkey>V</designationHotkey>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
@@ -278,7 +267,6 @@
 		<costList>
 			<Steel>200</Steel>
 		</costList>
-		<designationCategory>Misc</designationCategory>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<comps>
 			<li>
@@ -289,7 +277,6 @@
 				<maxSimultaneous>2</maxSimultaneous>
 			</li>
 		</comps>
-		<designationHotkey>T</designationHotkey>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
@@ -364,8 +351,6 @@
 		<passability>PassThroughOnly</passability>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<staticSunShadowHeight>0.3</staticSunShadowHeight>
-		<designationCategory>Misc</designationCategory>
-		<designationHotkey>H</designationHotkey>
 	</ThingDef>
 	
 
@@ -392,7 +377,6 @@
 		<tickerType>Normal</tickerType>
 		<description>A self-powered sarcophagus designed to keep a person in a state of suspended animation for many years.</description>
 		<size>(1,2)</size>
-		<designationCategory>Misc</designationCategory>
 		<hasInteractionCell>true</hasInteractionCell>
 		<interactionCellOffset>(1,0,0)</interactionCellOffset>
 		<costList>

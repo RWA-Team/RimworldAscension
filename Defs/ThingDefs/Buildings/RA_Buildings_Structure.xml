@@ -11,6 +11,8 @@
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
+		<designationCategory>Structure</designationCategory>
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
 
@@ -38,7 +40,6 @@
 		<selectable>true</selectable>
 		<tickerType>Normal</tickerType>
 		<rotatable>false</rotatable>
-		<designationCategory>Structure</designationCategory>
 		<holdsRoof>true</holdsRoof>
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<blockLight>true</blockLight>
@@ -72,7 +73,6 @@
 		</graphicData>
 		<uiIconPath>Things/Building/Door/DoorSimple_MenuIcon</uiIconPath>
 		<costStuffCount>25</costStuffCount>
-		<designationHotKey>P</designationHotKey>
 	</ThingDef>
 
 
@@ -117,7 +117,6 @@
 		<neverMultiSelect>true</neverMultiSelect>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<holdsRoof>true</holdsRoof>
-		<designationCategory>Structure</designationCategory>
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<blockLight>true</blockLight>
 		<stuffCategories>
@@ -134,7 +133,6 @@
 				<multiplier>2</multiplier>
 			</li>
 		</damageMultipliers>
-		<designationHotKey>B</designationHotKey>
 	</ThingDef>
 	
 

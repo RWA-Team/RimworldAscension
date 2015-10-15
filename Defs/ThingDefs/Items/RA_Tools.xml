@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+
+	<ThingDef Name="BaseTool" Abstract="True">
+		<category>Item</category>
+		<thingClass>ThingWithComps</thingClass>
+		<equipmentType>Primary</equipmentType>
+		<pathCost>10</pathCost>
+		<useHitPoints>True</useHitPoints>
+		<selectable>True</selectable>
+		<graphicData>
+			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+		</graphicData>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>0.5</DeteriorationRate>
+			<SellPriceFactor>0.1</SellPriceFactor>
+		</statBases>
+		<altitudeLayer>Item</altitudeLayer>
+		<alwaysHaulable>True</alwaysHaulable>
+		<tickerType>Never</tickerType>
+		<techLevel>Neolithic</techLevel>
+		<weaponTags>
+			<li>Melee</li>
+		</weaponTags>
+		<thingCategories>
+			<li>WeaponsMelee</li>
+		</thingCategories>
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+			<li>
+				<compClass>CompEquippable</compClass>
+			</li>
+		</comps>
+		<soundInteract>Interact_BeatFire</soundInteract>
+		<statBases>
+			<MeleeWeapon_DamageAmount>1</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>2</MeleeWeapon_Cooldown>
+		</statBases>
+		<inspectorTabs>
+			<li>ITab_Art</li>
+		</inspectorTabs>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="BaseTool">
+		<defName>Tool_Woodcutting_Handaxe</defName>
+		<label>handaxe</label>
+		<description>Practical handaxe. Trees - beware!</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Tools/Handaxe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<meleeDamageDef>Cut</meleeDamageDef>
+			</li>
+		</verbs>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="BaseTool">
+		<defName>Tool_Mining_Pickaxe</defName>
+		<label>pickaxe</label>
+		<description>Practical pickaxe. We have to go deeper.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Tools/Pickaxe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<meleeDamageDef>Stab</meleeDamageDef>
+			</li>
+		</verbs>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="BaseTool">
+		<defName>Tool_Building_Hammer</defName>
+		<label>hammer</label>
+		<description>Practical hammer. Be careful with your fingers.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Tools/Hammer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<meleeDamageDef>Blunt</meleeDamageDef>
+			</li>
+		</verbs>
+	</ThingDef>
+	
+
+</ThingDefs>

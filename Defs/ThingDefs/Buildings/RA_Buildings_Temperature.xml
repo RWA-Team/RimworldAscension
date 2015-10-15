@@ -11,6 +11,8 @@
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
+		<designationCategory>Temperature</designationCategory>
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
 
@@ -66,8 +68,6 @@
 				<lifespanTicks>120000</lifespanTicks>
 			</li>
 		</comps>
-		<designationCategory>Temperature</designationCategory>
-		<designationHotKey>I</designationHotKey>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<recipes>

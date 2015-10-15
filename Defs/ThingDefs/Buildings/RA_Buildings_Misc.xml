@@ -12,6 +12,7 @@
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
+		<designationCategory>Misc</designationCategory>
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 	
@@ -65,8 +66,6 @@
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
-		<designationCategory>Misc</designationCategory>
-		<designationHotkey>G</designationHotkey>
 	</ThingDef>
 
 

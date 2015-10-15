@@ -11,6 +11,8 @@
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
+		<designationCategory>Security</designationCategory>
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 	
 
@@ -41,8 +43,6 @@
 			<li>Woody</li>
 		</stuffCategories>
 		<costStuffCount>70</costStuffCount>
-		<designationCategory>Security</designationCategory>
-		<designationHotKey>L</designationHotKey>
 		<building>
 			<isTrap>true</isTrap>
 			<trapDamageCategory>Sharp</trapDamageCategory>

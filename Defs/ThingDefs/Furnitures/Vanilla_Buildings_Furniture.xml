@@ -22,7 +22,6 @@
 				<compClass>CompQuality</compClass>
 			</li>
 		</comps>
-		<DesignationCategory>Furniture</DesignationCategory>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 	</ThingDef>
 	
@@ -42,12 +41,41 @@
 		<inspectorTabs>
 			<li>ITab_Art</li>
 		</inspectorTabs>
-		<DesignationCategory>Furniture</DesignationCategory>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 	</ThingDef>
 
 
 	<!--============================== Beds ==============================-->
+	
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>SleepingSpot</defName>
+		<ThingClass>Building_Bed</ThingClass>
+		<label>sleeping spot</label>
+		<description>Designates a spot on the ground where people should sleep. Not comfortable.</description>
+		<graphicData>
+			<texPath>Things/Building/Furniture/Bed/SleepSpot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
+		<AltitudeLayer>FloorEmplacement</AltitudeLayer>
+		<statBases>
+			<BedRestEffectiveness>0.8</BedRestEffectiveness>
+			<WorkToMake>0</WorkToMake>
+			<Beauty>-2</Beauty>
+			<Comfort>0.4</Comfort>
+		</statBases>
+		<useHitPoints>False</useHitPoints>
+		<Size>(1,2)</Size>
+		<Passability>Standable</Passability>
+		<DrawGUIOverlay>True</DrawGUIOverlay>
+		<building>
+			<Bed_ShowSleeperBody>True</Bed_ShowSleeperBody>
+			<Bed_HealTickInterval>3000</Bed_HealTickInterval>
+			<sowTag>SupportPlantsOnly</sowTag>
+			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+		</building>
+	</ThingDef>
 	
 
 	<ThingDef ParentName="HighQualityFurnitureBase">
@@ -96,7 +124,6 @@
 		<LeaveResourcesWhenKilled>True</LeaveResourcesWhenKilled>
 		<StaticSunShadowHeight>0.17</StaticSunShadowHeight>
 		<CastEdgeShadows>True</CastEdgeShadows>
-		<designationHotKey>R</designationHotKey>
 		<Passability>PassThroughOnly</Passability>
 		<DrawGUIOverlay>True</DrawGUIOverlay>
 		<placeWorkers>
@@ -153,7 +180,6 @@
 		<LeaveResourcesWhenKilled>True</LeaveResourcesWhenKilled>
 		<StaticSunShadowHeight>0.17</StaticSunShadowHeight>
 		<CastEdgeShadows>True</CastEdgeShadows>
-		<designationHotkey>H</designationHotkey>
 		<Passability>PassThroughOnly</Passability>
 		<DrawGUIOverlay>True</DrawGUIOverlay>
 		<researchPrerequisite>HospitalBed</researchPrerequisite>
@@ -164,6 +190,32 @@
 
 
 	<!--=========================== Animal beds ===============================-->
+	
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>AnimalSleepingSpot</defName>
+		<ThingClass>Building_Bed</ThingClass>
+		<label>animal sleeping spot</label>
+		<description>Designates a spot on the ground where animals should sleep.</description>
+		<size>(1,1)</size>
+		<Passability>Standable</Passability>
+		<useHitPoints>False</useHitPoints>
+		<AltitudeLayer>FloorEmplacement</AltitudeLayer>
+		<graphicData>
+			<texPath>Things/Building/Misc/AnimalBed/AnimalSleepSpot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>0</WorkToMake>
+		</statBases>
+		<building>
+			<bed_humanlike>false</bed_humanlike>
+			<Bed_ShowSleeperBody>True</Bed_ShowSleeperBody>
+			<Bed_HealTickInterval>3000</Bed_HealTickInterval>
+			<sowTag>SupportPlantsOnly</sowTag>
+			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+		</building>
+	</ThingDef>
 	
 
 	<ThingDef ParentName="FurnitureBase">
@@ -271,7 +323,6 @@
 		</stuffCategories>
 		<costStuffCount>60</costStuffCount>
 		<pathCost>30</pathCost>
-		<designationHotKey>J</designationHotKey>
 		<fillPercent>0.35</fillPercent>
 		<building>
 			<isSittable>true</isSittable>
@@ -307,7 +358,6 @@
 		<costStuffCount>100</costStuffCount>
 		<pathCost>30</pathCost>
 		<fillPercent>0.40</fillPercent>
-		<designationHotKey>N</designationHotKey>
 		<building>
 			<isSittable>true</isSittable>
 		</building>
@@ -330,7 +380,6 @@
 		</costList>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
-		<designationCategory>Furniture</designationCategory>
 		<rotatable>false</rotatable>
 		<graphicData>
 			<texPath>Things/Building/Furniture/LampStanding</texPath>
@@ -364,7 +413,6 @@
 		<defName>StandingLamp</defName>
 		<label>standing lamp</label>
 		<description>Standing lamp that lights an area.</description>
-		<designationHotKey>L</designationHotKey>
 		<comps>
 			<li>
 				<compClass>CompGlower</compClass>
@@ -377,7 +425,6 @@
 	<ThingDef ParentName="StandingLampBase">
 		<defName>StandingLamp_Red</defName>
 		<label>standing lamp (red)</label>
-		<designationHotKey>O</designationHotKey>
 		<description>Standing lamp that lights an area in red.</description>
 		<comps>
 			<li>
@@ -394,7 +441,6 @@
 		<defName>StandingLamp_Green</defName>
 		<label>standing lamp (green)</label>
 		<description>Standing lamp that lights an area in green.</description>
-		<designationHotKey>K</designationHotKey>
 		<comps>   
 			<li>
 				<compClass>CompGlower</compClass>
@@ -409,7 +455,6 @@
 		<defName>StandingLamp_Blue</defName>
 		<label>standing lamp (blue)</label>
 		<description>Standing lamp that lights an area in blue.</description>
-		<designationHotKey>M</designationHotKey>
 		<comps>
 			<li>
 				<compClass>CompGlower</compClass>
@@ -472,7 +517,6 @@
 		<inspectorTabs>
 			<li>ITab_Storage</li>
 		</inspectorTabs>
-		<designationHotKey>I</designationHotKey>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<surfaceType>Item</surfaceType>
 	</ThingDef>

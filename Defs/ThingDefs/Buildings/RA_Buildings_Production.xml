@@ -11,6 +11,8 @@
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
+		<DesignationCategory>Production</DesignationCategory>
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 	
 
@@ -29,7 +31,6 @@
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>True</useHitPoints>
 		<passability>PassThroughOnly</passability>
-		<DesignationCategory>Production</DesignationCategory>
 		<pathCost>70</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-1)</interactionCellOffset>

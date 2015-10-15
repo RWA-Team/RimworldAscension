@@ -38,8 +38,6 @@
 		</stuffCategories>
 		<costStuffCount>15</costStuffCount>
 		<pathCost>10</pathCost>
-		<designationCategory>Joy</designationCategory>
-		<designationHotKey>H</designationHotKey>
 	</ThingDef>
 	
 
@@ -72,8 +70,6 @@
 		<costStuffCount>70</costStuffCount>
 		<pathCost>70</pathCost>
 		<passability>PassThroughOnly</passability>
-		<designationCategory>Joy</designationCategory>
-		<designationHotKey>C</designationHotKey>
 	</ThingDef>
 	
 
@@ -110,8 +106,6 @@
 		</costList>
 		<pathCost>70</pathCost>
 		<passability>PassThroughOnly</passability>
-		<designationCategory>Joy</designationCategory>
-		<designationHotKey>B</designationHotKey>
 		<placeWorkers>
 			<li>PlaceWorker_NeverAdjacentUnstandable</li>
 		</placeWorkers>

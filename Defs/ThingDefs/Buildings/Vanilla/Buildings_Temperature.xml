@@ -63,8 +63,6 @@
 				<glowColor>(255,150,100,0)</glowColor>
 			</li>
 		</comps>
-		<designationCategory>Temperature</designationCategory>
-		<designationHotKey>H</designationHotKey>
 	</ThingDef>
 
 
@@ -113,8 +111,6 @@
 				<energyPerSecond>-21</energyPerSecond>
 			</li>
 		</comps>
-		<designationCategory>Temperature</designationCategory>
-		<designationHotKey>O</designationHotKey>
 	</ThingDef>
 
 
@@ -151,8 +147,6 @@
 		<building>
 			<canPlaceOverWall>true</canPlaceOverWall>
 		</building>
-		<designationCategory>Temperature</designationCategory>
-		<designationHotKey>N</designationHotKey>
 	</ThingDef>
 
 
