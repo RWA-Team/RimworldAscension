@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DefPackage-TraderKindDef>
+
+
+	<TraderKindDef>
+		<defName>NeolithicTrader</defName>
+		<label>neolithic trader</label>
+		<stockGenerators>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Silver</thingDef>
+				<countRange>
+					<min>4000</min>
+					<max>6000</max>
+				</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>WoodLog</thingDef>
+				<price>Cheap</price>
+				<countRange>
+					<min>800</min>
+					<max>1500</max>
+				</countRange>
+			</li>
+			<li Class="StockGenerator_Category">
+				<categoryDef>FoodMeals</categoryDef>
+				<thingDefCountRange>
+					<min>1</min>
+					<max>2</max>
+				</thingDefCountRange>
+				<price>Cheap</price>
+				<totalPriceRange>
+					<min>500</min>
+					<max>1500</max>
+				</totalPriceRange>
+			</li>
+		</stockGenerators>
+	</TraderKindDef>
+
+
+</DefPackage-TraderKindDef>

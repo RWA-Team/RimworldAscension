@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResearchProjectDefs>
+
+
+	<!--used to hide buldings-->
+	<ResearchProjectDef>
+		<defName>Blocked</defName>
+		<prerequisites>
+			<li>Blocked</li>
+		</prerequisites>		
+	</ResearchProjectDef>
+
+
+	<!-- ========================= Neolithic Tech Level ==========================-->
+
+
+	<ResearchProjectDef>
+		<defName>ExamineFlora</defName>
+		<label>examine local flora</label>
+		<description>Study local flora samples to see what you can do with them.</description>
+		<totalCost>100</totalCost>
+	</ResearchProjectDef>
+	
+	
+			<ResearchProjectDef>
+				<defName>BasicFarming</defName>
+				<label>basic farming</label>
+				<description>Grow simple domesticated plants</description>
+				<totalCost>200</totalCost>
+				<prerequisites>
+					<li>ExamineFlora</li>
+				</prerequisites>
+				<researchMods>
+					<li>
+						<specialAction>RA.ResearchMods.BasicFarming</specialAction>
+					</li>
+				</researchMods>
+			</ResearchProjectDef>
+
+			
+			<ResearchProjectDef>
+				<defName>WoodWorking</defName>
+				<label>wood working</label>
+				<description>Allows you to craft wooden trade crafts and provide wooden base for weapons and tools.</description>
+				<totalCost>200</totalCost>
+				<prerequisites>
+					<li>ExamineFlora</li>
+				</prerequisites>
+			</ResearchProjectDef>
+
+			
+	<ResearchProjectDef>
+		<defName>ExamineFauna</defName>
+		<label>examine local fauna</label>
+		<description>Study local fauna species to see what you can do with them.</description>
+		<totalCost>100</totalCost>
+	</ResearchProjectDef>
+
+			
+			<ResearchProjectDef>
+				<defName>LeatherWorking</defName>
+				<label>leather working</label>
+				<description>Allows you to craft apparel from animals' hides.</description>
+				<totalCost>200</totalCost>
+				<prerequisites>
+					<li>ExamineFauna</li>
+				</prerequisites>
+			</ResearchProjectDef>
+
+			
+			<ResearchProjectDef>
+				<defName>AnimalHusbandry</defName>
+				<label>animal husbandry</label>
+				<description>Learn how to tame and control wild animals.</description>
+				<totalCost>200</totalCost>
+				<prerequisites>
+					<li>ExamineFauna</li>
+				</prerequisites>
+			</ResearchProjectDef>
+
+			
+	<ResearchProjectDef>
+		<defName>StoneWorking</defName>
+		<label>stone working</label>
+		<description>Allows you to cut stone chunks into blocks, make statues and provide stone pommel for weapons and tools.</description>
+		<totalCost>200</totalCost>
+	</ResearchProjectDef>
+	
+
+	<!--
+	<ResearchProjectDef>
+		<defName>MedievalTech</defName>
+		<label>medieval tech</label>
+		<description>Acquire knowledge about more advanced technologies.</description>
+		<totalCost>1000</totalCost>
+		<prerequisites>
+			<li>BasicFarming</li>
+			<li>AnimalHusbandry</li>
+			<li>WoodWorking</li>
+			<li>StoneWorking</li>
+			<li>LeatherWorking</li>
+		</prerequisites>
+		<researchMods>
+			<li>
+				<specialAction>RA.TechUpgrades.Medieval</specialAction>
+			</li>
+		</researchMods>
+	</ResearchProjectDef>
+	-->
+
+	<!-- ========================= Medieval Tech Level ==========================-->
+
+			<!--
+
+	<ResearchProjectDef>
+		<defName>MetalWorks</defName>
+		<label>metal works</label>
+		<description>Allows you to build metallic buildings, crafts and weapon variations.</description>
+		<totalCost>1000</totalCost>
+		<prerequisites>
+			<li>MedievalTech</li>
+		</prerequisites>		
+	</ResearchProjectDef>
+
+
+	<ResearchProjectDef>
+		<defName>Tailoring</defName>
+		<label>tailoring</label>
+		<description>Allows you to craft apparel from cloth.</description>
+		<totalCost>1000</totalCost>
+		<prerequisites>
+			<li>MedievalTech</li>
+		</prerequisites>		
+	</ResearchProjectDef>
+			-->
+
+
+</ResearchProjectDefs>

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<WorkGivers>
+
+
+	<WorkGiverDef>
+		<defName>Research</defName>
+		<giverClass>RA.WorkGivers.WorkGiver_DoBill_Research</giverClass>
+		<workType>Research</workType>
+		<verb>research</verb>
+		<gerund>researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+
+	<WorkGiverDef>
+		<defName>HaulToTrade</defName>
+		<giverClass>RA.WorkGiver_HaulToTrade</giverClass>
+		<workType>Hauling</workType>
+		<verb>haul</verb>
+		<gerund>hauling</gerund>
+		<priorityInType>500</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+
+	<WorkGiverDef>
+		<defName>HaulGeneral</defName>
+		<giverClass>RA.WorkGiver_HaulGeneral</giverClass>
+		<workType>Hauling</workType>
+		<verb>haul</verb>
+		<gerund>hauling</gerund>
+		<priorityInType>10</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+
+	<!--=============== Work With Tools ====================-->
+
+
+	<WorkGiverDef>
+		<defName>PlantsCut</defName>
+		<giverClass>RA.WorkGiver_PlantsCut</giverClass>
+		<workType>PlantCutting</workType>	
+		<verb>cut</verb>
+		<gerund>cutting</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+
+	<WorkGiverDef>
+		<defName>ConstructDeliverResourcesToBlueprints</defName>
+		<giverClass>RA.WorkGiver_ConstructDeliverResourcesToBlueprints</giverClass>
+		<workType>Hauling</workType>
+		<priorityInType>500</priorityInType>
+		<verb>work on</verb>
+		<gerund>working on</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+
+	<WorkGiverDef>
+		<defName>ConstructDeliverResourcesToFrames</defName>
+		<giverClass>WorkGiver_ConstructDeliverResourcesToFrames</giverClass>
+		<workType>Hauling</workType>
+		<priorityInType>400</priorityInType>
+		<verb>work on</verb>
+		<gerund>working on</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+
+	<WorkGiverDef>
+		<defName>Mine</defName>
+		<giverClass>RA.WorkGiver_Mine</giverClass>
+		<workType>Mining</workType>	
+		<verb>mine</verb>
+		<gerund>mining</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>	
+
+
+	<WorkGiverDef>
+		<defName>ConstructFinishFrames</defName>
+		<giverClass>RA.WorkGiver_ConstructFinishFrames</giverClass>
+		<workType>Construction</workType>
+		<priorityInType>100</priorityInType>
+		<verb>construct</verb>
+		<gerund>constructing</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+
+	<WorkGiverDef>
+		<defName>Repair</defName>
+		<giverClass>RA.WorkGiver_Repair</giverClass>
+		<workType>Repair</workType>
+		<verb>repair</verb>
+		<gerund>repairing</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>  
+
+
+</WorkGivers>

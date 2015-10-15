@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+	<JobDef>
+		<defName>HaulToCell</defName>
+		<driverClass>RA.JobDriver_HaulToCell</driverClass>
+		<reportString>Hauling TargetA.</reportString>
+	</JobDef>
+	
+	
+	<JobDef>
+		<defName>Research</defName>
+		<driverClass>RA.JobDrivers.JobDriver_DoBill_Research</driverClass>
+		<reportString>Doing research at TargetA.</reportString>
+		<suspendable>false</suspendable>
+	</JobDef>
+
+
+	<JobDef>
+		<defName>GoTrading</defName>
+		<driverClass>RA.JobDriver_GoTrading</driverClass>
+		<reportString>Trading.</reportString>
+	</JobDef>
+
+
+	<JobDef>
+		<defName>HaulToTrade</defName>
+		<driverClass>RA.JobDriver_HaulToTrade</driverClass>
+		<reportString>Hauling TargetA.</reportString>
+	</JobDef>
+
+
+	<JobDef>
+		<defName>UseSurvivalGuide</defName>
+		<driverClass>JobDriver_UseItem</driverClass>
+		<reportString>Using TargetA.</reportString>
+	</JobDef>
+
+
+</Defs>
