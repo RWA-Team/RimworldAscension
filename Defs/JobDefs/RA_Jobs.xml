@@ -36,6 +36,14 @@
 		<driverClass>JobDriver_UseItem</driverClass>
 		<reportString>Using TargetA.</reportString>
 	</JobDef>
+	
 
+	<JobDef>
+		<defName>CombatTraining</defName>
+		<driverClass>RA.JobDriver_CombatTraining</driverClass>
+		<!-- <alwaysShowWeapon>true</alwaysShowWeapon> -->
+		<reportString>Practicing in fighting skills.</reportString>
+	</JobDef>
+	
 
 </Defs>
