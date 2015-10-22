@@ -10,7 +10,7 @@ using Verse.Sound;
 using RimWorld;
 using RimWorld.SquadAI;
 
-namespace RimworldAscension
+namespace RA
 {
     // Defend the position near the trading post
     public class State_Trading : State
@@ -61,12 +61,12 @@ namespace RimworldAscension
         public override void UpdateAllDuties()
         {
             merchant.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("Station"));
-            animal.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("EscortTradeCart"), merchant, 4);
+            animal.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("EscortTradeCart"), merchant, 6);
 
             // Duties for guards
             for (int i = 2; i < this.brain.ownedPawns.Count; i++)
             {
-                brain.ownedPawns[i].mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("EscortTradeCart"), merchant, 5);
+                brain.ownedPawns[i].mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("EscortTradeCart"), merchant, 6);
             }            
         }
     }

@@ -7,7 +7,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 
-namespace RimworldAscension
+namespace RA
 {
     public class WorkGiver_HaulToTrade : WorkGiver_Scanner
     {

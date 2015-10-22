@@ -10,7 +10,7 @@ using Verse.Sound;
 using RimWorld;
 
 
-namespace RimworldAscension
+namespace RA
 {
 
     /// <summary>

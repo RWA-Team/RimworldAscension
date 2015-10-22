@@ -7,12 +7,13 @@ using RimWorld;
 using Verse;
 using UnityEngine;
 
-namespace RimworldAscension
+namespace RA
 {
     public class CompCaravan_Properties : CompProperties
     {
         //All textures use Graphic_Multi
-        public string cartTexturePath;
+        public string cartEmptyTexturePath;
+        public string cartFullTexturePath;
         public string wheelTexturePath;
         public string harnessTexturePath;
         public CompCaravan_Properties()

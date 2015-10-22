@@ -10,7 +10,7 @@ using Verse.Sound;
 using RimWorld;
 using RimWorld.SquadAI;
 
-namespace RimworldAscension
+namespace RA
 {
     // Defend the position near the trading post
     public class State_GatherCaravan : State

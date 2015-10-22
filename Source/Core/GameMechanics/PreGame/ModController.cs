@@ -3,17 +3,12 @@ using System.Linq;
 using UnityEngine;
 using Verse;
 
-namespace RimworldAscension.PreGame
+namespace RA
 {
 	public class ModController : MonoBehaviour
 	{
-		public static readonly string ModName = "Rimworld Ascension";
-
 		public Window currentLayer;
-
 		public bool gameplay;
-
-		public RootMap replacementRootMap;
 
 		public Window TopLayer
 		{
@@ -34,8 +29,7 @@ namespace RimworldAscension.PreGame
 		{
 			get
 			{
-				InstalledMod installedMod = InstalledModLister.AllInstalledMods.First((InstalledMod m) => m.Name.Equals(ModController.ModName));
-				return installedMod != null && installedMod.Active;
+                return InstalledModLister.AllInstalledMods.Any(mod => mod.Name == "Rimworld Ascension" && mod.Active);
 			}
 		}
 
@@ -56,75 +50,42 @@ namespace RimworldAscension.PreGame
 			{
 				this.gameplay = true;
 				base.enabled = false;
-				if (this.ModEnabled)// && PrepareCarefully.Instance.Active && !ScenarioController.Instance.IsInScenario())
+
+				if (ModEnabled)
 				{
-					try
-					{
-						RootMap component = GameObject.Find("GameCoreDummy").GetComponent<RootMap>();
-						component.enabled = false;
+                        Verse.RootMap component = GameObject.Find("GameCoreDummy").GetComponent<Verse.RootMap>();
+                        component.enabled = false;
 						UnityEngine.Object.DestroyImmediate(component);
-						this.replacementRootMap = GameObject.Find("GameCoreDummy").AddComponent<RootMap>();
-					}
-					catch (Exception ex)
-					{
-						Log.Error("Failed to start the game with the Rimworld Ascension mod");
-						Log.Error(ex.ToString());
-						throw ex;
-					}
+                        GameObject.Find("GameCoreDummy").AddComponent<RA_RootMap>();
 				}
 			}
 		}
 
-		public virtual void Update()
-		{
-			try
-			{
-				if (!this.gameplay)
-				{
-					this.MenusUpdate();
-				}
-				else
-				{
-					this.GameplayUpdate();
-				}
-			}
-			catch (Exception ex)
-			{
-				base.enabled = false;
-				Log.Error(ex.ToString());
-			}
-		}
+        public virtual void Update()
+        {
+            if (!this.gameplay)
+            {
+                this.MenusUpdate();
+            }
+            else
+            {
+                this.GameplayUpdate();
+            }
+        }
 
-		public virtual void MenusUpdate()
-		{
-			bool flag = false;
-			Window topLayer = this.TopLayer;
-			if (topLayer != this.currentLayer)
-			{
-				this.currentLayer = topLayer;
-				flag = true;
-			}
-			if (topLayer != null && "RimWorld.Page_CharMaker".Equals(topLayer.GetType().FullName))
-			{
-				if (this.ModEnabled)
-				{
-					this.ResetTextures();
-					Find.WindowStack.TryRemove(topLayer, true);
+        public virtual void MenusUpdate()
+        {
+            if (ModEnabled)
+            {
+                if (TopLayer != null && "RimWorld.Page_CharMaker".Equals(TopLayer.GetType().FullName))
+                {
+                    Find.WindowStack.TryRemove(TopLayer, true);
                     Find.WindowStack.Add(new Page_CharMaker(true));
-					return;
-				}
-				if (flag)
-				{
-					Log.Message("Rimworld Ascension mod not enabled.  Did not replace Character Creation Page");
-				}
-			}
-		}
+                }
+            }
+        }
 
 		public virtual void GameplayUpdate()
-		{
-		}
-
-		public void ResetTextures()
 		{
 		}
 	}

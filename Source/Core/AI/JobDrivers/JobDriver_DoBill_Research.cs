@@ -8,7 +8,7 @@ using Verse.AI;
 using RimWorld;
 using UnityEngine;
 
-namespace RimworldAscension.JobDrivers
+namespace RA.JobDrivers
 {
     public class JobDriver_DoBill_Research : JobDriver
     {

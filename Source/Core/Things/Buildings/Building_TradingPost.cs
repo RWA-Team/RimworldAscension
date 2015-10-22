@@ -9,7 +9,7 @@ using Verse;
 using Verse.Sound;
 using Verse.AI;
 
-namespace RimworldAscension
+namespace RA
 {
     public class Building_TradingPost : Building, IThingContainerOwner
     {
@@ -56,7 +56,7 @@ namespace RimworldAscension
                     for (int j = centerCell.z - tradeZoneRange; j < centerCell.z + tradeZoneRange + 1; j++)
                     {
                         currentCell.z = j;
-                        if ((Math.Abs(centerCell.x - currentCell.x) > 1 || Math.Abs(centerCell.z - currentCell.z) > 1) && GenGrid.InBounds(currentCell) && currentCell.Standable())
+                        if ((Math.Abs(centerCell.x - currentCell.x) > 1 || Math.Abs(centerCell.z - currentCell.z) > 1) && GenGrid.InBounds(currentCell) && currentCell.Walkable())
                             yield return currentCell;
                     }
                 }
@@ -99,19 +99,19 @@ namespace RimworldAscension
             }
         }
 
-        public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn actor)
+        public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn pawn)
         {
             ICommunicable communicable = TradeSession.tradeCompany as ICommunicable;
 
-            if (!actor.CanReach(this, PathEndMode.InteractionCell, Danger.Deadly))
+            if (!pawn.CanReach(this, PathEndMode.InteractionCell, Danger.Deadly))
             {
                 yield return new FloatMenuOption("Cannot use: no path", null);
             }
-            else if (!actor.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
+            else if (!pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
             {
                 yield return new FloatMenuOption("Cannot use: incapable of talking", null);
             }
-            else if (!actor.CanReserve(this, 1))
+            else if (!pawn.CanReserve(this, 1))
             {
                 yield return new FloatMenuOption("Cannot use: reserved", null);
             }
@@ -121,7 +121,11 @@ namespace RimworldAscension
             }
             else if (TradeSession.deal != null && TradeSession.deal.isPending)
             {
-                yield return new FloatMenuOption("Cannot use: previous deal is not resolved yet", null);
+                Action action = () =>
+                {
+                    NegateTradeDeal();
+                };
+                yield return new FloatMenuOption("Negate Current Deal", action);
             }
             else
             {
@@ -131,15 +135,15 @@ namespace RimworldAscension
                     {
                         commTarget = communicable
                     };
-                    actor.drafter.TakeOrderedJob(job);
+                    pawn.drafter.TakeOrderedJob(job);
                 };
                 yield return new FloatMenuOption("Start trading", action);
             }
         }
 
-        public override void TickRare()
+        public override void Tick()
         {
-            if (TradeSession.deal != null && TradeSession.deal.isPending)
+            if (TradeSession.deal != null && TradeSession.deal.isPending && Find.TickManager.TicksGame % 65 == 0)
             {
                 // regenerates things/resource requests to haul to the trading post
                 RegenerateRequestCounters();
@@ -168,6 +172,8 @@ namespace RimworldAscension
                 colonyOffer.TryDropAll(InteractionCell, ThingPlaceMode.Near);
                 // clears trade deal data
                 TradeSession.FinishTradeDeal();
+
+                Messages.Message("Trade Deal Resolved", MessageSound.Benefit);
 
                 return true;
             }

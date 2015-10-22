@@ -6,7 +6,7 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace RimworldAscension
+namespace RA
 {
     public class JobDriver_HaulToTrade : JobDriver
     {

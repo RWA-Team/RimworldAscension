@@ -9,7 +9,7 @@ using Verse.AI;
 using RimWorld;
 using RimWorld.SquadAI;
 
-namespace RimworldAscension
+namespace RA
 {
 	public abstract class JobGiver_AIFollowPawn : ThinkNode_JobGiver
 	{

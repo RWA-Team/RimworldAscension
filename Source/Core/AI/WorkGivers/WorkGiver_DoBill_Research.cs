@@ -8,7 +8,7 @@ using Verse;
 using Verse.AI;
 using UnityEngine;
 
-namespace RimworldAscension.WorkGivers
+namespace RA.WorkGivers
 {
     public class WorkGiver_DoBill_Research : WorkGiver_Scanner
     {
@@ -157,7 +157,7 @@ namespace RimworldAscension.WorkGivers
         {
             IBillGiver billGiver = researchBench as IBillGiver;
             Bill bill = null;
-            Dictionary<ResearchProjectDef, RecipeDef> researchRecipes = researchBench.TryGetComp<RimworldAscension.CompResearcher>().Properties.researchRecipes;
+            Dictionary<ResearchProjectDef, RecipeDef> researchRecipes = researchBench.TryGetComp<RA.CompResearcher>().Properties.researchRecipes;
 
             // check if can generate bills
             if (billGiver == null)
@@ -357,12 +357,12 @@ namespace RimworldAscension.WorkGivers
         {
             if (bill.recipe.allowMixingIngredients)
             {
-                return WorkGiver_DoBill_Research.TryFindBestBillIngredientsInSet_AllowMix(availableThings, bill, chosen);
+                return WorkGiver_DoBill_Research.TryFindBestBillIngredientsInAllowMix(availableThings, bill, chosen);
             }
-            return WorkGiver_DoBill_Research.TryFindBestBillIngredientsInSet_NoMix(availableThings, bill, chosen);
+            return WorkGiver_DoBill_Research.TryFindBestBillIngredientsInNoMix(availableThings, bill, chosen);
         }
 
-        public static bool TryFindBestBillIngredientsInSet_NoMix(List<Thing> availableThings, Bill bill, List<ThingAmount> chosen)
+        public static bool TryFindBestBillIngredientsInNoMix(List<Thing> availableThings, Bill bill, List<ThingAmount> chosen)
         {
             RecipeDef recipe = bill.recipe;
             chosen.Clear();
@@ -416,7 +416,7 @@ namespace RimworldAscension.WorkGivers
             return true;
         }
 
-        public static bool TryFindBestBillIngredientsInSet_AllowMix(List<Thing> availableThings, Bill bill, List<ThingAmount> chosen)
+        public static bool TryFindBestBillIngredientsInAllowMix(List<Thing> availableThings, Bill bill, List<ThingAmount> chosen)
         {
             chosen.Clear();
             for (int i = 0; i < bill.recipe.ingredients.Count; i++)

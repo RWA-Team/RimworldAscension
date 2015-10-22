@@ -6,7 +6,7 @@ using System.Text;
 using RimWorld;
 using Verse;
 
-namespace RimworldAscension.PreGame
+namespace RA
 {
     public class Genstep_Colonists : Genstep
     {

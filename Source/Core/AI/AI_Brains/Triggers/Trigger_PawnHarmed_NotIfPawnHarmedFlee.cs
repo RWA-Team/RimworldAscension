@@ -5,7 +5,7 @@ using RimWorld;
 //using RimWorld.Planet;
 using RimWorld.SquadAI;
 
-namespace RimworldAscension
+namespace RA
 {
     class Trigger_PawnHarmed_NotIfPawnHarmedFlee : Trigger
     {
