@@ -8,7 +8,7 @@ using Verse;
 using Verse.AI;
 using Verse.Sound;
 
-namespace RimworldAscension
+namespace RA
 {
     public class Dialog_Trade : Window
     {

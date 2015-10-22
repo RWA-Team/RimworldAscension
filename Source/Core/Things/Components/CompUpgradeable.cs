@@ -7,12 +7,10 @@ using RimWorld;
 using Verse;
 using UnityEngine;
 
-namespace RimworldAscension
+namespace RA
 {
     public class CompUpgradeable : ThingComp
     {
-        public static Texture2D Ui_Upgrade = ContentFinder<Texture2D>.Get("Upgrade", true);
-
         public CompUpgradeable_Properties Properties
         {
             get
@@ -27,7 +25,7 @@ namespace RimworldAscension
             {
                 defaultDesc = "Upgrade this so you can get advanced version and save some resources",
                 defaultLabel = "Upgrade",
-                icon = Ui_Upgrade,
+                icon = ContentFinder<Texture2D>.Get("UI/Gizmos/Upgrade", true),
                 activateSound = SoundDef.Named("Click"),
                 action = new Action(UpgradeBuilding),
             };

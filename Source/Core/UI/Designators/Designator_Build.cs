@@ -8,7 +8,7 @@ using Verse;
 using Verse.Sound;
 using Verse.AI;
 
-namespace RimworldAscension
+namespace RA
 {
     public class Designator_Build : Designator_Place
     {

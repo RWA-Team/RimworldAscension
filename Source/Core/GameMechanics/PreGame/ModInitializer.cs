@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Verse;
 
-namespace RimworldAscension.PreGame
+namespace RA
 {
 	public class ModInitializer : ITab
 	{
@@ -10,7 +10,7 @@ namespace RimworldAscension.PreGame
 
 		public ModInitializer()
 		{
-			this.gameObject = new GameObject("RimworldAscensionController");
+			this.gameObject = new GameObject("RAController");
 			this.gameObject.AddComponent<ModController>();
 			UnityEngine.Object.DontDestroyOnLoad(this.gameObject);
 		}

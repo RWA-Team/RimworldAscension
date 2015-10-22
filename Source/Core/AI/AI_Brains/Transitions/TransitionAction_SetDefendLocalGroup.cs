@@ -6,7 +6,7 @@ using System.Text;
 using Verse;
 using RimWorld.SquadAI;
 
-namespace RimworldAscension
+namespace RA
 {
     public class TransitionAction_SetDefendLocalGroup : TransitionAction
     {

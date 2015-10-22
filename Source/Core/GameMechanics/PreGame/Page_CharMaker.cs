@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Verse;
 
-namespace RimworldAscension.PreGame
+namespace RA
 {
 	public class Page_CharMaker : Window
 	{
@@ -24,14 +24,13 @@ namespace RimworldAscension.PreGame
 
 		public Page_CharMaker(bool generateColonists)
 		{
-			//PrepareCarefully.Instance.Active = false;
 			this.forcePause = true;
 			this.absorbInputAroundWindow = true;
 			this.forcePause = true;
 			this.soundAppear = null;
 			if (generateColonists || MapInitData.colonists.Count == 0)
 			{
-				MapInitData.GenerateDefaultColonistsWithFaction();
+                MapIniter_NewGame.GenerateDefaultColonistsWithFaction();
 			}
 			this.curPawn = MapInitData.colonists[0];
 		}

@@ -11,7 +11,7 @@ using RimWorld;
 //using RimWorld.Planet;
 using RimWorld.SquadAI;
 
-namespace RimworldAscension
+namespace RA
 {
 
     /// <summary>

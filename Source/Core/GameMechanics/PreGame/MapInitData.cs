@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
-namespace RimworldAscension.PreGame
+namespace RA
 {
     public static class MapInitData
     {
-        public const int StartingColonistCount = 5;
+        public const int StartingColonistCount = 3;
 
         public static bool startedFromEntry;
 
@@ -30,7 +31,7 @@ namespace RimworldAscension.PreGame
 
         public static Month startingMonth;
 
-        public static int debug_loadsSinceReset;
+        private static int debug_loadsSinceReset;
 
         public static bool StartedDirectInEditor
         {
@@ -66,7 +67,7 @@ namespace RimworldAscension.PreGame
 
         public static void ChooseDecentLandingSite()
         {
-            Verse.MapInitData.ChooseDecentLandingSite();
+            MapInitData.landingCoords = WorldSquareFinder.RandomDecentLandingSite();
         }
 
         public static void ChooseDefaultStoryteller()
@@ -91,7 +92,7 @@ namespace RimworldAscension.PreGame
             do
             {
                 MapInitData.colonists.Clear();
-                for (int i = 0; i < StartingColonistCount; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     MapInitData.colonists.Add(MapInitData.NewGeneratedColonist());
                 }
@@ -133,7 +134,7 @@ namespace RimworldAscension.PreGame
             return pawn;
         }
 
-        public static void SetColonyFactionIntoWorld()
+        internal static void SetColonyFactionIntoWorld()
         {
             MapInitData.colonyFaction.homeSquare = MapInitData.landingCoords;
             Find.FactionManager.Add(MapInitData.colonyFaction);
@@ -141,7 +142,7 @@ namespace RimworldAscension.PreGame
             MapInitData.colonyFaction = null;
         }
 
-        public static Pawn NewGeneratedColonist()
+        private static Pawn NewGeneratedColonist()
         {
             return PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfColony, false, 0);
         }

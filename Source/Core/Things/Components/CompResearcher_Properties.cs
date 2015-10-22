@@ -6,7 +6,7 @@ using System.Text;
 using RimWorld;
 using Verse;
 
-namespace RimworldAscension
+namespace RA
 {
     public class CompResearcher_Properties : CompProperties
     {

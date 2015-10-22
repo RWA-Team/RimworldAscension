@@ -7,7 +7,7 @@ using RimWorld;
 using Verse;
 using UnityEngine;
 
-namespace RimworldAscension
+namespace RA
 {
     public class CompResearcher : ThingComp
     {

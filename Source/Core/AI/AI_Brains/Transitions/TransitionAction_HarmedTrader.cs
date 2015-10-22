@@ -10,12 +10,12 @@ using Verse;
 using Verse.AI;
 
 
-namespace RimworldAscension
+namespace RA
 {
-    class TransitionAction_TraderDefendSuccess : TransitionAction
+    class TransitionAction_TraderHarmedFlee : TransitionAction
     {
-        public string message = "TraderDefendSuccess";
-        public float goodwillChange = 2.5f;
+        public string message = "TraderHarmed";
+        public float goodwillChange = -5f;
 
         public override void DoAction(Transition trans)
         {
@@ -29,7 +29,7 @@ namespace RimworldAscension
                     if (brainFaction != null)
                     {
                         brainFaction.AffectGoodwillWith(Faction.OfColony, goodwillChange);
-                        Messages.Message(message.Translate(new object[] { brainFaction.name }), MessageSound.Silent);
+                        Messages.Message(message.Translate(new object[] { brainFaction.name }), MessageSound.Negative);
                     }
                 }
             }
