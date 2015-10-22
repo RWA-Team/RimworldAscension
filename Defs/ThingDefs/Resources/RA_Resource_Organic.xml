@@ -49,7 +49,7 @@
 	</ThingDef>
 	
 	
-	  <!--=============== Plant Resources ====================-->
+	  <!--===================== Plant Resources =====================-->
 	  
 
 	<ThingDef ParentName="ResourceBase">
@@ -60,8 +60,28 @@
 			<texPath>Things/Resources/LeafBundle</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>10</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	
+	  <!--===================== Animal Resources =====================-->
+	  
+	  
+	<ThingDef ParentName="ResourceBase">
+		<defName>Bone</defName>
+		<label>bone</label>
+		<description>Pile of bones.</description>
+		<graphicData>
+			<texPath>Things/Resources/Bone</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
 		<statBases>
-			<MarketValue>0</MarketValue>
+			<MarketValue>10</MarketValue>
 		</statBases>
 		<comps>
 			<li Class="CompProperties_Rottable">

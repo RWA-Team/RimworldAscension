@@ -15,7 +15,7 @@
 		<designationCategory>Misc</designationCategory>
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
-	
+
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>Grave</defName>
@@ -66,6 +66,41 @@
 			</li>
 		</comps>
 		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>Dummy</defName>
+		<thingClass>RA.Building_Dummy</thingClass>
+		<label>dummy</label>
+		<description>A man-able shooting range your colonists can practice their shooting skills at.</description>
+		<graphicData>
+			<texPath>Things/Buildings/TargetDummies/Dummy</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<altitudeLayer>Waist</altitudeLayer>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<statBases>
+			<WorkToMake>500</WorkToMake>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<passability>Standable</passability>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>0.2</fillPercent>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<costList>
+			<WoodLog>30</WoodLog>
+		</costList>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>30</pathCost>
+		<rotatable>true</rotatable>
+		<inspectorTabs>
+			<li>RA.ITab_TargetDummy_AllowedColonists</li>
+		</inspectorTabs>
 	</ThingDef>
 
 
