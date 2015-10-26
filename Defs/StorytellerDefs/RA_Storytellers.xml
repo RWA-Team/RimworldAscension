@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StorytellerDefs>
+
+	<!--
+	MTB - Mean Time Between
+	Threat Cycles mechanic removed
+	-->
+	<StorytellerDef>
+		<defName>Cassandra</defName>
+		<label>Cassandra Ascension</label>
+		<description>Cassandra creates story events on a steadily-increasing curve of challenge and tension.</description>
+		<quotation>The essence of good storytelling is the perfect progression of intensifying struggle.</quotation>
+		<incidentMakerClass>RA.IncidentMaker_RA</incidentMakerClass>
+		<listOrder>20</listOrder>
+		<portraitLarge>UI/HeroArt/Storytellers/CassandraClassic</portraitLarge>
+		<portraitTiny>UI/HeroArt/Storytellers/CassandraClassicTiny</portraitTiny>
+		<desiredPopulationMin>20</desiredPopulationMin>
+		<desiredPopulationMax>30</desiredPopulationMax>
+		<desiredPopulationCritical>40</desiredPopulationCritical>
+		<minDaysBetweenThreatBigs>3.8</minDaysBetweenThreatBigs>
+		<classic_RandomEventMTBDays>1.3</classic_RandomEventMTBDays>
+		<classic_ThreatBigMTBDays>2.5</classic_ThreatBigMTBDays>
+		<classic_ThreatSmallMTBDays>6.5</classic_ThreatSmallMTBDays>
+	</StorytellerDef>
+
+
+</StorytellerDefs>
