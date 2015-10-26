@@ -124,7 +124,7 @@ namespace RA
                     for (int j = centerCell.z - TradeRectangleRange; j < centerCell.z + TradeRectangleRange + 1; j++)
                     {
                         currentCell.z = j;
-                        if ((Math.Abs(centerCell.x - currentCell.x) > 1 || Math.Abs(centerCell.z - currentCell.z) > 1) && GenGrid.InBounds(currentCell) && currentCell.Standable())
+                        if ((Math.Abs(centerCell.x - currentCell.x) > 1 || Math.Abs(centerCell.z - currentCell.z) > 1) && GenGrid.InBounds(currentCell) && currentCell.Walkable())
                             yield return currentCell;
                     }
                 }

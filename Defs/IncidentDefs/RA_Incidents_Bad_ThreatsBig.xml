@@ -7,6 +7,7 @@
 		<workerClass>IncidentWorker_RaidEnemy</workerClass>
 		<chance>9.0</chance>
 		<minRefireDays>10</minRefireDays>
+		<earliestDay>10</earliestDay>
 		<category>ThreatBig</category>
 		<pointsScaleable>true</pointsScaleable>
 	</IncidentDef>

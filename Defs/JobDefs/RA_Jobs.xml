@@ -13,7 +13,6 @@
 		<defName>Research</defName>
 		<driverClass>RA.JobDrivers.JobDriver_DoBill_Research</driverClass>
 		<reportString>Doing research at TargetA.</reportString>
-		<suspendable>false</suspendable>
 	</JobDef>
 
 
@@ -41,8 +40,7 @@
 	<JobDef>
 		<defName>CombatTraining</defName>
 		<driverClass>RA.JobDriver_CombatTraining</driverClass>
-		<!-- <alwaysShowWeapon>true</alwaysShowWeapon> -->
-		<reportString>Practicing in fighting skills.</reportString>
+		<reportString>Practicing combat skills on TargetA.</reportString>
 	</JobDef>
 	
 

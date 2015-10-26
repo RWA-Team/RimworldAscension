@@ -5,7 +5,7 @@
     <defName>AnimalInsanitySingle</defName>
     <workerClass>IncidentWorker_AnimalInsanitySingle</workerClass>
     <chance>5</chance>
-    <minRefireDays>3</minRefireDays>
+    <minRefireDays>7</minRefireDays>
     <category>ThreatSmall</category>
   </IncidentDef>
 

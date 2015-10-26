@@ -122,9 +122,9 @@ namespace RA
 
                 if (attackVerb != null && attackVerb.CanHitTarget(this))
                 {
-                    inspectString.AppendLine(pawn.NameStringShort + " melee skill level:\t" + pawn.skills.GetSkill(SkillDefOf.Melee).LevelDescriptor);
-                    inspectString.AppendLine("Melee hit chance:\t" + GenText.AsPercent(pawn.GetStatValue(StatDefOf.MeleeHitChance)));
-                    inspectString.AppendLine("Current DPS:\t" + pawn.GetStatValue(StatDefOf.MeleeHitChance) * pawn.GetStatValue(StatDefOf.MeleeWeapon_DamageAmount) / pawn.GetStatValue(StatDefOf.MeleeWeapon_Cooldown));
+                    inspectString.AppendFormat("{0} melee skill level:\t{1} ({2})\n", pawn.NameStringShort, pawn.skills.GetSkill(SkillDefOf.Melee).LevelDescriptor, pawn.skills.GetSkill(SkillDefOf.Melee).level);
+                    inspectString.AppendLine("Melee hit chance:\t\t" + GenText.AsPercent(pawn.GetStatValue(StatDefOf.MeleeHitChance)));
+                    inspectString.AppendLine("DPS with current accuracy:\t\t" + (pawn.GetStatValue(StatDefOf.MeleeHitChance) * pawn.GetStatValue(StatDefOf.MeleeWeapon_DamageAmount) / pawn.GetStatValue(StatDefOf.MeleeWeapon_Cooldown)).ToString("F2"));
                 }
                 else
                 {
