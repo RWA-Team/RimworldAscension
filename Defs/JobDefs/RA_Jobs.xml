@@ -7,11 +7,11 @@
 		<driverClass>RA.JobDriver_HaulToCell</driverClass>
 		<reportString>Hauling TargetA.</reportString>
 	</JobDef>
-	
-	
+
+
 	<JobDef>
 		<defName>Research</defName>
-		<driverClass>RA.JobDrivers.JobDriver_DoBill_Research</driverClass>
+		<driverClass>RA.JobDriver_DoBill_Research</driverClass>
 		<reportString>Doing research at TargetA.</reportString>
 	</JobDef>
 
@@ -35,13 +35,20 @@
 		<driverClass>JobDriver_UseItem</driverClass>
 		<reportString>Using TargetA.</reportString>
 	</JobDef>
-	
+
 
 	<JobDef>
 		<defName>CombatTraining</defName>
 		<driverClass>RA.JobDriver_CombatTraining</driverClass>
 		<reportString>Practicing combat skills on TargetA.</reportString>
 	</JobDef>
-	
+
+
+<!-- 	<JobDef>
+		<defName>PutInInventory</defName>
+		<driverClass>RA.JobDriver_PutInInventory</driverClass>
+		<reportString>Put TargetB in TargetA.</reportString>
+	</JobDef> -->
+
 
 </Defs>

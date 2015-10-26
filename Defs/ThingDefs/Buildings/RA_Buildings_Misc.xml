@@ -69,7 +69,7 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="BuildingBase">
+<!-- 	<ThingDef ParentName="BuildingBase">
 		<defName>Dummy</defName>
 		<thingClass>RA.Building_Dummy</thingClass>
 		<label>dummy</label>
@@ -135,7 +135,7 @@
 		<inspectorTabs>
 			<li>RA.ITab_AllowedColonists</li>
 		</inspectorTabs>
-	</ThingDef>
+	</ThingDef> -->
 
 
 </Buildings>
