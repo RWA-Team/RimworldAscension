@@ -53,56 +53,6 @@
 
       <!-- Necessary for the below steps to work properly -->
       <li Class="Genstep_FindPlayerStartSpot" />
-      
-      <!-- Scatter some resources across the map -->
-      <li Class="Genstep_ScatterThingGroups">
-        <thingDefs>
-          <li>BlocksSandstone</li>
-        </thingDefs>
-        <minSpacing>15</minSpacing>
-        <countPer10kCellsRange><min>1.0</min><max>1.0</max></countPer10kCellsRange>
-        <spotMustBeStandable>true</spotMustBeStandable>
-        <groupSizeRange><min>3</min><max>6</max></groupSizeRange>
-        <stackCountRange><min>30</min><max>50</max></stackCountRange>
-      </li>
- 
-      <!-- Place starting resources near players' start location -->
-      <li Class="Genstep_ScatterThingGroups">
-        <thingDefs>
-          <li>BlocksSandstone</li>
-        </thingDefs>
-        <spotMustBeStandable>true</spotMustBeStandable>
-        <groupSizeRange><min>6</min><max>6</max></groupSizeRange>
-        <stackCountRange><min>75</min><max>75</max></stackCountRange>
-        <countAtPlayerStart>1</countAtPlayerStart>
-      </li>
-      <li Class="Genstep_ScatterThingGroups">
-        <thingDefs>
-          <li>WoodLog</li>
-        </thingDefs>
-        <spotMustBeStandable>true</spotMustBeStandable>
-        <groupSizeRange><min>6</min><max>6</max></groupSizeRange>
-        <stackCountRange><min>40</min><max>60</max></stackCountRange>
-        <countAtPlayerStart>1</countAtPlayerStart>
-      </li>
-      <li Class="Genstep_ScatterThingGroups">
-        <thingDefs>
-          <li>MealSimple</li>
-        </thingDefs>
-        <spotMustBeStandable>true</spotMustBeStandable>
-        <groupSizeRange><min>5</min><max>5</max></groupSizeRange>
-        <stackCountRange><min>5</min><max>5</max></stackCountRange>
-        <countAtPlayerStart>1</countAtPlayerStart>
-      </li>
-      <li Class="Genstep_ScatterThingGroups">
-        <thingDefs>
-          <li>HerbalMedicine</li>
-        </thingDefs>
-        <spotMustBeStandable>true</spotMustBeStandable>
-        <groupSizeRange><min>5</min><max>5</max></groupSizeRange>
-        <stackCountRange><min>5</min><max>5</max></stackCountRange>
-        <countAtPlayerStart>1</countAtPlayerStart>
-      </li>
 
       <!-- Some final essentials -->
       <li Class="RA.Genstep_Colonists" />

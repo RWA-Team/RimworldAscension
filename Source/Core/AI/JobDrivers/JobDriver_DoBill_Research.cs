@@ -8,7 +8,7 @@ using Verse.AI;
 using RimWorld;
 using UnityEngine;
 
-namespace RA.JobDrivers
+namespace RA
 {
     public class JobDriver_DoBill_Research : JobDriver
     {

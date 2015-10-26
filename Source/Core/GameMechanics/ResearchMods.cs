@@ -28,28 +28,28 @@ namespace RA
 
         public static void WoodWorking()
         {
-            ThingDef craftBench = DefDatabase<ThingDef>.GetNamed("CraftingTable_Neolithic", true);
+            ThingDef craftBench = ThingDef.Named("CraftingTable_Neolithic");
             craftBench.researchPrerequisite = null;
 
-            if (Find.ResearchManager.IsFinished(DefDatabase<ResearchProjectDef>.GetNamed("StoneWorking", true)))
+            if (Find.ResearchManager.IsFinished(ResearchProjectDef.Named("StoneWorking")))
             {
                 // NOTE: add neolithic tools recipe
 
-                ThingDef meleeBench = DefDatabase<ThingDef>.GetNamed("MeleeWeaponTable_Neolithic", true);
+                ThingDef meleeBench = ThingDef.Named("MeleeWeaponTable_Neolithic");
                 meleeBench.researchPrerequisite = null;
             }
         }
 
         public static void StoneWorking()
         {
-            ThingDef craftBench = DefDatabase<ThingDef>.GetNamed("CraftingTable_Neolithic", true);
+            ThingDef craftBench = ThingDef.Named("CraftingTable_Neolithic");
             craftBench.researchPrerequisite = null;
 
-            if (Find.ResearchManager.IsFinished(DefDatabase<ResearchProjectDef>.GetNamed("WoodWorking", true)))
+            if (Find.ResearchManager.IsFinished(ResearchProjectDef.Named("WoodWorking")))
             {
                 // NOTE: add neolithic tools recipe
 
-                ThingDef meleeBench = DefDatabase<ThingDef>.GetNamed("MeleeWeaponTable_Neolithic", true);
+                ThingDef meleeBench = ThingDef.Named("MeleeWeaponTable_Neolithic");
                 meleeBench.researchPrerequisite = null;
             }
         }

@@ -4,7 +4,7 @@
 
 	<WorkGiverDef>
 		<defName>Research</defName>
-		<giverClass>RA.WorkGivers.WorkGiver_DoBill_Research</giverClass>
+		<giverClass>RA.WorkGiver_DoBill_Research</giverClass>
 		<workType>Research</workType>
 		<verb>research</verb>
 		<gerund>researching at</gerund>

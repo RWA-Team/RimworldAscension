@@ -2,7 +2,7 @@
 <Defs>
 
 
-	<IncidentDef>
+<!-- 	<IncidentDef>
 		<defName>RaidEnemy</defName>
 		<workerClass>IncidentWorker_RaidEnemy</workerClass>
 		<chance>9.0</chance>
@@ -10,7 +10,7 @@
 		<earliestDay>10</earliestDay>
 		<category>ThreatBig</category>
 		<pointsScaleable>true</pointsScaleable>
-	</IncidentDef>
+	</IncidentDef> -->
 
 	<IncidentDef>
 		<defName>AnimalInsanity</defName>
