@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+
+  <ThingDef>
+    <defName>DropShipIncoming</defName>
+    <category>Skyfaller</category>
+    <label>Drop Ship (incoming)</label>
+    <thingClass>RA.DropShipIncoming</thingClass>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Things/Special/CrashingShipPartAscension</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(6,3)</drawSize>
+    </graphicData>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <drawOffscreen>true</drawOffscreen>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>DropShipCrashed</defName>
+    <label>drop ship</label>
+    <category>Building</category>
+    <thingClass>RA.DropShipCrashed</thingClass>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Things/Special/CrashedShipPartAscension</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(6,3)</drawSize>
+    </graphicData>
+    <altitudeLayer>BuildingTall</altitudeLayer>
+    <useHitPoints>true</useHitPoints>
+    <size>(6,3)</size>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToMake>500</WorkToMake>
+    </statBases>
+    <selectable>true</selectable>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>DropPodCrashingIncoming</defName>
+    <category>Skyfaller</category>
+    <label>Drop Pod (incoming)</label>
+    <thingClass>RA.DropPodCrashingIncoming</thingClass>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Things/Special/DropPod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>1.9</drawSize>
+    </graphicData>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <drawOffscreen>true</drawOffscreen>
+  </ThingDef>
+
+  <ThingDef>
+    <defName>DropPodCrashed</defName>
+    <label>drop pod wreckage</label>
+    <category>Building</category>
+    <thingClass>RA.DropPodCrashed</thingClass>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Things/Special/DropPodCrashed</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.9</drawSize>
+      <shadowData>
+        <volume>(0.8, 0.6, 0.8)</volume>
+      </shadowData>
+    </graphicData>
+    <altitudeLayer>BuildingTall</altitudeLayer>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToMake>250</WorkToMake>
+    </statBases>
+    <selectable>true</selectable>
+  </ThingDef>
+
+</Buildings>
