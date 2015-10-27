@@ -33,7 +33,7 @@ namespace RA
             if (!ResearchPrereqsFulfilled)
                 gizmo.Disable(DisabledReasonString());
 
-            if (Properties.upgradeTargetDef == null || DefDatabase<ThingDef>.GetNamed(Properties.upgradeTargetDef.ToString(), true) == null)
+            if (Properties.upgradeTargetDef == null || ThingDef.Named(Properties.upgradeTargetDef.ToString()) == null)
             {
                 Log.Error("No such def to upgrade to.");
                 yield return null;

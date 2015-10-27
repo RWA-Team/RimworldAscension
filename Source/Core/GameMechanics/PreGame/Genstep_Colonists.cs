@@ -11,7 +11,6 @@ namespace RA
     public class Genstep_Colonists : Genstep
     {
         public const int NumStartingMealsPerColonist = 10;
-
         public const int NumStartingMedPacksPerColonist = 6;
 
         public override void Generate()
@@ -22,40 +21,37 @@ namespace RA
                 PawnUtility.AddAndRemoveComponentsAsAppropriate(current);
                 current.needs.mood.thoughts.TryGainThought(ThoughtDefOf.NewColonyOptimism);
             }
-            Genstep_Colonists.CreateInitialWorkSettings();
+            CreateInitialWorkSettings();
             bool startedDirectInEditor = MapInitData.StartedDirectInEditor;
-            List<List<Thing>> list = new List<List<Thing>>();
-            foreach (Pawn current2 in MapInitData.colonists)
-            {
-                if (MapInitData.startedFromEntry && Rand.Value < 0.5f)
-                {
-                    current2.health.AddHediff(HediffDefOf.CryptosleepSickness, null, null);
-                }
-                List<Thing> list2 = new List<Thing>();
-                list2.Add(current2);
-                Thing thing = ThingMaker.MakeThing(ThingDefOf.MealSurvivalPack, null);
-                thing.stackCount = NumStartingMealsPerColonist;
-                list2.Add(thing);
-                Thing thing2 = ThingMaker.MakeThing(ThingDefOf.Medicine, null);
-                thing2.stackCount = NumStartingMedPacksPerColonist;
-                list2.Add(thing2);
-                list.Add(list2);
-            }
-            bool canInstaDropDuringInit = startedDirectInEditor;
-            DropPodUtility.DropThingGroupsNear(MapGenerator.PlayerStartSpot, list, 110, canInstaDropDuringInit, true, true);
-        }
 
-        public static Thing RandomPet()
-        {
-            PawnKindDef kindDef = (from td in DefDatabase<PawnKindDef>.AllDefs
-                                   where td.race.category == ThingCategory.Pawn && td.RaceProps.petness > 0f
-                                   select td).RandomElementByWeight((PawnKindDef td) => td.RaceProps.petness);
-            Pawn pawn = PawnGenerator.GeneratePawn(kindDef, Faction.OfColony, false, 0);
-            if (pawn.Name == null || pawn.Name.Numerical)
+            // list of lists to generate after ship crash
+            List<List<Thing>> listsToGenerate = new List<List<Thing>>();
+
+            // colonists list added to that list
+            List<Thing> colonists = new List<Thing>();
+            foreach (Pawn pawn in MapInitData.colonists)
+                colonists.Add(pawn);
+            listsToGenerate.Add(colonists);
+
+            // Create damaged drop pods with dead tribals
+            for (int i = 0; i < MapInitData.colonists.Count; i++)
             {
-                pawn.Name = NameGenerator.GenerateName(pawn, NameStyle.Full);
+                // Setup faction
+                Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDefOf.Tribe);
+                // Generate pawn
+                Pawn pawn = PawnGenerator.GeneratePawn(PawnKindDef.Named("TribalWarrior"), faction, false, 0);
+                // Find a location to drop
+                IntVec3 crashCell = CellFinder.RandomClosewalkCellNear(MapGenerator.PlayerStartSpot, 30);
+                // Drop a drop pod containg our pawn
+                DropShipUtility.MakeDropPodCrashingAt(crashCell, new DropPodInfo
+                {
+                    SingleContainedThing = pawn,
+                    openDelay = 180,
+                });
             }
-            return pawn;
+
+            // Create the ship wreck with colonists
+            DropShipUtility.MakeShipWreckCrashingAt(MapGenerator.PlayerStartSpot, listsToGenerate, 110, startedDirectInEditor);
         }
 
         public static void CreateInitialWorkSettings()

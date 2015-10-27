@@ -38,16 +38,16 @@ namespace RA
 
         public void UsedBy(Pawn pawn)
         {
-            DefDatabase<ThingDef>.GetNamed("ResearchBench", true).researchPrerequisite = null;
-            DefDatabase<ThingDef>.GetNamed("Campfire", true).researchPrerequisite = null;
-            DefDatabase<ThingDef>.GetNamed("Door", true).researchPrerequisite = null;
-            DefDatabase<ThingDef>.GetNamed("Wall", true).researchPrerequisite = null;
-            DefDatabase<ThingDef>.GetNamed("TrapDeadfall", true).researchPrerequisite = null;
-            DefDatabase<ThingDef>.GetNamed("Grave", true).researchPrerequisite = null;
-            DefDatabase<ThingDef>.GetNamed("Stool", true).researchPrerequisite = null;
-            DefDatabase<ThingDef>.GetNamed("TableShort", true).researchPrerequisite = null;
-            DefDatabase<ThingDef>.GetNamed("TableLong", true).researchPrerequisite = null;
-            DefDatabase<ThingDef>.GetNamed("PlantPot", true).researchPrerequisite = null;
+            ThingDef.Named("ResearchBench").researchPrerequisite = null;
+            ThingDef.Named("Campfire").researchPrerequisite = null;
+            ThingDef.Named("Door").researchPrerequisite = null;
+            ThingDef.Named("Wall").researchPrerequisite = null;
+            ThingDef.Named("TrapDeadfall").researchPrerequisite = null;
+            ThingDef.Named("Grave").researchPrerequisite = null;
+            ThingDef.Named("Stool").researchPrerequisite = null;
+            ThingDef.Named("TableShort").researchPrerequisite = null;
+            ThingDef.Named("TableLong").researchPrerequisite = null;
+            ThingDef.Named("PlantPot").researchPrerequisite = null;
 
             DefDatabase<TerrainDef>.GetNamed("TileSandstone", true).researchPrerequisite = null;
             DefDatabase<TerrainDef>.GetNamed("TileGranite", true).researchPrerequisite = null;

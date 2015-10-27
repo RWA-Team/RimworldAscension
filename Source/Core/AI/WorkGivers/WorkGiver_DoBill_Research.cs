@@ -8,7 +8,7 @@ using Verse;
 using Verse.AI;
 using UnityEngine;
 
-namespace RA.WorkGivers
+namespace RA
 {
     public class WorkGiver_DoBill_Research : WorkGiver_Scanner
     {

@@ -6,13 +6,30 @@ using RimWorld;
 
 namespace RA
 {
-    public class DropPodCrashingIncoming : Thing
+    public class DropPodCrashing : Thing
     {
-        protected int ticksToImpact = 120; // Ticks until pod hits the ground
-        public DropPodCrashingInfo contents; // Contents and config of the pod
-        private bool soundPlayed; // Whether sound has been played or not
-        private static readonly SoundDef LandSound = SoundDef.Named("DropPodFall"); // Landing sound
-        private static readonly Material ShadowMat = MaterialPool.MatFrom("Things/Special/DropPodShadow", ShaderDatabase.Transparent); // The shadow graphic of the droppod
+        public static readonly SoundDef LandSound = SoundDef.Named("DropPodFall"); // Landing sound
+        public static readonly Material ShadowMat = MaterialPool.MatFrom("Things/Special/DropPodShadow", ShaderDatabase.Transparent); // The shadow graphic of the droppod
+
+        public int ticksToImpact; // Ticks until pod hits the ground
+        public bool soundPlayed; // Whether sound has been played or not
+        public float impactShakeStrength; // impact strength
+
+        public ThingWithComps crater;
+        public DropPodCrashed wreck;
+        public DropPodInfo cargo;
+
+        public override void SpawnSetup()
+        {
+            // Do base setup
+            base.SpawnSetup();
+
+            ticksToImpact = Rand.RangeInclusive(120, 200);
+            impactShakeStrength = 0.01f;
+            crater = (ThingWithComps)ThingMaker.MakeThing(ThingDef.Named("CraterMedium"));
+            wreck = (DropPodCrashed)ThingMaker.MakeThing(ThingDef.Named("DropPodCrashed"));
+            wreck.cargo = this.cargo;
+        }
 
         public override Vector3 DrawPos
         {
@@ -30,24 +47,6 @@ namespace RA
             }
         }
 
-        public override void SpawnSetup()
-        {
-            // Do base setup
-            base.SpawnSetup();
-            // randomise the ticks to impact so all pods dont fall at exactly the same time
-            this.ticksToImpact = Rand.RangeInclusive(120, 200);
-        }
-
-        public override void ExposeData()
-        {
-            // Base data to save
-            base.ExposeData();
-            // Save tickstoimpact to save file
-            Scribe_Values.LookValue<int>(ref this.ticksToImpact, "ticksToImpact", 0, false);
-            // Save pod contents to save file
-            Scribe_Deep.LookDeep<DropPodCrashingInfo>(ref this.contents, "contents", new object[0]);
-        }
-
         public override void Tick()
         {
             // If the pod is inflight, slight ending delay here to stop smoke motes covering the crash
@@ -63,7 +62,7 @@ namespace RA
             if (this.ticksToImpact <= 0)
             {
                 // Hit the ground
-                this.PodImpact();
+                this.Impact();
             }
             // If we havent already played the sound and we are low enough
             if (!this.soundPlayed && this.ticksToImpact < 100)
@@ -71,14 +70,14 @@ namespace RA
                 // Set the bool to true so sound doesnt play again
                 this.soundPlayed = true;
                 // Play the sound
-                DropPodCrashingIncoming.LandSound.PlayOneShot(base.Position);
+                DropPodCrashing.LandSound.PlayOneShot(base.Position);
             }
         }
         public override void Draw()
         {
-            //Set up a matrix
+            // Set up a matrix
             Matrix4x4 matrix = default(Matrix4x4);
-            //Set up a vector
+            // Set up a vector
             Vector3 s = new Vector3(1.9f, 0f, 1.9f);
             // Adjust the angle of the texture to 45 degrees
             matrix.SetTRS(DrawPos + Altitudes.AltIncVect, Quaternion.AngleAxis(45, Vector3.up), s);
@@ -99,10 +98,10 @@ namespace RA
             Vector3 s = new Vector3(num, 1f, num);
             Matrix4x4 matrix = default(Matrix4x4);
             matrix.SetTRS(pos, Quaternion.AngleAxis(135f, Vector3.up), s);
-            Graphics.DrawMesh(MeshPool.plane10, matrix, DropPodCrashingIncoming.ShadowMat, 0);
+            Graphics.DrawMesh(MeshPool.plane10, matrix, DropPodCrashing.ShadowMat, 0);
         }
 
-        private void PodImpact()
+        public virtual void Impact()
         {
             // Loop a few times
             for (int i = 0; i < 6; i++)
@@ -113,16 +112,10 @@ namespace RA
             }
             // Throw a quick flash
             MoteThrower.ThrowLightningGlow(base.Position.ToVector3Shifted(), 2f);
-            // Create a crater
-            ThingWithComps crater = (ThingWithComps)ThingMaker.MakeThing(ThingDef.Named("CraterMedium"), null);
-            // Create a crashed drop pod
-            DropPodCrashed dropPod = (DropPodCrashed)ThingMaker.MakeThing(ThingDef.Named("DropPodCrashed"), null);
-            // Set contents into the new crashed droppod
-            dropPod.info = this.contents;
             // Spawn the crater
             GenSpawn.Spawn(crater, base.Position, base.Rotation);
             // Spawn the crashed drop pod
-            GenSpawn.Spawn(dropPod, base.Position, base.Rotation);
+            GenSpawn.Spawn(wreck, base.Position, base.Rotation);
             // For all cells around the crater centre point based on half its diameter (radius)
             foreach (IntVec3 current in GenRadial.RadialCellsAround(crater.Position, crater.def.size.x / 2, true))
             {
@@ -161,9 +154,10 @@ namespace RA
                 }
             }
             // Do a bit of camera shake for added effect
-            CameraShaker.DoShake(0.010f);
+            CameraShaker.DoShake(impactShakeStrength);
             // Fire an explosion with motes
-            GenExplosion.DoExplosion(base.Position, 2f, DamageDefOf.Bomb, null, null, null);
+            // Explosion radius same as the pod size
+            GenExplosion.DoExplosion(base.Position, this.def.Size.Magnitude + 1, DamageDefOf.Bomb, null);
             CellRect cellRect = CellRect.CenteredOn(base.Position, 2);
             cellRect.ClipInsideMap();
             for (int i = 0; i < 5; i++)
@@ -171,8 +165,17 @@ namespace RA
                 IntVec3 randomCell = cellRect.RandomCell;
                 MoteThrower.ThrowFireGlow(DrawPos.ToIntVec3(), 1.5f);
             }
-            // Destroy pod
+            // Destroy incoming pod
             this.Destroy(DestroyMode.Vanish);
+        }
+
+        public override void ExposeData()
+        {
+            // Base data to save
+            base.ExposeData();
+            // Save tickstoimpact to save file
+            Scribe_Values.LookValue<int>(ref this.ticksToImpact, "ticksToImpact");
+            Scribe_Deep.LookDeep<DropPodInfo>(ref this.cargo, "cargo", new object[0]);
         }
     }
 }

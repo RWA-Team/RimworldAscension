@@ -18,7 +18,7 @@ namespace RA
         public TradeCompany(TraderKindDef def)
         {
             this.def = def;
-            this.name = DefDatabase<RulePackDef>.GetNamed("NamerTraderGeneral", true).GenerateDefault_Name(
+            this.name = RulePackDef.Named("NamerTraderGeneral").GenerateDefault_Name(
                 from vis in Find.PassingShipManager.passingShips 
                 select vis.name);
             this.randomPriceFactorSeed = Rand.RangeInclusive(1, 10000000);

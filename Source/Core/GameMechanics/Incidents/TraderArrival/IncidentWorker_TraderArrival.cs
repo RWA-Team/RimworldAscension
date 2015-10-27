@@ -123,7 +123,7 @@ namespace RA
             // merchant
             pawns.Add(PawnGenerator.GeneratePawn(PawnKindDefOf.SpaceSoldier, parms.faction));
             // animal
-            pawns.Add(PawnGenerator.GeneratePawn(DefDatabase<PawnKindDef>.GetNamed("CaravanMuffalo"), parms.faction));
+            pawns.Add(PawnGenerator.GeneratePawn(PawnKindDef.Named("CaravanMuffalo"), parms.faction));
             // guards
             pawns.AddRange(PawnGroupMakerUtility.GenerateArrivingPawns(parms).ToList<Pawn>());
 
