@@ -14,8 +14,9 @@ namespace RA
         public const int NumStartingMedPacksPerColonist = 1;
         public static readonly SoundDef OpenSound = SoundDef.Named("DropPodOpen"); // Open sound
 
-        public DropPodInfo cargo; // Drop pods contents and config
+        public bool deployed; // whether skyfaller has opened yet
 
+        public DropPodInfo cargo; // Drop pods contents and config
         public List<IntVec3> damagedCells = new List<IntVec3>(); // list of smoke and spark generators
 
         public override void SpawnSetup()
@@ -35,8 +36,12 @@ namespace RA
 
         public override void Tick()
         {
-            if (cargo.openDelay-- <= 0)
-                Deploy();
+            if (!deployed)
+                if (cargo.openDelay-- <= 0)
+                {
+                    Deploy();
+                    deployed = true;
+                }
 
             foreach (IntVec3 damagedCell in damagedCells)
             {
@@ -172,7 +177,8 @@ namespace RA
             // Base data to save
             base.ExposeData();
 
-            // Save pods content
+            // Save tickstoimpact to save file
+            Scribe_Values.LookValue<bool>(ref deployed, "deployed");
             Scribe_Deep.LookDeep<DropPodInfo>(ref this.cargo, "info", new object[0]);
         }
     }

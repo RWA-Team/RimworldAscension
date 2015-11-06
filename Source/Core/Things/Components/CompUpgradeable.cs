@@ -18,7 +18,7 @@ namespace RA
                 return (CompUpgradeable_Properties)props;
             }
         }
-                
+
         public override IEnumerable<Command> CompGetGizmosExtra()
         {
             Command_Action gizmo = new Command_Action
@@ -96,6 +96,19 @@ namespace RA
                 }
                 return true;
             }
+        }
+    }
+
+    public class CompUpgradeable_Properties : CompProperties
+    {
+        public List<ResearchProjectDef> researchPrerequisites = new List<ResearchProjectDef>();
+        public ThingDef upgradeTargetDef = new ThingDef();
+        public float upgradeDiscountMultiplier = 0.5f;
+
+        // Default requirement
+        public CompUpgradeable_Properties()
+        {
+            this.compClass = typeof(CompUpgradeable_Properties);
         }
     }
 }

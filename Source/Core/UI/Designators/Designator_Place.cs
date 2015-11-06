@@ -36,6 +36,14 @@ namespace RA
             this.soundSucceeded = SoundDefOf.DesignatePlaceBuilding;
         }
 
+        // determine conditions of hiding similar gizmos
+        public override bool GroupsWith(Gizmo other)
+        {
+            Command command = other as Command;
+            return command != null && ((this.hotKey == command.hotKey && this.defaultLabel == command.defaultLabel && this.Label == command.Label && this.icon == command.icon) || (this.groupKey != 0 && command.groupKey != 0 && this.groupKey == command.groupKey));
+        }
+
+
         public override void DoExtraGuiControls(float leftX, float bottomY)
         {
             ThingDef thingDef = this.PlacingDef as ThingDef;

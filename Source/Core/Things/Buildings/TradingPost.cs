@@ -282,6 +282,8 @@ namespace RA
         public override void ExposeData()
         {
             base.ExposeData();
+            //NOTE: save all reuired values
+
             //Scribe_Deep.LookDeep<TradeCompany>(ref tradeCompany, "tradeCompany", new object[0]);
         }
     }

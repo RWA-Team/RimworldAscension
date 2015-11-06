@@ -9,6 +9,19 @@ using UnityEngine;
 
 namespace RA
 {
+    public class CompCaravan_Properties : CompProperties
+    {
+        //All textures use Graphic_Multi
+        public string cartEmptyTexturePath;
+        public string cartFullTexturePath;
+        public string wheelTexturePath;
+        public string harnessTexturePath;
+        public CompCaravan_Properties()
+        {
+            compClass = typeof(CompCaravan_Properties);
+        }
+    }
+
     public class CompCaravan : ThingComp
     {
         public List<Thing> cargo = new List<Thing>();
@@ -44,10 +57,10 @@ namespace RA
 
         public bool SpawnedAndWell(Pawn pawn)
         {
-            if (!pawn.SpawnedInWorld || pawn.Downed)
-                return false;
-            else
+            if (pawn.SpawnedInWorld && !pawn.Downed)
                 return true;
+            else
+                return false;
         }
 
         public override void PostSpawnSetup()

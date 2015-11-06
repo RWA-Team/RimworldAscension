@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace RA
 {
-    public class Building_Target : Building_Dummy
+    public class Target : Dummy
     {
         public int interactionCellOffset = 1;
         public static int interactionCellOffset_Transfer;
@@ -35,7 +35,8 @@ namespace RA
             foreach (Gizmo gizmo in base.GetGizmos())
                 yield return gizmo;
 
-            Command_Action gizmo_increaseRange = new Command_Action
+            // Increase Range gizmo
+            yield return new Command_Action
             {
                 defaultDesc = "Increase interaction cell offset",
                 defaultLabel = "Increase Range",
@@ -43,9 +44,9 @@ namespace RA
                 activateSound = SoundDef.Named("Click"),
                 action = new Action(IncreaseRange),
             };
-            yield return gizmo_increaseRange;
 
-            Command_Action gizmo_decreaseRange = new Command_Action
+            // Decrease Range gizmo
+            yield return new Command_Action
             {
                 defaultDesc = "Decrease interaction cell offset",
                 defaultLabel = "Decrease Range",
@@ -53,22 +54,21 @@ namespace RA
                 activateSound = SoundDef.Named("Click"),
                 action = new Action(DecreaseRange),
             };
-            yield return gizmo_decreaseRange;
         }
 
         public override void CopySettings()
         {
             base.CopySettings();
 
-            Building_Target.interactionCellOffset_Transfer = interactionCellOffset;
+            Target.interactionCellOffset_Transfer = interactionCellOffset;
         }
 
         public override void PasteSettings()
         {
             base.PasteSettings();
 
-            if (Building_Target.interactionCellOffset_Transfer != 0)
-                interactionCellOffset = Building_Target.interactionCellOffset_Transfer;
+            if (Target.interactionCellOffset_Transfer != 0)
+                interactionCellOffset = Target.interactionCellOffset_Transfer;
         }
 
         public void IncreaseRange()
@@ -130,7 +130,15 @@ namespace RA
                     inspectString.AppendLine("Total hit chance at this range:\t\t" + GenText.AsPercent(hitReport.TotalHitChance));
                     inspectString.AppendLine("Pawn stats accuracy modifier:\t\t" + GenText.AsPercent(hitReport.hitChanceThroughPawnStat));
                     inspectString.AppendLine("Weapon stats accuracy modifier:\t" + GenText.AsPercent(hitReport.hitChanceThroughEquipment));
-                    inspectString.AppendLine("DPS with current accuracy:\t\t" + CalculateShootingDPS(hitReport, pawn.equipment.Primary.def).ToString("F2"));
+                    inspectString.AppendLine("DPS with current accuracy:\t\t" + CalculateShootingDPS(hitReport, pawn.equipment.Primary.def).ToString("F1"));
+                    if (pawn.skills.GetSkill(SkillDefOf.Shooting).level < 10)
+                    {
+                        inspectString.AppendLine("ExpPS with current weapon:\t\t" + (pawn.skills.GetSkill(SkillDefOf.Shooting).LearningFactor * 10f / pawn.GetStatValue(StatDefOf.RangedWeapon_Cooldown)).ToString("F1"));
+                    }
+                    else
+                    {
+                        inspectString.AppendLine("Pawn needs real combat to progress further.");
+                    }
                 }
                 else
                 {
@@ -143,9 +151,9 @@ namespace RA
         public float CalculateShootingDPS(HitReport hitReport, ThingDef weaponDef)
         {
             float projectileDamage = weaponDef.Verbs[0].projectileDef == null ? 0 : weaponDef.Verbs[0].projectileDef.projectile.damageAmountBase;
-            float cooldown = weaponDef.GetStatValueAbstract(StatDefOf.RangedWeapon_Cooldown, null);
+            float cooldown = weaponDef.GetStatValueAbstract(StatDefOf.RangedWeapon_Cooldown);
             float burstCount = weaponDef.Verbs[0].burstShotCount;
-            float burstShotsInterval = weaponDef.Verbs[0].ticksBetweenBurstShots / 60f;
+            float burstShotsInterval = (float)weaponDef.Verbs[0].ticksBetweenBurstShots / GenTicks.TicksPerRealtimeSecond;
 
             return projectileDamage * burstCount * hitReport.TotalHitChance / (cooldown + (burstCount - 1) * burstShotsInterval);
         }
@@ -154,7 +162,7 @@ namespace RA
         {
             base.ExposeData();
 
-            Scribe_Values.LookValue<int>(ref interactionCellOffset, "interactionCellOffset", 0);
+            Scribe_Values.LookValue<int>(ref interactionCellOffset, "interactionCellOffset");
         }
     }
 }

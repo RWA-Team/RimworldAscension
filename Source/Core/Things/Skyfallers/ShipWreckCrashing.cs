@@ -13,8 +13,6 @@ namespace RA
             base.SpawnSetup();
 
             ticksToImpact = Rand.RangeInclusive(120, 200);
-            impactShakeStrength = 0.013f;
-            crater = (ThingWithComps)ThingMaker.MakeThing(ThingDef.Named("CraterLarge"));
             wreck = (DropPodCrashed)ThingMaker.MakeThing(ThingDef.Named("ShipWreckCrashed"));
             wreck.cargo = this.cargo;
         }

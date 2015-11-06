@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace RA
 {
-    public class Building_Dummy : Building
+    public class Dummy : Building
     {
         public List<Pawn> allowedPawns = new List<Pawn>();
         public static List<Pawn> allowedPawns_Transfer;
@@ -80,29 +80,34 @@ namespace RA
 
         public virtual void CopySettings()
         {
-            Building_Dummy.allowedPawns_Transfer = new List<Pawn>(allowedPawns);
+            Dummy.allowedPawns_Transfer = new List<Pawn>(allowedPawns);
         }
 
         public virtual void PasteSettings()
         {
-            if (Building_Dummy.allowedPawns_Transfer != null)
-                allowedPawns = new List<Pawn>(Building_Dummy.allowedPawns_Transfer);
+            if (Dummy.allowedPawns_Transfer != null)
+                allowedPawns = new List<Pawn>(Dummy.allowedPawns_Transfer);
         }
-                
+
+        // do action each time dummy takes damage
         public override void PostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
         {
+            Pawn pawn = Find.Reservations.FirstReserverOf(this, Faction);
+
             // if zoom is close enough and dummy is selected
-            if (Find.CameraMap.CurrentZoom == CameraZoomRange.Closest && Find.Selector.IsSelected(this))
+            if (Find.CameraMap.CurrentZoom == CameraZoomRange.Closest && (Find.Selector.IsSelected(this) || Find.Selector.IsSelected(pawn)))
+            {
                 // throws text mote with applied damage each time damage taken
-                MoteThrower.ThrowText(new Vector3(this.Position.x + 0.5f, this.Position.y, this.Position.z + 0.8f), dinfo.Amount.ToString(), 60);
+                MoteThrower.ThrowText(new Vector3(this.Position.x + 0.5f, this.Position.y, this.Position.z + 1f), dinfo.Amount.ToString(), GenDate.TicksPerRealSecond);
+            }
         }
 
         public override void Tick()
         {
             base.Tick();
 
-            // check every 30 ticks
-            if (Find.TickManager.TicksGame % 30 == 0)
+            // check every second
+            if (Find.TickManager.TicksGame % GenTicks.TicksPerRealtimeSecond == 0)
             {
                 // if dummy is not reserved by colonists
                 if (!Find.Reservations.IsReserved(this, Faction))
@@ -122,9 +127,17 @@ namespace RA
 
                 if (attackVerb != null && attackVerb.CanHitTarget(this))
                 {
-                    inspectString.AppendFormat("{0} melee skill level:\t{1} ({2})\n", pawn.NameStringShort, pawn.skills.GetSkill(SkillDefOf.Melee).LevelDescriptor, pawn.skills.GetSkill(SkillDefOf.Melee).level);
-                    inspectString.AppendLine("Melee hit chance:\t\t" + GenText.AsPercent(pawn.GetStatValue(StatDefOf.MeleeHitChance)));
-                    inspectString.AppendLine("DPS with current accuracy:\t\t" + (pawn.GetStatValue(StatDefOf.MeleeHitChance) * pawn.GetStatValue(StatDefOf.MeleeWeapon_DamageAmount) / pawn.GetStatValue(StatDefOf.MeleeWeapon_Cooldown)).ToString("F2"));
+                    inspectString.AppendFormat("{0} melee skill level:\t\t{1} ({2})\n", pawn.NameStringShort, pawn.skills.GetSkill(SkillDefOf.Melee).LevelDescriptor, pawn.skills.GetSkill(SkillDefOf.Melee).level);
+                    inspectString.AppendLine("Melee hit chance:\t\t\t" + GenText.AsPercent(pawn.GetStatValue(StatDefOf.MeleeHitChance)));
+                    inspectString.AppendLine("DPS with current accuracy:\t\t" + (pawn.GetStatValue(StatDefOf.MeleeHitChance) * pawn.GetStatValue(StatDefOf.MeleeWeapon_DamageAmount) / pawn.GetStatValue(StatDefOf.MeleeWeapon_Cooldown)).ToString("F1"));
+                    if (pawn.skills.GetSkill(SkillDefOf.Shooting).level < 10)
+                    {
+                        inspectString.AppendLine("ExpPS with current weapon:\t\t" + (pawn.skills.GetSkill(SkillDefOf.Melee).LearningFactor * 10f / pawn.GetStatValue(StatDefOf.MeleeWeapon_Cooldown)).ToString("F1"));
+                    }
+                    else
+                    {
+                        inspectString.AppendLine("Pawn needs real combat to progress further.");
+                    }
                 }
                 else
                 {

@@ -37,8 +37,8 @@ namespace RA
             AdjustRequestLists();
 
             // NOTE: use pickup queues later?
-            Toil reachHaulable = Toils_Goto.GotoThing(CarryThingIndex, PathEndMode.ClosestTouch);
-            yield return reachHaulable;
+            Toil goToThing = Toils_Goto.GotoThing(CarryThingIndex, PathEndMode.ClosestTouch);
+            yield return goToThing;
 
             yield return Toils_Haul.StartCarryThing(CarryThingIndex);
 

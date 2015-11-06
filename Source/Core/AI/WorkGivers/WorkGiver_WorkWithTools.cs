@@ -9,106 +9,242 @@ using Verse.AI;
 
 namespace RA
 {
-    public class WorkGiver_WorkWithTools : WorkGiver
+    public class WorkGiver_WorkWithTools : WorkGiver, IExposable
     {
-        public IEnumerable<Thing> availableTools;
+        // reserved weapon reference to swap with tool later
+        public ThingWithComps reservedSlotter;
+        public ThingWithComps reservedWeapon;
+
         public Thing closestAvailableTool;
-        public string toolWorkTypeName;
+        public string workTypeName;
 
-        // Collection of pawns weapons before changing them to tools. Initialize with dummy element to avoid null references
-        public static Dictionary<Pawn, Thing> weaponReservations = new Dictionary<Pawn, Thing>()
-            {
-                {new Pawn(), new Thing()}
-            };
-
-        public void WorkPenaltyCheck(Pawn pawn)
+        public Job DoJobWithTool(Pawn pawn, IEnumerable<Thing> availableTargets, Func<Thing, Job> ActualJob, bool anotherWorkTypeKeepsTool = false)
         {
-            //float plantWorkSpeed_default = pawn.GetStatValue(StatDefOf.PlantWorkSpeed);
-            float plantWorkSpeed_withPenalty = pawn.GetStatValue(StatDefOf.PlantWorkSpeed) / 4;
-            if (pawn.equipment.Primary == null || !pawn.equipment.Primary.def.defName.Contains(toolWorkTypeName))
+            // has available job targets
+            if (availableTargets.Count() > 0)
             {
-                pawn.def.SetStatBaseValue(StatDefOf.PlantWorkSpeed, plantWorkSpeed_withPenalty);
+                Thing closestAvailableTarget = GenClosest.ClosestThing_Global_Reachable(pawn.Position, availableTargets, PathEndMode.Touch, TraverseParms.For(pawn));
+
+                // hands free
+                if (pawn.equipment.Primary == null)
+                {
+                    // search in slots for proper tool
+                    if (!TryEquipToolFromSlots(pawn))
+                    {
+                        // then search for free tool
+                        if (TryFindAvailableTool(pawn))
+                        {
+                            //reserve target for future work
+                            if (pawn.CanReserve(closestAvailableTarget))
+                            {
+                                pawn.Reserve(closestAvailableTarget);
+                            }
+
+                            // equip nearest tool
+                            return new Job(JobDefOf.Equip, closestAvailableTool);
+                        }
+                    }
+                }
+                // hands occupied
+                else
+                {
+                    // proper tool in hands
+                    if (IsProperTool(pawn.equipment.Primary))
+                    {
+                        // do the vanilla job with tool in hands
+                        return ActualJob(closestAvailableTarget);
+                    }
+                    /*
+                    // tool in hands, but not appropriate
+                    else if (pawn.equipment.Primary.def.defName.Contains("Tool"))
+                    {
+                        //reserve plant for future work
+                        ReservationUtility.Reserve(pawn, closestAvailablePlant);
+                        // equip appropriate tool
+                        return EquipTool(pawn);
+                    }
+                     */
+                    // not tool in hands
+                    else
+                    {
+                        // search in slots for proper tool
+                        if (!TryEquipToolFromSlots(pawn))
+                        {
+                            if (!TryStoreCurrentWeaponInSlots(pawn))
+                            {
+                                // add to reserve list, cause it will be dropped to equip tool later
+                                reservedWeapon = pawn.equipment.Primary;
+                            }
+
+                            // then search for free tool
+                            if (TryFindAvailableTool(pawn))
+                            {
+                                // equip nearest tool
+                                return new Job(JobDefOf.Equip, closestAvailableTool);
+                            }
+                        }
+                    }
+                }
             }
-            //else pawn.def.SetStatBaseValue(StatDefOf.PlantWorkSpeed, plantWorkSpeed_default);
+            // no available targets
+            else
+            {
+                // hands free
+                if (pawn.equipment.Primary == null)
+                {
+                    // has reserved weapon
+                    if (reservedWeapon != null)
+                    {
+                        // try get it from slots
+                        if (!TryEquipReservedWeaponFromSlots(pawn))
+                        {
+                            // else try pick it up
+                            reservedWeapon = null;
+                            if (pawn.CanReach(reservedWeapon, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()))
+                            {
+                                return new Job(JobDefOf.Equip, reservedWeapon);
+                            }
+                        }
+                    }
+                }
+                // hands occupied
+                else
+                {
+                    // proper tool in hands
+                    if (IsProperTool(pawn.equipment.Primary))
+                    {
+                        // keep tool in hands, cause other jobs of the same worktype is being done
+                        if (!anotherWorkTypeKeepsTool)
+                        {
+                            // has place to store tool
+                            if (StorageCellExists(pawn))
+                            {
+                                // store it
+                                return ReturnTool(pawn);
+                            }
+                            // no storage, but has reserved weapon
+                            if (reservedWeapon != null)
+                            {
+                                // try get it from slots
+                                if (!TryEquipReservedWeaponFromSlots(pawn))
+                                {
+                                    // else try pick it up
+                                    reservedWeapon = null;
+                                    if (pawn.CanReach(reservedWeapon, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()))
+                                    {
+                                        return new Job(JobDefOf.Equip, reservedWeapon);
+                                    }
+                                }
+                            }
+                            // no storage, no reserve, drop the tool
+                            else
+                            {
+                                ThingWithComps tool;
+                                // drops primary equipment (weapon) as forbidden
+                                pawn.equipment.TryDropEquipment(pawn.equipment.Primary, out tool, pawn.Position);
+                                // making it non forbidden
+                                tool.SetForbidden(false);
+                            }
+                        }
+                    }
+                    // something else in hands, skip job
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+
+            return null;
         }
 
-        // checks if thing has it's free stockpile cell
-        public bool StorageCellExists(Pawn pawn, Thing thing)
+        public bool IsProperTool(Thing thing)
         {
-            foreach (var slotGroup in Find.SlotGroupManager.AllGroupsListInPriorityOrder)
+            return (thing.def.weaponTags != null && thing.def.weaponTags.Exists(tag => tag.Contains("Tool") && tag.Contains(workTypeName))) ? true : false;
+        }
+
+        public bool TryEquipToolFromSlots(Pawn pawn)
+        {
+            IEnumerable<CompSlots> compsSlots = pawn.GetComp<CompEquipmentGizmoUser>().EquippedSlottersComps();
+
+            foreach (CompSlots comp in compsSlots)
             {
-                foreach (var cell in slotGroup.CellsList.Where(cell => StoreUtility.IsValidStorageFor(cell, thing) && pawn.CanReserve(cell)))
-                    if (cell != IntVec3.Invalid)
+                foreach (Thing thing in comp.slots)
+                {
+                    if (IsProperTool(thing))
+                    {
+                        if (pawn.equipment.Primary != null)
+                        {
+                            reservedSlotter = comp.parent;
+                            reservedWeapon = pawn.equipment.Primary;
+                        }
+                        comp.SwapEquipment(thing as ThingWithComps);
+
                         return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+        public bool TryEquipReservedWeaponFromSlots(Pawn pawn)
+        {
+            if (pawn.equipment.AllEquipment.Contains(reservedSlotter) || pawn.apparel.WornApparel.Contains(reservedSlotter as Apparel))
+            {
+                CompSlots comp = reservedSlotter.GetComp<CompSlots>();
+
+                if (comp.slots.Contains(reservedWeapon))
+                {
+                    comp.SwapEquipment(reservedWeapon);
+
+                    reservedSlotter = null;
+                    reservedWeapon = null;
+
+                    return true;
+                }
+            }
+            reservedSlotter = null;
+            reservedWeapon = null;
+
+            return false;
+        }
+
+        public bool TryStoreCurrentWeaponInSlots(Pawn pawn)
+        {
+            IEnumerable<CompSlots> compsSlots = pawn.GetComp<CompEquipmentGizmoUser>().EquippedSlottersComps();
+
+            foreach (CompSlots comp in compsSlots)
+            {
+                if (comp.slots.Count < comp.Properties.maxSlots)
+                {
+                    // NOTE: check if weapon reference is destroyed
+                    reservedSlotter = comp.parent;
+                    reservedWeapon = pawn.equipment.Primary;
+                    ThingWithComps resultThing;
+                    // put weapon in slotter
+                    pawn.equipment.TryTransferEquipmentToContainer(pawn.equipment.Primary, comp.slots, out resultThing);
+
+                    return true;
+                }
             }
 
             return false;
         }
 
-        public void FindAvailableTools(Pawn pawn)
+        public bool TryFindAvailableTool(Pawn pawn)
         {
-            // choose tools by def name
-            availableTools = Find.ListerThings.AllThings.FindAll(tool => tool.def.defName.Contains(toolWorkTypeName));
-
-            // needed to avoid null references if availableTools == 0
-            if (availableTools.Count() > 0)
-            {
-                // choose tools which are non forbidden and can be reserved
-                availableTools = availableTools.Where(tool => !tool.IsForbidden(pawn.Faction) && pawn.CanReserve(tool));
-            }
-        }
-
-        public bool GiveJobIfToolsAvailable(Pawn pawn)
-        {
-            // tools availability check for reserve and non-forbidden
-            FindAvailableTools(pawn);
+            // find proper tools of the specific work type
+            IEnumerable<Thing> availableTools = Find.ListerThings.AllThings.FindAll(tool => IsProperTool(tool) && !tool.IsForbidden(pawn.Faction) && pawn.CanReserveAndReach(tool, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()));
 
             if (availableTools.Count() > 0)
             {
+                // find closest reachable tool of the specific work type
+                closestAvailableTool = GenClosest.ClosestThing_Global_Reachable(pawn.Position, availableTools, PathEndMode.ClosestTouch, TraverseParms.For(pawn));
+
                 return true;
             }
-            // no free tools
-            else if (availableTools.Count() == 0)
-            {
-                // hands free
-                if (pawn.equipment.Primary == null)
-                {
-                    return false;
-                }
-                // tool required equipped
-                else if (pawn.equipment.Primary.def.defName.Contains(toolWorkTypeName))
-                {
-                    return true;
-                }
-                // hands occupied, but it's not required tool
-                else
-                {
-                    return false;
-                }
-            }
-            // unexpected exception
-            else
-            {
-                Log.Message("GiveJobIfToolsAvailable EXCEPTION");
-                return false;
-            }
-        }
 
-        // equip previously equipped non tool weapon
-        public Job EquipReservedWeapon(Pawn pawn)
-        {
-            Thing weapon = weaponReservations[pawn];
-            weaponReservations.Remove(pawn);
-            return new Job(JobDefOf.Equip, weapon);
-        }
-
-        public Job EquipTool(Pawn pawn)
-        {
-            // find closest reachable tool of the specific workType name
-            closestAvailableTool = GenClosest.ClosestThing_Global_Reachable(pawn.Position, availableTools, PathEndMode.Touch, TraverseParms.For(pawn), 9999);
-
-            // job to equip nearest tool
-            return new Job(JobDefOf.Equip, closestAvailableTool);
+            return false;
         }
 
         public Job ReturnTool(Pawn pawn)
@@ -123,13 +259,27 @@ namespace RA
             return HaulAIUtility.HaulToStorageJob(pawn, tool);
         }
 
-        // for debug. Not used
-        public void GetReservedWeaponsList()
+        // check if there is free cell is the proper stockpile
+        public bool StorageCellExists(Pawn pawn)
         {
-            foreach (KeyValuePair<Pawn, Thing> pair in weaponReservations)
+            foreach (var slotGroup in Find.SlotGroupManager.AllGroupsListInPriorityOrder)
             {
-                Log.Message("pair =" + pair.ToString());
+                foreach (var cell in slotGroup.CellsList)
+                {
+                    if (StoreUtility.IsValidStorageFor(cell, pawn.equipment.Primary) && pawn.CanReserveAndReach(cell, PathEndMode.OnCell, pawn.NormalMaxDanger()))
+                    {
+                        return true;
+                    }
+                }
             }
+
+            return false;
+        }
+
+        public void ExposeData()
+        {
+            Scribe_References.LookReference<ThingWithComps>(ref reservedSlotter, "reservedSlotter");
+            Scribe_References.LookReference<ThingWithComps>(ref reservedWeapon, "reservedWeapon");
         }
     }
 }

@@ -82,8 +82,8 @@ namespace RA
                 int num = 0;
                 while (num < brain.ownedPawns.Count)
                 {
-                    Pawn item = brain.ownedPawns[num];
-                    if (!item.Position.InHorDistOf(destCell, 10f) || !item.CanReach(destCell, PathEndMode.OnCell, Danger.Deadly))
+                    Pawn pawn = brain.ownedPawns[num];
+                    if (!pawn.Position.InHorDistOf(destCell, 10f) || !pawn.CanReach(destCell, PathEndMode.OnCell, pawn.NormalMaxDanger()))
                     {
                         flag = false;
                         break;
