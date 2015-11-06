@@ -150,6 +150,14 @@
 			<li>RemoveBodyPart</li>
 			<li>Euthanize</li>
 		</recipes>
+		<comps>
+			<li>
+				<compClass>CompAttachBase</compClass>
+			</li>
+			<li>
+				<compClass>RA.CompEquipmentGizmoUser</compClass>
+			</li>
+		</comps>
 		<butcherProducts>
 			<Bone>10</Bone>
 		</butcherProducts>

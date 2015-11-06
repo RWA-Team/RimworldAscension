@@ -116,7 +116,7 @@
 
 	<ThingDef ParentName="BenchBase">
 		<DefName>MeleeWeaponTable_Neolithic</DefName>
-		<label>smithing bench</label>
+		<label>melee weapon bench</label>
 		<Description>A workbench equipped for weapons and tools production.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableSmithing</texPath>
@@ -129,14 +129,12 @@
 			<Flammability>1.0</Flammability>
 			<Cleanliness>-3</Cleanliness>
 		</statBases>
-		<!-- Changed via research mod-->
-		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
 
 	<ThingDef ParentName="BenchBase">
 		<DefName>RangedWeaponTable_Neolithic</DefName>
-		<label>smithing bench</label>
+		<label>ranged weapon bench</label>
 		<Description>A workbench equipped for weapons and tools production.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableSmithing</texPath>
@@ -149,8 +147,6 @@
 			<Flammability>1.0</Flammability>
 			<Cleanliness>-3</Cleanliness>
 		</statBases>
-		<!-- Changed via research mod-->
-		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
 

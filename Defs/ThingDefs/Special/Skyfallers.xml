@@ -15,7 +15,7 @@
 			<texPath>Things/Special/DropPod</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutFlying</shaderType>
-			<drawSize>1.9</drawSize>
+			<drawSize>(2,2)</drawSize>
 		</graphicData>
 		<altitudeLayer>MetaOverlays</altitudeLayer>
 		<useHitPoints>false</useHitPoints>
@@ -28,10 +28,10 @@
 		<label>crashing ship wreck</label>
 		<thingClass>RA.ShipWreckCrashing</thingClass>
 		<graphicData>
-			<texPath>Things/Special/CrashingShipPartAscension</texPath>
+			<texPath>Things/Skyfallers/ShipWreckCrashing</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutFlying</shaderType>
-			<drawSize>(6,3)</drawSize>
+			<drawSize>(5,3)</drawSize>
 		</graphicData>
 	</ThingDef>
 
@@ -46,21 +46,19 @@
 		<thingClass>RA.DropPodCrashed</thingClass>
 		<tickerType>Normal</tickerType>
 		<graphicData>
-			<texPath>Things/Special/DropPodCrashed</texPath>
+			<texPath>Things/Skyfallers/DropPodCrashed</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>1.9</drawSize>
 			<shadowData>
 				<volume>(0.8, 0.6, 0.8)</volume>
 			</shadowData>
+			<drawSize>(2,2)</drawSize>
 		</graphicData>
 		<altitudeLayer>BuildingTall</altitudeLayer>
 		<passability>Impassable</passability>
-		<useHitPoints>true</useHitPoints>
+		<useHitPoints>false</useHitPoints>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
 			<!-- needed to be able to deconstruct -->
 			<WorkToMake>100</WorkToMake>
-			<Flammability>0</Flammability>
 		</statBases>
 		<selectable>true</selectable>
 	</ThingDef>
@@ -71,16 +69,13 @@
 		<label>ship wreck</label>
 		<thingClass>RA.ShipWreckCrashed</thingClass>
 		<graphicData>
-			<texPath>Things/Special/CrashedShipPartAscension</texPath>
+			<texPath>Things/Skyfallers/ShipWreckCrashed</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>CutoutFlying</shaderType>
-			<drawSize>(6,3)</drawSize>
+			<drawSize>(5,3)</drawSize>
 		</graphicData>
-		<size>(6,3)</size>
+		<size>(5,3)</size>
 		<statBases>
-			<MaxHitPoints>500</MaxHitPoints>
 			<WorkToMake>300</WorkToMake>
-			<Flammability>0</Flammability>
 		</statBases>
 	</ThingDef>
 

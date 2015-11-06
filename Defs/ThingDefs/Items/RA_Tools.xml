@@ -3,8 +3,8 @@
 
 
 	<ThingDef Name="BaseTool" Abstract="True">
-		<category>Item</category>
 		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
 		<equipmentType>Primary</equipmentType>
 		<pathCost>10</pathCost>
 		<useHitPoints>True</useHitPoints>
@@ -22,12 +22,11 @@
 		<altitudeLayer>Item</altitudeLayer>
 		<alwaysHaulable>True</alwaysHaulable>
 		<tickerType>Never</tickerType>
-		<techLevel>Neolithic</techLevel>
 		<weaponTags>
 			<li>Melee</li>
 		</weaponTags>
 		<thingCategories>
-			<li>WeaponsMelee</li>
+			<li>Tools</li>
 		</thingCategories>
 		<comps>
 			<li>
@@ -38,68 +37,173 @@
 			</li>
 		</comps>
 		<soundInteract>Interact_BeatFire</soundInteract>
-		<statBases>
+		<!-- 		<statBases>
 			<MeleeWeapon_DamageAmount>1</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>2</MeleeWeapon_Cooldown>
-		</statBases>
-		<inspectorTabs>
-			<li>ITab_Art</li>
-		</inspectorTabs>
+			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
+		</statBases> -->
 	</ThingDef>
-	
 
-	<ThingDef ParentName="BaseTool">
-		<defName>Tool_Woodcutting_Handaxe</defName>
-		<label>handaxe</label>
-		<description>Practical handaxe. Trees - beware!</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Tools/Handaxe</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
+
+	<ThingDef Name="PlantCuttingTool" ParentName="BaseTool" Abstract="True">
+		<weaponTags>
+			<li>PlantCuttingTool</li>
+		</weaponTags>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
 	</ThingDef>
-	
 
-	<ThingDef ParentName="BaseTool">
-		<defName>Tool_Mining_Pickaxe</defName>
-		<label>pickaxe</label>
-		<description>Practical pickaxe. We have to go deeper.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Tools/Pickaxe</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
+
+	<ThingDef Name="MiningTool" ParentName="BaseTool" Abstract="True">
+		<weaponTags>
+			<li>MiningTool</li>
+		</weaponTags>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
 				<meleeDamageDef>Stab</meleeDamageDef>
 			</li>
 		</verbs>
 	</ThingDef>
-	
 
-	<ThingDef ParentName="BaseTool">
-		<defName>Tool_Building_Hammer</defName>
-		<label>hammer</label>
-		<description>Practical hammer. Be careful with your fingers.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Tools/Hammer</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
+
+	<ThingDef Name="ConstructionTool" ParentName="BaseTool" Abstract="True">
+		<weaponTags>
+			<li>ConstructionTool</li>
+		</weaponTags>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
 				<meleeDamageDef>Blunt</meleeDamageDef>
 			</li>
 		</verbs>
 	</ThingDef>
-	
+
+
+	<!--============================== Neolithic Tools ==============================-->
+
+
+	<ThingDef ParentName="PlantCuttingTool">
+		<defName>Stone_Handaxe</defName>
+		<label>stone handaxe</label>
+		<description>A stone handaxe. Useless in fight, good for cutting down plants.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Neolithic/StoneHandaxe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<techLevel>Neolithic</techLevel>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ConstructionTool">
+		<defName>Stone_Hammer</defName>
+		<label>stone hammer</label>
+		<description>A stone hammer. Useless in fight, good for Construction and repair.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Neolithic/StoneHammer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<techLevel>Neolithic</techLevel>
+	</ThingDef>
+
+
+	<!--============================== Medieval Tools ==============================-->
+
+
+	<ThingDef ParentName="PlantCuttingTool">
+		<defName>Metal_Handaxe</defName>
+		<label>metal handaxe</label>
+		<description>A metal handaxe. Useless in fight, good for cutting down plants.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Medieval/MetalHandaxe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedStatOffsets>
+			<PlantWorkSpeed>0.5</PlantWorkSpeed>
+		</equippedStatOffsets>
+		<techLevel>Medieval</techLevel>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ConstructionTool">
+		<defName>Metal_Hammer</defName>
+		<label>metal hammer</label>
+		<description>A metal hammer. Useless in fight, good for Construction and repair.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Medieval/MetalHammer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedStatOffsets>
+			<ConstructionSpeed>0.5</ConstructionSpeed>
+		</equippedStatOffsets>
+		<techLevel>Medieval</techLevel>
+	</ThingDef>
+
+
+	<ThingDef ParentName="MiningTool">
+		<defName>Metal_Pickaxe</defName>
+		<label>metal pickaxe</label>
+		<description>A metal pickaxe. Useless in fight, good for mining rocks.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Medieval/MetalPickaxe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedStatOffsets>
+			<MiningSpeed>0.5</MiningSpeed>
+		</equippedStatOffsets>
+		<techLevel>Medieval</techLevel>
+	</ThingDef>
+
+
+	<!--============================== Midworld Tools ==============================-->
+
+
+	<ThingDef ParentName="PlantCuttingTool">
+		<defName>Chainsaw</defName>
+		<label>chainsaw</label>
+		<description>A chainsaw.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Midworld/Chainsaw</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedStatOffsets>
+			<PlantWorkSpeed>1</PlantWorkSpeed>
+		</equippedStatOffsets>
+		<techLevel>Midworld</techLevel>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ConstructionTool">
+		<defName>Autohammer</defName>
+		<label>autohammer</label>
+		<description>An autohammer.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Midworld/Autohammer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedStatOffsets>
+			<ConstructionSpeed>1</ConstructionSpeed>
+		</equippedStatOffsets>
+		<techLevel>Midworld</techLevel>
+	</ThingDef>
+
+
+	<ThingDef ParentName="MiningTool">
+		<defName>Drill</defName>
+		<label>drill</label>
+		<description>A drill.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Midworld/Drill</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedStatOffsets>
+			<MiningSpeed>1</MiningSpeed>
+		</equippedStatOffsets>
+		<techLevel>Midworld</techLevel>
+	</ThingDef>
+
 
 </ThingDefs>
