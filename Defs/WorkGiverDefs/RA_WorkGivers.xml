@@ -40,7 +40,21 @@
 	</WorkGiverDef>
 
 
-	<!--=============== Work With Tools ====================-->
+	<WorkGiverDef>
+		<defName>Uninstall</defName>
+		<giverClass>WorkGiver_Uninstall</giverClass>
+		<!-- workType changed to hauling compare to vanilla -->
+		<workType>Hauling</workType>
+		<priorityInType>195</priorityInType>
+		<verb>uninstall</verb>
+		<gerund>uninstalling</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+
+	<!--=================== Work with tools =====================-->
 
 
 	<WorkGiverDef>
@@ -49,32 +63,6 @@
 		<workType>PlantCutting</workType>	
 		<verb>cut</verb>
 		<gerund>cutting</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>
-
-
-	<WorkGiverDef>
-		<defName>ConstructDeliverResourcesToBlueprints</defName>
-		<giverClass>RA.WorkGiver_ConstructDeliverResourcesToBlueprints</giverClass>
-		<workType>Hauling</workType>
-		<priorityInType>500</priorityInType>
-		<verb>work on</verb>
-		<gerund>working on</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>
-
-
-	<WorkGiverDef>
-		<defName>ConstructDeliverResourcesToFrames</defName>
-		<giverClass>WorkGiver_ConstructDeliverResourcesToFrames</giverClass>
-		<workType>Hauling</workType>
-		<priorityInType>400</priorityInType>
-		<verb>work on</verb>
-		<gerund>working on</gerund>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -94,12 +82,27 @@
 
 
 	<WorkGiverDef>
-		<defName>ConstructFinishFrames</defName>
-		<giverClass>RA.WorkGiver_ConstructFinishFrames</giverClass>
-		<workType>Construction</workType>
-		<priorityInType>100</priorityInType>
-		<verb>construct</verb>
-		<gerund>constructing</gerund>
+		<defName>ConstructDeliverResourcesToBlueprints</defName>
+		<giverClass>RA.WorkGiver_ConstructDeliverResourcesToBlueprints</giverClass>
+		<!-- workType changed to hauling compare to vanilla -->
+		<workType>Hauling</workType>
+		<priorityInType>500</priorityInType>
+		<verb>haul</verb>
+		<gerund>hauling</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+
+	<WorkGiverDef>
+		<defName>ConstructDeliverResourcesToFrames</defName>
+		<giverClass>WorkGiver_ConstructDeliverResourcesToFrames</giverClass>
+		<!-- workType changed to hauling compare to vanilla -->
+		<workType>Hauling</workType>
+		<priorityInType>400</priorityInType>
+		<verb>haul</verb>
+		<gerund>hauling</gerund>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -116,6 +119,19 @@
 			<li>Manipulation</li>
 		</requiredCapacities>
 	</WorkGiverDef>  
+
+
+	<WorkGiverDef>
+		<defName>ConstructFinishFrames</defName>
+		<giverClass>RA.WorkGiver_ConstructFinishFrames</giverClass>
+		<workType>Construction</workType>
+		<priorityInType>100</priorityInType>
+		<verb>construct</verb>
+		<gerund>constructing</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
 
 
 </WorkGivers>

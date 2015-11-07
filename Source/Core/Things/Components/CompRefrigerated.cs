@@ -9,18 +9,6 @@ using Verse.AI;
 
 namespace RA
 {
-    public class RottableData
-    {
-        public int HitPoints;
-        public float rotProgress;
-
-        public RottableData(int HitPoints, float rotProgress)
-        {
-            this.HitPoints = HitPoints;
-            this.rotProgress = rotProgress;
-        }
-    }
-
     public class CompRefrigerated : ThingComp
     {
         public Dictionary<Thing, RottableData> rottablesList = new Dictionary<Thing, RottableData>();
@@ -97,6 +85,18 @@ namespace RA
 
             foreach (Thing thing in changesList)
                 rottablesList.Add(thing, new RottableData(thing.HitPoints, thing.TryGetComp<CompRottable>().rotProgress));
+        }
+    }
+
+    public class RottableData
+    {
+        public int HitPoints;
+        public float rotProgress;
+
+        public RottableData(int HitPoints, float rotProgress)
+        {
+            this.HitPoints = HitPoints;
+            this.rotProgress = rotProgress;
         }
     }
 }

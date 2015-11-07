@@ -29,7 +29,7 @@ namespace RA
 
         protected override void FillTab()
         {
-            Building_Dummy dummy = this.SelThing as Building_Dummy;
+            Dummy dummy = this.SelThing as Dummy;
 
             Text.Anchor = TextAnchor.MiddleCenter;
 

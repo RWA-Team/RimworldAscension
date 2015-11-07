@@ -35,29 +35,29 @@
 	</RecipeDef >
   
 	<RecipeDef  ParentName="Make_Tool">
-		<defName>Make_Tool_Handaxe</defName>
-		<label>make handaxe</label>
-		<description>Makes a handaxe</description>
+		<defName>Make_Stone_Handaxe</defName>
+		<label>make stone handaxe tool</label>
+		<description>Makes a stone handaxe tool.</description>
 		<products>
-			<Tool_Woodcutting_Handaxe>1</Tool_Woodcutting_Handaxe>
+			<Stone_Handaxe>1</Stone_Handaxe>
 		</products>
 	</RecipeDef>
 	
-	<RecipeDef  ParentName="Make_Tool">
+<!-- 	<RecipeDef  ParentName="Make_Tool">
 		<defName>Make_Tool_Pickaxe</defName>
 		<label>make pickaxe</label>
 		<description>Makes a pickaxe</description>
 		<products>
 			<Tool_Mining_Pickaxe>1</Tool_Mining_Pickaxe>
 		</products>
-	</RecipeDef>
+	</RecipeDef> -->
 	
 	<RecipeDef  ParentName="Make_Tool">
-		<defName>Make_Tool_Hammer</defName>
-		<label>make hammer</label>
-		<description>Makes a hammer</description>
+		<defName>Make_Stone_Hammer</defName>
+		<label>make stone hammer tool</label>
+		<description>Makes a stone hammer tool.</description>
 		<products>
-			<Tool_Building_Hammer>1</Tool_Building_Hammer>
+			<Stone_Hammer>1</Stone_Hammer>
 		</products>
 	</RecipeDef>
 

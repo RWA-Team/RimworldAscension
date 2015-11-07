@@ -4,7 +4,6 @@
 
 	<ThingDef Name="BuildingBase" Abstract="True">
 		<category>Building</category>
-		<thingClass>Building</thingClass>
 		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
 		<selectable>true</selectable>
 		<drawerType>MapMeshAndRealTime</drawerType>
@@ -69,9 +68,9 @@
 	</ThingDef>
 
 
-<!-- 	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="BuildingBase">
 		<defName>Dummy</defName>
-		<thingClass>RA.Building_Dummy</thingClass>
+		<thingClass>RA.Dummy</thingClass>
 		<label>dummy</label>
 		<description>An abstract representation of a human figure, on which your pawns can practice their melee skills. Pawns will begin training routine if their life needs are fulfilled and they have nothing else to do.</description>
 		<graphicData>
@@ -106,7 +105,7 @@
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>Target</defName>
-		<thingClass>RA.Building_Target</thingClass>
+		<thingClass>RA.Target</thingClass>
 		<label>target</label>
 		<description>Classic shooting target, on which your pawns can practice their shooting skills. Pawns will begin training routine if their life needs are fulfilled and they have nothing else to do.</description>
 		<graphicData>
@@ -135,7 +134,42 @@
 		<inspectorTabs>
 			<li>RA.ITab_AllowedColonists</li>
 		</inspectorTabs>
-	</ThingDef> -->
+	</ThingDef>
+	
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>TradingPost</defName>
+		<label>trading post</label>
+		<thingClass>RA.Building_TradingPost</thingClass>
+		<graphicData>
+			<texPath>Things/Buildings/TradingPost_Free</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<altitudeLayer>BuildingTall</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>150</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToMake>2700</WorkToMake>
+			<Flammability>1.0</Flammability>
+			<Beauty>10</Beauty>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<description>A small tent with hundreds of trinkets to be sold.</description>
+		<size>(3,3)</size>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>1.0</fillPercent>
+		<costList>
+			<WoodLog>50</WoodLog>
+		</costList>
+		<combatTargetBuilding>true</combatTargetBuilding>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<specialDisplayRadius>10</specialDisplayRadius>
+	</ThingDef>
 
 
 </Buildings>

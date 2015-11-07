@@ -153,11 +153,10 @@
 	</ThingDef>
 
 
-<!-- 	<ThingDef ParentName="ApparelMakeableBase">
+	<ThingDef ParentName="ApparelMakeableBase">
 		<defName>Apparel_Backpack</defName>
-		<thingClass>RA.Apparel_Backpack</thingClass>
 		<label>backpack</label>
-		<description> A backpack is a bag with straps that go over your shoulders, so that you can carry things on your back when you are walking or climbing.</description>
+		<description>A backpack is a bag with straps that go over your shoulders, so that you can carry things on your back when you are walking or climbing.</description>
 		<graphicData>
 			<texPath>Things/Items/Apparels/Backpack/Backpack</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -165,19 +164,11 @@
 		<tickerType>Normal</tickerType>
 		<costStuffCount>50</costStuffCount>
 		<stuffCategories>
-			<li>Fabric</li>
 			<li>Leathery</li>
 		</stuffCategories>
 		<statBases>
 			<WorkToMake>1000</WorkToMake>
-			<ArmorRating_Blunt>0.03</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.03</ArmorRating_Sharp>
-			<ArmorRating_Heat>0.03</ArmorRating_Heat>
-			<BackpackMaxItem>3</BackpackMaxItem>
 		</statBases>
-		<equippedStatOffsets>
-			<MoveSpeed>-0.05</MoveSpeed>
-		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>
 				<li>Torso</li>
@@ -187,37 +178,103 @@
 				<li>Accessory</li>
 			</layers>
 			<commonality>1</commonality>
-			<tags>
-				<li>Backpack</li>
-			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_Options">
 			<options>
 				<li>
 					<weight>10</weight>
-					<only>RGBA(0.33,0.33,0.33,1)</only>
-				</li>
-				<li>
-					<weight>10</weight>
-					<only>RGBA(0.65,0.65,0.65,1)</only>
-				</li>
-				<li>
-					<weight>30</weight>
 					<only>RGBA(0.4,0.3,0.15,1)</only>
 				</li>
 				<li>
-					<weight>6</weight>
-					<min>RGBA(0.3,0.3,0.3,1)</min>
-					<max>RGBA(0.5,0.5,0.5,1)</max>
+					<weight>15</weight>
+					<only>RGBA(0.6,0.45,0.18,1)</only>
 				</li>
 				<li>
-					<weight>2</weight>
-					<min>RGBA(0.5,0.5,0.5,1)</min>
-					<max>RGBA(1,1,1,1)</max>
+					<weight>20</weight>
+					<only>RGBA(0.8,0.6,0.23,1)</only>
 				</li>
 			</options>
 		</colorGenerator>
-	</ThingDef> -->
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+			<li Class="RA.CompSlots_Properties">
+				<compClass>RA.CompSlots</compClass>
+				<allowedThingCategoryDefs>
+					<li>Weapons</li>
+					<li>Apparel</li>
+				</allowedThingCategoryDefs>
+				<forbiddenSubThingCategoryDefs>
+					<li>Tools</li>
+				</forbiddenSubThingCategoryDefs>
+				<maxSlots>1</maxSlots>
+			</li>
+		</comps>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ApparelMakeableBase">
+		<defName>Apparel_Toolbelt</defName>
+		<label>toolbelt</label>
+		<description>A toolbelt to keep your tools to yourself.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Toolbelt/Toolbelt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<costStuffCount>50</costStuffCount>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<statBases>
+			<WorkToMake>1000</WorkToMake>
+		</statBases>
+		<apparel>
+			<bodyPartGroups>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Toolbelt/Toolbelt</worngraphicPath>
+			<layers>
+				<li>Accessory</li>
+			</layers>
+			<commonality>1</commonality>
+		</apparel>
+		<colorGenerator Class="ColorGenerator_Options">
+			<options>
+				<li>
+					<weight>10</weight>
+					<only>RGBA(0.4,0.3,0.15,1)</only>
+				</li>
+				<li>
+					<weight>15</weight>
+					<only>RGBA(0.6,0.45,0.18,1)</only>
+				</li>
+				<li>
+					<weight>20</weight>
+					<only>RGBA(0.8,0.6,0.23,1)</only>
+				</li>
+			</options>
+		</colorGenerator>
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+			<li Class="RA.CompSlots_Properties">
+				<compClass>RA.CompSlots</compClass>
+				<allowedThingCategoryDefs>
+					<li>Tools</li>
+				</allowedThingCategoryDefs>
+				<maxSlots>3</maxSlots>
+			</li>
+		</comps>
+	</ThingDef>
 
 
 </ThingDefs>

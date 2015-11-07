@@ -41,14 +41,50 @@
 		<defName>CombatTraining</defName>
 		<driverClass>RA.JobDriver_CombatTraining</driverClass>
 		<reportString>Practicing combat skills on TargetA.</reportString>
+		<alwaysShowWeapon>true</alwaysShowWeapon>
 	</JobDef>
 
 
-<!-- 	<JobDef>
-		<defName>PutInInventory</defName>
-		<driverClass>RA.JobDriver_PutInInventory</driverClass>
-		<reportString>Put TargetB in TargetA.</reportString>
-	</JobDef> -->
+	<JobDef>
+		<defName>PutInSlot</defName>
+		<driverClass>RA.JobDriver_PutInSlot</driverClass>
+		<reportString>Put TargetA in TargetB.</reportString>
+	</JobDef>
+
+
+	<!--=================== Work with tools =====================-->
+
+
+	<JobDef>
+		<defName>Mine</defName>
+		<driverClass>JobDriver_Mine</driverClass>
+		<reportString>Mining TargetA.</reportString>
+		<alwaysShowWeapon>true</alwaysShowWeapon>
+	</JobDef>
+
+
+	<JobDef>
+		<defName>FinishFrame</defName>
+		<driverClass>JobDriver_ConstructFinishFrame</driverClass>
+		<reportString>Building TargetA.</reportString>
+		<alwaysShowWeapon>true</alwaysShowWeapon>
+	</JobDef>
+
+
+	<JobDef>
+		<defName>Harvest</defName>
+		<driverClass>JobDriver_PlantHarvest</driverClass>
+		<reportString>Harvesting TargetA.</reportString>
+		<alwaysShowWeapon>true</alwaysShowWeapon>
+	</JobDef>
+
+
+	<JobDef>
+		<defName>CutPlant</defName>
+		<driverClass>JobDriver_PlantCut</driverClass>
+		<reportString>Cutting TargetA.</reportString>
+		<alwaysShowWeapon>true</alwaysShowWeapon>
+	</JobDef>
 
 
 </Defs>

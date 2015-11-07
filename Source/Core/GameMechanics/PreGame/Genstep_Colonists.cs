@@ -43,7 +43,7 @@ namespace RA
                 // Find a location to drop
                 IntVec3 crashCell = CellFinder.RandomClosewalkCellNear(MapGenerator.PlayerStartSpot, 30);
                 // Drop a drop pod containg our pawn
-                DropShipUtility.MakeDropPodCrashingAt(crashCell, new DropPodInfo
+                SkyfallerUtility.MakeDropPodCrashingAt(crashCell, new DropPodInfo
                 {
                     SingleContainedThing = pawn,
                     openDelay = 180,
@@ -51,7 +51,7 @@ namespace RA
             }
 
             // Create the ship wreck with colonists
-            DropShipUtility.MakeShipWreckCrashingAt(MapGenerator.PlayerStartSpot, listsToGenerate, 110, startedDirectInEditor);
+            SkyfallerUtility.MakeShipWreckCrashingAt(MapGenerator.PlayerStartSpot, listsToGenerate, 110, startedDirectInEditor);
         }
 
         public static void CreateInitialWorkSettings()
