@@ -39,7 +39,6 @@ namespace RA
             // carry resources according to it's counter number
             if (requestedResourceCounters.Exists(item => item.thingDef == thing.def))
             {
-                //Log.Message("value " + offeredResourceCounters.Find(item => item.thingDef == thing.def).count);
                 ThingCount counter = requestedResourceCounters.Find(item => item.thingDef == thing.def);
                 numToCarry = Math.Min(thing.stackCount, counter.count);
             }

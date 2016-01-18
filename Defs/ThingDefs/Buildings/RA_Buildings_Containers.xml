@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+
+	<ThingDef Name="StorageBase" Abstract="True">
+		<category>Building</category>
+		<thingClass>Building_Storage</thingClass>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<holdsRoof>false</holdsRoof>
+		<filthLeaving>BuildingRubble</filthLeaving>
+		<Passability>Impassable</Passability>	
+		<castEdgeShadows>true</castEdgeShadows>
+		<Size>(1,1)</Size>
+		<building>
+			<preventDeterioration>true</preventDeterioration>
+		</building>
+		<DesignationCategory>Furniture</DesignationCategory>
+		<AltitudeLayer>ItemImportant</AltitudeLayer>
+		<surfaceType>Item</surfaceType>
+		<hasTooltip>true</hasTooltip>
+		<tickerType>Rare</tickerType>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+			<li>RA.ITab_Container_Gear</li>
+		</inspectorTabs>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="StorageBase">
+		<defName>Container_Storage</defName>
+		<label>Storage Box</label>
+		<graphicData>
+			<texPath>Things/Buildings/Furnitures/Containers/Storage</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToMake>1000</WorkToMake>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<Description>A place to store in.</Description>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+		</stuffCategories>
+		<costStuffCount>75</costStuffCount>
+		<comps>
+			<li Class="RA.CompContainer_Properties">
+				<compClass>RA.CompContainer</compClass>
+				<itemsCap>10</itemsCap>
+			</li>
+		</comps>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="StorageBase">
+		<defName>Container_Fridge</defName>
+		<label>Fridge Box</label>
+		<graphicData>
+			<texPath>Things/Buildings/Furnitures/Containers/Fridge</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToMake>1000</WorkToMake>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<Description>A place to freeze in.</Description>
+		<stuffCategories>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>75</costStuffCount>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Foods</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+		</building>
+		<comps>
+			<li Class="RA.CompContainer_Properties">
+				<compClass>RA.CompContainer</compClass>
+				<itemsCap>5</itemsCap>
+			</li>
+			<li>
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>200</basePowerConsumption>
+			</li>
+			<li>
+				<compClass>RA.CompRefrigerated</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+	
+
+</Buildings>

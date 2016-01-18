@@ -175,9 +175,6 @@ namespace RA
                 return null;
             }
 
-            Log.Message("pawn = " + pawn);
-            Log.Message("bench = " + researchBench);
-
 
             // researchBench has added bills
             if (billGiver.BillStack.Count == 1)
@@ -185,12 +182,9 @@ namespace RA
                 // research project is finished or changed
                 if (researchRecipes.Any(pair => pair.Value == billGiver.BillStack[0].recipe && (pair.Key.IsFinished || pair.Key != Find.ResearchManager.currentProj)))
                 {
-                    Log.Message("cleared");
                     billGiver.BillStack.Clear();
                 }
             }
-
-            Log.Message("billstack.count = " + billGiver.BillStack.Count);
 
             // Add research bill if it's not added already
             if (billGiver.BillStack.Count == 0)
@@ -198,17 +192,14 @@ namespace RA
                 bill = new Bill_Production(researchRecipes[Find.ResearchManager.currentProj]);
                 bill.suspended = true;
                 billGiver.BillStack.AddBill(bill);
-                Log.Message("added new bill");
             }
             else
             {
-                Log.Message("research = " + Find.ResearchManager.currentProj);
                 bill = billGiver.BillStack[0];
             }
 
             if (!WorkGiver_DoBill_Research.TryFindBestBillIngredients(bill, pawn, researchBench, this.chosenIngThings))
             {
-                Log.Message("no materials");
                 if (FloatMenuMaker.making)
                 {
                     JobFailReason.Is(WorkGiver_DoBill_Research.MissingMaterialsTranslated);
@@ -239,18 +230,15 @@ namespace RA
             Job haulAside = WorkGiverUtility.HaulStuffOffBillGiverJob(pawn, billGiver, null);
             if (haulAside != null)
             {
-                Log.Message("haul aside");
                 return haulAside;
             }
 
-            Log.Message("do bill");
             // gather ingridients and do bill
             Job doBill = new Job(JobDefOf.Research, researchBench);
             doBill.targetQueueB = new List<TargetInfo>(this.chosenIngThings.Count);
             doBill.numToBringList = new List<int>(this.chosenIngThings.Count);
             for (int k = 0; k < this.chosenIngThings.Count; k++)
             {
-                Log.Message("item = " + this.chosenIngThings[k].thing);
                 // pre reservation is made to assure that current researcher is cleaning the bench, not some other pawn with research skill
                 ReservationUtility.Reserve(pawn, this.chosenIngThings[k].thing, 1);
                 doBill.targetQueueB.Add(this.chosenIngThings[k].thing);

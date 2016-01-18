@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+
+	<ThingDef Name="BaseRangedWeapon" Abstract="True">
+		<category>Item</category>
+		<thingClass>ThingWithComps</thingClass>
+		<equipmentType>Primary</equipmentType>
+		<pathCost>15</pathCost>
+		<useHitPoints>True</useHitPoints>
+		<selectable>True</selectable>
+		<graphicData>
+			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>0.5</DeteriorationRate>
+			<SellPriceFactor>0.1</SellPriceFactor>
+		</statBases>
+		<altitudeLayer>Item</altitudeLayer>
+		<alwaysHaulable>True</alwaysHaulable>
+		<tickerType>Never</tickerType>
+		<soundInteract>InteractPistol</soundInteract>
+		<thingCategories>
+			<li>WeaponsRanged</li>
+		</thingCategories>
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+			<li>
+				<compClass>CompEquippable</compClass>
+			</li>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+
+
+	<ThingDef Name="BaseProjectile" Abstract="True">
+		<category>Projectile</category>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<thingClass>Bullet</thingClass>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<graphicData>
+			<shaderType>Transparent</shaderType>
+		</graphicData>
+	</ThingDef>
+
+
+	<!-- =================== Neolithic =================== -->
+
+
+	<ThingDef ParentName="BaseRangedWeapon">
+		<defName>Bow</defName>
+		<label>bow</label>
+		<description>A simple wooden bow.</description>
+		<graphicData>
+			<texPath>Things/Item/Equipment/WeaponRanged/BowShort</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>BowSmall</soundInteract>
+		<statBases>
+			<MarketValue>180</MarketValue>
+			<AccuracyTouch>0.93</AccuracyTouch>
+			<AccuracyShort>0.85</AccuracyShort>
+			<AccuracyMedium>0.75</AccuracyMedium>
+			<AccuracyLong>0.50</AccuracyLong>
+			<RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
+		</statBases>
+		<techLevel>Neolithic</techLevel>		
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<projectileDef>Arrow_Small</projectileDef>
+				<warmupTicks>150</warmupTicks>
+				<range>35</range>
+				<soundCast>BowSmall</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseProjectile">
+		<defName>Arrow_Small</defName>
+		<label>arrow</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>Arrow</damageDef>
+			<DamageAmountBase>10</DamageAmountBase>
+			<Speed>70</Speed>
+		</projectile>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BaseRangedWeapon">
+		<defName>Composite_Bow</defName>
+		<label>bow</label>
+		<description>A advanced version of the bow, strengthened with some bone plates.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Neolithic/CompositeBow</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>BowSmall</soundInteract>
+		<statBases>
+			<MarketValue>60</MarketValue>
+			<AccuracyTouch>0.89</AccuracyTouch>
+			<AccuracyShort>0.64</AccuracyShort>
+			<AccuracyMedium>0.41</AccuracyMedium>
+			<AccuracyLong>0.22</AccuracyLong>
+			<RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
+		</statBases>
+		<techLevel>Neolithic</techLevel>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<projectileDef>Arrow_Small</projectileDef>
+				<warmupTicks>150</warmupTicks>
+				<range>29</range>
+				<soundCast>BowSmall</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseProjectile">
+		<defName>Arrow_Small</defName>
+		<label>arrow</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>Arrow</damageDef>
+			<DamageAmountBase>10</DamageAmountBase>
+			<Speed>70</Speed>
+		</projectile>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BaseRangedWeapon">
+		<defName>Thrumbo_Bow</defName>
+		<label>thrumbo horn bow</label>
+		<description>An exotiс thrumbo horn bow. Unique properties of the thrumbo horn allow it to shoot arrows with immence force.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Neolithic/ThrumboBow</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>BowLarge</soundInteract>
+		<statBases>
+			<MarketValue>180</MarketValue>
+			<AccuracyTouch>0.89</AccuracyTouch>
+			<AccuracyShort>0.72</AccuracyShort>
+			<AccuracyMedium>0.6</AccuracyMedium>
+			<AccuracyLong>0.42</AccuracyLong>
+			<RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
+		</statBases>
+		<techLevel>Neolithic</techLevel>
+		<weaponTags>
+			<li>Ranged_Neolithic</li>
+		</weaponTags>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<projectileDef>Arrow_Great</projectileDef>
+				<warmupTicks>120</warmupTicks>
+				<range>45</range>
+				<soundCast>BowGreat</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseProjectile">
+		<defName>Arrow_Great</defName>
+		<label>arrow</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>Arrow</damageDef>
+			<DamageAmountBase>10</DamageAmountBase>
+			<Speed>70</Speed>
+		</projectile>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BaseRangedWeapon">
+		<defName>Pilum</defName>
+		<label>pilum</label>
+		<description>A bundle of pilums, non-reusable throwing spears.</description>
+		<graphicData>
+			<texPath>Things/Item/Equipment/WeaponRanged/Pilum</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_BeatFire</soundInteract>
+		<statBases>
+			<MarketValue>90</MarketValue>
+			<AccuracyTouch>0.91</AccuracyTouch>
+			<AccuracyShort>0.71</AccuracyShort>
+			<AccuracyMedium>0.50</AccuracyMedium>
+			<AccuracyLong>0.32</AccuracyLong>
+			<RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
+		</statBases>
+		<techLevel>Neolithic</techLevel>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<projectileDef>Pilum_Thrown</projectileDef>
+				<warmupTicks>240</warmupTicks>
+				<range>20</range>
+				<soundCast>Interact_BeatFire</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseProjectile">
+		<defName>Pilum_Thrown</defName>
+		<label>pilum (thrown)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Pilum</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>Stab</damageDef>
+			<DamageAmountBase>30</DamageAmountBase>
+			<Speed>26</Speed>
+		</projectile>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BaseRangedWeapon">
+		<defName>Sling</defName>
+		<label>sling</label>
+		<description>A rudementary sling. Used to hurl stones with surprising accuracy.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Neolithic/Sling</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>BowSmall</soundInteract>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+			<MarketValue>180</MarketValue>
+			<AccuracyTouch>0.65</AccuracyTouch>
+			<AccuracyShort>0.88</AccuracyShort>
+			<AccuracyMedium>0.7</AccuracyMedium>
+			<AccuracyLong>0.35</AccuracyLong>
+			<RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<projectileDef>Cobble</projectileDef>
+				<warmupTicks>60</warmupTicks>
+				<range>24</range>
+				<soundCast>BowSmall</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseProjectile">
+		<defName>Cobble</defName>
+		<label>cobble</label>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Neolithic/Projectiles/Cobble</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>Blunt</damageDef>
+			<DamageAmountBase>4</DamageAmountBase>
+			<Speed>49</Speed>
+		</projectile>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BaseRangedWeapon">
+		<defName>Tomahawk</defName>
+		<label>tomahawk</label>
+		<description>An axe, made for throwing, deadly if it hits.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Neolithic/Tomahawk</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<soundInteract>InteractGrenade</soundInteract>
+		<statBases>
+			<MarketValue>180</MarketValue>
+			<AccuracyTouch>0.74</AccuracyTouch>
+			<AccuracyShort>0.67</AccuracyShort>
+			<AccuracyMedium>0.41</AccuracyMedium>
+			<AccuracyLong>0.28</AccuracyLong>
+			<RangedWeapon_Cooldown>2.60</RangedWeapon_Cooldown>
+		</statBases>
+		<techLevel>Neolithic</techLevel>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<projectileDef>Tomahawk_Thrown</projectileDef>
+				<warmupTicks>120</warmupTicks>
+				<range>18</range>
+				<soundCast>ThrowGrenade</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseProjectile">
+		<defName>Tomahawk_Thrown</defName>
+		<label>tomahawk</label>
+		<thingClass>RA.TomahawkThrown</thingClass>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Neolithic/Projectiles/TomahawkThrown</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>Cut</damageDef>
+			<DamageAmountBase>15</DamageAmountBase>
+			<Speed>25</Speed>
+		</projectile>
+	</ThingDef>
+
+
+</ThingDefs>

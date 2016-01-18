@@ -133,7 +133,6 @@ namespace RA
                 // regenerate slow pawns
                 do
                 {
-                    Log.Message("regenerated value " + pawns[i].GetStatValue(StatDefOf.MoveSpeed));
                     pawns[i] = PawnGenerator.GeneratePawn(pawns[i].kindDef, pawns[i].Faction);
                 } while (pawns[i].GetStatValue(StatDefOf.MoveSpeed) / pawns[i].def.statBases.Find(pair => pair.stat == StatDefOf.MoveSpeed).value < 0.9f);
 

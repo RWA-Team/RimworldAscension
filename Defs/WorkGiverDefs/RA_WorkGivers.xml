@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <WorkGivers>
 
+	<!-- 
+	singleBillGiverDef - determine the building which uses this workgiver (required)
+	-->
 
 	<WorkGiverDef>
 		<defName>Research</defName>
@@ -48,6 +51,49 @@
 		<priorityInType>195</priorityInType>
 		<verb>uninstall</verb>
 		<gerund>uninstalling</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+
+	<!--=================== Crafting =====================-->
+
+
+	<WorkGiverDef>
+		<defName>DoBills_MakeWeapons_NeolithicMelee</defName>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Smithing</workType>
+		<priorityInType>115</priorityInType>
+		<singleBillGiverDef>WarriorsBench</singleBillGiverDef>
+		<verb>crafting</verb>
+		<gerund>crafting at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>DoBills_MakeWeapons_NeolithicRanged</defName>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Smithing</workType>
+		<priorityInType>120</priorityInType>
+		<singleBillGiverDef>HuntersBench</singleBillGiverDef>
+		<verb>crafting</verb>
+		<gerund>crafting at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>DoBills_Crafting</defName>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Smithing</workType>
+		<priorityInType>125</priorityInType>
+		<singleBillGiverDef>CraftsmanBench</singleBillGiverDef>
+		<verb>crafting</verb>
+		<gerund>crafting at</gerund>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>

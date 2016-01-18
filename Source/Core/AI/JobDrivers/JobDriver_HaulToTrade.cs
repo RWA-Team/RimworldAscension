@@ -82,8 +82,6 @@ namespace RA
 
         public void AdjustRequestLists()
         {
-            Log.Message("target " + TargetThingA);
-            Log.Message("num to carry " + CurJob.maxNumToCarry);
             if (TargetThingA.def.stackLimit > 1)
             {
                 ThingCount counter = WorkGiver_HaulToTrade.requestedResourceCounters.Find(item => item.thingDef == TargetThingA.def);

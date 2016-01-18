@@ -12,7 +12,7 @@
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
 		<designationCategory>Misc</designationCategory>
-		<researchPrerequisite>Blocked</researchPrerequisite>
+		<researchPrerequisite>SurvivalGuideI</researchPrerequisite>
 	</ThingDef>
 
 
@@ -23,9 +23,9 @@
 		<ThingClass>Building_WorkTable</ThingClass>
 		<label>research bench</label>
 		<description>Researchers work here to discover new things.</description>
-		<size>(5,2)</size>
+		<size>(3,1)</size>
 		<castEdgeShadows>true</castEdgeShadows>
-		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+<!-- 		<staticSunShadowHeight>0.20</staticSunShadowHeight> -->
 		<AltitudeLayer>Waist</AltitudeLayer>
 		<surfaceType>Item</surfaceType>
 		<fillPercent>0.5</fillPercent>
@@ -43,10 +43,10 @@
 	<ThingDef ParentName="ResearchBenchBase">
 		<defName>ResearchBench</defName>
 		<graphicData>
-			<texPath>Things/Building/Production/ResearchBench</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
+			<texPath>Things/Buildings/ResearchBenches/Neolithic/ResearchBench_Neolithic</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
-			<drawSize>(7,4)</drawSize>
+			<drawSize>(4,2)</drawSize>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
@@ -55,10 +55,13 @@
 			<ResearchSpeedFactor>1.0</ResearchSpeedFactor>
 		</statBases>
 		<stuffCategories>
-			<li>Woody</li>
-			<li>Stony</li>
+			<li>StonyRaw</li>
 		</stuffCategories>
-		<costStuffCount>75</costStuffCount>
+		<costStuffCount>4</costStuffCount>
+		<costList>
+			<Primitive_Handaxe>1</Primitive_Handaxe>
+			<Primitive_Hammer>1</Primitive_Hammer>			
+		</costList>
 		<comps>
 			<li>
 				<compClass>CompAffectedByFacilities</compClass>

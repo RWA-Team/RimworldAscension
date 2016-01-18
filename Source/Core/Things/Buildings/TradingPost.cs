@@ -103,17 +103,9 @@ namespace RA
         {
             ICommunicable communicable = TradeSession.tradeCompany as ICommunicable;
 
-            if (!pawn.CanReach(this, PathEndMode.InteractionCell, Danger.Deadly))
-            {
-                yield return new FloatMenuOption("Cannot use: no path", null);
-            }
-            else if (!pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
+            if (!pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
             {
                 yield return new FloatMenuOption("Cannot use: incapable of talking", null);
-            }
-            else if (!pawn.CanReserve(this, 1))
-            {
-                yield return new FloatMenuOption("Cannot use: reserved", null);
             }
             else if (occupied == false || merchant == null || merchant.Downed || merchant.Dead)
             {
@@ -274,7 +266,7 @@ namespace RA
                 }
                 else
                 {
-                    return GraphicDatabase.Get<Graphic_Single>("Things/Building/TradingPost_Occupied", def.graphic.Shader, def.graphic.drawSize, def.graphic.Color);
+                    return GraphicDatabase.Get<Graphic_Single>("Things/Buildings/TradingPost/TradingPost_Occupied", def.graphic.Shader, def.graphic.drawSize, def.graphic.Color);
                 }
             }
         }

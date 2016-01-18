@@ -25,7 +25,7 @@ namespace RA
             {
                 defaultDesc = "Upgrade this so you can get advanced version and save some resources",
                 defaultLabel = "Upgrade",
-                icon = ContentFinder<Texture2D>.Get("UI/Gizmos/Upgrade", true),
+                icon = ContentFinder<Texture2D>.Get("UI/Icons/Upgrade", true),
                 activateSound = SoundDef.Named("Click"),
                 action = new Action(UpgradeBuilding),
             };

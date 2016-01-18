@@ -111,7 +111,7 @@ namespace RA
             Command_Action gizmo_Scavenge = new Command_Action
             {
                 // Command icon
-                icon = ContentFinder<Texture2D>.Get("UI/Gizmos/Scavenge"),
+                icon = ContentFinder<Texture2D>.Get("UI/Icons/Scavenge"),
                 // Command label
                 defaultLabel = "Scavenge",
                 // Command description
@@ -128,9 +128,9 @@ namespace RA
         {
             Action action = () =>
             {
-                pawn.drafter.TakeOrderedJob(new Job(JobDefOf.Deconstruct,this));
+                pawn.drafter.TakeOrderedJob(new Job(JobDefOf.Deconstruct, this));
             };
-            yield return new FloatMenuOption("Acavenge the " + this.Label, action);
+            yield return new FloatMenuOption("Scavenge the " + this.Label, action);
         }
 
         public void Scavenge()

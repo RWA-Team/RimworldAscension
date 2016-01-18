@@ -53,30 +53,10 @@
 
 	<!-- ========================= Work Tables ==========================-->
 	
-	
-	<ThingDef ParentName="BenchBase">
-		<DefName>CraftingTable_Neolithic</DefName>
-		<label>crafting table</label>
-		<Description>A table and tools to craft various stuff.</Description>
-		<graphicData>
-			<texPath>Things/Building/Production/TableSculpting</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(3.5,1.5)</drawSize>
-		</graphicData>
-		<statBases>
-			<WorkToMake>3000</WorkToMake>
-			<MaxHitPoints>180</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-			<Cleanliness>-2</Cleanliness>
-		</statBases>
-		<!-- recipes and visibility added via researchMod -->
-		<researchPrerequisite>Blocked</researchPrerequisite>
-	</ThingDef>
-
 
 	<ThingDef ParentName="BenchBase">
 		<DefName>TableButcher</DefName>
-		<label>butcher table</label>
+		<label>butcher workbench</label>
 		<Description>A heavy table for butchering dead creatures into pieces of raw meat.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableButcher</texPath>
@@ -95,10 +75,9 @@
 		<researchPrerequisite>ExamineFauna</researchPrerequisite>
 	</ThingDef>
 
-
 	<ThingDef ParentName="BenchBase">
-		<DefName>TailorTable_Neolithic</DefName>
-		<label>tailor's workbench</label>
+		<DefName>TannersBench</DefName>
+		<label>tanners's workbench</label>
 		<Description>A workbench for crafting leather clothings from raw hides.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableTailor</texPath>
@@ -112,12 +91,30 @@
 		</statBases>
 		<researchPrerequisite>LeatherWorking</researchPrerequisite>
 	</ThingDef>
-
+	
+	<ThingDef ParentName="BenchBase">
+		<DefName>CraftsmanBench</DefName>
+		<label>craftsman workbench</label>
+		<Description>A table and tools to craft various stuff.</Description>
+		<graphicData>
+			<texPath>Things/Building/Production/TableSculpting</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3.5,1.5)</drawSize>
+		</graphicData>
+		<statBases>
+			<WorkToMake>3000</WorkToMake>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Cleanliness>-2</Cleanliness>
+		</statBases>
+		<!-- some recipes and visibility added via researchMod -->
+		<researchPrerequisite>Blocked</researchPrerequisite>
+	</ThingDef>
 
 	<ThingDef ParentName="BenchBase">
-		<DefName>MeleeWeaponTable_Neolithic</DefName>
-		<label>melee weapon bench</label>
-		<Description>A workbench equipped for weapons and tools production.</Description>
+		<DefName>WarriorsBench</DefName>
+		<label>warrior's workbench</label>
+		<Description>A workbench equipped for melee weapons production.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableSmithing</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -129,13 +126,14 @@
 			<Flammability>1.0</Flammability>
 			<Cleanliness>-3</Cleanliness>
 		</statBases>
+		<!-- recipes and visibility added via researchMod -->
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
-
 	<ThingDef ParentName="BenchBase">
-		<DefName>RangedWeaponTable_Neolithic</DefName>
-		<label>ranged weapon bench</label>
-		<Description>A workbench equipped for weapons and tools production.</Description>
+		<DefName>HuntersBench</DefName>
+		<label>hunter's workbench</label>
+		<Description>A workbench equipped for ranged weapons production.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableSmithing</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -147,8 +145,9 @@
 			<Flammability>1.0</Flammability>
 			<Cleanliness>-3</Cleanliness>
 		</statBases>
+		<!-- recipes and visibility added via researchMod -->
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
-
 
 	<ThingDef ParentName="BenchBase">
 		<DefName>TableStonecutter</DefName>

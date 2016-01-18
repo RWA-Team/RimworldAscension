@@ -15,6 +15,13 @@
 		<reportString>Doing research at TargetA.</reportString>
 	</JobDef>
 
+	<JobDef>
+		<defName>DoBill</defName>
+		<driverClass>RA.JobDriver_DoBill</driverClass>
+		<reportString>Doing bill at TargetA.</reportString>
+		<suspendable>false</suspendable>
+	</JobDef>
+
 
 	<JobDef>
 		<defName>GoTrading</defName>
