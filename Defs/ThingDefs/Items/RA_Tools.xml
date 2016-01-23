@@ -84,8 +84,8 @@
 
 	<ThingDef ParentName="PlantCuttingTool">
 		<defName>Primitive_Handaxe</defName>
-		<label>primitive handaxe</label>
-		<description>A primitive handaxe. Useless in fight, good for cutting down plants.</description>
+		<label>primitive hand axe</label>
+		<description>An improvised axe-looking tool designed with vegetation cutting in mind. Lacking the weight and finish of a melee weapon.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/PrimitiveHandaxe</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -97,7 +97,7 @@
 	<ThingDef ParentName="ConstructionTool">
 		<defName>Primitive_Hammer</defName>
 		<label>primitive hammer</label>
-		<description>A primitive hammer. Useless in fight, good forc construction and repair.</description>
+		<description>An improvised hammer-looking tool used for construction and repair rather than for combat purposes.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/PrimitiveHammer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -111,8 +111,8 @@
 
 	<ThingDef ParentName="PlantCuttingTool">
 		<defName>Metal_Handaxe</defName>
-		<label>metal handaxe</label>
-		<description>A metal handaxe. Useless in fight, good for cutting down plants.</description>
+		<label>metal hand axe</label>
+		<description>A smithed metal hand axe designed with plant cutting in mind and therefore lacking the weight and edge commonly found on combat focused axes.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/MetalHandaxe</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -127,7 +127,7 @@
 	<ThingDef ParentName="ConstructionTool">
 		<defName>Metal_Hammer</defName>
 		<label>metal hammer</label>
-		<description>A metal hammer. Useless in fight, good for Construction and repair.</description>
+		<description>A smithed metal hammer associated with repair and construction rather than combat.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/MetalHammer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -142,7 +142,7 @@
 	<ThingDef ParentName="MiningTool">
 		<defName>Metal_Pickaxe</defName>
 		<label>metal pickaxe</label>
-		<description>A metal pickaxe. Useless in fight, good for mining rocks.</description>
+		<description>A smithed metal pickaxe for prospectors and miners alike. No use in a melee.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/MetalPickaxe</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -160,7 +160,7 @@
 	<ThingDef ParentName="PlantCuttingTool">
 		<defName>Chainsaw</defName>
 		<label>chainsaw</label>
-		<description>A chainsaw.</description>
+		<description>An ancient gasoline-powered saw-type tool used for cutting and trimming vegetation.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Midworld/Chainsaw</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -174,8 +174,8 @@
 
 	<ThingDef ParentName="ConstructionTool">
 		<defName>Autohammer</defName>
-		<label>autohammer</label>
-		<description>An autohammer.</description>
+		<label>auto-hammer</label>
+		<description>An ancient electric hammer-type tool utilized in construction and repairs.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Midworld/Autohammer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -189,8 +189,8 @@
 
 	<ThingDef ParentName="MiningTool">
 		<defName>Drill</defName>
-		<label>drill</label>
-		<description>A drill.</description>
+		<label>mining drill</label>
+		<description>An ancient powered mining drill used for prospection of and tunneling through rock surfaces.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Midworld/Drill</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
