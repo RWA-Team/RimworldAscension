@@ -40,12 +40,12 @@
 	<ThingDef ParentName="TradeableBase">
 		<defName>Figurine</defName>
 		<label>figurine</label>
-		<description>Text.</description>
+		<description>A primitive figurine or idol resembling some sort of creature.</description>
 		<graphicData>
 			<texPath>Things/Items/Tradeables/Figurines</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
-		<soundInteract>Standart_Drop</soundInteract>
+		<soundInteract>Standard_Drop</soundInteract>
 		<statBases>
 			<MarketValue>100</MarketValue>
 			<MaxHitPoints>100</MaxHitPoints>
