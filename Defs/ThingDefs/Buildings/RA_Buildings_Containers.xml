@@ -42,7 +42,7 @@
 			<WorkToMake>1000</WorkToMake>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<Description>A place to store in.</Description>
+		<Description>A storage container that holds up to ten item stacks at once.</Description>
 		<stuffCategories>
 			<li>Metallic</li>
 			<li>Woody</li>
@@ -69,7 +69,7 @@
 			<WorkToMake>1000</WorkToMake>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<Description>A place to freeze in.</Description>
+		<Description>A storage container that holds and refrigerates up to five stacks of items at once.</Description>
 		<stuffCategories>
 			<li>Metallic</li>
 		</stuffCategories>
