@@ -55,7 +55,7 @@
 	<JobDef>
 		<defName>PutInSlot</defName>
 		<driverClass>RA.JobDriver_PutInSlot</driverClass>
-		<reportString>Put TargetA in TargetB.</reportString>
+		<reportString>Putting TargetA in TargetB.</reportString>
 	</JobDef>
 
 
