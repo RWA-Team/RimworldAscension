@@ -60,7 +60,7 @@
 	<ThingDef ParentName="BaseRangedWeapon">
 		<defName>Bow</defName>
 		<label>bow</label>
-		<description>A simple wooden bow.</description>
+		<description>A simple wooden bow. Accurate with high range, fast with mediocre damage.</description>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponRanged/BowShort</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -89,7 +89,7 @@
 
 	<ThingDef ParentName="BaseProjectile">
 		<defName>Arrow_Small</defName>
-		<label>arrow</label>
+		<label>bow arrow</label>
 		<graphicData>
 			<texPath>Things/Projectile/Arrow_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -105,8 +105,8 @@
 
 	<ThingDef ParentName="BaseRangedWeapon">
 		<defName>Composite_Bow</defName>
-		<label>bow</label>
-		<description>A advanced version of the bow, strengthened with some bone plates.</description>
+		<label>composite bow</label>
+		<description>A advanced bow strengthened with bone plates to earn the "composite" prefix. Not very accurate with average range, fast with mediocre damage.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/CompositeBow</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -135,7 +135,7 @@
 
 	<ThingDef ParentName="BaseProjectile">
 		<defName>Arrow_Small</defName>
-		<label>arrow</label>
+		<label>composite bow arrow</label>
 		<graphicData>
 			<texPath>Things/Projectile/Arrow_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -152,7 +152,7 @@
 	<ThingDef ParentName="BaseRangedWeapon">
 		<defName>Thrumbo_Bow</defName>
 		<label>thrumbo horn bow</label>
-		<description>An exotiс thrumbo horn bow. Unique properties of the thrumbo horn allow it to shoot arrows with immence force.</description>
+		<description>An exotiс thrumbo horn bow. Unique properties of the thrumbo horn allow it to shoot arrows with immence force. Very high range and somewhat accurate, fast with mediocre damage.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/ThrumboBow</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -184,7 +184,7 @@
 
 	<ThingDef ParentName="BaseProjectile">
 		<defName>Arrow_Great</defName>
-		<label>arrow</label>
+		<label>thrumbo horn bow arrow</label>
 		<graphicData>
 			<texPath>Things/Projectile/Arrow_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -201,7 +201,7 @@
 	<ThingDef ParentName="BaseRangedWeapon">
 		<defName>Pilum</defName>
 		<label>pilum</label>
-		<description>A bundle of pilums, non-reusable throwing spears.</description>
+		<description>A bundle of pilums, non-reusable throwing spears. Decent close range accuracy, medium range and long warmup with high damage.</description>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponRanged/Pilum</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -247,7 +247,7 @@
 	<ThingDef ParentName="BaseRangedWeapon">
 		<defName>Sling</defName>
 		<label>sling</label>
-		<description>A rudementary sling. Used to hurl stones with surprising accuracy.</description>
+		<description>A rudimentary sling used to hurl stones with surprising accuracy. Good mid-range accuracy and range, fast with very low damage.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/Sling</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -293,7 +293,7 @@
 	<ThingDef ParentName="BaseRangedWeapon">
 		<defName>Tomahawk</defName>
 		<label>tomahawk</label>
-		<description>An axe, made for throwing, deadly if it hits.</description>
+		<description>A thrown axe-type weapon, carefully weighted to fly through the air well. Very slow and hardly accurate, decent range and above average damage.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/Tomahawk</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
