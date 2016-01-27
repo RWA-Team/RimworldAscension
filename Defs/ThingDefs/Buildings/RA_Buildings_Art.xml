@@ -49,7 +49,7 @@
 		<defName>Totem</defName>
 		<label>totem</label>
 		<size>(1,2)</size>
-		<description>A person-sized piece of material sculpted into an artistic form.</description>
+		<description>A large and highly stylized hunk of material manufactured by certain tribal civilizations. It possibly serves a spiritual purpose and is in any case used as decoration.</description>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
 			<texPath>Things/Buildings/Art/Totem/Totem</texPath>
