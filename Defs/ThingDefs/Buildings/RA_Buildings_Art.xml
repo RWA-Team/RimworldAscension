@@ -9,8 +9,8 @@
 	 -->
 
 	<ThingDef Name="BuildingArt_Base" Abstract="True">
-		<thingClass>RA.Building_Art_Shadowed</thingClass>
 		<category>Building</category>
+		<thingClass>RA.Building_Art_Shadowed</thingClass>
 		<selectable>true</selectable>
 		<altitudeLayer>Waist</altitudeLayer>
 		<rotatable>false</rotatable>

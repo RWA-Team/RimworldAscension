@@ -13,15 +13,22 @@ namespace RA
     {
         public Dictionary<Thing, RottableData> rottablesList = new Dictionary<Thing, RottableData>();
 
-        public List<Thing> itemsList { get { return Find.ThingGrid.ThingsListAtFast(parent.Position).Where(thing => thing.def.thingClass != typeof(Building_Storage)).ToList(); } }
+        public List<Thing> itemsList
+        {
+        	get
+        	{
+        		return Find.ThingGrid.ThingsListAtFast(parent.Position).Where(thing => thing.def.thingClass != typeof(Building_Storage)).ToList();
+        	}
+        }
 
         // Executed when building is spawned on map (after loading too)
         public override void PostSpawnSetup()
         {
             base.PostSpawnSetup();
 
-            if (parent.TryGetComp<CompPowerTrader>() == null)
-                Log.Error(parent.def.defName + " require CompPowerTrader component in it's def");
+            	//REMOVED by Alistaire to fix neolithic refrigeration
+            /*if (parent.TryGetComp<CompPowerTrader>() == null)
+                Log.Error(parent.def.defName + " require CompPowerTrader component in it's def");*/
 
             RefrigerateContents();
         }
@@ -36,7 +43,7 @@ namespace RA
         public void RefrigerateContents()
         {
             // Only refrigerate if it has power
-            if (parent.TryGetComp<CompPowerTrader>().PowerOn == false)
+            if (parent.TryGetComp<CompPowerTrader>() != null && !parent.TryGetComp<CompPowerTrader>().PowerOn)
             {
                 return;
             }
@@ -60,7 +67,7 @@ namespace RA
 
         public void ScanForRottables()
         {
-            List<Thing> changesList = new List<Thing>();
+            var changesList = new HashSet<Thing>();
             // Things to remove from rottables list
             foreach (KeyValuePair<Thing, RottableData> item in rottablesList)
             {

@@ -29,18 +29,18 @@
 		<fixedIngredientFilter>
 			<categories>
 				<li>StoneBlocks</li>
-			</categories>			
-			<thingDefs>		
+			</categories>
+			<thingDefs>
 				<li>WoodLog</li>
 			</thingDefs>
 		</fixedIngredientFilter>
-	</RecipeDef >
+	</RecipeDef>
 
 
 	<RecipeDef  ParentName="MakeWeapon_Neolithic">
 		<defName>Make_Primitive_Handaxe</defName>
-		<label>make primitive handaxe</label>
-		<description>Makes a crude neolithic tool for cutting trees.</description>
+		<label>make improvised hand axe</label>
+		<description>Makes an improvised tool for cutting trees.</description>
 		<products>
 			<Primitive_Handaxe>1</Primitive_Handaxe>
 		</products>
@@ -66,8 +66,8 @@
 
 	<RecipeDef  ParentName="MakeWeapon_Neolithic">
 		<defName>Make_Primitive_Hammer</defName>
-		<label>make primitive hammer</label>
-		<description>Makes a crude neolithic tool for constructing.</description>
+		<label>make improvised mallet</label>
+		<description>Makes an improvised tool for construction.</description>
 		<products>
 			<Primitive_Hammer>1</Primitive_Hammer>
 		</products>
@@ -89,6 +89,40 @@
 				<count>5</count>
 			</li>
 		</ingredients>
+	</RecipeDef>
+
+
+	<RecipeDef  ParentName="MakeWeapon_Base">
+		<defName>Make_Primitive_HandBroom</defName>
+		<label>make hand broom</label>
+		<description>Makes an improvised cleaning device.</description>
+		<products>
+			<Primitive_HandBroom>1</Primitive_HandBroom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BastFibre</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+				<li>BastFibre</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 	</RecipeDef>
 	
 

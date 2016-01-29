@@ -28,11 +28,56 @@
 			<li>RA.ITab_Container_Gear</li>
 		</inspectorTabs>
 	</ThingDef>
+
+
+	<!--============================== Neolithic Storage ==============================-->
 	
+	
+	<ThingDef ParentName="StorageBase">
+		<defName>Container_Amphora</defName>
+		<label>Storage Box</label>
+		<graphicData>
+			<texPath>Things/Buildings/Furnitures/Containers/Storage</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToMake>1000</WorkToMake>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<Description>An amphora rack capable of storing up to four different types of consumables in their respective amphorae.</Description>
+		<stuffCategories>
+			<li>Woody</li>
+		</stuffCategories>
+		<costStuffCount>20</costStuffCount>
+		<costList>
+			<PotteryAmphora>4</PotteryAmphora>
+		</costList>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Foods</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+		</building>
+		<comps>
+			<li Class="RA.CompContainer_Properties">
+				<compClass>RA.CompContainer</compClass>
+				<itemsCap>4</itemsCap>
+			</li>
+			<li>
+				<compClass>RA.CompRefrigerated</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+	
+
 
 	<ThingDef ParentName="StorageBase">
 		<defName>Container_Storage</defName>
-		<label>Storage Box</label>
+		<label>storage box</label>
 		<graphicData>
 			<texPath>Things/Buildings/Furnitures/Containers/Storage</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -59,7 +104,7 @@
 
 	<ThingDef ParentName="StorageBase">
 		<defName>Container_Fridge</defName>
-		<label>Fridge Box</label>
+		<label>refrigerated storage</label>
 		<graphicData>
 			<texPath>Things/Buildings/Furnitures/Containers/Fridge</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

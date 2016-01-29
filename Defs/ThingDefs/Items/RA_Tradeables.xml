@@ -17,30 +17,29 @@
 			<li>
 				<compClass>CompForbiddable</compClass>
 			</li>
-			<li>
-				<compClass>CompQuality</compClass>
-			</li>
-			<li>
-				<compClass>CompArt</compClass>
-				<nameMaker>NamerMeleeWeapon</nameMaker>
-				<descriptionMaker>ArtWeaponMelee</descriptionMaker>
-				<minQualityForArtistic>Excellent</minQualityForArtistic>
-			</li>
 		</comps>
 		<alwaysHaulable>true</alwaysHaulable>
 		<drawGUIOverlay>true</drawGUIOverlay>
 		<rotatable>false</rotatable>
 		<pathCost>15</pathCost>
 	</ThingDef>
+	
+	<ThingDef ParentName="TradeableBase" Name="TradeableArtBase" Abstract="True">
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+	</ThingDef>
 
 
 	<!--=============== Neolithic ====================-->
 
 
-	<ThingDef ParentName="TradeableBase">
+	<ThingDef ParentName="TradeableArtBase">
 		<defName>Figurine</defName>
 		<label>figurine</label>
-		<description>A primitive figurine or idol resembling some sort of creature.</description>
+		<description>A handcrafted figurine or idol resembling some sort of creature. It looks valuable.</description>
 		<graphicData>
 			<texPath>Things/Items/Tradeables/Figurines</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -58,6 +57,35 @@
 			<li>Stony</li>
 			<li>Bone</li>
 		</stuffCategories>
+		<comps>
+			<li>
+				<compClass>CompArt</compClass>
+				<nameMaker>NamerFigurine</nameMaker>
+				<descriptionMaker>ArtFigurine</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="TradeableBase">
+		<defName>PotteryAmphora</defName>
+		<label>amphora</label>
+		<description>A handcrafted water- and airtight ceramic container used to stockpile food and other perishable resources. Its uses in refrigeration and storage make it a valuable commodity.</description>
+		<graphicData>
+			<texPath>Things/Items/Tradeables/Pottery</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<soundInteract>Standard_Drop</soundInteract>
+		<statBases>
+			<MarketValue>320</MarketValue>
+			<MaxHitPoints>30</MaxHitPoints>
+		</statBases>
+		<thingCategories>
+			<li>Ceramics</li>
+		</thingCategories>
+	<!--<stuffCategories>		Wivex: ceramics certainly don't need it as i see it now
+			<li>RawCeramic</li>
+		</stuffCategories>-->
 	</ThingDef>
 
 

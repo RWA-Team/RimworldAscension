@@ -151,7 +151,7 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>PlantHaygrass</defName>
 		<label>haygrass</label>
-		<description>A mixture of nutrient-rich grasses which yield large amounts of hay. Hay is edible for animals, but not humans.</description>
+		<description>A mixture of plants which yield large amounts of grass. Grass is edible for animals, but not humans.</description>
 		<statBases>
 			<MaxHitPoints>85</MaxHitPoints>
 			<Beauty>1</Beauty>
@@ -171,7 +171,7 @@
 			<shootsSeeds>false</shootsSeeds>
 			<maxMeshCount>4</maxMeshCount>
 			<harvestTag>Standard</harvestTag>
-			<harvestedThingDef>Hay</harvestedThingDef>
+			<harvestedThingDef>Grass</harvestedThingDef>
 			<harvestDestroys>true</harvestDestroys>
 			<harvestYield>18</harvestYield>
 			<sowTags>
@@ -230,7 +230,7 @@
 	<ThingDef ParentName="PlantBase">
 		<defName>PlantCotton</defName>
 		<label>cotton plant</label>
-		<description>Yields cotton, a fine plant fiber used to make cloth.</description>
+		<description>Yields cotton, a fine plant fibre used to make cloth.</description>
 		<statBases>
 			<MaxHitPoints>85</MaxHitPoints>
 			<Beauty>1</Beauty>
@@ -249,7 +249,7 @@
 			<dieIfLeafless>true</dieIfLeafless>
 			<shootsSeeds>false</shootsSeeds>
 			<harvestTag>Standard</harvestTag>
-			<harvestedThingDef>Cloth</harvestedThingDef>
+			<harvestedThingDef>RawCotton</harvestedThingDef>
 			<harvestDestroys>true</harvestDestroys>
 			<harvestYield>5</harvestYield>
 			<topWindExposure>0.1</topWindExposure>

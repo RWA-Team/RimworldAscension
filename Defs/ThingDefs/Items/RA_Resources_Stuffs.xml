@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="ResourceBase" Abstract="True">
+		<thingClass>ThingWithComps</thingClass>
+		<label>unspecified resource</label>
+		<category>Item</category>
+		<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<stackLimit>75</stackLimit>
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+		</comps>
+		<alwaysHaulable>true</alwaysHaulable>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<rotatable>false</rotatable>
+		<pathCost>15</pathCost>
+	</ThingDef>
+
+
+	<!--===================== Organic products =====================-->
+
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>WoodLog</defName>
+		<label>wood</label>
+		<description>Wood from trees or other fibrous plants. Useful for building structures, weapons, and even simple prosthetics. A raw stick of wood can be used as a weapon in a pinch.</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/WoodLog</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<soundInteract>Wood_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>
+		<statBases>
+			<MarketValue>1.4</MarketValue>
+			<MaxHitPoints>120</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1</DeteriorationRate>
+			<SharpDamageMultiplier>0.4</SharpDamageMultiplier>
+		</statBases>
+		<stuffProps>
+			<appearance>Planks</appearance>
+			<stuffAdjective>wooden</stuffAdjective>
+			<categories>
+				<li>Woody</li>
+			</categories>
+			<color>(133,97,67)</color>
+			<constructEffect>ConstructWood</constructEffect>
+			<soundImpactStuff>BulletImpactWood</soundImpactStuff>
+			<soundMeleeHitSharp>MeleeHit_Wood</soundMeleeHitSharp>
+			<soundMeleeHitBlunt>MeleeHit_Wood</soundMeleeHitBlunt>
+			<statOffsets>
+				<Beauty>2</Beauty>
+			</statOffsets>
+			<statFactors>
+				<Flammability>1</Flammability>
+				<MaxHitPoints>0.5</MaxHitPoints>
+				<Beauty>1.25</Beauty>
+				<Flammability>1</Flammability>
+				<WorkToMake>0.7</WorkToMake>
+				<DoorOpenSpeed>1.2</DoorOpenSpeed>
+				<MeleeWeapon_Cooldown>0.9</MeleeWeapon_Cooldown>
+			</statFactors>
+		</stuffProps>
+		<isBodyPartOrImplant>true</isBodyPartOrImplant>
+		<techHediffsTags>
+			<li>Poor</li>
+		</techHediffsTags>
+	</ThingDef>
+
+
+	<!--===================== Textiles =====================-->
+	
+
+	<ThingDef ParentName="ResourceBase">
+	<defName>Linen</defName>
+	<label>linen</label>
+	<description>Linen woven from flax fibres.</description>
+	<graphicData>
+		<texPath>Things/Item/Resource/Cloth</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<color>(197,181,149)</color>
+	</graphicData>
+	<statBases>
+		<MaxHitPoints>100</MaxHitPoints>
+		<MarketValue>10.5</MarketValue>
+		<Flammability>1.0</Flammability>
+		<DeteriorationRate>2</DeteriorationRate>
+	</statBases>
+	<stuffProps>
+		<categories>
+			<li>Fabric</li>
+		</categories>
+		<color>(197,181,149)</color>
+		<allowColorGenerators>true</allowColorGenerators>
+	</stuffProps>
+	<thingCategories>
+		<li>Textiles</li>
+	</thingCategories>
+	<comps>
+		<li>
+			<compClass>CompColorable</compClass>
+		</li>
+	</comps>
+	<colorGeneratorInTraderStock Class="ColorGenerator_Options">
+		<options>
+			<li>
+				<weight>5</weight>
+				<only>RGBA(0.33,0.33,0.33,1)</only>
+			</li>
+			<li>
+				<weight>10</weight>
+				<min>RGBA(0.3,0.3,0.3,1)</min>
+				<max>RGBA(0.9,0.9,0.9,1)</max>
+			</li>
+			<li>
+				<weight>5</weight>
+				<only>RGBA(0.9,0.9,0.9,1)</only>
+			</li>
+		</options>
+	</colorGeneratorInTraderStock>
+	</ThingDef>
+	
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>Cloth</defName>
+		<label>cloth</label>
+		<description>Cloth woven from cotton fibres.</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/Cloth</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(162,157,152)</color>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<MarketValue>13</MarketValue>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+		</statBases>
+		<stuffProps>
+			<categories>
+				<li>Fabric</li>
+			</categories>
+			<color>(162,157,152)</color>
+			<allowColorGenerators>true</allowColorGenerators>
+		</stuffProps>
+		<thingCategories>
+			<li>Textiles</li>
+		</thingCategories>
+		<comps>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+		</comps>
+		<colorGeneratorInTraderStock Class="ColorGenerator_Options">
+			<options>
+				<li>
+					<weight>5</weight>
+					<only>RGBA(0.33,0.33,0.33,1)</only>
+				</li>
+				<li>
+					<weight>10</weight>
+					<min>RGBA(0.3,0.3,0.3,1)</min>
+					<max>RGBA(0.9,0.9,0.9,1)</max>
+				</li>
+				<li>
+					<weight>5</weight>
+					<only>RGBA(0.9,0.9,0.9,1)</only>
+				</li>
+			</options>
+		</colorGeneratorInTraderStock>
+	</ThingDef>
+	
+</Defs>

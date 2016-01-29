@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+		<!--Drying-->
+	<PercentDried>{0} dried</PercentDried>
+	<DryingRate>Drying rate</DryingRate>
+	<ExposedToWaterOrRain>Soaked</ExposedToWaterOrRain>
+	<TooColdToDry>Too cold</TooColdToDry>
+	<XDaysOfOptimalDryingLeft>Dries in {0}</XDaysOfOptimalDryingLeft>
+	
+</LanguageData>

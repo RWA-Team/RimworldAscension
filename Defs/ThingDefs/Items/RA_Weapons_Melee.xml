@@ -6,8 +6,8 @@
 	-->
 
 	<ThingDef Name="MeleeWeapon_Base" Abstract="True">
-		<category>Item</category>
 		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
 		<equipmentType>Primary</equipmentType>
 		<pathCost>15</pathCost>
 		<useHitPoints>True</useHitPoints>
