@@ -125,6 +125,7 @@
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/PrimitiveBroom</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<color>(133,97,67)</color>
 		</graphicData>
 		<techLevel>Neolithic</techLevel>
 	</ThingDef>

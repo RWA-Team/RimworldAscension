@@ -167,7 +167,7 @@ namespace RA
 		{
 			get
 			{
-				return Mathf.RoundToInt(daysToDry * GenDate.TicksPerDay);
+				return Mathf.RoundToInt(daysToDry * (float)GenDate.TicksPerDay);
 			}
 		}
 

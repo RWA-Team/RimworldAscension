@@ -119,6 +119,7 @@
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<blockLight>true</blockLight>
 		<stuffCategories>
+			<li>Bricky</li>
 			<li>Woody</li>
 			<li>Stony</li>
 		</stuffCategories>

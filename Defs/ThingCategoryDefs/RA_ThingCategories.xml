@@ -126,6 +126,14 @@
 				<iconPath>Ui/Icons/ThingCategories/StoneBlocks</iconPath>
 			</ThingCategoryDef>
 
+			<ThingCategoryDef>	<!-- ADDED by Alistaire for Bricks -->
+				<defName>Bricks</defName>
+				<label>bricks</label>
+				<parent>ResourcesRaw</parent>
+				<resourceReadoutRoot>true</resourceReadoutRoot>
+				<iconPath>UI/Icons/ThingCategories/Bricks</iconPath>
+			</ThingCategoryDef>
+
 			<ThingCategoryDef>	<!-- ADDED by Alistaire for PlantFibres -->
 				<defName>PlantFibres</defName>
 				<label>fibres</label>

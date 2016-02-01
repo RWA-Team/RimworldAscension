@@ -32,6 +32,17 @@
 			<li>Unfinished</li>
 		</thingCategories>
 	</ThingDef>
+	
+	
+	<ThingDef ParentName="UnfinishedBase">
+		<defName>UnfinishedPottery</defName>
+		<label>Unfinished pottery</label>
+		<graphicData>
+			<texPath>Things/Items/Unfinished/UnfinishedPottery</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(134,116,92)</color>
+		</graphicData>
+	</ThingDef>
 
 
 	<ThingDef ParentName="UnfinishedBase">

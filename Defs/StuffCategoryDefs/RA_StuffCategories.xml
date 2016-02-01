@@ -11,6 +11,10 @@
 		<defName>StonyRaw</defName>
 		<label>raw stony</label>
 	</StuffCategoryDef>
-
+	
+	<StuffCategoryDef>	<!-- ADDED by Alistaire for Mud bricks -->
+		<defName>Bricky</defName>
+		<label>bricky</label>
+	</StuffCategoryDef>
 
 </Defs>

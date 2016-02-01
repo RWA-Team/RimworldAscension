@@ -51,7 +51,7 @@
 		</stuffCategories>
 		<costStuffCount>20</costStuffCount>
 		<costList>
-			<PotteryAmphora>4</PotteryAmphora>
+			<Amphora>4</Amphora>
 		</costList>
 		<building>
 			<fixedStorageSettings>

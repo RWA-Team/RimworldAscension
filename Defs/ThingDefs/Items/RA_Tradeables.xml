@@ -66,26 +66,46 @@
 			</li>
 		</comps>
 	</ThingDef>
-
+	
+	
 	<ThingDef ParentName="TradeableBase">
-		<defName>PotteryAmphora</defName>
+		<defName>UnfiredAmphora</defName>
+		<label>unfired amphora</label>
+		<description>An unfired amphora. Firing this in a kiln produces a valuable, refrigeratory container.</description>
+		<graphicData>
+			<texPath>Things/Items/Tradeables/Pottery</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<color>(134,116,92)</color>
+		</graphicData>
+		<soundInteract>Standard_Drop</soundInteract>
+		<statBases>
+			<MarketValue>50</MarketValue>
+			<MaxHitPoints>20</MaxHitPoints>
+		</statBases>
+		<thingCategories>
+			<li>Unfinished</li>
+		</thingCategories>
+		<tradeability>Never</tradeability>
+	</ThingDef>
+	
+	
+	<ThingDef ParentName="TradeableBase">
+		<defName>Amphora</defName>
 		<label>amphora</label>
 		<description>A handcrafted water- and airtight ceramic container used to stockpile food and other perishable resources. Its uses in refrigeration and storage make it a valuable commodity.</description>
 		<graphicData>
 			<texPath>Things/Items/Tradeables/Pottery</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
+			<color>(183,115,52)</color>
 		</graphicData>
 		<soundInteract>Standard_Drop</soundInteract>
 		<statBases>
-			<MarketValue>320</MarketValue>
-			<MaxHitPoints>30</MaxHitPoints>
+			<MarketValue>55</MarketValue>
+			<MaxHitPoints>40</MaxHitPoints>
 		</statBases>
 		<thingCategories>
 			<li>Ceramics</li>
 		</thingCategories>
-	<!--<stuffCategories>		Wivex: ceramics certainly don't need it as i see it now
-			<li>RawCeramic</li>
-		</stuffCategories>-->
 	</ThingDef>
 
 

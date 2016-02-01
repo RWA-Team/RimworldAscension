@@ -19,7 +19,7 @@
 	<ThingDef ParentName="BuildingBase">
 		<defName>Campfire</defName>
 		<label>campfire</label>
-		<description>Cooks meals and produces heat. Burns out after a few days. As with all heat sources, it must be placed indoors so it has a closed space to heat.</description>    
+		<description>Cooks meals and produces heat. Burns out after a few days. As with all heat sources, it must be placed indoors so it has a closed space to heat.</description>
 		<thingClass>Building_Campfire</thingClass>
 		<category>Building</category>
 		<graphicData>
