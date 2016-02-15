@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-using UnityEngine;
 using RimWorld;
 using Verse;
-using Verse.Sound;
 using Verse.AI;
 
 namespace RA
@@ -103,17 +100,9 @@ namespace RA
         {
             ICommunicable communicable = TradeSession.tradeCompany as ICommunicable;
 
-            if (!pawn.CanReach(this, PathEndMode.InteractionCell, Danger.Deadly))
-            {
-                yield return new FloatMenuOption("Cannot use: no path", null);
-            }
-            else if (!pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
+            if (!pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
             {
                 yield return new FloatMenuOption("Cannot use: incapable of talking", null);
-            }
-            else if (!pawn.CanReserve(this, 1))
-            {
-                yield return new FloatMenuOption("Cannot use: reserved", null);
             }
             else if (occupied == false || merchant == null || merchant.Downed || merchant.Dead)
             {
@@ -207,8 +196,8 @@ namespace RA
                 if (pawn.CurJob != null && pawn.CurJob.def.defName == "HaulToTrade")
                 {
                     currentHaulable = pawn.CurJob.targetA.Thing;
-                                        
-                    if (currentHaulable.def.stackLimit >1)
+
+                    if (currentHaulable.def.stackLimit > 1)
                     {
                         if (currentlyHauled_RequestedResources.Exists(counter => counter.thingDef == currentHaulable.def))
                             currentlyHauled_RequestedResources.Find(counter => counter.thingDef == currentHaulable.def).count += pawn.CurJob.maxNumToCarry;
@@ -221,10 +210,10 @@ namespace RA
                     }
                 }
             }
-            
+
             // regenerate request lists in workgiver for the missing items (cause of failed haul jobs)
             WorkGiver_HaulToTrade.requestedItems = new List<Thing>(offeredItems.Except(currentlyHauled_RequestedItems));
-            
+
             // regenerate request lists in workgiver for the missing resources (cause of failed haul jobs)
             foreach (ThingCount counter in offeredResourceCounters)
             {
@@ -274,7 +263,7 @@ namespace RA
                 }
                 else
                 {
-                    return GraphicDatabase.Get<Graphic_Single>("Things/Building/TradingPost_Occupied", def.graphic.Shader, def.graphic.drawSize, def.graphic.Color);
+                    return GraphicDatabase.Get<Graphic_Single>("Things/Buildings/TradingPost/TradingPost_Occupied", def.graphic.Shader, def.graphic.drawSize, def.graphic.Color);
                 }
             }
         }
@@ -282,9 +271,13 @@ namespace RA
         public override void ExposeData()
         {
             base.ExposeData();
-            //NOTE: save all reuired values
 
-            //Scribe_Deep.LookDeep<TradeCompany>(ref tradeCompany, "tradeCompany", new object[0]);
+            Scribe_Deep.LookDeep(ref colonyOffer, "colonyOffer", new object[] { this });
+            Scribe_Collections.LookList(ref merchantOffer, "merchantOffer", LookMode.Deep, new object[0]);
+            Scribe_Collections.LookList(ref offeredItems, "offeredItems", LookMode.Deep, new object[0]);
+            Scribe_Collections.LookList(ref offeredResourceCounters, "offeredResourceCounters", LookMode.Deep, new object[] { this });
+            Scribe_Deep.LookDeep(ref merchant, "merchant", new object[0]);
+            Scribe_Values.LookValue(ref occupied, "occupied");
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
+	<!-- 
+	drawOffscreen - draw thing even if it's center is not inside screen rect
+	 -->
 
 	<ThingDef>
 		<defName>Crater</defName>
@@ -10,7 +13,6 @@
 		<graphicData>
 			<texPath>Overlays/Crater</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(4,4)</drawSize>
 			<shaderType>Transparent</shaderType>
 		</graphicData>
 		<comps>
@@ -19,7 +21,7 @@
 				<lifespanTicks>3600000</lifespanTicks>
 			</li>
 		</comps>
-		<altitudeLayer>Floor</altitudeLayer>
+		<altitudeLayer>MoteLow</altitudeLayer>
 		<useHitPoints>false</useHitPoints>
 		<drawOffscreen>true</drawOffscreen>
 		<selectable>false</selectable>

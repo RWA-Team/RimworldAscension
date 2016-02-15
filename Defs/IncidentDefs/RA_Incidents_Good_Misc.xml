@@ -3,9 +3,10 @@
 
 
 	<IncidentDef>
+		<!-- forced via special action -->
 		<defName>RaidFriendly</defName>
-		<workerClass>IncidentWorker_RaidFriendly</workerClass>
-		<chance>3</chance>
+		<workerClass>RA.IncidentWorker_RaidFriendly</workerClass>
+		<chance>0</chance>
 		<pointsScaleable>true</pointsScaleable>
 	</IncidentDef>
 	

@@ -17,7 +17,6 @@ namespace RA
         {
             if (pawn.CurJob != null && pawn.CurJob.def == JobDefOf.Wait)
             {
-                Log.Message("stay");
                 return null;
             }
             else

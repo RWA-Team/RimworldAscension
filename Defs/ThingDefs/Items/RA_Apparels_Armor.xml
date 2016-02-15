@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<!-- 
+	defaultOutfitTags - used to determine gear in preset outfit sets available in the outfits menu
+	equippedStatOffsets - applies offset to the pawns stat when worn
+	worngraphicPath - specified when needs to select apparel type based on body type variations
+	 -->
+
+	<ThingDef Name="Armor_Base" Abstract="True">
+		<thingClass>Apparel</thingClass>
+		<category>Item</category>
+		<selectable>True</selectable>
+		<pathCost>10</pathCost>
+		<useHitPoints>True</useHitPoints>
+		<graphicData>
+			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>0.5</DeteriorationRate>
+			<SellPriceFactor>0.1</SellPriceFactor>
+		</statBases>
+		<altitudeLayer>Item</altitudeLayer>
+		<alwaysHaulable>True</alwaysHaulable>
+		<tickerType>Never</tickerType>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	
+	<!-- ========================= Shields =========================-->	
+	
+
+	<ThingDef ParentName="Armor_Base">
+		<defName>Buckler</defName>
+		<thingClass>RA.Shield</thingClass>
+		<label>buckler</label>
+		<description>A shield made from hard materials able to deflect most types of attack. Wears out with use. </description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Shields/Buckler</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+		</statBases>
+		<stuffCategories>
+			<li>Bone</li>
+			<li>Leathery</li>
+		</stuffCategories>
+		<apparel>
+			<bodyPartGroups>
+				<li>Arms</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Accessory</li>
+			</layers>
+			<commonality>1</commonality>
+		</apparel>
+	</ThingDef>
+
+
+</ThingDefs>

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+
+	<!-- 
+	workAmount - number of ticks to complete the recipe at normal speed and efficiency (60 t/s)
+	fixedIngredientFilter - determine ingridiens set to be chosen from
+	
+	defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others)
+	IMPORTANT!: used as a special case to disallow stuff types of the result products
+	-->
+
+	<RecipeDef Name="MakeArmor_Base" Abstract="True">
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<effectWorking>Smith</effectWorking>
+		<soundWorking>Recipe_Smith</soundWorking>
+		<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+		<researchPrerequisite>Blocked</researchPrerequisite>
+	</RecipeDef >
+
+
+	<!-- ========================= Neolithic =========================-->
+
+
+	<RecipeDef  ParentName="MakeArmor_Base">
+		<defName>Make_Buckler</defName>
+		<label>make buckler</label>
+		<description>Makes a buckler.</description>
+		<products>
+			<Buckler>1</Buckler>
+		</products>
+		<recipeUsers>
+			<li>WarriorsBench</li>
+		</recipeUsers>
+		<fixedIngredientFilter>		
+<!-- 		== added via research mods ==
+			<categories>
+				<li>Leathers</li>
+			</categories> -->			
+			<thingDefs>			
+<!-- 			== added via research mods ==
+				<li>Bone</li> -->				
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</defaultIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+					<thingDefs>
+						<li>Bone</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+
+</RecipeDefs>

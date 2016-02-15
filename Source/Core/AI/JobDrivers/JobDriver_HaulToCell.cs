@@ -381,8 +381,6 @@ namespace RA
                             Thing t = thing;
                             if (item.TryAbsorbStack(thing, true))
                             {
-                                // Clean up to prevent haulables lists overflow
-                                RemoveHaulableFromLists(t);
                                 // it gets absorbed and destroyed
                                 resultingThing = item;
                                 return !flag;
@@ -392,9 +390,6 @@ namespace RA
                 }
 
                 resultingThing = GenSpawn.Spawn(thing, loc);
-
-                // Clean up to prevent haulables lists overflow
-                RemoveHaulableFromLists(thing);
 
                 return !flag;
             }
@@ -422,8 +417,6 @@ namespace RA
                         Thing t = thing;
                         if (thing2.TryAbsorbStack(thing, true))
                         {
-                            // Clean up to prevent haulables lists overflow
-                            RemoveHaulableFromLists(t);
                             resultingThing = thing2;
                             return !flag;
                         }
@@ -434,8 +427,6 @@ namespace RA
             }
 
             resultingThing = GenSpawn.Spawn(thing, loc);
-            // Clean up to prevent haulables lists overflow
-            RemoveHaulableFromLists(thing);
 
             SlotGroup slotGroup1 = loc.GetSlotGroup();
             if (slotGroup1 != null && slotGroup1.parent != null)
@@ -542,8 +533,6 @@ namespace RA
                         Thing t = thing2;
                         if (thing.TryAbsorbStack(thing2, true))
                         {
-                            // Clean up to prevent haulables lists overflow
-                            RemoveHaulableFromLists(t);
                             return PlaceSpotQuality.Perfect;
                         }
                         // cannot absorb all/anything
@@ -592,17 +581,6 @@ namespace RA
                 return PlaceSpotQuality.Awful;
             }
             return PlaceSpotQuality.Okay;
-        }
-
-        //To prevent unintended hauling requests and haulable's lists cluttering and overflow
-        public static void RemoveHaulableFromLists(Thing thing)
-        {
-            if (WorkGiver_HaulGeneral.haulables_blockedInListerHaulables.Contains(thing))
-                WorkGiver_HaulGeneral.haulables_blockedInListerHaulables.Remove(thing);
-            if (WorkGiver_HaulGeneral.haulables_insideContainers.Contains(thing))
-                WorkGiver_HaulGeneral.haulables_insideContainers.Remove(thing);
-            if (RA_ListerHaulables.haulables.Contains(thing))
-                RA_ListerHaulables.haulables.Remove(thing);
         }
     }
 }

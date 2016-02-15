@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <WorkGivers>
 
+	<!-- 
+	singleBillGiverDef - determine the building which uses this workgiver (required)
+	-->
 
 	<WorkGiverDef>
 		<defName>Research</defName>
@@ -12,7 +15,6 @@
 			<li>Manipulation</li>
 		</requiredCapacities>
 	</WorkGiverDef>
-
 
 	<WorkGiverDef>
 		<defName>HaulToTrade</defName>
@@ -26,7 +28,6 @@
 		</requiredCapacities>
 	</WorkGiverDef>
 
-
 	<WorkGiverDef>
 		<defName>HaulGeneral</defName>
 		<giverClass>RA.WorkGiver_HaulGeneral</giverClass>
@@ -39,7 +40,6 @@
 		</requiredCapacities>
 	</WorkGiverDef>
 
-
 	<WorkGiverDef>
 		<defName>Uninstall</defName>
 		<giverClass>WorkGiver_Uninstall</giverClass>
@@ -48,6 +48,33 @@
 		<priorityInType>195</priorityInType>
 		<verb>uninstall</verb>
 		<gerund>uninstalling</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+
+	<!--=================== Crafting =====================-->
+
+	<WorkGiverDef>
+		<defName>RefillBurner</defName>
+		<giverClass>RA.WorkGiver_RefillBurner</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>100</priorityInType>
+		<verb>refilling</verb>
+		<gerund>refilling</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>DoBills_CraftingGeneral</defName>
+		<giverClass>RA.WorkGiver_DoBill</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>10</priorityInType>
+		<verb>crafting</verb>
+		<gerund>crafting at</gerund>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -68,7 +95,6 @@
 		</requiredCapacities>
 	</WorkGiverDef>
 
-
 	<WorkGiverDef>
 		<defName>Mine</defName>
 		<giverClass>RA.WorkGiver_Mine</giverClass>
@@ -78,8 +104,7 @@
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
-	</WorkGiverDef>	
-
+	</WorkGiverDef>
 
 	<WorkGiverDef>
 		<defName>ConstructDeliverResourcesToBlueprints</defName>
@@ -94,7 +119,6 @@
 		</requiredCapacities>
 	</WorkGiverDef>
 
-
 	<WorkGiverDef>
 		<defName>ConstructDeliverResourcesToFrames</defName>
 		<giverClass>WorkGiver_ConstructDeliverResourcesToFrames</giverClass>
@@ -108,7 +132,6 @@
 		</requiredCapacities>
 	</WorkGiverDef>
 
-
 	<WorkGiverDef>
 		<defName>Repair</defName>
 		<giverClass>RA.WorkGiver_Repair</giverClass>
@@ -118,8 +141,7 @@
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
-	</WorkGiverDef>  
-
+	</WorkGiverDef>
 
 	<WorkGiverDef>
 		<defName>ConstructFinishFrames</defName>

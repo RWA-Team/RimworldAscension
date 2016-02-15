@@ -12,7 +12,7 @@
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
 		<designationCategory>Structure</designationCategory>
-		<researchPrerequisite>Blocked</researchPrerequisite>
+		<researchPrerequisite>SurvivalGuideI</researchPrerequisite>
 	</ThingDef>
 
 

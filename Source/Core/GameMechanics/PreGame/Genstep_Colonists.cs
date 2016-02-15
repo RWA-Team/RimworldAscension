@@ -33,13 +33,11 @@ namespace RA
                 colonists.Add(pawn);
             listsToGenerate.Add(colonists);
 
-            // Create damaged drop pods with dead tribals
+            // Create damaged drop pods with dead pawns
             for (int i = 0; i < MapInitData.colonists.Count; i++)
             {
-                // Setup faction
-                Faction faction = Find.FactionManager.FirstFactionOfDef(FactionDefOf.Tribe);
                 // Generate pawn
-                Pawn pawn = PawnGenerator.GeneratePawn(PawnKindDef.Named("TribalWarrior"), faction, false, 0);
+                Pawn pawn = PawnGenerator.GeneratePawn(PawnKindDefOf.SpaceSoldier, FactionUtility.DefaultFactionFrom(FactionDefOf.SpacerHostile), false, 0);
                 // Find a location to drop
                 IntVec3 crashCell = CellFinder.RandomClosewalkCellNear(MapGenerator.PlayerStartSpot, 30);
                 // Drop a drop pod containg our pawn

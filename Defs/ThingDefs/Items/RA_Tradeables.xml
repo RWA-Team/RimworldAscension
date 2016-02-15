@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+	<ThingDef Name="TradeableBase" Abstract="True">
+		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
+		<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li>
+				<compClass>CompArt</compClass>
+				<nameMaker>NamerMeleeWeapon</nameMaker>
+				<descriptionMaker>ArtWeaponMelee</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+		</comps>
+		<alwaysHaulable>true</alwaysHaulable>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<rotatable>false</rotatable>
+		<pathCost>15</pathCost>
+	</ThingDef>
+
+
+	<!--=============== Neolithic ====================-->
+
+
+	<ThingDef ParentName="TradeableBase">
+		<defName>Figurine</defName>
+		<label>figurine</label>
+		<description>Text.</description>
+		<graphicData>
+			<texPath>Things/Items/Tradeables/Figurines</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<soundInteract>Standart_Drop</soundInteract>
+		<statBases>
+			<MarketValue>100</MarketValue>
+			<MaxHitPoints>100</MaxHitPoints>
+		</statBases>
+		<thingCategories>
+			<li>Items</li>
+		</thingCategories>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Stony</li>
+			<li>Bone</li>
+		</stuffCategories>
+	</ThingDef>
+
+
+</Defs>

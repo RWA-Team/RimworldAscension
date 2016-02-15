@@ -154,7 +154,6 @@ namespace RA
 
                 if (Find.ResearchManager.currentProj == null || Find.ResearchManager.currentProj != startedResearch)
                 {
-                    Log.Message("End or change");
                     actor.jobs.EndCurrentJob(JobCondition.Succeeded);
                 }
                 else

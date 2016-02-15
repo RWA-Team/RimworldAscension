@@ -18,7 +18,7 @@ namespace RA
         public Thing closestAvailableTool;
         public string workTypeName;
 
-        public Job DoJobWithTool(Pawn pawn, IEnumerable<Thing> availableTargets, Func<Thing, Job> ActualJob, bool anotherWorkTypeKeepsTool = false)
+        public Job DoJobWithTool(Pawn pawn, IEnumerable<Thing> availableTargets, Func<Thing, Job> ActualJob)
         {
             // has available job targets
             if (availableTargets.Count() > 0)
@@ -114,7 +114,7 @@ namespace RA
                     if (IsProperTool(pawn.equipment.Primary))
                     {
                         // keep tool in hands, cause other jobs of the same worktype is being done
-                        if (!anotherWorkTypeKeepsTool)
+                        if (!ShouldKeepTool(pawn))
                         {
                             // has place to store tool
                             if (StorageCellExists(pawn))
@@ -161,6 +161,28 @@ namespace RA
         public bool IsProperTool(Thing thing)
         {
             return (thing.def.weaponTags != null && thing.def.weaponTags.Exists(tag => tag.Contains("Tool") && tag.Contains(workTypeName))) ? true : false;
+        }
+
+        // keeps current tool equipped if there are available unfinished jobs for this tool type
+        public bool ShouldKeepTool(Pawn pawn)
+        {
+            foreach (string tag in pawn.equipment.Primary.def.weaponTags)
+            {
+                if (tag.Contains("Construction") && (pawn.workSettings.WorkIsActive(WorkTypeDefOf.Construction) && WorkGiver_ConstructFinishFrames.hasPotentialJobs || pawn.workSettings.WorkIsActive(WorkTypeDefOf.Repair) && WorkGiver_Repair.hasPotentialJobs))
+                {
+                    return true;
+                }
+                if (pawn.workSettings.WorkIsActive(WorkTypeDefOf.Mining) && tag.Contains("Mining") && WorkGiver_Mine.hasPotentialJobs)
+                {
+                    return true;
+                }
+                if (pawn.workSettings.WorkIsActive(WorkTypeDefOf.PlantCutting) && tag.Contains("PlantCutting") && WorkGiver_PlantsCut.hasPotentialJobs)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public bool TryEquipToolFromSlots(Pawn pawn)

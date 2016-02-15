@@ -16,7 +16,7 @@
 		<isSaveable>false</isSaveable>
 		<rotatable>false</rotatable>
 	</ThingDef>
-	
+
 
 	<ThingDef ParentName="MoteBase">
 		<defName>Mote_SmokeBlack</defName>
@@ -32,5 +32,33 @@
 		</mote>
 	</ThingDef>
 	
+	<ThingDef ParentName="MoteBase">
+		<defName>Mote_SmokeWhite</defName>
+		<graphicData>
+			<texPath>Things/Mote/Smoke</texPath>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeinDuration>30</fadeinDuration>
+			<ticksBeforeStartFadeout>400</ticksBeforeStartFadeout>
+			<fadeoutDuration>200</fadeoutDuration>
+			<growthRate>0.005</growthRate>
+		</mote>
+	</ThingDef>
+
+	<ThingDef ParentName="MoteBase">
+		<defName>Mote_SmokeBlack_Signal</defName>
+		<graphicData>
+			<texPath>Overlays/Motes/SmokeBlack</texPath>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeinDuration>30</fadeinDuration>
+			<ticksBeforeStartFadeout>600</ticksBeforeStartFadeout>
+			<fadeoutDuration>200</fadeoutDuration>
+			<growthRate>0.005</growthRate>
+		</mote>
+	</ThingDef>
+
 
 </Defs>

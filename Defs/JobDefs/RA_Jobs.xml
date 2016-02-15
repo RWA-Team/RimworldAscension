@@ -8,13 +8,18 @@
 		<reportString>Hauling TargetA.</reportString>
 	</JobDef>
 
-
 	<JobDef>
 		<defName>Research</defName>
 		<driverClass>RA.JobDriver_DoBill_Research</driverClass>
 		<reportString>Doing research at TargetA.</reportString>
 	</JobDef>
 
+	<JobDef>
+		<defName>DoBill</defName>
+		<driverClass>RA.JobDriver_DoBill</driverClass>
+		<reportString>Doing bill at TargetA.</reportString>
+		<suspendable>false</suspendable>
+	</JobDef>
 
 	<JobDef>
 		<defName>GoTrading</defName>
@@ -22,13 +27,16 @@
 		<reportString>Trading.</reportString>
 	</JobDef>
 
-
 	<JobDef>
 		<defName>HaulToTrade</defName>
 		<driverClass>RA.JobDriver_HaulToTrade</driverClass>
 		<reportString>Hauling TargetA.</reportString>
 	</JobDef>
 
+	<JobDef>
+		<defName>RefillBurner</defName>
+		<driverClass>RA.JobDriver_RefillBurner</driverClass>
+	</JobDef>
 
 	<JobDef>
 		<defName>UseSurvivalGuide</defName>
@@ -36,14 +44,12 @@
 		<reportString>Using TargetA.</reportString>
 	</JobDef>
 
-
 	<JobDef>
 		<defName>CombatTraining</defName>
 		<driverClass>RA.JobDriver_CombatTraining</driverClass>
 		<reportString>Practicing combat skills on TargetA.</reportString>
 		<alwaysShowWeapon>true</alwaysShowWeapon>
 	</JobDef>
-
 
 	<JobDef>
 		<defName>PutInSlot</defName>
@@ -62,7 +68,6 @@
 		<alwaysShowWeapon>true</alwaysShowWeapon>
 	</JobDef>
 
-
 	<JobDef>
 		<defName>FinishFrame</defName>
 		<driverClass>JobDriver_ConstructFinishFrame</driverClass>
@@ -70,14 +75,12 @@
 		<alwaysShowWeapon>true</alwaysShowWeapon>
 	</JobDef>
 
-
 	<JobDef>
 		<defName>Harvest</defName>
 		<driverClass>JobDriver_PlantHarvest</driverClass>
 		<reportString>Harvesting TargetA.</reportString>
 		<alwaysShowWeapon>true</alwaysShowWeapon>
 	</JobDef>
-
 
 	<JobDef>
 		<defName>CutPlant</defName>

@@ -12,7 +12,7 @@
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
 		<designationCategory>Misc</designationCategory>
-		<researchPrerequisite>Blocked</researchPrerequisite>
+		<researchPrerequisite>SurvivalGuideI</researchPrerequisite>
 	</ThingDef>
 
 
@@ -74,9 +74,9 @@
 		<label>dummy</label>
 		<description>An abstract representation of a human figure, on which your pawns can practice their melee skills. Pawns will begin training routine if their life needs are fulfilled and they have nothing else to do.</description>
 		<graphicData>
-			<texPath>Things/Buildings/TrainingStands/Dummy</texPath>
+			<texPath>Things/Buildings/Misc/TrainingStands/Dummy</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(2,2)</drawSize>
+			<drawSize>(2.5,2.5)</drawSize>
 		</graphicData>
 		<altitudeLayer>Waist</altitudeLayer>
 		<interactionCellOffset>(0,0,1)</interactionCellOffset>
@@ -109,7 +109,7 @@
 		<label>target</label>
 		<description>Classic shooting target, on which your pawns can practice their shooting skills. Pawns will begin training routine if their life needs are fulfilled and they have nothing else to do.</description>
 		<graphicData>
-			<texPath>Things/Buildings/TrainingStands/Target</texPath>
+			<texPath>Things/Buildings/Misc/TrainingStands/Target</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<altitudeLayer>Waist</altitudeLayer>
@@ -142,7 +142,7 @@
 		<label>trading post</label>
 		<thingClass>RA.Building_TradingPost</thingClass>
 		<graphicData>
-			<texPath>Things/Buildings/TradingPost_Free</texPath>
+			<texPath>Things/Buildings/Misc/TradingPost/TradingPost_Free</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>Transparent</shaderType>
 			<drawSize>(3,3)</drawSize>

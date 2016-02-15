@@ -1,55 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+	<!-- 
+	fillPercent - determne cover multiplier vs projectiles
+	 -->
 
 	<ThingDef Name="BuildingBase" Abstract="True">
 		<category>Building</category>
 		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
 		<selectable>true</selectable>
-		<drawerType>MapMeshAndRealTime</drawerType>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
 		<designationCategory>Temperature</designationCategory>
-		<researchPrerequisite>Blocked</researchPrerequisite>
+		<researchPrerequisite>SurvivalGuideI</researchPrerequisite>
 	</ThingDef>
 
-
-	<ThingDef ParentName="BuildingBase">
-		<defName>Campfire</defName>
-		<label>campfire</label>
-		<description>Cooks meals and produces heat. Burns out after a few days. As with all heat sources, it must be placed indoors so it has a closed space to heat.</description>    
-		<thingClass>Building_Campfire</thingClass>
+	<ThingDef Name="BuildingBase_Fueled" ParentName="BuildingBase" Abstract="True">
+		<thingClass>RA.Building_WorkTable_Fueled</thingClass>
 		<category>Building</category>
+		<passability>Impassable</passability>
+		<tickerType>Normal</tickerType>
 		<graphicData>
-			<texPath>Things/Building/Misc/Campfire</texPath>
+			<shaderType>CutoutComplex</shaderType>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawRotated>false</drawRotated>
 		</graphicData>
-		<altitudeLayer>Waist</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<pathCost>50</pathCost>
-		<constructEffect>ConstructDirt</constructEffect>
-		<tickerType>Normal</tickerType>
-		<drawerType>RealtimeOnly</drawerType>
-		<fillPercent>0.25</fillPercent>
 		<statBases>
-			<MaxHitPoints>80</MaxHitPoints>
-			<WorkToMake>200</WorkToMake>
 			<Flammability>0</Flammability>
 		</statBases>
-		<selectable>true</selectable>
-		<costList>
-			<WoodLog>30</WoodLog>
-		</costList>
-		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
-		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<placeWorkers>
 			<li>PlaceWorker_Heater</li>
 		</placeWorkers>
+		<selectable>true</selectable>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+			<li>RA.ITab_Fuel</li>
+		</inspectorTabs>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BuildingBase_Fueled">
+		<defName>Campfire</defName>
+		<label>campfire</label>
+		<description>Cooks meals and produces heat. As with all heat sources, it must be placed indoors so it has a closed space to heat.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Temperature/Campfire</texPath>
+			<drawSize>(1.4,1.4)</drawSize>
+		</graphicData>
+		<altitudeLayer>Waist</altitudeLayer>
+		<fillPercent>0.25</fillPercent>
+		<building>
+			<isMealSource>true</isMealSource>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<deconstructible>true</deconstructible>
+		</building>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<WorkToMake>200</WorkToMake>
+		</statBases>
+		<stuffCategories>
+			<li>StonyRaw</li>
+		</stuffCategories>
+		<costStuffCount>1</costStuffCount>
+		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<comps>
+			<li>
+				<compClass>CompGatherSpot</compClass>
+			</li>
 			<li>
 				<compClass>CompGlower</compClass>
 				<glowRadius>10</glowRadius>
@@ -60,28 +83,66 @@
 				<heatPerSecond>21</heatPerSecond>
 				<heatPushMaxTemperature>28</heatPushMaxTemperature>
 			</li>
-			<li>
-				<compClass>CompGatherSpot</compClass>
-			</li>
-			<li>
-				<compClass>CompLifespan</compClass>
-				<lifespanTicks>120000</lifespanTicks>
+			<li Class="RA.CompFueled_Properties">
+				<compClass>RA.CompFueled</compClass>
+				<operatingTemp>500</operatingTemp>
+				<fireDrawOffset>(0,0,0.1)</fireDrawOffset>
+				<smokeDrawOffset>(0,0,0.1)</smokeDrawOffset>
+				<fuelDrawScale>0.8</fuelDrawScale>
 			</li>
 		</comps>
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<recipes>
 			<li>CookMealSimpleCampfire</li>
 		</recipes>
-		<inspectorTabs>
-			<li>ITab_Bills</li>
-		</inspectorTabs>
-		<building>
-			<isMealSource>true</isMealSource>
-			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-			<deconstructible>false</deconstructible>
-		</building>
 	</ThingDef>
-	
-	
+
+	<ThingDef ParentName="BuildingBase_Fueled">
+		<defName>Kiln</defName>
+		<label>kiln</label>
+		<description>An impovised kiln used to produce ceramics and building blocks out of raw mud.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Temperature/Kiln</texPath>
+			<drawSize>(1.4,1.4)</drawSize>
+		</graphicData>
+		<altitudeLayer>BuildingTall</altitudeLayer>
+		<fillPercent>1</fillPercent>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<deconstructible>true</deconstructible>
+		</building>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<WorkToMake>200</WorkToMake>
+		</statBases>
+		<stuffCategories>
+			<li>StonyRaw</li>
+		</stuffCategories>
+		<costStuffCount>4</costStuffCount>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<comps>
+			<li>
+				<compClass>CompGlower</compClass>
+				<glowRadius>2</glowRadius>
+				<glowColor>(252,187,113,0)</glowColor>
+			</li>
+			<li>
+				<compClass>CompHeatPusher</compClass>
+				<heatPerSecond>21</heatPerSecond>
+				<heatPushMaxTemperature>25</heatPushMaxTemperature>
+			</li>
+			<li Class="RA.CompFueled_Properties">
+				<compClass>RA.CompFueled</compClass>
+				<operatingTemp>500</operatingTemp>
+				<fireDrawOffset>(0,-0.1,-0.15)</fireDrawOffset>
+				<smokeDrawOffset>(0,-0.1,0.6)</smokeDrawOffset>
+				<fuelDrawOffset>(0,-0.1,-0.3)</fuelDrawOffset>
+				<fuelDrawScale>0.7</fuelDrawScale>
+			</li>
+		</comps>
+		<recipes>
+			<li>CookMealSimpleCampfire</li>
+		</recipes>
+	</ThingDef>
+
+
 </Defs>
