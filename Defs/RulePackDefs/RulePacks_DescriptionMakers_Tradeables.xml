@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<RulePackDef>
+		<defName>ArtFigurine</defName>
+		<include>	
+			<li>ArtUtility</li>
+		</include>
+		<rulePack>
+			<rulesStrings>
+				<li>description->This [figurine] [depicts] [image]</li>
+				<li>description->This [figurine] bears a [depiction] of [image]</li>
+				<li>description->On this [figurine] is a [depiction] of [image]</li>
+				<li>figurine->idol</li>
+				<li>figurine->figurine</li>
+				<li>figurine->puppet</li>
+				<li>figurine->effigy</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+
+</Defs>

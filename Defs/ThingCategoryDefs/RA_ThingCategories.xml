@@ -95,6 +95,12 @@
 					<iconPath>Ui/Icons/ThingCategories/Leathers</iconPath>
 				</ThingCategoryDef>  
 				
+			<ThingCategoryDef>	<!-- ADDED by Alistaire for PotteryAmphoras, possible for use in more advanced stuff (diodes? body armor?) -->
+				<defName>Ceramics</defName>
+				<label>ceramics</label>
+				<parent>Manufactured</parent>
+				<iconPath>UI/Icons/ThingCategories/Ceramics</iconPath>
+			</ThingCategoryDef>
 
 			<ThingCategoryDef>
 				<defName>Medicine</defName>
@@ -118,6 +124,22 @@
 				<parent>ResourcesRaw</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
 				<iconPath>Ui/Icons/ThingCategories/StoneBlocks</iconPath>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>	<!-- ADDED by Alistaire for Bricks -->
+				<defName>Bricks</defName>
+				<label>bricks</label>
+				<parent>ResourcesRaw</parent>
+				<resourceReadoutRoot>true</resourceReadoutRoot>
+				<iconPath>UI/Icons/ThingCategories/Bricks</iconPath>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>	<!-- ADDED by Alistaire for PlantFibres -->
+				<defName>PlantFibres</defName>
+				<label>fibres</label>
+				<parent>ResourcesRaw</parent>
+				<resourceReadoutRoot>true</resourceReadoutRoot>
+				<iconPath>UI/Icons/ThingCategories/Fibres</iconPath>
 			</ThingCategoryDef>
 			
 

@@ -20,6 +20,10 @@
 		<reportString>Doing bill at TargetA.</reportString>
 		<suspendable>false</suspendable>
 	</JobDef>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 
 	<JobDef>
 		<defName>GoTrading</defName>
@@ -54,7 +58,7 @@
 	<JobDef>
 		<defName>PutInSlot</defName>
 		<driverClass>RA.JobDriver_PutInSlot</driverClass>
-		<reportString>Put TargetA in TargetB.</reportString>
+		<reportString>Putting TargetA in TargetB.</reportString>
 	</JobDef>
 
 

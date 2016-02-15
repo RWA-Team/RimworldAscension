@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RulePackDef>
+    <defName>NamerFigurine</defName>
+    <include>
+      <li>NamerArtUtility</li>
+    </include>
+    <rulePack>
+      <rulesStrings>
+        <li>name->[artname]</li>
+        <li>name->[personname]'s [artname]</li>
+        <li>name->[artname] [trans] [personname]</li>
+        <li>name->[artname] [trans] [concept]</li>
+        <li>name->[concept] [trans] [personname]</li>
+        <li>name->[concept]</li>
+        <li>name->[color] [concept]</li>
+        <li>name->[color] [artname]</li>
+        <li>name->[personname] [trans] [color]</li>
+        <li>name->[color] [terrainfeature]</li>
+        <li>name->A [art_adjective] [concept]</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+</Defs>
