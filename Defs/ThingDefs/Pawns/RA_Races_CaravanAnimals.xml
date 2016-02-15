@@ -83,10 +83,10 @@
 			</li>
 			<li Class="RA.CompCaravan_Properties">
 				<compClass>RA.CompCaravan</compClass>
-				<cartEmptyTexturePath>Things/Various/CaravanCart/CartEmpty</cartEmptyTexturePath>
-				<cartFullTexturePath>Things/Various/CaravanCart/CartFull</cartFullTexturePath>
-				<wheelTexturePath>Things/Various/CaravanCart/Wheel</wheelTexturePath>
-				<harnessTexturePath>Things/Various/CaravanCart/Harness</harnessTexturePath>
+				<cartEmptyTexturePath>Things/Special/CaravanCart/CartEmpty</cartEmptyTexturePath>
+				<cartFullTexturePath>Things/Special/CaravanCart/CartFull</cartFullTexturePath>
+				<wheelTexturePath>Things/Special/CaravanCart/Wheel</wheelTexturePath>
+				<harnessTexturePath>Things/Special/CaravanCart/Harness</harnessTexturePath>
 			</li>
 		</comps>
 		<race>

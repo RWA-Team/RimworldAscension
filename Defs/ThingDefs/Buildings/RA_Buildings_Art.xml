@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<!-- 
+	Building_Art class - adds beauty value stat to inpection string
+	Building_Art_Shadowed class - allows casting of fading shadows from stuffed things
+	terrainAffordanceNeeded - type of terrain required to be build upon (no difference in Light/Heavy in the game so far)
+	fillPercent - determne cover multiplier vs projectiles
+	 -->
+
+	<ThingDef Name="BuildingArt_Base" Abstract="True">
+		<thingClass>Building_Art</thingClass>
+		<category>Building</category>
+		<selectable>true</selectable>
+		<altitudeLayer>Waist</altitudeLayer>
+		<rotatable>false</rotatable>
+		<fillPercent>1</fillPercent>
+		<passability>PassThroughOnly</passability>
+		<useHitPoints>true</useHitPoints>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+		<statBases>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li>
+				<compClass>CompArt</compClass>
+				<nameMaker>NamerSculpture</nameMaker>
+				<descriptionMaker>ArtSculpture</descriptionMaker>
+			</li>
+			<li>
+				<compClass>RA.CompFadingShadowThrower</compClass>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>ITab_Art</li>
+		</inspectorTabs>
+		<designationCategory>Misc</designationCategory>
+	</ThingDef>
+
+
+	<!--================================ Neolithic ======================================-->
+
+
+	<ThingDef ParentName="BuildingArt_Base">
+		<defName>Totem</defName>
+		<label>totem</label>
+		<size>(1,2)</size>
+		<description>A person-sized piece of material sculpted into an artistic form.</description>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<texPath>Things/Buildings/Art/Totem/Totem</texPath>
+			<drawSize>(2,2)</drawSize>
+			<shadowData>
+				<volume>(0.5, 1, 0.25)</volume>
+				<offset>(0,0,-0.75)</offset>
+			</shadowData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Beauty>40</Beauty>
+			<WorkToMake>48000</WorkToMake>
+		</statBases>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Stony</li>
+			<li>Bone</li>
+		</stuffCategories>
+		<costStuffCount>135</costStuffCount>
+	</ThingDef>
+
+
+
+</ThingDefs>

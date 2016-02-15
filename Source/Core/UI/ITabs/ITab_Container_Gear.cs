@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 using UnityEngine;
 using Verse;
-using Verse.AI;
 using RimWorld;
 
 
@@ -27,7 +23,7 @@ namespace RA
         public string GetTitle()
         {
 			//Stored items count: {0} / {1}
-	        labelTitle = "Container_StoredItemsCount".Translate(container.itemsCount, container.compProps.itemsCap);
+	        labelTitle = "Container_StoredItemsCount".Translate(container.ItemsCount, container.Properties.itemsCap);
             return labelTitle;
         }
 
@@ -40,11 +36,10 @@ namespace RA
                 Log.Error("No CompContainer included for this Building_Storage");
                 return;
             }
-            List<Thing> list = container.itemsList;
+            List<Thing> list = container.ListAllItems;
             float fieldHeight = 30.0f;
-            this.size = new Vector2(300f, 55f + container.compProps.itemsCap * fieldHeight);
+            this.size = new Vector2(300f, 55f + container.Properties.itemsCap * fieldHeight);
 
-            ConceptDatabase.KnowledgeDemonstrated(ConceptDefOf.PrisonerTab, KnowledgeAmount.GuiFrame);
             Text.Font = GameFont.Small;
 
             Rect innerRect = GenUI.ContractedBy(new Rect(0.0f, 0.0f, this.size.x, this.size.y), 10f);

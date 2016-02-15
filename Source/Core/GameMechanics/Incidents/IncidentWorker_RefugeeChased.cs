@@ -47,7 +47,7 @@ namespace RA
                 GenSpawn.Spawn(refugee, spawnSpot);
                 refugee.SetFaction(Faction.OfColony, null);
                 Find.CameraMap.JumpTo(spawnSpot);
-                IncidentParms incidentParms = IncidentMakerUtility.DefaultParmsNow(Find.Storyteller.def, IncidentCategory.ThreatBig);
+                IncidentParms incidentParms = IncidentParmsUtility.GenerateThreatPointsParams();
                 incidentParms.forced = true;
                 incidentParms.faction = enemyFac;
                 incidentParms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;

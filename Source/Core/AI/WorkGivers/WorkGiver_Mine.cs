@@ -11,6 +11,9 @@ namespace RA
 {
     public class WorkGiver_Mine : WorkGiver_WorkWithTools
     {
+        //used to keep current tool equipped if there are available unfinished jobs for this tool type
+        public static bool hasPotentialJobs;
+
         public IEnumerable<Thing> availableVeins;
         public Thing closestAvailableVein;
 
@@ -33,6 +36,8 @@ namespace RA
             IEnumerable<Thing> designatedTargets = Find.DesignationManager.DesignationsOfDef(DesignationDefOf.Mine).Select(designation => MineUtility.MineableInCell(designation.target.Cell));
 
             IEnumerable<Thing> availableTargets = designatedTargets.Where(target => pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()));
+
+            hasPotentialJobs = availableTargets.Count() > 0 ? true : false;
 
             return DoJobWithTool(pawn, availableTargets, ActualJob);
         }

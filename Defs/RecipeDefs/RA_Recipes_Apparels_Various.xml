@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+
+	<!-- 
+	workAmount - number of ticks to complete the recipe at normal speed and efficiency (60 t/s)
+	fixedIngredientFilter - determine ingridiens set to be chosen from
+	
+	defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others)
+	IMPORTANT!: used as a special case to disallow stuff types of the result products
+	-->
+
+	<RecipeDef Name="MakeApparel_Base" Abstract="True">
+		<workSpeedStat>TailoringSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<effectWorking>Tailor</effectWorking>
+		<soundWorking>Recipe_Tailor</soundWorking>
+		<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+		<researchPrerequisite>Blocked</researchPrerequisite>
+	</RecipeDef >
+
+
+	<!-- ========================= Neolithic =========================-->
+
+
+	<RecipeDef Name="MakeApparel_Neolithic" ParentName="MakeApparel_Base" Abstract="True">
+		<fixedIngredientFilter>
+			<categories>
+				<li>Leathers</li>
+			</categories>
+		</fixedIngredientFilter>
+		<recipeUsers>
+			<li>TannersBench</li>
+		</recipeUsers>
+	</RecipeDef >
+
+
+	<RecipeDef  ParentName="MakeApparel_Neolithic">
+		<defName>Make_Backpack</defName>
+		<label>make backpack</label>
+		<description>Makes a backpack.</description>
+		<products>
+			<Backpack>1</Backpack>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+	
+	<RecipeDef  ParentName="MakeApparel_Neolithic">
+		<defName>Make_Toolbelt</defName>
+		<label>make toolbelt</label>
+		<description>Makes a toolbelt.</description>
+		<products>
+			<Toolbelt>1</Toolbelt>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+
+</RecipeDefs>

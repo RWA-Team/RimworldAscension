@@ -18,7 +18,6 @@ namespace RA
             IntVec3 cell = pawn.mindState.duty.focus.Cell;
             if (!pawn.CanReach(cell, PathEndMode.OnCell, Danger.Some, false) || pawn.Position == cell)
             {
-                Log.Message("go");
                 return null;
             }
 

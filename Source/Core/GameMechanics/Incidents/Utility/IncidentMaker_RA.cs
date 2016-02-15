@@ -73,7 +73,7 @@ namespace RA
 
         public override IncidentParms ParmsNow(IncidentCategory incCat)
         {
-            return IncidentMakerUtility.DefaultParmsNow(base.Def, incCat);
+            return IncidentParmsUtility.GenerateThreatPointsParams();
         }
 
         // used for debug

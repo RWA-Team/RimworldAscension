@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+
+	<!-- 
+	workAmount - number of ticks to complete the recipe at normal speed and efficiency (60 t/s)
+	fixedIngredientFilter - determine ingridiens set to be chosen from
+	
+	defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others)
+	IMPORTANT!: used as a special case to disallow stuff types of the result products
+	-->
+
+	<RecipeDef Name="MakeWeapon_Base" Abstract="True">
+		<jobString>Making a weapon.</jobString>
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<effectWorking>Smith</effectWorking>
+		<soundWorking>Recipe_Smith</soundWorking>
+		<unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+		<researchPrerequisite>Blocked</researchPrerequisite>
+		<recipeUsers>
+			<li>HuntersBench</li>
+		</recipeUsers>
+	</RecipeDef >
+	
+	
+	<!-- ========================= Neolithic =========================-->
+	
+
+	<RecipeDef  ParentName="MakeWeapon_Base">
+		<defName>Make_Bow</defName>
+		<label>make bow</label>
+		<description>Makes a simple wooden bow with stone arrows.</description>
+		<workAmount>9000</workAmount>
+		<products>
+			<Bow>1</Bow>
+		</products>
+		<fixedIngredientFilter>	
+			<thingDefs>		
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef  ParentName="MakeWeapon_Base">
+		<defName>Make_Composite_Bow</defName>
+		<label>make composite bow</label>
+		<description>Makes an advanced composite bow with bone arrows.</description>
+		<workAmount>9000</workAmount>
+		<products>
+			<Composite_Bow>1</Composite_Bow>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Bone</li>				
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bone</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef  ParentName="MakeWeapon_Base">
+		<defName>Make_Thrumbo_Bow</defName>
+		<label>make thrumbo horn bow</label>
+		<description>Makes a supreme bow made of thrumbo horm.</description>
+		<workAmount>9000</workAmount>
+		<products>
+			<Thrumbo_Bow>1</Thrumbo_Bow>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>ThrumboHorn</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ThrumboHorn</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef  ParentName="MakeWeapon_Base">
+		<defName>Make_Pilum</defName>
+		<label>make bundle of pilums</label>
+		<description>Makes a bundle of throwing spears with bone heads.</description>
+		<workAmount>9000</workAmount>
+		<products>
+			<Pilum>1</Pilum>
+		</products>
+		<fixedIngredientFilter>	
+			<thingDefs>
+				<li>Bone</li>				
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bone</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef  ParentName="MakeWeapon_Base">
+		<defName>Make_Sling</defName>
+		<label>make sling</label>
+		<description>Makes the sipliest ranged weapon, a sling.</description>
+		<workAmount>9000</workAmount>
+		<products>
+			<Sling>1</Sling>
+		</products>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Leathers</li>
+			</categories>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef  ParentName="MakeWeapon_Base">
+		<defName>Make_Tomahawk</defName>
+		<label>make tomahawk</label>
+		<description>Makes a bundle of stone tomahawks.</description>
+		<workAmount>9000</workAmount>
+		<products>
+			<Tomahawk>1</Tomahawk>
+		</products>
+		<fixedIngredientFilter>
+			<categories>
+				<li>StoneBlocks</li>
+			</categories>			
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneBlocks</li>
+					</categories>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+	
+
+</RecipeDefs>
