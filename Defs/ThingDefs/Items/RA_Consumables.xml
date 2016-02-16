@@ -31,7 +31,7 @@
 		<defName>SurvivalGuide_Neolithic</defName>
 		<thingClass>RA.SurvivalGuide</thingClass>
 		<label>survival guide vol. 1</label>
-		<description>A shabby half-burned book. It looks like one of those military training guides to survive in the harsh enviroment. Some of it's pages can still be read.</description>
+		<description>A shabby half-burned book. It looks like one of those military training guides to survive in the harsh enviroment. Some of its pages can still be read.</description>
 		<graphicData>
 			<texPath>Things/Items/Consumables/TechLevelGuides/SurvivalGuide_Neolithic</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

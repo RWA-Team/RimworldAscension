@@ -5,7 +5,7 @@
 	<MainTabDef>
 		<defName>Architect</defName>
 		<label>architect</label>
-		<description>Designate where and what colonists should build, farm, store items, and so on.</description>
+		<description>Designate where and what colonists should build, farm, store, and so on.</description>
 		<windowClass>RA.MainTabWindow_Architect</windowClass>
 		<order>1</order>
 		<defaultToggleKey>Tab</defaultToggleKey>
@@ -15,7 +15,7 @@
 	<MainTabDef>
 		<defName>Research</defName>
 		<label>research</label>
-		<description>Examine and decide on research projects.</description>
+		<description>Examine things and decide on research projects.</description>
 		<windowClass>RA.MainTabWindow_Research</windowClass>
 		<order>90</order>
 	</MainTabDef>

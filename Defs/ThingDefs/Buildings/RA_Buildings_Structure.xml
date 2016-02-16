@@ -83,7 +83,6 @@
 		<defName>Wall</defName>
 		<label>wall</label>
 		<thingClass>Building</thingClass>
-		<category>Building</category>
 		<description>An impassable wall. Capable of holding up a roof.</description>
 		<graphicData>
 			<texPath>Things/Building/Linked/Wall</texPath>
@@ -120,6 +119,7 @@
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<blockLight>true</blockLight>
 		<stuffCategories>
+			<li>Bricky</li>
 			<li>Woody</li>
 			<li>Stony</li>
 		</stuffCategories>
@@ -134,6 +134,41 @@
 			</li>
 		</damageMultipliers>
 	</ThingDef>
-	
 
+	<ThingDef ParentName="Wall">
+		<defName>Palisade</defName>
+		<label>palisade</label>
+		<description>An impassable palisade. Not capable of holding up a roof.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Linked/Palisades/Palisades_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
+		</graphicData>
+		<blueprintGraphicData>
+			<texPath>Things/Buildings/Linked/Palisades/Palisades_Blueprint_Atlas</texPath>
+		</blueprintGraphicData>
+		<uiIconPath>Things/Buildings/Linked/Palisades/Palisades_MenuIcon</uiIconPath>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>	<!-- Yes -->
+		<altitudeLayer>Waist</altitudeLayer>
+		<fillPercent>0.65</fillPercent>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToMake>100</WorkToMake>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<costStuffCount>3</costStuffCount>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<staticSunShadowHeight>0.3</staticSunShadowHeight>
+		<holdsRoof>False</holdsRoof>
+		<stuffCategories>
+			<li>Woody</li>
+		</stuffCategories>
+	</ThingDef>
+	
 </Buildings>

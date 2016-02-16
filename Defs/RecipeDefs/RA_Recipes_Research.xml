@@ -15,7 +15,8 @@
 	</RecipeDef>
 
 
-	<!-- ========================= Neolithic ==========================-->
+	<!-- ========================= NEOLITHIC ==========================-->
+		<!-- ========= Examination =========-->
 
 
 	<RecipeDef ParentName="ResearchBase">
@@ -34,7 +35,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>LeafBundle</li>
+						<li>BastFibre</li>
 					</thingDefs>
 				</filter>
 				<count>30</count>
@@ -46,21 +47,6 @@
 					</thingDefs>
 				</filter>
 				<count>30</count>
-			</li>
-		</ingredients>
-	</RecipeDef>
-
-
-	<RecipeDef ParentName="ResearchBase">
-		<defName>BasicFarming</defName>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>PlantFoodRaw</li>
-					</categories>
-				</filter>
-				<count>75</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -80,11 +66,6 @@
 				<count>1</count>
 			</li>
 		</ingredients>
-	</RecipeDef>
-
-
-	<RecipeDef ParentName="ResearchBase">
-		<defName>AnimalHusbandry</defName>
 	</RecipeDef>
 
 
@@ -123,6 +104,21 @@
 
 
 	<RecipeDef ParentName="ResearchBase">
+		<defName>BasicFarming</defName>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+				</filter>
+				<count>75</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+
+	<RecipeDef ParentName="ResearchBase">
 		<defName>LeatherWorking</defName>
 		<effectWorking>Tailor</effectWorking>
 		<soundWorking>Recipe_ButcherCorpseFlesh</soundWorking>
@@ -136,6 +132,12 @@
 				<count>75</count>
 			</li>
 		</ingredients>
+	</RecipeDef>
+
+		<!-- ========= Research =========-->
+
+	<RecipeDef ParentName="ResearchBase">
+		<defName>AnimalHusbandry</defName>
 	</RecipeDef>
 
 
