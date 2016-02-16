@@ -62,7 +62,7 @@
 			<harvestWork>100</harvestWork>
 			<harvestTag>Standard</harvestTag>
 			<harvestDestroys>false</harvestDestroys>
-			<harvestedThingDef>LeafBundle</harvestedThingDef>
+<!-- 			<harvestedThingDef>LeafBundle</harvestedThingDef> -->
 			<harvestYield>10</harvestYield>
 			<fertilityMin>0.4</fertilityMin>
 			<wildClusterSizeRange>

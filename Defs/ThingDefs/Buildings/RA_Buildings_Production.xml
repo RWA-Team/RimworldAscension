@@ -14,6 +14,7 @@
 		<DesignationCategory>Production</DesignationCategory>
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
+	
 
 	<ThingDef Name="BenchBase" ParentName="BuildingBase" Abstract="True">
 		<ThingClass>Building_WorkTable</ThingClass>
@@ -45,23 +46,7 @@
 		</building>
 	</ThingDef>
 	
-<<<<<<< HEAD
-
-	<!-- ========================= Work Tables ==========================-->
 	
-<<<<<<< HEAD
-
-	<ThingDef ParentName="BenchBase">
-		<DefName>TableButcher</DefName>
-		<label>butcher workbench</label>
-		<Description>A heavy table for butchering dead creatures into pieces of raw meat.</Description>
-=======
-
-	<ThingDef ParentName="BenchBase">
-		<DefName>TableButcher</DefName>
-		<label>butcher workbench</label>
-		<Description>A heavy table for butchering dead creatures into pieces of raw meat.</Description>
-=======
 	<ThingDef Name="StuffifiedBenchBase" ParentName="BenchBase" Abstract="True">
 		<stuffCategories>
 			<li>Woody</li>
@@ -70,13 +55,13 @@
 	</ThingDef>
 	
 
-	<!-- ========================= Work Tables ==========================-->
+	<!-- ==================== Work Tables =====================-->
+	
 
 	<ThingDef ParentName="StuffifiedBenchBase">
 		<DefName>TannersBench</DefName>
 		<label>tanners's workbench</label>
 		<Description>A workbench for crafting leather clothings from raw hides.</Description>
->>>>>>> origin/master
 		<graphicData>
 			<texPath>Things/Building/Production/TableTailor</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -89,20 +74,11 @@
 		</statBases>
 		<researchPrerequisite>LeatherWorking</researchPrerequisite>
 	</ThingDef>
-<<<<<<< HEAD
-
-	<ThingDef ParentName="BenchBase">
-		<DefName>TannersBench</DefName>
-		<label>tanners's workbench</label>
-		<Description>A workbench for crafting leather clothings from raw hides.</Description>
-=======
 	
 	<ThingDef ParentName="StuffifiedBenchBase">
 		<DefName>CraftsmanBench</DefName>
 		<label>craftsman workbench</label>
 		<Description>A table and tools to craft various stuff.</Description>
->>>>>>> origin/master
->>>>>>> refs/remotes/origin/master
 		<graphicData>
 			<texPath>Things/Building/Production/TableSculpting</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -117,64 +93,8 @@
 		<!-- some recipes and visibility added via researchMod -->
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
-<<<<<<< HEAD
-
-	<ThingDef ParentName="BenchBase">
-		<DefName>TannersBench</DefName>
-		<label>tanners's workbench</label>
-		<Description>A workbench for crafting leather clothings from raw hides.</Description>
-=======
-<<<<<<< HEAD
-	
-	<ThingDef ParentName="BenchBase">
-		<DefName>CraftsmanBench</DefName>
-		<label>craftsman workbench</label>
-		<Description>A table and tools to craft various stuff.</Description>
->>>>>>> refs/remotes/origin/master
-		<graphicData>
-			<texPath>Things/Building/Production/TableSculpting</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(3.5,1.5)</drawSize>
-		</graphicData>
-		<statBases>
-			<WorkToMake>3000</WorkToMake>
-			<MaxHitPoints>180</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-			<Cleanliness>-2</Cleanliness>
-		</statBases>
-		<!-- some recipes and visibility added via researchMod -->
-		<researchPrerequisite>Blocked</researchPrerequisite>
-	</ThingDef>
-<<<<<<< HEAD
-	
-	<ThingDef ParentName="BenchBase">
-		<DefName>CraftsmanBench</DefName>
-		<label>craftsman workbench</label>
-		<Description>A table and tools to craft various stuff.</Description>
-		<graphicData>
-			<texPath>Things/Building/Production/TableSculpting</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(3.5,1.5)</drawSize>
-		</graphicData>
-		<statBases>
-			<WorkToMake>3000</WorkToMake>
-			<MaxHitPoints>180</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-			<Cleanliness>-2</Cleanliness>
-		</statBases>
-		<!-- some recipes and visibility added via researchMod -->
-		<researchPrerequisite>Blocked</researchPrerequisite>
-	</ThingDef>
-
-	<ThingDef ParentName="BenchBase">
-=======
-
-	<ThingDef ParentName="BenchBase">
-=======
 
 	<ThingDef ParentName="StuffifiedBenchBase">
->>>>>>> origin/master
->>>>>>> refs/remotes/origin/master
 		<DefName>WarriorsBench</DefName>
 		<label>warrior's workbench</label>
 		<Description>A workbench equipped for melee weapons production.</Description>
@@ -192,16 +112,8 @@
 		<!-- recipes and visibility added via researchMod -->
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
-
-<<<<<<< HEAD
-	<ThingDef ParentName="BenchBase">
-=======
-<<<<<<< HEAD
-	<ThingDef ParentName="BenchBase">
-=======
+	
 	<ThingDef ParentName="StuffifiedBenchBase">
->>>>>>> origin/master
->>>>>>> refs/remotes/origin/master
 		<DefName>HuntersBench</DefName>
 		<label>hunter's workbench</label>
 		<Description>A workbench equipped for ranged weapons production.</Description>
@@ -220,7 +132,7 @@
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
-	<ThingDef ParentName="BenchBase">
+<!-- 	<ThingDef ParentName="BenchBase">
 		<DefName>TableKiln</DefName>
 		<label>kiln</label>
 		<Description>An oven equipped to fire pottery and other materials that require firing such as bricks.</Description>
@@ -243,8 +155,7 @@
 			<li>FireAmphorae</li>
 		</recipes>
 		<researchPrerequisite>Blocked</researchPrerequisite>
-	</ThingDef>
-
-
+	</ThingDef> -->
+	
 
 </ThingDefs>

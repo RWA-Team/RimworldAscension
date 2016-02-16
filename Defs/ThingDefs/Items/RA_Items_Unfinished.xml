@@ -32,10 +32,6 @@
 			<li>Unfinished</li>
 		</thingCategories>
 	</ThingDef>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 	
 	
 	<ThingDef ParentName="UnfinishedBase">
@@ -47,8 +43,6 @@
 			<color>(134,116,92)</color>
 		</graphicData>
 	</ThingDef>
->>>>>>> origin/master
->>>>>>> refs/remotes/origin/master
 
 
 	<ThingDef ParentName="UnfinishedBase">

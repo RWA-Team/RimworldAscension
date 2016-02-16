@@ -6,16 +6,8 @@ using Verse;
 
 namespace RA
 {
-    public class Graphic_StuffBased : Graphic_Collection
+    public class Graphic_StuffBased : Graphic_Appearances
     {
-        public override Material MatSingle
-        {
-            get
-            {
-                return this.subGraphics[0].MatSingle;
-            }
-        }
-
         public override void Init(GraphicRequest req)
         {
             base.Init(req);

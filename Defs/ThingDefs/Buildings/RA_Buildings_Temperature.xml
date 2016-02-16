@@ -16,6 +16,7 @@
 		<designationCategory>Temperature</designationCategory>
 		<researchPrerequisite>SurvivalGuideI</researchPrerequisite>
 	</ThingDef>
+	
 
 	<ThingDef Name="BuildingBase_Fueled" ParentName="BuildingBase" Abstract="True">
 		<thingClass>RA.Building_WorkTable_Fueled</thingClass>

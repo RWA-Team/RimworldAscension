@@ -97,18 +97,8 @@
 
 	<ThingDef ParentName="PlantCuttingTool">
 		<defName>Primitive_Handaxe</defName>
-<<<<<<< HEAD
-		<label>primitive handaxe</label>
-		<description>A primitive handaxe. Useless in fight, good for cutting down plants.</description>
-=======
-<<<<<<< HEAD
-		<label>primitive handaxe</label>
-		<description>A primitive handaxe. Useless in fight, good for cutting down plants.</description>
-=======
 		<label>improvised hand axe</label>
 		<description>An improvised axe-looking tool designed with vegetation cutting in mind. Lacking the weight and finish of a melee weapon.</description>
->>>>>>> origin/master
->>>>>>> refs/remotes/origin/master
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/PrimitiveHandaxe</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -119,19 +109,8 @@
 
 	<ThingDef ParentName="ConstructionTool">
 		<defName>Primitive_Hammer</defName>
-<<<<<<< HEAD
-		<label>primitive hammer</label>
-		<description>A primitive hammer. Useless in fight, good forc construction and repair.</description>
-=======
-<<<<<<< HEAD
-		<label>primitive hammer</label>
-		<description>A primitive hammer. Useless in fight, good forc construction and repair.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/PrimitiveHammer</texPath>
-=======
 		<label>improvised mallet</label>
 		<description>An improvised hammer-looking tool used for construction and repair rather than for combat purposes.</description>
->>>>>>> refs/remotes/origin/master
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/PrimitiveHammer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -145,7 +124,6 @@
 		<description>An improvised cleaning device made out of plant fibres.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/PrimitiveBroom</texPath>
->>>>>>> origin/master
 			<graphicClass>Graphic_Single</graphicClass>
 			<color>(133,97,67)</color>
 		</graphicData>
