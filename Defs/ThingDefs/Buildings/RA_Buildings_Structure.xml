@@ -140,7 +140,7 @@
 		<label>palisade</label>
 		<description>An impassable palisade. Not capable of holding up a roof.</description>
 		<graphicData>
-			<texPath>Things/Buildings/Linked/Palisades/Palisades_Atlas</texPath>
+			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Atlas</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<linkType>CornerFiller</linkType>
 			<linkFlags>
@@ -149,9 +149,9 @@
 			</linkFlags>
 		</graphicData>
 		<blueprintGraphicData>
-			<texPath>Things/Buildings/Linked/Palisades/Palisades_Blueprint_Atlas</texPath>
+			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Blueprint_Atlas</texPath>
 		</blueprintGraphicData>
-		<uiIconPath>Things/Buildings/Linked/Palisades/Palisades_MenuIcon</uiIconPath>
+		<uiIconPath>Things/Buildings/Structure/Walls/Palisade/Palisade_MenuIcon</uiIconPath>
 		<passability>PassThroughOnly</passability>
 		<pathCost>70</pathCost>	<!-- Yes -->
 		<altitudeLayer>Waist</altitudeLayer>
