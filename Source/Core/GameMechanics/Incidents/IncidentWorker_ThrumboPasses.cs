@@ -20,7 +20,7 @@ namespace RA
                 return false;
             }
             PawnKindDef thrumbo = PawnKindDefOf.Thrumbo;
-            float points = IncidentMakerUtility.DefaultParmsNow(Find.Storyteller.def, IncidentCategory.ThreatBig).points;
+            float points = IncidentParmsUtility.GenerateThreatPointsParams().points;
             int num = GenMath.RoundRandom(points / thrumbo.combatPower);
             int max = Rand.RangeInclusive(2, 4);
             num = Mathf.Clamp(num, 1, max);

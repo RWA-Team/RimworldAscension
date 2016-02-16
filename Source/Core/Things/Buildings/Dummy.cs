@@ -151,7 +151,7 @@ namespace RA
         {
             base.ExposeData();
 
-            Scribe_Collections.LookList<Pawn>(ref allowedPawns, "allowedPawns", LookMode.MapReference, new object[0]);
+            Scribe_Collections.LookList(ref allowedPawns, "allowedPawns", LookMode.MapReference, new object[0]);
         }
     }
 }

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+	<StuffCategoryDef>
+		<defName>Bone</defName>
+		<label>bone</label>
+	</StuffCategoryDef>
+	
+	<StuffCategoryDef>
+		<defName>StonyRaw</defName>
+		<label>raw stony</label>
+	</StuffCategoryDef>
+
+
+</Defs>

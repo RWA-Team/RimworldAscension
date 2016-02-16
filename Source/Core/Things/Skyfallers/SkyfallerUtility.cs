@@ -19,7 +19,7 @@ namespace RA
             GenSpawn.Spawn(dropPodCrashing, loc);
         }
 
-        public static void MakeShipWreckCrashingAt(IntVec3 dropCenter, List<List<Thing>> thingsGroups, int openDelay = 120, bool canInstaDropDuringInit = true, bool leaveSlag = false, bool canRoofPunch = true)
+        public static void MakeShipWreckCrashingAt(IntVec3 dropCenter, List<List<Thing>> thingsGroups, int openDelay = 120, bool canInstaDropDuringInit = true, bool leaveSlag = false, bool canRoofPunch = false)
         {
             // Set a var to store drop cell
             IntVec3 intVec;
@@ -35,7 +35,7 @@ namespace RA
                         ". Dropping on random square instead."
                 }));
                 // Try another way to get a drop spot
-                intVec = CellFinderLoose.RandomCellWith((IntVec3 c) => c.Walkable(), 1000);
+                intVec = CellFinderLoose.RandomCellWith((IntVec3 c) => c.Walkable());
             }
 
             // Setup a new container for contents and config
@@ -63,34 +63,49 @@ namespace RA
 
         public static void Impact(Thing skyfaller, Thing resultThing, float explosionDamageMultiplier)
         {
+            DoRoofPunch(skyfaller.Position);
+
             // max side length of drawSize or actual size etermine result crater radius
-            float impactZoneRadius = Mathf.Max(Mathf.Max(skyfaller.def.Size.x, skyfaller.def.Size.z), Mathf.Max(skyfaller.Graphic.drawSize.x, skyfaller.Graphic.drawSize.y));
+            float impactRadius = Mathf.Max(Mathf.Max(skyfaller.def.Size.x, skyfaller.def.Size.z), Mathf.Max(skyfaller.Graphic.drawSize.x, skyfaller.Graphic.drawSize.y)) * 2;
 
             // Throw some dust puffs
             for (int i = 0; i < 6; i++)
             {
-                // ToVector3Shifted points at the cell center, not the bottom left cell corner
-                Vector3 loc = skyfaller.Position.ToVector3Shifted() + Gen.RandomHorizontalVector(1f);
+                Vector3 loc = skyfaller.TrueCenter() + Gen.RandomHorizontalVector(1f);
                 MoteThrower.ThrowDustPuff(loc, 1.2f);
             }
 
             // Throw a quick flash
-            MoteThrower.ThrowLightningGlow(skyfaller.Position.ToVector3Shifted(), impactZoneRadius);
+            MoteThrower.ThrowLightningGlow(skyfaller.TrueCenter(), impactRadius);
 
             // Spawn the crater
             Crater crater = (Crater)ThingMaker.MakeThing(ThingDef.Named("Crater"));
             // adjust result crater size to the impacr zone radius
-            crater.innerRadius = impactZoneRadius;
+            crater.impactRadius = impactRadius;
             // make explosion in the impact area
-            GenExplosion.DoExplosion(skyfaller.Position, crater.innerRadius * 2, DamageDefOf.Bomb, skyfaller, null, null, explosionDamageMultiplier);
+            GenExplosion.DoExplosion(skyfaller.Position, impactRadius, DamageDefOf.Bomb, skyfaller, null, null, explosionDamageMultiplier);
+
             // spawn the crater, rotated to the random angle, to provide visible variety
             GenSpawn.Spawn(crater, skyfaller.Position, Rot4.North);
 
             // Spawn the impact result thing
             GenSpawn.Spawn(resultThing, skyfaller.Position, skyfaller.Rotation);
 
-            // Punch the roof, if needed
-            RoofDef roof = skyfaller.Position.GetRoof();
+            // MapComponent Injector
+            if (!Find.Map.components.Exists(component => component.GetType() == typeof(MapCompCameraShaker)))
+                Find.Map.components.Add(new MapCompCameraShaker());
+            
+            // Do a bit of camera shake for added effect
+            MapCompCameraShaker.DoShake(impactRadius * 0.1f);
+
+            // Destroy incoming pod
+            skyfaller.Destroy();
+        }
+
+        // Punch the roof, if needed
+        public static void DoRoofPunch (IntVec3 position)
+        {
+            RoofDef roof = position.GetRoof();
             // If there was actually a roof
             if (roof != null)
             {
@@ -98,7 +113,7 @@ namespace RA
                 if (!roof.soundPunchThrough.NullOrUndefined())
                 {
                     // Play punch sound
-                    roof.soundPunchThrough.PlayOneShot(skyfaller.Position);
+                    roof.soundPunchThrough.PlayOneShot(position);
                 }
                 // If the roof def is to leave filth
                 if (roof.filthLeaving != null)
@@ -106,29 +121,10 @@ namespace RA
                     // Drop some filth
                     for (int j = 0; j < 3; j++)
                     {
-                        FilthMaker.MakeFilth(skyfaller.Position, roof.filthLeaving, 1);
+                        FilthMaker.MakeFilth(position, roof.filthLeaving, 1);
                     }
                 }
             }
-
-            // MapComponent Injector
-            if (!Find.Map.components.Exists(component => component.GetType() == typeof(MapCompCameraShaker)))
-                Find.Map.components.Add(new MapCompCameraShaker());
-
-            // Do a bit of camera shake for added effect
-            MapCompCameraShaker.DoShake(impactZoneRadius * 0.1f);
-
-            // make random fire mote in area around impact
-            CellRect cellRect = CellRect.CenteredOn(skyfaller.Position, 2);
-            cellRect.ClipInsideMap();
-            for (int i = 0; i < 5; i++)
-            {
-                IntVec3 randomCell = cellRect.RandomCell;
-                MoteThrower.ThrowFireGlow(skyfaller.Position, 1.5f);
-            }
-
-            // Destroy incoming pod
-            skyfaller.Destroy(DestroyMode.Vanish);
         }
     }
 }

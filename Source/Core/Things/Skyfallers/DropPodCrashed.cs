@@ -46,7 +46,7 @@ namespace RA
             foreach (IntVec3 damagedCell in damagedCells)
             {
                 // Throw smoke mote
-                ThrowSmokeBlack(damagedCell, 0.5f);
+                SpecialMotes.ThrowSmokeBlack(damagedCell.ToVector3(), 0.5f);
             }
         }
 
@@ -78,27 +78,6 @@ namespace RA
             DropPodCrashed.OpenSound.PlayOneShot(base.Position);
         }
 
-        public static void ThrowSmokeBlack(IntVec3 loc, float size)
-        {
-            // Only throw smoke every 10 ticks
-            if (Find.TickManager.TicksGame % 10 != 0)
-            {
-                return;
-            }
-            // Make the mote
-            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDef.Named("Mote_SmokeBlack"));
-            // Set a size
-            moteThrown.ScaleUniform = Rand.Range(1.5f, 2.5f) * size;
-            // Set a rotation
-            moteThrown.exactRotationRate = Rand.Range(-0.5f, 0.5f);
-            // Set a position
-            moteThrown.exactPosition = loc.ToVector3();
-            // Set angle and speed
-            moteThrown.SetVelocityAngleSpeed((float)Rand.Range(30, 40), Rand.Range(0.008f, 0.012f));
-            // Spawn mote
-            GenSpawn.Spawn(moteThrown, loc);
-        }
-
         public override IEnumerable<Gizmo> GetGizmos()
         {
             // Do base gizmos if required
@@ -111,7 +90,7 @@ namespace RA
             Command_Action gizmo_Scavenge = new Command_Action
             {
                 // Command icon
-                icon = ContentFinder<Texture2D>.Get("UI/Gizmos/Scavenge"),
+                icon = ContentFinder<Texture2D>.Get("UI/Icons/Scavenge"),
                 // Command label
                 defaultLabel = "Scavenge",
                 // Command description
@@ -128,9 +107,9 @@ namespace RA
         {
             Action action = () =>
             {
-                pawn.drafter.TakeOrderedJob(new Job(JobDefOf.Deconstruct,this));
+                pawn.drafter.TakeOrderedJob(new Job(JobDefOf.Deconstruct, this));
             };
-            yield return new FloatMenuOption("Acavenge the " + this.Label, action);
+            yield return new FloatMenuOption("Scavenge the " + this.Label, action);
         }
 
         public void Scavenge()
@@ -178,8 +157,9 @@ namespace RA
             base.ExposeData();
 
             // Save tickstoimpact to save file
-            Scribe_Values.LookValue<bool>(ref deployed, "deployed");
-            Scribe_Deep.LookDeep<DropPodInfo>(ref this.cargo, "info", new object[0]);
+            Scribe_Values.LookValue(ref deployed, "deployed");
+            Scribe_Deep.LookDeep(ref cargo, "info", new object[0]);
+            Scribe_Collections.LookList(ref damagedCells, "damagedCells", LookMode.Value);
         }
     }
 }

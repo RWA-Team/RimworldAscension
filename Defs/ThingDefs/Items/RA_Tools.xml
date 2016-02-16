@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
+	<!-- 
+	stuffCategories - specifies that weapon is made from stuff (stuff modifiers apply) and what stuff types should be used
+	-->
 
 	<ThingDef Name="BaseTool" Abstract="True">
 		<thingClass>ThingWithComps</thingClass>
@@ -22,9 +25,6 @@
 		<altitudeLayer>Item</altitudeLayer>
 		<alwaysHaulable>True</alwaysHaulable>
 		<tickerType>Never</tickerType>
-		<weaponTags>
-			<li>Melee</li>
-		</weaponTags>
 		<thingCategories>
 			<li>Tools</li>
 		</thingCategories>
@@ -37,10 +37,6 @@
 			</li>
 		</comps>
 		<soundInteract>Interact_BeatFire</soundInteract>
-		<!-- 		<statBases>
-			<MeleeWeapon_DamageAmount>1</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
-		</statBases> -->
 	</ThingDef>
 
 
@@ -87,11 +83,11 @@
 
 
 	<ThingDef ParentName="PlantCuttingTool">
-		<defName>Stone_Handaxe</defName>
-		<label>stone handaxe</label>
-		<description>A stone handaxe. Useless in fight, good for cutting down plants.</description>
+		<defName>Primitive_Handaxe</defName>
+		<label>primitive handaxe</label>
+		<description>A primitive handaxe. Useless in fight, good for cutting down plants.</description>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/StoneHandaxe</texPath>
+			<texPath>Things/Items/Weapons/Neolithic/PrimitiveHandaxe</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<techLevel>Neolithic</techLevel>
@@ -99,11 +95,11 @@
 
 
 	<ThingDef ParentName="ConstructionTool">
-		<defName>Stone_Hammer</defName>
-		<label>stone hammer</label>
-		<description>A stone hammer. Useless in fight, good for Construction and repair.</description>
+		<defName>Primitive_Hammer</defName>
+		<label>primitive hammer</label>
+		<description>A primitive hammer. Useless in fight, good forc construction and repair.</description>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/StoneHammer</texPath>
+			<texPath>Things/Items/Weapons/Neolithic/PrimitiveHammer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<techLevel>Neolithic</techLevel>
