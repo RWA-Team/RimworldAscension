@@ -11,6 +11,9 @@ namespace RA
 {
     public class WorkGiver_PlantsCut : WorkGiver_WorkWithTools
     {
+        //used to keep current tool equipped if there are available unfinished jobs for this tool type
+        public static bool hasPotentialJobs;
+
         public WorkGiver_PlantsCut()
         {
             workTypeName = "PlantCutting";
@@ -42,6 +45,8 @@ namespace RA
             IEnumerable<Thing> designatedTargets = Find.DesignationManager.allDesignations.FindAll(designation => designation.def == DesignationDefOf.CutPlant || designation.def == DesignationDefOf.HarvestPlant).Select(designation => designation.target.Thing);
 
             IEnumerable<Thing> availableTargets = designatedTargets.Where(target => pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()) && !target.IsBurning());
+
+            hasPotentialJobs = availableTargets.Count() > 0 ? true : false;
 
             return DoJobWithTool(pawn, availableTargets, ActualJob);
         }

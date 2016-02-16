@@ -272,10 +272,15 @@ namespace RA
                 if (researchRecipe != null && !researchRecipe.ingredients.NullOrEmpty())
                 {
                     // draw research prerequisites
-                    descriptionString.Append("Required research materials:\n\n");
+                    descriptionString.Append("Required research materials:\n");
                     foreach (IngredientCount ingridient in researchRecipe.ingredients)
                     {
                         descriptionString.AppendFormat("\t{0} ", ingridient.GetBaseCount());
+
+                        if (ingridient.GetBaseCount() == 1)
+                            descriptionString.Append("sample ");
+                        else
+                            descriptionString.Append("samples ");
 
                         if (!ingridient.filter.categories.NullOrEmpty())
                         {

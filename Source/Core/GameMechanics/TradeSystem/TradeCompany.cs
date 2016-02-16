@@ -150,9 +150,9 @@ namespace RA
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Defs.LookDef<TraderKindDef>(ref this.def, "def");
-            Scribe_Collections.LookList<Thing>(ref this.things, "things", LookMode.Deep, new object[0]);
-            Scribe_Values.LookValue<int>(ref this.randomPriceFactorSeed, "randomPriceFactorSeed", 0, false);
+            Scribe_Defs.LookDef(ref def, "def");
+            Scribe_Collections.LookList(ref things, "things", LookMode.Deep, new object[0]);
+            Scribe_Values.LookValue(ref randomPriceFactorSeed, "randomPriceFactorSeed");
         }
 	}
 }

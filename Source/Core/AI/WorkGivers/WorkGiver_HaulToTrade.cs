@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using UnityEngine;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -18,7 +17,7 @@ namespace RA
         {
             IEnumerable<Thing> items = requestedItems;
             foreach (ThingCount counter in requestedResourceCounters)
-                items = items.Concat(TradeUtility.AllSellableThings.Where(item => item.def == counter.thingDef && pawn.CanReserve(item)));
+                items = items.Concat(TradeUtility.AllSellableThings.Where(item => item.def == counter.thingDef));
 
             return items;
         }
@@ -39,7 +38,6 @@ namespace RA
             // carry resources according to it's counter number
             if (requestedResourceCounters.Exists(item => item.thingDef == thing.def))
             {
-                //Log.Message("value " + offeredResourceCounters.Find(item => item.thingDef == thing.def).count);
                 ThingCount counter = requestedResourceCounters.Find(item => item.thingDef == thing.def);
                 numToCarry = Math.Min(thing.stackCount, counter.count);
             }

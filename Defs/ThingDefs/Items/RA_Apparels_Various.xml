@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<!-- 
+	defaultOutfitTags - used to determine gear in preset outfit sets available in the outfits menu
+	equippedStatOffsets - applies offset to the pawns stat when worn
+	worngraphicPath - specified when needs to select apparel type based on body type variations
+	 -->
+
+	<ThingDef Name="Apparel_Base" Abstract="True">
+		<thingClass>Apparel</thingClass>
+		<category>Item</category>
+		<selectable>True</selectable>
+		<pathCost>10</pathCost>
+		<useHitPoints>True</useHitPoints>
+		<graphicData>
+			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>0.5</DeteriorationRate>
+			<SellPriceFactor>0.1</SellPriceFactor>
+		</statBases>
+		<altitudeLayer>Item</altitudeLayer>
+		<alwaysHaulable>True</alwaysHaulable>
+		<tickerType>Never</tickerType>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Apparel_Base">
+		<defName>Backpack</defName>
+		<label>backpack</label>
+		<description>A backpack is a bag with straps that go over your shoulders, so that you can carry things on your back when you are walking or climbing.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Backpack/Backpack</texPath>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Backpack/Backpack</worngraphicPath>
+			<layers>
+				<li>Accessory</li>
+			</layers>
+			<commonality>1</commonality>
+		</apparel>
+		<colorGenerator Class="ColorGenerator_Options">
+			<options>
+				<li>
+					<weight>10</weight>
+					<only>RGBA(0.4,0.3,0.15,1)</only>
+				</li>
+				<li>
+					<weight>15</weight>
+					<only>RGBA(0.6,0.45,0.18,1)</only>
+				</li>
+				<li>
+					<weight>20</weight>
+					<only>RGBA(0.8,0.6,0.23,1)</only>
+				</li>
+			</options>
+		</colorGenerator>
+		<comps>
+			<li Class="RA.CompSlots_Properties">
+				<compClass>RA.CompSlots</compClass>
+				<allowedThingCategoryDefs>
+					<li>Weapons</li>
+					<li>Apparel</li>
+				</allowedThingCategoryDefs>
+				<forbiddenSubThingCategoryDefs>
+					<li>Tools</li>
+				</forbiddenSubThingCategoryDefs>
+				<maxSlots>1</maxSlots>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="Apparel_Base">
+		<defName>Toolbelt</defName>
+		<label>toolbelt</label>
+		<description>A toolbelt to keep your tools to yourself.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Toolbelt/Toolbelt</texPath>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<apparel>
+			<bodyPartGroups>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Toolbelt/Toolbelt</worngraphicPath>
+			<layers>
+				<li>Accessory</li>
+			</layers>
+			<commonality>1</commonality>
+		</apparel>
+		<colorGenerator Class="ColorGenerator_Options">
+			<options>
+				<li>
+					<weight>10</weight>
+					<only>RGBA(0.4,0.3,0.15,1)</only>
+				</li>
+				<li>
+					<weight>15</weight>
+					<only>RGBA(0.6,0.45,0.18,1)</only>
+				</li>
+				<li>
+					<weight>20</weight>
+					<only>RGBA(0.8,0.6,0.23,1)</only>
+				</li>
+			</options>
+		</colorGenerator>
+		<comps>
+			<li Class="RA.CompSlots_Properties">
+				<compClass>RA.CompSlots</compClass>
+				<allowedThingCategoryDefs>
+					<li>Tools</li>
+				</allowedThingCategoryDefs>
+				<maxSlots>3</maxSlots>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="Apparel_Base">
+		<defName>Headdress</defName>
+		<label>headdress</label>
+		<description>A headdress.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Headdress/Headdress</texPath>
+		</graphicData>
+		<statBases>
+			<Insulation_Cold>-10</Insulation_Cold>
+			<Insulation_Heat>-2</Insulation_Heat>
+		</statBases>
+		<equippedStatOffsets>
+			<SocialImpact>0.2</SocialImpact>
+			<GiftImpact>0.2</GiftImpact>
+			<TradePriceImprovement>0.2</TradePriceImprovement>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Headdress/Headdress</worngraphicPath>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+		</apparel>
+		<colorGenerator Class="ColorGenerator_Options">
+			<options>
+				<li>
+					<weight>10</weight>
+					<only>RGBA(0.33,0.33,0.33,1)</only>
+				</li>
+				<li>
+					<weight>10</weight>
+					<only>RGBA(0.65,0.65,0.65,1)</only>
+				</li>
+				<li>
+					<weight>6</weight>
+					<min>RGBA(0.3,0.3,0.3,1)</min>
+					<max>RGBA(0.5,0.5,0.5,1)</max>
+				</li>
+				<li>
+					<weight>10</weight>
+					<only>RGBA(0.9,0.9,0.9,1)</only>
+				</li>
+			</options>
+		</colorGenerator>
+	</ThingDef>
+
+
+</ThingDefs>

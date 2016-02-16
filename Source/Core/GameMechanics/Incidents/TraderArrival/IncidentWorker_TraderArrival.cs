@@ -72,11 +72,11 @@ namespace RA
                 RCellFinder.TryFindRandomPawnEntryCell(out parms.spawnCenter);
             }
 
+            // select faction of trade caravan
             if (parms.faction == null)
             {
-                // select faction of trade caravan if not specified before
                 if (!(from faction in Find.FactionManager.AllFactionsVisible
-                      where (faction.def != FactionDefOf.Colony && !faction.HostileTo(Faction.OfColony))// && faction.def.techLevel <= FactionDefOf.Colony.techLevel)
+                      where (faction.def != FactionDefOf.Colony && !faction.HostileTo(Faction.OfColony) && faction.def.techLevel <= FactionDefOf.Colony.techLevel)
                       select faction).TryRandomElement<Faction>(out parms.faction))
                 {
                     return false;
@@ -84,7 +84,7 @@ namespace RA
             }
 
             // rescale early game caravan strength point to spawn guards, when amount of points is too low
-            if (parms.points <= 25f)
+            if (parms.points <= 100f)
             {
                 float value = Rand.Value;
                 if (value < 0.4f)
@@ -93,11 +93,11 @@ namespace RA
                 }
                 else if (value < 0.8f)
                 {
-                    parms.points = (float)Rand.Range(140, 200);
+                    parms.points = (float)Rand.Range(140, 250);
                 }
                 else
                 {
-                    parms.points = (float)Rand.Range(200, 500);
+                    parms.points = (float)Rand.Range(250, 500);
                 }
             }
 
@@ -121,7 +121,8 @@ namespace RA
         {
             List<Pawn> pawns = new List<Pawn>();
             // merchant
-            pawns.Add(PawnGenerator.GeneratePawn(PawnKindDefOf.SpaceSoldier, parms.faction));
+            if (parms.faction.def.techLevel == TechLevel.Neolithic)
+            pawns.Add(PawnGenerator.GeneratePawn(PawnKindDef.Named("TribalMerchant"), parms.faction));
             // animal
             pawns.Add(PawnGenerator.GeneratePawn(PawnKindDef.Named("CaravanMuffalo"), parms.faction));
             // guards
@@ -133,7 +134,6 @@ namespace RA
                 // regenerate slow pawns
                 do
                 {
-                    Log.Message("regenerated value " + pawns[i].GetStatValue(StatDefOf.MoveSpeed));
                     pawns[i] = PawnGenerator.GeneratePawn(pawns[i].kindDef, pawns[i].Faction);
                 } while (pawns[i].GetStatValue(StatDefOf.MoveSpeed) / pawns[i].def.statBases.Find(pair => pair.stat == StatDefOf.MoveSpeed).value < 0.9f);
 

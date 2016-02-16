@@ -11,6 +11,16 @@
 	</ResearchProjectDef>
 
 
+	<ResearchProjectDef>
+		<defName>SurvivalGuideI</defName>
+		<label>basic survival guide instructions</label>
+		<description>You've learned something useful.</description>
+		<prerequisites>
+			<li>SurvivalGuideI</li>
+		</prerequisites>		
+	</ResearchProjectDef>
+
+
 	<!-- ========================= Neolithic Tech Level ==========================-->
 
 
@@ -25,7 +35,7 @@
 			<ResearchProjectDef>
 				<defName>BasicFarming</defName>
 				<label>basic farming</label>
-				<description>Grow simple domesticated plants</description>
+				<description>Learn how to grow simple omestic plants.</description>
 				<totalCost>200</totalCost>
 				<prerequisites>
 					<li>ExamineFlora</li>
@@ -36,16 +46,20 @@
 					</li>
 				</researchMods>
 			</ResearchProjectDef>
-
 			
 			<ResearchProjectDef>
 				<defName>WoodWorking</defName>
 				<label>wood working</label>
-				<description>Allows you to craft wooden trade crafts and provide wooden base for weapons and tools.</description>
+				<description>Allows you perform elaborate wooden carving to make wooden trade crafts and base for tools and weapons.</description>
 				<totalCost>200</totalCost>
 				<prerequisites>
 					<li>ExamineFlora</li>
 				</prerequisites>
+				<researchMods>
+					<li>
+						<specialAction>RA.ResearchMods.WoodWorking</specialAction>
+					</li>
+				</researchMods>
 			</ResearchProjectDef>
 
 			
@@ -58,6 +72,21 @@
 
 			
 			<ResearchProjectDef>
+				<defName>BoneWorking</defName>
+				<label>bone working</label>
+				<description>Allows you perform elaborate bone carving to make bone trade crafts and sharp blades.</description>
+				<totalCost>200</totalCost>
+				<prerequisites>
+					<li>ExamineFauna</li>
+				</prerequisites>
+				<researchMods>
+					<li>
+						<specialAction>RA.ResearchMods.BoneWorking</specialAction>
+					</li>
+				</researchMods>
+			</ResearchProjectDef>
+			
+			<ResearchProjectDef>
 				<defName>LeatherWorking</defName>
 				<label>leather working</label>
 				<description>Allows you to craft apparel from animals' hides.</description>
@@ -65,8 +94,12 @@
 				<prerequisites>
 					<li>ExamineFauna</li>
 				</prerequisites>
+				<researchMods>
+					<li>
+						<specialAction>RA.ResearchMods.LeatherWorking</specialAction>
+					</li>
+				</researchMods>
 			</ResearchProjectDef>
-
 			
 			<ResearchProjectDef>
 				<defName>AnimalHusbandry</defName>
@@ -82,8 +115,13 @@
 	<ResearchProjectDef>
 		<defName>StoneWorking</defName>
 		<label>stone working</label>
-		<description>Allows you to cut stone chunks into blocks, make statues and provide stone pommel for weapons and tools.</description>
+		<description>Allows you to cut stone chunks into blocks and allows you perform elaborate stone carving to make stone trade crafts and sharp blades.</description>
 		<totalCost>200</totalCost>
+		<researchMods>
+			<li>
+				<specialAction>RA.ResearchMods.StoneWorking</specialAction>
+			</li>
+		</researchMods>
 	</ResearchProjectDef>
 	
 

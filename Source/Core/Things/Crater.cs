@@ -1,32 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-using UnityEngine;
-using RimWorld;
 using Verse;
 using Verse.Sound;
-using Verse.AI;
+using UnityEngine;
+using RimWorld;
 
 namespace RA
 {
     public class Crater : ThingWithComps
     {
-        public float innerRadius;
+        public float impactRadius;
+
+        public override void SpawnSetup()
+        {
+            base.SpawnSetup();
+
+            foreach (IntVec3 cell in GenRadial.RadialCellsAround(this.Position, impactRadius, true))
+            {
+                // set open terrain underneath to gravel
+                Thing building = cell.GetThingList().Find(thing => thing.def.category == ThingCategory.Building);
+                if (building == null)
+                {
+                    Find.TerrainGrid.SetTerrain(cell, DefDatabase<TerrainDef>.GetNamed("Gravel"));
+                }
+
+            }
+        }
 
         // change drawsize of the crater if specific radius is set
         public override Graphic Graphic
         {
             get
             {
-                if (innerRadius == 0)
+                if (impactRadius == 0)
                 {
                     return def.graphic;
                 }
                 else
                 {
-                    return GraphicDatabase.Get<Graphic_Single>(def.graphic.path, def.graphic.Shader, new Vector2(def.graphic.drawSize.x * innerRadius, def.graphic.drawSize.y * innerRadius), def.graphic.Color);
+                    return GraphicDatabase.Get<Graphic_Single>(def.graphic.path, def.graphic.Shader, def.graphicData.drawSize * impactRadius * 2, def.graphic.Color);
                 }
             }
         }
@@ -37,7 +49,7 @@ namespace RA
             base.ExposeData();
 
             // Save tickstoimpact to save file
-            Scribe_Values.LookValue<float>(ref innerRadius, "radius");
+            Scribe_Values.LookValue(ref impactRadius, "impactRadius");
         }
     }
 }

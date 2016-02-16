@@ -12,7 +12,7 @@
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
 		<designationCategory>Misc</designationCategory>
-		<researchPrerequisite>Blocked</researchPrerequisite>
+		<researchPrerequisite>SurvivalGuideI</researchPrerequisite>
 	</ThingDef>
 
 
@@ -25,7 +25,7 @@
 		<description>Researchers work here to discover new things.</description>
 		<size>(5,2)</size>
 		<castEdgeShadows>true</castEdgeShadows>
-		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+<!-- 		<staticSunShadowHeight>0.20</staticSunShadowHeight> -->
 		<AltitudeLayer>Waist</AltitudeLayer>
 		<surfaceType>Item</surfaceType>
 		<fillPercent>0.5</fillPercent>
@@ -43,10 +43,10 @@
 	<ThingDef ParentName="ResearchBenchBase">
 		<defName>ResearchBench</defName>
 		<graphicData>
-			<texPath>Things/Building/Production/ResearchBench</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
+			<texPath>Things/Buildings/Misc/ResearchBenches/Neolithic/ResearchBench_Neolithic</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
-			<drawSize>(7,4)</drawSize>
+			<drawSize>(5,2)</drawSize>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
@@ -55,10 +55,13 @@
 			<ResearchSpeedFactor>1.0</ResearchSpeedFactor>
 		</statBases>
 		<stuffCategories>
-			<li>Woody</li>
-			<li>Stony</li>
+			<li>StonyRaw</li>
 		</stuffCategories>
-		<costStuffCount>75</costStuffCount>
+		<costStuffCount>4</costStuffCount>
+		<costList>
+			<Primitive_Handaxe>1</Primitive_Handaxe>
+			<Primitive_Hammer>1</Primitive_Hammer>			
+		</costList>
 		<comps>
 			<li>
 				<compClass>CompAffectedByFacilities</compClass>
@@ -66,38 +69,8 @@
 					<li>MultiAnalyzer</li>
 				</linkableFacilities>
 			</li>
-			<li Class="RA.CompResearcher_Properties">
+			<li>
 				<compClass>RA.CompResearcher</compClass>
-				<researchRecipes>
-					<li>
-						<key>ExamineFlora</key>
-						<value>ExamineFlora</value>
-					</li>
-					<li>
-						<key>BasicFarming</key>
-						<value>BasicFarming</value>
-					</li>
-					<li>
-						<key>ExamineFauna</key>
-						<value>ExamineFauna</value>
-					</li>
-					<li>
-						<key>AnimalHusbandry</key>
-						<value>AnimalHusbandry</value>
-					</li>
-					<li>
-						<key>WoodWorking</key>
-						<value>WoodWorking</value>
-					</li>
-					<li>
-						<key>StoneWorking</key>
-						<value>StoneWorking</value>
-					</li>
-					<li>
-						<key>LeatherWorking</key>
-						<value>ExamineFlora</value>
-					</li>
-				</researchRecipes>
 			</li>
 		</comps>
 	</ThingDef>

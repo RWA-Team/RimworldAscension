@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using Verse;
 using Verse.Sound;
 using RimWorld;
@@ -49,7 +48,7 @@ namespace RA
             if (this.ticksToImpact > 8)
             {
                 // Throw some smoke and fire glow trails
-                MoteThrower.ThrowSmoke(DrawPos, 3f);
+                MoteThrower.ThrowSmoke(DrawPos, 2f);
                 MoteThrower.ThrowFireGlow(DrawPos.ToIntVec3(), 1.5f);
             }
             // Drop the ticks to impact
@@ -59,7 +58,7 @@ namespace RA
             {
                 // Hit the ground
                 // explosion damage multiplier 1f ~ 100 damage
-                SkyfallerUtility.Impact(this, wreck, 10f);
+                SkyfallerUtility.Impact(this, wreck, 20f);
             }
             // If we havent already played the sound and we are low enough
             if (!this.soundPlayed && this.ticksToImpact < 100)
@@ -91,7 +90,7 @@ namespace RA
             // Adjust for altitude
             pos.y = Altitudes.AltitudeFor(AltitudeLayer.Shadows);
             // contract shadow as altitude falls
-            float num = 2f + (float)this.ticksToImpact / 100f;
+            float num = 2f + ticksToImpact / 100f;
             Vector3 s = new Vector3(num, 1f, num);
             Matrix4x4 matrix = default(Matrix4x4);
             matrix.SetTRS(pos, Quaternion.AngleAxis(135f, Vector3.up), s);
@@ -104,8 +103,8 @@ namespace RA
             base.ExposeData();
 
             // Save tickstoimpact to save file
-            Scribe_Values.LookValue<int>(ref this.ticksToImpact, "ticksToImpact");
-            Scribe_Deep.LookDeep<DropPodInfo>(ref this.cargo, "cargo", new object[0]);
+            Scribe_Values.LookValue(ref ticksToImpact, "ticksToImpact");
+            Scribe_Deep.LookDeep(ref cargo, "cargo", new object[0]);
         }
     }
 }

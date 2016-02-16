@@ -43,7 +43,7 @@ namespace RA
             for (int i = 0; i < this.brain.ownedPawns.Count; i++)
             {
                 // merchant
-                if (brain.ownedPawns[i].kindDef == PawnKindDefOf.SpaceSoldier)
+                if (brain.ownedPawns[i].kindDef.label == "merchant")
                 {
                     merchant = brain.ownedPawns[i];
                     merchant.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("GoTo"), merchantDest);

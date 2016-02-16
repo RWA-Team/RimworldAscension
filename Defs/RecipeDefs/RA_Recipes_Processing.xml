@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+	
+	<!--===================== Pottery and similar =====================-->
+	
+	
+	<RecipeDef>
+		<defName>MakeAdobeBricks</defName>
+		<label>make adobe bricks</label>
+		<description>Turn mud into faster-to-dry adobe bricks.</description>
+		<jobString>Adobe brick making.</jobString>
+			<workAmount>300</workAmount>
+			<workSpeedStat>SculptingSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<workSkillLearnFactor>0.1</workSkillLearnFactor>
+			<effectWorking>Sculpt</effectWorking>
+			<soundWorking>Recipe_Sculpt</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Mud</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Hay</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Mud</li>
+				<li>Hay</li>
+			</thingDefs>
+			<!-- alternatively categories: PlantFibres -->
+		</fixedIngredientFilter>
+		<products>
+			<BricksAdobe>1</BricksAdobe>
+		</products>
+	</RecipeDef>
+	
+	
+	<RecipeDef>
+		<defName>ShapeAmphora</defName>
+		<label>make unfired amphorae</label>
+		<description>Turn clay into an unfired amphora.</description>
+		<jobString>Shaping amphorae.</jobString>
+			<workAmount>12000</workAmount>
+			<workSpeedStat>SculptingSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<workSkillLearnFactor>1.0</workSkillLearnFactor>
+			<effectWorking>Sculpt</effectWorking>
+			<soundWorking>Recipe_Sculpt</soundWorking>
+		<unfinishedThingDef>UnfinishedPottery</unfinishedThingDef>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Clay</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Clay</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<UnfiredAmphora>1</UnfiredAmphora>
+		</products>
+	</RecipeDef>
+	
+	
+	<RecipeDef Name="WeavingBase" Abstract="True">
+		<workAmount>12000</workAmount>
+		<workSpeedStat>TailoringSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<workSkillLearnFactor>0.3</workSkillLearnFactor>
+		<effectWorking>Tailor</effectWorking>
+		<soundWorking>Recipe_Tailor</soundWorking>
+	</RecipeDef>
+	
+	
+	<RecipeDef ParentName="WeavingBase">
+		<defName>WeaveCottonCloth</defName>
+		<label>weave cotton cloth</label>
+		<description>Turn cotton lint into a sheet of cotton cloth.</description>
+		<jobString>Cotton weaving.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CottonLint</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CottonLint</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Cloth>1</Cloth>
+		</products>
+	</RecipeDef>
+	
+	
+	<RecipeDef ParentName="WeavingBase">
+		<defName>WeaveLinen</defName>
+		<label>weave linen</label>
+		<description>Turn linen pulp into a sheet of linen.</description>
+		<jobString>Linen weaving.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>LinenPulp</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>LinenPulp</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Linen>1</Linen>
+		</products>
+	</RecipeDef>
+	
+	
+	
+	<!--===================== Other =====================-->
+	
+	
+	<RecipeDef>
+		<workerCounterClass>RecipeWorkerCounter_MakeStoneBlocks</workerCounterClass>
+		<defName>MakeStoneBlocks</defName>
+		<label>make stone blocks</label>
+		<description>Cuts rock chunks into usable stone blocks.</description>
+		<jobString>Stonecutting.</jobString>
+		<workAmount>1600</workAmount>
+		<workSpeedStat>StonecuttingSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<workSkillLearnFactor>0.25</workSkillLearnFactor>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+		<targetCountAdjustment>50</targetCountAdjustment>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneChunks</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<specialProducts>
+			<li>Butchery</li>
+		</specialProducts>
+		<fixedIngredientFilter>
+			<categories>
+				<li>StoneChunks</li>
+			</categories>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	
+
+	<RecipeDef>
+		<defName>ExtractMetalFromSlag</defName>
+		<label>smelt metal from slag</label>
+		<description>Use heat and strong electromagnets to separate useful metal from slag chunks.</description>
+		<jobString>Smelting metal from slag.</jobString>
+			<workAmount>1600</workAmount>
+			<workSpeedStat>SmeltingSpeed</workSpeedStat>
+			<effectWorking>Smelt</effectWorking>
+			<soundWorking>Recipe_Smelt</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ChunkSlagSteel</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<products>
+			<Steel>10</Steel>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ChunkSlagSteel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	
+
+	<RecipeDef>
+		<defName>SmeltWeapon</defName>
+		<label>smelt metal from weapon</label>
+		<description>Use heat and strong electromagnets to separate useful metal from weapons.</description>
+		<jobString>Smelting metal from weapon.</jobString>
+		<workAmount>1600</workAmount>
+		<workSpeedStat>SmeltingSpeed</workSpeedStat>
+		<effectWorking>Smelt</effectWorking>
+		<soundWorking>Recipe_Smelt</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Weapons</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<specialProducts>
+			<li>Smelted</li>
+		</specialProducts>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Weapons</li>
+			</categories>
+			<specialFiltersToDisallow>
+				<li>AllowNonSmeltableWeapons</li>
+			</specialFiltersToDisallow>
+		</fixedIngredientFilter>
+	</RecipeDef>
+
+
+</RecipeDefs>

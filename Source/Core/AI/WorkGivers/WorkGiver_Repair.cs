@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 using RimWorld;
@@ -11,8 +9,8 @@ namespace RA
 {
     public class WorkGiver_Repair : WorkGiver_WorkWithTools
     {
-        //used to avoid conflict with Construction and Repair jobs cause they are using the same worktype tool
-        public static bool currentWorkTypeKeepsTool;
+        //used to keep current tool equipped if there are available unfinished jobs for this tool type
+        public static bool hasPotentialJobs;
 
         public WorkGiver_Repair()
         {
@@ -34,9 +32,9 @@ namespace RA
 
             IEnumerable<Thing> availableTargets = designatedTargets.Where(target => target.Faction == pawn.Faction && Find.AreaHome[target.Position] && pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()) && target.def.useHitPoints && target.HitPoints < target.MaxHitPoints && Find.DesignationManager.DesignationOn(target, DesignationDefOf.Deconstruct) == null && !target.IsBurning());
 
-            currentWorkTypeKeepsTool = availableTargets.Count() > 0 ? true : false;
+            hasPotentialJobs = availableTargets.Count() > 0 ? true : false;
 
-            return DoJobWithTool(pawn, availableTargets, ActualJob, WorkGiver_ConstructFinishFrames.currentWorkTypeKeepsTool);
+            return DoJobWithTool(pawn, availableTargets, ActualJob);
         }
     }
 }
