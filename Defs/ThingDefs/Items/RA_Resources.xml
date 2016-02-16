@@ -15,20 +15,9 @@
 
 	<ThingDef Abstract="True" Name="ResourceBase" >
 		<thingClass>ThingWithComps</thingClass>
-<<<<<<< HEAD
 		<category>Item</category>
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
-=======
-<<<<<<< HEAD
-		<category>Item</category>
-		<resourceReadoutPriority>Middle</resourceReadoutPriority>
-=======
-			<label>unspecified resource</label>
-		<category>Item</category>
-		<resourceReadoutPriority>Middle</resourceReadoutPriority>
-			<useHitPoints>true</useHitPoints>
->>>>>>> origin/master
->>>>>>> refs/remotes/origin/master
+		<useHitPoints>true</useHitPoints>
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
 		<stackLimit>75</stackLimit>
@@ -42,86 +31,8 @@
 		<rotatable>false</rotatable>
 		<pathCost>15</pathCost>
 	</ThingDef>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> refs/remotes/origin/master
 
 
-	<!--===================== Plant Resources =====================-->
-
-
-	<ThingDef ParentName="ResourceBase">
-		<defName>LeafBundle</defName>
-		<label>leaf bundle</label>
-		<description>A bundle of leaves.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/LeafBundle</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<soundInteract>Grain_Drop</soundInteract>
-		<soundDrop>Grain_Drop</soundDrop>
-		<thingCategories>
-			<li>ResourcesRaw</li>
-		</thingCategories>
-		<comps>
-			<li Class="CompProperties_Rottable">
-				<daysToRotStart>10</daysToRotStart>
-				<rotDestroys>true</rotDestroys>
-			</li>
-		</comps>
-	</ThingDef>
-
-
-
-	<ThingDef ParentName="ResourceBase">
-		<defName>WoodLog</defName>
-		<label>wood</label>
-		<description>Wood from trees or other fibrous plants. Useful for building structures, weapons, and even simple prosthetics. A raw stick of wood can be used as a weapon in a pinch.</description>
-		<graphicData>
-			<texPath>Things/Item/Resource/WoodLog</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-		</graphicData>
-		<thingCategories>
-			<li>ResourcesRaw</li>
-		</thingCategories>
-		<soundInteract>Wood_Drop</soundInteract>
-		<soundDrop>Wood_Drop</soundDrop>
-		<statBases>
-			<MarketValue>1.4</MarketValue>
-			<MaxHitPoints>120</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-			<DeteriorationRate>1</DeteriorationRate>
-			<SharpDamageMultiplier>0.4</SharpDamageMultiplier>
-			<MaxBurningTemp>1100</MaxBurningTemp>
-			<BurnDuration>625</BurnDuration>
-		</statBases>
-		<stuffProps>
-			<appearance>Planks</appearance>
-			<stuffAdjective>wooden</stuffAdjective>
-			<categories>
-				<li>Woody</li>
-			</categories>
-			<color>(133,97,67)</color>
-			<constructEffect>ConstructWood</constructEffect>
-			<soundImpactStuff>BulletImpactWood</soundImpactStuff>
-			<soundMeleeHitSharp>MeleeHit_Wood</soundMeleeHitSharp>
-			<soundMeleeHitBlunt>MeleeHit_Wood</soundMeleeHitBlunt>
-			<statOffsets>
-				<Beauty>2</Beauty>
-			</statOffsets>
-			<statFactors>
-				<Flammability>1</Flammability>
-			</statFactors>
-		</stuffProps>
-		<isBodyPartOrImplant>true</isBodyPartOrImplant>
-		<techHediffsTags>
-			<li>Poor</li>
-		</techHediffsTags>
-<<<<<<< HEAD
-=======
-=======
-	
 	<ThingDef Abstract="True" Name="OrganicProductBase" ParentName="ResourceBase">
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<statBases>
@@ -132,8 +43,8 @@
 		<tickerType>Rare</tickerType>
 	</ThingDef>
 
-	
-	<!--===================== Plant Resources =====================-->
+
+	<!--=================== Plant Resources ===================-->
 
 
 	<ThingDef ParentName="OrganicProductBase">
@@ -181,9 +92,8 @@
 		</comps>
 		<!--Flax -[drying]-> Dried flax -[weaving]-> Linen
 			CompProperties_Dryable -->
-	</ThingDef>
-	
-	
+	</ThingDef>	
+
 	<ThingDef ParentName="ResourceBase">
 		<defName>BastFibre</defName>
 		<label>bast fibre</label>
@@ -203,9 +113,8 @@
 			<MarketValue>0.2</MarketValue>
 		</statBases>
 		<!--BastFibre -[processing]-> Product-->
-	</ThingDef>
-	
-	
+	</ThingDef>	
+
 	<ThingDef ParentName="OrganicProductBase">
 		<defName>Grass</defName>
 		<label>grass</label>
@@ -249,9 +158,8 @@
 		</ingestible>
 		<tradeability>Never</tradeability>
 		<techLevel>Neolithic</techLevel>
-	</ThingDef>
-	
-	
+	</ThingDef>	
+
 	<ThingDef ParentName="OrganicProductBase">
 		<defName>Hay</defName>
 		<label>hay</label>
@@ -281,8 +189,7 @@
 		</ingestible>
 		<techLevel>Neolithic</techLevel>
 	</ThingDef>
-	
-	
+
 	<ThingDef ParentName="OrganicProductBase">
 		<defName>CottonLint</defName>
 		<label>cotton lint</label>
@@ -304,9 +211,8 @@
 			</li>
 		</comps>
 		<!--Raw cotton -[weaving]-> Cloth-->
-	</ThingDef>
-	
-	
+	</ThingDef>	
+
 	<ThingDef ParentName="OrganicProductBase">
 		<defName>LinenPulp</defName>
 		<label>linen pulp</label>
@@ -329,33 +235,9 @@
 			</li>
 		</comps>
 	</ThingDef>
-	
-	
-	<ThingDef ParentName="ResourceBase">
-		<defName>LeafBundle</defName>
-		<label>leaf bundle</label>
-		<description>A bundle of leaves.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/LeafBundle</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<soundInteract>Grain_Drop</soundInteract>
-		<soundDrop>Grain_Drop</soundDrop>
-		<thingCategories>
-			<li>ResourcesRaw</li>
-		</thingCategories>
-		<comps>
-			<li Class="CompProperties_Rottable">
-				<daysToRotStart>10</daysToRotStart>
-				<rotDestroys>true</rotDestroys>
-			</li>
-		</comps>
->>>>>>> origin/master
->>>>>>> refs/remotes/origin/master
-	</ThingDef>
 
 
-	<!--===================== Animal Resources =====================-->
+	<!--=================== Animal Resources ===================-->
 
 
 	<ThingDef ParentName="ResourceBase">
@@ -538,7 +420,7 @@
 	<!--===================== Stone Blocks =====================-->
 
 
-	<ThingDef ParentName="ResourceBase" Name="StoneBlocksBase" Abstract="True">
+	<ThingDef Name="StoneBlocksBase" ParentName="ResourceBase"  Abstract="True">
 		<description>Blocks of stone. Mostly useful for building long-lasting, simple structures.</description>
 		<graphicData>
 			<texPath>Things/Item/Resource/StoneBlocks</texPath>
@@ -576,16 +458,8 @@
 				<TrapMeleeDamage>1.5</TrapMeleeDamage>
 			</statFactors>
 		</stuffProps>
-	</ThingDef>
+	</ThingDef>	
 
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
->>>>>>> refs/remotes/origin/master
 	<ThingDef ParentName="StoneBlocksBase">
 		<defName>BlocksSandstone</defName>
 		<label>sandstone blocks</label>
@@ -690,10 +564,6 @@
 	</ThingDef>
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 	<!--===================== Bricks =====================-->
 
 
@@ -713,7 +583,7 @@
 			<li>Bricks</li>
 		</thingCategories>
 	</ThingDef>
-	
+
 	<ThingDef ParentName="BricksBase" Name="StuffBricksBase" Abstract="True">
 		<stuffProps>
 			<categories>
@@ -856,6 +726,4 @@
 	</ThingDef>
 
 
->>>>>>> origin/master
->>>>>>> refs/remotes/origin/master
 </Defs>

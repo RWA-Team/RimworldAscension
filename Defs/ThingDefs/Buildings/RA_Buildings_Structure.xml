@@ -16,7 +16,7 @@
 	</ThingDef>
 
 
-	<!--========================= Doors =============================-->
+	<!--====================== Doors ==========================-->
 	
 
 	<ThingDef ParentName="BuildingBase" Name="DoorBase" Abstract="True">
@@ -170,5 +170,6 @@
 			<li>Woody</li>
 		</stuffCategories>
 	</ThingDef>
+	
 	
 </Buildings>

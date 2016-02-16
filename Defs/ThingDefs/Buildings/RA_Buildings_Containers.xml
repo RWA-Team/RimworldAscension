@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
+
 	<ThingDef Name="StorageBase" Abstract="True">
 		<category>Building</category>
 		<thingClass>Building_Storage</thingClass>
@@ -66,95 +67,7 @@
 			<li Class="RA.CompContainer_Properties">
 				<compClass>RA.CompContainer</compClass>
 				<itemsCap>4</itemsCap>
-			</li>
-			<li>
-				<compClass>RA.CompRefrigerated</compClass>
-			</li>
-		</comps>
-	</ThingDef>
-	
-
-
-	<ThingDef ParentName="StorageBase">
-		<defName>Container_Storage</defName>
-		<label>storage box</label>
-		<graphicData>
-<<<<<<< HEAD:Defs/ThingDefs/Buildings/RA_Buildings_Containers.xml
-			<texPath>Things/Buildings/Furniture/Containers/Storage</texPath>
-=======
-<<<<<<< HEAD:Defs/ThingDefs/Buildings/RA_Buildings_Containers.xml
-			<texPath>Things/Buildings/Furniture/Containers/Storage</texPath>
-=======
-			<texPath>Things/Buildings/Furnitures/Containers/Storage</texPath>
->>>>>>> origin/master:Defs/ThingDefs/Buildings/RA_Buildings_Containers.xml
->>>>>>> refs/remotes/origin/master:Defs/ThingDefs/Buildings/RA_Buildings_Containers.xml
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<WorkToMake>1000</WorkToMake>
-			<Flammability>1.0</Flammability>
-		</statBases>
-		<Description>A storage container that holds up to ten item stacks at once.</Description>
-		<stuffCategories>
-			<li>Metallic</li>
-			<li>Woody</li>
-		</stuffCategories>
-		<costStuffCount>75</costStuffCount>
-		<comps>
-			<li Class="RA.CompContainer_Properties">
-				<compClass>RA.CompContainer</compClass>
-				<itemsCap>10</itemsCap>
-<<<<<<< HEAD:Defs/ThingDefs/Buildings/RA_Buildings_Containers.xml
-				<rotModifier>1</rotModifier>
-=======
-<<<<<<< HEAD:Defs/ThingDefs/Buildings/RA_Buildings_Containers.xml
-				<rotModifier>1</rotModifier>
-=======
-			</li>
-		</comps>
-	</ThingDef>
-	
-
-	<ThingDef ParentName="StorageBase">
-		<defName>Container_Fridge</defName>
-		<label>refrigerated storage</label>
-		<graphicData>
-			<texPath>Things/Buildings/Furnitures/Containers/Fridge</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<WorkToMake>1000</WorkToMake>
-			<Flammability>1.0</Flammability>
-		</statBases>
-		<Description>A storage container that holds and refrigerates up to five stacks of items at once.</Description>
-		<stuffCategories>
-			<li>Metallic</li>
-		</stuffCategories>
-		<costStuffCount>75</costStuffCount>
-		<building>
-			<fixedStorageSettings>
-				<filter>
-					<categories>
-						<li>Foods</li>
-					</categories>
-				</filter>
-			</fixedStorageSettings>
-		</building>
-		<comps>
-			<li Class="RA.CompContainer_Properties">
-				<compClass>RA.CompContainer</compClass>
-				<itemsCap>5</itemsCap>
-			</li>
-			<li>
-				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>200</basePowerConsumption>
-			</li>
-			<li>
-				<compClass>RA.CompRefrigerated</compClass>
->>>>>>> origin/master:Defs/ThingDefs/Buildings/RA_Buildings_Containers.xml
->>>>>>> refs/remotes/origin/master:Defs/ThingDefs/Buildings/RA_Buildings_Containers.xml
+				<rotModifier>0.75</rotModifier>
 			</li>
 		</comps>
 	</ThingDef>
