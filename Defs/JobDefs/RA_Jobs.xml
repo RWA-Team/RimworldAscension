@@ -20,13 +20,6 @@
 		<reportString>Doing bill at TargetA.</reportString>
 		<suspendable>false</suspendable>
 	</JobDef>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
->>>>>>> refs/remotes/origin/master
 
 	<JobDef>
 		<defName>GoTrading</defName>

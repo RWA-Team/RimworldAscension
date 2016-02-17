@@ -1,57 +1,48 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 using UnityEngine;
 using Verse;
+using RimWorld;
 
 namespace RA
 {
-    public class Graphic_StuffBased : Graphic_Appearances
+    public class Graphic_StuffBased : Graphic_Collection
     {
+        public Dictionary<StuffCategoryDef, Graphic> stuffBasedGraphics;
+
+        // determine whach graphic(texture) to show 
+        public override Material MatSingle
+        {
+            get
+            {
+                return this.subGraphics[0].MatSingle;
+            }
+        }
+
+        // rearrange all graphics in array to proper positions, based on they stuffCategory, setting all missing graphics as BadGraphic material
         public override void Init(GraphicRequest req)
         {
             base.Init(req);
-            Graphic[] array = new Graphic[this.subGraphics.Length];
+
+            // subGraphics - initial graphic set, consists of all textures in the thing texture folder
+            stuffBasedGraphics = new Dictionary<StuffCategoryDef, Graphic>(this.subGraphics.Length);
+
+            Graphic graphicCurrent;
             for (int i = 0; i < this.subGraphics.Length; i++)
             {
-                array[i] = this.subGraphics[i];
-            }
-            this.subGraphics = new Graphic[Enum.GetNames(typeof(StuffAppearance)).Length];
-            IEnumerator enumerator = Enum.GetValues(typeof(StuffAppearance)).GetEnumerator();
-            try
-            {
-                while (enumerator.MoveNext())
-                {
-                    StuffAppearance stuffAppearance = (StuffAppearance)((byte)enumerator.Current);
-                    Graphic graphic = BaseContent.BadGraphic;
-                    for (int j = 0; j < array.Length; j++)
-                    {
-                        Graphic graphic2 = array[j];
-                        string[] array2 = graphic2.MatSingle.name.Split(new char[]
-                        {
-                            '_'
-                        });
-                        string a = array2[array2.Length - 1];
-                        if (a == stuffAppearance.ToString())
-                        {
-                            graphic = graphic2;
-                            break;
-                        }
-                        if (graphic == null && a == StuffAppearance.Smooth.ToString())
-                        {
-                            graphic = graphic2;
-                        }
-                    }
-                    this.subGraphics[(int)stuffAppearance] = graphic;
-                }
-            }
-            finally
-            {
-                IDisposable disposable = enumerator as IDisposable;
-                if (disposable != null)
-                {
-                    disposable.Dispose();
-                }
+                graphicCurrent = this.subGraphics[i];
+
+                // stuff category def should be the second part in texture name (Cape_Leathery_Front)
+                string[] nameParts = graphicCurrent.MatSingle.name.Split('_');
+                string stuffCatName = nameParts[1];
+
+                StuffCategoryDef category = DefDatabase<StuffCategoryDef>.GetNamed(stuffCatName);
+                if (category != null)
+                    stuffBasedGraphics.Add(category, graphicCurrent);
+                else
+                    stuffBasedGraphics.Add(category, BaseContent.BadGraphic);
             }
         }
 
@@ -59,31 +50,34 @@ namespace RA
         {
             if (newColorTwo != Color.white)
             {
-                Log.ErrorOnce("Cannot use Graphic_Appearances.GetColoredVersion with a non-white colorTwo.", 9910251);
+                Log.ErrorOnce("Cannot use Graphic_Appearances.GetColoredVersion with a non-white colorTwo.", 9910272);
             }
-            return GraphicDatabase.Get<Graphic_Appearances>(this.path, newShader, this.drawSize, newColor);
+            return GraphicDatabase.Get<Graphic_StuffBased>(this.path, newShader, this.drawSize, newColor);
         }
 
         public override Material MatSingleFor(Thing thing)
         {
-            StuffAppearance stuffAppearance = StuffAppearance.Smooth;
             if (thing != null && thing.Stuff != null)
             {
-                stuffAppearance = thing.Stuff.stuffProps.appearance;
+                return stuffBasedGraphics[thing.Stuff.stuffProps.categories[0]].MatSingleFor(thing);
             }
-            Graphic graphic = this.subGraphics[(int)stuffAppearance];
-            return graphic.MatSingleFor(thing);
+            else
+            {
+                Log.Error(string.Format("No graphic for {0} of {1} category.", thing, thing.Stuff.stuffProps.categories[0]));
+                return null;
+            }
         }
 
         public override void DrawWorker(Vector3 loc, Rot4 rot, ThingDef thingDef, Thing thing)
         {
-            StuffAppearance stuffAppearance = StuffAppearance.Smooth;
             if (thing != null && thing.Stuff != null)
             {
-                stuffAppearance = thing.Stuff.stuffProps.appearance;
+                stuffBasedGraphics[thing.Stuff.stuffProps.categories[0]].DrawWorker(loc, rot, thingDef, thing);
             }
-            Graphic graphic = this.subGraphics[(int)stuffAppearance];
-            graphic.DrawWorker(loc, rot, thingDef, thing);
+            else
+            {
+                Log.Error(string.Format("No graphic for {0} of {1} category.", thing, thing.Stuff.stuffProps.categories[0]));
+            }
         }
 
         public override string ToString()

@@ -38,7 +38,7 @@
 		<defName>Container_Amphora</defName>
 		<label>Storage Box</label>
 		<graphicData>
-			<texPath>Things/Buildings/Furnitures/Containers/Storage</texPath>
+			<texPath>Things/Buildings/Furniture/Containers/Storage</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
