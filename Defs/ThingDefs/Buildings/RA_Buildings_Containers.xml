@@ -38,13 +38,8 @@
 		<defName>Container_Amphora</defName>
 		<label>Storage Box</label>
 		<graphicData>
-<<<<<<< HEAD
 			<texPath>Things/Buildings/Furniture/Containers</texPath>
 			<graphicClass>RA.Graphic_StuffBased</graphicClass>
-=======
-			<texPath>Things/Buildings/Furniture/Containers/Storage</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
->>>>>>> origin/Wivex-branch
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
