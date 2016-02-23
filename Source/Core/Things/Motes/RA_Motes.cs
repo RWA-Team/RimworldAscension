@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RA
 {
-    public static class SpecialMotes
+    public static class RA_Motes
     {
         public static void ThrowSmoke(Vector3 loc, float size, string moteDefName)
         {

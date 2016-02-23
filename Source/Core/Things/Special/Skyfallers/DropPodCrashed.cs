@@ -46,7 +46,7 @@ namespace RA
             foreach (IntVec3 damagedCell in damagedCells)
             {
                 // Throw smoke mote
-                SpecialMotes.ThrowSmokeBlack(damagedCell.ToVector3(), 0.5f);
+                RA_Motes.ThrowSmokeBlack(damagedCell.ToVector3(), 0.5f);
             }
         }
 

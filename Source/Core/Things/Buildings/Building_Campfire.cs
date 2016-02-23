@@ -46,7 +46,7 @@ namespace RA
 
         public override void ThrowSmoke(Vector3 loc, float size)
         {
-            SpecialMotes.ThrowSmokeBlack_Signal(loc, size);
+            RA_Motes.ThrowSmokeBlack_Signal(loc, size);
         }
 
         public void SendSignal()

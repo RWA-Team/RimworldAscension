@@ -102,7 +102,7 @@ namespace RA
 
         public virtual void ThrowSmoke(Vector3 loc, float size)
         {
-            SpecialMotes.ThrowSmokeWhite(loc, size);
+            RA_Motes.ThrowSmokeWhite(loc, size);
         }
 
         public bool ManuallyOperated
