@@ -9,8 +9,9 @@
 		<windowClass>RA.MainTabWindow_Architect</windowClass>
 		<order>1</order>
 		<defaultToggleKey>Tab</defaultToggleKey>
-	</MainTabDef>	
-
+	</MainTabDef>
+	
+	
 	<MainTabDef>
 		<defName>Research</defName>
 		<label>research</label>

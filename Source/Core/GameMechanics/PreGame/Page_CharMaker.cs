@@ -30,7 +30,7 @@ namespace RA
 			this.soundAppear = null;
 			if (generateColonists || MapInitData.colonists.Count == 0)
 			{
-                MapInitData.GenerateDefaultColonistsWithFaction();
+                MapIniter_NewGame.GenerateDefaultColonistsWithFaction();
 			}
 			this.curPawn = MapInitData.colonists[0];
 		}

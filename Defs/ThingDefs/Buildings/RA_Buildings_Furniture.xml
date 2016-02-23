@@ -53,7 +53,7 @@
 	<!--============================== Beds ==============================-->
 
 
-<!-- 	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="BuildingBase">
 		<defName>LeafBed</defName>
 		<label>leafy bed</label>
 		<Description>A makeshift bed, made from logs and leaves.</Description>
@@ -98,7 +98,7 @@
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
 		<researchPrerequisite>ExamineFlora</researchPrerequisite>
-	</ThingDef>	 -->
+	</ThingDef>	
 
 	<!--
 	<ThingDef ParentName="FurnitureBase">

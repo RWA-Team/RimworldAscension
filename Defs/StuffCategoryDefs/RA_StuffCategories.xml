@@ -11,11 +11,18 @@
 		<defName>StonyRaw</defName>
 		<label>raw stony</label>
 	</StuffCategoryDef>
+<<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
+
+=======
 	
 	<StuffCategoryDef>	<!-- ADDED by Alistaire for Mud bricks -->
 		<defName>Bricky</defName>
 		<label>bricky</label>
 	</StuffCategoryDef>
-	
+>>>>>>> origin/master
+>>>>>>> refs/remotes/origin/master
 
 </Defs>

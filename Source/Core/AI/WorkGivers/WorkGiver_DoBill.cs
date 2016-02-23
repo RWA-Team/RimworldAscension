@@ -319,6 +319,7 @@ namespace RA
             }
             if (thing.def == this.def.singleBillGiverDef || ThingRequestGroup.PotentialBillGiver.Includes(thing.def))
             {
+                Log.Message("true");
                 return true;
             }
             if (pawn != null)

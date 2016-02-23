@@ -2,44 +2,12 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-using Verse;
-using RimWorld;
-
 namespace RA
 {
-    public class DetoursInitializer : ITab
+    public static class Detours
     {
         public static List<string> detoured = new List<string>();
         public static List<string> destinations = new List<string>();
-
-        // ITab requirement
-        protected override void FillTab() { }
-
-        public DetoursInitializer()
-        {
-            if (Prefs.DevMode)
-                Log.Message("Detours initialized");
-
-            // Detour RimWorld.ThingSelectionUtility.SelectableNow
-            MethodInfo vanillaSelectableNow = typeof(ThingSelectionUtility).GetMethod("SelectableNow", BindingFlags.Static | BindingFlags.Public);
-            MethodInfo newSelectableNow = typeof(RA_ThingSelectionUtility).GetMethod("SelectableNow", BindingFlags.Static | BindingFlags.Public);
-            TryDetourFromTo(vanillaSelectableNow, newSelectableNow);
-
-            // Detour Verse.MapInitData.GenerateDefaultColonistsWithFaction
-            MethodInfo vanillaInitNewGeneratedMap = typeof(MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
-            MethodInfo newInitNewGeneratedMap = typeof(RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
-            TryDetourFromTo(vanillaInitNewGeneratedMap, newInitNewGeneratedMap);
-
-            // Detour RimWorld.MainMenuDrawer.MainMenuOnGUI
-            MethodInfo vanillaDoMainMenuButtons = typeof(MainMenuDrawer).GetMethod("MainMenuOnGUI", BindingFlags.Static | BindingFlags.Public);
-            MethodInfo newDoMainMenuButtons = typeof(RA_MainMenuDrawer).GetMethod("MainMenuOnGUI", BindingFlags.Static | BindingFlags.Public);
-            TryDetourFromTo(vanillaDoMainMenuButtons, newDoMainMenuButtons);
-
-            // Detour RimWorld.UI_BackgroundMain.BackgroundOnGUI
-            MethodInfo vanillaBackgroundOnGUI = typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI", BindingFlags.Instance | BindingFlags.Public);
-            MethodInfo newBackgroundOnGUI = typeof(RA_UI_BackgroundMain).GetMethod("BackgroundOnGUI", BindingFlags.Instance | BindingFlags.Public);
-            TryDetourFromTo(vanillaBackgroundOnGUI, newBackgroundOnGUI);
-        }
 
         /**
             This is a basic first implementation of the IL method 'hooks' (detours) made possible by RawCode's work;
@@ -52,7 +20,7 @@ namespace RA
             // keep track of detours and spit out some messaging
             string sourceString = source.DeclaringType.FullName + "." + source.Name;
             string destinationString = destination.DeclaringType.FullName + "." + destination.Name;
-
+            
             detoured.Add(sourceString);
             destinations.Add(destinationString);
 

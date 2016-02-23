@@ -1,15 +1,18 @@
-﻿using RimWorld;
-using RimWorld.Planet;
-
-using System.IO;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.IO;
+
+using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace RA
 {
-    public static class RA_MapIniter_NewGame
+    public static class MapIniter_NewGame
     {
-        private const int GameStartHourOfDay = 6;
+        public const int GameStartHourOfDay = 6;
 
         public static void InitNewGeneratedMap()
         {
@@ -20,7 +23,7 @@ namespace RA
             if (!MapInitData.startedFromEntry)
             {
                 Game.Mode = GameMode.Entry;
-                if (!TryLoadNewestWorld())
+                if (!MapIniter_NewGame.TryLoadNewestWorld())
                 {
                     WorldGenerator.GenerateWorld();
                 }
@@ -28,7 +31,7 @@ namespace RA
                 MapInitData.ChooseDefaultDifficulty();
                 Rand.RandomizeSeedFromTime();
                 MapInitData.ChooseDecentLandingSite();
-                GenerateDefaultColonistsWithFaction();
+                MapInitData.GenerateDefaultColonistsWithFaction();
                 SetColonyFactionIntoWorld();
                 MapInitData.mapSize = 150;
             }
@@ -63,7 +66,7 @@ namespace RA
             if (MapInitData.startedFromEntry)
             {
                 Find.MusicManagerMap.disabled = true;
-                DiaNode diaNode = new DiaNode("GameStartDialog".Translate());
+                DiaNode diaNode = new DiaNode(GenerateDefaultStartMessage());
                 DiaOption diaOption = new DiaOption();
                 diaOption.resolveTree = true;
                 diaOption.action = delegate
@@ -77,6 +80,11 @@ namespace RA
                 dialog_NodeTree.soundClose = SoundDef.Named("GameStartSting");
                 Find.WindowStack.Add(dialog_NodeTree);
             }
+        }
+
+        public static string GenerateDefaultStartMessage()
+        {
+        	return "RA_GameStartDialog".Translate();
         }
 
         public static void GenerateDefaultColonistsWithFaction()
@@ -105,7 +113,7 @@ namespace RA
         {
             FileInfo fileInfo = (from wf in SavedWorldsDatabase.AllWorldFiles
                                  orderby wf.LastWriteTime descending
-                                 select wf).FirstOrDefault();
+                                 select wf).FirstOrDefault<FileInfo>();
             if (fileInfo == null)
             {
                 return false;

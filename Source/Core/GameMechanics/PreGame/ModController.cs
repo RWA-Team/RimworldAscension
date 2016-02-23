@@ -1,10 +1,11 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using Verse;
 
 namespace RA
 {
-    public class RA_Controller : MonoBehaviour
+	public class ModController : MonoBehaviour
 	{
 		public Window currentLayer;
 		public bool gameplay;
@@ -37,27 +38,28 @@ namespace RA
 			base.enabled = true;
 		}
 
-        public void OnLevelWasLoaded(int level)
-        {
-            if (level == 0)
-            {
-                this.gameplay = false;
-                base.enabled = true;
-            }
-            if (level == 1)
-            {
-                this.gameplay = true;
-                base.enabled = false;
+		public void OnLevelWasLoaded(int level)
+		{
+			if (level == 0)
+			{
+				this.gameplay = false;
+				base.enabled = true;
+				return;
+			}
+			if (level == 1)
+			{
+				this.gameplay = true;
+				base.enabled = false;
 
-                if (ModEnabled)
-                {
-                    RootMap component = GameObject.Find("GameCoreDummy").GetComponent<RootMap>();
-                    component.enabled = false;
-                    DestroyImmediate(component);
-                    GameObject.Find("GameCoreDummy").AddComponent<RA_RootMap>();
-                }
-            }
-        }
+				if (ModEnabled)
+				{
+                        Verse.RootMap component = GameObject.Find("GameCoreDummy").GetComponent<Verse.RootMap>();
+                        component.enabled = false;
+						UnityEngine.Object.DestroyImmediate(component);
+                        GameObject.Find("GameCoreDummy").AddComponent<RA_RootMap>();
+				}
+			}
+		}
 
         public virtual void Update()
         {

@@ -31,7 +31,7 @@ namespace RA
         public Graphic fireGraphic_current;
         public Graphic fuelGraphic;
 
-        public bool autoConsumeMode;
+        public bool sustainHeatMode = false;
         public float fuelStackRefillPercent = 0.5f;
         public int currentFuelBurnDuration = 0;
 
@@ -59,7 +59,6 @@ namespace RA
 
             // required comps initialize
             compFueled = this.TryGetComp<CompFueled>();
-            autoConsumeMode = compFueled.Properties.defaultAutoConsume;
             compHeatPusher = this.TryGetComp<CompHeatPusher>();
             heatPerSecond_fromXML = compHeatPusher.props.heatPerSecond;
             compGlower = this.TryGetComp<CompGlower>();
@@ -92,17 +91,12 @@ namespace RA
             AdjustInternalTemp();            
             AdjustGlowerAndHeater();
 
-            // if building is operational, throw smoke mote and draw fire
-            if (Burning)
+            // if building is operational, throw smoke mote and drw fire
+            if (internalTemp > MinBurningTemp)
             {
                 // throw smoke puffs
-                ThrowSmoke(this.DrawPos + compFueled.Properties.smokeDrawOffset, this.RotatedSize.Magnitude / 4);
+                SpecialMotes.ThrowSmokeWhite(this.DrawPos + compFueled.Properties.smokeDrawOffset, this.RotatedSize.Magnitude / 4);
             }
-        }
-
-        public virtual void ThrowSmoke(Vector3 loc, float size)
-        {
-            SpecialMotes.ThrowSmokeWhite(loc, size);
         }
 
         public bool ManuallyOperated
@@ -113,16 +107,6 @@ namespace RA
                 if (pawn != null && !pawn.pather.Moving
                     && pawn.CurJob != null && pawn.CurJob.targetA != null && pawn.CurJob.targetA.HasThing
                     && pawn.CurJob.targetA.Thing == this)
-                    return true;
-                return false;
-            }
-        }
-
-        public bool Burning
-        {
-            get
-            {
-                if (internalTemp >= MinBurningTemp)
                     return true;
                 return false;
             }
@@ -146,26 +130,22 @@ namespace RA
             else
             {
                 // only pawn can burn fuel, and when it's needed
-                if (fuelContainer.Count > 0 && fuelContainer[0].stackCount > 0)
+                if (fuelContainer.Count > 0 && fuelContainer[0].stackCount > 0 && internalTemp <= compFueled.Properties.operatingTemp && ManuallyOperated)
                 {
-                    // burn everthing in auto mode and only if necessary in manual mode
-                    if (autoConsumeMode || (internalTemp <= compFueled.Properties.operatingTemp && ManuallyOperated))
-                    {
-                        currentFuelBurnDuration = (int)fuelContainer[0].GetStatValue(StatDef.Named("BurnDuration"));
-                        currentFuelMaxTemp = fuelContainer[0].GetStatValue(StatDef.Named("MaxBurningTemp"));
-                        if (--fuelContainer[0].stackCount == 0)
-                            fuelContainer.Clear();
-                    }
+                    currentFuelBurnDuration = (int)fuelContainer[0].GetStatValue(StatDef.Named("BurnDuration"));
+                    currentFuelMaxTemp = fuelContainer[0].GetStatValue(StatDef.Named("MaxBurningTemp"));
+                    if (--fuelContainer[0].stackCount == 0)
+                        fuelContainer.Clear();
                 }
                 // if no more fuel to burn, lower inner temperature
                 else
                 {
-                    float surroundTemp = this.Position.GetTemperature();
+                    float minTemp = this.Position.GetTemperature();
 
-                    if (internalTemp > surroundTemp)
+                    if (internalTemp > minTemp)
                     {
                         // limits the decrease value to the local temperature
-                        internalTemp -= (internalTemp - HeatChangePerTick > surroundTemp) ? HeatChangePerTick : internalTemp - surroundTemp;
+                        internalTemp -= (internalTemp - HeatChangePerTick > minTemp) ? HeatChangePerTick : internalTemp - minTemp;
                     }
                 }
             }
@@ -174,7 +154,7 @@ namespace RA
         // adjust glow and heating according to the current inner temperature
         public void AdjustGlowerAndHeater()
         {
-            if (Burning)
+            if (internalTemp >= MinBurningTemp)
             {
                 if (internalTemp <= compFueled.Properties.operatingTemp)
                 {
@@ -215,6 +195,50 @@ namespace RA
             return false;
         }
 
+        public override IEnumerable<Gizmo> GetGizmos()
+        {
+            foreach (Gizmo gizmo in base.GetGizmos())
+                yield return gizmo;
+
+            //yield return new Command_Action
+            //{
+            //    defaultLabel = "Send help signal",
+            //    defaultDesc = "Sends a signal to all nearby friendly factions that you need military assistance. Some of them might even send reinforments to you",
+            //    icon = ContentFinder<Texture2D>.Get("UI/Icons/Upgrade", true),
+            //    activateSound = SoundDef.Named("Click"),
+            //    action = () =>
+            //    {
+            //        smoking = true;
+            //        // sends string signal to all comps which recognized by proper one
+            //        SendSignal();
+            //    }
+            //};
+
+            //// Toggle sustain working mode gizmo
+            //yield return new Command_Toggle
+            //{
+            //    defaultDesc = "Keep burning fuel even when not used.",
+            //    defaultLabel = "Sustain heat",
+            //    icon = ContentFinder<Texture2D>.Get("UI/Icons/Upgrade", true),
+            //    isActive = () => sustainHeatMode,
+            //    toggleAction = () =>
+            //    {
+            //        sustainHeatMode = !sustainHeatMode;
+            //    }
+            //};
+        }
+
+        public void SendSignal()
+        {
+            IncidentParms helpTeamParams = IncidentParmsUtility.GenerateThreatPointsParams();
+            helpTeamParams.forced = true;
+            helpTeamParams.raidArrivalMode = PawnsArriveMode.EdgeWalkIn;
+
+            QueuedIncident queuedIncident = new QueuedIncident(IncidentDef.Named("RaidFriendly"), helpTeamParams);
+            queuedIncident.occurTick = Find.TickManager.TicksGame + IncidentWorker_RaidFriendly.HelpDelay.RandomInRange;
+            Find.Storyteller.incidentQueue.Add(queuedIncident);
+        }
+
         // adds graphic texture to the burner
         public override void DrawAt(Vector3 drawLoc)
         {
@@ -226,7 +250,7 @@ namespace RA
 
         public void TryDrawRandomFire(Vector3 drawLoc)
         {
-            if (Burning)
+            if (internalTemp > MinBurningTemp)
             {
                 float maxFireScale = compFueled.Properties.fireDrawScale;
 
@@ -281,7 +305,7 @@ namespace RA
             base.ExposeData();
 
             Scribe_Deep.LookDeep(ref filterFuelCurrent, "filterFuelCurrent", new object[0]);
-            Scribe_Values.LookValue(ref autoConsumeMode, "sustainHeatMode");
+            Scribe_Values.LookValue(ref sustainHeatMode, "sustainHeatMode");
             Scribe_Values.LookValue(ref fuelStackRefillPercent, "fuelStackRefillPercent");
             Scribe_Values.LookValue(ref currentFuelBurnDuration, "currentFuelBurnDuration");
             Scribe_Values.LookValue(ref internalTemp, "internalTemp");
