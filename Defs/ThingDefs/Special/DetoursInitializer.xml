@@ -1,0 +1,17 @@
+﻿<ThingDefs>
+
+	<!-- Since Itab .ctors called before game loads, we use it as the earliest access point to perform detours-->
+	
+	<ThingDef>
+		<defName>DetoursInitializer</defName>
+		<category>Building</category>
+		<menuHidden>true</menuHidden>
+		<label>DetoursInitializer</label>
+		<thingClass>RA.DetoursInitializer</thingClass>
+		<inspectorTabs>
+			<li>RA.DetoursInitializer</li>
+		</inspectorTabs>
+	</ThingDef>
+	
+	
+</ThingDefs>

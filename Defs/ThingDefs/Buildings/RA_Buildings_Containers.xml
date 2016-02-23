@@ -38,8 +38,8 @@
 		<defName>Container_Amphora</defName>
 		<label>Storage Box</label>
 		<graphicData>
-			<texPath>Things/Buildings/Furniture/Containers/Storage</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Things/Buildings/Furniture/Containers</texPath>
+			<graphicClass>RA.Graphic_StuffBased</graphicClass>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
@@ -49,11 +49,12 @@
 		<Description>An amphora rack capable of storing up to four different types of consumables in their respective amphorae.</Description>
 		<stuffCategories>
 			<li>Woody</li>
+			<li>Stony</li>
 		</stuffCategories>
 		<costStuffCount>20</costStuffCount>
-		<costList>
+<!-- 		<costList>
 			<Amphora>4</Amphora>
-		</costList>
+		</costList> -->
 		<building>
 			<fixedStorageSettings>
 				<filter>
