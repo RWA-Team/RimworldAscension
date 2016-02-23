@@ -18,10 +18,10 @@ namespace RA
         private const int ButCount = 3;
         private const float TitleShift = 15f;
 
-        // required for drawing animation
-        private static readonly List<Texture2D> FramesList = ContentFinder<Texture2D>.GetAllInFolder("UI/MainMenu/Animation").ToList();
-        public static int currentFrame = 0;
-        public static int ticksCounter = 0;
+        //// required for drawing animation
+        //public static readonly List<Texture2D> FramesList = ContentFinder<Texture2D>.GetAllInFolder("UI/MainMenu/Animation").ToList();
+        //public static int currentFrame = 0;
+        //public static int ticksCounter = 0;
 
         private static readonly Texture2D IconBlog = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Blog", true);
         private static readonly Texture2D IconForums = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Forums", true);
@@ -33,24 +33,24 @@ namespace RA
         private static readonly Texture2D TexLudeonLogo = ContentFinder<Texture2D>.Get("UI/HeroArt/LudeonLogoSmall", true);
         private static readonly Vector2 LudeonLogoSize = new Vector2(200f, 58f);
 
-        public static void DrawAnimation(Rect rect, int ticksPerFrame)
-        {
-            GUI.DrawTexture(rect, FramesList[currentFrame], ScaleMode.StretchToFill, true);
+        //public static void DrawAnimation(Rect rect, int ticksPerFrame)
+        //{
+        //    GUI.DrawTexture(rect, FramesList[currentFrame], ScaleMode.StretchToFill, true);
 
-            if (ticksCounter >= ticksPerFrame)
-            {
-                if (currentFrame >= FramesList.Count - 1)
-                    currentFrame = 0;
-                else
-                    currentFrame++;
+        //    if (ticksCounter >= ticksPerFrame)
+        //    {
+        //        if (currentFrame >= FramesList.Count - 1)
+        //            currentFrame = 0;
+        //        else
+        //            currentFrame++;
 
-                ticksCounter = 0;
-            }
-            else
-            {
-                ticksCounter++;
-            }
-        }
+        //        ticksCounter = 0;
+        //    }
+        //    else
+        //    {
+        //        ticksCounter++;
+        //    }
+        //}
 
         public static void MainMenuOnGUI()
         {
