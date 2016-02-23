@@ -22,6 +22,7 @@ namespace RA
         public float fuelDrawScale = 1f;
         public float fireDrawScale = 1f;
         public float operatingTemp = 1000f;
+        public bool defaultAutoConsume = false;
 
         // Default requirement
         public CompFueled_Properties()

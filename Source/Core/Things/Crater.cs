@@ -14,7 +14,7 @@ namespace RA
         public override void SpawnSetup()
         {
             base.SpawnSetup();
-
+            
             foreach (IntVec3 cell in GenRadial.RadialCellsAround(this.Position, impactRadius, true))
             {
                 // set open terrain underneath to gravel

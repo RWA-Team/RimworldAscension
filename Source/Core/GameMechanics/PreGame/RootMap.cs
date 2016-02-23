@@ -8,8 +8,9 @@ using Verse.Steam;
 
 namespace RA
 {
-    public class RA_RootMap : RootMap
+    public class RA_RootMap : Root
     {
+		public Map curMap;
         public static bool globalInitDone;
 
         public override void Start()
@@ -33,12 +34,12 @@ namespace RA
             {
                 Log.Message("Command line arguments: " + GenText.ToSpaceList(commandLineArgs.Skip(1)));
             }
-            if (!RA_RootMap.globalInitDone)
+            if (!globalInitDone)
             {
                 VersionControl.LogVersionNumber();
                 Application.targetFrameRate = 60;
                 Prefs.Init();
-                RA_RootMap.globalInitDone = true;
+                globalInitDone = true;
             }
             Find.ResetReferences();
             if (!PlayDataLoader.loaded)
