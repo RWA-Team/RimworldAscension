@@ -13,16 +13,14 @@ namespace RA
     public abstract class Designator_Place : Designator
     {
         public const float RotButSize = 64f;
-
         public const float RotButSpacing = 10f;
-
         public Rot4 placingRot = Rot4.North;
-
         public static float middleMouseDownTime;
 
         public static readonly Texture2D RotLeftTex = ContentFinder<Texture2D>.Get("UI/Widgets/RotLeft", true);
-
         public static readonly Texture2D RotRightTex = ContentFinder<Texture2D>.Get("UI/Widgets/RotRight", true);
+
+        public static Dictionary<int, Graphic> ghostGraphics = new Dictionary<int, Graphic>();
 
         public abstract BuildableDef PlacingDef
         {
@@ -116,6 +114,56 @@ namespace RA
             }
         }
 
+        public virtual void DrawGhost(Color ghostCol)
+        {
+            DrawGhostThing(Gen.MouseCell(), this.placingRot, (ThingDef)this.PlacingDef, null, ghostCol, AltitudeLayer.Blueprint);
+        }
+
+        public static void DrawGhostThing(IntVec3 center, Rot4 rot, ThingDef thingDef, Graphic baseGraphic, Color ghostCol, AltitudeLayer drawAltitude)
+        {
+            if (baseGraphic == null)
+            {
+                baseGraphic = thingDef.graphic;
+            }
+            Graphic graphic = GhostGraphicFor(baseGraphic, thingDef, ghostCol);
+            Vector3 loc = Gen.TrueCenter(center, rot, thingDef.Size, Altitudes.AltitudeFor(drawAltitude));
+            // calls DrawWorker of the thing's graphic class with the null thing ref
+            graphic.DrawFromDef(loc, rot, thingDef);
+            if (thingDef.PlaceWorkers != null)
+            {
+                for (int i = 0; i < thingDef.PlaceWorkers.Count; i++)
+                {
+                    thingDef.PlaceWorkers[i].DrawGhost(thingDef, center, rot);
+                }
+            }
+        }
+
+        private static Graphic GhostGraphicFor(Graphic baseGraphic, ThingDef thingDef, Color ghostCol)
+        {
+            int hashCode = baseGraphic.GetHashCode() * 399;
+            hashCode ^= thingDef.GetHashCode() * 391;
+            hashCode ^= ghostCol.GetHashCode() * 415;
+            Graphic graphic;
+            // trying to get graphic lass based thing's hashcode
+            if (!ghostGraphics.TryGetValue(hashCode, out graphic))
+            {
+                if (thingDef.graphicData.Linked || thingDef.thingClass == typeof(Building_Door))
+                {
+                    graphic = GraphicDatabase.Get<Graphic_Single>(thingDef.uiIconPath, ShaderDatabase.Transparent, thingDef.graphicData.drawSize, ghostCol);
+                }
+                else if (baseGraphic != null)
+                {
+                    graphic = baseGraphic.GetColoredVersion(ShaderDatabase.Transparent, ghostCol, Color.white);
+                }
+                else
+                {
+                    graphic = thingDef.graphic.GetColoredVersion(ShaderDatabase.Transparent, ghostCol, Color.white);
+                }
+                ghostGraphics.Add(hashCode, graphic);
+            }
+            return graphic;
+        }
+
         public IEnumerable<IntVec3> TradeableCells
         {
             get
@@ -137,11 +185,6 @@ namespace RA
                     }
                 }
             }
-        }
-
-        public virtual void DrawGhost(Color ghostCol)
-        {
-            GhostDrawer.DrawGhostThing(Gen.MouseCell(), this.placingRot, (ThingDef)this.PlacingDef, null, ghostCol, AltitudeLayer.Blueprint);
         }
 
         public void HandleRotationShortcuts()
