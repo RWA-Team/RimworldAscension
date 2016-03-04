@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-
-using UnityEngine;
 using RimWorld;
+using UnityEngine;
 using Verse;
-using Verse.Sound;
-using Verse.AI;
 
 namespace RA
 {
@@ -16,52 +12,30 @@ namespace RA
 
         public BuildableDef entDef;
 
-        public ThingDef stuffDef;
-
         public static readonly Vector2 TerrainTextureCroppedSize = new Vector2(64f, 64f);
 
         public static readonly Vector2 DragPriceDrawOffset = new Vector2(19f, 17f);
 
-        public override BuildableDef PlacingDef
+        public override BuildableDef PlacingDef => entDef;
+
+        // determine conditions of hiding similar gizmos. Added Graphic_StuffBased support
+        public override bool GroupsWith(Gizmo other)
         {
-            get
-            {
-                return this.entDef;
-            }
+            return base.GroupsWith(other) || PlacingDef == (other as Designator_Build)?.PlacingDef;
         }
 
         public override string Label
         {
             get
             {
-                ThingDef thingDef = this.entDef as ThingDef;
-                if (thingDef != null)
-                {
-                    return GenLabel.ThingLabel(thingDef, this.stuffDef, 1);
-                }
-                return this.entDef.label;
+                var thingDef = entDef as ThingDef;
+                return thingDef != null ? GenLabel.ThingLabel(thingDef, stuffDef) : entDef.label;
             }
         }
 
-        public override string Desc
-        {
-            get
-            {
-                return this.entDef.description;
-            }
-        }
+        public override string Desc => entDef.description;
 
-        protected override Color IconDrawColor
-        {
-            get
-            {
-                if (this.stuffDef != null)
-                {
-                    return this.stuffDef.stuffProps.color;
-                }
-                return this.entDef.IconDrawColor;
-            }
-        }
+        protected override Color IconDrawColor => stuffDef?.stuffProps.color ?? entDef.IconDrawColor;
 
         public override bool Visible
         {
@@ -71,63 +45,45 @@ namespace RA
                 {
                     return true;
                 }
-                if (this.entDef.researchPrerequisite != null && !Find.ResearchManager.IsFinished(this.entDef.researchPrerequisite))
+                if (entDef.researchPrerequisite != null && !Find.ResearchManager.IsFinished(entDef.researchPrerequisite))
                 {
                     return false;
                 }
-                if (this.entDef.buildingPrerequisites != null)
+                if (entDef.buildingPrerequisites != null)
                 {
-                    for (int i = 0; i < this.entDef.buildingPrerequisites.Count; i++)
-                    {
-                        if (!Find.ListerBuildings.ColonistsHaveBuilding(this.entDef.buildingPrerequisites[i]))
-                        {
-                            return false;
-                        }
-                    }
+                    return entDef.buildingPrerequisites.All(t => Find.ListerBuildings.ColonistsHaveBuilding(t));
                 }
                 return true;
             }
         }
 
-        public override int DraggableDimensions
-        {
-            get
-            {
-                return this.entDef.placingDraggableDimensions;
-            }
-        }
+        public override int DraggableDimensions => entDef.placingDraggableDimensions;
 
-        public override bool DragDrawMeasurements
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool DragDrawMeasurements => true;
 
         public Designator_Build(BuildableDef entDef)
         {
             this.entDef = entDef;
-            this.icon = entDef.uiIcon;
-            ThingDef thingDef = entDef as ThingDef;
+            icon = entDef.uiIcon;
+            var thingDef = entDef as ThingDef;
             if (thingDef != null)
             {
-                this.iconProportions = thingDef.graphicData.drawSize;
-                this.iconDrawScale = GenUI.IconDrawScale(thingDef);
+                iconProportions = thingDef.graphicData.drawSize;
+                iconDrawScale = GenUI.IconDrawScale(thingDef);
             }
             else
             {
-                this.iconProportions = new Vector2(1f, 1f);
-                this.iconDrawScale = 1f;
+                iconProportions = new Vector2(1f, 1f);
+                iconDrawScale = 1f;
             }
-            TerrainDef terrainDef = entDef as TerrainDef;
+            var terrainDef = entDef as TerrainDef;
             if (terrainDef != null)
             {
-                this.iconTexCoords = new Rect(0f, 0f, Designator_Build.TerrainTextureCroppedSize.x / (float)this.icon.width, Designator_Build.TerrainTextureCroppedSize.y / (float)this.icon.height);
+                iconTexCoords = new Rect(0f, 0f, TerrainTextureCroppedSize.x / icon.width, TerrainTextureCroppedSize.y / icon.height);
             }
             if (thingDef != null && thingDef.MadeFromStuff)
             {
-                this.stuffDef = GenStuff.DefaultStuffFor(thingDef);
+                stuffDef = GenStuff.DefaultStuffFor(thingDef);
             }
         }
 
@@ -136,28 +92,19 @@ namespace RA
             base.DrawMouseAttachments();
             if (!ArchitectCategoryTab.InfoRect.Contains(GenUI.AbsMousePosition()))
             {
-                DesignationDragger dragger = DesignatorManager.Dragger;
-                int num;
-                if (dragger.Dragging)
+                var dragger = DesignatorManager.Dragger;
+                var num = dragger.Dragging ? dragger.DragCells.Count : 1;
+                var num2 = 0f;
+                var vector = Event.current.mousePosition + DragPriceDrawOffset;
+                var list = entDef.CostListAdjusted(stuffDef);
+                foreach (var thingCount in list)
                 {
-                    num = dragger.DragCells.Count<IntVec3>();
-                }
-                else
-                {
-                    num = 1;
-                }
-                float num2 = 0f;
-                Vector2 vector = Event.current.mousePosition + Designator_Build.DragPriceDrawOffset;
-                List<ThingCount> list = this.entDef.CostListAdjusted(this.stuffDef, true);
-                for (int i = 0; i < list.Count; i++)
-                {
-                    ThingCount thingCount = list[i];
-                    float top = vector.y + num2;
-                    Rect position = new Rect(vector.x, top, 27f, 27f);
+                    var top = vector.y + num2;
+                    var position = new Rect(vector.x, top, 27f, 27f);
                     GUI.DrawTexture(position, thingCount.thingDef.uiIcon);
-                    Rect rect = new Rect(vector.x + 29f, top, 999f, 29f);
-                    int num3 = num * thingCount.count;
-                    string text = num3.ToString();
+                    var rect = new Rect(vector.x + 29f, top, 999f, 29f);
+                    var num3 = num * thingCount.count;
+                    var text = num3.ToString();
                     if (Find.ResourceCounter.GetCount(thingCount.thingDef) < num3)
                     {
                         GUI.color = Color.red;
@@ -175,26 +122,27 @@ namespace RA
 
         public override void ProcessInput(Event ev)
         {
-            ThingDef thingDef = this.entDef as ThingDef;
+            var thingDef = entDef as ThingDef;
             if (thingDef == null || !thingDef.MadeFromStuff)
             {
                 base.ProcessInput(ev);
             }
             else
             {
-                List<FloatMenuOption> list = new List<FloatMenuOption>();
-                foreach (ThingDef current in Find.ResourceCounter.AllCountedAmounts.Keys)
+                var list = new List<FloatMenuOption>();
+                foreach (var current in Find.ResourceCounter.AllCountedAmounts.Keys)
                 {
-                    if (current.IsStuff && current.stuffProps.CanMake(thingDef) && (Game.GodMode || Find.ListerThings.ThingsOfDef(current).Count > 0))
+                    if (current.IsStuff && current.stuffProps.CanMake(thingDef) &&
+                        (Game.GodMode || Find.ListerThings.ThingsOfDef(current).Count > 0))
                     {
-                        ThingDef localStuffDef = current;
-                        string labelCap = localStuffDef.LabelCap;
-                        FloatMenuOption item = new FloatMenuOption(labelCap, delegate
+                        var localStuffDef = current;
+                        var labelCap = localStuffDef.LabelCap;
+                        var item = new FloatMenuOption(labelCap, delegate
                         {
-                            this.ProcessInput(ev);
+                            ProcessInput(ev);
                             DesignatorManager.Select(this);
-                            this.stuffDef = localStuffDef;
-                        }, MenuOptionPriority.Medium, null, null);
+                            stuffDef = localStuffDef;
+                        });
                         list.Add(item);
                     }
                 }
@@ -204,8 +152,7 @@ namespace RA
                 }
                 else
                 {
-                    FloatMenu floatMenu = new FloatMenu(list, false);
-                    floatMenu.vanishIfMouseDistant = true;
+                    var floatMenu = new FloatMenu(list) {vanishIfMouseDistant = true};
                     Find.WindowStack.Add(floatMenu);
                     DesignatorManager.Select(this);
                 }
@@ -214,31 +161,31 @@ namespace RA
 
         public override AcceptanceReport CanDesignateCell(IntVec3 c)
         {
-            return GenConstruct.CanPlaceBlueprintAt(this.entDef, c, this.placingRot, Game.GodMode);
+            return GenConstruct.CanPlaceBlueprintAt(entDef, c, placingRot, Game.GodMode);
         }
 
         public override void DesignateSingleCell(IntVec3 c)
         {
-            if (Game.GodMode || this.entDef.GetStatValueAbstract(StatDefOf.WorkToMake, this.stuffDef) == 0f)
+            if (Game.GodMode || entDef.GetStatValueAbstract(StatDefOf.WorkToMake, stuffDef) == 0f)
             {
-                if (this.entDef is TerrainDef)
+                if (entDef is TerrainDef)
                 {
-                    Find.TerrainGrid.SetTerrain(c, (TerrainDef)this.entDef);
+                    Find.TerrainGrid.SetTerrain(c, (TerrainDef)entDef);
                 }
                 else
                 {
-                    Thing thing = ThingMaker.MakeThing((ThingDef)this.entDef, this.stuffDef);
+                    var thing = ThingMaker.MakeThing((ThingDef)entDef, stuffDef);
                     thing.SetFactionDirect(Faction.OfColony);
-                    GenSpawn.Spawn(thing, c, this.placingRot);
+                    GenSpawn.Spawn(thing, c, placingRot);
                 }
             }
             else
             {
-                GenSpawn.WipeExistingThings(c, this.placingRot, this.entDef.blueprintDef, true);
-                GenConstruct.PlaceBlueprintForBuild(this.entDef, c, this.placingRot, Faction.OfColony, this.stuffDef);
+                GenSpawn.WipeExistingThings(c, placingRot, entDef.blueprintDef, true);
+                GenConstruct.PlaceBlueprintForBuild(entDef, c, placingRot, Faction.OfColony, stuffDef);
             }
-            MoteThrower.ThrowMetaPuffs(GenAdj.OccupiedRect(c, this.placingRot, this.entDef.Size));
-            if (this.entDef == ThingDef.Named("OrbitalTradeBeacon"))
+            MoteThrower.ThrowMetaPuffs(GenAdj.OccupiedRect(c, placingRot, entDef.Size));
+            if (entDef == ThingDef.Named("OrbitalTradeBeacon"))
             {
                 ConceptDatabase.KnowledgeDemonstrated(ConceptDefOf.BuildOrbitalTradeBeacon, KnowledgeAmount.Total);
             }
@@ -247,14 +194,14 @@ namespace RA
         public override void SelectedUpdate()
         {
             base.SelectedUpdate();
-            IntVec3 intVec = Gen.MouseCell();
-            ThingDef thingDef = this.entDef as ThingDef;
+            var intVec = Gen.MouseCell();
+            var thingDef = entDef as ThingDef;
             if (thingDef != null && (thingDef.EverTransmitsPower || thingDef.ConnectToPower))
             {
                 OverlayDrawHandler.DrawPowerGridOverlayThisFrame();
                 if (thingDef.ConnectToPower)
                 {
-                    CompPower compPower = PowerConnectionMaker.BestTransmitterForConnector(intVec, null);
+                    var compPower = PowerConnectionMaker.BestTransmitterForConnector(intVec);
                     if (compPower != null)
                     {
                         PowerNetGraphics.RenderAnticipatedWirePieceConnecting(intVec, compPower.parent);
@@ -265,24 +212,21 @@ namespace RA
 
         public override void DrawPanelReadout(ref float curY, float width)
         {
-            if (this.entDef.costStuffCount <= 0 && this.stuffDef != null)
+            // special Graphic_StuffBased implementation
+            var baseGraphic = PlacingDef.graphic as Graphic_StuffBased;
+            if (stuffDef != null && baseGraphic!=null)
+                icon =  (Texture2D)baseGraphic.categorizedGraphics[stuffDef.stuffProps.categories[0].defName].MatSingle.mainTexture;
+
+            if (entDef.costStuffCount <= 0 && stuffDef != null)
             {
-                this.stuffDef = null;
+                stuffDef = null;
             }
             Text.Font = GameFont.Tiny;
-            List<ThingCount> list = this.entDef.CostListAdjusted(this.stuffDef, false);
-            for (int i = 0; i < list.Count; i++)
+            var list = entDef.CostListAdjusted(stuffDef, false);
+            foreach (var thingCount in list)
             {
-                ThingCount thingCount = list[i];
-                Texture2D image;
-                if (thingCount.thingDef == null)
-                {
-                    image = TexUI.UnknownThing;
-                }
-                else
-                {
-                    image = thingCount.thingDef.uiIcon;
-                }
+                var image = thingCount.thingDef == null ? TexUI.UnknownThing : thingCount.thingDef.uiIcon;
+
                 GUI.DrawTexture(new Rect(0f, curY, 20f, 20f), image);
                 if (thingCount.thingDef != null && thingCount.thingDef.resourceReadoutPriority != ResourceCountPriority.Uncounted && Find.ResourceCounter.GetCount(thingCount.thingDef) < thingCount.count)
                 {
@@ -290,28 +234,24 @@ namespace RA
                 }
                 Widgets.Label(new Rect(26f, curY + 2f, 50f, 100f), thingCount.count.ToString());
                 GUI.color = Color.white;
-                string text;
-                if (thingCount.thingDef == null)
-                {
-                    text = "(" + "UnchosenStuff".Translate() + ")";
-                }
-                else
-                {
-                    text = thingCount.thingDef.LabelCap;
-                }
-                float width2 = width - 60f;
-                float num = Text.CalcHeight(text, width2) - 2f;
+
+                var text = thingCount.thingDef == null
+                    ? "(" + "UnchosenStuff".Translate() + ")"
+                    : thingCount.thingDef.LabelCap;
+
+                var width2 = width - 60f;
+                var num = Text.CalcHeight(text, width2) - 2f;
                 Widgets.Label(new Rect(60f, curY + 2f, width2, num), text);
                 curY += num;
             }
-            ThingDef thingDef = this.entDef as ThingDef;
+            var thingDef = entDef as ThingDef;
             if (thingDef != null)
             {
-                Widgets.InfoCardButton(0f, curY, thingDef, this.stuffDef);
+                Widgets.InfoCardButton(0f, curY, thingDef, stuffDef);
             }
             else
             {
-                Widgets.InfoCardButton(0f, curY, this.entDef);
+                Widgets.InfoCardButton(0f, curY, entDef);
             }
             curY += 24f;
         }

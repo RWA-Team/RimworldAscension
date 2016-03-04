@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using System.Collections.Generic;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.Sound;
-using UnityEngine;
+using Random = System.Random;
 
 namespace RA
 {
@@ -19,24 +16,18 @@ namespace RA
         public const int BaseAbsorbChance_Ranged = 50;
 
         // determine when to display shield texture and gizmo
-        public bool ShouldDisplay
-        {
-            get
-            {
-                return !this.wearer.Dead && !this.wearer.Downed && this.wearer.Faction.HostileTo(Faction.OfColony) && (!this.wearer.IsPrisonerOfColony || (this.wearer.BrokenStateDef != null && this.wearer.BrokenStateDef.isAggro));
-            }
-        }
+        public bool ShouldDisplay => !wearer.Dead && !wearer.Downed && wearer.Faction.HostileTo(Faction.OfColony) && (!wearer.IsPrisonerOfColony || (wearer.BrokenStateDef != null && wearer.BrokenStateDef.isAggro));
 
         // absorbs recieved damage
         public override bool CheckPreAbsorbDamage(DamageInfo dinfo)
         {
             if (dinfo.Instigator != null)
             {
-                SkillRecord meleeSkill = this.wearer.skills.GetSkill(SkillDefOf.Melee);
-                float hitRoll = new System.Random().Next(1, 100);
+                var meleeSkill = wearer.skills.GetSkill(SkillDefOf.Melee);
+                float hitRoll = new Random().Next(1, 100);
 
                 // instigator is melee and damage not explosive
-                if (dinfo.Instigator.Position.AdjacentTo8WayOrInside(this.wearer.Position) && !dinfo.Def.isExplosive)
+                if (dinfo.Instigator.Position.AdjacentTo8WayOrInside(wearer.Position) && !dinfo.Def.isExplosive)
                 {
                     if (hitRoll <= BaseAbsorbChance_Melee + meleeSkill.level * 2)
                     {
@@ -45,7 +36,7 @@ namespace RA
                 }
 
                 // instigator is ranged and damage not explosive
-                if (!dinfo.Instigator.Position.AdjacentTo8WayOrInside(this.wearer.Position) && !dinfo.Def.isExplosive)
+                if (!dinfo.Instigator.Position.AdjacentTo8WayOrInside(wearer.Position) && !dinfo.Def.isExplosive)
                 {
                     if (hitRoll <= BaseAbsorbChance_Ranged + meleeSkill.level * 2)
                     {
@@ -60,34 +51,31 @@ namespace RA
         // returns true if damage is completely absorbed
         public bool TryAbsorbDamage(DamageInfo dinfo)
         {
-            this.HitPoints -= dinfo.Amount;
+            HitPoints -= dinfo.Amount;
 
-            if (this.HitPoints <= 0)
+            if (HitPoints <= 0)
             {
-                dinfo.SetAmount(dinfo.Amount + this.HitPoints);
+                dinfo.SetAmount(dinfo.Amount + HitPoints);
                 Break();
                 return false;
             }
-            else
-            {
-                ThrowAbsorbationEffects(dinfo);
-                return true;
-            }
+            ThrowAbsorbationEffects(dinfo);
+            return true;
         }
 
         // throws special effects when damage is absorved
         public void ThrowAbsorbationEffects(DamageInfo dinfo)
         {
-            SoundAbsorbDamage.PlayOneShot(this.wearer.Position);
-            Vector3 loc = this.wearer.TrueCenter() + Vector3Utility.HorizontalVectorFromAngle(dinfo.Angle).RotatedBy(180f) * 0.5f;
-            MoteThrower.ThrowStatic(loc, ThingDefOf.Mote_ShotHit_Spark, 1f);
+            SoundAbsorbDamage.PlayOneShot(wearer.Position);
+            var loc = wearer.TrueCenter() + Vector3Utility.HorizontalVectorFromAngle(dinfo.Angle).RotatedBy(180f) * 0.5f;
+            MoteThrower.ThrowStatic(loc, ThingDefOf.Mote_ShotHit_Spark);
             MoteThrower.ThrowText(loc, "Blocked");
         }
 
         public void Break()
         {
-            SoundBreak.PlayOneShot(this.wearer.Position);
-            this.Destroy();
+            SoundBreak.PlayOneShot(wearer.Position);
+            Destroy();
         }
 
         // allows to attack only adjacent cells (melee targets)
@@ -103,40 +91,40 @@ namespace RA
         // draws thing on pawn
         public override void DrawWornExtras()
         {
-            float turnAngle = 0f;
-            Vector3 drawCenter = this.wearer.drawer.DrawPos;
+            var turnAngle = 0f;
+            var drawCenter = wearer.drawer.DrawPos;
             drawCenter.y = Altitudes.AltitudeFor(AltitudeLayer.Pawn);
-            Vector3 s = new Vector3(1f, 1f, 1f);
+            var s = new Vector3(1f, 1f, 1f);
 
-            if (this.wearer.Rotation == Rot4.North && (this.wearer.Faction == Faction.OfColony && !this.wearer.Drafted || this.wearer.Faction.HostileTo(Faction.OfColony)))
+            if (wearer.Rotation == Rot4.North && (wearer.Faction == Faction.OfColony && !wearer.Drafted || wearer.Faction.HostileTo(Faction.OfColony)))
             {
                 drawCenter.y += 0.1f;
             }
 
-            if (this.wearer.Rotation == Rot4.South)
+            if (wearer.Rotation == Rot4.South)
             {
                 drawCenter.y += 0.1f;
                 drawCenter.x += 0.2f;
                 drawCenter.z -= 0.2f;
             }
 
-            if (this.wearer.Rotation == Rot4.East)
+            if (wearer.Rotation == Rot4.East)
             {
                 drawCenter.y -= 0.1f;
                 drawCenter.z -= 0.2f;
                 turnAngle = 60f;
             }
 
-            if (this.wearer.Rotation == Rot4.West)
+            if (wearer.Rotation == Rot4.West)
             {
                 drawCenter.y += 0.1f;
                 drawCenter.z -= 0.2f;
                 turnAngle = 300f;
             }
 
-            Matrix4x4 matrix = default(Matrix4x4);
+            var matrix = default(Matrix4x4);
             matrix.SetTRS(drawCenter, Quaternion.AngleAxis(turnAngle, Vector3.up), s);
-            Graphics.DrawMesh(MeshPool.plane10, matrix, this.Graphic.MatSingle, 0);
+            Graphics.DrawMesh(MeshPool.plane10, matrix, Graphic.MatSingle, 0);
         }
 
         // draws gizmo with shield durability
@@ -144,7 +132,7 @@ namespace RA
         {
             base.GetWornGizmos();
 
-            Gizmo_ShieldStatus gizmoShield = new Gizmo_ShieldStatus
+            var gizmoShield = new Gizmo_ShieldStatus
             {
                 shield = this
             };
@@ -156,33 +144,27 @@ namespace RA
     {
         public static readonly Texture2D FullTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.2f, 0.24f));
         public static readonly Texture2D EmptyTex = SolidColorMaterials.NewSolidColorTexture(Color.clear);
-        public static readonly Texture2D meleeBlock_Icon = ContentFinder<Texture2D>.Get("UI/Icons/MeleeBlock", true);
-        public static readonly Texture2D rangedBlock_Icon = ContentFinder<Texture2D>.Get("UI/Icons/RangedBlock", true);
+        public static readonly Texture2D meleeBlock_Icon = ContentFinder<Texture2D>.Get("UI/Icons/MeleeBlock");
+        public static readonly Texture2D rangedBlock_Icon = ContentFinder<Texture2D>.Get("UI/Icons/RangedBlock");
 
         public const int ShieldIcon_Size = 75;
 
         public Shield shield;
 
-        public override float Width
-        {
-            get
-            {
-                return 140f;
-            }
-        }
+        public override float Width => 140f;
 
         public override GizmoResult GizmoOnGUI(Vector2 topLeft)
         {
-            Rect gizmoRect = new Rect(topLeft.x, topLeft.y, this.Width, Height);
+            var gizmoRect = new Rect(topLeft.x, topLeft.y, Width, Height);
             Widgets.DrawWindowBackground(gizmoRect);
 
-            Rect gizmoRect_margined = gizmoRect.ContractedBy(5f);
+            var gizmoRect_margined = gizmoRect.ContractedBy(5f);
 
             Text.Font = GameFont.Small;
             Text.Anchor = TextAnchor.MiddleCenter;
 
             // header text
-            Rect headerTextRect = gizmoRect_margined;
+            var headerTextRect = gizmoRect_margined;
             headerTextRect.height = gizmoRect_margined.height / 3;
             headerTextRect.width = headerTextRect.height + 40;
             Widgets.Label(headerTextRect, "Block:");
@@ -190,7 +172,7 @@ namespace RA
             // melee block icon
             // NOTE: mouse over texture shows description
             //TooltipHandler.TipRegion(buttonRect, "gdfgdfgdfgdfgdfgf");
-            Rect meleeBlock_IconRect = headerTextRect;
+            var meleeBlock_IconRect = headerTextRect;
             meleeBlock_IconRect.y += headerTextRect.height;
             meleeBlock_IconRect.width = meleeBlock_IconRect.height;
             Widgets.DrawTextureFitted(meleeBlock_IconRect, meleeBlock_Icon, 0.9f);
@@ -198,29 +180,29 @@ namespace RA
             Text.Anchor = TextAnchor.MiddleLeft;
 
             // melee block hit chance label
-            Rect meleeBlock_LabelRect = meleeBlock_IconRect;
+            var meleeBlock_LabelRect = meleeBlock_IconRect;
             meleeBlock_LabelRect.x += meleeBlock_IconRect.width;
             meleeBlock_LabelRect.width = 40;
             Widgets.Label(meleeBlock_LabelRect, " " + (25 + shield.wearer.skills.GetSkill(SkillDefOf.Melee).level * 2) + "%");
 
             // ranged block icon
-            Rect rangedBlock_IconRect = meleeBlock_IconRect;
+            var rangedBlock_IconRect = meleeBlock_IconRect;
             rangedBlock_IconRect.y += meleeBlock_IconRect.height;
             Widgets.DrawTextureFitted(rangedBlock_IconRect, rangedBlock_Icon, 0.9f);
 
             // ranged block hit chance label
-            Rect rangedBlock_LabelRect = meleeBlock_LabelRect;
+            var rangedBlock_LabelRect = meleeBlock_LabelRect;
             rangedBlock_LabelRect.y += meleeBlock_LabelRect.height;
             Widgets.Label(rangedBlock_LabelRect, " " + (50 + shield.wearer.skills.GetSkill(SkillDefOf.Melee).level * 2) + "%");
 
-            Rect healthMeterRect = rangedBlock_IconRect;
+            var healthMeterRect = rangedBlock_IconRect;
             healthMeterRect.x += rangedBlock_IconRect.width + rangedBlock_LabelRect.width;
             healthMeterRect.width = gizmoRect_margined.xMax - healthMeterRect.x;
-            float fillPercent = (float)shield.HitPoints / Mathf.Max(1f, (float)shield.MaxHitPoints);
+            var fillPercent = shield.HitPoints / Mathf.Max(1f, shield.MaxHitPoints);
             // NOTE: Widgets.FillableBarLabeled?
             Widgets.FillableBar(healthMeterRect, fillPercent, FullTex, EmptyTex, false);
 
-            Rect iconRect = new Rect(healthMeterRect.xMax - (healthMeterRect.xMax - healthMeterRect.x) / 2 - ShieldIcon_Size/2, gizmoRect_margined.y - ShieldIcon_Size / 5, ShieldIcon_Size, ShieldIcon_Size);
+            var iconRect = new Rect(healthMeterRect.xMax - (healthMeterRect.xMax - healthMeterRect.x) / 2 - ShieldIcon_Size/2, gizmoRect_margined.y - ShieldIcon_Size / 5, ShieldIcon_Size, ShieldIcon_Size);
             Widgets.ThingIcon(iconRect, shield);
 
             Text.Anchor = TextAnchor.MiddleCenter;

@@ -1,31 +1,30 @@
-﻿using RimWorld;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
 namespace RA
 {
     public class Window_ThingFilter : Window
     {
-        Building_WorkTable_Fueled burner;
+        WorkTable_Fueled burner;
 
         public Vector2 scrollPosition = default(Vector2);
 
-        public Window_ThingFilter(Building_WorkTable_Fueled burner, float offsetY)
+        public Window_ThingFilter(WorkTable_Fueled burner, float offsetY)
         {
-            this.closeOnEscapeKey = true;
-            this.closeOnClickedOutside = true;
+            closeOnEscapeKey = true;
+            closeOnClickedOutside = true;
 
-            this.currentWindowRect.width = 280f;
-            this.currentWindowRect.height = 200f;
-            this.currentWindowRect.x = 0f;
-            this.currentWindowRect.y = offsetY + this.currentWindowRect.height;
+            currentWindowRect.width = 280f;
+            currentWindowRect.height = 200f;
+            currentWindowRect.x = 0f;
+            currentWindowRect.y = offsetY + currentWindowRect.height;
 
             this.burner = burner;
         }
 
         public override void DoWindowContents(Rect inRect)
         {
-            ThingFilterUI.DoThingFilterConfigWindow(inRect, ref this.scrollPosition, burner.filterFuelCurrent, burner.filterFuelPossible);
+            ThingFilterUI.DoThingFilterConfigWindow(inRect, ref scrollPosition, burner.filterFuelCurrent, burner.filterFuelPossible);
         }
     }
 
@@ -41,31 +40,31 @@ namespace RA
 
         public static void DoThingFilterConfigWindow(Rect rect, ref Vector2 scrollPosition, ThingFilter filter, ThingFilter parentFilter = null, int openMask = 1)
         {
-            Widgets.DrawMenuSection(rect, true);
+            Widgets.DrawMenuSection(rect);
             Text.Font = GameFont.Tiny;
-            float num = rect.width - 2f;
-            Rect rect2 = new Rect(rect.x + 1f, rect.y + 1f, num / 2f, 24f);
-            if (Widgets.TextButton(rect2, "ClearAll".Translate(), true, false))
+            var num = rect.width - 2f;
+            var rect2 = new Rect(rect.x + 1f, rect.y + 1f, num / 2f, 24f);
+            if (Widgets.TextButton(rect2, "ClearAll".Translate()))
             {
                 filter.SetDisallowAll();
             }
-            Rect rect3 = new Rect(rect2.xMax + 1f, rect2.y, num / 2f - 1f, 24f);
-            if (Widgets.TextButton(rect3, "AllowAll".Translate(), true, false))
+            var rect3 = new Rect(rect2.xMax + 1f, rect2.y, num / 2f - 1f, 24f);
+            if (Widgets.TextButton(rect3, "AllowAll".Translate()))
             {
                 filter.SetAllowAll(parentFilter);
             }
             Text.Font = GameFont.Small;
             rect.yMin = rect2.yMax;
-            Rect viewRect = new Rect(0f, 0f, rect.width - 16f, ThingFilterUI.viewHeight);
+            var viewRect = new Rect(0f, 0f, rect.width - 16f, viewHeight);
             Widgets.BeginScrollView(rect, ref scrollPosition, viewRect);
-            float num2 = 0f;
+            var num2 = 0f;
             num2 += 2f;
             DrawHitPointsFilterConfig(ref num2, viewRect.width, filter);
             DrawQualityFilterConfig(ref num2, viewRect.width, filter);
-            float num3 = num2;
-            Rect rect4 = new Rect(0f, num2, 9999f, 9999f);
-            Listing_TreeThingFilter listing_TreeThingFilter = new Listing_TreeThingFilter(rect4, filter, parentFilter, 210f, true);
-            TreeNode_ThingCategory node = ThingCategoryNodeDatabase.RootNode;
+            var num3 = num2;
+            var rect4 = new Rect(0f, num2, 9999f, 9999f);
+            var listing_TreeThingFilter = new Listing_TreeThingFilter(rect4, filter, parentFilter, 210f, true);
+            var node = ThingCategoryNodeDatabase.RootNode;
             if (parentFilter != null)
             {
                 if (parentFilter.DisplayRootCategory == null)
@@ -89,8 +88,8 @@ namespace RA
             {
                 return;
             }
-            Rect rect = new Rect(20f, y, width - 20f, 26f);
-            FloatRange allowedHitPointsPercents = filter.AllowedHitPointsPercents;
+            var rect = new Rect(20f, y, width - 20f, 26f);
+            var allowedHitPointsPercents = filter.AllowedHitPointsPercents;
             Widgets.FloatRange(rect, 1, ref allowedHitPointsPercents, 0f, 1f, ToStringStyle.PercentZero, "HitPoints");
             filter.AllowedHitPointsPercents = allowedHitPointsPercents;
             y += 26f;
@@ -104,8 +103,8 @@ namespace RA
             {
                 return;
             }
-            Rect rect = new Rect(20f, y, width - 20f, 26f);
-            QualityRange allowedQualityLevels = filter.AllowedQualityLevels;
+            var rect = new Rect(20f, y, width - 20f, 26f);
+            var allowedQualityLevels = filter.AllowedQualityLevels;
             Widgets.QualityRange(rect, 2, ref allowedQualityLevels);
             filter.AllowedQualityLevels = allowedQualityLevels;
             y += 26f;

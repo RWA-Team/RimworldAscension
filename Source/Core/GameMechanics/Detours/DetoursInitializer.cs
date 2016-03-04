@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-
-using Verse;
 using RimWorld;
+using Verse;
 
 namespace RA
 {
@@ -21,24 +20,29 @@ namespace RA
                 Log.Message("Detours initialized");
 
             // Detour RimWorld.ThingSelectionUtility.SelectableNow
-            MethodInfo vanillaSelectableNow = typeof(ThingSelectionUtility).GetMethod("SelectableNow", BindingFlags.Static | BindingFlags.Public);
-            MethodInfo newSelectableNow = typeof(RA_ThingSelectionUtility).GetMethod("SelectableNow", BindingFlags.Static | BindingFlags.Public);
+            var vanillaSelectableNow = typeof(ThingSelectionUtility).GetMethod("SelectableNow", BindingFlags.Static | BindingFlags.Public);
+            var newSelectableNow = typeof(RA_ThingSelectionUtility).GetMethod("SelectableNow", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaSelectableNow, newSelectableNow);
 
             // Detour Verse.MapInitData.GenerateDefaultColonistsWithFaction
-            MethodInfo vanillaInitNewGeneratedMap = typeof(MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
-            MethodInfo newInitNewGeneratedMap = typeof(RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
+            var vanillaInitNewGeneratedMap = typeof(MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
+            var newInitNewGeneratedMap = typeof(RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaInitNewGeneratedMap, newInitNewGeneratedMap);
 
             // Detour RimWorld.MainMenuDrawer.MainMenuOnGUI
-            MethodInfo vanillaDoMainMenuButtons = typeof(MainMenuDrawer).GetMethod("MainMenuOnGUI", BindingFlags.Static | BindingFlags.Public);
-            MethodInfo newDoMainMenuButtons = typeof(RA_MainMenuDrawer).GetMethod("MainMenuOnGUI", BindingFlags.Static | BindingFlags.Public);
+            var vanillaDoMainMenuButtons = typeof(MainMenuDrawer).GetMethod("MainMenuOnGUI", BindingFlags.Static | BindingFlags.Public);
+            var newDoMainMenuButtons = typeof(RA_MainMenuDrawer).GetMethod("MainMenuOnGUI", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaDoMainMenuButtons, newDoMainMenuButtons);
 
             // Detour RimWorld.UI_BackgroundMain.BackgroundOnGUI
-            MethodInfo vanillaBackgroundOnGUI = typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI", BindingFlags.Instance | BindingFlags.Public);
-            MethodInfo newBackgroundOnGUI = typeof(RA_UI_BackgroundMain).GetMethod("BackgroundOnGUI", BindingFlags.Instance | BindingFlags.Public);
+            var vanillaBackgroundOnGUI = typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI", BindingFlags.Instance | BindingFlags.Public);
+            var newBackgroundOnGUI = typeof(RA_UI_BackgroundMain).GetMethod("BackgroundOnGUI", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaBackgroundOnGUI, newBackgroundOnGUI);
+
+            // Detour Verse.Pawn.ExitMap
+            var vanillaExitMap = typeof(Pawn).GetMethod("ExitMap", BindingFlags.Instance | BindingFlags.Public);
+            var newExitMap = typeof(RA_Pawn).GetMethod("ExitMap", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaExitMap, newExitMap);
         }
 
         /**
@@ -50,8 +54,8 @@ namespace RA
         public static unsafe bool TryDetourFromTo(MethodInfo source, MethodInfo destination)
         {
             // keep track of detours and spit out some messaging
-            string sourceString = source.DeclaringType.FullName + "." + source.Name;
-            string destinationString = destination.DeclaringType.FullName + "." + destination.Name;
+            var sourceString = source.DeclaringType.FullName + "." + source.Name;
+            var destinationString = destination.DeclaringType.FullName + "." + destination.Name;
 
             detoured.Add(sourceString);
             destinations.Add(destinationString);
@@ -62,14 +66,14 @@ namespace RA
                 // 12 byte destructive
 
                 // Get function pointers
-                long Source_Base = source.MethodHandle.GetFunctionPointer().ToInt64();
-                long Destination_Base = destination.MethodHandle.GetFunctionPointer().ToInt64();
+                var Source_Base = source.MethodHandle.GetFunctionPointer().ToInt64();
+                var Destination_Base = destination.MethodHandle.GetFunctionPointer().ToInt64();
 
                 // Native source address
-                byte* Pointer_Raw_Source = (byte*)Source_Base;
+                var Pointer_Raw_Source = (byte*)Source_Base;
 
                 // Pointer to insert jump address into native code
-                long* Pointer_Raw_Address = (long*)(Pointer_Raw_Source + 0x02);
+                var Pointer_Raw_Address = (long*)(Pointer_Raw_Source + 0x02);
 
                 // Insert 64-bit absolute jump into native code (address in rax)
                 // mov rax, immediate64
@@ -86,17 +90,17 @@ namespace RA
                 // 5 byte destructive
 
                 // Get function pointers
-                int Source_Base = source.MethodHandle.GetFunctionPointer().ToInt32();
-                int Destination_Base = destination.MethodHandle.GetFunctionPointer().ToInt32();
+                var Source_Base = source.MethodHandle.GetFunctionPointer().ToInt32();
+                var Destination_Base = destination.MethodHandle.GetFunctionPointer().ToInt32();
 
                 // Native source address
-                byte* Pointer_Raw_Source = (byte*)Source_Base;
+                var Pointer_Raw_Source = (byte*)Source_Base;
 
                 // Pointer to insert jump address into native code
-                int* Pointer_Raw_Address = (int*)(Pointer_Raw_Source + 1);
+                var Pointer_Raw_Address = (int*)(Pointer_Raw_Source + 1);
 
                 // Jump offset (less instruction size)
-                int offset = (Destination_Base - Source_Base) - 5;
+                var offset = Destination_Base - Source_Base - 5;
 
                 // Insert 32-bit relative jump into native code
                 *Pointer_Raw_Source = 0xE9;

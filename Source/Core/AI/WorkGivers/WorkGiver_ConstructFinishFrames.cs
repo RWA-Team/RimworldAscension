@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
-
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -32,9 +29,9 @@ namespace RA
             // all things marked for plantcutting or harvesting
             IEnumerable<Thing> designatedTargets = Find.ListerThings.AllThings.FindAll(target => target is Frame);
 
-            IEnumerable<Thing> availableTargets = designatedTargets.Where(target => target.Faction == pawn.Faction && GenConstruct.CanConstruct(target, pawn) && (target as Frame).MaterialsNeeded().Count == 0 && pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()));
+            var availableTargets = designatedTargets.Where(target => target.Faction == pawn.Faction && GenConstruct.CanConstruct(target, pawn) && (target as Frame).MaterialsNeeded().Count == 0 && pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()));
 
-            hasPotentialJobs = availableTargets.Count() > 0 ? true : false;
+            hasPotentialJobs = availableTargets.Any();
 
             return DoJobWithTool(pawn, availableTargets, ActualJob);
         }

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using UnityEngine;
-using Verse;
-using Verse.AI;
 using RimWorld;
 using RimWorld.SquadAI;
+using Verse;
+using Verse.AI;
 
 namespace RA
 {
@@ -20,47 +16,43 @@ namespace RA
             // check if there are free traing posts in colony or outdoor temperature is suitable for caravan trades
             if (Find.ListerBuildings.AllBuildingsColonistOfClass<Building_TradingPost>().Any(post => post.occupied == false) || GenTemperature.OutdoorTemp > -25.0f || GenTemperature.OutdoorTemp < 45.0f)
                 return true;
-            else
-                return false;
+            return false;
         }
 
         public override bool TryExecute(IncidentParms parms)
         {
-            Building_TradingPost tradingPost;
-            Pawn animal, merchant;
-
             string str;
             if (!TryResolveParms(parms, true)) // limited for trader 
                 return false;
 
-            List<Pawn> pawns = SpawnPawns(parms);
+            var pawns = SpawnPawns(parms);
             if (pawns == null || pawns.Count < 2)
                 return false;
 
-            merchant = pawns[0];
-            animal = pawns[1];
+            var merchant = pawns[0];
+            var animal = pawns[1];
 
             if (pawns.Count > 2)
             {
-                str = "GroupTradersArrive".Translate(new object[] { parms.faction.name });
-                str = GenText.AdjustedFor(str, merchant);
+                str = "GroupTradersArrive".Translate(parms.faction.name);
+                str = str.AdjustedFor(merchant);
             }
             else
             {
-                str = "SingleTraderArrives".Translate(new object[] { parms.faction.name, merchant.Name });
-                str = GenText.AdjustedFor(str, merchant);
+                str = "SingleTraderArrives".Translate(parms.faction.name, merchant.Name);
+                str = str.AdjustedFor(merchant);
             }
 
-            tradingPost = FindClosestFreeTradingPost(merchant);
+            var tradingPost = FindClosestFreeTradingPost(merchant);
             if (tradingPost == null)
                 return false;
             
             // fill caravan's container. Also setups current Trade Company type
             animal.TryGetComp<CompCaravan>().cargo = TradeSession.GenerateTradeCompanyGoods();
             
-            string label = "LabelLetterTrader".Translate();
-            Find.LetterStack.ReceiveLetter(label, str, LetterType.Good, merchant, null);
-            StateGraph stateGraph = GraphMaker_Trader.TradeGraph(tradingPost);
+            var label = "LabelLetterTrader".Translate();
+            Find.LetterStack.ReceiveLetter(label, str, LetterType.Good, merchant);
+            var stateGraph = GraphMaker_Trader.TradeGraph(tradingPost);
             BrainMaker.MakeNewBrain(parms.faction, stateGraph, pawns);
             return true;
         }
@@ -76,8 +68,8 @@ namespace RA
             if (parms.faction == null)
             {
                 if (!(from faction in Find.FactionManager.AllFactionsVisible
-                      where (faction.def != FactionDefOf.Colony && !faction.HostileTo(Faction.OfColony) && faction.def.techLevel <= FactionDefOf.Colony.techLevel)
-                      select faction).TryRandomElement<Faction>(out parms.faction))
+                      where faction.def != FactionDefOf.Colony && !faction.HostileTo(Faction.OfColony) && faction.def.techLevel <= FactionDefOf.Colony.techLevel
+                      select faction).TryRandomElement(out parms.faction))
                 {
                     return false;
                 }
@@ -86,24 +78,24 @@ namespace RA
             // rescale early game caravan strength point to spawn guards, when amount of points is too low
             if (parms.points <= 100f)
             {
-                float value = Rand.Value;
+                var value = Rand.Value;
                 if (value < 0.4f)
                 {
-                    parms.points = (float)Rand.Range(100, 140);
+                    parms.points = Rand.Range(100, 140);
                 }
                 else if (value < 0.8f)
                 {
-                    parms.points = (float)Rand.Range(140, 250);
+                    parms.points = Rand.Range(140, 250);
                 }
                 else
                 {
-                    parms.points = (float)Rand.Range(250, 500);
+                    parms.points = Rand.Range(250, 500);
                 }
             }
 
             // rescale late game caravan strength point to spawn guards, when amount of points is too high
             if (limitPoints && parms.points >= 200f)
-                parms.points = (float)Rand.Range(150, 350);
+                parms.points = Rand.Range(150, 350);
 
             // determine mode of caravan arrival (drop, walk in, etc.)
             parms.raidArrivalMode = PawnsArriveMode.EdgeWalkIn;
@@ -119,17 +111,16 @@ namespace RA
 
         public List<Pawn> SpawnPawns(IncidentParms parms)
         {
-            List<Pawn> pawns = new List<Pawn>();
+            var pawns = new List<Pawn>();
             // merchant
             if (parms.faction.def.techLevel == TechLevel.Neolithic)
             pawns.Add(PawnGenerator.GeneratePawn(PawnKindDef.Named("TribalMerchant"), parms.faction));
             // animal
             pawns.Add(PawnGenerator.GeneratePawn(PawnKindDef.Named("CaravanMuffalo"), parms.faction));
             // guards
-            pawns.AddRange(PawnGroupMakerUtility.GenerateArrivingPawns(parms).ToList<Pawn>());
+            pawns.AddRange(PawnGroupMakerUtility.GenerateArrivingPawns(parms).ToList());
 
-            IntVec3 spawnCell;
-            for (int i = 0; i < pawns.Count; i++)
+            for (var i = 0; i < pawns.Count; i++)
             {
                 // regenerate slow pawns
                 do
@@ -138,6 +129,7 @@ namespace RA
                 } while (pawns[i].GetStatValue(StatDefOf.MoveSpeed) / pawns[i].def.statBases.Find(pair => pair.stat == StatDefOf.MoveSpeed).value < 0.9f);
 
                 // merchant
+                IntVec3 spawnCell;
                 if (i == 0)
                 {
                     spawnCell = parms.spawnCenter;

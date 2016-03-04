@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-
-using UnityEngine;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.Sound;
-using Verse.AI;
 
 namespace RA
 {
@@ -24,63 +21,48 @@ namespace RA
         {
             get
             {
-                if (this.desPanelsCached == null)
+                if (desPanelsCached == null)
                 {
-                    this.CacheDesPanels();
+                    CacheDesPanels();
                 }
-                return (float)Mathf.CeilToInt((float)this.desPanelsCached.Count / 2f) * 32f;
+                return Mathf.CeilToInt(desPanelsCached.Count / 2f) * 32f;
             }
         }
 
-        public override Vector2 RequestedTabSize
-        {
-            get
-            {
-                return new Vector2(200f, this.WinHeight);
-            }
-        }
+        public override Vector2 RequestedTabSize => new Vector2(200f, WinHeight);
 
-        protected override float WindowPadding
-        {
-            get
-            {
-                return 0f;
-            }
-        }
+        protected override float WindowPadding => 0f;
 
         public MainTabWindow_Architect()
         {
 
-            this.CacheDesPanels();
+            CacheDesPanels();
         }
 
         public override void ExtraOnGUI()
         {
             base.ExtraOnGUI();
-            if (this.selectedDesPanel != null)
-            {
-                this.selectedDesPanel.DesignationTabOnGUI();
-            }
+            selectedDesPanel?.DesignationTabOnGUI();
         }
 
         public override void DoWindowContents(Rect inRect)
         {
             base.DoWindowContents(inRect);
             Text.Font = GameFont.Small;
-            float num = inRect.width / 2f;
-            float num2 = 0f;
-            float num3 = 0f;
-            for (int i = 0; i < this.desPanelsCached.Count; i++)
+            var num = inRect.width / 2f;
+            var num2 = 0f;
+            var num3 = 0f;
+            foreach (ArchitectCategoryTab tab in desPanelsCached)
             {
-                Rect rect = new Rect(num2 * num, num3 * 32f, num, 32f);
+                var rect = new Rect(num2 * num, num3 * 32f, num, 32f);
                 rect.height += 1f;
                 if (num2 == 0f)
                 {
                     rect.width += 1f;
                 }
-                if (WidgetsSubtle.ButtonSubtle(rect, this.desPanelsCached[i].def.LabelCap, 0f, 8f, SoundDefOf.MouseoverButtonCategory))
+                if (WidgetsSubtle.ButtonSubtle(rect, tab.def.LabelCap, 0f, 8f, SoundDefOf.MouseoverButtonCategory))
                 {
-                    this.ClickedCategory(this.desPanelsCached[i]);
+                    ClickedCategory(tab);
                 }
                 num2 += 1f;
                 if (num2 > 1f)
@@ -93,25 +75,18 @@ namespace RA
 
         public void CacheDesPanels()
         {
-            this.desPanelsCached = new List<ArchitectCategoryTab>();
-            foreach (DesignationCategoryDef current in from dc in DefDatabase<DesignationCategoryDef>.AllDefs
+            desPanelsCached = new List<ArchitectCategoryTab>();
+            foreach (var current in from dc in DefDatabase<DesignationCategoryDef>.AllDefs
                                                        orderby dc.order descending
                                                        select dc)
             {
-                this.desPanelsCached.Add(new ArchitectCategoryTab(current));
+                desPanelsCached.Add(new ArchitectCategoryTab(current));
             }
         }
 
         public void ClickedCategory(ArchitectCategoryTab Pan)
         {
-            if (this.selectedDesPanel == Pan)
-            {
-                this.selectedDesPanel = null;
-            }
-            else
-            {
-                this.selectedDesPanel = Pan;
-            }
+            selectedDesPanel = selectedDesPanel == Pan ? null : Pan;
             SoundDefOf.ArchitectCategorySelect.PlayOneShotOnCamera();
         }
     }

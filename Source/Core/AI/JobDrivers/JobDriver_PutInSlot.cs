@@ -1,12 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Verse;
 using Verse.AI;
-using RimWorld;
-
 
 namespace RA
 {
@@ -18,28 +12,30 @@ namespace RA
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            ThingWithComps slotter = CurJob.GetTarget(SlotterInd).Thing as ThingWithComps;
-            CompSlots compSlots = slotter.GetComp<CompSlots>();
+            var slotter = CurJob.GetTarget(SlotterInd).Thing as ThingWithComps;
+            var compSlots = slotter.GetComp<CompSlots>();
 
             // no free slots
-            this.FailOn(() => { return (compSlots.slots.Count >= compSlots.Properties.maxSlots) ? true : false; });
+            this.FailOn(() => compSlots.slots.Count >= compSlots.Properties.maxSlots);
 
             // reserve resources
             yield return Toils_Reserve.ReserveQueue(HaulableInd);
 
             // extract next target thing from targetQueue
-            Toil toilExtractNextTarget = Toils_JobTransforms.ExtractNextTargetFromQueue(HaulableInd);
+            var toilExtractNextTarget = Toils_JobTransforms.ExtractNextTargetFromQueue(HaulableInd);
             yield return toilExtractNextTarget;
 
-            Toil toilGoToThing = Toils_Goto.GotoThing(HaulableInd, PathEndMode.ClosestTouch)
+            var toilGoToThing = Toils_Goto.GotoThing(HaulableInd, PathEndMode.ClosestTouch)
                 .FailOnDespawned(HaulableInd);
             yield return toilGoToThing;
-            
-            Toil pickUpThingIntoSlot = new Toil();
-            pickUpThingIntoSlot.initAction = () =>
+
+            var pickUpThingIntoSlot = new Toil
             {
-                if (!compSlots.slots.TryAdd(CurJob.targetA.Thing))
-                    this.EndJobWith(JobCondition.Incompletable);
+                initAction = () =>
+                {
+                    if (!compSlots.slots.TryAdd(CurJob.targetA.Thing))
+                        EndJobWith(JobCondition.Incompletable);
+                }
             };
             yield return pickUpThingIntoSlot;
 

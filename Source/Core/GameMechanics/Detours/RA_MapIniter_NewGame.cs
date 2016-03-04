@@ -1,19 +1,15 @@
-﻿using RimWorld;
+﻿using System.Linq;
+using RimWorld;
 using RimWorld.Planet;
-
-using System.IO;
-using System.Linq;
 using Verse;
 
 namespace RA
 {
     public static class RA_MapIniter_NewGame
     {
-        private const int GameStartHourOfDay = 6;
-
         public static void InitNewGeneratedMap()
         {
-            string str = GenText.ToCommaList(from mod in LoadedModManager.LoadedMods
+            var str = GenText.ToCommaList(from mod in LoadedModManager.LoadedMods
                                              select mod.name);
             Log.Message("Initializing new game with mods " + str);
             DeepProfiler.Start("InitNewGeneratedMap");
@@ -63,18 +59,19 @@ namespace RA
             if (MapInitData.startedFromEntry)
             {
                 Find.MusicManagerMap.disabled = true;
-                DiaNode diaNode = new DiaNode("GameStartDialog".Translate());
-                DiaOption diaOption = new DiaOption();
-                diaOption.resolveTree = true;
-                diaOption.action = delegate
+                var diaNode = new DiaNode("GameStartDialog".Translate());
+                var diaOption = new DiaOption
                 {
-                    Find.MusicManagerMap.ForceSilenceFor(7f);
-                    Find.MusicManagerMap.disabled = false;
+                    resolveTree = true,
+                    action = delegate
+                    {
+                        Find.MusicManagerMap.ForceSilenceFor(7f);
+                        Find.MusicManagerMap.disabled = false;
+                    },
+                    playClickSound = false
                 };
-                diaOption.playClickSound = false;
                 diaNode.options.Add(diaOption);
-                Dialog_NodeTree dialog_NodeTree = new Dialog_NodeTree(diaNode);
-                dialog_NodeTree.soundClose = SoundDef.Named("GameStartSting");
+                var dialog_NodeTree = new Dialog_NodeTree(diaNode) {soundClose = SoundDef.Named("GameStartSting")};
                 Find.WindowStack.Add(dialog_NodeTree);
             }
         }
@@ -85,9 +82,9 @@ namespace RA
             do
             {
                 MapInitData.colonists.Clear();
-                for (int i = 0; i < 5; i++)
+                for (var i = 0; i < 5; i++)
                 {
-                    MapInitData.colonists.Add(PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfColony, false, 0));
+                    MapInitData.colonists.Add(PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfColony));
                 }
             }
             while (!MapInitData.AnyoneCanDoRequiredWorks());
@@ -103,14 +100,14 @@ namespace RA
 
         public static bool TryLoadNewestWorld()
         {
-            FileInfo fileInfo = (from wf in SavedWorldsDatabase.AllWorldFiles
+            var fileInfo = (from wf in SavedWorldsDatabase.AllWorldFiles
                                  orderby wf.LastWriteTime descending
                                  select wf).FirstOrDefault();
             if (fileInfo == null)
             {
                 return false;
             }
-            string fullName = fileInfo.FullName;
+            var fullName = fileInfo.FullName;
             WorldLoader.LoadWorldFromFile(fullName);
             return true;
         }

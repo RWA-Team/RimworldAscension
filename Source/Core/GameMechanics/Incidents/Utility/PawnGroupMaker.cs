@@ -6,7 +6,6 @@ using System.Text;
 using UnityEngine;
 using Verse;
 
-
 namespace RimWorld
 {
     public class PawnGroupMaker
@@ -48,7 +47,7 @@ namespace RimWorld
             }
 
             //Spawn the pawns from the chosen groups
-            bool forceIncapDone = false;
+            var forceIncapDone = false;
             foreach (var g in ChoosePawnGenOptions(parms))
             {
                 Pawn p;
@@ -77,17 +76,17 @@ namespace RimWorld
         private IEnumerable<PawnGenOption> ChoosePawnGenOptions(IncidentParms parms)
         {
             //Spend the points group by group
-            float initialPoints = parms.points;
-            float pointsLeft = parms.points;
-            List<PawnGenOption> allowedGroups = new List<PawnGenOption>();
-            List<PawnGenOption> chosenGroups = new List<PawnGenOption>();
-            bool leaderChosen = false;
+            var initialPoints = parms.points;
+            var pointsLeft = parms.points;
+            var allowedGroups = new List<PawnGenOption>();
+            var chosenGroups = new List<PawnGenOption>();
+            var leaderChosen = false;
 
             while (true)
             {
                 allowedGroups.Clear();
 
-                for (int i = 0; i < options.Count; i++)
+                for (var i = 0; i < options.Count; i++)
                 {
                     var g = options[i];
 
@@ -117,7 +116,7 @@ namespace RimWorld
 
                 //At higher points counts, we suppress the pawn count by biasing up the weight
                 // of groups with a high points cost per pawn
-                float desireToSuppressCount = Mathf.InverseLerp(800, 1600, initialPoints);
+                var desireToSuppressCount = Mathf.InverseLerp(800, 1600, initialPoints);
                 desireToSuppressCount = Mathf.Clamp(desireToSuppressCount, 0, 0.5f);
                 Func<PawnGenOption, float> adjustedSelectionWeight = gr =>
                 {
@@ -125,14 +124,14 @@ namespace RimWorld
 
                     if (desireToSuppressCount > 0)
                     {
-                        float weightAdjusted = weight * gr.Cost;
+                        var weightAdjusted = weight * gr.Cost;
                         weight = Mathf.Lerp(weight, weightAdjusted, desireToSuppressCount);
                     }
 
                     return weight;
                 };
 
-                PawnGenOption newlyChosenEntry = allowedGroups.RandomElementByWeight(adjustedSelectionWeight);
+                var newlyChosenEntry = allowedGroups.RandomElementByWeight(adjustedSelectionWeight);
                 if (newlyChosenEntry.kind.factionLeader)
                     leaderChosen = true;
 
@@ -150,7 +149,7 @@ namespace RimWorld
         /// </summary>
         private static float MaxAllowedPawnGroupCost(Faction faction, float totalPoints, RaidStrategyDef raidStrategy)
         {
-            float maxGroupCost = Mathf.Max(totalPoints * 0.5f, 50);
+            var maxGroupCost = Mathf.Max(totalPoints * 0.5f, 50);
 
             if (raidStrategy != null)
             {

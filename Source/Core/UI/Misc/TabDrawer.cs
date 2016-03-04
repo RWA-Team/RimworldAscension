@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
+using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
-using RimWorld;
 
 namespace RA
 {
@@ -20,24 +18,24 @@ namespace RA
 
         public static TabRecord DrawTabs(Rect baseRect, IEnumerable<TabRecord> tabsEnum)
         {
-            TabDrawer.tabList = new List<TabRecord>(tabsEnum);
+            tabList = new List<TabRecord>(tabsEnum);
 
             TabRecord tabClicked = null;
-            TabRecord tabSelected = TabDrawer.tabList.FirstOrDefault(tab => tab.selected);
+            var tabSelected = tabList.FirstOrDefault(tab => tab.selected);
 
             // no tabs selected error
             if (tabSelected == null)
             {
-                return TabDrawer.tabList[0];
+                return tabList[0];
             }
 
-            float num = baseRect.width + (float)(TabDrawer.tabList.Count - 1) * TabHoriztonalOverlap;
-            float tabWidth = num / (float)TabDrawer.tabList.Count;
+            var num = baseRect.width + (tabList.Count - 1) * TabHoriztonalOverlap;
+            var tabWidth = num / tabList.Count;
             if (tabWidth > MaxTabWidth)
             {
                 tabWidth = MaxTabWidth;
             }
-            Rect rectTabBody = new Rect(baseRect);
+            var rectTabBody = new Rect(baseRect);
             rectTabBody.y -= TabHeight;
             rectTabBody.height = 9999f;
 
@@ -48,14 +46,14 @@ namespace RA
 
                 Func<TabRecord, Rect> DefineTabHeaderDrawRect = delegate(TabRecord tab)
                 {
-                    int tabIndex = TabDrawer.tabList.IndexOf(tab);
-                    float xPosition = (float)tabIndex * (tabWidth - TabHoriztonalOverlap);
+                    var tabIndex = tabList.IndexOf(tab);
+                    var xPosition = tabIndex * (tabWidth - TabHoriztonalOverlap);
                     return new Rect(xPosition, 1f, tabWidth, TabHeight);
                 };
 
-                foreach (TabRecord currentTab in tabList)
+                foreach (var currentTab in tabList)
                 {
-                    Rect rectCurrentTabHeader = DefineTabHeaderDrawRect(currentTab);
+                    var rectCurrentTabHeader = DefineTabHeaderDrawRect(currentTab);
                     // mouseover tab
                     if (Mouse.IsOver(rectCurrentTabHeader))
                     {
@@ -75,7 +73,7 @@ namespace RA
                 }
 
                 // draw all but selected tabs in reversed order (tabs overlap left to right)
-                for (int tabIndex = tabList.Count - 1; tabIndex >= 0; tabIndex--)
+                for (var tabIndex = tabList.Count - 1; tabIndex >= 0; tabIndex--)
                 {
                     if (!tabList[tabIndex].selected)
                     {

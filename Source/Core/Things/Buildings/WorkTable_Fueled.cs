@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
 using RimWorld;
-using Verse;
 using UnityEngine;
+using Verse;
+using static System.String;
 
 namespace RA
 {
-    public class Building_WorkTable_Fueled : Building_WorkTable, IThingContainerOwner
+    public class WorkTable_Fueled : Building_WorkTable, IThingContainerOwner
     {
         public const float MinBurningTemp = 100f;
         public const float HeatChangePerTick = 0.5f;
@@ -33,7 +33,7 @@ namespace RA
 
         public bool autoConsumeMode;
         public float fuelStackRefillPercent = 0.5f;
-        public int currentFuelBurnDuration = 0;
+        public int currentFuelBurnDuration;
 
         public float currentFuelMaxTemp, internalTemp, heatPerSecond_fromXML, glowRadius_fromXML;
 
@@ -45,7 +45,7 @@ namespace RA
         // required to use ThingContainer
         public IntVec3 GetPosition()
         {
-            return this.PositionHeld;
+            return PositionHeld;
         }
 
         public override void SpawnSetup()
@@ -55,7 +55,7 @@ namespace RA
             fuelContainer = new ThingContainer(this, false);
 
             // internal temperature initialize
-            internalTemp = this.Position.GetTemperature();
+            internalTemp = Position.GetTemperature();
 
             // required comps initialize
             compFueled = this.TryGetComp<CompFueled>();
@@ -70,17 +70,17 @@ namespace RA
             filterFuelPossible.SetDisallowAll();
             filterFuelPossible.allowedQualitiesConfigurable = false;
             filterFuelPossible.allowedHitPointsConfigurable = false;
-            foreach (ThingDef def in DefDatabase<ThingDef>.AllDefs.Where(def => !def.statBases.NullOrEmpty() && def.statBases.Exists(stat => stat.stat.defName == "MaxBurningTemp" && stat.value > 0)))
+            foreach (var thingDef in DefDatabase<ThingDef>.AllDefs.Where(def => !def.statBases.NullOrEmpty() && def.statBases.Exists(stat => stat.stat.defName == "MaxBurningTemp" && stat.value > 0)))
             {
-                filterFuelPossible.SetAllow(def, true);
+                filterFuelPossible.SetAllow(thingDef, true);
             }
             filterFuelCurrent.CopyFrom(filterFuelPossible);
 
             // fire textures initialize
-            List<Texture2D> list = ContentFinder<Texture2D>.GetAllInFolder(fireTex_path).ToList<Texture2D>();
-            for (int i = 0; i < list.Count; i++)
+            var list = ContentFinder<Texture2D>.GetAllInFolder(fireTex_path).ToList();
+            foreach (Texture2D texture in list)
             {
-                fireGraphicsVariants.Add(GraphicDatabase.Get<Graphic_Single>(fireTex_path + "/" + list[i].name, ShaderDatabase.TransparentPostLight, this.def.Size.ToVector2(), Color.white));
+                fireGraphicsVariants.Add(GraphicDatabase.Get<Graphic_Single>(fireTex_path + "/" + texture.name, ShaderDatabase.TransparentPostLight, def.Size.ToVector2(), Color.white));
             }
             fireGraphic_current = fireGraphicsVariants.RandomElement();
         }
@@ -96,7 +96,7 @@ namespace RA
             if (Burning)
             {
                 // throw smoke puffs
-                ThrowSmoke(this.DrawPos + compFueled.Properties.smokeDrawOffset, this.RotatedSize.Magnitude / 4);
+                ThrowSmoke(DrawPos + compFueled.Properties.smokeDrawOffset, RotatedSize.Magnitude / 4);
             }
         }
 
@@ -109,7 +109,7 @@ namespace RA
         {
             get
             {
-                Pawn pawn = Find.ThingGrid.ThingAt<Pawn>(this.InteractionCell);
+                var pawn = Find.ThingGrid.ThingAt<Pawn>(InteractionCell);
                 if (pawn != null && !pawn.pather.Moving
                     && pawn.CurJob != null && pawn.CurJob.targetA != null && pawn.CurJob.targetA.HasThing
                     && pawn.CurJob.targetA.Thing == this)
@@ -139,7 +139,7 @@ namespace RA
                 if (internalTemp < currentFuelMaxTemp)
                 {
                     // limits the increase value to the fuel stat
-                    internalTemp += (HeatChangePerTick + internalTemp < currentFuelMaxTemp) ? HeatChangePerTick : currentFuelMaxTemp - internalTemp;
+                    internalTemp += HeatChangePerTick + internalTemp < currentFuelMaxTemp ? HeatChangePerTick : currentFuelMaxTemp - internalTemp;
                 }
             }
             // else, burn next fuel unit
@@ -160,12 +160,12 @@ namespace RA
                 // if no more fuel to burn, lower inner temperature
                 else
                 {
-                    float surroundTemp = this.Position.GetTemperature();
+                    var surroundTemp = Position.GetTemperature();
 
                     if (internalTemp > surroundTemp)
                     {
                         // limits the decrease value to the local temperature
-                        internalTemp -= (internalTemp - HeatChangePerTick > surroundTemp) ? HeatChangePerTick : internalTemp - surroundTemp;
+                        internalTemp -= internalTemp - HeatChangePerTick > surroundTemp ? HeatChangePerTick : internalTemp - surroundTemp;
                     }
                 }
             }
@@ -178,8 +178,8 @@ namespace RA
             {
                 if (internalTemp <= compFueled.Properties.operatingTemp)
                 {
-                    compHeatPusher.props.heatPerSecond = heatPerSecond_fromXML + (compHeatPusher.props.heatPushMaxTemperature - heatPerSecond_fromXML) * (Mathf.Min(internalTemp / compFueled.Properties.operatingTemp, 1f));
-                    compGlower.props.glowRadius = glowRadius_fromXML * (Mathf.Min(internalTemp / compFueled.Properties.operatingTemp, 1));
+                    compHeatPusher.props.heatPerSecond = heatPerSecond_fromXML + (compHeatPusher.props.heatPushMaxTemperature - heatPerSecond_fromXML) * Mathf.Min(internalTemp / compFueled.Properties.operatingTemp, 1f);
+                    compGlower.props.glowRadius = glowRadius_fromXML * Mathf.Min(internalTemp / compFueled.Properties.operatingTemp, 1);
                 }
             }
             else
@@ -189,25 +189,19 @@ namespace RA
             }
 
             // redraw glower
-            Find.MapDrawer.MapMeshDirty(this.Position, MapMeshFlag.Things);
+            Find.MapDrawer.MapMeshDirty(Position, MapMeshFlag.Things);
             Find.GlowGrid.RegisterGlower(compGlower);
         }
 
         // used to determine of using bills is possible
-        public override bool UsableNow
-        {
-            get
-            {
-                return compFueled == null
-                    || internalTemp > compFueled.Properties.operatingTemp
-                    || fuelContainer.Count > 0 && fuelContainer[0].stackCount > 0;
-            }
-        }
+        public override bool UsableNow => compFueled == null
+                                          || internalTemp > compFueled.Properties.operatingTemp
+                                          || fuelContainer.Count > 0 && fuelContainer[0].stackCount > 0;
 
         public bool RequireMoreFuel()
         {
             // no fuel or fuel stack is too small
-            if (fuelContainer.Count == 0 || ((float)fuelContainer[0].stackCount / (float)fuelContainer[0].def.stackLimit) <= fuelStackRefillPercent)
+            if (fuelContainer.Count == 0 || fuelContainer[0].stackCount / (float)fuelContainer[0].def.stackLimit <= fuelStackRefillPercent)
             {
                 return true;
             }
@@ -218,7 +212,7 @@ namespace RA
         // adds graphic texture to the burner
         public override void DrawAt(Vector3 drawLoc)
         {
-            this.Graphic.Draw(drawLoc, Rot4.North, this);
+            Graphic.Draw(drawLoc, Rot4.North, this);
 
             TryDrawCurrentFuel(drawLoc + compFueled.Properties.fuelDrawOffset);
             TryDrawRandomFire(drawLoc + compFueled.Properties.fireDrawOffset);
@@ -228,7 +222,7 @@ namespace RA
         {
             if (Burning)
             {
-                float maxFireScale = compFueled.Properties.fireDrawScale;
+                var maxFireScale = compFueled.Properties.fireDrawScale;
 
                 // changes fire graphic every 15 ticks async
                 if (this.IsHashIntervalTick(15))
@@ -243,7 +237,7 @@ namespace RA
                     fireGraphic_current = temp;
                 }
 
-                float fireScale = Mathf.Min((internalTemp / compFueled.Properties.operatingTemp), maxFireScale);
+                var fireScale = Mathf.Min(internalTemp / compFueled.Properties.operatingTemp, maxFireScale);
                 fireGraphic_current.drawSize = new Vector2(fireScale, fireScale);
                 fireGraphic_current.Draw(drawLoc, Rot4.North, this);
             }
@@ -253,11 +247,12 @@ namespace RA
         {
             if (fuelContainer.Count > 0)
             {
-                float fuelScale = compFueled.Properties.fuelDrawScale;
+                var fuelScale = compFueled.Properties.fuelDrawScale;
 
-                if (fuelContainer[0].Graphic is Graphic_StackCount)
+                var count = fuelContainer[0].Graphic as Graphic_StackCount;
+                if (count != null)
                 {
-                    fuelGraphic = (fuelContainer[0].Graphic as Graphic_StackCount).SubGraphicFor(fuelContainer[0]);
+                    fuelGraphic = count.SubGraphicFor(fuelContainer[0]);
                 }
 
                 fuelGraphic.drawSize = new Vector2(fuelScale, fuelScale);
@@ -267,27 +262,23 @@ namespace RA
 
         public override string GetInspectString()
         {
-            string inspectString = base.GetInspectString();
+            base.GetInspectString();
 
-            string text = inspectString;
-            return string.Concat(new string[]
-            {
-                string.Format("Current status: {0}\n", UsableNow ? "working" : "low temperature")
-            });
+            return Concat(Format("Current status: {0}\n", UsableNow ? "working" : "low temperature"));
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
 
-            Scribe_Deep.LookDeep(ref filterFuelCurrent, "filterFuelCurrent", new object[0]);
+            Scribe_Deep.LookDeep(ref filterFuelCurrent, "filterFuelCurrent");
             Scribe_Values.LookValue(ref autoConsumeMode, "sustainHeatMode");
             Scribe_Values.LookValue(ref fuelStackRefillPercent, "fuelStackRefillPercent");
             Scribe_Values.LookValue(ref currentFuelBurnDuration, "currentFuelBurnDuration");
             Scribe_Values.LookValue(ref internalTemp, "internalTemp");
             Scribe_Values.LookValue(ref heatPerSecond_fromXML, "heatPerSecond_fromXML");
             Scribe_Values.LookValue(ref glowRadius_fromXML, "glowRadius_fromXML");
-            Scribe_Deep.LookDeep(ref fuelContainer, "fuelContainer", new object[] { this });
+            Scribe_Deep.LookDeep(ref fuelContainer, "fuelContainer", this);
         }
     }
 }

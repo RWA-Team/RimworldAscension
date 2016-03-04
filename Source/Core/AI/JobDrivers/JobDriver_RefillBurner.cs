@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
 using Verse;
 using Verse.AI;
 
@@ -36,7 +35,7 @@ namespace RA
 
             //Gather fuel loop
             {
-                Toil extractTarget = Toils_JobTransforms.ExtractNextTargetFromQueue(FuelIndex);
+                var extractTarget = Toils_JobTransforms.ExtractNextTargetFromQueue(FuelIndex);
                 yield return extractTarget;
                 yield return Toils_Goto.GotoThing(FuelIndex, PathEndMode.ClosestTouch)
                     .FailOnDespawnedOrForbidden(FuelIndex)
@@ -51,52 +50,50 @@ namespace RA
 
         public void FindFuelToGather()
         {
-            Building_WorkTable_Fueled burner = CurJob.GetTarget(BurnerIndex).Thing as Building_WorkTable_Fueled;
-            int requiredFuelAmount = CurJob.maxNumToCarry;
+            var requiredFuelAmount = CurJob.maxNumToCarry;
 
-            IntVec3 searchCenter = CurJob.GetTarget(FuelIndex).Thing.Position;
+            var searchCenter = CurJob.GetTarget(FuelIndex).Thing.Position;
             IEnumerable<Thing> searchSet = Find.ListerThings.ThingsOfDef(CurJob.GetTarget(FuelIndex).Thing.def);
 
             CurJob.targetQueueA = new List<TargetInfo>();
             CurJob.numToBringList = new List<int>();
 
-            int closestFuelStackCount = 0;
+            var closestFuelStackCount = 0;
 
             do
             {
                 // max search radius - 10 cells around first or last picked up fuel resource
-                CurJob.targetQueueA.Add(GenClosest.ClosestThing_Global_Reachable(searchCenter, searchSet, PathEndMode.ClosestTouch, TraverseParms.For(pawn, DangerUtility.NormalMaxDanger(pawn)), 10));
+                CurJob.targetQueueA.Add(GenClosest.ClosestThing_Global_Reachable(searchCenter, searchSet, PathEndMode.ClosestTouch, TraverseParms.For(pawn, pawn.NormalMaxDanger()), 10));
                 closestFuelStackCount += CurJob.targetQueueA.Last().Thing.stackCount;
 
-                if (requiredFuelAmount >= closestFuelStackCount)
-                    CurJob.numToBringList.Add(closestFuelStackCount);
-                else
-                    CurJob.numToBringList.Add(requiredFuelAmount);
+                CurJob.numToBringList.Add(requiredFuelAmount >= closestFuelStackCount
+                    ? closestFuelStackCount
+                    : requiredFuelAmount);
 
                 // NOTE: check if works properly
                 searchSet = searchSet.Where(fuel => !CurJob.targetQueueA.Contains(fuel));
                 searchCenter = CurJob.targetQueueA.Last().Thing.Position;
 
                 requiredFuelAmount -= closestFuelStackCount;
-            } while (requiredFuelAmount > 0 && searchSet.Count() > 0);
+            } while (requiredFuelAmount > 0 && searchSet.Any());
         }
 
         public Toil DepositFuelIntoBurner(TargetIndex burnerIndex)
         {
-            Toil toil = new Toil();
+            var toil = new Toil();
             toil.initAction = delegate
             {
-                Pawn actor = toil.actor;
-                Job curJob = actor.jobs.curJob;
+                var actor = toil.actor;
+                var curJob = actor.jobs.curJob;
                 if (actor.carrier.CarriedThing == null)
                 {
                     Log.Error(actor + " tried to place hauled thing in container but is not hauling anything.");
                     return;
                 }
-                IThingContainerOwner thingContainerOwner = curJob.GetTarget(burnerIndex).Thing as IThingContainerOwner;
+                var thingContainerOwner = curJob.GetTarget(burnerIndex).Thing as IThingContainerOwner;
                 if (thingContainerOwner != null)
                 {
-                    int num = actor.carrier.CarriedThing.stackCount;
+                    var num = actor.carrier.CarriedThing.stackCount;
                     actor.carrier.container.TransferToContainer(actor.carrier.CarriedThing, thingContainerOwner.GetContainer(), num);
                 }
                 else if (curJob.GetTarget(burnerIndex).Thing.def.Minifiable)

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
+﻿using System.Collections.Generic;
+using RimWorld.SquadAI;
 using Verse;
 using Verse.AI;
-using Verse.Sound;
-using RimWorld;
-using RimWorld.SquadAI;
 
 namespace RA
 {
@@ -30,7 +23,7 @@ namespace RA
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_References.LookReference<Building_TradingPost>(ref tradingPost, "tradingPost");
+            Scribe_References.LookReference(ref tradingPost, "tradingPost");
         }
 
         public override void Init()
@@ -64,7 +57,7 @@ namespace RA
             animal.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("EscortTradeCart"), merchant, 6);
 
             // Duties for guards
-            for (int i = 2; i < this.brain.ownedPawns.Count; i++)
+            for (var i = 2; i < brain.ownedPawns.Count; i++)
             {
                 brain.ownedPawns[i].mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("EscortTradeCart"), merchant, 6);
             }            

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using UnityEngine;
 using RimWorld;
+using UnityEngine;
 using Verse;
-using Verse.AI;
 
 namespace RA
 {
@@ -46,21 +44,9 @@ namespace RA
             }
         }
 
-        public virtual string Label
-        {
-            get
-            {
-                return AnyThing.LabelBase.CapitalizeFirst();
-            }
-        }
+        public virtual string Label => AnyThing.LabelBase.CapitalizeFirst();
 
-        public virtual float BaseMarketValue
-        {
-            get
-            {
-                return AnyThing.MarketValue;
-            }
-        }
+        public virtual float BaseMarketValue => AnyThing.MarketValue;
 
         public virtual float ListOrderPriority
         {
@@ -103,17 +89,11 @@ namespace RA
                 {
                     num = 20;
                 }
-                return (float)num;
+                return num;
             }
         }
 
-        public bool TraderWillTrade
-        {
-            get
-            {
-                return TradeSession.tradeCompany.def.WillTrade(AnyThing);
-            }
-        }
+        public bool TraderWillTrade => TradeSession.tradeCompany.def.WillTrade(AnyThing);
 
         public Thing AnyThing
         {
@@ -127,34 +107,16 @@ namespace RA
                 {
                     return FirstThingTrader.GetInnerIfMinified();
                 }
-                Log.Error(base.GetType() + " lacks AnyThing.");
+                Log.Error(GetType() + " lacks AnyThing.");
                 return null;
             }
         }
 
-        public virtual ThingDef ThingDef
-        {
-            get
-            {
-                return AnyThing.def;
-            }
-        }
+        public virtual ThingDef ThingDef => AnyThing.def;
 
-        public ThingDef StuffDef
-        {
-            get
-            {
-                return AnyThing.Stuff;
-            }
-        }
+        public ThingDef StuffDef => AnyThing.Stuff;
 
-        public virtual string TipDescription
-        {
-            get
-            {
-                return ThingDef.description;
-            }
-        }
+        public virtual string TipDescription => ThingDef.description;
 
         public TradeAction ActionToDo
         {
@@ -172,13 +134,7 @@ namespace RA
             }
         }
 
-        public bool IsCurrency
-        {
-            get
-            {
-                return !Bugged && ThingDef == ThingDefOf.Silver;
-            }
-        }
+        public bool IsCurrency => !Bugged && ThingDef == ThingDefOf.Silver;
 
         public float CurTotalSilverCost
         {
@@ -188,25 +144,13 @@ namespace RA
                 {
                     return 0f;
                 }
-                return (float)offerCount * PriceFor(ActionToDo);
+                return offerCount * PriceFor(ActionToDo);
             }
         }
 
-        public virtual Window NewInfoDialog
-        {
-            get
-            {
-                return new Dialog_InfoCard(ThingDef);
-            }
-        }
+        public virtual Window NewInfoDialog => new Dialog_InfoCard(ThingDef);
 
-        public bool Bugged
-        {
-            get
-            {
-                return AnyThing == null;
-            }
-        }
+        public bool Bugged => AnyThing == null;
 
         public Tradeable()
         {
@@ -258,7 +202,7 @@ namespace RA
                 Log.Error("Should not increment currency tradeable " + this);
                 return false;
             }
-            AcceptanceReport result = CanSetToDropOneMore();
+            var result = CanSetToDropOneMore();
             if (!result.Accepted)
             {
                 return result;
@@ -300,7 +244,7 @@ namespace RA
                 Log.Error("Should not decrement currency tradeable " + this);
                 return false;
             }
-            AcceptanceReport result = CanSetToLaunchOneMore();
+            var result = CanSetToLaunchOneMore();
             if (!result.Accepted)
             {
                 return result;
@@ -325,13 +269,8 @@ namespace RA
 
         public int CountHeldBy(Transactor trans)
         {
-            List<Thing> list = TransactorThings(trans);
-            int num = 0;
-            for (int i = 0; i < list.Count; i++)
-            {
-                num += list[i].stackCount;
-            }
-            return num;
+            var list = TransactorThings(trans);
+            return list.Sum(t => t.stackCount);
         }
 
         public int CountPostDealFor(Transactor trans)
@@ -345,12 +284,12 @@ namespace RA
 
         public float PriceFor(TradeAction action)
         {
-            float num = TradeSession.tradeCompany.def.PriceTypeFor(ThingDef, action).PriceMultiplier();
-            float num2 = TradeSession.tradeCompany.RandomPriceFactorFor(this);
-            float num3 = 1f;
+            var num = TradeSession.tradeCompany.def.PriceTypeFor(ThingDef, action).PriceMultiplier();
+            var num2 = TradeSession.tradeCompany.RandomPriceFactorFor(this);
+            var num3 = 1f;
             if (TradeSession.colonyNegotiator != null)
             {
-                float num4 = Mathf.Clamp01(TradeSession.colonyNegotiator.health.capacities.GetEfficiency(PawnCapacityDefOf.Talking));
+                var num4 = Mathf.Clamp01(TradeSession.colonyNegotiator.health.capacities.GetEfficiency(PawnCapacityDefOf.Talking));
                 if (action == TradeAction.ToDrop)
                 {
                     num3 += 1f - num4;
@@ -363,13 +302,13 @@ namespace RA
             float num5;
             if (action == TradeAction.ToDrop)
             {
-                num5 = BaseMarketValue * (1f - TradeSession.colonyNegotiator.GetStatValue(StatDefOf.TradePriceImprovement, true)) * num3 * num * num2;
+                num5 = BaseMarketValue * (1f - TradeSession.colonyNegotiator.GetStatValue(StatDefOf.TradePriceImprovement)) * num3 * num * num2;
                 num5 = Mathf.Max(num5, 0.5f);
             }
             else
             {
-                num5 = BaseMarketValue * Find.Storyteller.difficulty.baseSellPriceFactor * AnyThing.GetStatValue(StatDefOf.SellPriceFactor, true) * (1f + TradeSession.colonyNegotiator.GetStatValue(StatDefOf.TradePriceImprovement, true)) * num3 * num * num2;
-                num5 *= Tradeable.LaunchPricePostFactorCurve.Evaluate(num5);
+                num5 = BaseMarketValue * Find.Storyteller.difficulty.baseSellPriceFactor * AnyThing.GetStatValue(StatDefOf.SellPriceFactor) * (1f + TradeSession.colonyNegotiator.GetStatValue(StatDefOf.TradePriceImprovement)) * num3 * num * num2;
+                num5 *= LaunchPricePostFactorCurve.Evaluate(num5);
                 num5 = Mathf.Max(num5, 0.01f);
                 if (num5 >= PriceFor(TradeAction.ToDrop))
                 {
@@ -395,7 +334,7 @@ namespace RA
                     return;
                 }
                 // thingsColony used as a stack of the same type things. We always deal with the first thing in this stack
-                Thing thing = FirstThingColony;
+                var thing = FirstThingColony;
                 // if thing is a stackable resource
                 if (thing.def.stackLimit > 1)
                 {
@@ -417,7 +356,7 @@ namespace RA
             {
                 // offerLeftover - current amount of tradeable type to offer
                 // offerCount - total amount of tradeable type to offer
-                int offerLeftover = Math.Abs(offerCount);
+                var offerLeftover = Math.Abs(offerCount);
                 while (offerLeftover > 0)
                 {
                     if (thingsTrader.Count == 0)
@@ -425,10 +364,10 @@ namespace RA
                         Log.Error("Nothing left to take from trader for " + this);
                         return;
                     }
-                    Thing currentThing = FirstThingTrader;
-                    int transferCount = Mathf.Min(offerLeftover, currentThing.stackCount);
+                    var currentThing = FirstThingTrader;
+                    var transferCount = Mathf.Min(offerLeftover, currentThing.stackCount);
                     // make new thing\stack by splitting required amount of another stack (can take it whole)
-                    Thing transferedThing = currentThing.SplitOff(transferCount);
+                    var transferedThing = currentThing.SplitOff(transferCount);
                     offerLeftover -= transferCount;
                     if (transferedThing == currentThing)
                     {
@@ -445,7 +384,7 @@ namespace RA
 
         public static void DropThing(Thing t)
         {
-            IntVec3 c = DropCellFinder.TradeDropSpot();
+            var c = DropCellFinder.TradeDropSpot();
             DropPodUtility.MakeDropPodAt(c, new DropPodInfo
             {
                 SingleContainedThing = t,
@@ -455,15 +394,7 @@ namespace RA
 
         public override string ToString()
         {
-            return string.Concat(new object[]
-			{
-				base.GetType(),
-				"(",
-				ThingDef,
-				", countToDrop=",
-				offerCount,
-				")"
-			});
+            return string.Concat(GetType(), "(", ThingDef, ", countToDrop=", offerCount, ")");
         }
 
         public override int GetHashCode()

@@ -1,6 +1,6 @@
-﻿using Verse;
-using RimWorld;
+﻿using RimWorld;
 using UnityEngine;
+using Verse;
 
 namespace RA
 {
@@ -8,11 +8,11 @@ namespace RA
     {
         public static void ThrowSmoke(Vector3 loc, float size, string moteDefName)
         {
-            MoteThrown moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDef.Named(moteDefName));
+            var moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDef.Named(moteDefName));
             moteThrown.ScaleUniform = Rand.Range(1.5f, 2.5f) * size;
             moteThrown.exactRotationRate = Rand.Range(-0.5f, 0.5f);
             moteThrown.exactPosition = loc;
-            moteThrown.SetVelocityAngleSpeed((float)Rand.Range(30, 40), Rand.Range(0.008f, 0.012f));
+            moteThrown.SetVelocityAngleSpeed(Rand.Range(30, 40), Rand.Range(0.008f, 0.012f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
         }
 

@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
 using RimWorld;
-using Verse;
 using UnityEngine;
+using Verse;
 
 namespace RA
 {
@@ -15,17 +14,11 @@ namespace RA
         public List<Thing> tempBuffer = new List<Thing>();
         public List<Thing> thingsWithLabels = new List<Thing>();
 
-        public List<Thing> ListAllItems { get { return Find.ThingGrid.ThingsListAtFast(parent.Position).Where(thing => thing != this.parent).ToList(); } }
+        public List<Thing> ListAllItems { get { return Find.ThingGrid.ThingsListAtFast(parent.Position).Where(thing => thing != parent).ToList(); } }
         // doesn't count container as thing
-        public int ItemsCount { get { return ListAllItems.Count; } }
+        public int ItemsCount => ListAllItems.Count;
 
-        public CompContainer_Properties Properties
-        {
-            get
-            {
-                return (CompContainer_Properties)props;
-            }
-        }
+        public CompContainer_Properties Properties => (CompContainer_Properties)props;
 
         // Executed when building is spawned on map (after loading too)
         public override void PostSpawnSetup()
@@ -51,13 +44,13 @@ namespace RA
             DrawRemovedItems();
 
             // individual interval of 250 ticks
-            if (this.parent.IsHashIntervalTick(GenTicks.TickRareInterval))
+            if (parent.IsHashIntervalTick(GenTicks.TickRareInterval))
                 AdjustRottables();
         }
 
         public void HideStoredItems()
         {
-            foreach (Thing item in ListAllItems)
+            foreach (var item in ListAllItems)
             {
                 if (!hiddenItems.Contains(item))
                 {
@@ -71,7 +64,7 @@ namespace RA
         public void DrawRemovedItems()
         {
             tempBuffer.Clear();
-            foreach (Thing item in hiddenItems)
+            foreach (var item in hiddenItems)
             {
                 if (!ListAllItems.Contains(item))
                 {
@@ -87,9 +80,9 @@ namespace RA
         {
             if (Properties.rotModifier != 1f)
             {
-                CompRottable compRot;
-                foreach (Thing item in hiddenItems)
+                foreach (var item in hiddenItems)
                 {
+                    CompRottable compRot;
                     if ((compRot = item.TryGetComp<CompRottable>()) != null)
                     {
                         // if rottable data already saved, regenerate
@@ -118,9 +111,9 @@ namespace RA
         // Scatter items to provide easy access
         public void ScatterItemsAround()
         {
-            foreach (Thing thing in ListAllItems)
+            foreach (var thing in ListAllItems)
             {
-                IntVec3 bestSpot = IntVec3.Invalid;
+                IntVec3 bestSpot;
                 if (JobDriver_HaulToCell.TryFindPlaceSpotNear(parent.Position, thing, out bestSpot))
                 {
                     thing.Position = bestSpot;
@@ -148,7 +141,7 @@ namespace RA
         // Default requirement
         public CompContainer_Properties()
         {
-            this.compClass = typeof(CompContainer_Properties);
+            compClass = typeof(CompContainer_Properties);
         }
     }
 

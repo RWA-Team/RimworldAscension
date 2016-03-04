@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using UnityEngine;
+﻿
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.Sound;
-using Verse.AI;
 
 namespace RA
 {
@@ -18,7 +14,7 @@ namespace RA
 
         public static int dragBaseAmount;
 
-        public static bool dragLimitWarningGiven = false;
+        public static bool dragLimitWarningGiven;
 
         public static Sustainer dragSustainer;
 
@@ -32,47 +28,47 @@ namespace RA
 
         public static void TradeSliderDraggingStarted(float mouseOffX, float rateFactor)
         {
-            TradeSliders.DragStartSound.PlayOneShotOnCamera();
+            DragStartSound.PlayOneShotOnCamera();
         }
 
         public static void TradeSliderDraggingUpdate(float mouseOffX, float rateFactor)
         {
-            int num = TradeSliders.dragBaseAmount;
+            var num = dragBaseAmount;
             if (Mathf.Abs(mouseOffX) > 300f)
             {
                 if (mouseOffX > 0f)
                 {
-                    TradeSliders.dragBaseAmount -= GenMath.RoundRandom(rateFactor);
+                    dragBaseAmount -= GenMath.RoundRandom(rateFactor);
                 }
                 else
                 {
-                    TradeSliders.dragBaseAmount += GenMath.RoundRandom(rateFactor);
+                    dragBaseAmount += GenMath.RoundRandom(rateFactor);
                 }
             }
-            int num2 = TradeSliders.dragBaseAmount - (int)(mouseOffX / 4f);
-            int num3 = TradeSliders.dragTrad.offerCount;
+            var num2 = dragBaseAmount - (int)(mouseOffX / 4f);
+            var num3 = dragTrad.offerCount;
             AcceptanceReport acceptanceReport = null;
             while (num3 != num2)
             {
                 if (num2 > num3)
                 {
-                    acceptanceReport = TradeSliders.dragTrad.TrySetToDropOneMore();
+                    acceptanceReport = dragTrad.TrySetToDropOneMore();
                 }
                 if (num2 < num3)
                 {
-                    acceptanceReport = TradeSliders.dragTrad.TrySetToLaunchOneMore();
+                    acceptanceReport = dragTrad.TrySetToLaunchOneMore();
                 }
                 if (!acceptanceReport.Accepted)
                 {
-                    if (!TradeSliders.dragLimitWarningGiven)
+                    if (!dragLimitWarningGiven)
                     {
-                        if (TradeSliders.dragTrad.CountHeldBy(Transactor.Colony) + TradeSliders.dragTrad.CountHeldBy(Transactor.Trader) > 1)
+                        if (dragTrad.CountHeldBy(Transactor.Colony) + dragTrad.CountHeldBy(Transactor.Trader) > 1)
                         {
                             Messages.Message(acceptanceReport.Reason, MessageSound.RejectInput);
                         }
-                        TradeSliders.dragLimitWarningGiven = true;
+                        dragLimitWarningGiven = true;
                     }
-                    TradeSliders.dragBaseAmount = num;
+                    dragBaseAmount = num;
                     break;
                 }
                 if (num2 > num3)
@@ -83,17 +79,17 @@ namespace RA
                 {
                     num3--;
                 }
-                TradeSliders.dragLimitWarningGiven = false;
+                dragLimitWarningGiven = false;
             }
             if (acceptanceReport.Accepted)
             {
-                if (TradeSliders.dragSustainer == null)
+                if (dragSustainer == null)
                 {
-                    TradeSliders.DragAmountChangedSound.PlayOneShotOnCamera();
+                    DragAmountChangedSound.PlayOneShotOnCamera();
                 }
                 else
                 {
-                    float num4 = -mouseOffX;
+                    var num4 = -mouseOffX;
                     if (num4 > 300f)
                     {
                         num4 = 300f;
@@ -102,21 +98,21 @@ namespace RA
                     {
                         num4 = -300f;
                     }
-                    TradeSliders.dragSustainer.externalParams["DragX"] = num4;
+                    dragSustainer.externalParams["DragX"] = num4;
                 }
-                TradeSliders.lastDragRealTime = Time.realtimeSinceStartup;
+                lastDragRealTime = Time.realtimeSinceStartup;
             }
-            if (TradeSliders.dragSustainer != null)
+            if (dragSustainer != null)
             {
-                TradeSliders.dragSustainer.Maintain();
-                TradeSliders.dragSustainer.externalParams["TimeSinceDrag"] = Time.realtimeSinceStartup - TradeSliders.lastDragRealTime;
+                dragSustainer.Maintain();
+                dragSustainer.externalParams["TimeSinceDrag"] = Time.realtimeSinceStartup - lastDragRealTime;
             }
         }
 
         public static void TradeSliderDraggingCompleted(float mouseOffX, float rateFactor)
         {
-            TradeSliders.dragSustainer = null;
-            TradeSliders.DragEndSound.PlayOneShotOnCamera();
+            dragSustainer = null;
+            DragEndSound.PlayOneShotOnCamera();
         }
     }
 }

@@ -1,25 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
 using RimWorld;
 using Verse;
 
 namespace RA
 {
-	public class IncidentMaker_RA : IncidentMaker
+    public class IncidentMaker_RA : IncidentMaker
 	{
         // number of days after start without any random incidents
         public static int graceDaysCount = 2;
 
-        protected override float MinIncidentChancePopFactor
-		{
-			get
-			{
-				return 0.05f;
-			}
-		}
+        protected override float MinIncidentChancePopFactor => 0.05f;
 
         /* yield return doesn't break the sequence
          * called every 7500 ticks (QueueInterval), 4 times per game day
@@ -32,7 +23,7 @@ namespace RA
                 //Day 3: visitors
                 if (DaysPassed == 3)
                 {
-                    QueuedIncident qi = new QueuedIncident(IncidentDef.Named("VisitorGroup"));
+                    var qi = new QueuedIncident(IncidentDef.Named("VisitorGroup"));
                     yield return qi;
                 }
             }
@@ -47,18 +38,18 @@ namespace RA
                 }
 
                 // General incident
-                if (Rand.MTBEventOccurs(Def.classic_RandomEventMTBDays, GenDate.TicksPerDay, IncidentMaker.QueueInterval))
+                if (Rand.MTBEventOccurs(Def.classic_RandomEventMTBDays, GenDate.TicksPerDay, QueueInterval))
                     yield return RandomIncidentOfCategory(IncidentCategory.Misc);
 
                 // Small threats
-                if (DaysPassed > 8 && Rand.MTBEventOccurs(Def.classic_ThreatSmallMTBDays, GenDate.TicksPerDay, IncidentMaker.QueueInterval))
+                if (DaysPassed > 8 && Rand.MTBEventOccurs(Def.classic_ThreatSmallMTBDays, GenDate.TicksPerDay, QueueInterval))
                     yield return RandomIncidentOfCategory(IncidentCategory.ThreatSmall);
 
                 // Big threats
-                float daysSinceThreatBig = (float)(Find.TickManager.TicksGame - StoryState.LastThreatBigQueueTick) / GenDate.TicksPerDay;
+                var daysSinceThreatBig = (float)(Find.TickManager.TicksGame - StoryState.LastThreatBigQueueTick) / GenDate.TicksPerDay;
                 if (daysSinceThreatBig > Def.minDaysBetweenThreatBigs)
                 {
-                    if (Rand.MTBEventOccurs(Def.classic_ThreatBigMTBDays, GenDate.TicksPerDay, IncidentMaker.QueueInterval))
+                    if (Rand.MTBEventOccurs(Def.classic_ThreatBigMTBDays, GenDate.TicksPerDay, QueueInterval))
                         yield return RandomIncidentOfCategory(IncidentCategory.ThreatBig);
                 }
             }
@@ -67,8 +58,8 @@ namespace RA
         public QueuedIncident RandomIncidentOfCategory(IncidentCategory category)
         {
             // random weight determine element probalility compare to other elements
-            IncidentDef incidentDef = DefDatabase<IncidentDef>.AllDefs.Where(def => def.category == category).RandomElementByWeight(def => IncidentChanceAdjustedForPopulation(def));
-            return new QueuedIncident(incidentDef, this.ParmsNow(incidentDef.category));
+            var incidentDef = DefDatabase<IncidentDef>.AllDefs.Where(def => def.category == category).RandomElementByWeight(def => IncidentChanceAdjustedForPopulation(def));
+            return new QueuedIncident(incidentDef, ParmsNow(incidentDef.category));
         }
 
         public override IncidentParms ParmsNow(IncidentCategory incCat)
@@ -79,7 +70,7 @@ namespace RA
         // used for debug
 		public void ForceQueueThreatBig()
 		{
-            base.IncQueue.Add(RandomIncidentOfCategory(IncidentCategory.ThreatBig));
+            IncQueue.Add(RandomIncidentOfCategory(IncidentCategory.ThreatBig));
 		}
 	}
 }

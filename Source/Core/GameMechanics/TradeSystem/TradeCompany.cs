@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-
-using UnityEngine;
 using RimWorld;
 using Verse;
-using Verse.AI;
 
 namespace RA
 {
@@ -18,29 +14,17 @@ namespace RA
         public TradeCompany(TraderKindDef def)
         {
             this.def = def;
-            this.name = RulePackDef.Named("NamerTraderGeneral").GenerateDefault_Name(
+            name = RulePackDef.Named("NamerTraderGeneral").GenerateDefault_Name(
                 from vis in Find.PassingShipManager.passingShips 
                 select vis.name);
-            this.randomPriceFactorSeed = Rand.RangeInclusive(1, 10000000);
+            randomPriceFactorSeed = Rand.RangeInclusive(1, 10000000);
         }
 
-		public override string FullTitle
-		{
-			get
-			{
-				return this.name + " (" + this.def.label + ")";
-			}
-		}
+		public override string FullTitle => name + " (" + def.label + ")";
 
-		public int Silver
-		{
-			get
-			{
-				return this.CountHeldOf(ThingDefOf.Silver, null);
-			}
-		}
+        public int Silver => CountHeldOf(ThingDefOf.Silver);
 
-		public override void TryOpenComms(Pawn negotiator)
+        public override void TryOpenComms(Pawn negotiator)
 		{
 			if (TradeSession.tradeCompany == null)
 				return;
@@ -51,12 +35,12 @@ namespace RA
 
 		public override string GetCallLabel()
 		{
-			return this.name + " (" + this.def.label + ")";
+			return name + " (" + def.label + ")";
 		}
 
 		public int CountHeldOf(ThingDef thingDef, ThingDef stuffDef = null)
 		{
-			Thing thing = this.HeldThingMatching(thingDef, stuffDef);
+			var thing = HeldThingMatching(thingDef, stuffDef);
 			if (thing != null)
 			{
 				return thing.stackCount;
@@ -66,14 +50,14 @@ namespace RA
 
 		public void AddToStock(Thing thing)
 		{
-			Thing thing2 = this.HeldThingMatching(thing);
+			var thing2 = HeldThingMatching(thing);
 			if (thing2 != null)
 			{
 				thing2.stackCount += thing.stackCount;
 			}
 			else
 			{
-				this.things.Add(thing);
+                things.Add(thing);
 			}
 		}
 
@@ -83,49 +67,27 @@ namespace RA
 			{
 				return null;
 			}
-			for (int i = 0; i < this.things.Count; i++)
-			{
-				Thing thing2 = this.things[i];
-				if (TradeUtility.TradeAsOne(thing2, thing))
-				{
-					return thing2;
-				}
-			}
-			return null;
+		    return things.FirstOrDefault(thing2 => TradeUtility.TradeAsOne(thing2, thing));
 		}
 
 		public void RemoveFromStock(Thing thing)
 		{
-			if (!this.things.Contains(thing))
+			if (!things.Contains(thing))
 			{
-				Log.Error(string.Concat(new object[]
-				{
-					"Tried to remove ",
-					thing,
-					" from trader ",
-					this.name,
-					" who didn't have it."
-				}));
+				Log.Error(string.Concat("Tried to remove ", thing, " from trader ", name, " who didn't have it."));
 				return;
 			}
-			this.things.Remove(thing);
+            things.Remove(thing);
 		}
 
 		public Thing HeldThingMatching(ThingDef thingDef, ThingDef stuffDef)
 		{
-			for (int i = 0; i < this.things.Count; i++)
-			{
-				if (this.things[i].def == thingDef && this.things[i].Stuff == stuffDef)
-				{
-					return this.things[i];
-				}
-			}
-			return null;
+		    return things.FirstOrDefault(t => t.def == thingDef && t.Stuff == stuffDef);
 		}
 
-		public void ChangeCountHeldOf(ThingDef thingDef, ThingDef stuffDef, int count)
+        public void ChangeCountHeldOf(ThingDef thingDef, ThingDef stuffDef, int count)
 		{
-			Thing thing = this.HeldThingMatching(thingDef, stuffDef);
+			var thing = HeldThingMatching(thingDef, stuffDef);
 			if (thing == null)
 			{
 				Log.Error("Changing count of thing trader doesn't have: " + thingDef);
@@ -135,23 +97,23 @@ namespace RA
 
 		public float RandomPriceFactorFor(Tradeable tradeable)
 		{
-			int num = DefDatabase<ThingDef>.AllDefsListForReading.IndexOf(tradeable.ThingDef);
+			var num = DefDatabase<ThingDef>.AllDefsListForReading.IndexOf(tradeable.ThingDef);
 			Rand.PushSeed();
-			Rand.Seed = this.randomPriceFactorSeed * num;
-			float result = Rand.Range(0.9f, 1.1f);
+			Rand.Seed = randomPriceFactorSeed * num;
+			var result = Rand.Range(0.9f, 1.1f);
 			Rand.PopSeed();
 			return result;
 		}
         public override string ToString()
         {
-            return this.FullTitle;
+            return FullTitle;
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Defs.LookDef(ref def, "def");
-            Scribe_Collections.LookList(ref things, "things", LookMode.Deep, new object[0]);
+            Scribe_Collections.LookList(ref things, "things", LookMode.Deep);
             Scribe_Values.LookValue(ref randomPriceFactorSeed, "randomPriceFactorSeed");
         }
 	}

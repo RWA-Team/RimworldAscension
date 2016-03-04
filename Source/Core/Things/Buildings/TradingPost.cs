@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -22,19 +21,19 @@ namespace RA
 
         public Building_TradingPost()
         {
-            this.colonyOffer = new ThingContainer(this, false);
+            colonyOffer = new ThingContainer(this, false);
         }
 
         // required for using IThingContainerOwner, to use modified HaulToContainer job (HaulToTrade)
         public IntVec3 GetPosition()
         {
-            return this.Position;
+            return Position;
         }
 
         // required for using IThingContainerOwner, to use modified HaulToContainer job (HaulToTrade)
         public ThingContainer GetContainer()
         {
-            return this.colonyOffer;
+            return colonyOffer;
         }
 
         public IEnumerable<IntVec3> TradeableCells
@@ -42,18 +41,18 @@ namespace RA
             get
             {
                 // half width of the rectangle, determined by <specialDisplayRadius> in building def
-                int tradeZoneRange = (int)this.def.specialDisplayRadius + 1;
+                var tradeZoneRange = (int)def.specialDisplayRadius + 1;
 
-                IntVec3 centerCell = this.Position;
-                IntVec3 currentCell = centerCell;
+                var centerCell = Position;
+                var currentCell = centerCell;
 
-                for (int i = centerCell.x - tradeZoneRange; i < centerCell.x + tradeZoneRange + 1; i++)
+                for (var i = centerCell.x - tradeZoneRange; i < centerCell.x + tradeZoneRange + 1; i++)
                 {
                     currentCell.x = i;
-                    for (int j = centerCell.z - tradeZoneRange; j < centerCell.z + tradeZoneRange + 1; j++)
+                    for (var j = centerCell.z - tradeZoneRange; j < centerCell.z + tradeZoneRange + 1; j++)
                     {
                         currentCell.z = j;
-                        if ((Math.Abs(centerCell.x - currentCell.x) > 1 || Math.Abs(centerCell.z - currentCell.z) > 1) && GenGrid.InBounds(currentCell) && currentCell.Walkable())
+                        if ((Math.Abs(centerCell.x - currentCell.x) > 1 || Math.Abs(centerCell.z - currentCell.z) > 1) && currentCell.InBounds() && currentCell.Walkable())
                             yield return currentCell;
                     }
                 }
@@ -64,9 +63,9 @@ namespace RA
         {
             get
             {
-                foreach (IntVec3 cell in this.TradeableCells)
+                foreach (var cell in TradeableCells)
                 {
-                    foreach (Thing item in Find.ThingGrid.ThingsAt(cell))
+                    foreach (var item in Find.ThingGrid.ThingsAt(cell))
                     {
                         if (item.def.category == ThingCategory.Item && !item.IsBurning() && !item.IsForbidden(Faction.OfColony))
                         {
@@ -79,26 +78,26 @@ namespace RA
 
         public override void DrawExtraSelectionOverlays()
         {
-            if (this.def.specialDisplayRadius > 1f)
+            if (def.specialDisplayRadius > 1f)
             {
                 GenDraw.DrawFieldEdges(TradeableCells.ToList());
             }
-            if (this.def.drawPlaceWorkersWhileSelected && this.def.PlaceWorkers != null)
+            if (def.drawPlaceWorkersWhileSelected && def.PlaceWorkers != null)
             {
-                for (int i = 0; i < this.def.PlaceWorkers.Count; i++)
+                foreach (PlaceWorker worker in def.PlaceWorkers)
                 {
-                    this.def.PlaceWorkers[i].DrawGhost(this.def, this.Position, this.Rotation);
+                    worker.DrawGhost(def, Position, Rotation);
                 }
             }
-            if (this.def.hasInteractionCell)
+            if (def.hasInteractionCell)
             {
-                GenDraw.DrawInteractionCell(this.def, Position, Rotation);
+                GenDraw.DrawInteractionCell(def, Position, Rotation);
             }
         }
 
         public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn pawn)
         {
-            ICommunicable communicable = TradeSession.tradeCompany as ICommunicable;
+            var communicable = TradeSession.tradeCompany as ICommunicable;
 
             if (!pawn.health.capacities.CapableOf(PawnCapacityDefOf.Talking))
             {
@@ -110,17 +109,14 @@ namespace RA
             }
             else if (TradeSession.deal != null && TradeSession.deal.isPending)
             {
-                Action action = () =>
-                {
-                    NegateTradeDeal();
-                };
+                Action action = NegateTradeDeal;
                 yield return new FloatMenuOption("Negate Current Deal", action);
             }
             else
             {
                 Action action = () =>
                 {
-                    Job job = new Job(DefDatabase<JobDef>.GetNamed("GoTrading"), new TargetInfo(this))
+                    var job = new Job(DefDatabase<JobDef>.GetNamed("GoTrading"), new TargetInfo(this))
                     {
                         commTarget = communicable
                     };
@@ -145,14 +141,14 @@ namespace RA
             // deal successful, all offered items hauled to the trading post
             if (offeredItems.Count == 0 && offeredResourceCounters.Count == 0)
             {
-                foreach (Thing thing in colonyOffer)
+                foreach (var thing in colonyOffer)
                 {
                     // used to fill all the stacks of the same thing type
                     TradeSession.tradeCompany.AddToStock(thing);
                 }
                 colonyOffer.Clear();
                 // NOTE: merchantOffer Clear?
-                foreach (Thing thing in merchantOffer)
+                foreach (var thing in merchantOffer)
                 {
                     // used to fill all the stacks of the same thing type and do some other actions and checks
                     colonyOffer.TryAdd(thing);
@@ -166,15 +162,14 @@ namespace RA
 
                 return true;
             }
-            else
-                return false;
+            return false;
         }
 
         // items returned to their owners
         public void NegateTradeDeal()
         {
             colonyOffer.TryDropAll(InteractionCell, ThingPlaceMode.Near);
-            foreach (Thing thing in merchantOffer)
+            foreach (var thing in merchantOffer)
             {
                 TradeSession.tradeCompany.AddToStock(thing);
             }
@@ -186,12 +181,12 @@ namespace RA
 
         public void RegenerateRequestCounters()
         {
-            List<Thing> currentlyHauled_RequestedItems = new List<Thing>();
-            List<ThingCount> currentlyHauled_RequestedResources = new List<ThingCount>();
+            var currentlyHauled_RequestedItems = new List<Thing>();
+            var currentlyHauled_RequestedResources = new List<ThingCount>();
             Thing currentHaulable;
 
             // generate lists of things being hauled due to offer requests
-            foreach (Pawn pawn in Find.ListerPawns.FreeColonists)
+            foreach (var pawn in Find.ListerPawns.FreeColonists)
             {
                 if (pawn.CurJob != null && pawn.CurJob.def.defName == "HaulToTrade")
                 {
@@ -215,7 +210,7 @@ namespace RA
             WorkGiver_HaulToTrade.requestedItems = new List<Thing>(offeredItems.Except(currentlyHauled_RequestedItems));
 
             // regenerate request lists in workgiver for the missing resources (cause of failed haul jobs)
-            foreach (ThingCount counter in offeredResourceCounters)
+            foreach (var counter in offeredResourceCounters)
             {
                 // if workgiver has this resource request
                 if (WorkGiver_HaulToTrade.requestedResourceCounters.Exists(counter2 => counter2.thingDef == counter.thingDef))
@@ -261,10 +256,7 @@ namespace RA
                 {
                     return def.graphic;
                 }
-                else
-                {
-                    return GraphicDatabase.Get<Graphic_Single>("Things/Buildings/TradingPost/TradingPost_Occupied", def.graphic.Shader, def.graphic.drawSize, def.graphic.Color);
-                }
+                return GraphicDatabase.Get<Graphic_Single>("Things/Buildings/TradingPost/TradingPost_Occupied", def.graphic.Shader, def.graphic.drawSize, def.graphic.Color);
             }
         }
 
@@ -272,11 +264,11 @@ namespace RA
         {
             base.ExposeData();
 
-            Scribe_Deep.LookDeep(ref colonyOffer, "colonyOffer", new object[] { this });
-            Scribe_Collections.LookList(ref merchantOffer, "merchantOffer", LookMode.Deep, new object[0]);
-            Scribe_Collections.LookList(ref offeredItems, "offeredItems", LookMode.Deep, new object[0]);
-            Scribe_Collections.LookList(ref offeredResourceCounters, "offeredResourceCounters", LookMode.Deep, new object[] { this });
-            Scribe_Deep.LookDeep(ref merchant, "merchant", new object[0]);
+            Scribe_Deep.LookDeep(ref colonyOffer, "colonyOffer", this);
+            Scribe_Collections.LookList(ref merchantOffer, "merchantOffer", LookMode.Deep);
+            Scribe_Collections.LookList(ref offeredItems, "offeredItems", LookMode.Deep);
+            Scribe_Collections.LookList(ref offeredResourceCounters, "offeredResourceCounters", LookMode.Deep, this);
+            Scribe_Deep.LookDeep(ref merchant, "merchant");
             Scribe_Values.LookValue(ref occupied, "occupied");
         }
     }

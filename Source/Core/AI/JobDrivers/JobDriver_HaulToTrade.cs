@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 using Verse;
 using Verse.AI;
 
@@ -12,11 +11,7 @@ namespace RA
 
         public override string GetReport()
         {
-            Thing hauledThing = null;
-            if (pawn.carrier.CarriedThing != null)
-                hauledThing = pawn.carrier.CarriedThing;
-            else
-                hauledThing = TargetThingA;
+            var hauledThing = pawn.carrier.CarriedThing ?? TargetThingA;
 
             return "ReportHaulingTo".Translate(hauledThing.LabelCap, CurJob.targetB.Thing.LabelBaseShort);
         }
@@ -34,7 +29,7 @@ namespace RA
             AdjustRequestLists();
 
             // NOTE: use pickup queues later?
-            Toil goToThing = Toils_Goto.GotoThing(CarryThingIndex, PathEndMode.ClosestTouch);
+            var goToThing = Toils_Goto.GotoThing(CarryThingIndex, PathEndMode.ClosestTouch);
             yield return goToThing;
 
             yield return Toils_Haul.StartCarryThing(CarryThingIndex);
@@ -48,20 +43,20 @@ namespace RA
 
         public Toil DepositHauledThingInContainer(TargetIndex containerInd)
         {
-            Toil toil = new Toil();
+            var toil = new Toil();
             toil.initAction = delegate
             {
-                Pawn actor = toil.actor;
-                Job curJob = actor.jobs.curJob;
+                var actor = toil.actor;
+                var curJob = actor.jobs.curJob;
                 if (actor.carrier.CarriedThing == null)
                 {
                     Log.Error(actor + " tried to place hauled thing in container but is not hauling anything.");
                     return;
                 }
-                IThingContainerOwner thingContainerOwner = curJob.GetTarget(containerInd).Thing as IThingContainerOwner;
+                var thingContainerOwner = curJob.GetTarget(containerInd).Thing as IThingContainerOwner;
                 if (thingContainerOwner != null)
                 {
-                    int num = actor.carrier.CarriedThing.stackCount;
+                    var num = actor.carrier.CarriedThing.stackCount;
                     actor.carrier.container.TransferToContainer(actor.carrier.CarriedThing, thingContainerOwner.GetContainer(), num);
                     AdjustOfferedLists();
                 }
@@ -81,7 +76,7 @@ namespace RA
         {
             if (TargetThingA.def.stackLimit > 1)
             {
-                ThingCount counter = WorkGiver_HaulToTrade.requestedResourceCounters.Find(item => item.thingDef == TargetThingA.def);
+                var counter = WorkGiver_HaulToTrade.requestedResourceCounters.Find(item => item.thingDef == TargetThingA.def);
                 counter.count -= CurJob.maxNumToCarry;
                 if (counter.count == 0)
                     WorkGiver_HaulToTrade.requestedResourceCounters.Remove(counter);
@@ -92,10 +87,10 @@ namespace RA
 
         public void AdjustOfferedLists()
         {
-            Building_TradingPost tradingPost = TargetThingB as Building_TradingPost;
+            var tradingPost = TargetThingB as Building_TradingPost;
             if (TargetThingA.def.stackLimit > 1)
             {
-                ThingCount counter = tradingPost.offeredResourceCounters.Find(item => item.thingDef == TargetThingA.def);
+                var counter = tradingPost.offeredResourceCounters.Find(item => item.thingDef == TargetThingA.def);
                 counter.count -= CurJob.maxNumToCarry;
                 if (counter.count == 0)
                     tradingPost.offeredResourceCounters.Remove(counter);

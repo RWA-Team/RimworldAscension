@@ -1,10 +1,11 @@
 ﻿using System;
-using Verse;
-using Verse.AI;
 using System.Collections.Generic;
-using Verse.Sound;
 using RimWorld;
 using UnityEngine;
+using Verse;
+using Verse.AI;
+using Verse.Sound;
+using Random = System.Random;
 
 namespace RA
 {
@@ -25,10 +26,10 @@ namespace RA
             base.SpawnSetup();
 
             // probability for the cell to throw smoke motes, halved  with each iteration
-            float chance = 1f;
-            foreach (IntVec3 cell in GenAdj.CellsOccupiedBy(this))
+            var chance = 1f;
+            foreach (var cell in GenAdj.CellsOccupiedBy(this))
             {
-                if (chance > new System.Random().NextDouble())
+                if (chance > new Random().NextDouble())
                     damagedCells.Add(cell);
                 chance /= 2;
             }
@@ -43,7 +44,7 @@ namespace RA
                     deployed = true;
                 }
 
-            foreach (IntVec3 damagedCell in damagedCells)
+            foreach (var damagedCell in damagedCells)
             {
                 // Throw smoke mote
                 RA_Motes.ThrowSmokeBlack(damagedCell.ToVector3(), 0.5f);
@@ -54,40 +55,37 @@ namespace RA
         public virtual void Deploy()
         {
             // loop over all contents
-            foreach (Thing thing in cargo.containedThings)
+            foreach (var thing in cargo.containedThings)
             {
                 // Place thing in world
-                GenPlace.TryPlaceThing(thing, this.Position, ThingPlaceMode.Near);
+                GenPlace.TryPlaceThing(thing, Position, ThingPlaceMode.Near);
                 // If its a pawn
-                Pawn pawn = thing as Pawn;
+                var pawn = thing as Pawn;
                 // if its a humanlike pawn
                 if (pawn != null && pawn.RaceProps.Humanlike)
                 {
                     // Record a tale
-                    TaleRecorder.RecordTale(TaleDef.Named("LandedInPod"), new object[]
-                    {
-                        pawn
-                    });
+                    TaleRecorder.RecordTale(TaleDef.Named("LandedInPod"), pawn);
                 }
                 // Kill pawns due to impact
                 HealthUtility.GiveInjuriesToKill(pawn);
             }
             // All contents dealt with, clear list
-            this.cargo.containedThings.Clear();
+            cargo.containedThings.Clear();
             // Play open sound
-            DropPodCrashed.OpenSound.PlayOneShot(base.Position);
+            OpenSound.PlayOneShot(Position);
         }
 
         public override IEnumerable<Gizmo> GetGizmos()
         {
             // Do base gizmos if required
-            foreach (Gizmo gizmo in base.GetGizmos())
+            foreach (var gizmo in base.GetGizmos())
             {
                 yield return gizmo;
             }
 
             // Setup a new command
-            Command_Action gizmo_Scavenge = new Command_Action
+            var gizmo_Scavenge = new Command_Action
             {
                 // Command icon
                 icon = ContentFinder<Texture2D>.Get("UI/Icons/Scavenge"),
@@ -98,7 +96,7 @@ namespace RA
                 // Command sound when activated
                 activateSound = SoundDef.Named("Click"),
                 // Action to call
-                action = new Action(Scavenge)
+                action = Scavenge
             };
             yield return gizmo_Scavenge;
         }
@@ -109,12 +107,12 @@ namespace RA
             {
                 pawn.drafter.TakeOrderedJob(new Job(JobDefOf.Deconstruct, this));
             };
-            yield return new FloatMenuOption("Scavenge the " + this.Label, action);
+            yield return new FloatMenuOption("Scavenge the " + Label, action);
         }
 
         public void Scavenge()
         {
-            this.SetFaction(Faction.OfColony);
+            SetFaction(Faction.OfColony);
             Find.DesignationManager.AddDesignation(new Designation(this, DesignationDefOf.Deconstruct));
         }
 
@@ -134,21 +132,21 @@ namespace RA
         public virtual void SpawnScavengebles()
         {
             // Generate some steel slags
-            for (int j = 0; j < 3; j++)
+            for (var j = 0; j < 3; j++)
             {
-                Thing thing = ThingMaker.MakeThing(ThingDefOf.ChunkSlagSteel);
-                GenPlace.TryPlaceThing(thing, base.Position, ThingPlaceMode.Near);
+                var thing = ThingMaker.MakeThing(ThingDefOf.ChunkSlagSteel);
+                GenPlace.TryPlaceThing(thing, Position, ThingPlaceMode.Near);
             }
 
             // Generate some meal packs
-            Thing thing2 = ThingMaker.MakeThing(ThingDefOf.MealSurvivalPack);
+            var thing2 = ThingMaker.MakeThing(ThingDefOf.MealSurvivalPack);
             thing2.stackCount = NumStartingMealsPerColonist;
-            GenPlace.TryPlaceThing(thing2, base.Position, ThingPlaceMode.Near);
+            GenPlace.TryPlaceThing(thing2, Position, ThingPlaceMode.Near);
 
             // Generate some medicine
-            Thing thing3 = ThingMaker.MakeThing(ThingDefOf.Medicine);
+            var thing3 = ThingMaker.MakeThing(ThingDefOf.Medicine);
             thing3.stackCount = NumStartingMedPacksPerColonist;
-            GenPlace.TryPlaceThing(thing3, base.Position, ThingPlaceMode.Near);
+            GenPlace.TryPlaceThing(thing3, Position, ThingPlaceMode.Near);
         }
 
         public override void ExposeData()
@@ -158,7 +156,7 @@ namespace RA
 
             // Save tickstoimpact to save file
             Scribe_Values.LookValue(ref deployed, "deployed");
-            Scribe_Deep.LookDeep(ref cargo, "info", new object[0]);
+            Scribe_Deep.LookDeep(ref cargo, "info");
             Scribe_Collections.LookList(ref damagedCells, "damagedCells", LookMode.Value);
         }
     }

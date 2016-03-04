@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using UnityEngine;
-using RimWorld;
 using Verse;
 
 namespace RA
@@ -20,9 +15,9 @@ namespace RA
         {
             get
             {
-                float x = (float)Math.Sin((double)(Find.RealTime.timeUnpaused * ShakeFrequency)) * curShakeMag;
-                float y = (float)Math.Sin((double)(Find.RealTime.timeUnpaused * ShakeFrequency) * 1.05) * curShakeMag;
-                float z = (float)Math.Sin((double)(Find.RealTime.timeUnpaused * ShakeFrequency) * 1.1) * curShakeMag;
+                var x = (float)Math.Sin(Find.RealTime.timeUnpaused * ShakeFrequency) * curShakeMag;
+                var y = (float)Math.Sin(Find.RealTime.timeUnpaused * ShakeFrequency * 1.05) * curShakeMag;
+                var z = (float)Math.Sin(Find.RealTime.timeUnpaused * ShakeFrequency * 1.1) * curShakeMag;
                 return new Vector3(x, y, z);
             }
         }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
-using UnityEngine;
 
 namespace RA
 {
@@ -17,14 +14,14 @@ namespace RA
 
         public override void FindTrainee()
         {
-            foreach (Pawn pawn in allowedPawns)
+            foreach (var pawn in allowedPawns)
             {
                 // find pawn with equipped ranged weapon and it's posible to hit target from interaction cell
                 if (pawn.equipment.Primary != null && pawn.equipment.PrimaryEq.PrimaryVerb is Verb_LaunchProjectile && pawn.equipment.PrimaryEq.PrimaryVerb.CanHitTargetFrom(InteractionCell, this))
                     // which is also idle, has no life needs and can reserve and reach
-                    if (pawn.mindState.IsIdle && !PawnHasNeeds(pawn) && ReservationUtility.CanReserveAndReach(pawn, this, PathEndMode.InteractionCell, Danger.Some))
+                    if (pawn.mindState.IsIdle && !PawnHasNeeds(pawn) && pawn.CanReserveAndReach(this, PathEndMode.InteractionCell, Danger.Some))
                     {
-                        pawn.drafter.TakeOrderedJob(new Job(DefDatabase<JobDef>.GetNamed("CombatTraining"), this, this.InteractionCell));
+                        pawn.drafter.TakeOrderedJob(new Job(DefDatabase<JobDef>.GetNamed("CombatTraining"), this, InteractionCell));
                         break;
                     }
             }
@@ -32,7 +29,7 @@ namespace RA
 
         public override IEnumerable<Gizmo> GetGizmos()
         {
-            foreach (Gizmo gizmo in base.GetGizmos())
+            foreach (var gizmo in base.GetGizmos())
                 yield return gizmo;
 
             // Increase Range gizmo
@@ -40,9 +37,9 @@ namespace RA
             {
                 defaultDesc = "Increase interaction cell offset",
                 defaultLabel = "Increase Range",
-                icon = ContentFinder<Texture2D>.Get("UI/Icons/Upgrade", true),
+                icon = ContentFinder<Texture2D>.Get("UI/Icons/Upgrade"),
                 activateSound = SoundDef.Named("Click"),
-                action = new Action(IncreaseRange),
+                action = IncreaseRange
             };
 
             // Decrease Range gizmo
@@ -50,9 +47,9 @@ namespace RA
             {
                 defaultDesc = "Decrease interaction cell offset",
                 defaultLabel = "Decrease Range",
-                icon = ContentFinder<Texture2D>.Get("UI/Icons/Upgrade", true),
+                icon = ContentFinder<Texture2D>.Get("UI/Icons/Upgrade"),
                 activateSound = SoundDef.Named("Click"),
-                action = new Action(DecreaseRange),
+                action = DecreaseRange
             };
         }
 
@@ -60,15 +57,15 @@ namespace RA
         {
             base.CopySettings();
 
-            Target.interactionCellOffset_Transfer = interactionCellOffset;
+            interactionCellOffset_Transfer = interactionCellOffset;
         }
 
         public override void PasteSettings()
         {
             base.PasteSettings();
 
-            if (Target.interactionCellOffset_Transfer != 0)
-                interactionCellOffset = Target.interactionCellOffset_Transfer;
+            if (interactionCellOffset_Transfer != 0)
+                interactionCellOffset = interactionCellOffset_Transfer;
         }
 
         public void IncreaseRange()
@@ -85,7 +82,7 @@ namespace RA
 
         public override void DrawExtraSelectionOverlays()
         {
-            Vector3 position = InteractionCell.ToVector3ShiftedWithAltitude(AltitudeLayer.MetaOverlays);
+            var position = InteractionCell.ToVector3ShiftedWithAltitude(AltitudeLayer.MetaOverlays);
             Graphics.DrawMesh(MeshPool.plane10, position, Quaternion.identity, MaterialPool.MatFrom("UI/Overlays/InteractionCell", ShaderDatabase.Transparent), 0);
         }
 
@@ -94,14 +91,14 @@ namespace RA
             get
             {
                 // try to offset interaction cell until it's standable
-                IntVec3 newInteractionCell;
-                for (int i = interactionCellOffset; i > 0; i--)
+                for (var i = interactionCellOffset; i > 0; i--)
                 {
-                    if (this.Rotation == Rot4.North)
+                    IntVec3 newInteractionCell;
+                    if (Rotation == Rot4.North)
                         newInteractionCell = base.InteractionCell + new IntVec3(0, 0, 0 - interactionCellOffset);
-                    else if (this.Rotation == Rot4.East)
+                    else if (Rotation == Rot4.East)
                         newInteractionCell = base.InteractionCell + new IntVec3(0 - interactionCellOffset, 0, 0);
-                    else if (this.Rotation == Rot4.South)
+                    else if (Rotation == Rot4.South)
                         newInteractionCell = base.InteractionCell + new IntVec3(0, 0, 0 + interactionCellOffset);
                     else
                         newInteractionCell = base.InteractionCell + new IntVec3(0 + interactionCellOffset, 0, 0);
@@ -117,15 +114,15 @@ namespace RA
 
         public override string GetInspectString()
         {
-            Pawn pawn = Find.Reservations.FirstReserverOf(this, Faction);
-            StringBuilder inspectString = new StringBuilder();
-            if (pawn != null && pawn.equipment.Primary != null && pawn.Position == InteractionCell)
+            var pawn = Find.Reservations.FirstReserverOf(this, Faction);
+            var inspectString = new StringBuilder();
+            if (pawn?.equipment.Primary != null && pawn.Position == InteractionCell)
             {
-                Verb_LaunchProjectile attackVerb = pawn.equipment.PrimaryEq.PrimaryVerb as Verb_LaunchProjectile;
+                var attackVerb = pawn.equipment.PrimaryEq.PrimaryVerb as Verb_LaunchProjectile;
 
                 if (attackVerb != null && attackVerb.CanHitTarget(this))
                 {
-                    HitReport hitReport = attackVerb.HitReportFor(this);
+                    var hitReport = attackVerb.HitReportFor(this);
                     inspectString.AppendFormat("{0} shooting skill:\t\t\t{1} ({2})\n", pawn.NameStringShort, pawn.skills.GetSkill(SkillDefOf.Shooting).LevelDescriptor, pawn.skills.GetSkill(SkillDefOf.Shooting).level);
                     inspectString.AppendLine("Total hit chance at this range:\t\t" + GenText.AsPercent(hitReport.TotalHitChance));
                     inspectString.AppendLine("Pawn stats accuracy modifier:\t\t" + GenText.AsPercent(hitReport.hitChanceThroughPawnStat));
@@ -150,10 +147,10 @@ namespace RA
 
         public float CalculateShootingDPS(HitReport hitReport, ThingDef weaponDef)
         {
-            float projectileDamage = weaponDef.Verbs[0].projectileDef == null ? 0 : weaponDef.Verbs[0].projectileDef.projectile.damageAmountBase;
-            float cooldown = weaponDef.GetStatValueAbstract(StatDefOf.RangedWeapon_Cooldown);
+            float projectileDamage = weaponDef.Verbs[0].projectileDef?.projectile.damageAmountBase ?? 0;
+            var cooldown = weaponDef.GetStatValueAbstract(StatDefOf.RangedWeapon_Cooldown);
             float burstCount = weaponDef.Verbs[0].burstShotCount;
-            float burstShotsInterval = (float)weaponDef.Verbs[0].ticksBetweenBurstShots / GenTicks.TicksPerRealtimeSecond;
+            var burstShotsInterval = weaponDef.Verbs[0].ticksBetweenBurstShots / GenTicks.TicksPerRealtimeSecond;
 
             return projectileDamage * burstCount * hitReport.TotalHitChance / (cooldown + (burstCount - 1) * burstShotsInterval);
         }
@@ -162,7 +159,7 @@ namespace RA
         {
             base.ExposeData();
 
-            Scribe_Values.LookValue<int>(ref interactionCellOffset, "interactionCellOffset");
+            Scribe_Values.LookValue(ref interactionCellOffset, "interactionCellOffset");
         }
     }
 }

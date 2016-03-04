@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
-using UnityEngine;
 
 namespace RA
 {
@@ -17,14 +15,14 @@ namespace RA
 
         public virtual void FindTrainee()
         {
-            foreach (Pawn pawn in allowedPawns)
+            foreach (var pawn in allowedPawns)
             {
                 // find pawn with equipped melee weapon
                 if (pawn.equipment.Primary != null && pawn.equipment.PrimaryEq.PrimaryVerb is Verb_MeleeAttack)
                     // which is also idle, has no life needs and can reserve and reach
-                    if (pawn.mindState.IsIdle && !PawnHasNeeds(pawn) && ReservationUtility.CanReserveAndReach(pawn, this, PathEndMode.InteractionCell, Danger.Some))
+                    if (pawn.mindState.IsIdle && !PawnHasNeeds(pawn) && pawn.CanReserveAndReach(this, PathEndMode.InteractionCell, Danger.Some))
                     {
-                        pawn.drafter.TakeOrderedJob(new Job(DefDatabase<JobDef>.GetNamed("CombatTraining"), this, this.InteractionCell));
+                        pawn.drafter.TakeOrderedJob(new Job(DefDatabase<JobDef>.GetNamed("CombatTraining"), this, InteractionCell));
                         break;
                     }
             }
@@ -54,51 +52,51 @@ namespace RA
 
         public override IEnumerable<Gizmo> GetGizmos()
         {
-            foreach (Gizmo gizmo in base.GetGizmos())
+            foreach (var gizmo in base.GetGizmos())
                 yield return gizmo;
 
-            Command_Action gizmo_copySettings = new Command_Action
+            var gizmo_copySettings = new Command_Action
             {
                 defaultDesc = "Copy dummy's settings",
                 defaultLabel = "Copy Settings",
-                icon = ContentFinder<Texture2D>.Get("UI/Commands/CopySettings", true),
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/CopySettings"),
                 activateSound = SoundDef.Named("Click"),
-                action = new Action(CopySettings),
+                action = CopySettings
             };
             yield return gizmo_copySettings;
 
-            Command_Action gizmo_pasteSettings = new Command_Action
+            var gizmo_pasteSettings = new Command_Action
             {
                 defaultDesc = "Paste dummy's settings",
                 defaultLabel = "Paste Settings",
-                icon = ContentFinder<Texture2D>.Get("UI/Commands/PasteSettings", true),
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/PasteSettings"),
                 activateSound = SoundDef.Named("Click"),
-                action = new Action(PasteSettings),
+                action = PasteSettings
             };
             yield return gizmo_pasteSettings;
         }
 
         public virtual void CopySettings()
         {
-            Dummy.allowedPawns_Transfer = new List<Pawn>(allowedPawns);
+            allowedPawns_Transfer = new List<Pawn>(allowedPawns);
         }
 
         public virtual void PasteSettings()
         {
-            if (Dummy.allowedPawns_Transfer != null)
-                allowedPawns = new List<Pawn>(Dummy.allowedPawns_Transfer);
+            if (allowedPawns_Transfer != null)
+                allowedPawns = new List<Pawn>(allowedPawns_Transfer);
         }
 
         // do action each time dummy takes damage
         public override void PostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
         {
-            Pawn pawn = Find.Reservations.FirstReserverOf(this, Faction);
+            var pawn = Find.Reservations.FirstReserverOf(this, Faction);
 
             // if zoom is close enough and dummy is selected
             if (Find.CameraMap.CurrentZoom == CameraZoomRange.Closest && (Find.Selector.IsSelected(this) || Find.Selector.IsSelected(pawn)))
             {
                 // throws text mote with applied damage each time damage taken
-                MoteThrower.ThrowText(new Vector3(this.Position.x + 0.5f, this.Position.y, this.Position.z + 1f), dinfo.Amount.ToString(), GenDate.TicksPerRealSecond);
+                MoteThrower.ThrowText(new Vector3(Position.x + 0.5f, Position.y, Position.z + 1f), dinfo.Amount.ToString(), GenDate.TicksPerRealSecond);
             }
         }
 
@@ -119,11 +117,11 @@ namespace RA
 
         public override string GetInspectString()
         {
-            Pawn pawn = Find.Reservations.FirstReserverOf(this, Faction);
-            StringBuilder inspectString = new StringBuilder();
-            if (pawn != null && pawn.equipment.Primary != null && pawn.Position == InteractionCell)
+            var pawn = Find.Reservations.FirstReserverOf(this, Faction);
+            var inspectString = new StringBuilder();
+            if (pawn?.equipment.Primary != null && pawn.Position == InteractionCell)
             {
-                Verb_MeleeAttack attackVerb = pawn.equipment.PrimaryEq.PrimaryVerb as Verb_MeleeAttack;
+                var attackVerb = pawn.equipment.PrimaryEq.PrimaryVerb as Verb_MeleeAttack;
 
                 if (attackVerb != null && attackVerb.CanHitTarget(this))
                 {
@@ -151,7 +149,7 @@ namespace RA
         {
             base.ExposeData();
 
-            Scribe_Collections.LookList(ref allowedPawns, "allowedPawns", LookMode.MapReference, new object[0]);
+            Scribe_Collections.LookList(ref allowedPawns, "allowedPawns", LookMode.MapReference);
         }
     }
 }

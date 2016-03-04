@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using UnityEngine;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.Sound;
-using Verse.AI;
 
 namespace RA
 {
@@ -14,56 +12,50 @@ namespace RA
     {
         public const float RotButSize = 64f;
         public const float RotButSpacing = 10f;
-        public Rot4 placingRot = Rot4.North;
-        public static float middleMouseDownTime;
 
-        public static readonly Texture2D RotLeftTex = ContentFinder<Texture2D>.Get("UI/Widgets/RotLeft", true);
-        public static readonly Texture2D RotRightTex = ContentFinder<Texture2D>.Get("UI/Widgets/RotRight", true);
+        public static readonly Texture2D RotLeftTex = ContentFinder<Texture2D>.Get("UI/Widgets/RotLeft");
+        public static readonly Texture2D RotRightTex = ContentFinder<Texture2D>.Get("UI/Widgets/RotRight");
 
         public static Dictionary<int, Graphic> ghostGraphics = new Dictionary<int, Graphic>();
+
+        public Rot4 placingRot = Rot4.North;
+        public static float middleMouseDownTime;
+        public ThingDef stuffDef = null;
 
         public abstract BuildableDef PlacingDef
         {
             get;
         }
 
-        public Designator_Place()
+        protected Designator_Place()
         {
-            this.soundDragSustain = SoundDefOf.DesignateDragBuilding;
-            this.soundDragChanged = SoundDefOf.DesignateDragBuildingChanged;
-            this.soundSucceeded = SoundDefOf.DesignatePlaceBuilding;
+            soundDragSustain = SoundDefOf.DesignateDragBuilding;
+            soundDragChanged = SoundDefOf.DesignateDragBuildingChanged;
+            soundSucceeded = SoundDefOf.DesignatePlaceBuilding;
         }
-
-        //// determine conditions of hiding similar gizmos
-        //public override bool GroupsWith(Gizmo other)
-        //{
-        //    Command command = other as Command;
-        //    return command != null && ((this.hotKey == command.hotKey && this.defaultLabel == command.defaultLabel && this.Label == command.Label && this.icon == command.icon) || (this.groupKey != 0 && command.groupKey != 0 && this.groupKey == command.groupKey));
-        //}
-
 
         public override void DoExtraGuiControls(float leftX, float bottomY)
         {
-            ThingDef thingDef = this.PlacingDef as ThingDef;
+            var thingDef = PlacingDef as ThingDef;
             if (thingDef != null && thingDef.rotatable)
             {
-                Rect winRect = new Rect(leftX, bottomY - 90f, 200f, 90f);
-                this.HandleRotationShortcuts();
+                var winRect = new Rect(leftX, bottomY - 90f, 200f, 90f);
+                HandleRotationShortcuts();
                 Find.WindowStack.ImmediateWindow(73095, winRect, WindowLayer.GameUI, delegate
                 {
-                    RotationDirection rotationDirection = RotationDirection.None;
+                    var rotationDirection = RotationDirection.None;
                     Text.Anchor = TextAnchor.MiddleCenter;
                     Text.Font = GameFont.Medium;
-                    Rect rect = new Rect(winRect.width / 2f - 64f - 5f, 15f, 64f, 64f);
-                    if (Widgets.ImageButton(rect, Designator_Place.RotLeftTex))
+                    var rect = new Rect(winRect.width / 2f - 64f - 5f, 15f, 64f, 64f);
+                    if (Widgets.ImageButton(rect, RotLeftTex))
                     {
                         SoundDefOf.AmountDecrement.PlayOneShotOnCamera();
                         rotationDirection = RotationDirection.Counterclockwise;
                         Event.current.Use();
                     }
                     Widgets.Label(rect, KeyBindingDefOf.DesignatorRotateLeft.MainKeyLabel);
-                    Rect rect2 = new Rect(winRect.width / 2f + 5f, 15f, 64f, 64f);
-                    if (Widgets.ImageButton(rect2, Designator_Place.RotRightTex))
+                    var rect2 = new Rect(winRect.width / 2f + 5f, 15f, 64f, 64f);
+                    if (Widgets.ImageButton(rect2, RotRightTex))
                     {
                         SoundDefOf.AmountIncrement.PlayOneShotOnCamera();
                         rotationDirection = RotationDirection.Clockwise;
@@ -72,11 +64,11 @@ namespace RA
                     Widgets.Label(rect2, KeyBindingDefOf.DesignatorRotateRight.MainKeyLabel);
                     if (rotationDirection != RotationDirection.None)
                     {
-                        this.placingRot.Rotate(rotationDirection);
+                        placingRot.Rotate(rotationDirection);
                     }
                     Text.Anchor = TextAnchor.UpperLeft;
                     Text.Font = GameFont.Small;
-                }, true, false, 1f);
+                });
             }
         }
 
@@ -85,83 +77,33 @@ namespace RA
             GenDraw.DrawNoBuildEdgeLines();
             if (!ArchitectCategoryTab.InfoRect.Contains(GenUI.AbsMousePosition()))
             {
-                IntVec3 intVec = Gen.MouseCell();
-                if (this.PlacingDef is TerrainDef)
+                var intVec = Gen.MouseCell();
+                if (PlacingDef is TerrainDef)
                 {
                     GenUI.RenderMouseoverBracket();
                     return;
                 }
-                Color ghostCol;
-                if (this.CanDesignateCell(intVec).Accepted)
+
+                var ghostCol = CanDesignateCell(intVec).Accepted ? new Color(0.5f, 1f, 0.6f, 0.4f) : new Color(1f, 0f, 0f, 0.4f);
+
+                // special Graphic_StuffBased implementation
+                var baseGraphic = PlacingDef.graphic as Graphic_StuffBased;
+                if (baseGraphic!=null)
+                    baseGraphic.currentCategory = stuffDef.stuffProps.categories[0].defName;
+
+                GhostDrawer.DrawGhostThing(Gen.MouseCell(), placingRot, (ThingDef)PlacingDef, baseGraphic?.categorizedGraphics[baseGraphic.currentCategory], ghostCol, AltitudeLayer.Blueprint);
+
+                if (CanDesignateCell(intVec).Accepted && PlacingDef.specialDisplayRadius > 0.01f)
                 {
-                    ghostCol = new Color(0.5f, 1f, 0.6f, 0.4f);
-                }
-                else
-                {
-                    ghostCol = new Color(1f, 0f, 0f, 0.4f);
-                }
-                this.DrawGhost(ghostCol);
-                if (this.CanDesignateCell(intVec).Accepted && this.PlacingDef.specialDisplayRadius > 0.01f)
-                {
-                    if (this.PlacingDef.defName.Contains("TradingPost"))
+                    if (PlacingDef.defName.Contains("TradingPost"))
                     {
                         GenDraw.DrawFieldEdges(TradeableCells.ToList());
                     }
                     else
-                        GenDraw.DrawRadiusRing(Gen.MouseCell(), this.PlacingDef.specialDisplayRadius);
+                        GenDraw.DrawRadiusRing(Gen.MouseCell(), PlacingDef.specialDisplayRadius);
                 }
-                GenDraw.DrawInteractionCell((ThingDef)this.PlacingDef, intVec, this.placingRot);
+                GenDraw.DrawInteractionCell((ThingDef)PlacingDef, intVec, placingRot);
             }
-        }
-
-        public virtual void DrawGhost(Color ghostCol)
-        {
-            DrawGhostThing(Gen.MouseCell(), this.placingRot, (ThingDef)this.PlacingDef, null, ghostCol, AltitudeLayer.Blueprint);
-        }
-
-        public static void DrawGhostThing(IntVec3 center, Rot4 rot, ThingDef thingDef, Graphic baseGraphic, Color ghostCol, AltitudeLayer drawAltitude)
-        {
-            if (baseGraphic == null)
-            {
-                baseGraphic = thingDef.graphic;
-            }
-            Graphic graphic = GhostGraphicFor(baseGraphic, thingDef, ghostCol);
-            Vector3 loc = Gen.TrueCenter(center, rot, thingDef.Size, Altitudes.AltitudeFor(drawAltitude));
-            // calls DrawWorker of the thing's graphic class with the null thing ref
-            graphic.DrawFromDef(loc, rot, thingDef);
-            if (thingDef.PlaceWorkers != null)
-            {
-                for (int i = 0; i < thingDef.PlaceWorkers.Count; i++)
-                {
-                    thingDef.PlaceWorkers[i].DrawGhost(thingDef, center, rot);
-                }
-            }
-        }
-
-        private static Graphic GhostGraphicFor(Graphic baseGraphic, ThingDef thingDef, Color ghostCol)
-        {
-            int hashCode = baseGraphic.GetHashCode() * 399;
-            hashCode ^= thingDef.GetHashCode() * 391;
-            hashCode ^= ghostCol.GetHashCode() * 415;
-            Graphic graphic;
-            // trying to get graphic lass based thing's hashcode
-            if (!ghostGraphics.TryGetValue(hashCode, out graphic))
-            {
-                if (thingDef.graphicData.Linked || thingDef.thingClass == typeof(Building_Door))
-                {
-                    graphic = GraphicDatabase.Get<Graphic_Single>(thingDef.uiIconPath, ShaderDatabase.Transparent, thingDef.graphicData.drawSize, ghostCol);
-                }
-                else if (baseGraphic != null)
-                {
-                    graphic = baseGraphic.GetColoredVersion(ShaderDatabase.Transparent, ghostCol, Color.white);
-                }
-                else
-                {
-                    graphic = thingDef.graphic.GetColoredVersion(ShaderDatabase.Transparent, ghostCol, Color.white);
-                }
-                ghostGraphics.Add(hashCode, graphic);
-            }
-            return graphic;
         }
 
         public IEnumerable<IntVec3> TradeableCells
@@ -169,18 +111,18 @@ namespace RA
             get
             {
                 // half width of the rectangle, determined by <specialDisplayRadius> in building def
-                int TradeRectangleRange = (int)this.PlacingDef.specialDisplayRadius + 1;
+                var TradeRectangleRange = (int)PlacingDef.specialDisplayRadius + 1;
 
-                IntVec3 centerCell = Gen.MouseCell();
-                IntVec3 currentCell = centerCell;
+                var centerCell = Gen.MouseCell();
+                var currentCell = centerCell;
 
-                for (int i = centerCell.x - TradeRectangleRange; i < centerCell.x + TradeRectangleRange + 1; i++)
+                for (var i = centerCell.x - TradeRectangleRange; i < centerCell.x + TradeRectangleRange + 1; i++)
                 {
                     currentCell.x = i;
-                    for (int j = centerCell.z - TradeRectangleRange; j < centerCell.z + TradeRectangleRange + 1; j++)
+                    for (var j = centerCell.z - TradeRectangleRange; j < centerCell.z + TradeRectangleRange + 1; j++)
                     {
                         currentCell.z = j;
-                        if ((Math.Abs(centerCell.x - currentCell.x) > 1 || Math.Abs(centerCell.z - currentCell.z) > 1) && GenGrid.InBounds(currentCell) && currentCell.Walkable())
+                        if ((Math.Abs(centerCell.x - currentCell.x) > 1 || Math.Abs(centerCell.z - currentCell.z) > 1) && currentCell.InBounds() && currentCell.Walkable())
                             yield return currentCell;
                     }
                 }
@@ -189,15 +131,15 @@ namespace RA
 
         public void HandleRotationShortcuts()
         {
-            RotationDirection rotationDirection = RotationDirection.None;
+            var rotationDirection = RotationDirection.None;
             if (Event.current.button == 2)
             {
                 if (Event.current.type == EventType.MouseDown)
                 {
                     Event.current.Use();
-                    Designator_Place.middleMouseDownTime = Time.realtimeSinceStartup;
+                    middleMouseDownTime = Time.realtimeSinceStartup;
                 }
-                if (Event.current.type == EventType.MouseUp && Time.realtimeSinceStartup - Designator_Place.middleMouseDownTime < 0.15f)
+                if (Event.current.type == EventType.MouseUp && Time.realtimeSinceStartup - middleMouseDownTime < 0.15f)
                 {
                     rotationDirection = RotationDirection.Clockwise;
                 }
@@ -213,12 +155,12 @@ namespace RA
             if (rotationDirection == RotationDirection.Clockwise)
             {
                 SoundDefOf.AmountIncrement.PlayOneShotOnCamera();
-                this.placingRot.Rotate(RotationDirection.Clockwise);
+                placingRot.Rotate(RotationDirection.Clockwise);
             }
             if (rotationDirection == RotationDirection.Counterclockwise)
             {
                 SoundDefOf.AmountDecrement.PlayOneShotOnCamera();
-                this.placingRot.Rotate(RotationDirection.Counterclockwise);
+                placingRot.Rotate(RotationDirection.Counterclockwise);
             }
         }
     }

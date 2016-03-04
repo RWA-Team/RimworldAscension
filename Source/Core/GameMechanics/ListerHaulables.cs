@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
-using UnityEngine;
-using Verse;
-using Verse.AI;
 using RimWorld;
+using Verse;
 
 namespace RA
 {
@@ -17,7 +12,7 @@ namespace RA
         public static int previousHaulablesCount_Vanilla = RimWorld.ListerHaulables.ThingsPotentiallyNeedingHauling().Count;
 
         public const int CellsPerTick = 4;
-        public static int groupCycleIndex = 0;
+        public static int groupCycleIndex;
         public static List<int> cellCycleIndices = new List<int>();
 
         //Find things that require hauling in storages
@@ -41,7 +36,7 @@ namespace RA
             if (sgList.Count == 0)
                 return;
 
-            int groupInd = groupCycleIndex % sgList.Count;
+            var groupInd = groupCycleIndex % sgList.Count;
             var sg = sgList[groupCycleIndex % sgList.Count];
 
             while (cellCycleIndices.Count <= groupInd)
@@ -50,18 +45,18 @@ namespace RA
             }
             if (cellCycleIndices[groupInd] >= int.MaxValue - 10000)
                 cellCycleIndices[groupInd] = 0;
-            for (int i = 0; i < CellsPerTick; i++)
+            for (var i = 0; i < CellsPerTick; i++)
             {
                 cellCycleIndices[groupInd]++;
 
                 var cell = sg.CellsList[cellCycleIndices[groupInd] % sg.CellsList.Count];
 
                 var thingList = cell.GetThingList();
-                for (int j = 0; j < thingList.Count; j++)
+                foreach (Thing thing in thingList)
                 {
-                    if (thingList[j].def.EverHaulable)
+                    if (thing.def.EverHaulable)
                     {
-                        CheckIfHaulable(thingList[j]);
+                        CheckIfHaulable(thing);
 
                         break;
                     }
@@ -72,17 +67,15 @@ namespace RA
         //Find things that require hauling in container's stacks
         public static void FindHaulablesInContainers()
         {
-            List<Building_Storage> containersList = new List<Building_Storage>();
-
             //Storage Buildings (like hoppers), which have CompContainer
-            containersList = Find.ListerBuildings.AllBuildingsColonistOfClass<Building_Storage>().Where(building => building.TryGetComp<CompContainer>() != null).ToList();
+            var containersList = Find.ListerBuildings.AllBuildingsColonistOfClass<Building_Storage>().Where(building => building.TryGetComp<CompContainer>() != null).ToList();
 
             //Checking things that require hauling in each container and adding them to haulables list
             if (containersList.Count > 0)
             {
-                foreach (Building_Storage container in containersList)
+                foreach (var container in containersList)
                 {
-                    foreach (Thing item in container.TryGetComp<CompContainer>().ListAllItems)
+                    foreach (var item in container.TryGetComp<CompContainer>().ListAllItems)
                     {
                         CheckIfHaulable(item);
                     }
@@ -93,9 +86,9 @@ namespace RA
         public static void RecalcAllInCell(IntVec3 c)
         {
             var list = c.GetThingList();
-            for (int i = 0; i < list.Count; i++)
+            foreach (Thing thing in list)
             {
-                CheckIfHaulable(list[i]);
+                CheckIfHaulable(thing);
             }
         }
 
@@ -122,7 +115,7 @@ namespace RA
         // duplicated to make changes
         public static bool IsInValidBestStorage(Thing t)
         {
-            SlotGroup slotGroup = t.Position.GetSlotGroup();
+            var slotGroup = t.Position.GetSlotGroup();
             IntVec3 intVec;
             return slotGroup != null && slotGroup.Settings.AllowedToAccept(t) && !WorkGiver_HaulGeneral.TryFindBestBetterStoreCellFor(t, null, slotGroup.Settings.Priority, Faction.OfColony, out intVec, false);
         }

@@ -52,7 +52,7 @@ namespace RimWorld
                 if (fac.def.pawnGroupMakers.NullOrEmpty())
                     continue;
 
-                StringBuilder sb = new StringBuilder();
+                var sb = new StringBuilder();
 
                 sb.AppendLine("======== FACTION: " + fac.name + " (" + fac.def.defName + ") min=" + fac.def.MinPointsToGeneratePawnGroup() + " =======");
 
@@ -61,7 +61,7 @@ namespace RimWorld
                     if (points < fac.def.MinPointsToGeneratePawnGroup())
                         return;
 
-                    IncidentParms parms = new IncidentParms();
+                    var parms = new IncidentParms();
                     parms.points = points;
                     sb.AppendLine("Group with " + parms.points + " points");
                     float totalCost = 0;

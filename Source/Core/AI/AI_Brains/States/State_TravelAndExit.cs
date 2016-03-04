@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
+﻿using RimWorld;
+using RimWorld.SquadAI;
 using Verse;
 using Verse.AI;
-using Verse.Sound;
-using RimWorld;
 //using RimWorld.Planet;
-using RimWorld.SquadAI;
 
 namespace RA
 {
@@ -22,13 +15,7 @@ namespace RA
         public IntVec3 destCell;
         public bool destAssigned;
 
-        public override IntVec3 FlagLoc
-        {
-            get
-            {
-                return destCell;
-            }
-        }
+        public override IntVec3 FlagLoc => destCell;
 
 
         /// <summary>
@@ -48,9 +35,9 @@ namespace RA
         public override void ExposeData()
         {
             base.ExposeData();
-            IntVec3 intVec3 = new IntVec3();
-            Scribe_Values.LookValue<IntVec3>(ref destCell, "dest", intVec3, false);
-            Scribe_Values.LookValue<bool>(ref destAssigned, "destAssigned", false, false);
+            var intVec3 = new IntVec3();
+            Scribe_Values.LookValue(ref destCell, "dest", intVec3);
+            Scribe_Values.LookValue(ref destAssigned, "destAssigned", false);
         }
 
 
@@ -78,20 +65,17 @@ namespace RA
         {
             if (Find.TickManager.TicksGame % 205 == 0)
             {
-                bool flag = true;
-                int num = 0;
+                var flag = true;
+                var num = 0;
                 while (num < brain.ownedPawns.Count)
                 {
-                    Pawn pawn = brain.ownedPawns[num];
+                    var pawn = brain.ownedPawns[num];
                     if (!pawn.Position.InHorDistOf(destCell, 10f) || !pawn.CanReach(destCell, PathEndMode.OnCell, pawn.NormalMaxDanger()))
                     {
                         flag = false;
                         break;
                     }
-                    else
-                    {
-                        num++;
-                    }
+                    num++;
                 }
                 if (flag)
                 {
@@ -102,7 +86,7 @@ namespace RA
 
         public override void UpdateAllDuties()
         {
-            foreach (Pawn ownedPawn in this.brain.ownedPawns)
+            foreach (var ownedPawn in brain.ownedPawns)
             {
                 ownedPawn.mindState.duty = new PawnDuty(DutyDefOf.Travel, destCell);
             }
@@ -111,7 +95,7 @@ namespace RA
         
         public void GiveDutyExitMap()
         {
-            foreach (Pawn ownedPawn in brain.ownedPawns)
+            foreach (var ownedPawn in brain.ownedPawns)
             {
                 ownedPawn.mindState.duty = new PawnDuty(DutyDefOf.ExitMapNearest);
             }

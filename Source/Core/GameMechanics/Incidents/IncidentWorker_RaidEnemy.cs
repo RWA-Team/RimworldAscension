@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-
 using RimWorld;
 using Verse;
 
@@ -24,14 +23,14 @@ namespace RA
             {
                 return true;
             }
-            float curPoints = parms.points;
+            var curPoints = parms.points;
             if (curPoints <= 0f)
             {
                 curPoints = 999999f;
             }
             return (from faction in Find.FactionManager.AllFactions
-                    where faction.HostileTo(Faction.OfColony) && faction.def.techLevel <= Faction.OfColony.def.techLevel && curPoints >= faction.def.MinPointsToGeneratePawnGroup() && (float)GenDate.DaysPassed >= faction.def.earliestRaidDays
-                    select faction).TryRandomElementByWeight((Faction fac) => fac.def.raidCommonality, out parms.faction);
+                    where faction.HostileTo(Faction.OfColony) && faction.def.techLevel <= Faction.OfColony.def.techLevel && curPoints >= faction.def.MinPointsToGeneratePawnGroup() && GenDate.DaysPassed >= faction.def.earliestRaidDays
+                    select faction).TryRandomElementByWeight(fac => fac.def.raidCommonality, out parms.faction);
         }
 
         protected override void ResolveRaidStrategy(IncidentParms parms)
@@ -40,9 +39,9 @@ namespace RA
             {
                 return;
             }
-            parms.raidStrategy = (from d in DefDatabase<RaidStrategyDef>.AllDefs
-                                  where d.Worker.CanUseWith(parms)
-                                  select d).RandomElementByWeight((RaidStrategyDef d) => d.selectionChance);
+            parms.raidStrategy = (from def in DefDatabase<RaidStrategyDef>.AllDefs
+                                  where def.Worker.CanUseWith(parms)
+                                  select def).RandomElementByWeight(d => d.selectionChance);
         }
 
         protected override string GetLetterLabel(IncidentParms parms)
@@ -56,25 +55,13 @@ namespace RA
             switch (parms.raidArrivalMode)
             {
                 case PawnsArriveMode.EdgeWalkIn:
-                    str = "EnemyRaidWalkIn".Translate(new object[]
-				{
-					parms.faction.def.pawnsPlural,
-					parms.faction.name
-				});
+                    str = "EnemyRaidWalkIn".Translate(parms.faction.def.pawnsPlural, parms.faction.name);
                     break;
                 case PawnsArriveMode.EdgeDrop:
-                    str = "EnemyRaidEdgeDrop".Translate(new object[]
-				{
-					parms.faction.def.pawnsPlural,
-					parms.faction.name
-				});
+                    str = "EnemyRaidEdgeDrop".Translate(parms.faction.def.pawnsPlural, parms.faction.name);
                     break;
                 case PawnsArriveMode.CenterDrop:
-                    str = "EnemyRaidCenterDrop".Translate(new object[]
-				{
-					parms.faction.def.pawnsPlural,
-					parms.faction.name
-				});
+                    str = "EnemyRaidCenterDrop".Translate(parms.faction.def.pawnsPlural, parms.faction.name);
                     break;
             }
             str += "\n\n";

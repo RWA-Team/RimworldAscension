@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
+﻿using RimWorld.SquadAI;
 using Verse;
 using Verse.AI;
-using RimWorld;
-using RimWorld.SquadAI;
 
 namespace RA
 {
@@ -26,21 +19,21 @@ namespace RA
         {
             this.tradingPost = tradingPost;
             // one cell above the interaction cell of trading post
-            this.merchantDest = new IntVec3(tradingPost.InteractionCell.x, tradingPost.InteractionCell.y, tradingPost.InteractionCell.z + 1);
+            merchantDest = new IntVec3(tradingPost.InteractionCell.x, tradingPost.InteractionCell.y, tradingPost.InteractionCell.z + 1);
             // one cell above and left of the interaction cell of trading post
-            this.animalDest = tradingPost.InteractionCell;
+            animalDest = tradingPost.InteractionCell;
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_References.LookReference<Building_TradingPost>(ref tradingPost, "tradingPost");
+            Scribe_References.LookReference(ref tradingPost, "tradingPost");
         }
 
         public override void UpdateAllDuties()
         {
 
-            for (int i = 0; i < this.brain.ownedPawns.Count; i++)
+            for (var i = 0; i < brain.ownedPawns.Count; i++)
             {
                 // merchant
                 if (brain.ownedPawns[i].kindDef.label == "merchant")
@@ -70,7 +63,7 @@ namespace RA
             {
                 if (merchant.Position == merchantDest && animal.Position == animalDest)
                 {
-                    this.brain.ReceiveMemo("TravelArrived");
+                    brain.ReceiveMemo("TravelArrived");
                 }
             }
         }

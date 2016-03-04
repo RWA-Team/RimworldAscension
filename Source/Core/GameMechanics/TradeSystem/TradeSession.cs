@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-
-using UnityEngine;
 using RimWorld;
 using Verse;
-using Verse.AI;
 
 namespace RA
 {
-	public static class TradeSession
+    public static class TradeSession
 	{
         public static TradeCompany tradeCompany;
 		public static Pawn colonyNegotiator;
@@ -18,18 +14,18 @@ namespace RA
         public static void InitiateTradeDeal(Pawn colonyNegotiator)
 		{
             TradeSession.colonyNegotiator = colonyNegotiator;
-			TradeSession.deal = new TradeDeal();
+			deal = new TradeDeal();
 		}
 
         public static void FinishTradeDeal()
         {
-            TradeSession.colonyNegotiator = null;
-            TradeSession.deal = null;
+            colonyNegotiator = null;
+            deal = null;
         }
 
         public static List<Thing> GenerateTradeCompanyGoods()
         {
-            TraderKindDef traderKindDef = new TraderKindDef();
+            var traderKindDef = new TraderKindDef();
             switch (Faction.OfColony.def.techLevel)
             {
                 case TechLevel.Neolithic:

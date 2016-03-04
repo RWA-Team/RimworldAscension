@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
-using RimWorld;
+﻿using RimWorld;
 using RimWorld.SquadAI;
 using Verse;
-using Verse.AI;
-
 
 namespace RA
 {
@@ -19,18 +11,14 @@ namespace RA
 
         public override void DoAction(Transition trans)
         {
-            List<State> states = trans.sources;
-            foreach (State state in states)
+            var states = trans.sources;
+            foreach (var state in states)
             {
-                if (state.brain != null)
+                var brainFaction = state.brain?.faction;
+                if (brainFaction != null)
                 {
-                    List<Pawn> brainPawns = state.brain.ownedPawns;
-                    Faction brainFaction = state.brain.faction;
-                    if (brainFaction != null)
-                    {
-                        brainFaction.AffectGoodwillWith(Faction.OfColony, goodwillChange);
-                        Messages.Message(message.Translate(new object[] { brainFaction.name }), MessageSound.Negative);
-                    }
+                    brainFaction.AffectGoodwillWith(Faction.OfColony, goodwillChange);
+                    Messages.Message(message.Translate(brainFaction.name), MessageSound.Negative);
                 }
             }
         }

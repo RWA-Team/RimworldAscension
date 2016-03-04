@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Linq;
-using System.Text;
-
 using RimWorld;
 using Verse;
 
@@ -128,13 +125,9 @@ namespace RA
             if (allowIfAll)
             {
                 // check if all prerequisites are met
-                foreach (string researchName in otherResearchPrerequisite_defNames)
+                if (otherResearchPrerequisite_defNames.Any(researchName => !Find.ResearchManager.IsFinished(ResearchProjectDef.Named(researchName))))
                 {
-                    if (!Find.ResearchManager.IsFinished(ResearchProjectDef.Named(researchName)))
-                    {
-                        // some prerequisites not met, return
-                        return;
-                    }
+                    return;
                 }
 
                 ThingDef.Named(benchDefName).researchPrerequisite = null;
@@ -142,7 +135,7 @@ namespace RA
             else
             {
                 // check if any of prerequisites are met
-                foreach (string researchName in otherResearchPrerequisite_defNames)
+                foreach (var researchName in otherResearchPrerequisite_defNames)
                 {
                     if (Find.ResearchManager.IsFinished(ResearchProjectDef.Named(researchName)))
                     {
@@ -158,13 +151,9 @@ namespace RA
             if (allowIfAll)
             {
                 // check if all prerequisites are met
-                foreach (string researchName in otherResearchPrerequisite_defNames)
+                if (otherResearchPrerequisite_defNames.Any(researchName => !Find.ResearchManager.IsFinished(ResearchProjectDef.Named(researchName))))
                 {
-                    if (!Find.ResearchManager.IsFinished(ResearchProjectDef.Named(researchName)))
-                    {
-                        // some prerequisites not met, return
-                        return;
-                    }
+                    return;
                 }
 
                 DefDatabase<RecipeDef>.GetNamed(recipeDefName).researchPrerequisite = null;
@@ -172,7 +161,7 @@ namespace RA
             else
             {
                 // check if any of prerequisites are met
-                foreach (string researchName in otherResearchPrerequisite_defNames)
+                foreach (var researchName in otherResearchPrerequisite_defNames)
                 {
                     if (Find.ResearchManager.IsFinished(ResearchProjectDef.Named(researchName)))
                     {
@@ -197,7 +186,7 @@ namespace RA
         // adds designato to the dame
         public static void AddDesignator(Designator designator, string designationCategoryDefName)
         {
-            DesignationCategoryDef category = DefDatabase<DesignationCategoryDef>.GetNamed(designationCategoryDefName);
+            var category = DefDatabase<DesignationCategoryDef>.GetNamed(designationCategoryDefName);
             category.resolvedDesignators.Add(designator);
         }
 
