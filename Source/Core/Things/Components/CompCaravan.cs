@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using System.Collections.Generic;
 using RimWorld;
-using Verse;
 using UnityEngine;
+using Verse;
 
 namespace RA
 {
@@ -32,35 +28,28 @@ namespace RA
         public Graphic harnessTexture;
 
         // destroys the cart once carrier is down
-        public bool broken = false;
+        public bool broken;
 
         // half of the quater of the cell
         public const float wheelRadius = 0.0256f;
 
         // current spin degree
-        public float rotor = 0;
+        public float rotor;
 
         public float num = 0;
-        public float num1 = 0;
-        public float num2 = 0;
-        public float num3 = 0;
-        public float num4 = 0;
-        public float num5 = 0;
+        public float num1;
+        public float num2;
+        public float num3;
+        public float num4;
+        public float num5;
 
-        public CompCaravan_Properties Properties
-        {
-            get
-            {
-                return (CompCaravan_Properties)props;
-            }
-        }
+        public CompCaravan_Properties Properties => (CompCaravan_Properties)props;
 
         public bool SpawnedAndWell(Pawn pawn)
         {
             if (pawn.SpawnedInWorld && !pawn.Downed)
                 return true;
-            else
-                return false;
+            return false;
         }
 
         public override void PostSpawnSetup()
@@ -74,15 +63,15 @@ namespace RA
         {
             base.CompTick();
 
-            if (SpawnedAndWell(this.parent as Pawn))
+            if (SpawnedAndWell(parent as Pawn))
             {
                 SetTexturesPosition();
 
-                Pawn pawn = this.parent as Pawn;
+                var pawn = parent as Pawn;
                 if (pawn.pather.Moving)
                 {
                     // rotate rotor by parent's move speed value
-                    float degree = pawn.GetStatValue(StatDefOf.MoveSpeed) / (GenTicks.TicksPerRealtimeSecond * wheelRadius);
+                    var degree = pawn.GetStatValue(StatDefOf.MoveSpeed) / (GenTicks.TicksPerRealtimeSecond * wheelRadius);
                     RotateWheelByDegree(degree);
                 }
             }
@@ -101,7 +90,7 @@ namespace RA
                 rotor = 0;
             }
 
-            if (this.parent.Rotation == Rot4.East)
+            if (parent.Rotation == Rot4.East)
             {
                 rotor += degree;
             }
@@ -113,7 +102,7 @@ namespace RA
         
         public void SetTexturesPosition()
         {
-            if (this.parent.Rotation == Rot4.South)
+            if (parent.Rotation == Rot4.South)
             {
                 num1 = 0f;
                 num2 = -0.1f;
@@ -121,13 +110,13 @@ namespace RA
                 num4 = 0;
                 num5 = 0;
             }
-            else if (this.parent.Rotation == Rot4.West || this.parent.Rotation == Rot4.East)
+            else if (parent.Rotation == Rot4.West || parent.Rotation == Rot4.East)
             {
                 num1 = -0.4f;
                 num2 = -0.01f;
                 num3 = 0.01f;
                 num4 = -0.7f;
-                num5 = (this.parent.Rotation == Rot4.West) ? -0.35f : 0.35f;
+                num5 = parent.Rotation == Rot4.West ? -0.35f : 0.35f;
             }
             else
             {
@@ -145,43 +134,43 @@ namespace RA
             if (!broken)
             {
                 //Harness
-                Matrix4x4 matrix = default(Matrix4x4);
-                Vector3 s = new Vector3(3f, 0.05f, 3f);
-                matrix.SetTRS(this.parent.DrawPos + Altitudes.AltIncVect, num.ToQuat(), s);
-                Graphics.DrawMesh((this.parent.Rotation == Rot4.West) ? MeshPool.plane10Flip : MeshPool.plane10, matrix, harnessTexture.MatAt(base.parent.Rotation), 0);
+                var matrix = default(Matrix4x4);
+                var s = new Vector3(3f, 0.05f, 3f);
+                matrix.SetTRS(parent.DrawPos + Altitudes.AltIncVect, num.ToQuat(), s);
+                Graphics.DrawMesh(parent.Rotation == Rot4.West ? MeshPool.plane10Flip : MeshPool.plane10, matrix, harnessTexture.MatAt(parent.Rotation), 0);
 
                 //Cart
-                Matrix4x4 matrix2 = default(Matrix4x4);
-                Vector3 offset = new Vector3(0f, s.y + num2, -1f + num1).RotatedBy(this.parent.Rotation.AsAngle);
-                matrix2.SetTRS(this.parent.DrawPos + offset + Altitudes.AltIncVect, num.ToQuat(), s);
+                var matrix2 = default(Matrix4x4);
+                var offset = new Vector3(0f, s.y + num2, -1f + num1).RotatedBy(parent.Rotation.AsAngle);
+                matrix2.SetTRS(parent.DrawPos + offset + Altitudes.AltIncVect, num.ToQuat(), s);
                 if (cargo != null && cargo.Count > 0)
-                    Graphics.DrawMesh((this.parent.Rotation == Rot4.West) ? MeshPool.plane10Flip : MeshPool.plane10, matrix2, cartFullTexture.MatAt(base.parent.Rotation), 0);
+                    Graphics.DrawMesh(parent.Rotation == Rot4.West ? MeshPool.plane10Flip : MeshPool.plane10, matrix2, cartFullTexture.MatAt(parent.Rotation), 0);
                 else
-                    Graphics.DrawMesh((this.parent.Rotation == Rot4.West) ? MeshPool.plane10Flip : MeshPool.plane10, matrix2, cartEmptyTexture.MatAt(base.parent.Rotation), 0);
+                    Graphics.DrawMesh(parent.Rotation == Rot4.West ? MeshPool.plane10Flip : MeshPool.plane10, matrix2, cartEmptyTexture.MatAt(parent.Rotation), 0);
 
                 //Wheels
-                Matrix4x4 matrix3 = default(Matrix4x4);
-                Vector3 s2 = new Vector3(3f, offset.y, 3f);
-                Vector3 offset2 = new Vector3(0 + num5, offset.y + num3, -1f + num1 + num4).RotatedBy(this.parent.Rotation.AsAngle);
-                if (this.parent.Rotation == Rot4.West || this.parent.Rotation == Rot4.East)
+                var matrix3 = default(Matrix4x4);
+                var s2 = new Vector3(3f, offset.y, 3f);
+                var offset2 = new Vector3(0 + num5, offset.y + num3, -1f + num1 + num4).RotatedBy(parent.Rotation.AsAngle);
+                if (parent.Rotation == Rot4.West || parent.Rotation == Rot4.East)
                 {
-                    matrix3.SetTRS(this.parent.DrawPos + offset2 + Altitudes.AltIncVect, rotor.ToQuat(), s2);
-                    Graphics.DrawMesh((this.parent.Rotation == Rot4.West) ? MeshPool.plane10Flip : MeshPool.plane10, matrix3, wheelTexture.MatAt(base.parent.Rotation), 0);
+                    matrix3.SetTRS(parent.DrawPos + offset2 + Altitudes.AltIncVect, rotor.ToQuat(), s2);
+                    Graphics.DrawMesh(parent.Rotation == Rot4.West ? MeshPool.plane10Flip : MeshPool.plane10, matrix3, wheelTexture.MatAt(parent.Rotation), 0);
                 }
                 else
                 {
-                    matrix3.SetTRS(this.parent.DrawPos + offset2 + Altitudes.AltIncVect, Rot4.North.AsQuat, s2);
-                    Graphics.DrawMesh((this.parent.Rotation == Rot4.West) ? MeshPool.plane10Flip : MeshPool.plane10, matrix3, (rotor % 30 == 0) ? wheelTexture.MatBack : wheelTexture.MatFront, 0);
+                    matrix3.SetTRS(parent.DrawPos + offset2 + Altitudes.AltIncVect, Rot4.North.AsQuat, s2);
+                    Graphics.DrawMesh(parent.Rotation == Rot4.West ? MeshPool.plane10Flip : MeshPool.plane10, matrix3, rotor % 30 == 0 ? wheelTexture.MatBack : wheelTexture.MatFront, 0);
                 }
             }
         }
 
         public override void PostDestroy(DestroyMode mode = DestroyMode.Kill)
         {
-            foreach (Thing thing in cargo)
+            foreach (var thing in cargo)
             {
                 Thing newThing;
-                GenDrop.TryDropSpawn(thing, this.parent.Position, ThingPlaceMode.Near, out newThing);
+                GenDrop.TryDropSpawn(thing, parent.Position, ThingPlaceMode.Near, out newThing);
             }
             cargo.Clear();
         }

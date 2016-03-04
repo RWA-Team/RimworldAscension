@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using RimWorld;
+﻿using System.Collections.Generic;
 using Verse;
 using Verse.AI;
-using UnityEngine;
 
 namespace RA
 {
@@ -16,13 +10,7 @@ namespace RA
         public List<Thing> designatedThings = new List<Thing>();
 
         // gets access to the comp properties
-        public CompSlots_Properties Properties
-        {
-            get
-            {
-                return (CompSlots_Properties)props;
-            }
-        }
+        public CompSlots_Properties Properties => (CompSlots_Properties)props;
 
         // IThingContainerOwner requirement
         public ThingContainer GetContainer()
@@ -33,7 +21,7 @@ namespace RA
         // IThingContainerOwner requirement
         public IntVec3 GetPosition()
         {
-            return this.parent.Position;
+            return parent.Position;
         }
 
         // initialises ThingContainer owner and restricts the max slots range
@@ -51,12 +39,12 @@ namespace RA
         // apply remaining damage and scatter things in slots, if holder is destroyed
         public override void PostPostApplyDamage(DamageInfo dinfo, float totalDamageDealt)
         {
-            if (this.parent.HitPoints < 0)
+            if (parent.HitPoints < 0)
             {
-                foreach (Thing thing in slots)
-                    thing.HitPoints -= (int)totalDamageDealt - this.parent.HitPoints;
+                foreach (var thing in slots)
+                    thing.HitPoints -= (int)totalDamageDealt - parent.HitPoints;
 
-                slots.TryDropAll(this.parent.Position, ThingPlaceMode.Near);
+                slots.TryDropAll(parent.Position, ThingPlaceMode.Near);
             }
         }
 
@@ -64,20 +52,20 @@ namespace RA
         public void SwapEquipment(ThingWithComps thing)
         {
             // if pawn has equipped weapon
-            if (this.owner.equipment.Primary != null)
+            if (owner.equipment.Primary != null)
             {
                 ThingWithComps resultThing;
                 // put weapon in slotter
-                this.owner.equipment.TryTransferEquipmentToContainer(this.owner.equipment.Primary, slots, out resultThing);
+                owner.equipment.TryTransferEquipmentToContainer(owner.equipment.Primary, slots, out resultThing);
             }
             // equip new weapon
-            this.owner.equipment.AddEquipment(thing);
+            owner.equipment.AddEquipment(thing);
             // remove that equipment from slotter
             slots.Remove(thing);
 
             // interrupt current jobs to prevent random errors
-            if (this.owner != null && this.owner.jobs.curJob != null)
-                this.owner.jobs.EndCurrentJob(JobCondition.InterruptForced);
+            if (owner?.jobs.curJob != null)
+                owner.jobs.EndCurrentJob(JobCondition.InterruptForced);
         }
 
         public override IEnumerable<Command> CompGetGizmosExtra()
@@ -88,9 +76,9 @@ namespace RA
                 {
                     slotsComp = this,
                     defaultLabel = string.Format("Put in ({0}/{1})", slots.Count, Properties.maxSlots),
-                    defaultDesc = string.Format("Put thing in {0}.", this.parent.Label),
+                    defaultDesc = string.Format("Put thing in {0}.", parent.Label),
                     // not used, but need to be defined, so that gizmo could accept actions
-                    icon = this.parent.def.uiIcon
+                    icon = parent.def.uiIcon
                 };
             }
         }
@@ -100,7 +88,7 @@ namespace RA
             base.PostExposeData();
 
             // NOTE: check if not "new object[]{ this });"
-            Scribe_Deep.LookDeep<ThingContainer>(ref slots, "slots", this);
+            Scribe_Deep.LookDeep(ref slots, "slots", this);
         }
     }
 
@@ -113,7 +101,7 @@ namespace RA
         // Default requirement
         public CompSlots_Properties()
         {
-            this.compClass = typeof(CompSlots_Properties);
+            compClass = typeof(CompSlots_Properties);
         }
     }
 }

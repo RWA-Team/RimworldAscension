@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -16,7 +15,7 @@ namespace RA
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
         {
             IEnumerable<Thing> items = requestedItems;
-            foreach (ThingCount counter in requestedResourceCounters)
+            foreach (var counter in requestedResourceCounters)
                 items = items.Concat(TradeUtility.AllSellableThings.Where(item => item.def == counter.thingDef));
 
             return items;
@@ -34,11 +33,11 @@ namespace RA
 
         public override Job JobOnThing(Pawn pawn, Thing thing)
         {
-            int numToCarry = 1;
+            var numToCarry = 1;
             // carry resources according to it's counter number
             if (requestedResourceCounters.Exists(item => item.thingDef == thing.def))
             {
-                ThingCount counter = requestedResourceCounters.Find(item => item.thingDef == thing.def);
+                var counter = requestedResourceCounters.Find(item => item.thingDef == thing.def);
                 numToCarry = Math.Min(thing.stackCount, counter.count);
             }
 
@@ -51,7 +50,7 @@ namespace RA
         // NOTE: add exception checks
         public static Building_TradingPost FindOccupiedTradingPost()
         {
-            return Find.ListerBuildings.AllBuildingsColonistOfClass<Building_TradingPost>().First(post => post.occupied == true);
+            return Find.ListerBuildings.AllBuildingsColonistOfClass<Building_TradingPost>().First(post => post.occupied);
         }
     }
 }

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-
-using UnityEngine;
 using RimWorld;
+using UnityEngine;
 using Verse;
-using Verse.AI;
 
 namespace RA
 {
@@ -14,137 +11,95 @@ namespace RA
         public List<Tradeable> tradeables = new List<Tradeable>();
         public bool isPending;
 
-        public int TradeableCount
-        {
-            get
-            {
-                return this.tradeables.Count;
-            }
-        }
+        public int TradeableCount => tradeables.Count;
 
         public Tradeable SilverTradeable
         {
             get
-            {
-                for (int i = 0; i < this.tradeables.Count; i++)
-                {
-                    if (this.tradeables[i].ThingDef == ThingDefOf.Silver)
-                    {
-                        return this.tradeables[i];
-                    }
-                }
-                return null;
-            }
+            { return tradeables.FirstOrDefault(t => t.ThingDef == ThingDefOf.Silver); }
         }
 
-        public IEnumerable<Tradeable> AllTradeables
-        {
-            get
-            {
-                return this.tradeables;
-            }
-        }
+        public IEnumerable<Tradeable> AllTradeables => tradeables;
 
         public TradeDeal()
         {
             isPending = false;
-            this.Reset();
+            Reset();
         }
 
         public IEnumerator<Tradeable> GetEnumerator()
         {
-            return this.tradeables.GetEnumerator();
+            return tradeables.GetEnumerator();
         }
 
         public void Reset()
         {
-            this.tradeables.Clear();
-            this.AddAllTradeables();
+            tradeables.Clear();
+            AddAllTradeables();
         }
 
         public void AddAllTradeables()
         {
-            foreach (Thing current in TradeUtility.AllSellableThings)
+            foreach (var current in TradeUtility.AllSellableThings)
             {
-                this.AddToTradeables(current, Transactor.Colony);
+                AddToTradeables(current, Transactor.Colony);
             }
-            foreach (Pawn current in Find.ListerPawns.PrisonersOfColony)
+            foreach (var current in Find.ListerPawns.PrisonersOfColony)
             {
                 if (current.guest.PrisonerIsSecure && current.SpawnedInWorld)
                 {
-                    this.AddToTradeables(current, Transactor.Colony);
+                    AddToTradeables(current, Transactor.Colony);
                 }
             }
-            foreach (Pawn current in from pa in Find.ListerPawns.PawnsInFaction(Faction.OfColony)
+            foreach (var current in from pa in Find.ListerPawns.PawnsInFaction(Faction.OfColony)
                                      where pa.RaceProps.Animal
                                      select pa)
             {
                 if (current.HostFaction == null && !current.Broken && !current.Downed)
                 {
-                    this.AddToTradeables(current, Transactor.Colony);
+                    AddToTradeables(current, Transactor.Colony);
                 }
             }
-            foreach (Thing current in TradeSession.tradeCompany.things)
+            foreach (var current in TradeSession.tradeCompany.things)
             {
-                this.AddToTradeables(current, Transactor.Trader);
+                AddToTradeables(current, Transactor.Trader);
             }
         }
 
         public void AddToTradeables(Thing t, Transactor trans)
         {
-            Tradeable tradeable = this.TradeableMatching(t);
+            var tradeable = TradeableMatching(t);
             if (tradeable == null)
             {
-                Pawn pawn = t as Pawn;
-                if (pawn != null)
-                {
-                    tradeable = new Tradeable_Pawn();
-                }
-                else
-                {
-                    tradeable = new Tradeable();
-                }
-                this.tradeables.Add(tradeable);
+                var pawn = t as Pawn;
+                tradeable = pawn != null ? new Tradeable_Pawn() : new Tradeable();
+                tradeables.Add(tradeable);
             }
             tradeable.AddThing(t, trans);
         }
 
         public Tradeable TradeableMatching(Thing thing)
         {
-            foreach (Tradeable current in this.tradeables)
-            {
-                if (TradeUtility.TradeAsOne(thing, current.AnyThing))
-                {
-                    return current;
-                }
-            }
-            return null;
+            return tradeables.FirstOrDefault(current => TradeUtility.TradeAsOne(thing, current.AnyThing));
         }
 
         public void UpdateCurrencyCount()
         {
-            float num = 0f;
-            foreach (Tradeable current in this.tradeables)
-            {
-                if (!current.IsCurrency)
-                {
-                    num += current.CurTotalSilverCost;
-                }
-            }
-            this.SilverTradeable.offerCount = -Mathf.RoundToInt(num);
+            var num = tradeables.Where(current => !current.IsCurrency).Sum(current => current.CurTotalSilverCost);
+            SilverTradeable.offerCount = -Mathf.RoundToInt(num);
         }
 
         public bool TryMakeDeal()
         {
-            if (this.SilverTradeable.CountPostDealFor(Transactor.Colony) < 0)
+            if (SilverTradeable.CountPostDealFor(Transactor.Colony) < 0)
             {
                 Find.WindowStack.WindowOfType<Dialog_Trade>().FlashSilver();
                 Messages.Message("MessageColonyCannotAfford".Translate(), MessageSound.RejectInput);
                 return false;
             }
-            this.UpdateCurrencyCount();
-            this.LimitCurrencyCountToTraderFunds();
-            foreach (Tradeable current in this.tradeables)
+            UpdateCurrencyCount();
+            LimitCurrencyCountToTraderFunds();
+            foreach (var current in tradeables)
             {
                 if (current.ActionToDo != TradeAction.None)
                 {
@@ -158,14 +113,14 @@ namespace RA
 
         public bool DoesTraderHaveEnoughSilver()
         {
-            return this.SilverTradeable.CountPostDealFor(Transactor.Trader) >= 0;
+            return SilverTradeable.CountPostDealFor(Transactor.Trader) >= 0;
         }
 
         public void LimitCurrencyCountToTraderFunds()
         {
-            if (this.SilverTradeable.offerCount > this.SilverTradeable.CountHeldBy(Transactor.Trader))
+            if (SilverTradeable.offerCount > SilverTradeable.CountHeldBy(Transactor.Trader))
             {
-                this.SilverTradeable.offerCount = this.SilverTradeable.CountHeldBy(Transactor.Trader);
+                SilverTradeable.offerCount = SilverTradeable.CountHeldBy(Transactor.Trader);
             }
         }
     }

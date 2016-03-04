@@ -1,30 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using RimWorld;
+﻿using System.Collections.Generic;
 using Verse;
-using UnityEngine;
 
 namespace RA
 {
     public class CompEquipmentGizmoUser : ThingComp
     {
-        public Pawn Owner
-        {
-            get
-            {
-                return this.parent as Pawn;
-            }
-        }
+        public Pawn Owner => parent as Pawn;
 
         public bool SpawnedAndWell(Pawn pawn)
         {
             if (pawn.SpawnedInWorld && !pawn.Downed)
                 return true;
-            else
-                return false;
+            return false;
         }
 
         public IEnumerable<CompSlots> EquippedSlottersComps()
@@ -33,8 +20,9 @@ namespace RA
             foreach (ThingWithComps thing in Owner.apparel.WornApparel)
             // NOTE: check what type to return (If it's designator, command_action, command or gizmo)
             {
-                foreach (CompSlots comp in thing.AllComps.FindAll(comp => comp.GetType() == (typeof(CompSlots))))
+                foreach (var thingComp in thing.AllComps.FindAll(comp => comp.GetType() == typeof(CompSlots)))
                 {
+                    var comp = (CompSlots) thingComp;
                     // reassign pawn owner in comp, if not already set
                     comp.owner = comp.owner != Owner ? Owner : comp.owner;
 
@@ -43,10 +31,11 @@ namespace RA
             }
 
             // iterate through all equipment (weapons)
-            foreach (ThingWithComps thing in Owner.equipment.AllEquipment)
+            foreach (var thing in Owner.equipment.AllEquipment)
             {
-                foreach (CompSlots comp in thing.AllComps.FindAll(comp => comp.GetType() == (typeof(CompSlots))))
+                foreach (var thingComp in thing.AllComps.FindAll(comp => comp.GetType() == typeof(CompSlots)))
                 {
+                    var comp = (CompSlots) thingComp;
                     // reassign pawn owner in comp, if not already set
                     comp.owner = comp.owner != Owner ? Owner : comp.owner;
 
@@ -64,12 +53,13 @@ namespace RA
                 foreach (ThingWithComps thing in Owner.apparel.WornApparel)
                 // NOTE: check what type to return (If it's designator, command_action, command or gizmo)
                 {
-                    foreach (CompEquipmentGizmoProvider comp in thing.AllComps.FindAll(comp => comp.GetType().IsSubclassOf(typeof(CompEquipmentGizmoProvider))))
+                    foreach (var thingComp in thing.AllComps.FindAll(comp => comp.GetType().IsSubclassOf(typeof(CompEquipmentGizmoProvider))))
                     {
+                        var comp = (CompEquipmentGizmoProvider) thingComp;
                         // reassign pawn owner in comp, if not already set
                         comp.owner = comp.owner != Owner ? Owner : comp.owner;
 
-                        foreach (Command gizmo in comp.CompGetGizmosExtra())
+                        foreach (var gizmo in comp.CompGetGizmosExtra())
                         {
                             yield return gizmo;
                         }
@@ -77,14 +67,15 @@ namespace RA
                 }
 
                 // iterate through all equipment (weapons)
-                foreach (ThingWithComps thing in Owner.equipment.AllEquipment)
+                foreach (var thing in Owner.equipment.AllEquipment)
                 {
-                    foreach (CompEquipmentGizmoProvider comp in thing.AllComps.FindAll(comp => comp.GetType().IsSubclassOf(typeof(CompEquipmentGizmoProvider))))
+                    foreach (var thingComp in thing.AllComps.FindAll(comp => comp.GetType().IsSubclassOf(typeof(CompEquipmentGizmoProvider))))
                     {
+                        var comp = (CompEquipmentGizmoProvider) thingComp;
                         // reassign pawn owner in comp, if not already set
                         comp.owner = comp.owner != Owner ? Owner : comp.owner;
 
-                        foreach (Command gizmo in comp.CompGetGizmosExtra())
+                        foreach (var gizmo in comp.CompGetGizmosExtra())
                         {
                             yield return gizmo;
                         }

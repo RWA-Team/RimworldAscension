@@ -5,13 +5,7 @@ namespace RA
 {
     public class CompFueled : ThingComp
     {
-        public CompFueled_Properties Properties
-        {
-            get
-            {
-                return (CompFueled_Properties)props;
-            }
-        }
+        public CompFueled_Properties Properties => (CompFueled_Properties)props;
     }
 
     public class CompFueled_Properties : CompProperties
@@ -27,7 +21,7 @@ namespace RA
         // Default requirement
         public CompFueled_Properties()
         {
-            this.compClass = typeof(CompFueled_Properties);
+            compClass = typeof(CompFueled_Properties);
         }
     }
 }

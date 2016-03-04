@@ -1,8 +1,5 @@
-﻿using Verse;
-using Verse.AI;
-using Verse.Sound;
-using RimWorld;
-//using RimWorld.Planet;
+﻿//using RimWorld.Planet;
+
 using RimWorld.SquadAI;
 
 namespace RA
@@ -33,7 +30,7 @@ namespace RA
             if (signal.type != TriggerSignalType.PawnLost)
                 return false;
 
-            return (signal.condition == PawnLostCondition.TakenPrisoner ? true : signal.condition == PawnLostCondition.IncappedOrKilled);
+            return signal.condition == PawnLostCondition.TakenPrisoner || signal.condition == PawnLostCondition.IncappedOrKilled;
         }
 
     }

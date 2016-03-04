@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -17,82 +16,76 @@ namespace RA
 
             public List<float> counts = new List<float>();
 
-            public int Count
-            {
-                get
-                {
-                    return this.defs.Count;
-                }
-            }
+            public int Count => defs.Count;
 
             public float this[ThingDef def]
             {
                 get
                 {
-                    int num = this.defs.IndexOf(def);
+                    var num = defs.IndexOf(def);
                     if (num < 0)
                     {
                         return 0f;
                     }
-                    return this.counts[num];
+                    return counts[num];
                 }
                 set
                 {
-                    int num = this.defs.IndexOf(def);
+                    var num = defs.IndexOf(def);
                     if (num < 0)
                     {
-                        this.defs.Add(def);
-                        this.counts.Add(value);
-                        num = this.defs.Count - 1;
+                        defs.Add(def);
+                        counts.Add(value);
+                        num = defs.Count - 1;
                     }
                     else
                     {
-                        this.counts[num] = value;
+                        counts[num] = value;
                     }
-                    this.CheckRemove(num);
+                    CheckRemove(num);
                 }
             }
 
             public float GetCount(int index)
             {
-                return this.counts[index];
+                return counts[index];
             }
 
             public void SetCount(int index, float val)
             {
-                this.counts[index] = val;
-                this.CheckRemove(index);
+                counts[index] = val;
+                CheckRemove(index);
             }
 
             public ThingDef GetDef(int index)
             {
-                return this.defs[index];
+                return defs[index];
             }
 
             public void CheckRemove(int index)
             {
-                if (this.counts[index] == 0f)
+                if (counts[index] == 0f)
                 {
-                    this.counts.RemoveAt(index);
-                    this.defs.RemoveAt(index);
+                    counts.RemoveAt(index);
+                    defs.RemoveAt(index);
                 }
             }
 
             public void Clear()
             {
-                this.defs.Clear();
-                this.counts.Clear();
+                defs.Clear();
+                counts.Clear();
             }
 
             public void GenerateFrom(List<Thing> things)
             {
-                this.Clear();
-                for (int i = 0; i < things.Count; i++)
+                Clear();
+                foreach (Thing thing in things)
                 {
                     ThingDef def;
-                    ThingDef expr_1C = def = things[i].def;
-                    float num = this[def];
-                    this[expr_1C] = num + (float)things[i].stackCount;
+                    var expr_1C = def = thing.def;
+                    var num = this[def];
+                    this[expr_1C] = num + thing.stackCount;
                 }
             }
         }
@@ -113,23 +106,17 @@ namespace RA
 
         public static HashSet<Thing> assignedThings = new HashSet<Thing>();
 
-        public static DefCountList availableCounts = new WorkGiver_DoBill.DefCountList();
+        public static DefCountList availableCounts = new DefCountList();
 
-        public override PathEndMode PathEndMode
-        {
-            get
-            {
-                return PathEndMode.Touch;
-            }
-        }
+        public override PathEndMode PathEndMode => PathEndMode.Touch;
 
         public override ThingRequest PotentialWorkThingRequest
         {
             get
             {
-                if (this.def.singleBillGiverDef != null)
+                if (def.singleBillGiverDef != null)
                 {
-                    return ThingRequest.ForDef(this.def.singleBillGiverDef);
+                    return ThingRequest.ForDef(def.singleBillGiverDef);
                 }
                 return ThingRequest.ForGroup(ThingRequestGroup.PotentialBillGiver);
             }
@@ -137,24 +124,24 @@ namespace RA
 
         public WorkGiver_DoBill()
         {
-            if (WorkGiver_DoBill.MissingSkillTranslated == null)
+            if (MissingSkillTranslated == null)
             {
-                WorkGiver_DoBill.MissingSkillTranslated = "MissingSkill".Translate();
+                MissingSkillTranslated = "MissingSkill".Translate();
             }
-            if (WorkGiver_DoBill.MissingMaterialsTranslated == null)
+            if (MissingMaterialsTranslated == null)
             {
-                WorkGiver_DoBill.MissingMaterialsTranslated = "MissingMaterials".Translate();
+                MissingMaterialsTranslated = "MissingMaterials".Translate();
             }
         }
 
         public override Job JobOnThing(Pawn pawn, Thing thing)
         {
-            IBillGiver billGiver = thing as IBillGiver;
+            var billGiver = thing as IBillGiver;
             if (billGiver == null)
             {
                 return null;
             }
-            if (!this.ThingIsUsableBillGiver(thing))
+            if (!ThingIsUsableBillGiver(thing))
             {
                 return null;
             }
@@ -166,51 +153,47 @@ namespace RA
             {
                 return null;
             }
-            if (!pawn.CanReserve(thing, 1) || thing.IsBurning() || thing.IsForbidden(pawn))
+            if (!pawn.CanReserve(thing) || thing.IsBurning() || thing.IsForbidden(pawn))
             {
                 return null;
             }
-            if (!pawn.CanReach(((Thing)billGiver).InteractionCell, PathEndMode.OnCell, Danger.Some, false))
+            if (!pawn.CanReach(((Thing)billGiver).InteractionCell, PathEndMode.OnCell, Danger.Some))
             {
                 return null;
             }
             Bill bill = null;
-            for (int i = 0; i < billGiver.BillStack.Count; i++)
+            foreach (var bill2 in billGiver.BillStack)
             {
-                Bill bill2 = billGiver.BillStack[i];
-                if (Find.TickManager.TicksGame >= bill2.lastIngredientSearchFailTicks + WorkGiver_DoBill.ReCheckFailedBillTicksRange.RandomInRange || FloatMenuMaker.making)
+                if (Find.TickManager.TicksGame >= bill2.lastIngredientSearchFailTicks + ReCheckFailedBillTicksRange.RandomInRange || FloatMenuMaker.making)
                 {
                     if (bill2.ShouldDoNow())
                     {
                         if (bill2.PawnAllowedToStartAnew(pawn))
                         {
-                            Bill_ProductionWithUft bill_ProductionWithUft = bill2 as Bill_ProductionWithUft;
+                            var bill_ProductionWithUft = bill2 as Bill_ProductionWithUft;
                             if (bill_ProductionWithUft != null)
                             {
                                 if (bill_ProductionWithUft.BoundUft != null)
                                 {
-                                    if (bill_ProductionWithUft.BoundWorker != pawn || !pawn.CanReserveAndReach(bill_ProductionWithUft.BoundUft, PathEndMode.Touch, Danger.Deadly, 1))
+                                    if (bill_ProductionWithUft.BoundWorker != pawn || !pawn.CanReserveAndReach(bill_ProductionWithUft.BoundUft, PathEndMode.Touch, Danger.Deadly))
                                     {
                                         goto IL_1CC;
                                     }
-                                    return WorkGiver_DoBill.FinishUftJob(pawn, bill_ProductionWithUft.BoundUft, bill_ProductionWithUft);
+                                    return FinishUftJob(pawn, bill_ProductionWithUft.BoundUft, bill_ProductionWithUft);
                                 }
-                                else
+                                var unfinishedThing = ClosestUnfinishedThingForBill(pawn, bill_ProductionWithUft);
+                                if (unfinishedThing != null)
                                 {
-                                    UnfinishedThing unfinishedThing = WorkGiver_DoBill.ClosestUnfinishedThingForBill(pawn, bill_ProductionWithUft);
-                                    if (unfinishedThing != null)
-                                    {
-                                        return WorkGiver_DoBill.FinishUftJob(pawn, unfinishedThing, bill_ProductionWithUft);
-                                    }
+                                    return FinishUftJob(pawn, unfinishedThing, bill_ProductionWithUft);
                                 }
                             }
                             if (!bill2.recipe.PawnSatisfiesSkillRequirements(pawn))
                             {
-                                JobFailReason.Is(WorkGiver_DoBill.MissingSkillTranslated);
+                                JobFailReason.Is(MissingSkillTranslated);
                             }
                             else
                             {
-                                if (WorkGiver_DoBill.TryFindBestBillIngredients(bill2, pawn, thing, this.chosenIngThings))
+                                if (TryFindBestBillIngredients(bill2, pawn, thing, chosenIngThings))
                                 {
                                     bill = bill2;
                                     break;
@@ -221,23 +204,22 @@ namespace RA
                                 }
                                 else
                                 {
-                                    JobFailReason.Is(WorkGiver_DoBill.MissingMaterialsTranslated);
+                                    JobFailReason.Is(MissingMaterialsTranslated);
                                 }
                             }
                         }
                     }
                 }
-            IL_1CC:;
+                IL_1CC:;
             }
             if (bill == null)
             {
                 return null;
             }
             billGiver.BillStack.RemoveInvalidBills();
-            bool flag = false;
-            for (int j = 0; j < billGiver.BillStack.Count; j++)
+            var flag = false;
+            foreach (var bill3 in billGiver.BillStack)
             {
-                Bill bill3 = billGiver.BillStack[j];
                 if (bill3 == bill)
                 {
                     flag = true;
@@ -248,18 +230,20 @@ namespace RA
             {
                 return null;
             }
-            Job job = WorkGiverUtility.HaulStuffOffBillGiverJob(pawn, billGiver, null);
+            var job = WorkGiverUtility.HaulStuffOffBillGiverJob(pawn, billGiver, null);
             if (job != null)
             {
                 return job;
             }
-            Job job2 = new Job(JobDefOf.DoBill, thing);
-            job2.targetQueueB = new List<TargetInfo>(this.chosenIngThings.Count);
-            job2.numToBringList = new List<int>(this.chosenIngThings.Count);
-            for (int k = 0; k < this.chosenIngThings.Count; k++)
+            var job2 = new Job(JobDefOf.DoBill, thing)
             {
-                job2.targetQueueB.Add(this.chosenIngThings[k].thing);
-                job2.numToBringList.Add(this.chosenIngThings[k].count);
+                targetQueueB = new List<TargetInfo>(chosenIngThings.Count),
+                numToBringList = new List<int>(chosenIngThings.Count)
+            };
+            for (var k = 0; k < chosenIngThings.Count; k++)
+            {
+                job2.targetQueueB.Add(chosenIngThings[k].thing);
+                job2.numToBringList.Add(chosenIngThings[k].count);
             }
             job2.haulMode = HaulMode.ToCellNonStorage;
             job2.bill = bill;
@@ -268,27 +252,19 @@ namespace RA
 
         public static UnfinishedThing ClosestUnfinishedThingForBill(Pawn pawn, Bill_ProductionWithUft bill)
         {
-            Predicate<Thing> predicate = (Thing t) => !t.IsForbidden(pawn) && ((UnfinishedThing)t).Recipe == bill.recipe && ((UnfinishedThing)t).Creator == pawn && pawn.CanReserve(t, 1);
-            Predicate<Thing> validator = predicate;
-            return (UnfinishedThing)GenClosest.ClosestThingReachable(pawn.Position, ThingRequest.ForDef(bill.recipe.unfinishedThingDef), PathEndMode.InteractionCell, TraverseParms.For(pawn, pawn.NormalMaxDanger(), TraverseMode.ByPawn, false), 9999f, validator, null, -1, false);
+            Predicate<Thing> predicate = t => !t.IsForbidden(pawn) && ((UnfinishedThing)t).Recipe == bill.recipe && ((UnfinishedThing)t).Creator == pawn && pawn.CanReserve(t);
+            var validator = predicate;
+            return (UnfinishedThing)GenClosest.ClosestThingReachable(pawn.Position, ThingRequest.ForDef(bill.recipe.unfinishedThingDef), PathEndMode.InteractionCell, TraverseParms.For(pawn, pawn.NormalMaxDanger()), 9999f, validator);
         }
 
         public static Job FinishUftJob(Pawn pawn, UnfinishedThing uft, Bill_ProductionWithUft bill)
         {
             if (uft.Creator != pawn)
             {
-                Log.Error(string.Concat(new object[]
-                {
-                    "Tried to get FinishUftJob for ",
-                    pawn,
-                    " finishing ",
-                    uft,
-                    " but its creator is ",
-                    uft.Creator
-                }));
+                Log.Error(string.Concat("Tried to get FinishUftJob for ", pawn, " finishing ", uft, " but its creator is ", uft.Creator));
                 return null;
             }
-            Job job = WorkGiverUtility.HaulStuffOffBillGiverJob(pawn, bill.billStack.billGiver, uft);
+            var job = WorkGiverUtility.HaulStuffOffBillGiverJob(pawn, bill.billStack.billGiver, uft);
             if (job != null && job.targetA.Thing != uft)
             {
                 return job;
@@ -310,43 +286,43 @@ namespace RA
 
         public bool ThingIsUsableBillGiver(Thing thing)
         {
-            Pawn pawn = thing as Pawn;
-            Corpse corpse = thing as Corpse;
+            var pawn = thing as Pawn;
+            var corpse = thing as Corpse;
             Pawn pawn2 = null;
             if (corpse != null)
             {
                 pawn2 = corpse.innerPawn;
             }
-            if (thing.def == this.def.singleBillGiverDef || ThingRequestGroup.PotentialBillGiver.Includes(thing.def))
+            if (thing.def == def.singleBillGiverDef || ThingRequestGroup.PotentialBillGiver.Includes(thing.def))
             {
                 return true;
             }
             if (pawn != null)
             {
-                if (this.def.billGiversAllHumanlikes && pawn.RaceProps.Humanlike)
+                if (def.billGiversAllHumanlikes && pawn.RaceProps.Humanlike)
                 {
                     return true;
                 }
-                if (this.def.billGiversAllMechanoids && pawn.RaceProps.mechanoid)
+                if (def.billGiversAllMechanoids && pawn.RaceProps.mechanoid)
                 {
                     return true;
                 }
-                if (this.def.billGiversAllAnimals && pawn.RaceProps.Animal)
+                if (def.billGiversAllAnimals && pawn.RaceProps.Animal)
                 {
                     return true;
                 }
             }
             if (corpse != null && pawn2 != null)
             {
-                if (this.def.billGiversAllHumanlikesCorpses && pawn2.RaceProps.Humanlike)
+                if (def.billGiversAllHumanlikesCorpses && pawn2.RaceProps.Humanlike)
                 {
                     return true;
                 }
-                if (this.def.billGiversAllMechanoidsCorpses && pawn2.RaceProps.mechanoid)
+                if (def.billGiversAllMechanoidsCorpses && pawn2.RaceProps.mechanoid)
                 {
                     return true;
                 }
-                if (this.def.billGiversAllAnimalsCorpses && pawn2.RaceProps.Animal)
+                if (def.billGiversAllAnimalsCorpses && pawn2.RaceProps.Animal)
                 {
                     return true;
                 }
@@ -361,7 +337,7 @@ namespace RA
                 chosen.Clear();
                 return true;
             }
-            Building building = billGiver as Building;
+            var building = billGiver as Building;
             IntVec3 c;
             if (building != null)
             {
@@ -379,61 +355,57 @@ namespace RA
             {
                 c = billGiver.Position;
             }
-            Region validRegionAt = Find.RegionGrid.GetValidRegionAt(c);
+            var validRegionAt = Find.RegionGrid.GetValidRegionAt(c);
             if (validRegionAt == null)
             {
                 return false;
             }
-            TraverseParms traverseParams = TraverseParms.For(pawn, Danger.Deadly, TraverseMode.ByPawn, false);
-            RegionEntryPredicate entryCondition = (Region r) => r.Allows(traverseParams, false);
-            WorkGiver_DoBill.relevantThings.Clear();
-            WorkGiver_DoBill.ingredientsOrdered.Clear();
-            for (int i = 0; i < bill.recipe.ingredients.Count; i++)
+            var traverseParams = TraverseParms.For(pawn);
+            RegionEntryPredicate entryCondition = r => r.Allows(traverseParams, false);
+            relevantThings.Clear();
+            ingredientsOrdered.Clear();
+            foreach (var ingredientCount in bill.recipe.ingredients)
             {
-                IngredientCount ingredientCount = bill.recipe.ingredients[i];
                 if (ingredientCount.filter.AllowedDefCount == 1)
                 {
-                    WorkGiver_DoBill.ingredientsOrdered.Add(ingredientCount);
+                    ingredientsOrdered.Add(ingredientCount);
                 }
             }
-            for (int j = 0; j < bill.recipe.ingredients.Count; j++)
+            foreach (var item in bill.recipe.ingredients)
             {
-                IngredientCount item = bill.recipe.ingredients[j];
-                if (!WorkGiver_DoBill.ingredientsOrdered.Contains(item))
+                if (!ingredientsOrdered.Contains(item))
                 {
-                    WorkGiver_DoBill.ingredientsOrdered.Add(item);
+                    ingredientsOrdered.Add(item);
                 }
             }
-            List<Thing> thingList = null;
-            bool foundAll = false;
-            Thing t;
+            List<Thing> thingList;
+            var foundAll = false;
             RegionProcessor regionProcessor = delegate (Region r)
             {
-                WorkGiver_DoBill.newRelevantThings.Clear();
+                newRelevantThings.Clear();
                 thingList = r.ListerThings.ThingsMatching(ThingRequest.ForGroup(ThingRequestGroup.HaulableEver));
-                for (int k = 0; k < thingList.Count; k++)
+                foreach (Thing thing in thingList)
                 {
-                    t = thingList[k];
-                    if (t.SpawnedInWorld && !t.IsForbidden(pawn) && (t.Position - billGiver.Position).LengthHorizontalSquared < bill.ingredientSearchRadius * bill.ingredientSearchRadius && bill.recipe.fixedIngredientFilter.Allows(t) && bill.ingredientFilter.Allows(t) && bill.recipe.ingredients.Any((IngredientCount ingNeed) => ingNeed.filter.Allows(t)) && pawn.CanReserve(t, 1) && (!bill.CheckIngredientsIfSociallyProper || t.IsSociallyProper(pawn)))
+                    if (thing.SpawnedInWorld && !thing.IsForbidden(pawn) && (thing.Position - billGiver.Position).LengthHorizontalSquared < bill.ingredientSearchRadius * bill.ingredientSearchRadius && bill.recipe.fixedIngredientFilter.Allows(thing) && bill.ingredientFilter.Allows(thing) && bill.recipe.ingredients.Any(ingNeed => ingNeed.filter.Allows(thing)) && pawn.CanReserve(thing) && (!bill.CheckIngredientsIfSociallyProper || thing.IsSociallyProper(pawn)))
                     {
-                        WorkGiver_DoBill.newRelevantThings.Add(t);
+                        newRelevantThings.Add(thing);
                     }
                 }
-                if (WorkGiver_DoBill.newRelevantThings.Count > 0)
+                if (newRelevantThings.Count > 0)
                 {
                     Comparison<Thing> comparison = delegate (Thing t1, Thing t2)
                     {
-                        float lengthHorizontalSquared = (t1.Position - pawn.Position).LengthHorizontalSquared;
-                        float lengthHorizontalSquared2 = (t2.Position - pawn.Position).LengthHorizontalSquared;
+                        var lengthHorizontalSquared = (t1.Position - pawn.Position).LengthHorizontalSquared;
+                        var lengthHorizontalSquared2 = (t2.Position - pawn.Position).LengthHorizontalSquared;
                         return lengthHorizontalSquared.CompareTo(lengthHorizontalSquared2);
                     };
-                    WorkGiver_DoBill.newRelevantThings.Sort(comparison);
-                    for (int l = 0; l < WorkGiver_DoBill.newRelevantThings.Count; l++)
+                    newRelevantThings.Sort(comparison);
+                    foreach (Thing newThing in newRelevantThings)
                     {
-                        WorkGiver_DoBill.relevantThings.Add(WorkGiver_DoBill.newRelevantThings[l]);
+                        relevantThings.Add(newThing);
                     }
-                    WorkGiver_DoBill.newRelevantThings.Clear();
-                    if (WorkGiver_DoBill.TryFindBestBillIngredientsInSet(WorkGiver_DoBill.relevantThings, bill, chosen))
+                    newRelevantThings.Clear();
+                    if (TryFindBestBillIngredientsInSet(relevantThings, bill, chosen))
                     {
                         foundAll = true;
                         return true;
@@ -449,45 +421,45 @@ namespace RA
         {
             if (bill.recipe.allowMixingIngredients)
             {
-                return WorkGiver_DoBill.TryFindBestBillIngredientsInSet_AllowMix(availableThings, bill, chosen);
+                return TryFindBestBillIngredientsInSet_AllowMix(availableThings, bill, chosen);
             }
-            return WorkGiver_DoBill.TryFindBestBillIngredientsInSet_NoMix(availableThings, bill, chosen);
+            return TryFindBestBillIngredientsInSet_NoMix(availableThings, bill, chosen);
         }
 
         public static bool TryFindBestBillIngredientsInSet_NoMix(List<Thing> availableThings, Bill bill, List<ThingAmount> chosen)
         {
-            RecipeDef recipe = bill.recipe;
+            var recipe = bill.recipe;
             chosen.Clear();
-            WorkGiver_DoBill.assignedThings.Clear();
-            WorkGiver_DoBill.availableCounts.Clear();
-            WorkGiver_DoBill.availableCounts.GenerateFrom(availableThings);
-            for (int i = 0; i < WorkGiver_DoBill.ingredientsOrdered.Count; i++)
+            assignedThings.Clear();
+            availableCounts.Clear();
+            availableCounts.GenerateFrom(availableThings);
+            for (var i = 0; i < ingredientsOrdered.Count; i++)
             {
-                IngredientCount ingredientCount = recipe.ingredients[i];
-                bool flag = false;
-                for (int j = 0; j < WorkGiver_DoBill.availableCounts.Count; j++)
+                var ingredientCount = recipe.ingredients[i];
+                var flag = false;
+                for (var j = 0; j < availableCounts.Count; j++)
                 {
-                    float num = (float)ingredientCount.CountRequiredOfFor(WorkGiver_DoBill.availableCounts.GetDef(j), bill.recipe);
-                    if (num <= WorkGiver_DoBill.availableCounts.GetCount(j))
+                    float num = ingredientCount.CountRequiredOfFor(availableCounts.GetDef(j), bill.recipe);
+                    if (num <= availableCounts.GetCount(j))
                     {
-                        if (ingredientCount.filter.Allows(WorkGiver_DoBill.availableCounts.GetDef(j)))
+                        if (ingredientCount.filter.Allows(availableCounts.GetDef(j)))
                         {
-                            for (int k = 0; k < availableThings.Count; k++)
+                            foreach (Thing thing in availableThings)
                             {
-                                if (availableThings[k].def == WorkGiver_DoBill.availableCounts.GetDef(j))
+                                if (thing.def == availableCounts.GetDef(j))
                                 {
-                                    if (!WorkGiver_DoBill.assignedThings.Contains(availableThings[k]))
+                                    if (!assignedThings.Contains(thing))
                                     {
-                                        int num2 = Mathf.Min(Mathf.FloorToInt(num), availableThings[k].stackCount);
-                                        ThingAmount.AddToList(chosen, availableThings[k], num2);
-                                        num -= (float)num2;
-                                        WorkGiver_DoBill.assignedThings.Add(availableThings[k]);
+                                        var num2 = Mathf.Min(Mathf.FloorToInt(num), thing.stackCount);
+                                        ThingAmount.AddToList(chosen, thing, num2);
+                                        num -= num2;
+                                        assignedThings.Add(thing);
                                         if (num < 0.001f)
                                         {
                                             flag = true;
-                                            float num3 = WorkGiver_DoBill.availableCounts.GetCount(j);
+                                            var num3 = availableCounts.GetCount(j);
                                             num3 -= ingredientCount.GetBaseCount();
-                                            WorkGiver_DoBill.availableCounts.SetCount(j, num3);
+                                            availableCounts.SetCount(j, num3);
                                             break;
                                         }
                                     }
@@ -511,19 +483,17 @@ namespace RA
         public static bool TryFindBestBillIngredientsInSet_AllowMix(List<Thing> availableThings, Bill bill, List<ThingAmount> chosen)
         {
             chosen.Clear();
-            for (int i = 0; i < bill.recipe.ingredients.Count; i++)
+            foreach (var ingredientCount in bill.recipe.ingredients)
             {
-                IngredientCount ingredientCount = bill.recipe.ingredients[i];
-                float num = ingredientCount.GetBaseCount();
-                for (int j = 0; j < availableThings.Count; j++)
+                var num = ingredientCount.GetBaseCount();
+                foreach (var thing in availableThings)
                 {
-                    Thing thing = availableThings[j];
                     if (ingredientCount.filter.Allows(thing))
                     {
-                        float num2 = bill.recipe.IngredientValueGetter.ValuePerUnitOf(thing.def);
-                        int num3 = Mathf.Min(Mathf.CeilToInt(num / num2), thing.stackCount);
+                        var num2 = bill.recipe.IngredientValueGetter.ValuePerUnitOf(thing.def);
+                        var num3 = Mathf.Min(Mathf.CeilToInt(num / num2), thing.stackCount);
                         ThingAmount.AddToList(chosen, thing, num3);
-                        num -= (float)num3 * num2;
+                        num -= num3 * num2;
                         if (num <= 0.0001f)
                         {
                             break;

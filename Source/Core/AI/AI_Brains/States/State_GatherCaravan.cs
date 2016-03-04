@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
+﻿using System.Collections.Generic;
+using RimWorld.SquadAI;
 using Verse;
 using Verse.AI;
-using Verse.Sound;
-using RimWorld;
-using RimWorld.SquadAI;
 
 namespace RA
 {
@@ -26,8 +19,8 @@ namespace RA
         public State_GatherCaravan(Building_TradingPost tradingPost)
         {
             this.tradingPost = tradingPost;
-            this.gatherDest = tradingPost.InteractionCell;
-            this.animalDest = new IntVec3(gatherDest.x, gatherDest.y, gatherDest.z + 1);
+            gatherDest = tradingPost.InteractionCell;
+            animalDest = new IntVec3(gatherDest.x, gatherDest.y, gatherDest.z + 1);
         }
 
         public override void Init()
@@ -39,7 +32,7 @@ namespace RA
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_References.LookReference<Building_TradingPost>(ref tradingPost, "tradingPost");
+            Scribe_References.LookReference(ref tradingPost, "tradingPost");
         }
 
         public override void Cleanup()
@@ -58,7 +51,7 @@ namespace RA
             animal.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("GoTo"), animalDest);
 
             // Duties for guards
-            for (int i = 2; i < this.brain.ownedPawns.Count; i++)
+            for (var i = 2; i < brain.ownedPawns.Count; i++)
             {
                 brain.ownedPawns[i].mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("GoTo"), CellFinder.RandomClosewalkCellNear(gatherDest, 3));
             }
@@ -66,15 +59,9 @@ namespace RA
         public override void StateTick()
         {
             // if animal reached it's destination
-            if (animal.Position != animalDest)
+            if (animal.Position == animalDest)
             {
-                // skip trigger
-                return;
-            }
-            else
-            {
-                // cycle until all pawns in range
-                foreach (Pawn pawn in brain.ownedPawns)
+                foreach (var pawn in brain.ownedPawns)
                 {
                     if (!pawn.Position.InHorDistOf(gatherDest, 3f))
                     {
@@ -82,9 +69,10 @@ namespace RA
                         return;
                     }
                 }
-            }
 
-            this.brain.ReceiveMemo("CaravanGathered");
+                brain.ReceiveMemo("CaravanGathered");
+            }
+            // cycle until all pawns in range
         }
     }
 }

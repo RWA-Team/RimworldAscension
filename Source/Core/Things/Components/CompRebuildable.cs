@@ -1,23 +1,22 @@
 ﻿using System.Collections.Generic;
-
 using RimWorld;
-using Verse;
 using UnityEngine;
+using Verse;
 
 namespace RA
 {
     class CompAutoRebuild : ThingComp
     {
-        public bool needsAutoRebuild = false;
+        public bool needsAutoRebuild;
 
         public override IEnumerable<Command> CompGetGizmosExtra()
         {
             // Toggle fire sustain mode gizmo
             yield return new Command_Toggle
             {
-                defaultDesc = "Make your colonists automatically rebuild this " + this.parent.Label + " when it's destroyed.",
+                defaultDesc = "Make your colonists automatically rebuild this " + parent.Label + " when it's destroyed.",
                 defaultLabel = "Auto rebuild",
-                icon = ContentFinder<Texture2D>.Get("UI/Icons/Upgrade", true),
+                icon = ContentFinder<Texture2D>.Get("UI/Icons/Upgrade"),
                 isActive = () => needsAutoRebuild,
                 toggleAction = () =>
                 {
@@ -30,7 +29,7 @@ namespace RA
         public override void PostDestroy(DestroyMode mode = DestroyMode.Vanish)
         {
             // NOTE: "this" might be unavailable at this point
-            GenConstruct.PlaceBlueprintForBuild(this.parent.def.entityDefToBuild, this.parent.Position, this.parent.Rotation, Faction.OfColony, this.parent.Stuff);
+            GenConstruct.PlaceBlueprintForBuild(parent.def.entityDefToBuild, parent.Position, parent.Rotation, Faction.OfColony, parent.Stuff);
         }
 
         public override void PostExposeData()

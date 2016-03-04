@@ -19,7 +19,7 @@
 	
 
 	<ThingDef Name="BuildingBase_Fueled" ParentName="BuildingBase" Abstract="True">
-		<thingClass>RA.Building_WorkTable_Fueled</thingClass>
+		<thingClass>RA.WorkTable_Fueled</thingClass>
 		<category>Building</category>
 		<passability>Impassable</passability>
 		<tickerType>Normal</tickerType>

@@ -1,7 +1,6 @@
 ﻿using System;
-
-using Verse;
 using UnityEngine;
+using Verse;
 
 namespace RA
 {
@@ -10,15 +9,15 @@ namespace RA
         public const float ShakeDecayRate = 0.5f;
         public const float ShakeFrequency = 24f;
         public const float MaxShakeMag = 1f;
-        public static float curShakeMag = 0f;
+        public static float curShakeMag;
 
         public static Vector3 ShakeOffset
         {
             get
             {
-                float x = (float)Math.Sin((double)(Find.RealTime.timeUnpaused * ShakeFrequency)) * curShakeMag;
-                float y = (float)Math.Sin((double)(Find.RealTime.timeUnpaused * ShakeFrequency) * 1.05) * curShakeMag;
-                float z = (float)Math.Sin((double)(Find.RealTime.timeUnpaused * ShakeFrequency) * 1.1) * curShakeMag;
+                var x = (float)Math.Sin(Find.RealTime.timeUnpaused * ShakeFrequency) * curShakeMag;
+                var y = (float)Math.Sin(Find.RealTime.timeUnpaused * ShakeFrequency * 1.05) * curShakeMag;
+                var z = (float)Math.Sin(Find.RealTime.timeUnpaused * ShakeFrequency * 1.1) * curShakeMag;
                 return new Vector3(x, y, z);
             }
         }

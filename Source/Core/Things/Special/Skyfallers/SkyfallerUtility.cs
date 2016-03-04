@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-
+using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.Sound;
-using UnityEngine;
-using RimWorld;
 
 namespace RA
 {
@@ -12,7 +11,7 @@ namespace RA
         public static void MakeDropPodCrashingAt(IntVec3 loc, DropPodInfo cargo)
         {
             // Create a new falling drop pod
-            DropPodCrashing dropPodCrashing = (DropPodCrashing)ThingMaker.MakeThing(ThingDef.Named("DropPodCrashing"), null);
+            var dropPodCrashing = (DropPodCrashing)ThingMaker.MakeThing(ThingDef.Named("DropPodCrashing"));
             // Set its content to what was passed in params
             dropPodCrashing.cargo = cargo;
             // Spawn the falling drop pod
@@ -27,24 +26,18 @@ namespace RA
             if (!DropCellFinder.TryFindDropSpotNear(dropCenter, out intVec, true, canRoofPunch))
             {
                 // Log an error
-                Log.Warning(string.Concat(new object[]
-                {
-                        "DropThingsNear in Ascension failed to find a place to drop ",
-                        " near ",
-                        dropCenter,
-                        ". Dropping on random square instead."
-                }));
+                Log.Warning(string.Concat("DropThingsNear in Ascension failed to find a place to drop ", " near ", dropCenter, ". Dropping on random square instead."));
                 // Try another way to get a drop spot
-                intVec = CellFinderLoose.RandomCellWith((IntVec3 c) => c.Walkable());
+                CellFinderLoose.RandomCellWith(cell => cell.Walkable());
             }
 
             // Setup a new container for contents and config
-            DropPodInfo cargo = new DropPodInfo();
+            var cargo = new DropPodInfo();
             // Loop over things passed in params
-            foreach (List<Thing> group in thingsGroups)
+            foreach (var group in thingsGroups)
             {
                 // Foreach thing we find
-                foreach (Thing thing in group)
+                foreach (var thing in group)
                 {
                     // Add it to the info container
                     cargo.containedThings.Add(thing);
@@ -54,7 +47,7 @@ namespace RA
             cargo.openDelay = openDelay;
 
             // Call the main method to create the ship
-            ShipWreckCrashing wreck = (ShipWreckCrashing)ThingMaker.MakeThing(ThingDef.Named("ShipWreckCrashing"));
+            var wreck = (ShipWreckCrashing)ThingMaker.MakeThing(ThingDef.Named("ShipWreckCrashing"));
             // Set its content to what was passed in params
             wreck.cargo = cargo;
             // Spawn the falling ship part
@@ -66,12 +59,12 @@ namespace RA
             DoRoofPunch(skyfaller.Position);
 
             // max side length of drawSize or actual size etermine result crater radius
-            float impactRadius = Mathf.Max(Mathf.Max(skyfaller.def.Size.x, skyfaller.def.Size.z), Mathf.Max(skyfaller.Graphic.drawSize.x, skyfaller.Graphic.drawSize.y)) * 2;
+            var impactRadius = Mathf.Max(Mathf.Max(skyfaller.def.Size.x, skyfaller.def.Size.z), Mathf.Max(skyfaller.Graphic.drawSize.x, skyfaller.Graphic.drawSize.y)) * 2;
 
             // Throw some dust puffs
-            for (int i = 0; i < 6; i++)
+            for (var i = 0; i < 6; i++)
             {
-                Vector3 loc = skyfaller.TrueCenter() + Gen.RandomHorizontalVector(1f);
+                var loc = skyfaller.TrueCenter() + Gen.RandomHorizontalVector(1f);
                 MoteThrower.ThrowDustPuff(loc, 1.2f);
             }
 
@@ -79,7 +72,7 @@ namespace RA
             MoteThrower.ThrowLightningGlow(skyfaller.TrueCenter(), impactRadius);
 
             // Spawn the crater
-            Crater crater = (Crater)ThingMaker.MakeThing(ThingDef.Named("Crater"));
+            var crater = (Crater)ThingMaker.MakeThing(ThingDef.Named("Crater"));
             // adjust result crater size to the impacr zone radius
             crater.impactRadius = impactRadius;
             // make explosion in the impact area
@@ -105,7 +98,7 @@ namespace RA
         // Punch the roof, if needed
         public static void DoRoofPunch (IntVec3 position)
         {
-            RoofDef roof = position.GetRoof();
+            var roof = position.GetRoof();
             // If there was actually a roof
             if (roof != null)
             {
@@ -119,9 +112,9 @@ namespace RA
                 if (roof.filthLeaving != null)
                 {
                     // Drop some filth
-                    for (int j = 0; j < 3; j++)
+                    for (var j = 0; j < 3; j++)
                     {
-                        FilthMaker.MakeFilth(position, roof.filthLeaving, 1);
+                        FilthMaker.MakeFilth(position, roof.filthLeaving);
                     }
                 }
             }

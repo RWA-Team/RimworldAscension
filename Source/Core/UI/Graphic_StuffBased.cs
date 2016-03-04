@@ -1,106 +1,111 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 using UnityEngine;
 using Verse;
-using RimWorld;
 
 namespace RA
 {
-    public class Graphic_StuffBased : Graphic_Collection
+    public enum StuffCategory : byte
     {
-        Dictionary<StuffCategoryDef, Graphic> categorizedGraphics;
+        Woody,
+        Stony
+    }
 
-        public override Material MatSingle
-        {
-            get
-            {
-                return this.subGraphics[0].MatSingle;
-            }
-        }
+    public class Graphic_StuffBased : Graphic
+    {
+        public Dictionary<string, Graphic> categorizedGraphics = new Dictionary<string, Graphic>();
+        public string currentCategory = default(string);
 
-        // NOTE: require disposing, as vanilla does?
         public override void Init(GraphicRequest req)
         {
-            base.Init(req);
+            path = req.path;
+            drawSize = req.drawSize;
+            color = req.color;
+            colorTwo = req.colorTwo;
 
-            if (Game.Mode == GameMode.MapPlaying)
+            var basePath = req.path;
+            foreach (var category in Enum.GetNames(typeof(StuffCategory)))
             {
-                categorizedGraphics = new Dictionary<StuffCategoryDef, Graphic>(this.subGraphics.Length);
-
-                // subGraphics - initial graphic set, consistsof all textures in the thing folder
-                foreach (Graphic graphic in this.subGraphics)
+                req.path = basePath + "/" + category;
+                var textures = ContentFinder<Texture2D>.GetAllInFolder(req.path).ToList();
+                if (!textures.NullOrEmpty())
                 {
-                    string[] textureNameParts = graphic.MatSingle.name.Split('_');
-                    // stuff category name should be the first after def name in texture name (to avoid problem)
-                    // it has index 2 here, because index 0 equal to shader type (added by game engine)
-                    string stuffName = textureNameParts[2];
+                    var textureNameParts = textures[0].name.Split('_');
+                    var graphic = DetermineGraphicType(textureNameParts[textureNameParts.Length - 1]);
 
-                    StuffCategoryDef def = DefDatabase<StuffCategoryDef>.GetNamed(stuffName);
-                    if (def != null)
-                        categorizedGraphics.Add(def, graphic);
-                    else
-                        categorizedGraphics.Add(def, BaseContent.BadGraphic);
+                    if (graphic is Graphic_Single)
+                    {
+                        req.path += "/" + textures[0].name;
+                    }
+
+                    graphic.Init(req);
+                    categorizedGraphics.Add(category, graphic);
                 }
             }
         }
 
-        public override Material MatSingleFor(Thing thing)
+        public Graphic DetermineGraphicType(string textureNameEnding)
         {
-            if (thing != null && thing.Stuff != null)
-            {
-                StuffCategoryDef category = thing.Stuff.stuffProps.categories[0];
-                // calls MatSingleFor() for the corresponding Graphic class (not this one)
-                return categorizedGraphics[category].MatSingleFor(thing);
-            }
-            else
-            {
-                Graphic graphic = this.subGraphics[0];
-                return graphic.MatSingleFor(thing);
-            }
+            // any that ends with _side/_back/_front or thier mask versions
+            if (Regex.IsMatch(textureNameEnding, @"_(front|back|side)[m]?$"))
+                return new Graphic_Multi();
+            // any that ends with _a/_b/.../_l or thier mask versions
+            if (Regex.IsMatch(textureNameEnding, @"_[a-l][m]?$"))
+                return new Graphic_StackCount();
+            // any that ends with _A/_B/.../_L or thier mask versions
+            if (Regex.IsMatch(textureNameEnding, @"_[A-L][m]?$"))
+                return new Graphic_Random();
+
+            return new Graphic_Single();
         }
 
+        // called by draw method of the thing, initial draw entry. Determine actual graphic instance to draw, with proper texture
         public override void DrawWorker(Vector3 loc, Rot4 rot, ThingDef thingDef, Thing thing)
         {
-            if (thing != null && thing.Stuff != null)
-            {
-                StuffCategoryDef category = thing.Stuff.stuffProps.categories[0];
-                Log.Message("category " + category);
-                Log.Message("value " + categorizedGraphics[category]);
-                // calls MatSingleFor() for the corresponding Graphic class (not this one)
-                categorizedGraphics[category].DrawWorker(loc, rot, thingDef, thing);
-            }
-            // draw stuffless graphic
-            else
-            {
-                Log.Message("STUFFLESS");
-                Graphic graphic = this.subGraphics[0];
-                graphic.DrawWorker(loc, rot, thingDef, thing);
-            }
+            GraphicClassSelector(thing).DrawWorker(loc, rot, thingDef, thing);
         }
 
-        // THIS SHOULD CHOOSE GRAPHIC
+        public override Material MatSingleFor(Thing thing)
+        {
+            return GraphicClassSelector(thing).MatSingleFor(thing);
+        }
+
+        public override Material MatSingle => currentCategory != default(string)
+            ? categorizedGraphics[currentCategory].MatSingle
+            : UncategorisedGraphic.MatSingle;
+
+        public Graphic GraphicClassSelector(Thing thing)
+        {
+            if (thing?.Stuff != null)
+            {
+                var category = thing.Stuff.stuffProps.categories[0].defName;
+                return categorizedGraphics[category];
+            }
+
+            return currentCategory != default(string)
+                ? categorizedGraphics[currentCategory]
+                : UncategorisedGraphic;
+        }
+
+        public Graphic GraphicClassSelector()
+        {
+            return GraphicClassSelector(null);
+        }
+
+        public Graphic UncategorisedGraphic => categorizedGraphics.Values.First();
+
+        // called when no category specified
         public override Graphic GetColoredVersion(Shader newShader, Color newColor, Color newColorTwo)
         {
-            Log.Message("COLORED");
-            if (newColorTwo != Color.white)
-            {
-                Log.ErrorOnce("Cannot use Graphic_StuffBased.GetColoredVersion with a non-white colorTwo.", 9910252);
-            }
-            return GraphicDatabase.Get<Graphic_StuffBased>(this.path, newShader, this.drawSize, newColor);
+            return GraphicClassSelector().GetColoredVersion(newShader, newColor, newColorTwo);
         }
 
         public override string ToString()
         {
-            return string.Concat(new object[]
-            {
-                "Appearance(path=",
-                this.path,
-                ", color=",
-                this.color,
-                ", colorTwo=unsupported)"
-            });
+            return string.Concat("Appearance(path=", path, ", color=", color, ", colorTwo=unsupported)");
         }
     }
 }

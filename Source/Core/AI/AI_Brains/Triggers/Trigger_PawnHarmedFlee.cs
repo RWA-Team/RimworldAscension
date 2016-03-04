@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
+﻿using RimWorld.SquadAI;
 using Verse;
-using Verse.AI;
-using Verse.Sound;
-using RimWorld;
 //using RimWorld.Planet;
-using RimWorld.SquadAI;
 
 namespace RA
 {
@@ -27,8 +18,7 @@ namespace RA
         {
             if (brain.numPawnsEverGained > 1)
                 return ActivateOnPawnGroup(brain, signal);
-            else
-                return ActivateOnPawnSingle(brain, signal);
+            return ActivateOnPawnSingle(brain, signal);
         }
 
         public bool ActivateOnPawnSingle(Brain brain, TriggerSignal signal)
@@ -41,7 +31,7 @@ namespace RA
             {
                 return false;
             }
-            return (signal.condition == PawnLostCondition.TakenPrisoner ? true : signal.condition == PawnLostCondition.IncappedOrKilled);
+            return signal.condition == PawnLostCondition.TakenPrisoner || signal.condition == PawnLostCondition.IncappedOrKilled;
         }
 
         public bool ActivateOnPawnGroup(Brain brain, TriggerSignal signal)
@@ -50,13 +40,13 @@ namespace RA
             {
                 return false;
             }
-            return (float)brain.numPawnsLostViolently >= (float)brain.numPawnsEverGained * this.fraction;
+            return brain.numPawnsLostViolently >= brain.numPawnsEverGained * fraction;
         }
 
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.LookValue<float>(ref this.fraction, "fraction", 0.5f, false);
+            Scribe_Values.LookValue(ref fraction, "fraction", 0.5f);
         }
     }
 }

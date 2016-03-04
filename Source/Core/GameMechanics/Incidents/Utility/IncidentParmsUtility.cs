@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 using RimWorld;
 using Verse;
 
@@ -21,12 +17,12 @@ namespace RA
 
         public static IncidentParms GenerateThreatPointsParams()
         {
-            IncidentParms incidentParms = new IncidentParms();
+            var incidentParms = new IncidentParms();
 
             // WealthItems is summary market value of all non-fogged haulables on map and colonists equipment
-            float wealthAmount = Find.StoryWatcher.watcherWealth.WealthItems + Find.StoryWatcher.watcherWealth.WealthBuildings * WealthPerBuilding_Modifier;
-            float wealthPoints = wealthAmount * WealthToPoints_Modifier / 1000f;
-            float colonistsPoints = (float)Find.ListerPawns.FreeColonistsCount * PointsPerColonist;
+            var wealthAmount = Find.StoryWatcher.watcherWealth.WealthItems + Find.StoryWatcher.watcherWealth.WealthBuildings * WealthPerBuilding_Modifier;
+            var wealthPoints = wealthAmount * WealthToPoints_Modifier / 1000f;
+            var colonistsPoints = Find.ListerPawns.FreeColonistsCount * PointsPerColonist;
             incidentParms.points = wealthPoints + colonistsPoints;
             incidentParms.points *= Find.StoryWatcher.watcherRampUp.TotalThreatPointsFactor;
             incidentParms.points *= Find.Storyteller.difficulty.threatScale;

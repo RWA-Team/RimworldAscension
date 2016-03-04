@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
-using Verse;
-using Verse.AI; 
-using Verse.Sound;
+﻿using System.Collections.Generic;
 using RimWorld;
-
+using Verse;
+using Verse.AI;
 
 namespace RA
 {
@@ -27,10 +20,7 @@ namespace RA
         {
             string repString;
 
-            if (!LanguageDatabase.activeLanguage.TryGetTextFromKey("ReportTrading", out repString))
-                repString = base.GetReport();
-            else
-                repString = "ReportTrading".Translate();
+            repString = !LanguageDatabase.activeLanguage.TryGetTextFromKey("ReportTrading", out repString) ? base.GetReport() : "ReportTrading".Translate();
 
             if (pawn != null && !pawn.Destroyed && pawn.SpawnedInWorld && pawn.CurJob != null)
             {
@@ -52,7 +42,7 @@ namespace RA
                 this.FailOnForbidden(targetInd);
 
             //Reserve thing to be used
-            Toil reserveTargetA = Toils_Reserve.Reserve(targetInd, 1);
+            var reserveTargetA = Toils_Reserve.Reserve(targetInd);
             yield return reserveTargetA;
 
             // Goto object
@@ -64,10 +54,10 @@ namespace RA
                     //Because that's a special case anyway
 
                     //While hauling to cell storage, ensure storage dest is still valid
-                    Pawn actor = toilGoto.actor;
-                    Job curJob = actor.jobs.curJob;
+                    var actor = toilGoto.actor;
+                    var curJob = actor.jobs.curJob;
 
-                    Thing targetThing = curJob.GetTarget(targetInd).Thing;
+                    var targetThing = curJob.GetTarget(targetInd).Thing;
 
                     if (targetThing == null || targetThing.Destroyed || targetThing.IsBurning() || targetThing.IsForbidden(pawn.Faction))
                         return true;
@@ -85,7 +75,7 @@ namespace RA
 
         public Toil Toils_OpenTradingWindow(ICommunicable tradeCompany)
         {
-            Toil toil = new Toil();
+            var toil = new Toil();
             toil.initAction = () =>
             {
                 toil.actor.pather.StopDead();

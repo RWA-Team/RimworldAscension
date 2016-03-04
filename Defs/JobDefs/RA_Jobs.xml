@@ -39,6 +39,13 @@
 	</JobDef>
 
 	<JobDef>
+		<defName>MakeSignalSmoke</defName>
+		<driverClass>RA.JobDriver_MakeSignalSmoke</driverClass>
+		<reportString>Sending signal smoke signs at TargetA.</reportString>
+		<suspendable>false</suspendable>
+	</JobDef>
+
+	<JobDef>
 		<defName>UseSurvivalGuide</defName>
 		<driverClass>JobDriver_UseItem</driverClass>
 		<reportString>Using TargetA.</reportString>

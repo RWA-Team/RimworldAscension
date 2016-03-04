@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-
+﻿
 using Verse;
-using Verse.Sound;
-using UnityEngine;
-using RimWorld;
 
 namespace RA
 {
@@ -15,10 +11,10 @@ namespace RA
         {
             base.SpawnSetup();
             
-            foreach (IntVec3 cell in GenRadial.RadialCellsAround(this.Position, impactRadius, true))
+            foreach (var cell in GenRadial.RadialCellsAround(Position, impactRadius, true))
             {
                 // set open terrain underneath to gravel
-                Thing building = cell.GetThingList().Find(thing => thing.def.category == ThingCategory.Building);
+                var building = cell.GetThingList().Find(thing => thing.def.category == ThingCategory.Building);
                 if (building == null)
                 {
                     Find.TerrainGrid.SetTerrain(cell, DefDatabase<TerrainDef>.GetNamed("Gravel"));
@@ -36,10 +32,7 @@ namespace RA
                 {
                     return def.graphic;
                 }
-                else
-                {
-                    return GraphicDatabase.Get<Graphic_Single>(def.graphic.path, def.graphic.Shader, def.graphicData.drawSize * impactRadius * 2, def.graphic.Color);
-                }
+                return GraphicDatabase.Get<Graphic_Single>(def.graphic.path, def.graphic.Shader, def.graphicData.drawSize * impactRadius * 2, def.graphic.Color);
             }
         }
 

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -30,7 +29,7 @@ namespace RA
             // all things marked for plantcutting or harvesting
             IEnumerable<Thing> designatedTargets = ListerBuildingsRepairable.RepairableBuildings(pawn.Faction);
 
-            IEnumerable<Thing> availableTargets = designatedTargets.Where(target => target.Faction == pawn.Faction && Find.AreaHome[target.Position] && pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()) && target.def.useHitPoints && target.HitPoints < target.MaxHitPoints && Find.DesignationManager.DesignationOn(target, DesignationDefOf.Deconstruct) == null && !target.IsBurning());
+            var availableTargets = designatedTargets.Where(target => target.Faction == pawn.Faction && Find.AreaHome[target.Position] && pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()) && target.def.useHitPoints && target.HitPoints < target.MaxHitPoints && Find.DesignationManager.DesignationOn(target, DesignationDefOf.Deconstruct) == null && !target.IsBurning());
 
             hasPotentialJobs = availableTargets.Count() > 0 ? true : false;
 

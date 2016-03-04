@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -21,10 +18,10 @@ namespace RA
             {
                 Action action = () =>
                 {
-                    Job job = new Job(DefDatabase<JobDef>.GetNamed("UseSurvivalGuide"), this);
+                    var job = new Job(DefDatabase<JobDef>.GetNamed("UseSurvivalGuide"), this);
                     pawn.drafter.TakeOrderedJob(job);
                 };
-                yield return new FloatMenuOption("Examine " + this.LabelCap, action);
+                yield return new FloatMenuOption("Examine " + LabelCap, action);
             }
         }
 
@@ -33,7 +30,7 @@ namespace RA
             Find.ResearchManager.currentProj = ResearchProjectDef.Named("SurvivalGuideI");
             Find.ResearchManager.InstantFinish(ResearchProjectDef.Named("SurvivalGuideI"));
 
-            this.Destroy(DestroyMode.Vanish);
+            Destroy();
         }
     }
 }

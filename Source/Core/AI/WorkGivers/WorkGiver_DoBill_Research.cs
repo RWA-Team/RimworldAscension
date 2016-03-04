@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -36,8 +34,8 @@ namespace RA
 
         public override Job JobOnThing(Pawn pawn, Thing researchBench)
         {
-            IBillGiver billGiver = researchBench as IBillGiver;
-            Bill bill = null;
+            var billGiver = researchBench as IBillGiver;
+            Bill bill;
 
             // check if can generate bills
             if (billGiver == null)
@@ -50,7 +48,7 @@ namespace RA
                 return null;
             }
 
-            if (!pawn.CanReserve(researchBench, 1) || !pawn.CanReach(researchBench.InteractionCell, PathEndMode.OnCell, Danger.Some, false) || researchBench.IsBurning() || researchBench.IsForbidden(pawn))
+            if (!pawn.CanReserve(researchBench) || !pawn.CanReach(researchBench.InteractionCell, PathEndMode.OnCell, Danger.Some) || researchBench.IsBurning() || researchBench.IsForbidden(pawn))
             {
                 return null;
             }
@@ -68,9 +66,11 @@ namespace RA
             // Add research bill if it's not added already
             if (billGiver.BillStack.Count == 0)
             {
-                bill = new Bill_Production(DefDatabase<RecipeDef>.GetNamed(Find.ResearchManager.currentProj.defName));
+                bill = new Bill_Production(DefDatabase<RecipeDef>.GetNamed(Find.ResearchManager.currentProj.defName))
+                {
+                    suspended = true
+                };
                 // NOTE: why suspended???
-                bill.suspended = true;
                 billGiver.BillStack.AddBill(bill);
             }
             else
@@ -78,7 +78,7 @@ namespace RA
                 bill = billGiver.BillStack[0];
             }
 
-            if (!TryFindBestBillIngredients(bill, pawn, researchBench, this.chosenIngThings))
+            if (!TryFindBestBillIngredients(bill, pawn, researchBench, chosenIngThings))
             {
                 if (FloatMenuMaker.making)
                 {
@@ -86,43 +86,44 @@ namespace RA
                 }
                 return null;
             }
-            else
-                bill.suspended = false;
-            
+            bill.suspended = false;
+
             // Reserve research table
-            if (pawn.CanReserveAndReach(researchBench, PathEndMode.OnCell, Danger.Some, 1))
-                ReservationUtility.Reserve(pawn, researchBench, 1);
+            if (pawn.CanReserveAndReach(researchBench, PathEndMode.OnCell, Danger.Some))
+                pawn.Reserve(researchBench);
 
             // Reserve all rubbish on the table for the researcher
             {
-                foreach (IntVec3 cell in billGiver.IngredientStackCells)
+                foreach (var cell in billGiver.IngredientStackCells)
                 {
-                    Thing thing = Find.ThingGrid.ThingAt(cell, ThingCategory.Item);
+                    var thing = Find.ThingGrid.ThingAt(cell, ThingCategory.Item);
                     if (thing != null)
                     {
-                        if (pawn.CanReserveAndReach(thing, PathEndMode.OnCell, Danger.Some, 1))
-                            ReservationUtility.Reserve(pawn, thing, 1);
+                        if (pawn.CanReserveAndReach(thing, PathEndMode.OnCell, Danger.Some))
+                            pawn.Reserve(thing);
                     }
                 }
             }
 
             // clear the work table
-            Job haulAside = WorkGiverUtility.HaulStuffOffBillGiverJob(pawn, billGiver, null);
+            var haulAside = WorkGiverUtility.HaulStuffOffBillGiverJob(pawn, billGiver, null);
             if (haulAside != null)
             {
                 return haulAside;
             }
 
             // gather ingridients and do bill
-            Job doBill = new Job(JobDefOf.Research, researchBench);
-            doBill.targetQueueB = new List<TargetInfo>(this.chosenIngThings.Count);
-            doBill.numToBringList = new List<int>(this.chosenIngThings.Count);
-            for (int k = 0; k < this.chosenIngThings.Count; k++)
+            var doBill = new Job(JobDefOf.Research, researchBench)
+            {
+                targetQueueB = new List<TargetInfo>(chosenIngThings.Count),
+                numToBringList = new List<int>(chosenIngThings.Count)
+            };
+            for (var k = 0; k < chosenIngThings.Count; k++)
             {
                 // pre reservation is made to assure that current researcher is cleaning the bench, not some other pawn with research skill
-                ReservationUtility.Reserve(pawn, this.chosenIngThings[k].thing, 1);
-                doBill.targetQueueB.Add(this.chosenIngThings[k].thing);
-                doBill.numToBringList.Add(this.chosenIngThings[k].count);
+                pawn.Reserve(chosenIngThings[k].thing);
+                doBill.targetQueueB.Add(chosenIngThings[k].thing);
+                doBill.numToBringList.Add(chosenIngThings[k].count);
             }
             doBill.haulMode = HaulMode.ToCellNonStorage;
             doBill.bill = bill;

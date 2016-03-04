@@ -1,30 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
+﻿using RimWorld;
+using RimWorld.SquadAI;
 using Verse;
 using Verse.AI;
-using RimWorld;
-using RimWorld.SquadAI;
 
 namespace RA
 {
     internal class State_DefendPoint : State
     {
         public IntVec3 defendPoint;
-
         public float defendRadius = 28f;
 
-        public override IntVec3 FlagLoc
-        {
-            get
-            {
-                // return new IntVec3(defendPointTrader.x, defendPointTrader.y, defendPointTrader.z - 2);
-                return this.defendPoint;
-            }
-        }
+        public override IntVec3 FlagLoc => defendPoint;
 
         public State_DefendPoint()
         {
@@ -38,22 +24,19 @@ namespace RA
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.LookValue<IntVec3>(ref this.defendPoint, "defendPoint", default(IntVec3), false);
+            Scribe_Values.LookValue(ref defendPoint, "defendPoint", default(IntVec3));
         }
 
         public override void UpdateAllDuties()
         {
-            for (int i = 0; i < this.brain.ownedPawns.Count; i++)
+            foreach (Pawn pawn in brain.ownedPawns)
             {
-                this.brain.ownedPawns[i].mindState.duty = new PawnDuty(DutyDefOf.Defend, this.defendPoint, -1f);
-                this.brain.ownedPawns[i].mindState.duty.focusSecond = this.defendPoint;
-                this.brain.ownedPawns[i].mindState.duty.radius = this.defendRadius;
+                pawn.mindState.duty = new PawnDuty(DutyDefOf.Defend, defendPoint, -1f)
+                {
+                    focusSecond = defendPoint,
+                    radius = defendRadius
+                };
             }
-        }
-
-        public override void StateTick()
-        {
-            base.StateTick();
         }
     }
 }

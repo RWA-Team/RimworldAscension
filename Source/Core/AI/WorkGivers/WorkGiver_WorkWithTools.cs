@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -21,9 +19,9 @@ namespace RA
         public Job DoJobWithTool(Pawn pawn, IEnumerable<Thing> availableTargets, Func<Thing, Job> ActualJob)
         {
             // has available job targets
-            if (availableTargets.Count() > 0)
+            if (availableTargets.Any())
             {
-                Thing closestAvailableTarget = GenClosest.ClosestThing_Global_Reachable(pawn.Position, availableTargets, PathEndMode.Touch, TraverseParms.For(pawn));
+                var closestAvailableTarget = GenClosest.ClosestThing_Global_Reachable(pawn.Position, availableTargets, PathEndMode.Touch, TraverseParms.For(pawn));
 
                 // hands free
                 if (pawn.equipment.Primary == null)
@@ -65,23 +63,20 @@ namespace RA
                     }
                      */
                     // not tool in hands
-                    else
+                    // search in slots for proper tool
+                    if (!TryEquipToolFromSlots(pawn))
                     {
-                        // search in slots for proper tool
-                        if (!TryEquipToolFromSlots(pawn))
+                        if (!TryStoreCurrentWeaponInSlots(pawn))
                         {
-                            if (!TryStoreCurrentWeaponInSlots(pawn))
-                            {
-                                // add to reserve list, cause it will be dropped to equip tool later
-                                reservedWeapon = pawn.equipment.Primary;
-                            }
+                            // add to reserve list, cause it will be dropped to equip tool later
+                            reservedWeapon = pawn.equipment.Primary;
+                        }
 
-                            // then search for free tool
-                            if (TryFindAvailableTool(pawn))
-                            {
-                                // equip nearest tool
-                                return new Job(JobDefOf.Equip, closestAvailableTool);
-                            }
+                        // then search for free tool
+                        if (TryFindAvailableTool(pawn))
+                        {
+                            // equip nearest tool
+                            return new Job(JobDefOf.Equip, closestAvailableTool);
                         }
                     }
                 }
@@ -160,13 +155,13 @@ namespace RA
 
         public bool IsProperTool(Thing thing)
         {
-            return (thing.def.weaponTags != null && thing.def.weaponTags.Exists(tag => tag.Contains("Tool") && tag.Contains(workTypeName))) ? true : false;
+            return thing.def.weaponTags != null && thing.def.weaponTags.Exists(tag => tag.Contains("Tool") && tag.Contains(workTypeName));
         }
 
         // keeps current tool equipped if there are available unfinished jobs for this tool type
         public bool ShouldKeepTool(Pawn pawn)
         {
-            foreach (string tag in pawn.equipment.Primary.def.weaponTags)
+            foreach (var tag in pawn.equipment.Primary.def.weaponTags)
             {
                 if (tag.Contains("Construction") && (pawn.workSettings.WorkIsActive(WorkTypeDefOf.Construction) && WorkGiver_ConstructFinishFrames.hasPotentialJobs || pawn.workSettings.WorkIsActive(WorkTypeDefOf.Repair) && WorkGiver_Repair.hasPotentialJobs))
                 {
@@ -187,11 +182,11 @@ namespace RA
 
         public bool TryEquipToolFromSlots(Pawn pawn)
         {
-            IEnumerable<CompSlots> compsSlots = pawn.GetComp<CompEquipmentGizmoUser>().EquippedSlottersComps();
+            var compsSlots = pawn.GetComp<CompEquipmentGizmoUser>().EquippedSlottersComps();
 
-            foreach (CompSlots comp in compsSlots)
+            foreach (var comp in compsSlots)
             {
-                foreach (Thing thing in comp.slots)
+                foreach (var thing in comp.slots)
                 {
                     if (IsProperTool(thing))
                     {
@@ -213,7 +208,7 @@ namespace RA
         {
             if (pawn.equipment.AllEquipment.Contains(reservedSlotter) || pawn.apparel.WornApparel.Contains(reservedSlotter as Apparel))
             {
-                CompSlots comp = reservedSlotter.GetComp<CompSlots>();
+                var comp = reservedSlotter.GetComp<CompSlots>();
 
                 if (comp.slots.Contains(reservedWeapon))
                 {
@@ -233,9 +228,9 @@ namespace RA
 
         public bool TryStoreCurrentWeaponInSlots(Pawn pawn)
         {
-            IEnumerable<CompSlots> compsSlots = pawn.GetComp<CompEquipmentGizmoUser>().EquippedSlottersComps();
+            var compsSlots = pawn.GetComp<CompEquipmentGizmoUser>().EquippedSlottersComps();
 
-            foreach (CompSlots comp in compsSlots)
+            foreach (var comp in compsSlots)
             {
                 if (comp.slots.Count < comp.Properties.maxSlots)
                 {
@@ -258,7 +253,7 @@ namespace RA
             // find proper tools of the specific work type
             IEnumerable<Thing> availableTools = Find.ListerThings.AllThings.FindAll(tool => IsProperTool(tool) && !tool.IsForbidden(pawn.Faction) && pawn.CanReserveAndReach(tool, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()));
 
-            if (availableTools.Count() > 0)
+            if (availableTools.Any())
             {
                 // find closest reachable tool of the specific work type
                 closestAvailableTool = GenClosest.ClosestThing_Global_Reachable(pawn.Position, availableTools, PathEndMode.ClosestTouch, TraverseParms.For(pawn));
@@ -284,24 +279,13 @@ namespace RA
         // check if there is free cell is the proper stockpile
         public bool StorageCellExists(Pawn pawn)
         {
-            foreach (var slotGroup in Find.SlotGroupManager.AllGroupsListInPriorityOrder)
-            {
-                foreach (var cell in slotGroup.CellsList)
-                {
-                    if (StoreUtility.IsValidStorageFor(cell, pawn.equipment.Primary) && pawn.CanReserveAndReach(cell, PathEndMode.OnCell, pawn.NormalMaxDanger()))
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
+            return Find.SlotGroupManager.AllGroupsListInPriorityOrder.SelectMany(slotGroup => slotGroup.CellsList).Any(cell => cell.IsValidStorageFor(pawn.equipment.Primary) && pawn.CanReserveAndReach(cell, PathEndMode.OnCell, pawn.NormalMaxDanger()));
         }
 
         public void ExposeData()
         {
-            Scribe_References.LookReference<ThingWithComps>(ref reservedSlotter, "reservedSlotter");
-            Scribe_References.LookReference<ThingWithComps>(ref reservedWeapon, "reservedWeapon");
+            Scribe_References.LookReference(ref reservedSlotter, "reservedSlotter");
+            Scribe_References.LookReference(ref reservedWeapon, "reservedWeapon");
         }
     }
 }

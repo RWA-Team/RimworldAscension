@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
+﻿using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -25,13 +23,13 @@ namespace RA
                 return true;
             }
 
-            IEnumerable<Faction> attackingFactions = (from pawn in Find.ListerPawns.PawnsHostileToColony
+            var attackingFactions = (from pawn in Find.ListerPawns.PawnsHostileToColony
                                                       select pawn.Faction).Distinct();
 
             // make list of friendly factions with descending order by their goodwill
-            List<Faction> friendlyFactions = Find.FactionManager.AllFactionsVisible.Where(fac => fac != Faction.OfColony && fac.GoodwillWith(Faction.OfColony) >= 0f).ToList().OrderByDescending(fac => fac.ColonyGoodwill).ToList();
+            var friendlyFactions = Find.FactionManager.AllFactionsVisible.Where(fac => fac != Faction.OfColony && fac.GoodwillWith(Faction.OfColony) >= 0f).ToList().OrderByDescending(fac => fac.ColonyGoodwill).ToList();
 
-            foreach (Faction faction in friendlyFactions)
+            foreach (var faction in friendlyFactions)
             {
                 // goodwill >= 50
                 if (faction.GoodwillWith(Faction.OfColony) >= 50f && faction.GoodwillWith(Faction.OfColony) < Rand.RangeInclusive(0, 100))
@@ -70,25 +68,13 @@ namespace RA
             switch (parms.raidArrivalMode)
             {
                 case PawnsArriveMode.EdgeWalkIn:
-                    str = "FriendlyRaidWalkIn".Translate(new object[]
-                    {
-                    parms.faction.def.pawnsPlural,
-                    parms.faction.name
-                    });
+                    str = "FriendlyRaidWalkIn".Translate(parms.faction.def.pawnsPlural, parms.faction.name);
                     break;
                 case PawnsArriveMode.EdgeDrop:
-                    str = "FriendlyRaidEdgeDrop".Translate(new object[]
-                    {
-                    parms.faction.def.pawnsPlural,
-                    parms.faction.name
-                    });
+                    str = "FriendlyRaidEdgeDrop".Translate(parms.faction.def.pawnsPlural, parms.faction.name);
                     break;
                 case PawnsArriveMode.CenterDrop:
-                    str = "FriendlyRaidCenterDrop".Translate(new object[]
-                    {
-                    parms.faction.def.pawnsPlural,
-                    parms.faction.name
-                    });
+                    str = "FriendlyRaidCenterDrop".Translate(parms.faction.def.pawnsPlural, parms.faction.name);
                     break;
             }
             str += "\n\n";

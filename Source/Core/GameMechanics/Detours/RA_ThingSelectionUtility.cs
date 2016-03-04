@@ -12,12 +12,12 @@ namespace RA
             }
             if (t.def.size.x == 1 && t.def.size.z == 1)
             {
-                return !GridsUtility.Fogged(t.Position);
+                return !t.Position.Fogged();
             }
-            CellRect.CellRectIterator iterator = GenAdj.OccupiedRect(t).GetIterator();
+            var iterator = t.OccupiedRect().GetIterator();
             while (!iterator.Done())
             {
-                if (!GridsUtility.Fogged(iterator.Current))
+                if (!iterator.Current.Fogged())
                 {
                     return true;
                 }
@@ -28,7 +28,7 @@ namespace RA
 
         public static bool IsInContainer(Thing t)
         {
-            Thing storage = Find.ThingGrid.ThingsListAtFast(t.Position).Find(thing => thing.TryGetComp<CompContainer>() != null);
+            var storage = Find.ThingGrid.ThingsListAtFast(t.Position).Find(thing => thing.TryGetComp<CompContainer>() != null);
             if (storage != null && t != storage)
             {
                 return true;

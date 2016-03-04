@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using UnityEngine;
+﻿using RimWorld;
 using Verse;
 using Verse.AI;
-using RimWorld;
-using RimWorld.SquadAI;
 
 namespace RA
 {
@@ -19,8 +12,7 @@ namespace RA
             {
                 return null;
             }
-            else
-                return new Job(JobDefOf.Wait);
+            return new Job(JobDefOf.Wait);
         }
     }
 }

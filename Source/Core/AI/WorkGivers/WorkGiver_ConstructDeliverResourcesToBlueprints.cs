@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-
+﻿
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -11,13 +7,7 @@ namespace RA
 {
     public class WorkGiver_ConstructDeliverResourcesToBlueprints : WorkGiver_ConstructDeliverResources
     {
-        public override ThingRequest PotentialWorkThingRequest
-        {
-            get
-            {
-                return ThingRequest.ForGroup(ThingRequestGroup.Blueprint);
-            }
-        }
+        public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForGroup(ThingRequestGroup.Blueprint);
 
         public override Job JobOnThing(Pawn pawn, Thing t)
         {
@@ -25,12 +15,12 @@ namespace RA
             {
                 return null;
             }
-            Blueprint blueprint = t as Blueprint;
+            var blueprint = t as Blueprint;
             if (blueprint == null)
             {
                 return null;
             }
-            Thing thing = blueprint.FirstBlockingThing(pawn, false);
+            var thing = blueprint.FirstBlockingThing(pawn);
             if (thing != null)
             {
                 if (thing.def.category == ThingCategory.Plant)
@@ -42,21 +32,13 @@ namespace RA
                         Find.DesignationManager.AddDesignation(new Designation(thing, DesignationDefOf.CutPlant));
                     return null;
                 }
-                else if (thing.def.category == ThingCategory.Item)
+                if (thing.def.category == ThingCategory.Item)
                 {
                     if (thing.def.EverHaulable)
                     {
                         return HaulAIUtility.HaulAsideJobFor(pawn, thing);
                     }
-                    Log.ErrorOnce(string.Concat(new object[]
-					{
-						"Never haulable ",
-						thing,
-						" blocking ",
-						t,
-						" at ",
-						t.Position
-					}), 6429262);
+                    Log.ErrorOnce(string.Concat("Never haulable ", thing, " blocking ", t, " at ", t.Position), 6429262);
                 }
                 return null;
             }
@@ -64,22 +46,18 @@ namespace RA
             {
                 return null;
             }
-            Job job = this.DeconstructExistingEdificeJob(pawn, blueprint);
+            var job = DeconstructExistingEdificeJob(pawn, blueprint);
             if (job != null)
             {
                 return job;
             }
-            Job job2 = base.ResourceDeliverJobFor(pawn, blueprint);
+            var job2 = ResourceDeliverJobFor(pawn, blueprint);
             if (job2 != null)
             {
                 return job2;
             }
-            Job job3 = this.NoCostFrameMakeJobFor(pawn, blueprint);
-            if (job3 != null)
-            {
-                return job3;
-            }
-            return null;
+            var job3 = NoCostFrameMakeJobFor(pawn, blueprint);
+            return job3;
         }
 
         public Job DeconstructExistingEdificeJob(Pawn pawn, Blueprint blue)
@@ -89,34 +67,31 @@ namespace RA
                 return null;
             }
             Thing thing = null;
-            CellRect cellRect = blue.OccupiedRect();
-            for (int i = cellRect.minZ; i <= cellRect.maxZ; i++)
+            var cellRect = blue.OccupiedRect();
+            for (var i = cellRect.minZ; i <= cellRect.maxZ; i++)
             {
-                int j = cellRect.minX;
+                var j = cellRect.minX;
                 while (j <= cellRect.maxX)
                 {
-                    IntVec3 c = new IntVec3(j, 0, i);
+                    var c = new IntVec3(j, 0, i);
                     thing = c.GetEdifice();
                     if (thing != null)
                     {
-                        ThingDef thingDef = blue.def.entityDefToBuild as ThingDef;
+                        var thingDef = blue.def.entityDefToBuild as ThingDef;
                         if (thingDef != null && thingDef.building.canPlaceOverWall && thing.def == ThingDefOf.Wall)
                         {
                             return null;
                         }
                         break;
                     }
-                    else
-                    {
-                        j++;
-                    }
+                    j++;
                 }
                 if (thing != null)
                 {
                     break;
                 }
             }
-            if (thing == null || !pawn.CanReserve(thing, 1))
+            if (thing == null || !pawn.CanReserve(thing))
             {
                 return null;
             }

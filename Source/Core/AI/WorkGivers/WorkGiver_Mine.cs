@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
-
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -33,11 +30,11 @@ namespace RA
         {
             // search things throught designations is faster than searching designations through all things
             // all things marked for plantcutting or harvesting
-            IEnumerable<Thing> designatedTargets = Find.DesignationManager.DesignationsOfDef(DesignationDefOf.Mine).Select(designation => MineUtility.MineableInCell(designation.target.Cell));
+            var designatedTargets = Find.DesignationManager.DesignationsOfDef(DesignationDefOf.Mine).Select(designation => MineUtility.MineableInCell(designation.target.Cell));
 
-            IEnumerable<Thing> availableTargets = designatedTargets.Where(target => pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()));
+            var availableTargets = designatedTargets.Where(target => pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()));
 
-            hasPotentialJobs = availableTargets.Count() > 0 ? true : false;
+            hasPotentialJobs = availableTargets.Any();
 
             return DoJobWithTool(pawn, availableTargets, ActualJob);
         }

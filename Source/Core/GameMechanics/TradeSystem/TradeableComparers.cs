@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using UnityEngine;
+﻿using System.Collections.Generic;
 using RimWorld;
 using Verse;
-using Verse.AI;
 
 namespace RA
 {
@@ -34,27 +29,27 @@ namespace RA
     {
         public override int Compare(Tradeable lhs, Tradeable rhs)
         {
-            ThingDef thingDef = lhs.ThingDef;
-            ThingDef thingDef2 = rhs.ThingDef;
+            var thingDef = lhs.ThingDef;
+            var thingDef2 = rhs.ThingDef;
             if (thingDef.category != thingDef2.category)
             {
                 return thingDef.category.CompareTo(thingDef2.category);
             }
-            float listOrderPriority = lhs.ListOrderPriority;
-            float listOrderPriority2 = rhs.ListOrderPriority;
+            var listOrderPriority = lhs.ListOrderPriority;
+            var listOrderPriority2 = rhs.ListOrderPriority;
             if (listOrderPriority != listOrderPriority2)
             {
                 return listOrderPriority.CompareTo(listOrderPriority2);
             }
-            int num = 0;
-            if (!lhs.AnyThing.def.thingCategories.NullOrEmpty<ThingCategoryDef>())
+            var num = 0;
+            if (!lhs.AnyThing.def.thingCategories.NullOrEmpty())
             {
-                num = (int)lhs.AnyThing.def.thingCategories[0].index;
+                num = lhs.AnyThing.def.thingCategories[0].index;
             }
-            int value = 0;
-            if (!rhs.AnyThing.def.thingCategories.NullOrEmpty<ThingCategoryDef>())
+            var value = 0;
+            if (!rhs.AnyThing.def.thingCategories.NullOrEmpty())
             {
-                value = (int)rhs.AnyThing.def.thingCategories[0].index;
+                value = rhs.AnyThing.def.thingCategories[0].index;
             }
             return num.CompareTo(value);
         }
@@ -72,7 +67,7 @@ namespace RA
     {
         public override int Compare(Tradeable lhs, Tradeable rhs)
         {
-            return this.GetValueFor(lhs).CompareTo(this.GetValueFor(rhs));
+            return GetValueFor(lhs).CompareTo(GetValueFor(rhs));
         }
 
         public int GetValueFor(Tradeable t)
@@ -90,13 +85,13 @@ namespace RA
     {
         public override int Compare(Tradeable lhs, Tradeable rhs)
         {
-            return this.GetValueFor(lhs).CompareTo(this.GetValueFor(rhs));
+            return GetValueFor(lhs).CompareTo(GetValueFor(rhs));
         }
 
         public float GetValueFor(Tradeable t)
         {
-            Thing anyThing = t.AnyThing;
-            Pawn pawn = anyThing as Pawn;
+            var anyThing = t.AnyThing;
+            var pawn = anyThing as Pawn;
             if (pawn != null)
             {
                 return pawn.health.summaryHealth.SummaryHealthPercent;
@@ -105,7 +100,7 @@ namespace RA
             {
                 return 1f;
             }
-            return (float)anyThing.HitPoints / (float)anyThing.MaxHitPoints;
+            return anyThing.HitPoints / (float)anyThing.MaxHitPoints;
         }
     }
 }

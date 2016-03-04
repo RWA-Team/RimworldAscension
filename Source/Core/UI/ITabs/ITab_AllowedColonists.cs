@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 using UnityEngine;
 using Verse;
-using Verse.AI;
-using RimWorld;
-
 
 namespace RA
 {
@@ -18,34 +11,31 @@ namespace RA
         public ITab_AllowedColonists()
         {
             // same as info panel
-            this.size = new Vector2(432f, 420f);
-            this.labelKey = "Trainees";
+            size = new Vector2(432f, 420f);
+            labelKey = "Trainees";
         }
 
-        public override bool IsVisible
-        {
-            get { return true; }
-        }
+        public override bool IsVisible => true;
 
         protected override void FillTab()
         {
-            Dummy dummy = this.SelThing as Dummy;
+            var dummy = SelThing as Dummy;
 
             Text.Anchor = TextAnchor.MiddleCenter;
 
-            float sideMargin = 25f;
-            float pawnField_height = 30f;
+            var sideMargin = 25f;
+            var pawnField_height = 30f;
 
-            Rect labelRect = new Rect(0f, 0f, this.size.x - sideMargin, pawnField_height);
+            var labelRect = new Rect(0f, 0f, size.x - sideMargin, pawnField_height);
             Text.Font = GameFont.Medium;
             Widgets.Label(labelRect, "Pawns allowed to train here:");
             Text.Font = GameFont.Small;
 
-            int pawnsCount = Find.ListerPawns.FreeColonistsSpawnedCount;
-            int pawnsRowsCount = (pawnsCount % 2 == 1) ? (pawnsCount / 2 + 1) : (pawnsCount / 2);
+            var pawnsCount = Find.ListerPawns.FreeColonistsSpawnedCount;
+            var pawnsRowsCount = pawnsCount % 2 == 1 ? pawnsCount / 2 + 1 : pawnsCount / 2;
 
-            Rect tableRect = new Rect(0f, labelRect.height, this.size.x, this.size.y - labelRect.height - 3f);
-            Rect scrollRect = new Rect(tableRect.x, tableRect.y, tableRect.width - sideMargin, pawnsRowsCount * pawnField_height - 3f);
+            var tableRect = new Rect(0f, labelRect.height, size.x, size.y - labelRect.height - 3f);
+            var scrollRect = new Rect(tableRect.x, tableRect.y, tableRect.width - sideMargin, pawnsRowsCount * pawnField_height - 3f);
 
             if (scrollRect.height > tableRect.height)
             {
@@ -54,16 +44,16 @@ namespace RA
                 Widgets.BeginScrollView(tableRect, ref scrollPosition, scrollRect);
             }
 
-            int cellInd = 0;
+            var cellInd = 0;
 
-            float currentX = scrollRect.x + sideMargin;
-            float currentY = scrollRect.y;
+            var currentX = scrollRect.x + sideMargin;
+            var currentY = scrollRect.y;
 
-            foreach (Pawn pawn in Find.ListerPawns.FreeColonistsSpawned)
+            foreach (var pawn in Find.ListerPawns.FreeColonistsSpawned)
             {
-                bool allowedFlag = false;
+                var allowedFlag = false;
 
-                Rect currentPawn_rect = new Rect(currentX, currentY, (scrollRect.width - sideMargin * 2) / 2, pawnField_height);
+                var currentPawn_rect = new Rect(currentX, currentY, (scrollRect.width - sideMargin * 2) / 2, pawnField_height);
 
                 // check if flag should be set already
                 if (dummy.allowedPawns.Contains(pawn))
