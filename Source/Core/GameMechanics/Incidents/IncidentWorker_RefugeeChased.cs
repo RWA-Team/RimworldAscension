@@ -18,16 +18,21 @@ namespace RA
             {
                 return false;
             }
-            var faction = Find.FactionManager.FirstFactionOfDef(FactionDefOf.Spacer);
-            var refugee = PawnGenerator.GeneratePawn(PawnKindDef.Named("SpaceRefugee"), faction);
+            var faction =
+                Find.FactionManager.AllFactions.Where(
+                    fac => fac.def.techLevel == Faction.OfColony.def.techLevel && fac != Faction.OfColony)
+                    .RandomElement();
+            var refugee = PawnGenerator.GeneratePawn(PawnKindDefOf.SpaceRefugee, faction);
             Faction enemyFac;
             if (!(from f in Find.FactionManager.AllFactions
-                  where !f.def.hidden && f.HostileTo(Faction.OfColony)
-                  select f).TryRandomElement(out enemyFac))
+                where f.HostileTo(Faction.OfColony)
+                select f).TryRandomElement(out enemyFac))
             {
                 return false;
             }
-            var text = "RefugeeChasedInitial".Translate(refugee.Name.ToStringFull, refugee.story.adulthood.title.ToLower(), enemyFac.def.pawnsPlural, enemyFac.name, refugee.ageTracker.AgeBiologicalYears);
+            var text = "RefugeeChasedInitial".Translate(refugee.Name.ToStringFull,
+                refugee.story.adulthood.title.ToLower(), enemyFac.def.pawnsPlural, enemyFac.name,
+                refugee.ageTracker.AgeBiologicalYears);
             text = text.AdjustedFor(refugee);
             var diaNode = new DiaNode(text);
             var diaOption = new DiaOption("RefugeeChasedInitial_Accept".Translate())

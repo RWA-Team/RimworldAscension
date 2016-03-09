@@ -12,7 +12,7 @@ namespace RA
         {
             return (from p in Find.ListerPawns.PawnsHostileToColony
                     where !p.Downed
-                    select p).Sum((Pawn p) => p.kindDef.combatPower) > 120f;
+                    select p).Sum(p => p.kindDef.combatPower) > 120f;
         }
 
         protected override bool TryResolveRaidFaction(IncidentParms parms)

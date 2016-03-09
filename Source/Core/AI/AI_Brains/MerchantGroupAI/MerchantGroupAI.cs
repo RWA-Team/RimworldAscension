@@ -3,9 +3,10 @@ using Verse;
 
 namespace RA
 {
-    public class GraphMaker_Trader
+    public class MerchantGroupAI
     {
-        public static StateGraph TradeGraph(Building_TradingPost tradingPost)
+        // main graph contains main subgraphs and transitions between them, which determine the overall group behaviour
+        public static StateGraph MainGraph(Building_TradingPost tradingPost)
         {
             IntVec3 departureCell;
             CellFinder.TryFindRandomEdgeCellWith(IsValidEdgeCell, out departureCell);

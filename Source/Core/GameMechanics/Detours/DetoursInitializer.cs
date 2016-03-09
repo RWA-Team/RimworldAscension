@@ -19,30 +19,62 @@ namespace RA
             if (Prefs.DevMode)
                 Log.Message("Detours initialized");
 
-            // Detour RimWorld.ThingSelectionUtility.SelectableNow
+            // detour RimWorld.ThingSelectionUtility.SelectableNow
             var vanillaSelectableNow = typeof(ThingSelectionUtility).GetMethod("SelectableNow", BindingFlags.Static | BindingFlags.Public);
             var newSelectableNow = typeof(RA_ThingSelectionUtility).GetMethod("SelectableNow", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaSelectableNow, newSelectableNow);
 
-            // Detour Verse.MapInitData.GenerateDefaultColonistsWithFaction
+            // detour Verse.MapInitData.GenerateDefaultColonistsWithFaction
             var vanillaInitNewGeneratedMap = typeof(MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
             var newInitNewGeneratedMap = typeof(RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaInitNewGeneratedMap, newInitNewGeneratedMap);
+            
+            #region MAINMENU
 
-            // Detour RimWorld.MainMenuDrawer.MainMenuOnGUI
+            // detour RimWorld.MainMenuDrawer.MainMenuOnGUI
             var vanillaDoMainMenuButtons = typeof(MainMenuDrawer).GetMethod("MainMenuOnGUI", BindingFlags.Static | BindingFlags.Public);
             var newDoMainMenuButtons = typeof(RA_MainMenuDrawer).GetMethod("MainMenuOnGUI", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaDoMainMenuButtons, newDoMainMenuButtons);
 
-            // Detour RimWorld.UI_BackgroundMain.BackgroundOnGUI
+            // detour RimWorld.UI_BackgroundMain.BackgroundOnGUI
             var vanillaBackgroundOnGUI = typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI", BindingFlags.Instance | BindingFlags.Public);
             var newBackgroundOnGUI = typeof(RA_UI_BackgroundMain).GetMethod("BackgroundOnGUI", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaBackgroundOnGUI, newBackgroundOnGUI);
 
-            // Detour Verse.Pawn.ExitMap
+            #endregion
+
+            #region DIPLOMACY
+
+            // allow AffectGoodwillWith with hidden factions
+            // detour RimWorld.Faction.AffectGoodwillWith
+            var vanillaAffectGoodwillWith = typeof(Faction).GetMethod("AffectGoodwillWith", BindingFlags.Instance | BindingFlags.Public);
+            var newAffectGoodwillWith = typeof(RA_Faction).GetMethod("AffectGoodwillWith", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaAffectGoodwillWith, newAffectGoodwillWith);
+
+            // allow Notify_MemberCaptured with hidden factions
+            // detour RimWorld.Faction.Notify_MemberCaptured
+            var vanillaNotify_MemberCaptured = typeof(Faction).GetMethod("Notify_MemberCaptured", BindingFlags.Instance | BindingFlags.Public);
+            var newNotify_MemberCaptured = typeof(RA_Faction).GetMethod("Notify_MemberCaptured", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaNotify_MemberCaptured, newNotify_MemberCaptured);
+
+            // allow SetHostileTo with hidden factions
+            // detour RimWorld.Faction.SetHostileTo
+            var vanillaSetHostileTo = typeof(Faction).GetMethod("SetHostileTo", BindingFlags.Instance | BindingFlags.Public);
+            var newSetHostileTo = typeof(RA_Faction).GetMethod("SetHostileTo", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaSetHostileTo, newSetHostileTo);
+
+            // removes hidden factions restriction from GenerateFactionsIntoCurrentWorld
+            // detour RimWorld.FactionGenerator.GenerateFactionsIntoCurrentWorld
+            var vanillaGenerateFactionsIntoCurrentWorld = typeof(FactionGenerator).GetMethod("GenerateFactionsIntoCurrentWorld", BindingFlags.Static | BindingFlags.Public);
+            var newGenerateFactionsIntoCurrentWorld = typeof(RA_FactionGenerator).GetMethod("GenerateFactionsIntoCurrentWorld", BindingFlags.Static | BindingFlags.Public);
+            TryDetourFromTo(vanillaGenerateFactionsIntoCurrentWorld, newGenerateFactionsIntoCurrentWorld);
+
+            // detour Verse.Pawn.ExitMap
             var vanillaExitMap = typeof(Pawn).GetMethod("ExitMap", BindingFlags.Instance | BindingFlags.Public);
             var newExitMap = typeof(RA_Pawn).GetMethod("ExitMap", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaExitMap, newExitMap);
+
+            #endregion
         }
 
         /**
@@ -50,7 +82,6 @@ namespace RA
             https://ludeon.com/forums/index.php?topic=17143.0
             Performs detours, spits out basic logs and warns if a method is detoured multiple times.
         **/
-
         public static unsafe bool TryDetourFromTo(MethodInfo source, MethodInfo destination)
         {
             // keep track of detours and spit out some messaging

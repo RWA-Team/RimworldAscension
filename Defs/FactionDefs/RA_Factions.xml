@@ -81,6 +81,7 @@
 		</pawnGroupMakers>
 		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
 		<homeIconColor>(50,200,50)</homeIconColor>
+		<hidden>true</hidden>
 	</FactionDef>
 	
 

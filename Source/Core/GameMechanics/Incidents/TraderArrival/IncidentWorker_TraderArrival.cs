@@ -52,7 +52,7 @@ namespace RA
             
             var label = "LabelLetterTrader".Translate();
             Find.LetterStack.ReceiveLetter(label, str, LetterType.Good, merchant);
-            var stateGraph = GraphMaker_Trader.TradeGraph(tradingPost);
+            var stateGraph = MerchantGroupAI.MainGraph(tradingPost);
             BrainMaker.MakeNewBrain(parms.faction, stateGraph, pawns);
             return true;
         }

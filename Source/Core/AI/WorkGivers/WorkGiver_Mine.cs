@@ -10,8 +10,7 @@ namespace RA
     {
         //used to keep current tool equipped if there are available unfinished jobs for this tool type
         public static bool hasPotentialJobs;
-
-        public IEnumerable<Thing> availableVeins;
+        
         public Thing closestAvailableVein;
 
         public WorkGiver_Mine()

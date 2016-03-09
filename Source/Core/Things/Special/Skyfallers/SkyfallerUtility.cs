@@ -85,11 +85,11 @@ namespace RA
             GenSpawn.Spawn(resultThing, skyfaller.Position, skyfaller.Rotation);
 
             // MapComponent Injector
-            if (!Find.Map.components.Exists(component => component.GetType() == typeof(MapCompCameraShaker)))
-                Find.Map.components.Add(new MapCompCameraShaker());
+            if (!Find.Map.components.Exists(component => component.GetType() == typeof(MapComp_CameraShaker)))
+                Find.Map.components.Add(new MapComp_CameraShaker());
             
             // Do a bit of camera shake for added effect
-            MapCompCameraShaker.DoShake(impactRadius * 0.1f);
+            MapComp_CameraShaker.DoShake(impactRadius * 0.1f);
 
             // Destroy incoming pod
             skyfaller.Destroy();

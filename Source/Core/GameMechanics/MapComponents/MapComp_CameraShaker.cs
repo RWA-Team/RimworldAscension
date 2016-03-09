@@ -4,7 +4,7 @@ using Verse;
 
 namespace RA
 {
-    class MapCompCameraShaker : MapComponent
+    class MapComp_CameraShaker : MapComponent
     {
         public const float ShakeDecayRate = 0.5f;
         public const float ShakeFrequency = 24f;
