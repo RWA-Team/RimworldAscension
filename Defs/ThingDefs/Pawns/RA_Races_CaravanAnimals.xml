@@ -82,7 +82,6 @@
 				<woolAmount>100</woolAmount>
 			</li>
 			<li Class="RA.CompCaravan_Properties">
-				<compClass>RA.CompCaravan</compClass>
 				<cartEmptyTexturePath>Things/Special/CaravanCart/CartEmpty</cartEmptyTexturePath>
 				<cartFullTexturePath>Things/Special/CaravanCart/CartFull</cartFullTexturePath>
 				<wheelTexturePath>Things/Special/CaravanCart/Wheel</wheelTexturePath>

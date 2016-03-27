@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+
+	<!-- 
+	- workAmount - should never be used (cause not affected by stuff). specify WorkToMake baseStat in product def instead
+	- specialProducts - Butchery\Smelted return from processed thing
+	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
+	- fixedIngredientFilter - determine ingridient set to choose from	
+	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
+	-->
+
+	<!--===================== Firing =====================-->
+
+
+	<RecipeDef Name="Firing" Abstract="True">
+		<workSkill>Crafting</workSkill>
+		<workSkillLearnFactor>0.1</workSkillLearnFactor>
+		<effectWorking>Sculpt</effectWorking>
+		<soundWorking>Recipe_Sculpt</soundWorking>
+		<researchPrerequisite>Pottery</researchPrerequisite>
+	</RecipeDef>
+
+
+	<RecipeDef ParentName="Firing">
+		<defName>FirePot</defName>
+		<label>fire pot</label>
+		<description>Finish pot with firing.</description>
+		<jobString>Firing pot.</jobString>
+		<workAmount>300</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawPot</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawPot</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Pot>1</Pot>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="Firing">
+		<defName>FireCeramics</defName>
+		<label>fire ceramics</label>
+		<description>Finish ceramics with firing.</description>
+		<jobString>Firing ceramics.</jobString>
+		<workAmount>300</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawCeramics</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawCeramics</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ceramics>1</Ceramics>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="Firing">
+		<defName>FireBlocksAdobe</defName>
+		<label>fire adobe block</label>
+		<description>Finish adobe block with firing.</description>
+		<jobString>Firing adobe block.</jobString>
+		<workAmount>300</workAmount>
+		<products>
+			<BlockAdobe>25</BlockAdobe>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawBlockAdobe</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawBlockAdobe</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="Firing">
+		<defName>FireBricks</defName>
+		<label>fire brick</label>
+		<description>Finish brick with firing.</description>
+		<jobString>Firing brick.</jobString>
+		<workAmount>300</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawBrick</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawBrick</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Brick>25</Brick>
+		</products>
+	</RecipeDef>
+
+</RecipeDefs>

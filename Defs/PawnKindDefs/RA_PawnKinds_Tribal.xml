@@ -87,7 +87,7 @@
 			<max>1000</max>
 		</apparelMoney>
 		<apparelRequired>
-			<li>Buckler</li>			
+			<li>ShieldTribal</li>			
 		</apparelRequired>
 <!-- 		<apparelTags>
 			<li>Tribal_Armor</li>

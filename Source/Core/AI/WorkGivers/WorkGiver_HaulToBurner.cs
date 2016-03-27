@@ -18,7 +18,7 @@ namespace RA
 
         public override Job NonScanJob(Pawn pawn)
         {
-            var allFuel = Find.ListerThings.ThingsInGroup(ThingRequestGroup.HaulableEver).Where(thing => thing.GetStatValue(StatDef.Named("BurnDurationSingleUnit")) > 0f && HaulAIUtility.PawnCanAutomaticallyHaulFast(pawn, thing));
+            var allFuel = Find.ListerThings.ThingsInGroup(ThingRequestGroup.HaulableEver).Where(thing => thing.GetStatValue(StatDef.Named("BurnDurationHours")) > 0f && HaulAIUtility.PawnCanAutomaticallyHaulFast(pawn, thing));
 
             if (allFuel.Any())
             {

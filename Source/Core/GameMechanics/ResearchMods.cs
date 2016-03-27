@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using Verse;
@@ -8,24 +9,32 @@ namespace RA
     public static class ResearchMods
     {
         #region NEOLITHIC
-
+        // +
         public static void BasicFarming()
         {
             AddDesignator(new Designator_ZoneAdd_Growing(), "Zone");
         }
-
-        public static void ExamineFauna()
+        // +
+        public static void Butchering()
         {
-            AddDesignator(new Designator_Hunt(), "Orders");
-        }
+            AddDesignator(new Designator_Slaughter(), "Orders");
 
+            // all meat based pawns
+            foreach (var pawnDef in DefDatabase<ThingDef>.AllDefs.Where(pawnDef => pawnDef.race?.isFlesh == true))
+            {
+                if (pawnDef.butcherProducts.NullOrEmpty())
+                    pawnDef.butcherProducts = new List<ThingCount>();
+                // each pawn generate it's (body size)x5 bone amount
+                pawnDef.butcherProducts.Add(new ThingCount(ThingDef.Named("Bone"), (int) pawnDef.race.baseBodySize*5));
+            }
+        }
+        // +
         public static void AnimalHusbandry()
         {
             AddDesignator(new Designator_Tame(), "Orders");
-            AddDesignator(new Designator_Slaughter(), "Orders");
         }
 
-        public static void WoodWorking()
+        public static void Carpentry()
         {
             TryAllowToBuild("CraftsmanBench");
             TryAllowToBuild("HuntersBench");
@@ -43,11 +52,9 @@ namespace RA
             TryAllowToCraft("Make_Thrumbo_Bow", true, "BoneWorking");
             TryAllowToCraft("Make_Pilum", true, "BoneWorking");
             TryAllowToCraft("Make_Tomahawk", true, "StoneWorking");
-
-
         }
 
-        public static void StoneWorking()
+        public static void Masonry()
         {
             TryAllowToBuild("CraftsmanBench");
             TryAllowToBuild("WarriorsBench", true, "WoodWorking");
@@ -57,45 +64,21 @@ namespace RA
             TryAllowToCraft("Make_Primitive_Hammer", false, "WoodWorking");
 
             TryAllowToCraft("Make_Shiv", true, "WoodWorking");
-            AddResourceTypeToRecipe("Make_Shiv", "StoneBlocks");
             TryAllowToCraft("Make_Spear", true, "WoodWorking");
-            AddResourceTypeToRecipe("Make_Spear", "StoneBlocks");
             TryAllowToCraft("Make_Club", true, "WoodWorking");
-            AddResourceTypeToRecipe("Make_Club", "StoneBlocks");
 
             TryAllowToCraft("Make_Tomahawk", true, "WoodWorking");
         }
 
-        public static void BoneWorking()
-        {
-            TryAllowToBuild("CraftsmanBench");
-            TryAllowToBuild("WarriorsBench", true, "WoodWorking");
-            TryAllowToBuild("HuntersBench", true, "WoodWorking");
-
-            TryAllowToCraft("Make_Shiv", true, "WoodWorking");
-            AddResourceTypeToRecipe("Make_Shiv", "Bone");
-            TryAllowToCraft("Make_Spear", true, "WoodWorking");
-            AddResourceTypeToRecipe("Make_Spear", "Bone");
-            TryAllowToCraft("Make_Club", true, "WoodWorking");
-            AddResourceTypeToRecipe("Make_Club", "Bone");
-            TryAllowToCraft("Make_Buckler", true, "WoodWorking");
-            AddResourceTypeToRecipe("Make_Buckler", "Bone");
-
-            TryAllowToCraft("Make_Composite_Bow", true, "WoodWorking");
-            TryAllowToCraft("Make_Thrumbo_Bow", true, "WoodWorking");
-            TryAllowToCraft("Make_Pilum", true, "WoodWorking");
-        }
-
-        public static void LeatherWorking()
+        public static void Tannery()
         {
             TryAllowToBuild("CraftsmanBench");
             TryAllowToBuild("HuntersBench");
 
             TryAllowToCraft("Make_Buckler", true, "WoodWorking");
-            AddResourceTypeToRecipe("Make_Buckler", "Leathers");
 
             TryAllowToCraft("Make_Sling");
-            
+
             TryAllowToCraft("Make_Backpack");
             TryAllowToCraft("Make_Toolbelt");
 
@@ -104,20 +87,25 @@ namespace RA
             TryAllowToCraft("Make_Hat");
         }
 
+        public static void BoneCarving()
+        {
+            TryAllowToBuild("CraftsmanBench");
+            TryAllowToBuild("WarriorsBench", true, "WoodWorking");
+            TryAllowToBuild("HuntersBench", true, "WoodWorking");
+
+            TryAllowToCraft("Make_Shiv", true, "WoodWorking");
+            TryAllowToCraft("Make_Spear", true, "WoodWorking");
+            TryAllowToCraft("Make_Club", true, "WoodWorking");
+            TryAllowToCraft("Make_Buckler", true, "WoodWorking");
+
+            TryAllowToCraft("Make_Composite_Bow", true, "WoodWorking");
+            TryAllowToCraft("Make_Thrumbo_Bow", true, "WoodWorking");
+            TryAllowToCraft("Make_Pilum", true, "WoodWorking");
+        }
+
         #endregion
 
-        /*
-        public static void Medieval()
-        {
-            FactionDef colony = DefDatabase<FactionDef>.GetNamed("Colony", true);
-            colony.techLevel = TechLevel.Medieval;
-        }
-        */
-
-        //  ********************************************************\
-
-
-        #region METHODS
+        #region UTILITY
 
         // adds building to the architect menu if all other research prerequisites are met
         public static void TryAllowToBuild(string benchDefName, bool allowIfAll = true, params string[] otherResearchPrerequisite_defNames)
@@ -171,23 +159,39 @@ namespace RA
             }
         }
 
-        // adds resource type to the recipe ingridients filter
-        public static void AddResourceTypeToRecipe(string recipeDefName, string resourceTypeName)
-        {
-            // check if resource type is category
-            if (DefDatabase<ThingCategoryDef>.GetNamedSilentFail(resourceTypeName) != null)
-                DefDatabase<RecipeDef>.GetNamedSilentFail(recipeDefName).fixedIngredientFilter.SetAllow(ThingCategoryDef.Named(resourceTypeName), true);
-
-            // check if resource type is thing
-            if (DefDatabase<ThingDef>.GetNamedSilentFail(resourceTypeName) != null)
-                DefDatabase<RecipeDef>.GetNamedSilentFail(recipeDefName).fixedIngredientFilter.SetAllow(ThingDef.Named(resourceTypeName), true);
-        }
-
-        // adds designato to the dame
+        // adds designator to the game
         public static void AddDesignator(Designator designator, string designationCategoryDefName)
         {
             var category = DefDatabase<DesignationCategoryDef>.GetNamed(designationCategoryDefName);
             category.resolvedDesignators.Add(designator);
+        }
+
+        // adds resource type to the allowed list in recipe ingridients filter (removes it from excepted list)
+        public static void AllowResourceTypeForAllRecipes(string resourceTypeName)
+        {
+            var thingDef = DefDatabase<ThingDef>.GetNamedSilentFail(resourceTypeName);
+
+            foreach (var recipeDef in DefDatabase<RecipeDef>.AllDefs)
+            {
+                // if type is category
+                if (thingDef == null)
+                {
+                    if (!recipeDef.fixedIngredientFilter.exceptedCategories.Contains(resourceTypeName))
+                    {
+                        recipeDef.fixedIngredientFilter.exceptedCategories.Remove(resourceTypeName);
+                        recipeDef.fixedIngredientFilter.SetAllow(ThingCategoryDef.Named(resourceTypeName), true);
+                    }
+                }
+                // if it's a thingDef
+                else
+                {
+                    if (!recipeDef.fixedIngredientFilter.exceptedThingDefs.Contains(thingDef))
+                    {
+                        recipeDef.fixedIngredientFilter.exceptedThingDefs.Remove(thingDef);
+                        recipeDef.fixedIngredientFilter.SetAllow(thingDef, true);
+                    }
+                }
+            }
         }
 
         #endregion

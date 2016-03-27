@@ -7,11 +7,11 @@ namespace RA
     {
         public static void GenerateFactionsIntoCurrentWorld()
         {
-            foreach (FactionDef current in DefDatabase<FactionDef>.AllDefs)
+            foreach (var current in DefDatabase<FactionDef>.AllDefs)
             {
-                for (int j = 0; j < current.requiredCountAtGameStart; j++)
+                for (var j = 0; j < current.requiredCountAtGameStart; j++)
                 {
-                    Faction faction = FactionGenerator.NewGeneratedFaction(current);
+                    var faction = FactionGenerator.NewGeneratedFaction(current);
                     Current.World.factionManager.Add(faction);
                 }
             }

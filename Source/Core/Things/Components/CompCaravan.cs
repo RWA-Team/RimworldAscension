@@ -14,7 +14,7 @@ namespace RA
         public string harnessTexturePath;
         public CompCaravan_Properties()
         {
-            compClass = typeof(CompCaravan_Properties);
+            compClass = typeof(CompCaravan);
         }
     }
 

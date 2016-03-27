@@ -84,7 +84,7 @@ namespace RA
             }
             if (def.drawPlaceWorkersWhileSelected && def.PlaceWorkers != null)
             {
-                foreach (PlaceWorker worker in def.PlaceWorkers)
+                foreach (var worker in def.PlaceWorkers)
                 {
                     worker.DrawGhost(def, Position, Rotation);
                 }

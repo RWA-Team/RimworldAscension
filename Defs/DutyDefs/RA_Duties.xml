@@ -12,7 +12,6 @@
 		</thinkNode>
 	</DutyDef>
 
-
 	<DutyDef>
 		<defName>Defend</defName>
 		<alwaysShowWeapon>true</alwaysShowWeapon>
@@ -43,12 +42,21 @@
 		</thinkNode>
 	</DutyDef>
 
+	<DutyDef>
+		<defName>Station</defName>
+		<thinkNode Class="ThinkNode_Priority">
+			<subNodes>
+				<li Class="RA.JobGiver_Station"/>
+			</subNodes>
+		</thinkNode>
+	</DutyDef>
 
 	<DutyDef>
 		<defName>EscortTradeCart</defName>
 		<alwaysShowWeapon>true</alwaysShowWeapon>
 		<thinkNode Class="ThinkNode_Priority">
 			<subNodes>
+				<li Class="RA.JobGiver_SearchAndStealTargets"/>
 				<li Class="RA.JobGiver_AIFollowEscortee"/>
 				<li Class="JobGiver_AIDefendEscortee">
 					<targetAcquireRadius>65</targetAcquireRadius>
@@ -61,12 +69,14 @@
 		</thinkNode>
 	</DutyDef>
 
-
 	<DutyDef>
-		<defName>Station</defName>
+		<defName>SnatchGoodsOrPeople</defName>
 		<thinkNode Class="ThinkNode_Priority">
 			<subNodes>
-				<li Class="RA.JobGiver_Station"/>
+				<li Class="RA.JobGiver_SearchAndStealTargets"/>
+				<li Class="JobGiver_ExitMapWalkNearest">
+					<jobMaxDuration>200</jobMaxDuration>
+				</li>
 			</subNodes>
 		</thinkNode>
 	</DutyDef>

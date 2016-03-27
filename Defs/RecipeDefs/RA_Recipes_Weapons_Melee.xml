@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+
+	<!-- 
+	- workAmount - should never be used (cause not affected by stuff). specify WorkToMake baseStat in product def instead
+	- specialProducts - Butchery\Smelted return from processed thing
+	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
+	- fixedIngredientFilter - determine ingridient set to choose from	
+	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
+	-->
+
+	<RecipeDef Name="MakeWeapon" Abstract="True">
+		<jobString>Making a weapon.</jobString>
+		<workSkill>Crafting</workSkill>
+		<effectWorking>Smith</effectWorking>
+		<soundWorking>Recipe_Smith</soundWorking>
+		<researchPrerequisite>Blocked</researchPrerequisite>
+	</RecipeDef>	
+
+
+	<!-- ========================= Neolithic =========================-->
+
+
+	<!-- 5 - Bast fiber\[Leathers] is used as binding material -->
+	<RecipeDef Name="MakeWeaponNeolithic" ParentName="MakeWeapon" Abstract="True">
+		<workSpeedStat>CarvingSpeed</workSpeedStat>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BastFibre</li>
+			</thingDefs>
+			<categories>
+				<li>Leathers</li>
+			</categories>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>Leathers</li>
+			</categories>
+		</defaultIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+					<thingDefs>
+						<li>BastFibre</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<!-- removes wood from possible stuff types -->
+	<RecipeDef Name="MakeWeaponNeolithicWoodBased" ParentName="MakeWeaponNeolithic" Abstract="True">
+		<fixedIngredientFilter>
+			<exceptedCategories>
+				<li>BlocksStone</li>
+			</exceptedCategories>
+			<exceptedThingDefs>
+				<li>Bone</li>
+			</exceptedThingDefs>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</defaultIngredientFilter>
+	</RecipeDef>
+
+
+	<RecipeDef ParentName="MakeWeaponNeolithic">
+		<defName>MakeShiv</defName>
+		<label>make shiv</label>
+		<description>Makes a crude neolithic shiv.</description>
+		<products>
+			<Shiv>1</Shiv>
+		</products>
+		<fixedIngredientFilter>
+			<exceptedCategories>
+				<li>BlocksStone</li>
+			</exceptedCategories>
+			<exceptedThingDefs>
+				<li>Bone</li>
+			</exceptedThingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>BlocksStone</li>
+					</categories>
+					<thingDefs>
+						<li>Bone</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponNeolithicWoodBased">
+		<defName>MakeSpearPrimitive</defName>
+		<label>make primitive spear</label>
+		<description>Makes a crude neolithic spear.</description>
+		<products>
+			<SpearPrimitive>1</SpearPrimitive>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>BlocksStone</li>
+					</categories>
+					<thingDefs>
+						<li>Bone</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<!-- not MakeWeaponNeolithicWoodBased, cause it should be made of wood as a result -->
+	<RecipeDef ParentName="MakeWeaponNeolithic">
+		<defName>MakeClub</defName>
+		<label>make club</label>
+		<description>Makes a crude neolithic club.</description>
+		<products>
+			<Club>1</Club>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>15</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponNeolithicWoodBased">
+		<defName>MakeAxePrimitive</defName>
+		<label>make primitive axe</label>
+		<description>Makes s a crude neolithic axe. ould be used as tool for cutting trees.</description>
+		<products>
+			<AxePrimitive>1</AxePrimitive>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>BlocksStone</li>
+					</categories>
+					<thingDefs>
+						<li>Bone</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>15</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponNeolithicWoodBased">
+		<defName>MakeHammerPrimitive</defName>
+		<label>make primitive hammer</label>
+		<description>Makes s a crude neolithic hammer. Could be used as tool for contruction and repaire.</description>
+		<products>
+			<HammerPrimitive>1</HammerPrimitive>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>BlocksStone</li>
+					</categories>
+					<thingDefs>
+						<li>Bone</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>15</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponNeolithic">
+		<defName>MakeBroom</defName>
+		<label>make broom</label>
+		<description>Makes simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BastFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+</RecipeDefs>

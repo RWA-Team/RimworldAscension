@@ -80,7 +80,7 @@ namespace RA
             public void GenerateFrom(List<Thing> things)
             {
                 Clear();
-                foreach (Thing thing in things)
+                foreach (var thing in things)
                 {
                     ThingDef def;
                     var expr_1C = def = thing.def;
@@ -384,7 +384,7 @@ namespace RA
             {
                 newRelevantThings.Clear();
                 thingList = r.ListerThings.ThingsMatching(ThingRequest.ForGroup(ThingRequestGroup.HaulableEver));
-                foreach (Thing thing in thingList)
+                foreach (var thing in thingList)
                 {
                     if (thing.SpawnedInWorld && !thing.IsForbidden(pawn) && (thing.Position - billGiver.Position).LengthHorizontalSquared < bill.ingredientSearchRadius * bill.ingredientSearchRadius && bill.recipe.fixedIngredientFilter.Allows(thing) && bill.ingredientFilter.Allows(thing) && bill.recipe.ingredients.Any(ingNeed => ingNeed.filter.Allows(thing)) && pawn.CanReserve(thing) && (!bill.CheckIngredientsIfSociallyProper || thing.IsSociallyProper(pawn)))
                     {
@@ -400,7 +400,7 @@ namespace RA
                         return lengthHorizontalSquared.CompareTo(lengthHorizontalSquared2);
                     };
                     newRelevantThings.Sort(comparison);
-                    foreach (Thing newThing in newRelevantThings)
+                    foreach (var newThing in newRelevantThings)
                     {
                         relevantThings.Add(newThing);
                     }
@@ -444,7 +444,7 @@ namespace RA
                     {
                         if (ingredientCount.filter.Allows(availableCounts.GetDef(j)))
                         {
-                            foreach (Thing thing in availableThings)
+                            foreach (var thing in availableThings)
                             {
                                 if (thing.def == availableCounts.GetDef(j))
                                 {

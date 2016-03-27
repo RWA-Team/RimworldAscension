@@ -84,7 +84,7 @@ namespace RA
                         var burningLabelRect = new Rect(fuelIconRect.width + MarginSize, 0f, fuelRect.width - (fuelIconRect.width + MarginSize), fuelIconRect.height / 2);
                         Widgets.Label(burningLabelRect, "Burning progress:");
                         var burningBarRect = new Rect(burningLabelRect.x, burningLabelRect.height, burningLabelRect.width, burningLabelRect.height);
-                        var fillPercentBurningProgress = burner.currentFuelBurnDuration / fuel.GetStatValue(StatDef.Named("BurnDuration"));
+                        var fillPercentBurningProgress = burner.currentFuelBurnDuration / fuel.GetStatValue(StatDef.Named("BurnDurationHours"));
                         Widgets.FillableBar(burningBarRect, fillPercentBurningProgress, FullTexFuel, EmptyTex, false);
 
                         // fuel count fillable bar
@@ -96,10 +96,10 @@ namespace RA
                         Text.Anchor = TextAnchor.MiddleLeft;
                         // current fuel type info
                         var fuelEstimatedTimeRect = new Rect(0f, fuelCountBarRect.yMax + MarginSize / 2, fuelRect.width, 20f);
-                        Widgets.Label(fuelEstimatedTimeRect, string.Format("Depletes after:\t{0}", TimeInfo(fuel.stackCount * (int)fuel.GetStatValue(StatDef.Named("BurnDuration")))));
+                        Widgets.Label(fuelEstimatedTimeRect, string.Format("Depletes after:\t{0}", TimeInfo(fuel.stackCount * (int)fuel.GetStatValue(StatDef.Named("BurnDurationHours")) * GenDate.TicksPerHour)));
                         // current fuel type info
                         var fuelMaxTempRect = new Rect(0f, fuelEstimatedTimeRect.yMax, fuelRect.width, fuelEstimatedTimeRect.height);
-                        Widgets.Label(fuelMaxTempRect, string.Format("Max tempertarure:\t{0} °C", fuel.GetStatValue(StatDef.Named("MaxBurningTemp"))));
+                        Widgets.Label(fuelMaxTempRect, string.Format("Max tempertarure:\t{0} °C", fuel.GetStatValue(StatDef.Named("MaxBurningTempCelsius"))));
                     }
                     GUI.EndGroup();
                 }

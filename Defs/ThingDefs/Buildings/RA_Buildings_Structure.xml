@@ -1,55 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
+	<!-- 
+	fillPercent - determne cover multiplier vs projectiles
+	castEdgeShadows - shadow aura around building
+	staticSunShadowHeight - solid square shadow with set length
+	 -->
 
-	<ThingDef Name="BuildingBase" Abstract="True">
+	<ThingDef Name="Structure" Abstract="True">
 		<category>Building</category>
 		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
-		<selectable>true</selectable>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
+		<useHitPoints>true</useHitPoints>
+		<fillPercent>1</fillPercent>
+		<rotatable>false</rotatable>
+		<selectable>true</selectable>
+		<holdsRoof>true</holdsRoof>
+		<blockLight>true</blockLight>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<statBases>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<building>
+			<ignoreNeedsPower>true</ignoreNeedsPower>
+		</building>
+		<damageMultipliers>
+			<li>
+				<damageDef>Bomb</damageDef>
+				<multiplier>2</multiplier>
+			</li>
+		</damageMultipliers>
 		<designationCategory>Structure</designationCategory>
-		<researchPrerequisite>SurvivalGuideI</researchPrerequisite>
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
 
 	<!--====================== Doors ==========================-->
-	
 
-	<ThingDef ParentName="BuildingBase" Name="DoorBase" Abstract="True">
+
+	<ThingDef Name="StructureDoor" ParentName="Structure" Abstract="True">
 		<thingClass>Building_Door</thingClass>
 		<blueprintClass>Blueprint_Door</blueprintClass>
 		<blueprintGraphicData>
 			<texPath>Things/Building/Door/Door_Blueprint</texPath>
 		</blueprintGraphicData>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
 		<altitudeLayer>DoorMoveable</altitudeLayer>
-		<fillPercent>1</fillPercent>
-		<useHitPoints>true</useHitPoints>
-		<stuffCategories>
-			<li>Woody</li>
-			<li>Stony</li>			
-		</stuffCategories>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
-			<Flammability>1.0</Flammability>
 		</statBases>
-		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-		<selectable>true</selectable>
-		<tickerType>Normal</tickerType>
-		<rotatable>false</rotatable>
-		<holdsRoof>true</holdsRoof>
-		<staticSunShadowHeight>1.0</staticSunShadowHeight>
-		<blockLight>true</blockLight>
-		<drawerType>RealtimeOnly</drawerType>
 		<building>
 			<soundDoorOpenPowered>DoorOpenPowered</soundDoorOpenPowered>
 			<soundDoorClosePowered>DoorClosePowered</soundDoorClosePowered>
 			<soundDoorOpenManual>DoorOpenManual</soundDoorOpenManual>
 			<soundDoorCloseManual>DoorCloseManual</soundDoorCloseManual>
-			<ignoreNeedsPower>true</ignoreNeedsPower>
 			<canPlaceOverWall>true</canPlaceOverWall>
 		</building>
 		<comps>
@@ -60,116 +73,98 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="DoorBase">
-		<defName>Door</defName>
-		<label>door</label>
+	<ThingDef ParentName="StructureDoor">
+		<defName>DoorWoodLog</defName>
+		<label>woodlog door</label>
 		<description>Divides rooms. Must be manually opened and closed, which slows people down.</description>
+		<stuffCategories>
+			<li>WoodLog</li>	
+		</stuffCategories>
+		<costStuffCount>25</costStuffCount>
 		<statBases>
 			<WorkToMake>850</WorkToMake>
 		</statBases>
 		<graphicData>
-			<texPath>Things/Building/Door/DoorSimple_Mover</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Things/Buildings/Structure/Doors/DoorLog_Mover</texPath>
 		</graphicData>
-		<uiIconPath>Things/Building/Door/DoorSimple_MenuIcon</uiIconPath>
-		<costStuffCount>25</costStuffCount>
+		<researchPrerequisite>StartPack</researchPrerequisite>
 	</ThingDef>
-
+	
 
 	<!--========================= Walls =============================-->
 
 
-	<ThingDef ParentName="BuildingBase" Name="Wall">
-		<defName>Wall</defName>
-		<label>wall</label>
+	<ThingDef Name="StructureWall" ParentName="Structure" Abstract="True">
 		<thingClass>Building</thingClass>
-		<description>An impassable wall. Capable of holding up a roof.</description>
 		<graphicData>
-			<texPath>Things/Building/Linked/Wall</texPath>
-			<graphicClass>Graphic_Appearances</graphicClass>
+			<graphicClass>Graphic_Single</graphicClass>
 			<linkType>CornerFiller</linkType>
 			<linkFlags>
 				<li>Wall</li>
 				<li>Rock</li>
 			</linkFlags>
 		</graphicData>
-		<blueprintGraphicData>
-			<texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
-		</blueprintGraphicData>
-		<uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
 		<statBases>
 			<MaxHitPoints>350</MaxHitPoints>
 			<WorkToMake>150</WorkToMake>
-			<Flammability>1.0</Flammability>
 		</statBases>
 		<costStuffCount>5</costStuffCount>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<altitudeLayer>BuildingTall</altitudeLayer>
 		<passability>Impassable</passability>
 		<castEdgeShadows>true</castEdgeShadows>
-		<fillPercent>1</fillPercent>
 		<coversFloor>true</coversFloor>
 		<placingDraggableDimensions>1</placingDraggableDimensions>
-		<tickerType>Never</tickerType>
-		<rotatable>false</rotatable>
-		<selectable>true</selectable>
 		<neverMultiSelect>true</neverMultiSelect>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<holdsRoof>true</holdsRoof>
-		<staticSunShadowHeight>1.0</staticSunShadowHeight>
-		<blockLight>true</blockLight>
-		<stuffCategories>
-			<li>Bricky</li>
-			<li>Woody</li>
-			<li>Stony</li>
-		</stuffCategories>
 		<building>
 			<isInert>true</isInert>
-			<ignoreNeedsPower>true</ignoreNeedsPower>
 		</building>
-		<damageMultipliers>
-			<li>
-				<damageDef>Bomb</damageDef>
-				<multiplier>2</multiplier>
-			</li>
-		</damageMultipliers>
 	</ThingDef>
 
-	<ThingDef ParentName="Wall">
-		<defName>Palisade</defName>
-		<label>palisade</label>
-		<description>An impassable palisade. Not capable of holding up a roof.</description>
+
+	<ThingDef ParentName="StructureWall">
+		<defName>WallLog</defName>
+		<label>log wall</label>
+		<description>A log wall. Capable of holding up a roof.</description>
 		<graphicData>
-			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Atlas</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<linkType>CornerFiller</linkType>
-			<linkFlags>
-				<li>Wall</li>
-				<li>Rock</li>
-			</linkFlags>
+			<texPath>Things/Buildings/Structure/Walls/WallLog/WallLog_Atlas</texPath>
 		</graphicData>
 		<blueprintGraphicData>
-			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Blueprint_Atlas</texPath>
+			<texPath>Things/Buildings/Structure/Walls/WallLog/WallLog_Atlas</texPath>
 		</blueprintGraphicData>
-		<uiIconPath>Things/Buildings/Structure/Walls/Palisade/Palisade_MenuIcon</uiIconPath>
-		<passability>PassThroughOnly</passability>
-		<pathCost>70</pathCost>	<!-- Yes -->
-		<altitudeLayer>Waist</altitudeLayer>
-		<fillPercent>0.65</fillPercent>
-		<statBases>
-			<MaxHitPoints>300</MaxHitPoints>
-			<WorkToMake>100</WorkToMake>
-			<Flammability>1.0</Flammability>
-		</statBases>
-		<costStuffCount>3</costStuffCount>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<staticSunShadowHeight>0.3</staticSunShadowHeight>
-		<holdsRoof>False</holdsRoof>
+		<uiIconPath>Things/Buildings/Structure/Walls/WallLog/WallLog_MenuIcon</uiIconPath>
 		<stuffCategories>
-			<li>Woody</li>
+			<li>WoodLog</li>	
 		</stuffCategories>
+		<researchPrerequisite>StartPack</researchPrerequisite>
 	</ThingDef>
-	
-	
+
+	<ThingDef ParentName="StructureWall">
+		<defName>Palisade</defName>
+		<label>palisade</label>
+		<description>A palisade wall. Cheaper and easier to build than thick log wall, can't hold roof and more fragile.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Atlas</texPath>
+		</graphicData>
+		<blueprintGraphicData>
+			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Atlas</texPath>
+		</blueprintGraphicData>
+		<uiIconPath>Missing</uiIconPath>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToMake>100</WorkToMake>
+		</statBases>
+		<stuffCategories>
+			<li>WoodLog</li>	
+		</stuffCategories>
+		<costStuffCount>3</costStuffCount>
+		<coversFloor>false</coversFloor>
+		<holdsRoof>false</holdsRoof>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<castEdgeShadows>false</castEdgeShadows>
+		<researchPrerequisite>StartPack</researchPrerequisite>
+	</ThingDef>
+
+
 </Buildings>

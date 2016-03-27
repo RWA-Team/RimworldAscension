@@ -2,52 +2,32 @@
 <RecipeDefs>
 
 	<!-- 
-	workAmount - number of ticks to complete the recipe at normal speed and efficiency (60 t/s)
-	fixedIngredientFilter - determine ingridiens set to be chosen from
-	
-	defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others)
-	IMPORTANT!: used as a special case to disallow stuff types of the result products
+	- workAmount - should never be used (cause not affected by stuff). specify WorkToMake baseStat in product def instead
+	- specialProducts - Butchery\Smelted return from processed thing
+	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
+	- fixedIngredientFilter - determine ingridient set to choose from	
+	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
 	-->
 
-	<RecipeDef Name="MakeArmor_Base" Abstract="True">
-		<workSpeedStat>SmithingSpeed</workSpeedStat>
+	<RecipeDef Name="MakeArmor" Abstract="True">
+		<workSpeedStat>CarvingSpeed</workSpeedStat>
 		<workSkill>Crafting</workSkill>
 		<effectWorking>Smith</effectWorking>
 		<soundWorking>Recipe_Smith</soundWorking>
-		<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</RecipeDef >
 
 
 	<!-- ========================= Neolithic =========================-->
 
-
-	<RecipeDef  ParentName="MakeArmor_Base">
-		<defName>Make_Buckler</defName>
-		<label>make buckler</label>
-		<description>Makes a buckler.</description>
+	<RecipeDef  ParentName="MakeArmor">
+		<defName>MakeShieldTribal</defName>
+		<label>make tribal shield</label>
+		<description>Makes a primitive wooden shield, commonly used by local tribes.</description>
 		<products>
-			<Buckler>1</Buckler>
+			<ShieldTribal>1</ShieldTribal>
 		</products>
-		<recipeUsers>
-			<li>WarriorsBench</li>
-		</recipeUsers>
-		<fixedIngredientFilter>		
-<!-- 		== added via research mods ==
-			<categories>
-				<li>Leathers</li>
-			</categories> -->			
-			<thingDefs>			
-<!-- 			== added via research mods ==
-				<li>Bone</li> -->				
-				<li>WoodLog</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<defaultIngredientFilter>
-			<thingDefs>
-				<li>WoodLog</li>
-			</thingDefs>
-		</defaultIngredientFilter>
 		<ingredients>
 			<li>
 				<filter>
@@ -55,7 +35,7 @@
 						<li>Leathers</li>
 					</categories>
 					<thingDefs>
-						<li>Bone</li>
+						<li>BastFibre</li>
 					</thingDefs>
 				</filter>
 				<count>5</count>
@@ -66,10 +46,10 @@
 						<li>WoodLog</li>
 					</thingDefs>
 				</filter>
-				<count>5</count>
+				<count>20</count>
 			</li>
 		</ingredients>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
 	</RecipeDef>
-
 
 </RecipeDefs>

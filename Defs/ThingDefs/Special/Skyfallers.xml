@@ -2,36 +2,49 @@
 <Buildings>
 
 
-	<!--========================= Crashing Skyfallers =============================-->
+	<!--========================= Flying Skyfallers =============================-->
 
 
-	<ThingDef Name="SkyfallerCrashing">
-		<defName>DropPodCrashing</defName>
+	<ThingDef Name="SkyfallerFlying" Abstract="True">
 		<category>Skyfaller</category>
-		<label>crashing drop pod</label>
-		<thingClass>RA.DropPodCrashing</thingClass>
 		<tickerType>Normal</tickerType>
-		<graphicData>
-			<texPath>Things/Special/DropPod</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>CutoutFlying</shaderType>
-			<drawSize>(2,2)</drawSize>
-		</graphicData>
 		<altitudeLayer>MetaOverlays</altitudeLayer>
 		<useHitPoints>false</useHitPoints>
 		<drawOffscreen>true</drawOffscreen>
+		<graphicData>
+			<shaderType>CutoutFlying</shaderType>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
 	</ThingDef>
 
 
-	<ThingDef ParentName="SkyfallerCrashing">
-		<defName>ShipWreckCrashing</defName>
-		<label>crashing ship wreck</label>
-		<thingClass>RA.ShipWreckCrashing</thingClass>
+	<ThingDef ParentName="SkyfallerFlying">
+		<defName>DropPodFlying</defName>
+		<label>Flying drop pod</label>
+		<thingClass>RA.DropPodFlying</thingClass>
 		<graphicData>
-			<texPath>Things/Special/Skyfallers/ShipWreckCrashing</texPath>
+			<texPath>Things/Special/DropPod</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>CutoutFlying</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="SkyfallerFlying">
+		<defName>ShipWreckFlying</defName>
+		<label>Flying ship wreck</label>
+		<thingClass>RA.ShipWreckFlying</thingClass>
+		<graphicData>
+			<texPath>Things/Special/Skyfallers/ShipWreckFlying</texPath>
 			<drawSize>(5,3)</drawSize>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="SkyfallerFlying">
+		<defName>DebrisFlying</defName>
+		<label>Flying debris</label>
+		<thingClass>RA.DebrisFlying</thingClass>
+		<graphicData>
+			<texPath>Things/Item/Chunk/ChunkSlag/MetalDebrisB</texPath>
 		</graphicData>
 	</ThingDef>
 
@@ -39,45 +52,65 @@
 	<!--========================= Landed Skyfallers =============================-->
 
 
-	<ThingDef Name="SkyfallerCrashed">
-		<defName>DropPodCrashed</defName>
-		<label>drop pod wreckage</label>
+	<ThingDef Name="ShipPartsLanded" Abstract="True">
+		<altitudeLayer>BuildingTall</altitudeLayer>
+		<passability>Impassable</passability>
 		<category>Building</category>
-		<thingClass>RA.DropPodCrashed</thingClass>
 		<tickerType>Normal</tickerType>
+		<selectable>true</selectable>
+		<useHitPoints>false</useHitPoints>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="ShipPartsLanded">
+		<defName>DropPodLanded</defName>
+		<label>drop pod wreckage</label>
+		<thingClass>RA.DropPodLanded</thingClass>
 		<graphicData>
-			<texPath>Things/Special/Skyfallers/DropPodCrashed</texPath>
+			<texPath>Things/Special/Skyfallers/DropPodLanded</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shadowData>
 				<volume>(0.8, 0.6, 0.8)</volume>
 			</shadowData>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
-		<altitudeLayer>BuildingTall</altitudeLayer>
-		<passability>Impassable</passability>
-		<useHitPoints>false</useHitPoints>
 		<statBases>
-			<!-- needed to be able to deconstruct -->
-			<WorkToMake>100</WorkToMake>
+			<!-- required for deconstruction to loot -->
+			<WorkToMake>200</WorkToMake>
 		</statBases>
-		<selectable>true</selectable>
+		<comps>
+			<li Class="RA.CompLoot_Properties">
+				<lootCounters>
+					<ChunkSlagSteel>10</ChunkSlagSteel>
+					<Medicine>5</Medicine>
+					<MealSurvivalPack>10</MealSurvivalPack>
+					<Multitool>1</Multitool>
+				</lootCounters>
+			</li>
+		</comps>
 	</ThingDef>
 
-
-	<ThingDef ParentName="SkyfallerCrashed">
-		<defName>ShipWreckCrashed</defName>
+	<ThingDef ParentName="ShipPartsLanded">
+		<defName>ShipWreckLanded</defName>
 		<label>ship wreck</label>
-		<thingClass>RA.ShipWreckCrashed</thingClass>
+		<thingClass>RA.ShipWreckLanded</thingClass>
 		<graphicData>
-			<texPath>Things/Special/Skyfallers/ShipWreckCrashed</texPath>
+			<texPath>Things/Special/Skyfallers/ShipWreckLanded</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(5,3)</drawSize>
 		</graphicData>
 		<size>(5,3)</size>
 		<statBases>
-			<WorkToMake>300</WorkToMake>
+			<WorkToMake>1000</WorkToMake>
 		</statBases>
+		<comps>
+			<li Class="RA.CompLoot_Properties">
+				<lootCounters>
+					<ChunkSlagSteel>30</ChunkSlagSteel>
+					<SurvivalGuide>1</SurvivalGuide>
+				</lootCounters>
+			</li>
+		</comps>
 	</ThingDef>
-
 
 </Buildings>

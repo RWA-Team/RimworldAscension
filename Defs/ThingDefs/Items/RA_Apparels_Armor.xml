@@ -4,7 +4,7 @@
 	<!-- 
 	defaultOutfitTags - used to determine gear in preset outfit sets available in the outfits menu
 	equippedStatOffsets - applies offset to the pawns stat when worn
-	worngraphicPath - specified when needs to select apparel type based on body type variations
+	worngraphicPath - used to fraw apparel texture on the pawn. shows nothing if not set
 	 -->
 
 	<ThingDef Name="Armor_Base" Abstract="True">
@@ -48,7 +48,7 @@
 	
 
 	<ThingDef ParentName="Armor_Base">
-		<defName>Buckler</defName>
+		<defName>ShieldTribal</defName>
 		<thingClass>RA.Shield</thingClass>
 		<label>buckler</label>
 		<description>A shield made from hard materials able to deflect most types of attack. Wears out with use. </description>

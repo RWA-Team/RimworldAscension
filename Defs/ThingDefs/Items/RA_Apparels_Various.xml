@@ -4,7 +4,7 @@
 	<!-- 
 	defaultOutfitTags - used to determine gear in preset outfit sets available in the outfits menu
 	equippedStatOffsets - applies offset to the pawns stat when worn
-	worngraphicPath - specified when needs to select apparel type based on body type variations
+	worngraphicPath - used to fraw apparel texture on the pawn. shows nothing if not set
 	 -->
 
 	<ThingDef Name="Apparel_Base" Abstract="True">
@@ -83,7 +83,6 @@
 		</colorGenerator>
 		<comps>
 			<li Class="RA.CompSlots_Properties">
-				<compClass>RA.CompSlots</compClass>
 				<allowedThingCategoryDefs>
 					<li>Weapons</li>
 					<li>Apparel</li>
@@ -135,7 +134,6 @@
 		</colorGenerator>
 		<comps>
 			<li Class="RA.CompSlots_Properties">
-				<compClass>RA.CompSlots</compClass>
 				<allowedThingCategoryDefs>
 					<li>Tools</li>
 				</allowedThingCategoryDefs>

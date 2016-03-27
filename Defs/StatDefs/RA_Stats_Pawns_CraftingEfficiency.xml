@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StatDefs>
+
+	<!-- 
+	skillNeedFactors - skill modifier bonus
+		bonusFactor - additional bonus per skill level (x1-x20)
+	
+	capacityFactors - modifier by pawn capacity
+		weight - modifier value per capacity stat
+	-->
+
+	<StatDef Name="Efficiency" Abstract="True">
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>1</weight>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.9</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.7</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+	
+
+	<StatDef ParentName="Efficiency">
+		<defName>ButcheringEfficiency</defName>
+		<label>butchering efficiency</label>
+		<description>Multiplier on the amount of butcher products yielded when butchering corpses.</description>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Cooking</skill>
+				<baseFactor>0.75</baseFactor>
+				<bonusFactor>0.025</bonusFactor>
+			</li>
+		</skillNeedFactors>
+	</StatDef>
+
+	<StatDef ParentName="Efficiency">
+		<defName>DisassemblingEfficiency</defName>
+		<label>disassembling efficiency</label>
+		<description>Multiplier on the amount of materials yielded when this person disassembles things.</description>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Crafting</skill>
+				<baseFactor>0.75</baseFactor>
+				<bonusFactor>0.025</bonusFactor>
+			</li>
+		</skillNeedFactors>
+	</StatDef>
+
+	<StatDef ParentName="Efficiency">
+		<defName>RefiningEfficiency</defName>
+		<label>refining efficiency</label>
+		<description>Multiplier on the amount of materials yielded when this person refines raw resources.</description>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Crafting</skill>
+				<baseFactor>0.75</baseFactor>
+				<bonusFactor>0.025</bonusFactor>
+			</li>
+		</skillNeedFactors>
+	</StatDef>
+
+</StatDefs>

@@ -1,38 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
+	<!-- 
+	fillPercent - determne cover multiplier vs projectiles
+	castEdgeShadows - shadow aura around building
+	staticSunShadowHeight - solid square shadow with set length
+	 -->
 
-	<ThingDef Name="BuildingBase" Abstract="True">
+	<ThingDef Name="Furniture" Abstract="True">
 		<category>Building</category>
 		<thingClass>Building</thingClass>
 		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<altitudeLayer>Waist</altitudeLayer>
 		<selectable>true</selectable>
+		<passability>PassThroughOnly</passability>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
-		<designationCategory>Furniture</designationCategory>
-		<researchPrerequisite>SurvivalGuideI</researchPrerequisite>
-	</ThingDef>
-
-
-	<ThingDef Name="FurnitureBase" ParentName="BuildingBase" Abstract="True">
-		<stuffCategories>
-			<li>Woody</li>
-			<li>Stony</li>
-			<li>Bone</li>
-		</stuffCategories>
-		<comps>
-			<li>
-				<compClass>CompQuality</compClass>
-			</li>
-		</comps>
+		<statBases>
+			<Flammability>1.0</Flammability>
+		</statBases>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<designationCategory>Furniture</designationCategory>
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
 
-	<ThingDef Name="HighQualityFurnitureBase" ParentName="FurnitureBase" Abstract="True">
+	<ThingDef Name="LuxuryFurniture" ParentName="Furniture" Abstract="True">
 		<comps>
 			<li>
 				<compClass>CompQuality</compClass>
@@ -50,193 +46,139 @@
 	</ThingDef>
 
 
-	<!--============================== Beds ==============================-->
+	<!--========================= Beds =========================-->
 
 
-<!-- 	<ThingDef ParentName="BuildingBase">
-		<defName>LeafBed</defName>
-		<label>leafy bed</label>
-		<Description>A makeshift bed, made from logs and leaves.</Description>
+	<ThingDef Name="Bed" ParentName="Furniture" Abstract="True">
 		<ThingClass>Building_Bed</ThingClass>
+		<Size>(1,2)</Size>
+		<building>
+			<Bed_ShowSleeperBody>True</Bed_ShowSleeperBody>
+		</building>
+		<passability>Standable</passability>
+		<PathCost>40</PathCost>
+		<fillPercent>0.25</fillPercent>
+		<DrawGUIOverlay>True</DrawGUIOverlay>
+		<comps>
+			<li>
+				<compClass>CompAffectedByFacilities</compClass>
+				<linkableFacilities>
+					<li>VitalsMonitor</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Bed">
+		<defName>BedHay</defName>
+		<label>hay bed</label>
+		<Description>A makeshift bed, made of hay and small branches.</Description>
 		<graphicData>
-			<texPath>Things/Buildings/Furniture/Beds/LeafBed/LeafBed</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
+			<texPath>Missing</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 			<drawSize>(3,4)</drawSize>
 		</graphicData>
-		<AltitudeLayer>Waist</AltitudeLayer>
+		<PathCost>20</PathCost>
+		<fillPercent>0</fillPercent>
+		<altitudeLayer>LowPlant</altitudeLayer>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
-			<Flammability>1.0</Flammability>
 			<Beauty>-1</Beauty>
 			<WorkToMake>100</WorkToMake>
 			<BedRestEffectiveness>0.9</BedRestEffectiveness>
 			<Comfort>0.5</Comfort>
-			<ImmunityGainSpeedFactor>1.05</ImmunityGainSpeedFactor>
+			<ImmunityGainSpeedFactor>1.01</ImmunityGainSpeedFactor>
 		</statBases>
-		<Size>(1,2)</Size>
 		<costList>
 			<WoodLog>10</WoodLog>
-			<LeafBundle>5</LeafBundle>
+			<Hay>20</Hay>
 		</costList>
 		<building>
-			<Bed_ShowSleeperBody>True</Bed_ShowSleeperBody>
 			<Bed_HealTickInterval>2300</Bed_HealTickInterval>
 		</building>
-		<comps>
-			<li>
-				<compClass>CompAffectedByFacilities</compClass>
-				<linkableFacilities>
-					<li>VitalsMonitor</li>
-				</linkableFacilities>
-			</li>
-		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<researchPrerequisite>StartPack</researchPrerequisite>
+	</ThingDef>	
+
+
+	<ThingDef ParentName="Bed">
+		<defName>BedHide</defName>
+		<label>hide bed</label>
+		<Description>A makeshift bed, makes you feel like in stone age.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Beds/HideBed</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
 		<PathCost>20</PathCost>
-		<Passability>Standable</Passability>
-		<DrawGUIOverlay>True</DrawGUIOverlay>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
-		<researchPrerequisite>ExamineFlora</researchPrerequisite>
-	</ThingDef>	 -->
-
-	<!--
-	<ThingDef ParentName="FurnitureBase">
-		<defName>HideBed</defName>
-		<label>bed</label>
-		<Description>A cozy mattress and sheets on a frame for resting.</Description>
-		<ThingClass>Building_Bed</ThingClass>
-		<graphicData>
-			<texPath>Things/Buildings/Furnitures/Beds/HideBed/HideBed</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<shaderType>CutoutComplex</shaderType>
-			<drawSize>(3,4)</drawSize>
-		</graphicData>
-		<AltitudeLayer>Waist</AltitudeLayer>
+		<fillPercent>0</fillPercent>
+		<altitudeLayer>LowPlant</altitudeLayer>
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>
-			<Flammability>1.0</Flammability>
 			<Beauty>8</Beauty>
-			<WorkToMake>870</WorkToMake>
+			<WorkToMake>500</WorkToMake>
 			<BedRestEffectiveness>1</BedRestEffectiveness>
 			<Comfort>0.75</Comfort>
 			<ImmunityGainSpeedFactor>1.1</ImmunityGainSpeedFactor>
 		</statBases>
 		<Size>(1,2)</Size>
 		<stuffCategories>
-			<li>Fabric</li>
+			<li>Leathery</li>
 		</stuffCategories>
-		<costStuffCount>15</costStuffCount>
+		<costStuffCount>10</costStuffCount>
 		<costList>
-			<WoodLog>35</WoodLog>
+			<WoodLog>10</WoodLog>
+			<Hay>20</Hay>
 		</costList>
 		<building>
-			<Bed_ShowSleeperBody>False</Bed_ShowSleeperBody>
 			<Bed_HealTickInterval>2100</Bed_HealTickInterval>
 		</building>
-		<comps>
-			<li>
-				<compClass>CompAffectedByFacilities</compClass>
-				<linkableFacilities>
-					<li>VitalsMonitor</li>
-				</linkableFacilities>
-			</li>
-		</comps>
-		<fillPercent>0.4</fillPercent>
-		<PathCost>60</PathCost>
-		<StaticSunShadowHeight>0.17</StaticSunShadowHeight>
-		<CastEdgeShadows>True</CastEdgeShadows>
-		<Passability>PassThroughOnly</Passability>
-		<DrawGUIOverlay>True</DrawGUIOverlay>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
-	</ThingDef>
-	-->
+	</ThingDef>	
 
-	<ThingDef ParentName="FurnitureBase">
-		<defName>Bed</defName>
-		<label>bed</label>
-		<Description>A cozy mattress and sheets on a frame for resting.</Description>
-		<ThingClass>Building_Bed</ThingClass>
+	<ThingDef ParentName="Bed">
+		<defName>AnimalSleepingBox</defName>
+		<label>animal sleeping box</label>
+		<description>A small box for animals to sleep in. Fits smaller animals like chickens, cats, or small dogs.</description>
+		<rotatable>false</rotatable>
+		<CastEdgeShadows>true</CastEdgeShadows>
 		<graphicData>
-			<texPath>Things/Building/Furniture/Bed/Bed</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<shaderType>CutoutComplex</shaderType>
-			<drawSize>(3,4)</drawSize>
+			<texPath>Things/Building/Misc/AnimalBed/AnimalSleepBox</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<AltitudeLayer>Waist</AltitudeLayer>
-		<statBases>
-			<MaxHitPoints>150</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-			<Beauty>8</Beauty>
-			<WorkToMake>870</WorkToMake>
-			<BedRestEffectiveness>1</BedRestEffectiveness>
-			<Comfort>0.75</Comfort>
-			<ImmunityGainSpeedFactor>1.1</ImmunityGainSpeedFactor>
-		</statBases>
-		<Size>(1,2)</Size>
-		<stuffCategories>
-			<li>Fabric</li>
-		</stuffCategories>
-		<costStuffCount>15</costStuffCount>
-		<costList>
-			<WoodLog>35</WoodLog>
-		</costList>
-		<building>
-			<Bed_ShowSleeperBody>False</Bed_ShowSleeperBody>
-			<Bed_HealTickInterval>2100</Bed_HealTickInterval>
-		</building>
-		<comps>
-			<li>
-				<compClass>CompAffectedByFacilities</compClass>
-				<linkableFacilities>
-					<li>VitalsMonitor</li>
-				</linkableFacilities>
-			</li>
-		</comps>
-		<fillPercent>0.4</fillPercent>
-		<PathCost>60</PathCost>
-		<StaticSunShadowHeight>0.17</StaticSunShadowHeight>
-		<CastEdgeShadows>True</CastEdgeShadows>
-		<Passability>PassThroughOnly</Passability>
-		<DrawGUIOverlay>True</DrawGUIOverlay>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
-	</ThingDef>
-	
-
-
-	<!--=========================== Animal beds ===============================-->
-
-
-
-
-
-	<!--======================= Basic domestic furniture ==============================-->
-
-
-	<ThingDef ParentName="FurnitureBase">
-		<defName>Stool</defName>
-		<label>stool</label>
-		<description>A simple platform on which to sit.</description>
-		<graphicData>
-			<texPath>Things/Building/Furniture/Stool</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<shadowData>
-				<volume>(0.3, 0.6, 0.3)</volume>
-			</shadowData>
-		</graphicData>
-		<altitudeLayer>Waist</altitudeLayer>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
-			<WorkToMake>750</WorkToMake>
-			<Flammability>1.0</Flammability>
-			<Beauty>3</Beauty>
-			<Comfort>0.5</Comfort>
+			<WorkToMake>120</WorkToMake>
+			<BedRestEffectiveness>0.93</BedRestEffectiveness>
+			<Comfort>0.60</Comfort>
+			<ImmunityGainSpeedFactor>1.05</ImmunityGainSpeedFactor>
 		</statBases>
-		<costStuffCount>15</costStuffCount>
+		<costList>
+			<WoodLog>5</WoodLog>
+			<Hay>15</Hay>
+		</costList>
+		<building>
+			<bed_humanlike>false</bed_humanlike>
+			<bed_maxBodySize>0.55</bed_maxBodySize>
+			<bed_HealTickInterval>2100</bed_HealTickInterval>
+		</building>
+		<researchPrerequisite>AnimalHusbandry</researchPrerequisite>
+	</ThingDef>
+
+
+	<!--======================= Stools ==============================-->
+
+
+	<ThingDef Name="Stool" ParentName="Furniture" Abstract="True">
+		<graphicData>
+			<shadowData>
+				<volume>(0.3, 0.4, 0.3)</volume>
+			</shadowData>
+		</graphicData>
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<pathCost>30</pathCost>
 		<fillPercent>0.30</fillPercent>
@@ -246,13 +188,62 @@
 	</ThingDef>
 
 
+	<ThingDef ParentName="Stool">
+		<defName>StoolPrimitive</defName>
+		<label>priitive stool</label>
+		<description>A primitive simple stool you can sit on.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Stools/PrimitiveStool</texPath>
+			<graphicClass>RA.Graphic_StuffBased</graphicClass>
+			<drawSize>(0.8,0.8)</drawSize>
+			<shaderType>Transparent</shaderType>
+		</graphicData>
+		<costList>
+			<StoolPrimitive>1</StoolPrimitive>
+		</costList>
+		<stuffCategories>
+			<li>WoodLog</li>
+			<li>StoneBlock</li>
+		</stuffCategories>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>750</WorkToMake>
+			<Beauty>3</Beauty>
+			<Comfort>0.5</Comfort>
+		</statBases>
+		<rotatable>false</rotatable>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Stool">
+		<defName>Stool</defName>
+		<label>stool</label>
+		<description>A simple platform on which to sit.</description>
+		<graphicData>
+			<texPath>Things/Building/Furniture/Stool</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>750</WorkToMake>
+			<Beauty>3</Beauty>
+			<Comfort>0.5</Comfort>
+		</statBases>
+		<costList>
+			<Stool>1</Stool>
+		</costList>
+		<stuffCategories>
+			<li>WoodPlank</li>
+			<li>StoneBlock</li>
+		</stuffCategories>
+	</ThingDef>
+
+
 	<!--======================= Tables ==============================-->
 
 
-	<ThingDef Abstract="True" ParentName="FurnitureBase" Name="TableBase">
+	<ThingDef Name="Table" ParentName="Furniture" Abstract="True">
 		<description>People eat off tables when chairs are placed facing them.</description>
-		<altitudeLayer>Waist</altitudeLayer>
-		<passability>PassThroughOnly</passability>
 		<castEdgeShadows>true</castEdgeShadows>
 		<pathCost>60</pathCost>
 		<fillPercent>0.4</fillPercent>
@@ -263,16 +254,13 @@
 			<li>
 				<compClass>CompGatherSpot</compClass>
 			</li>
-			<li>
-				<compClass>CompQuality</compClass>
-			</li>
 		</comps>
 	</ThingDef>
 
 
-	<ThingDef ParentName="TableBase">
+	<ThingDef ParentName="Table">
 		<defName>TableShort</defName>
-		<label>table (short)</label>
+		<label>short table</label>
 		<graphicData>
 			<texPath>Things/Building/Furniture/TableShort</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -281,18 +269,23 @@
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToMake>1500</WorkToMake>
-			<Flammability>1.0</Flammability>
 			<Beauty>8</Beauty>
 		</statBases>
 		<size>(2,2)</size>
-		<costStuffCount>50</costStuffCount>
+		<costList>
+			<TableShort>1</TableShort>
+		</costList>
+		<stuffCategories>
+			<li>WoodLog</li>
+			<li>StoneBlock</li>
+		</stuffCategories>
 		<rotatable>false</rotatable>
 	</ThingDef>
 
 
-	<ThingDef ParentName="TableBase">
+	<ThingDef ParentName="Table">
 		<defName>TableLong</defName>
-		<label>table (long)</label>
+		<label>long table</label>
 		<graphicData>
 			<texPath>Things/Building/Furniture/TableLong</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -301,18 +294,23 @@
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>
 			<WorkToMake>3000</WorkToMake>
-			<Flammability>1.0</Flammability>
 			<Beauty>12</Beauty>
 		</statBases>
 		<size>(2,4)</size>
-		<costStuffCount>95</costStuffCount>
+		<costList>
+			<TableShort>1</TableShort>
+		</costList>
+		<stuffCategories>
+			<li>WoodLog</li>
+			<li>StoneBlock</li>
+		</stuffCategories>
 	</ThingDef>
 
 
 	<!--============================== Light Sources ==============================-->
 
 
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="Furniture">
 		<defName>Torch</defName>
 		<label>wood torch</label>
 		<description>A temporary light source which burns for a few days.</description>
@@ -331,7 +329,6 @@
 		<statBases>
 			<MaxHitPoints>20</MaxHitPoints>
 			<WorkToMake>250</WorkToMake>
-			<Flammability>1.0</Flammability>
 		</statBases>
 		<selectable>true</selectable>
 		<size>(1,1)</size>
@@ -359,7 +356,7 @@
 	<!--======================= Decorations ==============================-->
 
 
-	<ThingDef ParentName="FurnitureBase">
+	<ThingDef ParentName="Furniture">
 		<defName>PlantPot</defName>
 		<thingClass>Building_PlantGrower</thingClass>
 		<label>plant pot</label>
@@ -376,7 +373,6 @@
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToMake>495</WorkToMake>
-			<Flammability>1.0</Flammability>
 		</statBases>
 		<costStuffCount>15</costStuffCount>
 		<inspectorTabs>

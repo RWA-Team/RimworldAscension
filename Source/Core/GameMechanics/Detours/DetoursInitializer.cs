@@ -18,17 +18,29 @@ namespace RA
         {
             if (Prefs.DevMode)
                 Log.Message("Detours initialized");
-
-            // detour RimWorld.ThingSelectionUtility.SelectableNow
+            
             var vanillaSelectableNow = typeof(ThingSelectionUtility).GetMethod("SelectableNow", BindingFlags.Static | BindingFlags.Public);
             var newSelectableNow = typeof(RA_ThingSelectionUtility).GetMethod("SelectableNow", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaSelectableNow, newSelectableNow);
-
-            // detour Verse.MapInitData.GenerateDefaultColonistsWithFaction
+            
             var vanillaInitNewGeneratedMap = typeof(MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
             var newInitNewGeneratedMap = typeof(RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaInitNewGeneratedMap, newInitNewGeneratedMap);
-            
+
+            #region GAMEEND
+
+            // delay CheckGameOver first call
+            var vanillaCheckGameOver = typeof(GameEnder).GetMethod("CheckGameOver", BindingFlags.Instance | BindingFlags.Public);
+            var newCheckGameOver = typeof(RA_GameEnder).GetMethod("CheckGameOver", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaCheckGameOver, newCheckGameOver);
+
+            // delay GameEndTick first call
+            var vanillaGameEndTick = typeof(GameEnder).GetMethod("GameEndTick", BindingFlags.Instance | BindingFlags.Public);
+            var newGameEndTick = typeof(RA_GameEnder).GetMethod("GameEndTick", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaGameEndTick, newGameEndTick); 
+
+            #endregion
+
             #region MAINMENU
 
             // detour RimWorld.MainMenuDrawer.MainMenuOnGUI
@@ -44,18 +56,29 @@ namespace RA
             #endregion
 
             #region DIPLOMACY
-
-            // allow AffectGoodwillWith with hidden factions
+            // allow AffectGoodwillWith with hidden factions; make factions hostile when relations are negative
             // detour RimWorld.Faction.AffectGoodwillWith
             var vanillaAffectGoodwillWith = typeof(Faction).GetMethod("AffectGoodwillWith", BindingFlags.Instance | BindingFlags.Public);
             var newAffectGoodwillWith = typeof(RA_Faction).GetMethod("AffectGoodwillWith", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaAffectGoodwillWith, newAffectGoodwillWith);
 
-            // allow Notify_MemberCaptured with hidden factions
-            // detour RimWorld.Faction.Notify_MemberCaptured
-            var vanillaNotify_MemberCaptured = typeof(Faction).GetMethod("Notify_MemberCaptured", BindingFlags.Instance | BindingFlags.Public);
-            var newNotify_MemberCaptured = typeof(RA_Faction).GetMethod("Notify_MemberCaptured", BindingFlags.Instance | BindingFlags.Public);
-            TryDetourFromTo(vanillaNotify_MemberCaptured, newNotify_MemberCaptured);
+            //// allow Notify_MemberCaptured with hidden factions
+            //// detour RimWorld.Faction.Notify_MemberCaptured
+            //var vanillaNotify_MemberCaptured = typeof(Faction).GetMethod("Notify_MemberCaptured", BindingFlags.Instance | BindingFlags.Public);
+            //var newNotify_MemberCaptured = typeof(RA_Faction).GetMethod("Notify_MemberCaptured", BindingFlags.Instance | BindingFlags.Public);
+            //TryDetourFromTo(vanillaNotify_MemberCaptured, newNotify_MemberCaptured);
+
+            //// allow Notify_MemberTookDamage with hidden factions
+            //// detour RimWorld.Faction.Notify_MemberTookDamage
+            //var vanillaNotify_MemberTookDamage = typeof(Faction).GetMethod("Notify_MemberTookDamage", BindingFlags.Instance | BindingFlags.Public);
+            //var newNotify_MemberTookDamage = typeof(RA_Faction).GetMethod("Notify_MemberTookDamage", BindingFlags.Instance | BindingFlags.Public);
+            //TryDetourFromTo(vanillaNotify_MemberTookDamage, newNotify_MemberTookDamage);
+
+            //// allow Notify_FactionTick with hidden factions
+            //// detour RimWorld.Faction.Notify_FactionTick
+            //var vanillaNotify_FactionTick = typeof(Faction).GetMethod("Notify_FactionTick", BindingFlags.Instance | BindingFlags.Public);
+            //var newNotify_FactionTick = typeof(RA_Faction).GetMethod("Notify_FactionTick", BindingFlags.Instance | BindingFlags.Public);
+            //TryDetourFromTo(vanillaNotify_FactionTick, newNotify_FactionTick);
 
             // allow SetHostileTo with hidden factions
             // detour RimWorld.Faction.SetHostileTo
@@ -69,10 +92,10 @@ namespace RA
             var newGenerateFactionsIntoCurrentWorld = typeof(RA_FactionGenerator).GetMethod("GenerateFactionsIntoCurrentWorld", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaGenerateFactionsIntoCurrentWorld, newGenerateFactionsIntoCurrentWorld);
 
-            // detour Verse.Pawn.ExitMap
-            var vanillaExitMap = typeof(Pawn).GetMethod("ExitMap", BindingFlags.Instance | BindingFlags.Public);
-            var newExitMap = typeof(RA_Pawn).GetMethod("ExitMap", BindingFlags.Instance | BindingFlags.Public);
-            TryDetourFromTo(vanillaExitMap, newExitMap);
+            //// detour Verse.Pawn.ExitMap
+            //var vanillaExitMap = typeof(Pawn).GetMethod("ExitMap", BindingFlags.Instance | BindingFlags.Public);
+            //var newExitMap = typeof(RA_Pawn).GetMethod("ExitMap", BindingFlags.Instance | BindingFlags.Public);
+            //TryDetourFromTo(vanillaExitMap, newExitMap);
 
             #endregion
         }

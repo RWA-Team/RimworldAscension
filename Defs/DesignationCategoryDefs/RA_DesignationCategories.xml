@@ -1,38 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+	<!-- 
+	- those DesignationCategories visible only if number of desinations inside is more than 2
+	- considered not to be used: security, floors, temperature
+	 -->
 
-	<DesignationCategoryDef>
+	<DesignationCategoryDef Name="BuildingCategory" Abstract="True">
+		<specialDesignatorClasses>
+			<li>Designator_Cancel</li>
+			<li>Designator_Deconstruct</li>
+		</specialDesignatorClasses>
+	</DesignationCategoryDef>
+
+
+	<!--============================== Designations ==============================-->
+
+
+	<DesignationCategoryDef ParentName="BuildingCategory">
 		<defName>Orders</defName>
 		<label>orders</label>
 		<description>Designate specific interactions with specific things.</description>
 		<order>900</order>
 		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li>
 			<li>Designator_Haul</li>
 			<li>Designator_PlantsCut</li>
 			<li>Designator_PlantsHarvest</li>
 			<li>Designator_PlantsHarvestWood</li>
+			<li>Designator_Hunt</li>
 			<li>Designator_Uninstall</li>
 			<li>Designator_Claim</li>
 			<li>Designator_Strip</li>
 			<li>Designator_RearmTrap</li>
-			<li>Designator_Open</li>
 			<li>Designator_PlanAdd</li>
 			<li>Designator_PlanRemove</li> 
 		</specialDesignatorClasses>
-	</DesignationCategoryDef>
-	
+	</DesignationCategoryDef>	
 
-	<DesignationCategoryDef>
+	<DesignationCategoryDef ParentName="BuildingCategory">
 		<DefName>Zone</DefName>
 		<label>zone/Area</label>
 		<description>Designate zones and areas where colonists will do certain activities.</description>
 		<order>800</order>
 		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li> 
 			<li>Designator_ZoneAddStockpile_Resources</li>
 			<li>Designator_ZoneAddStockpile_Dumping</li>
 			<li>Designator_ZoneDelete</li>
@@ -46,124 +56,69 @@
 			<li>Designator_AreaAllowedClear</li>
 		</specialDesignatorClasses>
 	</DesignationCategoryDef>
-	
 
-	<DesignationCategoryDef>
+
+	<!--============================== Buildings ==============================-->
+
+
+	<DesignationCategoryDef ParentName="BuildingCategory">
 		<DefName>Structure</DefName>
 		<label>structure</label>
-		<description>Structural constructions like walls and power cables.</description>
+		<description>Structural constructions like walls and floors.</description>
 		<order>700</order>
 		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li>
+			<li>Designator_RemoveFloor</li>
+			<li>Designator_SmoothFloor</li>
 		</specialDesignatorClasses>
-	</DesignationCategoryDef>
-	
+	</DesignationCategoryDef>	
 
-	<DesignationCategoryDef>
-		<DefName>Production</DefName>
-		<label>production</label>
-		<description>Structures used for producting goods.</description>
-		<order>600</order>
-		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li>
-		</specialDesignatorClasses>
-	</DesignationCategoryDef>
-	
-
-	<DesignationCategoryDef>
+	<DesignationCategoryDef ParentName="BuildingCategory">
 		<DefName>Furniture</DefName>
 		<label>furniture</label>
-		<description>Small constructions.</description>
+		<description>Designations for placing made furniture.</description>
+		<order>600</order>
+	</DesignationCategoryDef>	
+
+	<DesignationCategoryDef ParentName="BuildingCategory">
+		<DefName>Production</DefName>
+		<label>production</label>
+		<description>Buildings for producing finished goods.</description>
 		<order>500</order>
-		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li>
-		</specialDesignatorClasses>
 	</DesignationCategoryDef>
-	
 
-	<DesignationCategoryDef>
-		<DefName>Power</DefName>
-		<label>power</label>
-		<description>Electricity production, transmission, and management.</description>
-		<order>400</order>
-		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li>
-		</specialDesignatorClasses>
-	</DesignationCategoryDef>
-	
-
-	<DesignationCategoryDef>
-		<DefName>Security</DefName>
-		<label>security</label>
-		<description>Security and combat-oriented constructions.</description>
+	<DesignationCategoryDef ParentName="BuildingCategory">
+		<DefName>Defence</DefName>
+		<label>defence</label>
+		<description>Defence and combat-oriented constructions.</description>
 		<order>300</order>
-		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li>
-		</specialDesignatorClasses>
-	</DesignationCategoryDef>
-	
+	</DesignationCategoryDef>	
 
-	<DesignationCategoryDef>
-		<DefName>Misc</DefName>
-		<label>misc</label>
-		<description>Miscellaneous constructibles.</description>
+	<DesignationCategoryDef ParentName="BuildingCategory">
+		<DefName>Utility</DefName>
+		<label>utility</label>
+		<description>Various utility buildings.</description>
 		<order>250</order>
-		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li>
-		</specialDesignatorClasses>
-	</DesignationCategoryDef>
-	
-
-	<DesignationCategoryDef>
-		<DefName>Floors</DefName>
-		<label>floors</label>
-		<description>Flooring.</description>
-		<order>200</order>
-		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_SmoothFloor</li>
-			<li>Designator_RemoveFloor</li>
-		</specialDesignatorClasses>
 	</DesignationCategoryDef>
 
-	<DesignationCategoryDef>
+	<DesignationCategoryDef ParentName="BuildingCategory">
 		<DefName>Joy</DefName>
 		<label>joy</label>
 		<description>Entertaining or pleasurable things for colonists to enjoy.</description>
 		<order>100</order>
-		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li>
-		</specialDesignatorClasses>
 	</DesignationCategoryDef>
 
-	<DesignationCategoryDef>
+	<DesignationCategoryDef ParentName="BuildingCategory">
+		<DefName>Power</DefName>
+		<label>power</label>
+		<description>Electricity production, transmission, and management.</description>
+		<order>75</order>
+	</DesignationCategoryDef>	
+
+	<DesignationCategoryDef ParentName="BuildingCategory">
 		<DefName>Ship</DefName>
 		<label>ship</label>
 		<description>Components of your escape ship.</description>
 		<order>50</order>
-		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li>
-		</specialDesignatorClasses>
 	</DesignationCategoryDef>
-
-	<DesignationCategoryDef>
-		<DefName>Temperature</DefName>
-		<label>temperature</label>
-		<description>Things for controlling temperature.</description>
-		<order>25</order>
-		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li>
-		</specialDesignatorClasses>
-	</DesignationCategoryDef>
-
 
 </Defs>

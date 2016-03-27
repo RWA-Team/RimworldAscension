@@ -338,7 +338,7 @@ namespace RA
                 }
                 if (curJob.bill.GetStoreMode() == BillStoreMode.DropOnFloor)
                 {
-                    foreach (Thing thing in list)
+                    foreach (var thing in list)
                     {
                         if (!GenPlace.TryPlaceThing(thing, actor.Position, ThingPlaceMode.Near))
                         {
@@ -394,7 +394,7 @@ namespace RA
             var resources = new List<Thing>();
             if (job.placedTargets != null)
             {
-                foreach (TargetInfo target in job.placedTargets)
+                foreach (var target in job.placedTargets)
                 {
                     var thing = target.Thing;
                     if (resources.Contains(thing))

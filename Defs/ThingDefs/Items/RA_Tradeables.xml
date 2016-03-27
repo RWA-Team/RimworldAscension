@@ -1,21 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-
-	<ThingDef Name="TradeableBase" Abstract="True">
+	<ThingDef Name="Tradeable" Abstract="True">
 		<thingClass>ThingWithComps</thingClass>
 		<category>Item</category>
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<graphicData>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
 		<useHitPoints>true</useHitPoints>
 		<statBases>
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
+		<thingCategories>
+			<li>Tradeables</li>
+		</thingCategories>
 		<comps>
 			<li>
 				<compClass>CompForbiddable</compClass>
+			</li>
+			<li>
+				<compClass>CompQuality</compClass>
 			</li>
 		</comps>
 		<alwaysHaulable>true</alwaysHaulable>
@@ -23,38 +31,27 @@
 		<rotatable>false</rotatable>
 		<pathCost>15</pathCost>
 	</ThingDef>
-	
-	<ThingDef ParentName="TradeableBase" Name="TradeableArtBase" Abstract="True">
-		<comps>
-			<li>
-				<compClass>CompQuality</compClass>
-			</li>
-		</comps>
-	</ThingDef>
 
 
-	<!--=============== Neolithic ====================-->
+	<!--===================== Neolithic =====================-->
 	
 	
-	<ThingDef ParentName="TradeableArtBase">
+	<ThingDef ParentName="Tradeable">
 		<defName>Figurine</defName>
 		<label>figurine</label>
 		<description>A handcrafted figurine or idol resembling some sort of creature. It looks valuable.</description>
 		<graphicData>
 			<texPath>Things/Items/Tradeables/Figurines</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<soundInteract>Standard_Drop</soundInteract>
 		<statBases>
+			<WorkToMake>100</WorkToMake>
 			<MarketValue>100</MarketValue>
 			<MaxHitPoints>100</MaxHitPoints>
 		</statBases>
-		<thingCategories>
-			<li>Items</li>
-		</thingCategories>
 		<stuffCategories>
-			<li>Woody</li>
-			<li>Stony</li>
+			<li>Wood</li>
+			<li>StoneBlock</li>
 			<li>Bone</li>
 		</stuffCategories>
 		<comps>
@@ -65,46 +62,22 @@
 				<minQualityForArtistic>Excellent</minQualityForArtistic>
 			</li>
 		</comps>
-	</ThingDef>	
-	
-	<ThingDef ParentName="TradeableBase">
-		<defName>UnfiredAmphora</defName>
-		<label>unfired amphora</label>
-		<description>An unfired amphora. Firing this in a kiln produces a valuable, refrigeratory container.</description>
-		<graphicData>
-			<texPath>Things/Items/Tradeables/Pottery</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
-			<color>(134,116,92)</color>
-		</graphicData>
-		<soundInteract>Standard_Drop</soundInteract>
-		<statBases>
-			<MarketValue>50</MarketValue>
-			<MaxHitPoints>20</MaxHitPoints>
-		</statBases>
-		<thingCategories>
-			<li>Unfinished</li>
-		</thingCategories>
-		<tradeability>Never</tradeability>
-	</ThingDef>	
-	
-	<ThingDef ParentName="TradeableBase">
-		<defName>Amphora</defName>
-		<label>amphora</label>
-		<description>A handcrafted water- and airtight ceramic container used to stockpile food and other perishable resources. Its uses in refrigeration and storage make it a valuable commodity.</description>
-		<graphicData>
-			<texPath>Things/Items/Tradeables/Pottery</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
-			<color>(183,115,52)</color>
-		</graphicData>
-		<soundInteract>Standard_Drop</soundInteract>
-		<statBases>
-			<MarketValue>55</MarketValue>
-			<MaxHitPoints>40</MaxHitPoints>
-		</statBases>
-		<thingCategories>
-			<li>Ceramics</li>
-		</thingCategories>
 	</ThingDef>
-
+	
+	<ThingDef ParentName="Tradeable">
+		<defName>Ceramics</defName>
+		<label>ceramics</label>
+		<description>Various amphoras and vials made of clay.</description>
+		<graphicData>
+			<texPath>Things/Items/Tradeables/Ceramics</texPath>
+			<color>(198,255,255)</color>
+		</graphicData>
+		<soundInteract>Standard_Drop</soundInteract>
+		<statBases>
+			<WorkToMake>100</WorkToMake>
+			<MarketValue>100</MarketValue>
+			<MaxHitPoints>100</MaxHitPoints>
+		</statBases>
+	</ThingDef>
 
 </Defs>

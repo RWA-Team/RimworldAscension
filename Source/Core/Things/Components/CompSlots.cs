@@ -101,7 +101,7 @@ namespace RA
         // Default requirement
         public CompSlots_Properties()
         {
-            compClass = typeof(CompSlots_Properties);
+            compClass = typeof(CompSlots);
         }
     }
 }

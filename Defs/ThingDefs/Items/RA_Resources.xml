@@ -2,8 +2,11 @@
 <Defs>
 
 	<!-- 
-	statBases - initial stat values for the thing
-	
+	statBases - base stat values for the thing
+	default values:
+		- Flammability = 0
+		- MaxHitPoints = 100
+		
 	stuffProps:	
 		statOffsets - stuff based offset values
 		statFactors - stuff based multiplier values
@@ -13,7 +16,7 @@
 		Blunt\SharpDamageMultiplier
 	-->
 
-	<ThingDef Abstract="True" Name="ResourceBase" >
+	<ThingDef Name="Resource" Abstract="True">
 		<thingClass>ThingWithComps</thingClass>
 		<category>Item</category>
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
@@ -21,23 +24,26 @@
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
 		<stackLimit>75</stackLimit>
+		<alwaysHaulable>true</alwaysHaulable>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<rotatable>false</rotatable>
+		<pathCost>15</pathCost>
+		<statBases>
+			<Flammability>1</Flammability>
+		</statBases>
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
 		<comps>
 			<li>
 				<compClass>CompForbiddable</compClass>
 			</li>
 		</comps>
-		<alwaysHaulable>true</alwaysHaulable>
-		<drawGUIOverlay>true</drawGUIOverlay>
-		<rotatable>false</rotatable>
-		<pathCost>15</pathCost>
 	</ThingDef>
 
 
-	<ThingDef Abstract="True" Name="OrganicProductBase" ParentName="ResourceBase">
+	<ThingDef Name="ResourceOrganic" ParentName="Resource" Abstract="True" >
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<statBases>
-			<MaxHitPoints>100</MaxHitPoints>
-			<Flammability>1.0</Flammability>
 			<DeteriorationRate>5</DeteriorationRate>
 		</statBases>
 		<tickerType>Rare</tickerType>
@@ -46,8 +52,25 @@
 
 	<!--=================== Plant Resources ===================-->
 
+	
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>BastFibre</defName>
+		<label>bast fibre</label>
+		<description>A bunch of bast fibre.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/BastFibre</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(133,97,67)</color>
+		</graphicData>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<tradeability>Never</tradeability>
+	</ThingDef>
 
-	<ThingDef ParentName="OrganicProductBase">
+<!-- 	<ThingDef ParentName="OrganicProductBase">
 		<defName>Flax</defName>
 		<label>flax</label>
 		<description>A bunch of flax, a raw material used in linen manufacturing. On their own these are quite useless, but drying and fermentation of these plant products turns them into more valuable resources.</description>
@@ -90,30 +113,7 @@
 				</dryTemperature>
 			</li>
 		</comps>
-		<!--Flax -[drying]-> Dried flax -[weaving]-> Linen
-			CompProperties_Dryable -->
-	</ThingDef>	
-
-	<ThingDef ParentName="ResourceBase">
-		<defName>BastFibre</defName>
-		<label>bast fibre</label>
-		<description>A bunch of bast fibre.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/BastFibre</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<color>(133,97,67)</color>
-		</graphicData>
-		<stackLimit>200</stackLimit>
-		<soundInteract>Grain_Drop</soundInteract>
-		<soundDrop>Grain_Drop</soundDrop>
-		<thingCategories>
-			<li>PlantFibres</li>
-		</thingCategories>
-		<statBases>
-			<MarketValue>0.2</MarketValue>
-		</statBases>
-		<!--BastFibre -[processing]-> Product-->
-	</ThingDef>	
+	</ThingDef>
 
 	<ThingDef ParentName="OrganicProductBase">
 		<defName>Grass</defName>
@@ -131,7 +131,6 @@
 		<statBases>
 			<MarketValue>0.05</MarketValue>
 		</statBases>
-		<!--Grass -[drying]-> Hay-->
 		<comps>
 			<li Class="CompProperties_Rottable">
 				<daysToRotStart>90</daysToRotStart>
@@ -210,7 +209,6 @@
 				<daysToRotStart>90</daysToRotStart>
 			</li>
 		</comps>
-		<!--Raw cotton -[weaving]-> Cloth-->
 	</ThingDef>	
 
 	<ThingDef ParentName="OrganicProductBase">
@@ -234,496 +232,43 @@
 				<daysToRotStart>90</daysToRotStart>
 			</li>
 		</comps>
-	</ThingDef>
+	</ThingDef> -->
 
 
-	<!--=================== Animal Resources ===================-->
+	<!--===================== Clay Blocks =====================-->
 
 
-	<ThingDef ParentName="ResourceBase">
-		<defName>Bone</defName>
-		<label>bone</label>
-		<description>Primitive crafting material.</description>
+	<ThingDef Name="ResourceBlockClay" ParentName="Resource" Abstract="True">
 		<graphicData>
-			<texPath>Things/Items/Resources/Bone</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
+			<texPath>Things/Items/Resources/BlocksClay</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<soundInteract>Standard_Drop</soundInteract>
-		<soundDrop>Standard_Drop</soundDrop>
-		<thingCategories>
-			<li>ResourcesRaw</li>
-		</thingCategories>
+		<soundInteract>Stone_Drop</soundInteract>
+		<soundDrop>Stone_Drop</soundDrop>
 		<statBases>
-			<MarketValue>5</MarketValue>
-			<MaxHitPoints>150</MaxHitPoints>
-			<Flammability>0.5</Flammability>
-			<SharpDamageMultiplier>1.2</SharpDamageMultiplier>
-			<BluntDamageMultiplier>0.8</BluntDamageMultiplier>
-		</statBases>
-		<stuffProps>
-			<categories>
-				<li>Bone</li>
-			</categories>
-			<color>(216,220,216)</color>
-			<soundImpactStuff>BulletImpactWood</soundImpactStuff>
-			<soundMeleeHitSharp>MeleeHit_Wood</soundMeleeHitSharp>
-			<soundMeleeHitBlunt>MeleeHit_Wood</soundMeleeHitBlunt>
-			<smeltable>false</smeltable>
-			<statOffsets>
-				<Beauty>2</Beauty>
-			</statOffsets>
-			<statFactors>
-				<MaxHitPoints>1.2</MaxHitPoints>
-				<Flammability>0.5</Flammability>
-				<WorkToMake>0.8</WorkToMake>
-				<MarketValue>1.2</MarketValue>
-				<Comfort>1.2</Comfort>
-				<Beauty>1.2</Beauty>
-				<TrapMeleeDamage>1.2</TrapMeleeDamage>
-				<MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
-
-	<!--===================== Stone Chunks =====================-->
-
-
-	<ThingDef Name="ChunkBase" Abstract="True">
-		<category>Item</category>
-		<thingClass>ThingWithComps</thingClass>
-		<resourceReadoutPriority>Middle</resourceReadoutPriority>
-		<alwaysHaulable>true</alwaysHaulable>
-		<altitudeLayer>Item</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<fillPercent>0.4</fillPercent>
-		<statBases>
-			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>0</Flammability>
-			<Beauty>-10</Beauty>
-			<Cleanliness>-2</Cleanliness>
-		</statBases>
-		<selectable>true</selectable>
-		<pathCost>55</pathCost>
-		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
-		<saveCompressible>true</saveCompressible>
-		<tradeability>Never</tradeability>
-		<soundDrop>ChunkRock_Drop</soundDrop>
-		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
-		</comps>
-		<thingCategories>
-			<li>StoneChunks</li>
-		</thingCategories>
-		<stuffProps>
-			<categories>
-				<li>StonyRaw</li>
-			</categories>
-			<soundImpactStuff>BulletImpactGround</soundImpactStuff>
-			<soundMeleeHitSharp>MeleeHit_Stone</soundMeleeHitSharp>
-			<soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
-			<statOffsets>
-				<Beauty>-10</Beauty>
-				<Cleanliness>-2</Cleanliness>
-			</statOffsets>
-		</stuffProps>
-	</ThingDef>	
-
-	<ThingDef ParentName="ChunkBase">
-		<defName>ChunkSandstone</defName>
-		<label>sandstone chunk</label>
-		<graphicData>
-			<texPath>Things/Item/Chunk/ChunkStone</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
-			<color>(126,104,94)</color>
-		</graphicData>
-		<butcherProducts>
-			<BlocksSandstone>20</BlocksSandstone>
-		</butcherProducts>
-		<stuffProps>
-			<color>(126,104,94)</color>
-			<stuffAdjective>sandstone</stuffAdjective>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="ChunkBase">
-		<defName>ChunkGranite</defName>
-		<label>granite chunk</label>
-		<graphicData>
-			<texPath>Things/Item/Chunk/ChunkStone</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
-			<color>(105,95,97)</color>
-		</graphicData>
-		<butcherProducts>
-			<BlocksGranite>20</BlocksGranite>  
-		</butcherProducts>
-		<stuffProps>
-			<color>(105,95,97)</color>
-			<stuffAdjective>granite</stuffAdjective>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="ChunkBase">
-		<defName>ChunkLimestone</defName>
-		<label>limestone chunk</label>
-		<graphicData>
-			<texPath>Things/Item/Chunk/ChunkStone</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
-			<color>(158,153,135)</color>
-		</graphicData>
-		<butcherProducts>
-			<BlocksLimestone>20</BlocksLimestone>
-		</butcherProducts>
-		<stuffProps>
-			<color>(158,153,135)</color>
-			<stuffAdjective>limestone</stuffAdjective>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="ChunkBase">
-		<defName>ChunkSlate</defName>
-		<label>slate chunk</label>
-		<graphicData>
-			<texPath>Things/Item/Chunk/ChunkStone</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
-			<color>(90,90,90)</color>
-		</graphicData>
-		<butcherProducts>
-			<BlocksSlate>20</BlocksSlate>
-		</butcherProducts>
-		<stuffProps>
-			<color>(90,90,90)</color>
-			<stuffAdjective>slate</stuffAdjective>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="ChunkBase">
-		<defName>ChunkMarble</defName>
-		<label>marble chunk</label>
-		<graphicData>
-			<texPath>Things/Item/Chunk/ChunkStone</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
-			<color>(132,135,132)</color>
-		</graphicData>
-		<butcherProducts>
-			<BlocksMarble>20</BlocksMarble>
-		</butcherProducts>
-		<stuffProps>
-			<color>(132,135,132)</color>
-			<stuffAdjective>marble</stuffAdjective>
-		</stuffProps>
-	</ThingDef>
-
-
-	<!--===================== Stone Blocks =====================-->
-
-
-	<ThingDef Name="StoneBlocksBase" ParentName="ResourceBase"  Abstract="True">
-		<description>Blocks of stone. Mostly useful for building long-lasting, simple structures.</description>
-		<graphicData>
-			<texPath>Things/Item/Resource/StoneBlocks</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<soundInteract>Stone_Drop</soundInteract>
-		<soundDrop>Stone_Drop</soundDrop>
-		<useHitPoints>false</useHitPoints>
-		<statBases>
-			<BluntDamageMultiplier>1.2</BluntDamageMultiplier>
 		</statBases>
 		<thingCategories>
-			<li>StoneBlocks</li>
-		</thingCategories>
-		<stuffProps>
-			<categories>
-				<li>Stony</li>
-			</categories>
-			<appearance>Bricks</appearance>
-			<soundImpactStuff>BulletImpactGround</soundImpactStuff>
-			<soundMeleeHitSharp>MeleeHit_Stone</soundMeleeHitSharp>
-			<soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
-			<statOffsets>
-				<Beauty>2</Beauty>
-			</statOffsets>
-			<statFactors>
-				<Flammability>0</Flammability>
-				<MaxHitPoints>1.5</MaxHitPoints>
-				<WorkToMake>2.5</WorkToMake>
-				<MarketValue>0.5</MarketValue>
-				<Comfort>0.5</Comfort>
-				<Beauty>0.8</Beauty>
-				<DoorOpenSpeed>0.5</DoorOpenSpeed>
-				<MeleeWeapon_Cooldown>1.2</MeleeWeapon_Cooldown>
-				<TrapMeleeDamage>1.5</TrapMeleeDamage>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>	
-
-	<ThingDef ParentName="StoneBlocksBase">
-		<defName>BlocksSandstone</defName>
-		<label>sandstone blocks</label>
-		<description>Blocks of solid sandstone. Sandstone is a relatively soft rock and chips easily.</description>
-		<graphicData>
-			<color>(126,104,94)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.0</MarketValue>
-			<SharpDamageMultiplier>0.4</SharpDamageMultiplier>
-		</statBases>
-		<stuffProps>
-			<color>(126,104,94)</color>
-			<stuffAdjective>sandstone</stuffAdjective>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="StoneBlocksBase">
-		<defName>BlocksLimestone</defName>
-		<label>limestone blocks</label>
-		<description>Blocks of solid limestone.</description>
-		<graphicData>
-			<color>(158,153,135)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.4</MarketValue>
-			<SharpDamageMultiplier>0.6</SharpDamageMultiplier>
-		</statBases>
-		<stuffProps>
-			<color>(158,153,135)</color>
-			<stuffAdjective>limestone</stuffAdjective>
-			<statFactors>
-				<MarketValue>0.6</MarketValue>
-				<MaxHitPoints>1.6</MaxHitPoints>
-				<Beauty>1</Beauty>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="StoneBlocksBase">
-		<defName>BlocksGranite</defName>
-		<label>granite blocks</label>
-		<description>Blocks of solid granite. Granite is a very hard stone.</description>
-		<graphicData>
-			<color>(105,95,97)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.4</MarketValue>
-			<SharpDamageMultiplier>0.7</SharpDamageMultiplier>
-		</statBases>
-		<stuffProps>
-			<color>(105,95,97)</color>
-			<stuffAdjective>granite</stuffAdjective>
-			<statFactors>
-				<MarketValue>0.6</MarketValue>
-				<MaxHitPoints>1.8</MaxHitPoints>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="StoneBlocksBase">
-		<defName>BlocksSlate</defName>
-		<label>slate blocks</label>
-		<description>Blocks of solid slate. A dull-looking rock that chips easily.</description>
-		<graphicData>
-			<color>(70,70,70)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.0</MarketValue>
-			<SharpDamageMultiplier>0.6</SharpDamageMultiplier>
-		</statBases>
-		<stuffProps>
-			<color>(70,70,70)</color>
-			<stuffAdjective>slate</stuffAdjective>
-			<statFactors>
-				<WorkToMake>1.5</WorkToMake>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="StoneBlocksBase">
-		<defName>BlocksMarble</defName>
-		<label>marble blocks</label>
-		<description>Blocks of solid marble. Marble is a soft, beautiful stone, known for being easy to sculpt.</description>
-		<graphicData>
-			<color>(132,135,132)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.8</MarketValue>
-		</statBases>
-		<stuffProps>
-			<color>(132,135,132)</color>
-			<stuffAdjective>marble</stuffAdjective>
-			<statOffsets>
-				<Beauty>3</Beauty>
-			</statOffsets>
-			<statFactors>
-				<Beauty>1.5</Beauty>
-				<MarketValue>0.8</MarketValue>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
-
-	<!--===================== Bricks =====================-->
-
-
-	<ThingDef ParentName="ResourceBase" Name="BricksBase" Abstract="True">
-		<description>Bricks. Mostly useful for building long-lasting, simple structures.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/Bricks</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<soundInteract>Stone_Drop</soundInteract>
-		<soundDrop>Stone_Drop</soundDrop>
-		<useHitPoints>false</useHitPoints>
-		<statBases>
-			<BluntDamageMultiplier>1.2</BluntDamageMultiplier>
-		</statBases>
-		<thingCategories>
-			<li>Bricks</li>
+			<li>ResourcesRefined</li>
 		</thingCategories>
 	</ThingDef>
 
-	<ThingDef ParentName="BricksBase" Name="StuffBricksBase" Abstract="True">
-		<stuffProps>
-			<categories>
-				<li>Bricky</li>
-			</categories>
-			<appearance>Bricks</appearance>
-			<soundImpactStuff>BulletImpactGround</soundImpactStuff>
-			<soundMeleeHitSharp>MeleeHit_Stone</soundMeleeHitSharp>
-			<soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
-			<statFactors>
-				<Flammability>0</Flammability>
-				<MaxHitPoints>1</MaxHitPoints>
-				<WorkToMake>2.5</WorkToMake>
-				<Comfort>0.35</Comfort>
-				<Beauty>1</Beauty>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceBase" Name="ClumpsBase" Abstract="True">
-		<description>Ground clumps.</description>
+	<ThingDef ParentName="ResourceBlockClay">
+		<defName>BlockAdobe</defName>
+		<label>adobe block</label>
+		<description>A fired adobe block. Can be used for contruction</description>
 		<graphicData>
-			<texPath>Things/Items/Resources/Clumps</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<color>(127,106,0)</color>
 		</graphicData>
-		<soundInteract>Stone_Drop</soundInteract>
-		<soundDrop>Stone_Drop</soundDrop>
-		<useHitPoints>false</useHitPoints>
-		<thingCategories>
-			<li>ResourcesRaw</li>
-		</thingCategories>
-		<tradeability>Never</tradeability>
 	</ThingDef>
 
-	<ThingDef ParentName="ClumpsBase">
-		<defName>Mud</defName>
-		<label>mud</label>
-		<description>Clumps of mud, a very soft raw resource which can be dried and fired. Hay or similar plant fibres can be added to increase drying rate.</description>
+	<ThingDef ParentName="ResourceBlockClay">
+		<defName>Brick</defName>
+		<label>brick</label>
+		<description>A simple red brick. Can be used for contruction</description>
 		<graphicData>
-			<color>(69,54,41)</color>
+			<color>(127,51,0)</color>
 		</graphicData>
-		<statBases>
-			<MarketValue>0.05</MarketValue>
-		</statBases>
-		<comps>
-			<li Class="RA.CompProperties_Dryable">
-				<daysToDry>10.5</daysToDry>
-				<dryProducts>
-					<li>
-						<defName>Mudbricks</defName>
-					</li>
-				</dryProducts>
-				<dryTemperature>
-					<min>15</min>
-					<max>40</max>
-				</dryTemperature>
-			</li>
-		</comps>
 	</ThingDef>
-
-	<ThingDef ParentName="ClumpsBase">
-		<defName>Clay</defName>
-		<label>clay</label>
-		<description>Clumps of clay, a very soft resource used in pottery.</description>
-		<graphicData>
-			<color>(134,116,92)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>1</MarketValue>
-		</statBases>
-	</ThingDef>
-
-	<ThingDef ParentName="ClumpsBase">
-		<defName>BricksAdobe</defName>
-		<label>raw adobe bricks</label>
-		<description>Clumps of mud mixed with hay. They dry faster than mud clumps due to the addition of dry plant fibres.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/Clumps_Adobe</texPath>
-			<color>(69,60,41)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>0.15</MarketValue>
-		</statBases>
-		<comps>
-			<li Class="RA.CompProperties_Dryable">
-				<daysToDry>7</daysToDry>
-				<dryProducts>
-					<li>
-						<defName>Mudbricks</defName>
-					</li>
-				</dryProducts>
-				<dryTemperature>
-					<min>8</min>
-					<max>32</max>
-				</dryTemperature>
-			</li>
-		</comps>
-	</ThingDef>
-
-	<ThingDef ParentName="StuffBricksBase">
-		<defName>Mudbricks</defName>
-		<label>mudbricks</label>
-		<description>Dried bricks of mud used in construction. They are less fragile than mud due to a lengthy drying process and they can be fired in a kiln.</description>
-		<graphicData>
-			<color>(69,54,41)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>0.35</MarketValue>
-		</statBases>
-		<stuffProps>
-			<color>(69,54,41)</color>
-			<stuffAdjective>mudbrick</stuffAdjective>
-			<statFactors>
-				<MaxHitPoints>0.75</MaxHitPoints>
-				<Beauty>0.75</Beauty>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="StuffBricksBase">
-		<defName>BricksMudFired</defName>
-		<label>fired mud bricks</label>
-		<description>Fired bricks of mud used in construction.</description>
-		<graphicData>
-			<color>(93,63,37)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>0.8</MarketValue>
-		</statBases>
-		<stuffProps>
-			<color>(93,63,37)</color>
-			<stuffAdjective>fired mud brick</stuffAdjective>
-			<statOffsets>
-				<Beauty>1</Beauty>
-			</statOffsets>
-			<statFactors>
-				<WorkToMake>2.1</WorkToMake>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
 
 </Defs>

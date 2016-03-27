@@ -2,19 +2,19 @@
 <RecipeDefs>
 
 	<!-- 
-	workAmount - number of ticks to complete the recipe at normal speed and efficiency (60 t/s)
-	fixedIngredientFilter - determine ingridiens set to be chosen from
-	
-	defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others)
-	IMPORTANT!: used as a special case to disallow stuff types of the result products
+	- workAmount - should never be used (cause not affected by stuff). specify WorkToMake baseStat in product def instead
+	- specialProducts - Butchery\Smelted return from processed thing
+	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
+	- fixedIngredientFilter - determine ingridient set to choose from	
+	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
 	-->
 
-	<RecipeDef Name="MakeClothing_Base" Abstract="True">
+	<RecipeDef Name="Clothing" Abstract="True">
 		<workSpeedStat>TailoringSpeed</workSpeedStat>
 		<workSkill>Crafting</workSkill>
 		<effectWorking>Tailor</effectWorking>
 		<soundWorking>Recipe_Tailor</soundWorking>
-		<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</RecipeDef >
 
@@ -22,22 +22,20 @@
 	<!-- ========================= Neolithic =========================-->
 
 
-	<RecipeDef Name="MakeClothing_Neolithic" ParentName="MakeClothing_Base" Abstract="True">
+	<RecipeDef Name="ClothingNeolithic" ParentName="Clothing" Abstract="True">
 		<fixedIngredientFilter>
 			<categories>
 				<li>Leathers</li>
 			</categories>
 		</fixedIngredientFilter>
-		<recipeUsers>
-			<li>TannersBench</li>
-		</recipeUsers>
+		<researchPrerequisite>Tannery</researchPrerequisite>
 	</RecipeDef >
 
 
-	<RecipeDef  ParentName="MakeClothing_Neolithic">
-		<defName>Make_Loincloth</defName>
+	<RecipeDef  ParentName="ClothingNeolithic">
+		<defName>MakeLoincloth</defName>
 		<label>make loincloth</label>
-		<description>Makes a loincloth.</description>
+		<description>Makes a loincloth. Cheapest way to cover your nudity.</description>
 		<products>
 			<Loincloth>1</Loincloth>
 		</products>
@@ -48,15 +46,15 @@
 						<li>Leathers</li>
 					</categories>
 				</filter>
-				<count>5</count>
+				<count>15</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
 	
-	<RecipeDef  ParentName="MakeClothing_Neolithic">
-		<defName>Make_Tribalwear</defName>
+	<RecipeDef  ParentName="ClothingNeolithic">
+		<defName>MakeTribalwear</defName>
 		<label>make tribalwear</label>
-		<description>Makes a tribalwear.</description>
+		<description>Makes a tribalwear. Most common clothing among local tribies.</description>
 		<products>
 			<Tribalwear>1</Tribalwear>
 		</products>
@@ -67,15 +65,34 @@
 						<li>Leathers</li>
 					</categories>
 				</filter>
-				<count>5</count>
+				<count>35</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
 	
-	<RecipeDef  ParentName="MakeClothing_Neolithic">
-		<defName>Make_Hat</defName>
-		<label>make hat</label>
-		<description>Makes a hat.</description>
+	<RecipeDef  ParentName="ClothingNeolithic">
+		<defName>MakeHatBaggy</defName>
+		<label>make baggy hat</label>
+		<description>Makes baggy hat.</description>
+		<products>
+			<HatBaggy>1</HatBaggy>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+				</filter>
+				<count>7</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+	
+	<RecipeDef  ParentName="ClothingNeolithic">
+		<defName>MakeCape</defName>
+		<label>make cape</label>
+		<description>Makes a cape. Provides additional protection against rain and strong wind.</description>
 		<products>
 			<Cape>1</Cape>
 		</products>
@@ -86,10 +103,9 @@
 						<li>Leathers</li>
 					</categories>
 				</filter>
-				<count>5</count>
+				<count>15</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
-
 
 </RecipeDefs>

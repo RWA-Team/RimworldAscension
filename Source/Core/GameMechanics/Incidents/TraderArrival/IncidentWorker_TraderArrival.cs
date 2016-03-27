@@ -52,7 +52,9 @@ namespace RA
             
             var label = "LabelLetterTrader".Translate();
             Find.LetterStack.ReceiveLetter(label, str, LetterType.Good, merchant);
-            var stateGraph = MerchantGroupAI.MainGraph(tradingPost);
+            var stateGraph = Graph_MerchantGroup.MainGraph(tradingPost);
+            //var stateGraph = Graph_SnatcherGroup.MainGraph();
+            // each brain instance automatically added to executed groups list in brain .ctor
             BrainMaker.MakeNewBrain(parms.faction, stateGraph, pawns);
             return true;
         }
@@ -67,7 +69,8 @@ namespace RA
             // select faction of trade caravan
             if (parms.faction == null)
             {
-                if (!(from faction in Find.FactionManager.AllFactionsVisible
+                // TODO: AllFactionsVisible
+                if (!(from faction in Find.FactionManager.AllFactions
                       where faction.def != FactionDefOf.Colony && !faction.HostileTo(Faction.OfColony) && faction.def.techLevel <= FactionDefOf.Colony.techLevel
                       select faction).TryRandomElement(out parms.faction))
                 {

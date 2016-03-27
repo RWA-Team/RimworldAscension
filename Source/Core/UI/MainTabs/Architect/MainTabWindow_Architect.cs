@@ -9,12 +9,12 @@ namespace RA
 {
     public class MainTabWindow_Architect : MainTabWindow
     {
-        public const float WinWidth = 200f;
-
-        public const float ButHeight = 32f;
+        public const float WinWidth = 240f; // 200f
+        public const float BuildButtonHeight = 30f;
+        public const float DesignationButtonHeight = 50f;
+        public const float TextHeight = 25f;
 
         public List<ArchitectCategoryTab> desPanelsCached;
-
         public ArchitectCategoryTab selectedDesPanel;
 
         public float WinHeight
@@ -25,7 +25,8 @@ namespace RA
                 {
                     CacheDesPanels();
                 }
-                return Mathf.CeilToInt(desPanelsCached.Count / 2f) * 32f;
+                return Mathf.CeilToInt(desPanelsCached.Count/2f)*BuildButtonHeight + DesignationButtonHeight +
+                       TextHeight*2;
             }
         }
 
@@ -35,7 +36,6 @@ namespace RA
 
         public MainTabWindow_Architect()
         {
-
             CacheDesPanels();
         }
 
@@ -45,42 +45,74 @@ namespace RA
             selectedDesPanel?.DesignationTabOnGUI();
         }
 
-        public override void DoWindowContents(Rect inRect)
+        public override void DoWindowContents(Rect innerRect)
         {
-            base.DoWindowContents(inRect);
+            base.DoWindowContents(innerRect);
+
+            var columnWidth = innerRect.width/2f;
+
+            // burning fillable bar
             Text.Font = GameFont.Small;
-            var num = inRect.width / 2f;
-            var num2 = 0f;
-            var num3 = 0f;
-            foreach (ArchitectCategoryTab tab in desPanelsCached)
+            var designationsLabelRect = new Rect(0, 0f, innerRect.width, TextHeight);
+            Widgets.Label(designationsLabelRect, "Designations:");
+
+            // orders + zones designations
+            Text.Font = GameFont.Medium;
+            var designationsRect = new Rect(0f, designationsLabelRect.yMax, innerRect.width, DesignationButtonHeight);
+            GUI.BeginGroup(designationsRect);
             {
-                var rect = new Rect(num2 * num, num3 * 32f, num, 32f);
-                rect.height += 1f;
-                if (num2 == 0f)
+                for (int i = 0; i < 2; i++)
                 {
-                    rect.width += 1f;
-                }
-                if (WidgetsSubtle.ButtonSubtle(rect, tab.def.LabelCap, 0f, 8f, SoundDefOf.MouseoverButtonCategory))
-                {
-                    ClickedCategory(tab);
-                }
-                num2 += 1f;
-                if (num2 > 1f)
-                {
-                    num2 = 0f;
-                    num3 += 1f;
+                    var tab = desPanelsCached[i];
+                    var columnIndex = i % 2;
+
+                    var buttonRect = new Rect(columnIndex*columnWidth, 0, columnWidth, DesignationButtonHeight);
+
+                    // draw buttons
+                    if (WidgetsSubtle.ButtonSubtle(buttonRect, tab.def.LabelCap, 0f, 8f,
+                        SoundDefOf.MouseoverButtonCategory))
+                    {
+                        ClickedCategory(tab);
+                    }
                 }
             }
+            GUI.EndGroup();
+
+            // build designations
+            Text.Font = GameFont.Small;
+            var buttonsRect = new Rect(0f, designationsRect.yMax, innerRect.width, innerRect.height - designationsLabelRect.yMax);
+            GUI.BeginGroup(buttonsRect);
+            {
+                for (int i = 2; i < desPanelsCached.Count; i++)
+                {
+                    var tab = desPanelsCached[i];
+                    var columnIndex = i % 2;
+                    var rowIndex = i / 2;
+
+                    var buttonRect = new Rect(columnIndex * columnWidth, rowIndex * BuildButtonHeight, columnWidth,
+                        BuildButtonHeight);
+
+                    // draw buttons
+                    if (WidgetsSubtle.ButtonSubtle(buttonRect, tab.def.LabelCap, 0f, 8f,
+                        SoundDefOf.MouseoverButtonCategory))
+                    {
+                        ClickedCategory(tab);
+                    }
+                }
+            }
+            GUI.EndGroup();
         }
 
+        // determines the DesignationCategories to show in the menu list
         public void CacheDesPanels()
         {
             desPanelsCached = new List<ArchitectCategoryTab>();
-            foreach (var current in from dc in DefDatabase<DesignationCategoryDef>.AllDefs
-                                                       orderby dc.order descending
-                                                       select dc)
+            foreach (
+                var category in
+                    DefDatabase<DesignationCategoryDef>.AllDefs.Where(cat => cat.resolvedDesignators.Count > 2)
+                        .OrderByDescending(des => des.order))
             {
-                desPanelsCached.Add(new ArchitectCategoryTab(current));
+                desPanelsCached.Add(new ArchitectCategoryTab(category));
             }
         }
 

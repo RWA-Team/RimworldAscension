@@ -199,7 +199,7 @@ namespace RA
             var num2 = scrollPosition.y - 30f;
             var num3 = scrollPosition.y + mainRect.height;
             var num4 = 0;
-            foreach (Tradeable tradeable in cachedTradeables)
+            foreach (var tradeable in cachedTradeables)
             {
                 if (num > num2 && num < num3)
                 {

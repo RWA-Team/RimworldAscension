@@ -4,6 +4,7 @@
 	<!-- 
 	defaultOutfitTags - used to determine gear in preset outfit sets available in the outfits menu
 	equippedStatOffsets - applies offset to the pawns stat when worn
+	worngraphicPath - used to fraw apparel texture on the pawn. shows nothing if not set
 	 -->
 
 	<ThingDef Name="Clothing_Base" Abstract="True">
@@ -40,6 +41,71 @@
 				<compClass>CompQuality</compClass>
 			</li>
 		</comps>
+	</ThingDef>
+
+
+	<!--======================= Special =======================-->
+	
+	
+	<ThingDef Name="Clothing_Slave" ParentName="Clothing_Base" Abstract="True">
+		<statBases>
+			<ArmorRating_Blunt>0.03</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.03</ArmorRating_Sharp>
+			<Insulation_Cold>-5</Insulation_Cold>
+		</statBases>
+		<colorGenerator Class="ColorGenerator_Options">
+			<options>
+				<li>
+					<only>RGBA(1,0.5,0,2)</only>
+				</li>
+			</options>
+		</colorGenerator>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Clothing_Slave">
+		<defName>SlaveShirt</defName>
+		<label>slave shirt</label>
+		<description>An orange shirt, used by most of the prisons to keep track of prisoners.</description>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</worngraphicPath>
+			<layers>
+				<li>OnSkin</li>
+			</layers>
+			<tags>
+				<li>Starting</li>
+			</tags>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="Clothing_Slave">
+		<defName>SlavePants</defName>
+		<label>slave pants</label>
+		<description>An orange pants, used by most of the prisons to keep track of prisoners.</description>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/Various/Pants_OnMap</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<bodyPartGroups>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<layers>
+				<li>OnSkin</li>
+			</layers>
+			<tags>
+				<li>Starting</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 
@@ -181,8 +247,8 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Clothing_Neolithic">
-		<defName>Hat</defName>
-		<label>hat</label>
+		<defName>HatBaggy</defName>
+		<label>baggy hat</label>
 		<description>A hat.</description>
 		<graphicData>
 			<texPath>Things/Items/Apparels/Hat/Hat</texPath>

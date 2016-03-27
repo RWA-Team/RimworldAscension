@@ -141,7 +141,7 @@ namespace RA
         // Default requirement
         public CompContainer_Properties()
         {
-            compClass = typeof(CompContainer_Properties);
+            compClass = typeof(CompContainer);
         }
     }
 

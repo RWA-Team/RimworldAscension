@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -8,16 +7,17 @@ namespace RA
 {
     public class RA_Faction : Faction
     {
+        // allow AffectGoodwillWith with hidden factions; make factions hostile when relations are negative
         public new void AffectGoodwillWith(Faction other, float goodwillChange)
         {
             if (goodwillChange > 0f && !def.appreciative)
             {
                 return;
             }
-            float value = GoodwillWith(other) + goodwillChange;
-            FactionRelation factionRelation = RelationWith(other);
+            var value = GoodwillWith(other) + goodwillChange;
+            var factionRelation = RelationWith(other);
             factionRelation.goodwill = Mathf.Clamp(value, -100f, 100f);
-            if (!this.HostileTo(other) && GoodwillWith(other) < -80f)
+            if (!this.HostileTo(other) && GoodwillWith(other) < 0f)
             {
                 SetHostileTo(other, true);
                 if (Game.Mode == GameMode.MapPlaying && Find.TickManager.TicksGame > 100 && other == OfColony)
@@ -35,6 +35,44 @@ namespace RA
             }
         }
 
+        public new void Notify_MemberTookDamage(Pawn member, DamageInfo dinfo)
+        {
+            if (dinfo.Instigator?.Faction == null || !dinfo.Def.externalViolence || this.HostileTo(dinfo.Instigator.Faction))
+            {
+                return;
+            }
+            if (member.Broken && member.BrokenStateDef.isAggro)
+            {
+                return;
+            }
+            var pawn = dinfo.Instigator as Pawn;
+            if (pawn != null && pawn.Broken && pawn.BrokenStateDef == BrokenStateDefOf.Berserk)
+            {
+                return;
+            }
+            float num = Mathf.Min(100, dinfo.Amount);
+            var goodwillChange = -1.3f * num;
+            if (dinfo.Instigator.Faction == OfColony && this != OfColony)
+            {
+                AffectGoodwillWith(dinfo.Instigator.Faction, goodwillChange);
+            }
+        }
+
+        public new void FactionTick()
+        {
+            if (Find.TickManager.TicksGame % 1001 == 0 && this != OfColony)
+            {
+                if (ColonyGoodwill < def.naturalColonyGoodwill.min)
+                {
+                    AffectGoodwillWith(OfColony, def.goodwillDailyGain * 0f);
+                }
+                else if (ColonyGoodwill > def.naturalColonyGoodwill.max)
+                {
+                    AffectGoodwillWith(OfColony, -def.goodwillDailyFall * 0f);
+                }
+            }
+        }
+
         public new void Notify_MemberCaptured(Pawn member, Faction violator)
         {
             if (violator == this || this.HostileTo(violator))
@@ -48,12 +86,12 @@ namespace RA
 
         public new void SetHostileTo(Faction other, bool hostile)
         {
-            FactionRelation factionRelation = RelationWith(other);
+            var factionRelation = RelationWith(other);
             if (hostile)
             {
                 if (Game.Mode == GameMode.MapPlaying)
                 {
-                    foreach (Pawn current in Find.ListerPawns.PawnsInFaction(this).ToList())
+                    foreach (var current in Find.ListerPawns.PawnsInFaction(this).ToList())
                     {
                         if (current.HostFaction == other)
                         {
@@ -82,10 +120,10 @@ namespace RA
             }
             if (Game.Mode == GameMode.MapPlaying)
             {
-                List<Pawn> list = (from pa in Find.ListerPawns.AllPawns
+                var list = (from pa in Find.ListerPawns.AllPawns
                                    where pa.Faction == this || pa.Faction == other
                                    select pa).ToList();
-                foreach (Pawn current2 in list)
+                foreach (var current2 in list)
                 {
                     Find.ListerPawns.UpdateRegistryForPawn(current2);
                 }

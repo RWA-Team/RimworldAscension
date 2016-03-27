@@ -23,7 +23,7 @@ namespace RA
             if (closestBurner != null)
             {
                 var availableFuel = from fuel in Find.ListerThings.ThingsInGroup(ThingRequestGroup.HaulableEver)
-                                                   where fuel.GetStatValue(StatDef.Named("BurnDuration")) > 0f && HaulAIUtility.PawnCanAutomaticallyHaul(pawn, fuel) && closestBurner.filterFuelCurrent.Allows(fuel)
+                                                   where fuel.GetStatValue(StatDef.Named("BurnDurationHours")) > 0f && HaulAIUtility.PawnCanAutomaticallyHaul(pawn, fuel) && closestBurner.filterFuelCurrent.Allows(fuel)
                                                    select fuel;
 
                 if (availableFuel.Any())

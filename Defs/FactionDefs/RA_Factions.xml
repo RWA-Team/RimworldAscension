@@ -10,21 +10,19 @@
 		<label>colony</label>
 		<description>Your own community.</description>
 		<pawnsPlural>colonists</pawnsPlural>
-		<factionNameMaker>NamerFactionTribal</factionNameMaker>
+		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
 		<techLevel>Neolithic</techLevel>
-		<backstoryCategory>Tribal</backstoryCategory>
+		<backstoryCategory>Civil</backstoryCategory>
 		<hairTags>
 			<li>Tribal</li>
+			<li>Urban</li>
+			<li>Rural</li>
+			<li>Punk</li>
 		</hairTags>
-		<apparelStuffFilter>
-			<thingDefs>
-				<li>Deer_Leather</li>
-			</thingDefs>
-		</apparelStuffFilter>
 		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
 		<homeIconColor>(255,220,84)</homeIconColor>
 	</FactionDef>
-	
+
 
 	<FactionDef>
 		<defName>Tribe</defName>
@@ -83,6 +81,6 @@
 		<homeIconColor>(50,200,50)</homeIconColor>
 		<hidden>true</hidden>
 	</FactionDef>
-	
+
 
 </FactionDefs>

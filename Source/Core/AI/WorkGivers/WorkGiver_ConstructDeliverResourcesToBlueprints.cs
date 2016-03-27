@@ -15,7 +15,7 @@ namespace RA
             {
                 return null;
             }
-            var blueprint = t as Blueprint;
+            var blueprint = t as RimWorld.Blueprint;
             if (blueprint == null)
             {
                 return null;
@@ -60,7 +60,7 @@ namespace RA
             return job3;
         }
 
-        public Job DeconstructExistingEdificeJob(Pawn pawn, Blueprint blue)
+        public Job DeconstructExistingEdificeJob(Pawn pawn, RimWorld.Blueprint blue)
         {
             if (!blue.def.entityDefToBuild.IsEdifice())
             {
@@ -107,7 +107,7 @@ namespace RA
             {
                 return null;
             }
-            if (c is Blueprint && c.MaterialsNeeded().Count == 0)
+            if (c is RimWorld.Blueprint && c.MaterialsNeeded().Count == 0)
             {
                 return new Job(JobDefOf.PlaceNoCostFrame)
                 {

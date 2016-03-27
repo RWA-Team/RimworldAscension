@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
+	<!-- 
+	fillPercent - determne cover multiplier vs projectiles
+	castEdgeShadows - shadow aura around building
+	staticSunShadowHeight - solid square shadow with set length
+	 -->
 
 	<ThingDef Name="BuildingBase" Abstract="True">
 		<category>Building</category>
@@ -11,13 +16,13 @@
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
-		<designationCategory>Security</designationCategory>
-		<researchPrerequisite>SurvivalGuideI</researchPrerequisite>
+		<designationCategory>Defence</designationCategory>
+		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
-	
+
 
 	<!--==================== Traps ======================== -->
-	
+
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>TrapDeadfall</defName>
@@ -40,9 +45,11 @@
 		</statBases>
 		<description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
 		<stuffCategories>
-			<li>Woody</li>
+			<li>Wood</li>
+			<li>StoneBlock</li>
+			<li>Bone</li>
 		</stuffCategories>
-		<costStuffCount>70</costStuffCount>
+		<costStuffCount>20</costStuffCount>
 		<building>
 			<isTrap>true</isTrap>
 			<trapDamageCategory>Sharp</trapDamageCategory>
@@ -53,6 +60,5 @@
 			</trapUnarmedGraphicData>
 		</building>
 	</ThingDef>
-
 
 </ThingDefs>

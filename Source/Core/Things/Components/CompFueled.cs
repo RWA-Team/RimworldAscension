@@ -21,7 +21,7 @@ namespace RA
         // Default requirement
         public CompFueled_Properties()
         {
-            compClass = typeof(CompFueled_Properties);
+            compClass = typeof(CompFueled);
         }
     }
 }

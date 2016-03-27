@@ -46,9 +46,9 @@
 	</JobDef>
 
 	<JobDef>
-		<defName>UseSurvivalGuide</defName>
+		<defName>StudyBlueprint</defName>
 		<driverClass>JobDriver_UseItem</driverClass>
-		<reportString>Using TargetA.</reportString>
+		<reportString>Study TargetA.</reportString>
 	</JobDef>
 
 	<JobDef>
@@ -94,6 +94,16 @@
 		<driverClass>JobDriver_PlantCut</driverClass>
 		<reportString>Cutting TargetA.</reportString>
 		<alwaysShowWeapon>true</alwaysShowWeapon>
+	</JobDef>
+
+
+	<!--=================== AI jobs =====================-->
+
+
+	<JobDef>
+		<defName>SearchAndStealTargets</defName>
+		<driverClass>RA.JobDriver_SearchAndStealTargets</driverClass>
+		<reportString>Trying to steal something.</reportString>
 	</JobDef>
 
 

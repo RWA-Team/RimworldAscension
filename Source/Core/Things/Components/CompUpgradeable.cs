@@ -88,7 +88,7 @@ namespace RA
         // Default requirement
         public CompUpgradeable_Properties()
         {
-            compClass = typeof(CompUpgradeable_Properties);
+            compClass = typeof(CompUpgradeable);
         }
     }
 }

@@ -107,7 +107,7 @@
 
 
 	<ThingDef ParentName="BaseRangedWeapon">
-		<defName>Composite_Bow</defName>
+		<defName>BowComposite</defName>
 		<label>bow</label>
 		<description>A advanced version of the bow, strengthened with some bone plates.</description>
 		<graphicData>
@@ -156,7 +156,7 @@
 
 
 	<ThingDef ParentName="BaseRangedWeapon">
-		<defName>Thrumbo_Bow</defName>
+		<defName>BowThrumbo</defName>
 		<label>thrumbo horn bow</label>
 		<description>An exotiс thrumbo horn bow. Unique properties of the thrumbo horn allow it to shoot arrows with immence force.</description>
 		<graphicData>

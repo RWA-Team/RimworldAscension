@@ -52,7 +52,7 @@ namespace RA
                 var cell = sg.CellsList[cellCycleIndices[groupInd] % sg.CellsList.Count];
 
                 var thingList = cell.GetThingList();
-                foreach (Thing thing in thingList)
+                foreach (var thing in thingList)
                 {
                     if (thing.def.EverHaulable)
                     {
@@ -86,7 +86,7 @@ namespace RA
         public static void RecalcAllInCell(IntVec3 c)
         {
             var list = c.GetThingList();
-            foreach (Thing thing in list)
+            foreach (var thing in list)
             {
                 CheckIfHaulable(thing);
             }

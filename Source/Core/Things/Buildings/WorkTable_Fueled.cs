@@ -70,7 +70,7 @@ namespace RA
             filterFuelPossible.SetDisallowAll();
             filterFuelPossible.allowedQualitiesConfigurable = false;
             filterFuelPossible.allowedHitPointsConfigurable = false;
-            foreach (var thingDef in DefDatabase<ThingDef>.AllDefs.Where(def => !def.statBases.NullOrEmpty() && def.statBases.Exists(stat => stat.stat.defName == "MaxBurningTemp" && stat.value > 0)))
+            foreach (var thingDef in DefDatabase<ThingDef>.AllDefs.Where(def => !def.statBases.NullOrEmpty() && def.statBases.Exists(stat => stat.stat.defName == "MaxBurningTempCelsius" && stat.value > 0)))
             {
                 filterFuelPossible.SetAllow(thingDef, true);
             }
@@ -78,7 +78,7 @@ namespace RA
 
             // fire textures initialize
             var list = ContentFinder<Texture2D>.GetAllInFolder(fireTex_path).ToList();
-            foreach (Texture2D texture in list)
+            foreach (var texture in list)
             {
                 fireGraphicsVariants.Add(GraphicDatabase.Get<Graphic_Single>(fireTex_path + "/" + texture.name, ShaderDatabase.TransparentPostLight, def.Size.ToVector2(), Color.white));
             }
@@ -151,8 +151,8 @@ namespace RA
                     // burn everthing in auto mode and only if necessary in manual mode
                     if (autoConsumeMode || (internalTemp <= compFueled.Properties.operatingTemp && ManuallyOperated))
                     {
-                        currentFuelBurnDuration = (int)fuelContainer[0].GetStatValue(StatDef.Named("BurnDuration"));
-                        currentFuelMaxTemp = fuelContainer[0].GetStatValue(StatDef.Named("MaxBurningTemp"));
+                        currentFuelBurnDuration = (int)fuelContainer[0].GetStatValue(StatDef.Named("BurnDurationHours"))*GenDate.TicksPerHour;
+                        currentFuelMaxTemp = fuelContainer[0].GetStatValue(StatDef.Named("MaxBurningTempCelsius"));
                         if (--fuelContainer[0].stackCount == 0)
                             fuelContainer.Clear();
                     }
@@ -274,7 +274,7 @@ namespace RA
             Scribe_Deep.LookDeep(ref filterFuelCurrent, "filterFuelCurrent");
             Scribe_Values.LookValue(ref autoConsumeMode, "sustainHeatMode");
             Scribe_Values.LookValue(ref fuelStackRefillPercent, "fuelStackRefillPercent");
-            Scribe_Values.LookValue(ref currentFuelBurnDuration, "currentFuelBurnDuration");
+            Scribe_Values.LookValue(ref currentFuelBurnDuration, "currentFuelBurnDurationHours");
             Scribe_Values.LookValue(ref internalTemp, "internalTemp");
             Scribe_Values.LookValue(ref heatPerSecond_fromXML, "heatPerSecond_fromXML");
             Scribe_Values.LookValue(ref glowRadius_fromXML, "glowRadius_fromXML");

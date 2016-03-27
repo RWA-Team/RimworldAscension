@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Plants>
+
+	<!-- 
+	- sowTags - determines where this plant can be grown
+	- harvestTag - determine what designator allows harvesting
+	-->
+
+	<ThingDef Name="Plant" Abstract="True">
+		<category>Plant</category>
+		<thingClass>Plant</thingClass>
+		<altitudeLayer>LowPlant</altitudeLayer>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Flammability>0.8</Flammability>
+			<Beauty>1</Beauty>
+		</statBases>
+		<tickerType>Long</tickerType>
+		<selectable>true</selectable>
+		<neverMultiSelect>True</neverMultiSelect>
+		<drawerType>MapMeshOnly</drawerType>
+		<graphicData>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>CutoutPlant</shaderType>
+		</graphicData>
+		<pathCost>10</pathCost>
+		<ingestible>
+			<preferability>Plant</preferability>
+		</ingestible>
+		<plant>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestDestroys>true</harvestDestroys>
+			<soundHarvesting>Harvest_Standard</soundHarvesting>
+			<soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
+			<shootsSeeds>false</shootsSeeds>
+			<harvestTag>Standard</harvestTag>
+			<sowWork>150</sowWork>
+			<fertilityMin>0.5</fertilityMin>
+			<fertilityFactorGrowthRate>1.0</fertilityFactorGrowthRate>
+			<topWindExposure>0.1</topWindExposure>
+			<visualSizeRange>
+				<min>0.3</min>
+				<max>1.00</max>
+			</visualSizeRange>
+		</plant>
+	</ThingDef>
+	
+	
+	<!-- ============== Hidden (sow tags added via research mods) ============== -->
+
+
+	<ThingDef ParentName="Plant">
+		<defName>PlantCorn</defName>
+		<label>corn plant</label>
+		<description>A large grain plant which produces ears of delicious yellow seeds. Takes a relatively long time to grow, but yields lots of food, takes a long time to spoil, and can be happily eaten raw. Needs fertile soil to grow well.</description>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plant/CornPlant</texPath>
+		</graphicData>
+		<pathCost>15</pathCost>
+		<ingestible>
+			<nutrition>0.30</nutrition>
+		</ingestible>
+		<plant>
+			<harvestedThingDef>RawCorn</harvestedThingDef>
+			<harvestYield>22</harvestYield>
+			<topWindExposure>0.35</topWindExposure>
+			<growDays>13.68</growDays>
+			<fertilityFactorGrowthRate>1.0</fertilityFactorGrowthRate>
+			<visualSizeRange>
+				<min>0.3</min>
+				<max>1.4</max>
+			</visualSizeRange>
+		</plant>
+	</ThingDef>	
+
+	<ThingDef ParentName="Plant">
+		<defName>PlantRice</defName>
+		<label>rice plant</label>
+		<description>A low grain plant that thrives in rich soil and yields food fast, but is not nice to eat uncooked.</description>
+		<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plant/RicePlant</texPath>
+		</graphicData>
+		<ingestible>
+			<nutrition>0.18</nutrition>
+		</ingestible>
+		<plant>
+			<maxMeshCount>4</maxMeshCount>
+			<harvestedThingDef>RawRice</harvestedThingDef>
+			<harvestYield>6</harvestYield>
+			<topWindExposure>0.1</topWindExposure>
+			<growDays>4.89</growDays>
+			<fertilityFactorGrowthRate>1.0</fertilityFactorGrowthRate>
+			<visualSizeRange>
+				<min>0.3</min>
+				<max>0.8</max>
+			</visualSizeRange>
+		</plant>
+	</ThingDef>
+
+</Plants>

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+
+	<!-- 
+	fillPercent - determne cover multiplier vs projectiles
+	castEdgeShadows - shadow aura around building
+	staticSunShadowHeight - solid square shadow with set length
+	 -->
+
+	<ThingDef Name="Building" Abstract="True">
+		<category>Building</category>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+		<designationCategory>Misc</designationCategory>
+<!-- 		<researchPrerequisite>SurvivalGuideI</researchPrerequisite> -->
+	</ThingDef>
+
+
+	<ThingDef ParentName="Building">
+		<defName>Grave</defName>
+		<label>grave</label>
+		<thingClass>Building_Grave</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Misc/GraveEmpty</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
+		<constructEffect>ConstructDirt</constructEffect>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<description>Place the dead in graves to give them a decent final resting place.</description>
+		<size>(1,2)</size>
+		<statBases>
+			<WorkToMake>650</WorkToMake>
+		</statBases>
+		<passability>PassThroughOnly</passability>
+		<building>
+			<isInert>true</isInert>
+			<fullGraveGraphicData>
+				<texPath>Things/Building/Misc/GraveFull</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(3,4)</drawSize>
+			</fullGraveGraphicData>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Corpses</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<filter>
+					<categories>
+						<li>CorpsesHumanlike</li>
+					</categories>
+				</filter>
+			</defaultStorageSettings>
+		</building>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Building">
+		<defName>Dummy</defName>
+		<thingClass>RA.Dummy</thingClass>
+		<label>dummy</label>
+		<description>An abstract representation of a human figure, on which your pawns can practice their melee skills. Pawns will begin training routine if their life needs are fulfilled and they have nothing else to do.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Utility/TrainingStands/Dummy</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+		</graphicData>
+		<altitudeLayer>Waist</altitudeLayer>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<statBases>
+			<WorkToMake>500</WorkToMake>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<passability>Standable</passability>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>0.2</fillPercent>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<costList>
+			<WoodLog>30</WoodLog>
+		</costList>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>30</pathCost>
+		<rotatable>true</rotatable>
+		<inspectorTabs>
+			<li>RA.ITab_AllowedColonists</li>
+		</inspectorTabs>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Building">
+		<defName>Target</defName>
+		<thingClass>RA.Target</thingClass>
+		<label>target</label>
+		<description>Classic shooting target, on which your pawns can practice their shooting skills. Pawns will begin training routine if their life needs are fulfilled and they have nothing else to do.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Utility/TrainingStands/Target</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<altitudeLayer>Waist</altitudeLayer>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<statBases>
+			<WorkToMake>500</WorkToMake>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<passability>Standable</passability>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>0.2</fillPercent>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<costList>
+			<WoodLog>30</WoodLog>
+		</costList>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>30</pathCost>
+		<rotatable>true</rotatable>
+		<inspectorTabs>
+			<li>RA.ITab_AllowedColonists</li>
+		</inspectorTabs>
+	</ThingDef>
+	
+	
+	<ThingDef ParentName="Building">
+		<defName>TradingPost</defName>
+		<label>trading post</label>
+		<thingClass>RA.Building_TradingPost</thingClass>
+		<graphicData>
+			<texPath>Things/Buildings/Utility/TradingPost/TradingPost_Free</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(3,3)</drawSize>
+		</graphicData>
+		<altitudeLayer>BuildingTall</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>150</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToMake>2700</WorkToMake>
+			<Flammability>1.0</Flammability>
+			<Beauty>10</Beauty>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<description>A small tent with hundreds of trinkets to be sold.</description>
+		<size>(3,3)</size>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>1.0</fillPercent>
+		<costList>
+			<WoodLog>50</WoodLog>
+		</costList>
+		<combatTargetBuilding>true</combatTargetBuilding>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<specialDisplayRadius>10</specialDisplayRadius>
+	</ThingDef>
+
+
+</Buildings>
