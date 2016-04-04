@@ -59,7 +59,6 @@ namespace RA
                 tickAction = () =>
                 {
                     // NOTE: needed?
-                    Log.Message("ticks: " + ticks);
                     ticks--;
                 }
             };

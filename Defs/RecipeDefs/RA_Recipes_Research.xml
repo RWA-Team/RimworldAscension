@@ -109,7 +109,7 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="Research">
-		<defName>BoneCraving</defName>
+		<defName>BoneCarving</defName>
 		<effectWorking>CutStone</effectWorking>
 		<soundWorking>Recipe_MakeWoodPlanks_Hand</soundWorking>
 		<ingredients>

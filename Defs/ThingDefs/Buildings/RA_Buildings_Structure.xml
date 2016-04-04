@@ -129,6 +129,7 @@
 		<description>A log wall. Capable of holding up a roof.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Structure/Walls/WallLog/WallLog_Atlas</texPath>
+			<color>(216,220,216)</color>
 		</graphicData>
 		<blueprintGraphicData>
 			<texPath>Things/Buildings/Structure/Walls/WallLog/WallLog_Atlas</texPath>
@@ -150,7 +151,7 @@
 		<blueprintGraphicData>
 			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Atlas</texPath>
 		</blueprintGraphicData>
-		<uiIconPath>Missing</uiIconPath>
+		<uiIconPath>Things/Buildings/Structure/Walls/Palisade/Palisade_MenuIcon</uiIconPath>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToMake>100</WorkToMake>

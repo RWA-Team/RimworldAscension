@@ -276,7 +276,7 @@ namespace RA
                     {
                         descriptionString.AppendFormat("\t{0} ", ingridient.GetBaseCount());
 
-                        descriptionString.Append(ingridient.GetBaseCount() == 1 ? "sample " : "samples ");
+                        descriptionString.Append(ingridient.GetBaseCount() == 1 ? "sample of " : "samples of ");
 
                         if (!ingridient.filter.categories.NullOrEmpty())
                         {

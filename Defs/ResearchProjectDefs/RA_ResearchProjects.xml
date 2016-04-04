@@ -16,7 +16,12 @@
 		<defName>StartPack</defName>
 		<prerequisites>
 			<li>StartPack</li>
-		</prerequisites>		
+		</prerequisites>
+		<researchMods>
+			<li>
+				<specialAction>RA.ResearchMods.StartPack</specialAction>
+			</li>
+		</researchMods>
 	</ResearchProjectDef>
 
 

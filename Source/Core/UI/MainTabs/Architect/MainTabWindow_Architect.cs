@@ -11,11 +11,11 @@ namespace RA
     {
         public const float WinWidth = 240f; // 200f
         public const float BuildButtonHeight = 30f;
-        public const float DesignationButtonHeight = 50f;
+        public const float DesignationButtonHeight = 40f;
         public const float TextHeight = 25f;
 
-        public List<ArchitectCategoryTab> desPanelsCached;
-        public ArchitectCategoryTab selectedDesPanel;
+        public List<RA_ArchitectCategoryTab> desPanelsCached;
+        public RA_ArchitectCategoryTab selectedDesPanel;
 
         public float WinHeight
         {
@@ -25,8 +25,7 @@ namespace RA
                 {
                     CacheDesPanels();
                 }
-                return Mathf.CeilToInt(desPanelsCached.Count/2f)*BuildButtonHeight + DesignationButtonHeight +
-                       TextHeight*2;
+                return Mathf.CeilToInt((desPanelsCached.Count - 2)/2)*BuildButtonHeight + DesignationButtonHeight + TextHeight*2;
             }
         }
 
@@ -53,22 +52,22 @@ namespace RA
 
             // burning fillable bar
             Text.Font = GameFont.Small;
+            Text.Anchor = TextAnchor.MiddleCenter;
+
             var designationsLabelRect = new Rect(0, 0f, innerRect.width, TextHeight);
             Widgets.Label(designationsLabelRect, "Designations:");
 
             // orders + zones designations
-            Text.Font = GameFont.Medium;
             var designationsRect = new Rect(0f, designationsLabelRect.yMax, innerRect.width, DesignationButtonHeight);
             GUI.BeginGroup(designationsRect);
             {
-                for (int i = 0; i < 2; i++)
+                for (var i = 0; i < 2; i++)
                 {
                     var tab = desPanelsCached[i];
                     var columnIndex = i % 2;
 
-                    var buttonRect = new Rect(columnIndex*columnWidth, 0, columnWidth, DesignationButtonHeight);
-
                     // draw buttons
+                    var buttonRect = new Rect(columnIndex*columnWidth, 0, columnWidth, DesignationButtonHeight);
                     if (WidgetsSubtle.ButtonSubtle(buttonRect, tab.def.LabelCap, 0f, 8f,
                         SoundDefOf.MouseoverButtonCategory))
                     {
@@ -78,16 +77,19 @@ namespace RA
             }
             GUI.EndGroup();
 
+            Text.Anchor = TextAnchor.MiddleCenter;
+            var buildingLabelRect = new Rect(0, designationsRect.yMax, innerRect.width, TextHeight);
+            Widgets.Label(buildingLabelRect, "Building Categories:");
+
             // build designations
-            Text.Font = GameFont.Small;
-            var buttonsRect = new Rect(0f, designationsRect.yMax, innerRect.width, innerRect.height - designationsLabelRect.yMax);
+            var buttonsRect = new Rect(0f, buildingLabelRect.yMax, innerRect.width, innerRect.height - designationsLabelRect.yMax);
             GUI.BeginGroup(buttonsRect);
             {
-                for (int i = 2; i < desPanelsCached.Count; i++)
+                for (var i = 2; i < desPanelsCached.Count; i++)
                 {
                     var tab = desPanelsCached[i];
                     var columnIndex = i % 2;
-                    var rowIndex = i / 2;
+                    var rowIndex = i / 2 - 1;
 
                     var buttonRect = new Rect(columnIndex * columnWidth, rowIndex * BuildButtonHeight, columnWidth,
                         BuildButtonHeight);
@@ -106,17 +108,15 @@ namespace RA
         // determines the DesignationCategories to show in the menu list
         public void CacheDesPanels()
         {
-            desPanelsCached = new List<ArchitectCategoryTab>();
-            foreach (
-                var category in
-                    DefDatabase<DesignationCategoryDef>.AllDefs.Where(cat => cat.resolvedDesignators.Count > 2)
+            desPanelsCached = new List<RA_ArchitectCategoryTab>();
+            foreach (var category in DefDatabase<DesignationCategoryDef>.AllDefs.Where(cat => cat.resolvedDesignators.Count > 2 && cat.defName != "Floors")
                         .OrderByDescending(des => des.order))
             {
-                desPanelsCached.Add(new ArchitectCategoryTab(category));
+                desPanelsCached.Add(new RA_ArchitectCategoryTab(category));
             }
         }
 
-        public void ClickedCategory(ArchitectCategoryTab Pan)
+        public void ClickedCategory(RA_ArchitectCategoryTab Pan)
         {
             selectedDesPanel = selectedDesPanel == Pan ? null : Pan;
             SoundDefOf.ArchitectCategorySelect.PlayOneShotOnCamera();

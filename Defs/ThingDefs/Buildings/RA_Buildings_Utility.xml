@@ -16,8 +16,8 @@
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
-		<designationCategory>Misc</designationCategory>
-<!-- 		<researchPrerequisite>SurvivalGuideI</researchPrerequisite> -->
+		<designationCategory>Utility</designationCategory>
+		<researchPrerequisite>StartPack</researchPrerequisite>
 	</ThingDef>
 
 

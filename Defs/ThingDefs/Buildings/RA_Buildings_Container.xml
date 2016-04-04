@@ -9,7 +9,7 @@
 
 	<ThingDef Name="Container" Abstract="True">
 		<category>Building</category>
-		<thingClass>Building_Storage</thingClass>
+		<thingClass>RA.Container</thingClass>
 		<defName>BulletImpactWood</defName>  
 		<selectable>true</selectable>
 		<drawerType>MapMeshAndRealTime</drawerType>
@@ -45,8 +45,9 @@
 		<label>pot</label>
 		<Description>A big clay pot used to preserve food. Slightly decrease rotting process.</Description>
 		<graphicData>
-			<texPath>Things/Buildings/Furniture/Containers/Pot</texPath>
+			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<color>(141,86,65)</color>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
@@ -77,7 +78,7 @@
 		<label>basket</label>
 		<Description>A bast fiber based basket. Used to store various things inside.</Description>
 		<graphicData>
-			<texPath>Things/Buildings/Furniture/Containers/Basket/Basket_closed</texPath>
+			<texPath>Things/Buildings/Furniture/Containers/Basket/Basket</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>

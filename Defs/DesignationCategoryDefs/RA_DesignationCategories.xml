@@ -28,7 +28,6 @@
 			<li>Designator_PlantsHarvest</li>
 			<li>Designator_PlantsHarvestWood</li>
 			<li>Designator_Hunt</li>
-			<li>Designator_Uninstall</li>
 			<li>Designator_Claim</li>
 			<li>Designator_Strip</li>
 			<li>Designator_RearmTrap</li>
@@ -65,25 +64,35 @@
 		<DefName>Structure</DefName>
 		<label>structure</label>
 		<description>Structural constructions like walls and floors.</description>
+		<order>800</order>
+	</DesignationCategoryDef>
+
+	<DesignationCategoryDef>
+		<DefName>Floor</DefName>
+		<label>floor</label>
+		<description>Flooring.</description>
 		<order>700</order>
 		<specialDesignatorClasses>
+			<li>Designator_Cancel</li>
 			<li>Designator_RemoveFloor</li>
-			<li>Designator_SmoothFloor</li>
 		</specialDesignatorClasses>
-	</DesignationCategoryDef>	
-
-	<DesignationCategoryDef ParentName="BuildingCategory">
-		<DefName>Furniture</DefName>
-		<label>furniture</label>
-		<description>Designations for placing made furniture.</description>
-		<order>600</order>
 	</DesignationCategoryDef>	
 
 	<DesignationCategoryDef ParentName="BuildingCategory">
 		<DefName>Production</DefName>
 		<label>production</label>
 		<description>Buildings for producing finished goods.</description>
+		<order>600</order>
+	</DesignationCategoryDef>
+
+	<DesignationCategoryDef ParentName="BuildingCategory">
+		<DefName>Furniture</DefName>
+		<label>furniture</label>
+		<description>Designations for placing made furniture.</description>
 		<order>500</order>
+		<specialDesignatorClasses>
+			<li>Designator_Uninstall</li>
+		</specialDesignatorClasses>
 	</DesignationCategoryDef>
 
 	<DesignationCategoryDef ParentName="BuildingCategory">
@@ -97,7 +106,7 @@
 		<DefName>Utility</DefName>
 		<label>utility</label>
 		<description>Various utility buildings.</description>
-		<order>250</order>
+		<order>200</order>
 	</DesignationCategoryDef>
 
 	<DesignationCategoryDef ParentName="BuildingCategory">

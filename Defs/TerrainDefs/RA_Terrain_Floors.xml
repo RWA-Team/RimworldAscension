@@ -15,7 +15,7 @@
 		<constructEffect>ConstructDirt</constructEffect>
 		<AcceptTerrainSourceFilth>True</AcceptTerrainSourceFilth>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Structure</designationCategory>
+		<designationCategory>Floor</designationCategory>
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</TerrainDef>
 	

@@ -16,7 +16,7 @@
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
 		<thingCategories>
-			<li>Tradeables</li>
+			<li>Items</li>
 		</thingCategories>
 		<comps>
 			<li>

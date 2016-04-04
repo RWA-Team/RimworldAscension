@@ -19,6 +19,27 @@
 		<designationCategory>Defence</designationCategory>
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
+	
+	
+	<ThingDef Name="Minified" Abstract="True">
+		<thingClass>MinifiedThing</thingClass>
+		<category>Item</category>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<drawerType>RealtimeOnly</drawerType>
+		<thingCategories>
+			<li>Furniture</li>
+		</thingCategories>
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+		</comps>
+		<alwaysHaulable>true</alwaysHaulable>
+		<rotatable>false</rotatable>
+		<pathCost>15</pathCost>
+	</ThingDef>
 
 
 	<!--==================== Traps ======================== -->
@@ -44,12 +65,10 @@
 			<TrapSpringChance>0.8</TrapSpringChance>
 		</statBases>
 		<description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
-		<stuffCategories>
-			<li>Wood</li>
-			<li>StoneBlock</li>
-			<li>Bone</li>
-		</stuffCategories>
-		<costStuffCount>20</costStuffCount>
+		<minifiedDef>TrapDeadfallMinified</minifiedDef>
+		<costList>
+			<TrapDeadfallMinified>1</TrapDeadfallMinified>
+		</costList>
 		<building>
 			<isTrap>true</isTrap>
 			<trapDamageCategory>Sharp</trapDamageCategory>
@@ -59,6 +78,16 @@
 				<shaderType>Cutout</shaderType>
 			</trapUnarmedGraphicData>
 		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="Minified">
+		<defName>TrapDeadfallMinified</defName>
+		<label>deadfall trap</label>
+		<stuffCategories>
+			<li>WoodPlank</li>
+			<li>StoneBlock</li>
+			<li>Bone</li>
+		</stuffCategories>
 	</ThingDef>
 
 </ThingDefs>

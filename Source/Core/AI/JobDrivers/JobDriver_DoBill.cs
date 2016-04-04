@@ -58,7 +58,7 @@ namespace RA
                 return JobCondition.Ongoing;
             });
 
-            this.FailOnBurningImmobile(TargetIndex.A);	//Bill giver, or product burning in carry phase
+            this.FailOnBurningImmobile(TargetIndex.A); //Bill giver, or product burning in carry phase
 
             this.FailOn(() =>
             {
@@ -112,8 +112,8 @@ namespace RA
                 //Note that these fail cases must be on these toils, otherwise the recipe work fails if you stacked
                 //   your targetB into another object on the bill giver square.
                 var getToHaulTarget = Toils_Goto.GotoThing(IngredientInd, PathEndMode.ClosestTouch)
-                                        .FailOnDespawned(IngredientInd)
-                                        .FailOnForbidden(IngredientInd);
+                    .FailOnDespawned(IngredientInd)
+                    .FailOnForbidden(IngredientInd);
                 yield return getToHaulTarget;
 
                 yield return Toils_Haul.StartCarryThing(IngredientInd);
@@ -124,9 +124,10 @@ namespace RA
 
                 //Carry ingredient to the bill giver and put it on the square
                 yield return Toils_Goto.GotoThing(BillGiverInd, PathEndMode.InteractionCell)
-                                        .FailOnDestroyed(IngredientInd);
+                    .FailOnDestroyed(IngredientInd);
 
-                var findPlaceTarget = Toils_JobTransforms.SetTargetToIngredientPlaceCell(BillGiverInd, IngredientInd, IngredientPlaceCellInd);
+                var findPlaceTarget = Toils_JobTransforms.SetTargetToIngredientPlaceCell(BillGiverInd, IngredientInd,
+                    IngredientPlaceCellInd);
                 yield return findPlaceTarget;
                 yield return Toils_Haul.PlaceHauledThingInCell(IngredientPlaceCellInd, findPlaceTarget, false);
 
@@ -144,7 +145,8 @@ namespace RA
             //Create that and convert our job to be a job about working on it
 
             // special case for burners
-            yield return WaitUntilBurnerReady();
+            if (CurJob.GetTarget(BillGiverInd).Thing is WorkTable_Fueled)
+                yield return WaitUntilBurnerReady();
 
             // call duplicated to make changes
             yield return MakeUnfinishedThingIfNeeded();

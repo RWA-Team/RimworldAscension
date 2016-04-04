@@ -272,6 +272,7 @@
 				<count>1</count>
 			</li>
 		</ingredients>
+		<researchPrerequisite>Masonry</researchPrerequisite>
 	</RecipeDef>
 
 	<RecipeDef ParentName="Disassembling">

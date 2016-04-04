@@ -27,6 +27,18 @@ namespace RA
             var newInitNewGeneratedMap = typeof(RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaInitNewGeneratedMap, newInitNewGeneratedMap);
 
+            // added rectangular field edges support for trading post
+            // added Graphic_StuffBased support
+            var vanillaSelectedUpdate = typeof(Designator_Place).GetMethod("SelectedUpdate", BindingFlags.Instance | BindingFlags.Public);
+            var newSelectedUpdate = typeof(RA_Designator_Place).GetMethod("SelectedUpdate", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaSelectedUpdate, newSelectedUpdate);
+
+            // changed text align to middle center
+            var vanillaButtonSubtle = typeof(WidgetsSubtle).GetMethod("ButtonSubtle", BindingFlags.Static | BindingFlags.Public);
+            var newButtonSubtle = typeof(RA_WidgetsSubtle).GetMethod("ButtonSubtle", BindingFlags.Static | BindingFlags.Public);
+            TryDetourFromTo(vanillaButtonSubtle, newButtonSubtle);
+
+
             #region GAMEEND
 
             // delay CheckGameOver first call

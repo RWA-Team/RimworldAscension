@@ -97,9 +97,9 @@
 		<label>raw pot</label>
 		<description>An unfired pot.</description>
 		<graphicData>
-			<texPath>Missing</texPath>
+			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<color>(127,51,0)</color>
+			<color>(147,135,106)</color>
 		</graphicData>
 	</ThingDef>
 

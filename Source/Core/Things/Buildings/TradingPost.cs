@@ -36,25 +36,20 @@ namespace RA
             return colonyOffer;
         }
 
-        public IEnumerable<IntVec3> TradeableCells
+        public static IEnumerable<IntVec3> TradeableCells(IntVec3 centerCell, int tradeZoneRange)
         {
-            get
+            // half width of the rectangle, determined by <specialDisplayRadius> in building def
+            var currentCell = centerCell;
+
+            for (var i = centerCell.x - tradeZoneRange; i < centerCell.x + tradeZoneRange + 1; i++)
             {
-                // half width of the rectangle, determined by <specialDisplayRadius> in building def
-                var tradeZoneRange = (int)def.specialDisplayRadius + 1;
-
-                var centerCell = Position;
-                var currentCell = centerCell;
-
-                for (var i = centerCell.x - tradeZoneRange; i < centerCell.x + tradeZoneRange + 1; i++)
+                currentCell.x = i;
+                for (var j = centerCell.z - tradeZoneRange; j < centerCell.z + tradeZoneRange + 1; j++)
                 {
-                    currentCell.x = i;
-                    for (var j = centerCell.z - tradeZoneRange; j < centerCell.z + tradeZoneRange + 1; j++)
-                    {
-                        currentCell.z = j;
-                        if ((Math.Abs(centerCell.x - currentCell.x) > 1 || Math.Abs(centerCell.z - currentCell.z) > 1) && currentCell.InBounds() && currentCell.Walkable())
-                            yield return currentCell;
-                    }
+                    currentCell.z = j;
+                    if ((Math.Abs(centerCell.x - currentCell.x) > 1 || Math.Abs(centerCell.z - currentCell.z) > 1) &&
+                        currentCell.InBounds() && currentCell.Walkable())
+                        yield return currentCell;
                 }
             }
         }
@@ -63,7 +58,7 @@ namespace RA
         {
             get
             {
-                foreach (var cell in TradeableCells)
+                foreach (var cell in TradeableCells(Position, (int)def.specialDisplayRadius + 1))
                 {
                     foreach (var item in Find.ThingGrid.ThingsAt(cell))
                     {
@@ -80,7 +75,7 @@ namespace RA
         {
             if (def.specialDisplayRadius > 1f)
             {
-                GenDraw.DrawFieldEdges(TradeableCells.ToList());
+                GenDraw.DrawFieldEdges(TradeableCells(Position, (int)def.specialDisplayRadius + 1).ToList());
             }
             if (def.drawPlaceWorkersWhileSelected && def.PlaceWorkers != null)
             {

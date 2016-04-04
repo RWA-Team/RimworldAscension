@@ -73,8 +73,6 @@ namespace RA
             {
                 var actor = toil.actor;
 
-                Log.Message("ramain ticks "+ CurJob.expiryInterval);
-
                 if (actor.IsHashIntervalTick(checkInterval))
                 {
                     var traverseParams = TraverseParms.For(actor, Danger.Deadly, TraverseMode.ByPawn, true);

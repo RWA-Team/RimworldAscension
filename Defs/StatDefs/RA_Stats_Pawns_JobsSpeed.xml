@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StatDefs>
+
+	<!-- 
+	skillNeedFactors - skill modifier bonus
+		bonusFactor - additional bonus per skill level (x1-x20)
+	
+	capacityFactors - modifier by pawn capacity
+		weight - modifier value per capacity stat
+		
+	100% skill efficiency at level 5
+	-->
+
+	<StatDef Name="Job" Abstract="True">
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<statFactors>
+			<li>WorkSpeedGlobal</li>
+		</statFactors>
+	</StatDef>
+
+
+	<StatDef Name="JobDumb" ParentName="Job" Abstract="True">
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>0.5</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+
+	<StatDef ParentName="JobDumb">
+		<defName>CollectingSpeed</defName>
+		<label>collecting speed</label>
+		<description>Speed at which this person collects clay and sand.</description>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.8</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.5</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+</StatDefs>

@@ -2,9 +2,10 @@
 <Buildings>
 
 	<!-- 
-	fillPercent - determne cover multiplier vs projectiles
-	castEdgeShadows - shadow aura around building
-	staticSunShadowHeight - solid square shadow with set length
+	- fillPercent - determne cover multiplier vs projectiles
+	- castEdgeShadows - shadow aura around building
+	- staticSunShadowHeight - solid square shadow with set length
+	- resourceReadoutPriority - determines the resource check order build designators and bills. They don't work without that parameter defined
 	 -->
 
 	<ThingDef Name="Furniture" Abstract="True">
@@ -22,7 +23,6 @@
 		<statBases>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<designationCategory>Furniture</designationCategory>
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
@@ -43,6 +43,27 @@
 		<inspectorTabs>
 			<li>ITab_Art</li>
 		</inspectorTabs>
+	</ThingDef>
+	
+	
+	<ThingDef Name="Minified" Abstract="True">
+		<thingClass>MinifiedThing</thingClass>
+		<category>Item</category>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<drawerType>RealtimeOnly</drawerType>
+		<thingCategories>
+			<li>Furniture</li>
+		</thingCategories>
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+		</comps>
+		<alwaysHaulable>true</alwaysHaulable>
+		<rotatable>false</rotatable>
+		<pathCost>15</pathCost>
 	</ThingDef>
 
 
@@ -77,8 +98,7 @@
 		<graphicData>
 			<texPath>Missing</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>CutoutComplex</shaderType>
-			<drawSize>(3,4)</drawSize>
+			<shaderType>Cutout</shaderType>
 		</graphicData>
 		<PathCost>20</PathCost>
 		<fillPercent>0</fillPercent>
@@ -112,7 +132,7 @@
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Beds/HideBed</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>CutoutComplex</shaderType>
+			<shaderType>Cutout</shaderType>
 			<drawSize>(3,4)</drawSize>
 		</graphicData>
 		<PathCost>20</PathCost>
@@ -127,18 +147,22 @@
 			<ImmunityGainSpeedFactor>1.1</ImmunityGainSpeedFactor>
 		</statBases>
 		<Size>(1,2)</Size>
-		<stuffCategories>
-			<li>Leathery</li>
-		</stuffCategories>
-		<costStuffCount>10</costStuffCount>
+		<minifiedDef>BedHideMinified</minifiedDef>
 		<costList>
-			<WoodLog>10</WoodLog>
-			<Hay>20</Hay>
+			<BedHideMinified>1</BedHideMinified>
 		</costList>
 		<building>
 			<Bed_HealTickInterval>2100</Bed_HealTickInterval>
 		</building>
-	</ThingDef>	
+	</ThingDef>
+
+	<ThingDef ParentName="Minified">
+		<defName>BedHideMinified</defName>
+		<label>stool</label>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+	</ThingDef>
 
 	<ThingDef ParentName="Bed">
 		<defName>AnimalSleepingBox</defName>
@@ -190,7 +214,7 @@
 
 	<ThingDef ParentName="Stool">
 		<defName>StoolPrimitive</defName>
-		<label>priitive stool</label>
+		<label>stool</label>
 		<description>A primitive simple stool you can sit on.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Stools/PrimitiveStool</texPath>
@@ -198,13 +222,10 @@
 			<drawSize>(0.8,0.8)</drawSize>
 			<shaderType>Transparent</shaderType>
 		</graphicData>
+		<minifiedDef>StoolPrimitiveMinified</minifiedDef>
 		<costList>
-			<StoolPrimitive>1</StoolPrimitive>
+			<StoolPrimitiveMinified>1</StoolPrimitiveMinified>
 		</costList>
-		<stuffCategories>
-			<li>WoodLog</li>
-			<li>StoneBlock</li>
-		</stuffCategories>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<WorkToMake>750</WorkToMake>
@@ -214,6 +235,14 @@
 		<rotatable>false</rotatable>
 	</ThingDef>
 
+	<ThingDef ParentName="Minified">
+		<defName>StoolPrimitiveMinified</defName>
+		<label>stool</label>
+		<stuffCategories>
+			<li>WoodLog</li>
+			<li>StoneBlock</li>
+		</stuffCategories>
+	</ThingDef>
 
 	<ThingDef ParentName="Stool">
 		<defName>Stool</defName>
@@ -229,9 +258,15 @@
 			<Beauty>3</Beauty>
 			<Comfort>0.5</Comfort>
 		</statBases>
+		<minifiedDef>StoolMinified</minifiedDef>
 		<costList>
-			<Stool>1</Stool>
+			<StoolMinified>1</StoolMinified>
 		</costList>
+	</ThingDef>
+
+	<ThingDef ParentName="Minified">
+		<defName>StoolMinified</defName>
+		<label>stool</label>
 		<stuffCategories>
 			<li>WoodPlank</li>
 			<li>StoneBlock</li>
@@ -268,20 +303,26 @@
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
-			<WorkToMake>1500</WorkToMake>
+			<WorkToMake>0</WorkToMake>
 			<Beauty>8</Beauty>
 		</statBases>
 		<size>(2,2)</size>
+		<minifiedDef>TableShortMinified</minifiedDef>
 		<costList>
-			<TableShort>1</TableShort>
+			<TableShortMinified>1</TableShortMinified>
 		</costList>
-		<stuffCategories>
-			<li>WoodLog</li>
-			<li>StoneBlock</li>
-		</stuffCategories>
 		<rotatable>false</rotatable>
+		<researchPrerequisite>StartPack</researchPrerequisite>
 	</ThingDef>
 
+	<ThingDef ParentName="Minified">
+		<defName>TableShortMinified</defName>
+		<label>short table</label>
+		<stuffCategories>
+			<li>WoodPlank</li>
+			<li>StoneBlock</li>
+		</stuffCategories>
+	</ThingDef>
 
 	<ThingDef ParentName="Table">
 		<defName>TableLong</defName>
@@ -297,11 +338,17 @@
 			<Beauty>12</Beauty>
 		</statBases>
 		<size>(2,4)</size>
+		<minifiedDef>TableLongMinified</minifiedDef>
 		<costList>
-			<TableShort>1</TableShort>
+			<TableLongMinified>1</TableLongMinified>
 		</costList>
+	</ThingDef>
+
+	<ThingDef ParentName="Minified">
+		<defName>TableLongMinified</defName>
+		<label>long table</label>
 		<stuffCategories>
-			<li>WoodLog</li>
+			<li>WoodPlank</li>
 			<li>StoneBlock</li>
 		</stuffCategories>
 	</ThingDef>
@@ -374,7 +421,10 @@
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToMake>495</WorkToMake>
 		</statBases>
-		<costStuffCount>15</costStuffCount>
+		<minifiedDef>PlantPotMinified</minifiedDef>
+		<costList>
+			<PlantPotMinified>1</PlantPotMinified>
+		</costList>
 		<inspectorTabs>
 			<li>ITab_Growing</li>
 		</inspectorTabs>
@@ -392,6 +442,15 @@
 			<sowTag>Decorative</sowTag>
 		</building>
 		<rotatable>false</rotatable>
+	</ThingDef>
+
+	<ThingDef ParentName="Minified">
+		<defName>PlantPotMinified</defName>
+		<label>plant pot</label>
+		<stuffCategories>
+			<li>WoodPlank</li>
+			<li>StoneBlock</li>
+		</stuffCategories>
 	</ThingDef>
 
 

@@ -54,7 +54,7 @@
 		<workSpeedStat>CarvingSpeed</workSpeedStat>
 		<fixedIngredientFilter>
 			<exceptedCategories>
-				<li>BlocksStone</li>
+				<li>StoneBlocks</li>
 			</exceptedCategories>
 			<exceptedThingDefs>
 				<li>WoodLog</li>
@@ -62,6 +62,50 @@
 		</fixedIngredientFilter>
 	</RecipeDef>
 
+
+	<RecipeDef ParentName="FurnitureNeolithic">
+		<defName>MakeBedHide</defName>
+		<label>make hide bed</label>
+		<description>Make hide bed.</description>
+		<jobString>Making hide bed.</jobString>
+		<products>
+			<BedHide>1</BedHide>
+		</products>
+		<defaultIngredientFilter>
+			<categories>
+				<li>Leathers</li>
+			</categories>
+		</defaultIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneBlocks</li>
+					</categories>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>15</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Hay</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
 
 	<RecipeDef ParentName="FurnitureNeolithic">
 		<defName>MakeStoolPrimitive</defName>
@@ -75,7 +119,7 @@
 			<li>
 				<filter>
 					<categories>
-						<li>BlocksStone</li>
+						<li>StoneBlocks</li>
 					</categories>
 					<thingDefs>
 						<li>WoodLog</li>
@@ -94,12 +138,10 @@
 		<products>
 			<TableShort>1</TableShort>
 		</products>
+		<workAmount>1</workAmount>
 		<ingredients>
 			<li>
 				<filter>
-					<categories>
-						<li>BlocksStone</li>
-					</categories>
 					<thingDefs>
 						<li>WoodLog</li>
 					</thingDefs>
@@ -121,13 +163,36 @@
 			<li>
 				<filter>
 					<categories>
-						<li>BlocksStone</li>
+						<li>StoneBlocks</li>
 					</categories>
 					<thingDefs>
 						<li>WoodLog</li>
 					</thingDefs>
 				</filter>
 				<count>100</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="FurnitureNeolithic">
+		<defName>MakePlantPot</defName>
+		<label>make plant pot</label>
+		<description>Make plant pot.</description>
+		<jobString>Making plant pot.</jobString>
+		<products>
+			<PlantPot>1</PlantPot>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneBlocks</li>
+					</categories>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
 			</li>
 		</ingredients>
 	</RecipeDef>

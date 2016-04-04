@@ -27,7 +27,7 @@
 		<jobString>Making figurines.</jobString>
 		<fixedIngredientFilter>
 			<exceptedCategories>
-				<li>BlocksStone</li>
+				<li>StoneBlocks</li>
 			</exceptedCategories>
 			<exceptedThingDefs>
 				<li>WoodLog</li>
@@ -41,7 +41,7 @@
 			<li>
 				<filter>
 					<categories>
-						<li>BlocksStone</li>
+						<li>StoneBlocks</li>
 					</categories>
 					<thingDefs>
 						<li>WoodLog</li>

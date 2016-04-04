@@ -159,7 +159,7 @@
 		</products>
 		<fixedIngredientFilter>
 			<categories>
-				<li>BlocksStone</li>
+				<li>StoneBlocks</li>
 			</categories>
 		</fixedIngredientFilter>
 		<ingredients>
@@ -185,7 +185,7 @@
 			<li>
 				<filter>
 					<categories>
-						<li>BlocksStone</li>
+						<li>StoneBlocks</li>
 					</categories>
 				</filter>
 				<count>10</count>
@@ -265,7 +265,7 @@
 				<count>20</count>
 			</li>
 		</ingredients>
-		<researchPrerequisite>Tannery</researchPrerequisite>
+		<researchPrerequisite>StartPack</researchPrerequisite>
 	</RecipeDef>
 
 </RecipeDefs>

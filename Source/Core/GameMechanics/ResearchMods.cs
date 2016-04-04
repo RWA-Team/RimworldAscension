@@ -8,13 +8,18 @@ namespace RA
 {
     public static class ResearchMods
     {
+        public static void StartPack()
+        {
+            CheckWorkTablesAllowance();
+        }
+
         #region NEOLITHIC
-        // +
+
         public static void BasicFarming()
         {
             AddDesignator(new Designator_ZoneAdd_Growing(), "Zone");
         }
-        // +
+
         public static void Butchering()
         {
             AddDesignator(new Designator_Slaughter(), "Orders");
@@ -28,7 +33,7 @@ namespace RA
                 pawnDef.butcherProducts.Add(new ThingCount(ThingDef.Named("Bone"), (int) pawnDef.race.baseBodySize*5));
             }
         }
-        // +
+
         public static void AnimalHusbandry()
         {
             AddDesignator(new Designator_Tame(), "Orders");
@@ -36,71 +41,69 @@ namespace RA
 
         public static void Carpentry()
         {
-            TryAllowToBuild("CraftsmanBench");
-            TryAllowToBuild("HuntersBench");
-            TryAllowToBuild("WarriorsBench", false, "StoneWorking", "BoneWorking");
+            AllowResourceTypeForAllRecipes("WoodLog");
 
-            TryAllowToCraft("Make_Primitive_Handaxe", true, "StoneWorking");
-            TryAllowToCraft("Make_Primitive_Hammer", true, "StoneWorking");
+            // builder table
+            TryAllowToCraft("MakeStoolPrimitive");
+            TryAllowToCraft("MakeTableShort");
+            TryAllowToCraft("MakeTableLong");
+            TryAllowToCraft("MakeTotem");
 
-            TryAllowToCraft("Make_Shiv", false, "StoneWorking", "BoneWorking");
-            TryAllowToCraft("Make_Spear", false, "StoneWorking", "BoneWorking");
-            TryAllowToCraft("Make_Club", false, "StoneWorking", "BoneWorking");
+            // craftsman table
+            TryAllowToCraft("MakeFigurine");
 
-            TryAllowToCraft("Make_Bow");
-            TryAllowToCraft("Make_Composite_Bow", true, "BoneWorking");
-            TryAllowToCraft("Make_Thrumbo_Bow", true, "BoneWorking");
-            TryAllowToCraft("Make_Pilum", true, "BoneWorking");
-            TryAllowToCraft("Make_Tomahawk", true, "StoneWorking");
+            // hunter table
+            TryAllowToCraft("MakeTrapDeadfall");
         }
 
         public static void Masonry()
         {
-            TryAllowToBuild("CraftsmanBench");
-            TryAllowToBuild("WarriorsBench", true, "WoodWorking");
-            TryAllowToBuild("HuntersBench", true, "WoodWorking");
+            AddDesignator(new Designator_SmoothFloor(), "Floor");
+            AllowResourceTypeForAllRecipes("StoneBlocks");
 
-            TryAllowToCraft("Make_Primitive_Handaxe", false, "WoodWorking");
-            TryAllowToCraft("Make_Primitive_Hammer", false, "WoodWorking");
+            // builder table
+            TryAllowToCraft("MakeStoolPrimitive");
+            TryAllowToCraft("MakeTableShort");
+            TryAllowToCraft("MakeTableLong");
+            TryAllowToCraft("MakeTotem");
 
-            TryAllowToCraft("Make_Shiv", true, "WoodWorking");
-            TryAllowToCraft("Make_Spear", true, "WoodWorking");
-            TryAllowToCraft("Make_Club", true, "WoodWorking");
+            // craftsman table
+            TryAllowToCraft("MakeFigurine");
 
-            TryAllowToCraft("Make_Tomahawk", true, "WoodWorking");
-        }
+            // hunter table
+            TryAllowToCraft("MakeTrapDeadfall");
+            TryAllowToCraft("MakeTomahawk", true, "Carpentry");
 
-        public static void Tannery()
-        {
-            TryAllowToBuild("CraftsmanBench");
-            TryAllowToBuild("HuntersBench");
-
-            TryAllowToCraft("Make_Buckler", true, "WoodWorking");
-
-            TryAllowToCraft("Make_Sling");
-
-            TryAllowToCraft("Make_Backpack");
-            TryAllowToCraft("Make_Toolbelt");
-
-            TryAllowToCraft("Make_Loincloth");
-            TryAllowToCraft("Make_Tribalwear");
-            TryAllowToCraft("Make_Hat");
+            // warrior table
+            TryAllowToCraft("MakeShiv");
+            TryAllowToCraft("MakeSpearPrimitive", true, "Carpentry");
+            TryAllowToCraft("MakeAxePrimitive", true, "Carpentry");
+            TryAllowToCraft("MakeHammerPrimitive", true, "Carpentry");
         }
 
         public static void BoneCarving()
         {
-            TryAllowToBuild("CraftsmanBench");
-            TryAllowToBuild("WarriorsBench", true, "WoodWorking");
-            TryAllowToBuild("HuntersBench", true, "WoodWorking");
+            AllowResourceTypeForAllRecipes("Bone");
 
-            TryAllowToCraft("Make_Shiv", true, "WoodWorking");
-            TryAllowToCraft("Make_Spear", true, "WoodWorking");
-            TryAllowToCraft("Make_Club", true, "WoodWorking");
-            TryAllowToCraft("Make_Buckler", true, "WoodWorking");
+            // craftsman table
+            TryAllowToCraft("MakeFigurine");
 
-            TryAllowToCraft("Make_Composite_Bow", true, "WoodWorking");
-            TryAllowToCraft("Make_Thrumbo_Bow", true, "WoodWorking");
-            TryAllowToCraft("Make_Pilum", true, "WoodWorking");
+            // hunter table
+            TryAllowToCraft("MakeTrapDeadfall");
+            TryAllowToCraft("MakePilum", true, "Carpentry");
+            TryAllowToCraft("MakeBowComposite", true, "Carpentry");
+            TryAllowToCraft("MakeBowThrumbo", true, "Carpentry");
+
+            // warrior table
+            TryAllowToCraft("MakeShiv");
+            TryAllowToCraft("MakeSpearPrimitive", true, "Carpentry");
+            TryAllowToCraft("MakeAxePrimitive", true, "Carpentry");
+            TryAllowToCraft("MakeHammerPrimitive", true, "Carpentry");
+        }
+
+        public static void Tannery()
+        {
+            TryAllowToCraft("MakeBedHide", true, "Carpentry");
         }
 
         #endregion
@@ -108,26 +111,15 @@ namespace RA
         #region UTILITY
 
         // adds building to the architect menu if all other research prerequisites are met
-        public static void TryAllowToBuild(string benchDefName, bool allowIfAll = true, params string[] otherResearchPrerequisite_defNames)
+        public static void CheckWorkTablesAllowance()
         {
-            if (allowIfAll)
+            foreach (var tableDef in DefDatabase<ThingDef>.AllDefs.Where(def => !def.recipes.NullOrEmpty()))
             {
-                // check if all prerequisites are met
-                if (otherResearchPrerequisite_defNames.Any(researchName => !Find.ResearchManager.IsFinished(ResearchProjectDef.Named(researchName))))
+                if (tableDef.researchPrerequisite != null)
                 {
-                    return;
-                }
-
-                ThingDef.Named(benchDefName).researchPrerequisite = null;
-            }
-            else
-            {
-                // check if any of prerequisites are met
-                foreach (var researchName in otherResearchPrerequisite_defNames)
-                {
-                    if (Find.ResearchManager.IsFinished(ResearchProjectDef.Named(researchName)))
+                    if (tableDef.recipes.Any(recipeDef => recipeDef.AvailableNow))
                     {
-                        ThingDef.Named(benchDefName).researchPrerequisite = null;
+                        tableDef.researchPrerequisite = null;
                     }
                 }
             }
@@ -173,22 +165,24 @@ namespace RA
 
             foreach (var recipeDef in DefDatabase<RecipeDef>.AllDefs)
             {
-                // if type is category
-                if (thingDef == null)
-                {
-                    if (!recipeDef.fixedIngredientFilter.exceptedCategories.Contains(resourceTypeName))
-                    {
-                        recipeDef.fixedIngredientFilter.exceptedCategories.Remove(resourceTypeName);
-                        recipeDef.fixedIngredientFilter.SetAllow(ThingCategoryDef.Named(resourceTypeName), true);
-                    }
-                }
                 // if it's a thingDef
-                else
+                if (thingDef != null)
                 {
-                    if (!recipeDef.fixedIngredientFilter.exceptedThingDefs.Contains(thingDef))
+                    if (!recipeDef.fixedIngredientFilter?.exceptedThingDefs?.Contains(thingDef) ?? false)
                     {
                         recipeDef.fixedIngredientFilter.exceptedThingDefs.Remove(thingDef);
-                        recipeDef.fixedIngredientFilter.SetAllow(thingDef, true);
+                        //recipeDef.fixedIngredientFilter.SetAllow(thingDef, true);
+                        recipeDef.fixedIngredientFilter.thingDefs.Add(thingDef);
+                    }
+                }
+                // if type is category
+                else
+                {
+                    if (!recipeDef.fixedIngredientFilter?.exceptedCategories?.Contains(resourceTypeName) ?? false)
+                    {
+                        recipeDef.fixedIngredientFilter.exceptedCategories.Remove(resourceTypeName);
+                        //recipeDef.fixedIngredientFilter.SetAllow(ThingCategoryDef.Named(resourceTypeName), true);
+                        recipeDef.fixedIngredientFilter.categories.Add(resourceTypeName);
                     }
                 }
             }

@@ -56,8 +56,8 @@ namespace RA
                 });
             }
 
-            // Create damaged drop pods with dead pawns
-            for (var i = 0; i < Rand.RangeInclusive(10, 20); i++)
+            // Create flying debris
+            for (var i = 0; i < Rand.RangeInclusive(20, 40); i++)
             {
                 // Find a location to drop
                 IntVec3 dropCell;
