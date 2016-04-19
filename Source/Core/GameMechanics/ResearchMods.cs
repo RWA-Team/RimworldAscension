@@ -56,7 +56,7 @@ namespace RA
             TryAllowToCraft("MakeTrapDeadfall");
         }
 
-        public static void Masonry()
+        public static void Masonry() 
         {
             AddDesignator(new Designator_SmoothFloor(), "Floor");
             AllowResourceTypeForAllRecipes("StoneBlocks");
@@ -158,7 +158,7 @@ namespace RA
             category.resolvedDesignators.Add(designator);
         }
 
-        // adds resource type to the allowed list in recipe ingridients filter (removes it from excepted list)
+        // adds resource type to the allowed list in recipe ingridients filter (ignores excepted list)
         public static void AllowResourceTypeForAllRecipes(string resourceTypeName)
         {
             var thingDef = DefDatabase<ThingDef>.GetNamedSilentFail(resourceTypeName);
@@ -168,21 +168,17 @@ namespace RA
                 // if it's a thingDef
                 if (thingDef != null)
                 {
-                    if (!recipeDef.fixedIngredientFilter?.exceptedThingDefs?.Contains(thingDef) ?? false)
+                    if (recipeDef.fixedIngredientFilter?.exceptedThingDefs?.Contains(thingDef) ?? false)
                     {
-                        recipeDef.fixedIngredientFilter.exceptedThingDefs.Remove(thingDef);
-                        //recipeDef.fixedIngredientFilter.SetAllow(thingDef, true);
-                        recipeDef.fixedIngredientFilter.thingDefs.Add(thingDef);
+                        recipeDef.fixedIngredientFilter.SetAllow(thingDef, true);
                     }
                 }
                 // if type is category
                 else
                 {
-                    if (!recipeDef.fixedIngredientFilter?.exceptedCategories?.Contains(resourceTypeName) ?? false)
+                    if (recipeDef.fixedIngredientFilter?.exceptedCategories?.Contains(resourceTypeName) ?? false)
                     {
-                        recipeDef.fixedIngredientFilter.exceptedCategories.Remove(resourceTypeName);
-                        //recipeDef.fixedIngredientFilter.SetAllow(ThingCategoryDef.Named(resourceTypeName), true);
-                        recipeDef.fixedIngredientFilter.categories.Add(resourceTypeName);
+                        recipeDef.fixedIngredientFilter.SetAllow(ThingCategoryDef.Named(resourceTypeName), true);
                     }
                 }
             }

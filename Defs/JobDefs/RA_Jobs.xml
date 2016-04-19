@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-
 	<JobDef>
 		<defName>HaulToCell</defName>
 		<driverClass>RA.JobDriver_HaulToCell</driverClass>
@@ -52,6 +51,12 @@
 	</JobDef>
 
 	<JobDef>
+		<defName>TakeDrug</defName>
+		<driverClass>JobDriver_UseItem</driverClass>
+		<reportString>Start using TargetA.</reportString>
+	</JobDef>
+
+	<JobDef>
 		<defName>CombatTraining</defName>
 		<driverClass>RA.JobDriver_CombatTraining</driverClass>
 		<reportString>Practicing combat skills on TargetA.</reportString>
@@ -62,6 +67,18 @@
 		<defName>PutInSlot</defName>
 		<driverClass>RA.JobDriver_PutInSlot</driverClass>
 		<reportString>Putting TargetA in TargetB.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>CollectClay</defName>
+		<driverClass>RA.JobDriver_CollectClay</driverClass>
+		<reportString>Collecting clay.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>CollectSand</defName>
+		<driverClass>RA.JobDriver_CollectSand</driverClass>
+		<reportString>Collecting sand.</reportString>
 	</JobDef>
 
 

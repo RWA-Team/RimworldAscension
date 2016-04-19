@@ -7,7 +7,7 @@
 	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
 	- fixedIngredientFilter - determine ingridient set to choose from	
 	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
-	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complex recipes. Changed to allowed ones via reseach mods.
 	-->
 
 	<RecipeDef Name="MakeWeapon" Abstract="True">
@@ -34,6 +34,9 @@
 			</categories>
 		</fixedIngredientFilter>
 		<defaultIngredientFilter>
+			<thingDefs>
+				<li>BastFibre</li>
+			</thingDefs>
 			<categories>
 				<li>Leathers</li>
 			</categories>
@@ -62,8 +65,12 @@
 			<exceptedThingDefs>
 				<li>Bone</li>
 			</exceptedThingDefs>
-			<thingDefs>			
+			<categories>
+				<li>StoneBlocks</li>
+			</categories>
+			<thingDefs>
 				<li>WoodLog</li>
+				<li>Bone</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<defaultIngredientFilter>
@@ -88,6 +95,12 @@
 			<exceptedThingDefs>
 				<li>Bone</li>
 			</exceptedThingDefs>
+			<categories>
+				<li>StoneBlocks</li>
+			</categories>
+			<thingDefs>
+				<li>Bone</li>
+			</thingDefs>
 		</fixedIngredientFilter>
 		<ingredients>
 			<li>

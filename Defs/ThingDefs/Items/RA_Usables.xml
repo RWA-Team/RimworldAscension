@@ -1,24 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GameData>
 
-
-	<ThingDef Name="ResourceBase" Abstract="True">
-		<thingClass>ThingWithComps</thingClass>
+	<ThingDef Name="Usable" Abstract="True">
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stackLimit>1</stackLimit>
 		<category>Item</category>
-		<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
 		<useHitPoints>true</useHitPoints>
-		<statBases>
-			<Flammability>1.0</Flammability>
-		</statBases>
 		<selectable>true</selectable>
 		<altitudeLayer>Item</altitudeLayer>
-		<stackLimit>75</stackLimit>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>Items</li>
+		</thingCategories>
 		<comps>
 			<li>
 				<compClass>CompForbiddable</compClass>
 			</li>
 		</comps>
 		<alwaysHaulable>true</alwaysHaulable>
+		<drawGUIOverlay>true</drawGUIOverlay>
 		<rotatable>false</rotatable>
 		<pathCost>15</pathCost>
 	</ThingDef>
@@ -27,36 +33,25 @@
 	<!--=============== Tech Guides ====================-->
 
 
-	<ThingDef ParentName="ResourceBase">
+	<ThingDef ParentName="Usable">
 		<defName>SurvivalGuide</defName>
 		<thingClass>RA.Blueprint</thingClass>
 		<label>survival guide</label>
 		<description>A shabby half-burned book. It looks like one of those military training guides to survive in the harsh enviroment. Some of its pages can still be read.</description>
 		<graphicData>
 			<texPath>Things/Items/Usables/SurvivalGuide</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<resourceReadoutPriority>First</resourceReadoutPriority>
-		<stackLimit>1</stackLimit>
-		<tradeNeverStack>true</tradeNeverStack>
-		<useHitPoints>true</useHitPoints>
 		<statBases>
 			<MarketValue>2000</MarketValue>
-			<MaxHitPoints>80</MaxHitPoints>
 		</statBases>
-		<thingCategories>
-			<li>Items</li>
-		</thingCategories>
-		<drawGUIOverlay>false</drawGUIOverlay>
 		<tradeTags>
 			<li>Exotic</li>
 		</tradeTags>
 		<comps>
-			<li Class="RA.CompBlueprintParams_Properties">
+			<li Class="RA.CompBlueprint_Properties">
 				<researchName>StartPack</researchName>
 			</li>
 		</comps>
 	</ThingDef>
-
 
 </GameData>

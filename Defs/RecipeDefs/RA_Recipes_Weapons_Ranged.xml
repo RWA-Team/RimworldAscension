@@ -7,7 +7,7 @@
 	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
 	- fixedIngredientFilter - determine ingridient set to choose from	
 	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
-	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complex recipes. Changed to allowed ones via reseach mods.
 	-->
 
 	<!-- all ranged weapons are stuffless, so no default filter required -->

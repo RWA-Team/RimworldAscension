@@ -11,7 +11,7 @@ namespace RA
         public DesignationDef designationDef;
         public JobDef jobDef;
 
-        public override PathEndMode PathEndMode => PathEndMode.ClosestTouch;
+        public override PathEndMode PathEndMode => PathEndMode.Touch;
 
         public override bool ShouldSkip(Pawn pawn)
         {
@@ -20,19 +20,14 @@ namespace RA
 
         public override IEnumerable<IntVec3> PotentialWorkCellsGlobal(Pawn pawn)
         {
-            foreach (var designation in Find.DesignationManager.DesignationsOfDef(designationDef))
-            {
-                var targetCell = designation.target.Cell;
-                if (targetCell.InBounds() && pawn.CanReserveAndReach(designation.target, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()))
-                {
-                     yield return designation.target.Cell;
-                }
-            }
+            // TODO: check if i need more detailed version
+            return Find.DesignationManager.DesignationsOfDef(designationDef).Select(designation => designation.target.Cell);
         }
 
+        // checks if job is still doable (reservations and reachability usually checked here too)
         public override bool HasJobOnCell(Pawn pawn, IntVec3 c)
         {
-            return Find.DesignationManager.DesignationAt(c, designationDef) != null && pawn.CanReserveAndReach(c, PathEndMode.ClosestTouch, pawn.NormalMaxDanger());
+            return Find.DesignationManager.DesignationAt(c, designationDef) != null && pawn.CanReserveAndReach(c, PathEndMode.Touch, pawn.NormalMaxDanger());
         }
 
         public override Job JobOnCell(Pawn pawn, IntVec3 cell)

@@ -7,7 +7,7 @@
 	worngraphicPath - used to fraw apparel texture on the pawn. shows nothing if not set
 	 -->
 
-	<ThingDef Name="Apparel_Base" Abstract="True">
+	<ThingDef Name="Apparel" Abstract="True">
 		<thingClass>Apparel</thingClass>
 		<category>Item</category>
 		<selectable>True</selectable>
@@ -28,7 +28,7 @@
 		<alwaysHaulable>True</alwaysHaulable>
 		<tickerType>Never</tickerType>
 		<thingCategories>
-			<li>Apparel</li>
+			<li>Various</li>
 		</thingCategories>
 		<comps>
 			<li>
@@ -44,12 +44,12 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="Apparel_Base">
+	<ThingDef ParentName="Apparel">
 		<defName>Backpack</defName>
 		<label>backpack</label>
 		<description>A backpack is a bag with straps that go over your shoulders, so that you can carry things on your back when you are walking or climbing.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Backpack/Backpack</texPath>
+			<texPath>Things/Items/Apparels/Various/Backpack/Backpack</texPath>
 		</graphicData>
 		<tickerType>Normal</tickerType>
 		<stuffCategories>
@@ -59,7 +59,7 @@
 			<bodyPartGroups>
 				<li>Torso</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Backpack/Backpack</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Various/Backpack/Backpack</worngraphicPath>
 			<layers>
 				<li>Accessory</li>
 			</layers>
@@ -87,20 +87,17 @@
 					<li>Weapons</li>
 					<li>Apparel</li>
 				</allowedThingCategoryDefs>
-				<forbiddenSubThingCategoryDefs>
-					<li>Tools</li>
-				</forbiddenSubThingCategoryDefs>
 				<maxSlots>1</maxSlots>
 			</li>
 		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="Apparel_Base">
+	<ThingDef ParentName="Apparel">
 		<defName>Toolbelt</defName>
 		<label>toolbelt</label>
 		<description>A toolbelt to keep your tools to yourself.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Toolbelt/Toolbelt</texPath>
+			<texPath>Things/Items/Apparels/Various/Toolbelt/Toolbelt</texPath>
 		</graphicData>
 		<tickerType>Normal</tickerType>
 		<stuffCategories>
@@ -110,7 +107,7 @@
 			<bodyPartGroups>
 				<li>Legs</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Toolbelt/Toolbelt</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Various/Toolbelt/Toolbelt</worngraphicPath>
 			<layers>
 				<li>Accessory</li>
 			</layers>
@@ -135,19 +132,19 @@
 		<comps>
 			<li Class="RA.CompSlots_Properties">
 				<allowedThingCategoryDefs>
-					<li>Tools</li>
+					<li>WeaponsMelee</li>
 				</allowedThingCategoryDefs>
 				<maxSlots>3</maxSlots>
 			</li>
 		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="Apparel_Base">
+	<ThingDef ParentName="Apparel">
 		<defName>Headdress</defName>
 		<label>headdress</label>
 		<description>A headdress.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Headdress/Headdress</texPath>
+			<texPath>Things/Items/Apparels/Various/Headdress/Headdress</texPath>
 		</graphicData>
 		<statBases>
 			<Insulation_Cold>-10</Insulation_Cold>
@@ -158,11 +155,14 @@
 			<GiftImpact>0.2</GiftImpact>
 			<TradePriceImprovement>0.2</TradePriceImprovement>
 		</equippedStatOffsets>
+		<thingCategories>
+			<li>Headgear</li>
+		</thingCategories>
 		<apparel>
 			<bodyPartGroups>
 				<li>UpperHead</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Headdress/Headdress</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Various/Headdress/Headdress</worngraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>

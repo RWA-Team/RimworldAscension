@@ -2,7 +2,9 @@
 <WorkGivers>
 
 	<!-- 
-	singleBillGiverDef - determine the building which uses this workgiver (required)
+	- scanThings (true)- make workgiver check for PotentialWorkThingsGlobal 
+	- scanCells - make workgiver check for PotentialWorkCellsGlobal
+	- singleBillGiverDef - determine the building which uses this workgiver (required)
 	-->
 
 	<WorkGiverDef>
@@ -14,7 +16,11 @@
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
-	</WorkGiverDef>
+	</WorkGiverDef>	
+
+
+	<!--=================== Hauling =====================-->
+
 
 	<WorkGiverDef>
 		<defName>HaulToTrade</defName>
@@ -23,6 +29,47 @@
 		<verb>haul</verb>
 		<gerund>hauling</gerund>
 		<priorityInType>500</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>Uninstall</defName>
+		<giverClass>WorkGiver_Uninstall</giverClass>
+		<!-- workType changed to hauling compare to vanilla -->
+		<workType>Hauling</workType>
+		<priorityInType>200</priorityInType>
+		<verb>uninstall</verb>
+		<gerund>uninstalling</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CollectClay</defName>
+		<giverClass>RA.WorkGiver_CollectClay</giverClass>
+		<workType>Hauling</workType>
+		<scanThings>false</scanThings>
+		<scanCells>true</scanCells>
+		<priorityInType>100</priorityInType>
+		<verb>collect</verb>
+		<gerund>collecting</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CollectSand</defName>
+		<giverClass>RA.WorkGiver_CollectSand</giverClass>
+		<workType>Hauling</workType>
+		<scanThings>false</scanThings>
+		<scanCells>true</scanCells>
+		<priorityInType>100</priorityInType>
+		<verb>collect</verb>
+		<gerund>collecting</gerund>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
@@ -40,21 +87,9 @@
 		</requiredCapacities>
 	</WorkGiverDef>
 
-	<WorkGiverDef>
-		<defName>Uninstall</defName>
-		<giverClass>WorkGiver_Uninstall</giverClass>
-		<!-- workType changed to hauling compare to vanilla -->
-		<workType>Hauling</workType>
-		<priorityInType>195</priorityInType>
-		<verb>uninstall</verb>
-		<gerund>uninstalling</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>
-
 
 	<!--=================== Crafting =====================-->
+
 
 	<WorkGiverDef>
 		<defName>RefillBurner</defName>

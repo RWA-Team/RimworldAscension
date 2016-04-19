@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace RA
@@ -9,7 +10,7 @@ namespace RA
         {
             defaultLabel = "Collect Sand";
             defaultDesc = "Collect sand from sand tiles";
-            designationIconPath = "Missing";
+            icon = ContentFinder<Texture2D>.Get("Missing");
 
             designationDef = DefDatabase<DesignationDef>.GetNamed("CollectSand");
             allowedTerrain = new List<TerrainDef>

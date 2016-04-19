@@ -1,5 +1,4 @@
 ﻿using RimWorld.SquadAI;
-using Verse;
 
 namespace RA
 {

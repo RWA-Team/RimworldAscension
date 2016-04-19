@@ -52,7 +52,7 @@
 
 	<!--=================== Plant Resources ===================-->
 
-	
+
 	<ThingDef ParentName="ResourceOrganic">
 		<defName>BastFibre</defName>
 		<label>bast fibre</label>
@@ -70,7 +70,33 @@
 		<tradeability>Never</tradeability>
 	</ThingDef>
 
-<!-- 	<ThingDef ParentName="OrganicProductBase">
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Xerigium</defName>
+		<label>xerigium</label>
+		<description>This plant was selectively bred for centuries by settlers. It is sometimes also called &quot;healer's hand&quot; by tribespeople - a nickname it owes to its five major medicinal virtues.</description>
+		<thingClass>Medicine</thingClass>
+		<graphicData>
+			<texPath>Things/Plant/Xerigium</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<MarketValue>5</MarketValue>
+			<MedicalPotency>0.75</MedicalPotency>
+			<DeteriorationRate>5</DeteriorationRate>
+		</statBases>
+		<thingCategories>
+			<li>Medicine</li>
+		</thingCategories>
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>150</daysToRotStart>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- 	<ThingDef ParentName="OrganicProductBase">
 		<defName>Flax</defName>
 		<label>flax</label>
 		<description>A bunch of flax, a raw material used in linen manufacturing. On their own these are quite useless, but drying and fermentation of these plant products turns them into more valuable resources.</description>
@@ -235,8 +261,46 @@
 	</ThingDef> -->
 
 
-	<!--===================== Clay Blocks =====================-->
+	<!--========================= Clay =========================-->
 
+
+	<ThingDef Name="ResourceClay" ParentName="Resource" Abstract="True">
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>Clay</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Items/Resources/ClumpClay</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ResourceClay">
+		<defName>ClumpClayGray</defName>
+		<label>gray clay clumps</label>
+		<description>Clumps of gray clay.</description>
+		<graphicData>
+			<color>(127,51,0)</color>
+		</graphicData>
+		<tradeability>Never</tradeability>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceClay">
+		<defName>ClumpClayWhite</defName>
+		<label>white clay clumps</label>
+		<description>Clumps of white clay.</description>
+		<graphicData>
+			<color>(52,124,98)</color>
+		</graphicData>
+		<statBases>
+			<MarketValue>20</MarketValue>
+		</statBases>
+	</ThingDef>
+
+	<!-- Clay Blocks -->
 
 	<ThingDef Name="ResourceBlockClay" ParentName="Resource" Abstract="True">
 		<graphicData>

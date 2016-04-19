@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="Drug" Abstract="True">
+		<thingClass>Meal</thingClass>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stackLimit>10</stackLimit>
+		<category>Item</category>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<resourceReadoutPriority>First</resourceReadoutPriority>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<ingestible>
+			<preferability>NeverForNutrition</preferability>
+			<joyKind>Chemical</joyKind>
+			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+			<soundEat>Ingest_Beer</soundEat>
+			<isPleasureDrug>true</isPleasureDrug>
+		</ingestible>
+		<thingCategories>
+			<li>Drugs</li>
+		</thingCategories>
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+		</comps>
+		<alwaysHaulable>true</alwaysHaulable>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<rotatable>false</rotatable>
+		<pathCost>15</pathCost>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Drug">
+		<defName>Beer</defName>
+		<label>beer</label>
+		<description>The first beverage besides water ever consumed by mankind. Beer can taste good, but its main effect is intoxication. Excessive consumption can lead to alcohol addiction.</description>
+		<graphicData>
+			<texPath>Things/Item/Drug/Beer</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<DeteriorationRate>0</DeteriorationRate>
+			<MarketValue>9</MarketValue>
+		</statBases>
+		<ingestible>
+			<preferability>NeverForNutrition</preferability>
+			<nutrition>0.08</nutrition>
+			<joy>0.17</joy>
+			<joyKind>Chemical</joyKind>
+			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+			<soundEat>Ingest_Beer</soundEat>
+			<isPleasureDrug>true</isPleasureDrug>
+			<hediffGivers>
+				<li>
+					<chance>1</chance>
+					<hediffDef>Alcohol</hediffDef>
+				</li>
+			</hediffGivers>
+		</ingestible>
+	</ThingDef>
+
+</Defs>

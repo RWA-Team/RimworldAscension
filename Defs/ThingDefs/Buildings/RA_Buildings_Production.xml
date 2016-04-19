@@ -157,7 +157,7 @@
 			<WorkToMake>2000</WorkToMake>
 		</statBases>
 		<costList>
-			<ClumpClayRed>60</ClumpClayRed>
+			<ClumpClayGray>60</ClumpClayGray>
 		</costList>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<comps>
@@ -346,11 +346,10 @@
 
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableHunter</DefName>
-		<label>hunter workTable</label>
+		<label>hunter table</label>
 		<Description>A worktable equipped for ranged weapons production.</Description>
 		<graphicData>
-			<texPath>Things/Buildings/Production/BenchNeolithic</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Things/Buildings/Production/TableHunter/TableHunter</texPath>
 		</graphicData>
 		<statBases>
 			<WorkToMake>3000</WorkToMake>

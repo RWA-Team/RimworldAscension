@@ -66,7 +66,8 @@ namespace RA
                     // Record a tale
                     TaleRecorder.RecordTale(TaleDef.Named("LandedInPod"), pawn);
 
-                    if (pawn.kindDef == DefDatabase<PawnKindDef>.GetNamed("SpaceSlaverDead"))
+                    // kill slavers
+                    if (pawn.kindDef.defName == "SpaceSlaverDead")
                         HealthUtility.GiveInjuriesToKill(pawn);
                 }
             }

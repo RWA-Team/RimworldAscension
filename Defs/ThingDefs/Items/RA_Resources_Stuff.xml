@@ -305,7 +305,8 @@
 
 	<ThingDef Name="ResourceStoneBlock" ParentName="ResourceStone" Abstract="True">
 		<graphicData>
-			<texPath>Things/Item/Resource/StoneBlocks</texPath>
+			<texPath>Things/Items/Resources/StoneCobble</texPath>
+			<!-- <texPath>Things/Item/Resource/StoneBlocks</texPath> -->
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<thingCategories>

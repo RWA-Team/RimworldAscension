@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <PawnKindDefs>
 
-
 	<PawnKindDef>
 		<defName>SpaceSlaverDead</defName>
 		<label>space slaver</label>
@@ -27,6 +26,5 @@
 			<thingDef>Gun_SurvivalRifle</thingDef>
 		</inventoryOptions>
 	</PawnKindDef>
-
 
 </PawnKindDefs>

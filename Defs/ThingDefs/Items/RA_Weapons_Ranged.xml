@@ -76,7 +76,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>Ranged_Neolithic</li>
+			<li>RangedNeolithic</li>
 		</weaponTags>
 		<verbs>
 			<li>
@@ -125,7 +125,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>Ranged_Neolithic</li>
+			<li>RangedNeolithic</li>
 		</weaponTags>
 		<verbs>
 			<li>
@@ -174,7 +174,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>Ranged_Neolithic_Strong</li>
+			<li>RangedNeolithicStrong</li>
 		</weaponTags>
 		<verbs>
 			<li>
@@ -223,7 +223,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>Ranged_Neolithic</li>
+			<li>RangedNeolithic</li>
 		</weaponTags>
 		<verbs>
 			<li>
@@ -272,7 +272,7 @@
 			<RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
 		</statBases>
 		<weaponTags>
-			<li>Ranged_Neolithic_Weak</li>
+			<li>RangedNeolithicWeak</li>
 		</weaponTags>
 		<verbs>
 			<li>
@@ -322,7 +322,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>Ranged_Neolithic</li>
+			<li>RangedNeolithic</li>
 		</weaponTags>
 		<verbs>
 			<li>

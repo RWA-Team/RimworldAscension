@@ -14,11 +14,13 @@ namespace RA
 
         public override void Generate()
         {
-            foreach (var current in MapInitData.colonists)
+            foreach (var colonist in MapInitData.colonists)
             {
-                current.SetFactionDirect(Faction.OfColony);
-                PawnUtility.AddAndRemoveComponentsAsAppropriate(current);
-                current.needs.mood.thoughts.TryGainThought(ThoughtDefOf.NewColonyOptimism);
+                colonist.SetFactionDirect(Faction.OfColony);
+                PawnUtility.AddAndRemoveComponentsAsAppropriate(colonist);
+                colonist.needs.mood.thoughts.TryGainThought(ThoughtDefOf.NewColonyOptimism);
+                // damage colonists due to falling in ship wreck
+                ApplyMinorInjuries(colonist);
             }
             CreateInitialWorkSettings();
             var startedDirectInEditor = MapInitData.StartedDirectInEditor;
@@ -45,7 +47,9 @@ namespace RA
 
                 // Find a location to drop
                 IntVec3 dropCell;
-                if (!RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(MapGenerator.PlayerStartSpot, 10, out dropCell))
+                if (
+                    !RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(MapGenerator.PlayerStartSpot, 10,
+                        out dropCell))
                     dropCell = CellFinder.RandomClosewalkCellNear(MapGenerator.PlayerStartSpot, 30);
 
                 // Drop a drop pod containg our pawn
@@ -61,7 +65,9 @@ namespace RA
             {
                 // Find a location to drop
                 IntVec3 dropCell;
-                if (!RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(MapGenerator.PlayerStartSpot, 10, out dropCell))
+                if (
+                    !RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(MapGenerator.PlayerStartSpot, 10,
+                        out dropCell))
                     dropCell = CellFinder.RandomClosewalkCellNear(MapGenerator.PlayerStartSpot, 30);
 
                 // Drop a drop pod containg our pawn
@@ -132,6 +138,28 @@ namespace RA
                     }
                 }
             }
+        }
+
+        public static void ApplyMinorInjuries(Pawn pawn)
+        {
+            var hediffSet = pawn.health.hediffSet;
+            for (int i = 0; i < 5; i++)
+            {
+                var bodyPartRecord = HittablePartsViolence(hediffSet).RandomElementByWeight(x => x.absoluteFleshCoverage);
+                var amount = Rand.RangeInclusive(1, 5);
+                var dinfo = new DamageInfo(DamageDefOf.Blunt, amount, null,
+                    new BodyPartDamageInfo(bodyPartRecord, false, (HediffDef)null));
+                pawn.TakeDamage(dinfo);
+            }
+        }
+
+        public static IEnumerable<BodyPartRecord> HittablePartsViolence(HediffSet bodyModel)
+        {
+            return from x in bodyModel.GetNotMissingParts(null, null)
+                where
+                    x.depth == BodyPartDepth.Outside ||
+                    (x.depth == BodyPartDepth.Inside && x.def.IsSolid(x, bodyModel.hediffs))
+                select x;
         }
     }
 }

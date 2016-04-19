@@ -71,6 +71,7 @@
 				<rotModifier>0.75</rotModifier>
 			</li>
 		</comps>
+		<researchPrerequisite>Pottery</researchPrerequisite>
 	</ThingDef>
 
 	<ThingDef ParentName="Container">

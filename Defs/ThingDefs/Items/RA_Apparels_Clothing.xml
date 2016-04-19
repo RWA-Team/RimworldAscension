@@ -28,7 +28,7 @@
 		<alwaysHaulable>True</alwaysHaulable>
 		<tickerType>Never</tickerType>
 		<thingCategories>
-			<li>Apparel</li>
+			<li>Clothing</li>
 		</thingCategories>
 		<comps>
 			<li>
@@ -69,7 +69,6 @@
 		<description>An orange shirt, used by most of the prisons to keep track of prisoners.</description>
 		<graphicData>
 			<texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<apparel>
 			<bodyPartGroups>
@@ -93,7 +92,6 @@
 		<description>An orange pants, used by most of the prisons to keep track of prisoners.</description>
 		<graphicData>
 			<texPath>Things/Pawn/Humanlike/Apparel/Various/Pants_OnMap</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<apparel>
 			<bodyPartGroups>
@@ -169,7 +167,7 @@
 		<label>loincloth</label>
 		<description>Small pieces of leather to hide your nudity.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Loincloth/Loincloth</texPath>
+			<texPath>Things/Items/Apparels/Clothing/Loincloth/Loincloth</texPath>
 		</graphicData>
 		<statBases>
 			<Insulation_Cold>-10</Insulation_Cold>
@@ -178,7 +176,7 @@
 			<bodyPartGroups>
 				<li>Torso</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Loincloth/Loincloth</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Clothing/Loincloth/Loincloth</worngraphicPath>
 			<layers>
 				<li>OnSkin</li>
 			</layers>
@@ -207,17 +205,20 @@
 		<label>cape</label>
 		<description>A cape. Protects you from cold and curious glances.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Cape/Cape</texPath>
+			<texPath>Things/Items/Apparels/Clothing/Cape/Cape</texPath>
 		</graphicData>
 		<statBases>
 			<Insulation_Cold>-10</Insulation_Cold>
 			<Insulation_Heat>-2</Insulation_Heat>
 		</statBases>
+		<thingCategories>
+			<li>Headgear</li>
+		</thingCategories>
 		<apparel>
 			<bodyPartGroups>
 				<li>UpperHead</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Cape/Cape</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Clothing/Cape/Cape</worngraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>
@@ -249,19 +250,22 @@
 	<ThingDef ParentName="Clothing_Neolithic">
 		<defName>HatBaggy</defName>
 		<label>baggy hat</label>
-		<description>A hat.</description>
+		<description>A baggy hat.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Hat/Hat</texPath>
+			<texPath>Things/Items/Apparels/Clothing/HatBaggy/HatBaggy</texPath>
 		</graphicData>
 		<statBases>
 			<Insulation_Cold>-10</Insulation_Cold>
 			<Insulation_Heat>-2</Insulation_Heat>
 		</statBases>
+		<thingCategories>
+			<li>Headgear</li>
+		</thingCategories>
 		<apparel>
 			<bodyPartGroups>
 				<li>UpperHead</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Hat/Hat</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Clothing/HatBaggy/HatBaggy</worngraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>

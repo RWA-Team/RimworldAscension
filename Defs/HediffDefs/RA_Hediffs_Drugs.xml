@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- 
+	Hediff - health difference
+	
+	- initialSeverity (0.001f)- default severy value applied. Can stack if hediff apllied many times
+	- lethalSeverity (-1f)- causes death when reached
+	- stages - stage based on severety parameter, equal to the corresponding thought:
+		- painFactor - pain tolerance. Decrease current pain value.
+		- painOffset - persistent pain value
+		- vomitMtbDays - vomit delay
+	-->
+
+	<!-- 	Overall drug intoxication raised by any drug consume. Causes death when reach certain level. -->
+	<HediffDef>
+		<defName>Intoxication</defName>
+		<!-- <hediffClass>Hediff_Alcohol</hediffClass> -->
+		<label>intoxication</label>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<severityPerDay>-0.5</severityPerDay>
+		<lethalSeverity>1</lethalSeverity>
+		<stages>
+			<li>
+				<label>clean</label>
+				<everVisible>false</everVisible>
+			</li>
+			<li>
+				<minSeverity>0.25</minSeverity>
+				<label>mild intoxication</label>
+				<capMods>
+					<li>
+						<capacity>BloodFiltration</capacity>
+						<offset>-0.10</offset>
+					</li>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.10</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.5</minSeverity>
+				<label>intoxication</label>
+				<vomitMtbDays>0.5</vomitMtbDays>
+				<painOffset>0.1</painOffset>
+				<!-- <tale>Drunk</tale> -->
+				<capMods>
+					<li>
+						<capacity>BloodFiltration</capacity>
+						<offset>-0.35</offset>
+					</li>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.35</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.75</minSeverity>
+				<label>severe intoxication</label>
+				<vomitMtbDays>0.2</vomitMtbDays>
+				<painOffset>0.3</painOffset>
+				<!-- <tale>Drunk</tale> -->
+				<capMods>
+					<li>
+						<capacity>BloodFiltration</capacity>
+						<offset>-0.35</offset>
+					</li>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.35</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.9</minSeverity>
+				<label>coma</label>
+				<painFactor>0.1</painFactor>
+				<capMods>
+					<li>
+						<capacity>BloodFiltration</capacity>
+						<offset>-0.5</offset>
+					</li>
+					<li>
+						<capacity>Metabolism</capacity>
+						<offset>-0.5</offset>
+					</li>
+					<li>
+						<capacity>Consciousness</capacity>
+						<setMax>0.1</setMax>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	
+	<!--======================== Withdrawals ========================-->
+	
+	<!-- some withdrawals could be lethal -->
+
+	<HediffDef>
+		<defName>WithdrawalAlcohol</defName>
+		<hediffClass>Hediff_Alcohol</hediffClass>
+		<label>alcohol withdrawal</label>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<severityPerDay>0.05</severityPerDay>
+		<stages>
+			<li>
+				<label>no withdrawal</label>
+				<everVisible>false</everVisible>
+			</li>
+			<li>
+				<minSeverity>0.25</minSeverity>
+				<label>mild withdrawal</label>
+			</li>
+			<li>
+				<minSeverity>0.5</minSeverity>
+				<label>withdrawal</label>
+				<vomitMtbDays>2.5</vomitMtbDays>
+			</li>
+			<li>
+				<minSeverity>0.75</minSeverity>
+				<label>severe withdrawal</label>
+			</li>
+		</stages>
+	</HediffDef>
+
+</Defs>

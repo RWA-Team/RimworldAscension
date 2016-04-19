@@ -7,7 +7,7 @@
 	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
 	- fixedIngredientFilter - determine ingridient set to choose from	
 	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
-	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complex recipes. Changed to allowed ones via reseach mods.
 	-->
 
 	<!--===================== Moulding =====================-->
@@ -34,7 +34,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayRed</li>
+						<li>ClumpClayGray</li>
 					</thingDefs>
 				</filter>
 				<count>25</count>
@@ -50,7 +50,7 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>ClumpClayRed</li>
+				<li>ClumpClayGray</li>
 				<li>Hay</li>
 			</thingDefs>
 		</fixedIngredientFilter>
@@ -70,7 +70,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayRed</li>
+						<li>ClumpClayGray</li>
 					</thingDefs>
 				</filter>
 				<count>25</count>
@@ -78,7 +78,7 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>ClumpClayRed</li>
+				<li>ClumpClayGray</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
@@ -95,7 +95,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayRed</li>
+						<li>ClumpClayGray</li>
 					</thingDefs>
 				</filter>
 				<count>20</count>
@@ -103,7 +103,7 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>ClumpClayRed</li>
+				<li>ClumpClayGray</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>

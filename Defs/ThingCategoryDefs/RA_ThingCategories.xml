@@ -142,7 +142,7 @@
 			</ThingCategoryDef>
 		
 			<ThingCategoryDef>
-				<defName>RawProductsClay</defName>
+				<defName>ResourcesRawClay</defName>
 				<label>raw clay products</label>
 				<parent>ResourcesRaw</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
@@ -247,12 +247,6 @@
 				<label>melee weapons</label>
 				<parent>Weapons</parent>
 			</ThingCategoryDef>
-			
-				<ThingCategoryDef>
-					<defName>Tools</defName>
-					<label>tools</label>
-					<parent>WeaponsMelee</parent>
-				</ThingCategoryDef>
 
 			<ThingCategoryDef>
 				<defName>WeaponsRanged</defName>
@@ -275,6 +269,24 @@
 			<ThingCategoryDef>
 				<defName>Headgear</defName>
 				<label>headgear</label>
+				<parent>Apparel</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>Armor</defName>
+				<label>armor</label>
+				<parent>Apparel</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>Clothing</defName>
+				<label>clothing</label>
+				<parent>Apparel</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>Various</defName>
+				<label>various</label>
 				<parent>Apparel</parent>
 			</ThingCategoryDef>
 

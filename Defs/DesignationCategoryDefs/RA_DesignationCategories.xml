@@ -14,7 +14,7 @@
 	</DesignationCategoryDef>
 
 
-	<!--============================== Designations ==============================-->
+	<!--====================== Designations ======================-->
 
 
 	<DesignationCategoryDef ParentName="BuildingCategory">
@@ -27,6 +27,7 @@
 			<li>Designator_PlantsCut</li>
 			<li>Designator_PlantsHarvest</li>
 			<li>Designator_PlantsHarvestWood</li>
+			<li>RA.Designator_CollectClay</li>
 			<li>Designator_Hunt</li>
 			<li>Designator_Claim</li>
 			<li>Designator_Strip</li>
@@ -57,7 +58,7 @@
 	</DesignationCategoryDef>
 
 
-	<!--============================== Buildings ==============================-->
+	<!--====================== Buildings ======================-->
 
 
 	<DesignationCategoryDef ParentName="BuildingCategory">

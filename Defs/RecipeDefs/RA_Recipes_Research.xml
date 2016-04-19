@@ -132,7 +132,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayRed</li>
+						<li>ClumpClayGray</li>
 					</thingDefs>
 				</filter>
 				<count>150</count>
