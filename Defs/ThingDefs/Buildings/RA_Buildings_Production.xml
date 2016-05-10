@@ -186,7 +186,9 @@
 		</researchPrerequisites>
 	</ThingDef>
 
+
 	<!-- ==================== Neolithic Tables =====================-->
+
 
 	<ThingDef Name="WorkTableNeolithic" ParentName="WorkTable" Abstract="True">
 		<graphicData>

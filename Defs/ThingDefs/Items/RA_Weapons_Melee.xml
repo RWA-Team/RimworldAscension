@@ -69,38 +69,6 @@
 		</verbs>
 		<weaponTags>
 			<li>MeleeNeolithicWeak</li>
-<<<<<<< HEAD
-=======
-		</weaponTags>
-		<techLevel>Neolithic</techLevel>
-	</ThingDef>
-
-	<ThingDef ParentName="Weapon">
-		<defName>Club</defName>
-		<label>club</label>
-		<description>The oldest human weapon - a shaped piece of wood for bashing enemies to death. Primitive but effective.</description>
-		<graphicData>
-			<texPath>Things/Item/Equipment/WeaponMelee/Club</texPath>
-		</graphicData>
-		<equippedAngleOffset>-65</equippedAngleOffset>
-		<statBases>
-			<MarketValue>60</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
-		</statBases>
-		<stuffCategories>
-			<li>WoodLog</li>
-		</stuffCategories>
-		<verbs>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
-				<meleeDamageDef>Blunt</meleeDamageDef>
-			</li>
-		</verbs>
-		<weaponTags>
-			<li>MeleeNeolithicWeak</li>
->>>>>>> origin/Wivex-branch
 		</weaponTags>
 	</ThingDef>
 
@@ -161,7 +129,6 @@
 		</weaponTags>
 	</ThingDef>
 
-<<<<<<< HEAD
 	<ThingDef ParentName="WeaponMelee">
 		<defName>AxeNeolithic</defName>
 		<label>improvised axe</label>
@@ -172,18 +139,6 @@
 		<stuffCategories>
 			<li>Bone</li>
 			<li>StoneCobble</li>
-=======
-	<ThingDef ParentName="Weapon">
-		<defName>AxePrimitive</defName>
-		<label>improvised axe</label>
-		<description>An improvised axe-looking tool designed with vegetation cutting in mind. Lacking the weight and finish of a melee weapon.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/PrimitiveHandaxe</texPath>
-		</graphicData>
-		<stuffCategories>
-			<li>Bone</li>
-			<li>StoneBlock</li>
->>>>>>> origin/Wivex-branch
 		</stuffCategories>
 		<statBases>
 			<MarketValue>60</MarketValue>
@@ -200,7 +155,6 @@
 			<li>PlantCuttingTool</li>
 			<li>MeleeNeolithic</li>
 		</weaponTags>
-<<<<<<< HEAD
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMelee">
@@ -209,26 +163,11 @@
 		<description>An improvised hammer-looking tool used for construction and repair rather than for combat purposes.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/HammerNeolithic</texPath>
-=======
-		<techLevel>Neolithic</techLevel>
-	</ThingDef>
-
-	<ThingDef ParentName="Weapon">
-		<defName>HammerPrimitive</defName>
-		<label>improvised mallet</label>
-		<description>An improvised hammer-looking tool used for construction and repair rather than for combat purposes.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/PrimitiveHammer</texPath>
->>>>>>> origin/Wivex-branch
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<stuffCategories>
 			<li>Bone</li>
-<<<<<<< HEAD
 			<li>StoneCobble</li>
-=======
-			<li>StoneBlock</li>
->>>>>>> origin/Wivex-branch
 		</stuffCategories>
 		<statBases>
 			<MarketValue>60</MarketValue>
@@ -244,7 +183,6 @@
 		<weaponTags>
 			<li>ConstructionTool</li>
 			<li>MeleeNeolithic</li>
-<<<<<<< HEAD
 		</weaponTags>
 	</ThingDef>	
 
@@ -300,65 +238,6 @@
 			<li>ConstructionTool</li>
 			<li>PlantCuttingTool</li>
 		</weaponTags>
-=======
-		</weaponTags>
-		<techLevel>Neolithic</techLevel>
-	</ThingDef>	
-	
-	<ThingDef ParentName="Weapon">
-		<defName>Broom</defName>
-		<label>hand broom</label>
-		<description>An improvised cleaning device made out of plant fibres.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/Broom</texPath>
-			<color>(133,97,67)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>10</MarketValue>
-			<MeleeWeapon_DamageAmount>1</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
-		</statBases>
-		<verbs>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<meleeDamageDef>Blunt</meleeDamageDef>
-			</li>
-		</verbs>
-		<weaponTags>
-			<li>CleaningTool</li>
-		</weaponTags>
-		<techLevel>Neolithic</techLevel>
-	</ThingDef>
-	
-
-	<!-- ========================= Midworld =========================-->
-	
-
-	<ThingDef ParentName="Weapon">
-		<defName>Multitool</defName>
-		<label>multitool</label>
-		<description>A survival grade, all-in-one hammer- and axe-type tool used for construction and woodcutting. Performs perfectly in any environment, according to the manufacturer.</description>
-		<equippedAngleOffset>-65</equippedAngleOffset>
-		<statBases>
-			<MarketValue>500</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
-		</statBases>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Midworld/Multitool</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<verbs>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<meleeDamageDef>Cut</meleeDamageDef>
-			</li>
-		</verbs>
-		<weaponTags>
-			<li>ConstructionTool</li>
-			<li>PlantCuttingTool</li>
-		</weaponTags>
->>>>>>> origin/Wivex-branch
 		<techLevel>Midworld</techLevel>
 	</ThingDef>
 

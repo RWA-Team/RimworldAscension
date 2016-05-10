@@ -26,11 +26,11 @@
 		</hairTags>
 		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
 		<homeIconColor>(255,220,84)</homeIconColor>
-	</FactionDef>
-	
-	
+	</FactionDef>	
+
+
 	<!-- ========================= Neolithic =========================-->
-	
+
 
 	<FactionDef Name="Faction" Abstract="True">
 		<canMakeRandomly>true</canMakeRandomly>
@@ -50,6 +50,7 @@
 		<!-- <hidden>true</hidden> -->
 	</FactionDef>
 
+
 	<FactionDef Name="FactionNeolithic" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
@@ -60,7 +61,7 @@
 			<li>Tribal</li>
 		</hairTags>
 	</FactionDef>
-	
+
 
 	<FactionDef ParentName="FactionNeolithic">
 		<defName>Tribe</defName>

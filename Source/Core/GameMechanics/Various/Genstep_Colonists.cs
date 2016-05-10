@@ -56,9 +56,7 @@ namespace RA
 
                 // Find a location to drop
                 IntVec3 dropCell;
-                if (
-                    !RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(MapGenerator.PlayerStartSpot, 10,
-                        out dropCell))
+                if (!RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(MapGenerator.PlayerStartSpot, 10, out dropCell))
                     dropCell = CellFinder.RandomClosewalkCellNear(MapGenerator.PlayerStartSpot, 30);
 
                 // Drop a drop pod containg our pawn

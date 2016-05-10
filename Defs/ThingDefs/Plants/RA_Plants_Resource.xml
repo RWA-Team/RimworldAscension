@@ -5,7 +5,7 @@
 	- sowTags - determines where this plant can be grown
 	- harvestTag - determine what designator allows harvesting
 	-->
-	
+
 	<ThingDef ParentName="Plant">
 		<defName>PlantBush</defName>
 		<label>bush</label>

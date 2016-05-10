@@ -75,7 +75,6 @@
 		</requiredCapacities>
 	</WorkGiverDef>	
 
-
 	<WorkGiverDef>
 		<defName>RefillBurner</defName>
 		<giverClass>RA.WorkGiver_RefillBurner</giverClass>

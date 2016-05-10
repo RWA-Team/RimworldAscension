@@ -58,7 +58,9 @@
 		</stuffProps>
 	</ThingDef>
 
+
 	<!--===================== Wood =====================-->
+
 
 	<ThingDef Name="ResourceWood" ParentName="ResourceOrganic" Abstract="True">
 		<soundInteract>Wood_Drop</soundInteract>
@@ -92,7 +94,7 @@
 			</statFactors>
 		</stuffProps>
 	</ThingDef>
-	
+
 
 	<ThingDef ParentName="ResourceWood">
 		<defName>WoodLog</defName>
@@ -120,7 +122,9 @@
 		</techHediffsTags>
 	</ThingDef>
 
+
 	<!--===================== Stone =====================-->
+
 
 	<ThingDef Name="ResourceStone" ParentName="Resource" Abstract="True">
 		<statBases>
@@ -293,7 +297,9 @@
 		</stuffProps>
 	</ThingDef>
 
+
 	<!--===================== Fabric ====================-->
+
 
 	<!-- 	<ThingDef ParentName="Resource">
 		<defName>Linen</defName>

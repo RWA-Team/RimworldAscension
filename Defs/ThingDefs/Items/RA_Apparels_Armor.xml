@@ -8,7 +8,7 @@
 	 -->
 	 
 	<!--==================== Base Abstracts ========================-->
-	
+
 	<ThingDef Name="Apparel" ParentName="Item" Abstract="True">
 		<thingClass>Apparel</thingClass>
 		<graphicData>
@@ -20,15 +20,14 @@
 			<DeteriorationRate>0.5</DeteriorationRate>
 			<SellPriceFactor>0.1</SellPriceFactor>
 		</statBases>
-		<altitudeLayer>Item</altitudeLayer>
-		<alwaysHaulable>True</alwaysHaulable>
-		<tickerType>Never</tickerType>
-		<thingCategories>
-			<li>Armor</li>
-		</thingCategories>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
 	</ThingDef>	
 	
-	<!--==================== Armor ====================-->	
+	<!--==================== Armor ========================-->	
 
 	<ThingDef Name="Armor" ParentName="Apparel" Abstract="True">
 		<thingCategories>
@@ -36,7 +35,9 @@
 		</thingCategories>
 	</ThingDef>
 
-	<!--==================== Head ====================-->
+
+	<!-- ========================= Head =========================-->
+
 
 	<ThingDef Name="ArmorHead" ParentName="Armor" Abstract="True">
 		<thingCategories>

@@ -13,7 +13,7 @@
 		</thingCategories>
 	</ThingDef>
 
-	
+
 	<ThingDef ParentName="ApparelVarious">
 		<defName>Backpack</defName>
 		<label>backpack</label>
