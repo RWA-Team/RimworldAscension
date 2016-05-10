@@ -2,7 +2,12 @@
 <FactionDefs>
 
 	<!-- 
-	selectionWeight - used to mutiply chances of spawning toughter enemies instead of massing weak, if high numbers of threat points reached (the higher the more)
+	- selectionWeight - used to mutiply chances of spawning toughter enemies instead of massing weak, if high numbers of threat points reached (the higher the more)
+	- canMakeRandomly - determines if faction can be generated randomly by faction generator fs total faction count is less than required
+	- mustStartOneEnemy - one faction of that def should be hostile
+	- startingGoodwill - initial goodwill with other factions
+	- naturalColonyGoodwill - range of faction goodwill with colony that doesn't change due time
+	- hidden - faction is not seen in faction menu. Some interactions with faction blocked too.
 	 -->
 
 	<FactionDef>
@@ -10,55 +15,70 @@
 		<label>colony</label>
 		<description>Your own community.</description>
 		<pawnsPlural>colonists</pawnsPlural>
-		<factionNameMaker>NamerFactionTribal</factionNameMaker>
+		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
 		<techLevel>Neolithic</techLevel>
-		<backstoryCategory>Tribal</backstoryCategory>
+		<backstoryCategory>Civil</backstoryCategory>
 		<hairTags>
 			<li>Tribal</li>
+			<li>Urban</li>
+			<li>Rural</li>
+			<li>Punk</li>
 		</hairTags>
-		<apparelStuffFilter>
-			<thingDefs>
-				<li>Deer_Leather</li>
-			</thingDefs>
-		</apparelStuffFilter>
 		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
 		<homeIconColor>(255,220,84)</homeIconColor>
-	</FactionDef>
-	
+	</FactionDef>	
 
-	<FactionDef>
-		<defName>Tribe</defName>
-		<label>tribe</label>
-		<description>These people have been here a very long time. Maybe their ancestors crashed here a thousand years ago. Maybe they survived some cataclysm that destroyed a technological civilization here. In any case, the tribals are mostly nomadic people who live off the land using primitive tools and weapons.\n\nSome tribes are more aggressive than others; many are open to trade and alliances, even with strange peoples like yourselves. Close coop eration or recruitment will be very difficult because of the vast sociotechnological and linguistic gap between the tribals and yourselves.\n\nDespite their apparent technological weakness, the tribals can be dangerous enemies and valuable friends because of their skill with low-tech warfare, their numbers, and their hardiness.</description>
-		<pawnsPlural>tribespeople</pawnsPlural>
-		<requiredCountAtGameStart>4</requiredCountAtGameStart>
+
+	<!-- ========================= Neolithic =========================-->
+
+
+	<FactionDef Name="Faction" Abstract="True">
 		<canMakeRandomly>true</canMakeRandomly>
 		<raidCommonality>100</raidCommonality>
 		<canStageAttacks>true</canStageAttacks>
-		<startingGoodwill>
-			<min>-50</min>
-			<max>30</max>
-		</startingGoodwill>
 		<mustStartOneEnemy>true</mustStartOneEnemy>
+		<startingGoodwill>
+			<min>-10</min>
+			<max>25</max>
+		</startingGoodwill>
+		<naturalColonyGoodwill>
+			<min>-80</min>
+			<max>25</max>
+		</naturalColonyGoodwill>
+		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
+		<homeIconColor>(50,200,50)</homeIconColor>
+		<!-- <hidden>true</hidden> -->
+	</FactionDef>
+
+
+	<FactionDef Name="FactionNeolithic" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
 		<techLevel>Neolithic</techLevel>
 		<backstoryCategory>Tribal</backstoryCategory>
 		<leaderTitle>Chief</leaderTitle>
-		<apparelStuffFilter>
-			<thingDefs>
-				<li>Deer_Leather</li>
-			</thingDefs>
-		</apparelStuffFilter>
 		<hairTags>
 			<li>Tribal</li>
 		</hairTags>
-		<naturalColonyGoodwill>
-			<min>-100</min>
-			<max>10</max>
-		</naturalColonyGoodwill>
+	</FactionDef>
+
+
+	<FactionDef ParentName="FactionNeolithic">
+		<defName>Tribe</defName>
+		<label>tribe</label>
+		<description>These people have been here a very long time. Maybe their ancestors crashed here a thousand years ago. Maybe they survived some cataclysm that destroyed a technological civilization here. In any case, the tribals are mostly nomadic people who live off the land using primitive tools and weapons.\n\nSome tribes are more aggressive than others; many are open to trade and alliances, even with strange peoples like yourselves. Close coop eration or recruitment will be very difficult because of the vast sociotechnological and linguistic gap between the tribals and yourselves.\n\nDespite their apparent technological weakness, the tribals can be dangerous enemies and valuable friends because of their skill with low-tech warfare, their numbers, and their hardiness.</description>
+		<pawnsPlural>tribespeople</pawnsPlural>
+		<requiredCountAtGameStart>3</requiredCountAtGameStart>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Muffalo_Leather</li>
+			</thingDefs>
+		</apparelStuffFilter>
+		<caravanTraderKinds>
+			<li>Caravan_Neolithic</li>
+		</caravanTraderKinds>
 		<pawnGroupMakers>
-			<li>
+			<li Class="PawnGroupMaker_Normal">
 				<options>
 					<li>
 						<selectionWeight>20</selectionWeight>
@@ -78,10 +98,68 @@
 					</li>
 				</options>
 			</li>
+			<li Class="PawnGroupMaker_Trader">
+				<traders>
+					<li>
+						<selectionWeight>1</selectionWeight>
+						<kind>TribalTrader</kind>
+					</li>
+				</traders>
+				<carriers>
+					<li>
+						<selectionWeight>1</selectionWeight>
+						<kind>PackMuffalo</kind>
+					</li>
+				</carriers>
+				<guards>
+					<li>
+						<selectionWeight>60</selectionWeight>
+						<kind>TribalWarrior</kind>
+					</li>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>TribalHunter</kind>
+					</li>
+				</guards>
+			</li>
 		</pawnGroupMakers>
-		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
-		<homeIconColor>(50,200,50)</homeIconColor>
 	</FactionDef>
-	
+
+	<FactionDef ParentName="FactionNeolithic">
+		<defName>Ferals</defName>
+		<label>feral tribe</label>
+		<description>A feral uncivilized tribe of cannibals.</description>
+		<pawnsPlural>ferals</pawnsPlural>
+		<canStageAttacks>false</canStageAttacks>
+		<requiredCountAtGameStart>3</requiredCountAtGameStart>
+		<startingGoodwill>
+			<min>-100</min>
+			<max>-50</max>
+		</startingGoodwill>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Human_Leather</li>
+				<li>Bone</li>
+			</thingDefs>
+		</apparelStuffFilter>
+		<pawnGroupMakers>
+			<li Class="PawnGroupMaker_Normal">
+				<options>
+					<li>
+						<selectionWeight>150</selectionWeight>
+						<kind>FeralWarrior</kind>
+					</li>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>FeralHunter</kind>
+					</li>
+					<li>
+						<selectionWeight>200</selectionWeight>
+						<kind>FeralWarchief</kind>
+					</li>
+				</options>
+			</li>
+		</pawnGroupMakers>
+	</FactionDef>
 
 </FactionDefs>

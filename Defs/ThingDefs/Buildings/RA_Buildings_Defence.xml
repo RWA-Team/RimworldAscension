@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<!-- 
+	- fillPercent - determne cover multiplier vs projectiles
+	- castEdgeShadows - shadow aura around building
+	- staticSunShadowHeight - solid square shadow with set length
+	- drawerType:
+		- MapMeshOnly - doesn't draw from comps
+		- MapMeshAndRealTime - doesn't draw from comps
+		- RealTimeOnly - used for objects that change their texture (unsure)
+	- surfaceType:
+		- Item - allows place items
+		- Eat - allows place food to eat
+	 -->
+
+	<ThingDef Name="Defence" ParentName="Building" Abstract="True">
+		<designationCategory>Defence</designationCategory>
+	</ThingDef>
+	
+	
+	<ThingDef Name="MinifiedDefence" ParentName="Minified" Abstract="True">
+		<thingCategories>
+			<li>MinifiedDefences</li>
+		</thingCategories>
+	</ThingDef>
+
+
+	<!--==================== Traps ========================-->
+
+
+	<ThingDef ParentName="Defence">
+		<defName>TrapDeadfall</defName>
+		<label>deadfall trap</label>
+		<thingClass>Building_TrapRearmable</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Security/DeadfallArmed</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<altitudeLayer>Waist</altitudeLayer>
+		<drawerType>RealtimeOnly</drawerType>
+		<rotatable>false</rotatable>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<MaxHitPoints>40</MaxHitPoints>
+			<WorkToMake>3000</WorkToMake>
+			<Beauty>-4</Beauty>
+			<TrapMeleeDamage>50</TrapMeleeDamage>
+			<TrapSpringChance>0.8</TrapSpringChance>
+		</statBases>
+		<description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+		<minifiedDef>TrapDeadfallMinified</minifiedDef>
+		<costList>
+			<TrapDeadfallMinified>1</TrapDeadfallMinified>
+		</costList>
+		<building>
+			<isTrap>true</isTrap>
+			<trapDamageCategory>Sharp</trapDamageCategory>
+			<trapUnarmedGraphicData>
+				<texPath>Things/Building/Security/DeadfallUnarmed</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<shaderType>Cutout</shaderType>
+			</trapUnarmedGraphicData>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="MinifiedDefence">
+		<defName>TrapDeadfallMinified</defName>
+		<label>deadfall trap</label>
+		<stuffCategories>
+			<li>Wood</li>
+			<li>StoneCobble</li>
+			<li>Bone</li>
+		</stuffCategories>
+	</ThingDef>
+
+</ThingDefs>

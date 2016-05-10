@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SkillDefs>
+
+	<SkillDef>
+		<defName>Construction</defName>
+		<description>Better constructors build faster.</description>
+		<skillLabel>Construction</skillLabel>
+		<pawnLabel>Constructor</pawnLabel>
+	</SkillDef>
+
+	<SkillDef>
+		<defName>Research</defName>
+		<description>Studying materials, doing experiments, and learning.</description>
+		<skillLabel>Research</skillLabel>
+		<pawnLabel>Researcher</pawnLabel>
+	</SkillDef>
+
+</SkillDefs>

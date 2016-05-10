@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DesignationDefs>
+
+	<DesignationDef>
+		<defName>CollectClay</defName>
+		<texturePath>Designations/Mine</texturePath>
+		<targetType>Cell</targetType>
+	</DesignationDef>
+
+	<DesignationDef>
+		<defName>CollectSand</defName>
+		<texturePath>Designations/Mine</texturePath>
+		<targetType>Cell</targetType>
+	</DesignationDef>
+
+</DesignationDefs>

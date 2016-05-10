@@ -26,7 +26,7 @@ namespace RA
             };
         }
 
-        public override void PostDestroy(DestroyMode mode = DestroyMode.Vanish)
+        public override void PostDestroy(DestroyMode mode, bool wasSpawned)
         {
             // NOTE: "this" might be unavailable at this point
             GenConstruct.PlaceBlueprintForBuild(parent.def.entityDefToBuild, parent.Position, parent.Rotation, Faction.OfColony, parent.Stuff);

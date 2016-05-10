@@ -2,54 +2,24 @@
 <ThingDefs>
 
 	<!-- 
-	defaultOutfitTags - used to determine gear in preset outfit sets available in the outfits menu
-	equippedStatOffsets - applies offset to the pawns stat when worn
-	worngraphicPath - specified when needs to select apparel type based on body type variations
+	- defaultOutfitTags - used to determine gear in preset outfit sets available in the outfits menu
+	- equippedStatOffsets - applies offset to the pawns stat when worn
+	- worngraphicPath - used to fraw apparel texture on the pawn. shows nothing if not set
 	 -->
 
-	<ThingDef Name="Apparel_Base" Abstract="True">
-		<thingClass>Apparel</thingClass>
-		<category>Item</category>
-		<selectable>True</selectable>
-		<pathCost>10</pathCost>
-		<useHitPoints>True</useHitPoints>
-		<graphicData>
-			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<drawGUIOverlay>true</drawGUIOverlay>
-		<statBases>
-			<MaxHitPoints>100</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-			<DeteriorationRate>0.5</DeteriorationRate>
-			<SellPriceFactor>0.1</SellPriceFactor>
-		</statBases>
-		<altitudeLayer>Item</altitudeLayer>
-		<alwaysHaulable>True</alwaysHaulable>
-		<tickerType>Never</tickerType>
+	<ThingDef Name="ApparelVarious" ParentName="Apparel" Abstract="True">
 		<thingCategories>
-			<li>Apparel</li>
+			<li>ApparelVarious</li>
 		</thingCategories>
-		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
-			<li>
-				<compClass>CompColorable</compClass>
-			</li>
-			<li>
-				<compClass>CompQuality</compClass>
-			</li>
-		</comps>
 	</ThingDef>
 
 
-	<ThingDef ParentName="Apparel_Base">
+	<ThingDef ParentName="ApparelVarious">
 		<defName>Backpack</defName>
 		<label>backpack</label>
 		<description>A backpack is a bag with straps that go over your shoulders, so that you can carry things on your back when you are walking or climbing.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Backpack/Backpack</texPath>
+			<texPath>Things/Items/Apparels/Various/Backpack/Backpack</texPath>
 		</graphicData>
 		<tickerType>Normal</tickerType>
 		<stuffCategories>
@@ -59,7 +29,7 @@
 			<bodyPartGroups>
 				<li>Torso</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Backpack/Backpack</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Various/Backpack/Backpack</worngraphicPath>
 			<layers>
 				<li>Accessory</li>
 			</layers>
@@ -83,25 +53,21 @@
 		</colorGenerator>
 		<comps>
 			<li Class="RA.CompSlots_Properties">
-				<compClass>RA.CompSlots</compClass>
 				<allowedThingCategoryDefs>
 					<li>Weapons</li>
 					<li>Apparel</li>
 				</allowedThingCategoryDefs>
-				<forbiddenSubThingCategoryDefs>
-					<li>Tools</li>
-				</forbiddenSubThingCategoryDefs>
 				<maxSlots>1</maxSlots>
 			</li>
 		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="Apparel_Base">
+	<ThingDef ParentName="ApparelVarious">
 		<defName>Toolbelt</defName>
 		<label>toolbelt</label>
 		<description>A toolbelt to keep your tools to yourself.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Toolbelt/Toolbelt</texPath>
+			<texPath>Things/Items/Apparels/Various/Toolbelt/Toolbelt</texPath>
 		</graphicData>
 		<tickerType>Normal</tickerType>
 		<stuffCategories>
@@ -111,7 +77,7 @@
 			<bodyPartGroups>
 				<li>Legs</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Toolbelt/Toolbelt</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Various/Toolbelt/Toolbelt</worngraphicPath>
 			<layers>
 				<li>Accessory</li>
 			</layers>
@@ -135,21 +101,20 @@
 		</colorGenerator>
 		<comps>
 			<li Class="RA.CompSlots_Properties">
-				<compClass>RA.CompSlots</compClass>
 				<allowedThingCategoryDefs>
-					<li>Tools</li>
+					<li>WeaponsMelee</li>
 				</allowedThingCategoryDefs>
 				<maxSlots>3</maxSlots>
 			</li>
 		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="Apparel_Base">
+	<ThingDef ParentName="ApparelVarious">
 		<defName>Headdress</defName>
 		<label>headdress</label>
 		<description>A headdress.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Headdress/Headdress</texPath>
+			<texPath>Things/Items/Apparels/Various/Headdress/Headdress</texPath>
 		</graphicData>
 		<statBases>
 			<Insulation_Cold>-10</Insulation_Cold>
@@ -160,11 +125,14 @@
 			<GiftImpact>0.2</GiftImpact>
 			<TradePriceImprovement>0.2</TradePriceImprovement>
 		</equippedStatOffsets>
+		<thingCategories>
+			<li>Headgear</li>
+		</thingCategories>
 		<apparel>
 			<bodyPartGroups>
 				<li>UpperHead</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Headdress/Headdress</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Various/Headdress/Headdress</worngraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>
@@ -191,6 +159,5 @@
 			</options>
 		</colorGenerator>
 	</ThingDef>
-
 
 </ThingDefs>

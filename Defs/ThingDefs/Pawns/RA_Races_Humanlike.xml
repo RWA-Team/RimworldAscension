@@ -1,38 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
-
-	<ThingDef Name="BasePawn" Abstract="True">
-		<thingClass>Pawn</thingClass>
-		<category>Pawn</category>
-		<selectable>true</selectable>
-		<tickerType>Normal</tickerType>
-		<altitudeLayer>Pawn</altitudeLayer>
-		<useHitPoints>false</useHitPoints>
-		<hasTooltip>true</hasTooltip>
-		<soundImpactDefault>BulletImpactFlesh</soundImpactDefault>
-		<inspectorTabs>
-			<li>ITab_Pawn_Health</li>
-			<li>ITab_Pawn_Needs</li>
-			<li>ITab_Pawn_Character</li>
-			<li>ITab_Pawn_Training</li>
-			<li>ITab_Pawn_Gear</li>
-			<li>ITab_Pawn_Guest</li>
-			<li>ITab_Pawn_Prisoner</li>
-		</inspectorTabs>
-		<comps>
-			<li>
-				<compClass>CompAttachBase</compClass>
-			</li>
-		</comps>
-		<drawGUIOverlay>true</drawGUIOverlay>
-	</ThingDef>
-
-
-	<!-- ============================ Human ========================== -->
-
-
-	<ThingDef ParentName="BasePawn">
+	<ThingDef ParentName="Race">
 		<defName>Human</defName>
 		<label>human</label>
 		<description>A baseline human, mostly unmodified by gene engineering and mostly unchanged by evolutionary pressures on non-Earth planets.</description>
@@ -62,10 +31,10 @@
 			</li>
 		</verbs>
 		<race>
-			<thinkTree>Humanlike</thinkTree>
+			<thinkTreeMain>Humanlike</thinkTreeMain>
+			<thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
 			<intelligence>Humanlike</intelligence>
 			<makesFootprints>true</makesFootprints>
-			<isFlesh>true</isFlesh>
 			<lifeExpectancy>80</lifeExpectancy>
 			<leatherColor>(211,194,143)</leatherColor>
 			<leatherCommonalityFactor>0.01</leatherCommonalityFactor>
@@ -76,8 +45,8 @@
 			<body>Human</body>
 			<baseBodySize>1</baseBodySize>
 			<baseHealthScale>1</baseHealthScale>
-			<diet>Omnivorous</diet>
-			<gestationPeriodDays>90</gestationPeriodDays>
+			<foodType>OmnivoreHuman</foodType>
+			<gestationPeriodDays>45</gestationPeriodDays>
 			<litterSizeCurve>
 				<points>
 					<li>(0.5, 0)</li>
@@ -147,21 +116,15 @@
 			<li>InstallNaturalLung</li>
 			<li>InstallNaturalKidney</li>
 			<li>InstallNaturalLiver</li>
+			<li>ExciseCarcinoma</li>
 			<li>RemoveBodyPart</li>
 			<li>Euthanize</li>
 		</recipes>
 		<comps>
 			<li>
-				<compClass>CompAttachBase</compClass>
-			</li>
-			<li>
 				<compClass>RA.CompEquipmentGizmoUser</compClass>
 			</li>
 		</comps>
-		<butcherProducts>
-			<Bone>10</Bone>
-		</butcherProducts>
 	</ThingDef>
-
 
 </ThingDefs>

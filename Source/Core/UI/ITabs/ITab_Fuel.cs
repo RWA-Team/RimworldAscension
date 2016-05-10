@@ -15,7 +15,7 @@ namespace RA
         public static readonly Texture2D EmptyTex = SolidColorMaterials.NewSolidColorTexture(Color.gray);
         public static readonly Texture2D IconBGTex = ContentFinder<Texture2D>.Get("UI/Widgets/DesButBG");
 
-        public WorkTable_Fueled burner;
+        public WorkTableFueled burner;
 
         public ITab_Fuel()
         {
@@ -26,7 +26,7 @@ namespace RA
 
         protected override void FillTab()
         {
-            burner = SelThing as WorkTable_Fueled;
+            burner = SelThing as WorkTableFueled;
 
             const float MarginSize = 5f;
             const float TextHeight = 25f;
@@ -54,7 +54,7 @@ namespace RA
                 Widgets.DrawMenuSection(fuelRect);
                 // contract actual size after drawing BG
                 fuelRect = fuelRect.ContractedBy(MarginSize);
-                // if fuel tank not mmpty
+                // if fuel tank not empty
                 if (burner.fuelContainer.Count > 0)
                 {
 
@@ -84,7 +84,7 @@ namespace RA
                         var burningLabelRect = new Rect(fuelIconRect.width + MarginSize, 0f, fuelRect.width - (fuelIconRect.width + MarginSize), fuelIconRect.height / 2);
                         Widgets.Label(burningLabelRect, "Burning progress:");
                         var burningBarRect = new Rect(burningLabelRect.x, burningLabelRect.height, burningLabelRect.width, burningLabelRect.height);
-                        var fillPercentBurningProgress = burner.currentFuelBurnDuration / fuel.GetStatValue(StatDef.Named("BurnDuration"));
+                        var fillPercentBurningProgress = burner.currentFuelBurnDuration / fuel.GetStatValue(StatDef.Named("BurnDurationHours"));
                         Widgets.FillableBar(burningBarRect, fillPercentBurningProgress, FullTexFuel, EmptyTex, false);
 
                         // fuel count fillable bar
@@ -96,10 +96,10 @@ namespace RA
                         Text.Anchor = TextAnchor.MiddleLeft;
                         // current fuel type info
                         var fuelEstimatedTimeRect = new Rect(0f, fuelCountBarRect.yMax + MarginSize / 2, fuelRect.width, 20f);
-                        Widgets.Label(fuelEstimatedTimeRect, string.Format("Depletes after:\t{0}", TimeInfo(fuel.stackCount * (int)fuel.GetStatValue(StatDef.Named("BurnDuration")))));
+                        Widgets.Label(fuelEstimatedTimeRect, string.Format("Depletes after:\t{0}", TimeInfo(fuel.stackCount * (int)fuel.GetStatValue(StatDef.Named("BurnDurationHours")) * GenDate.TicksPerHour)));
                         // current fuel type info
                         var fuelMaxTempRect = new Rect(0f, fuelEstimatedTimeRect.yMax, fuelRect.width, fuelEstimatedTimeRect.height);
-                        Widgets.Label(fuelMaxTempRect, string.Format("Max tempertarure:\t{0} °C", fuel.GetStatValue(StatDef.Named("MaxBurningTemp"))));
+                        Widgets.Label(fuelMaxTempRect, string.Format("Max tempertarure:\t{0} °C", fuel.GetStatValue(StatDef.Named("MaxBurningTempCelsius"))));
                     }
                     GUI.EndGroup();
                 }

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+
+	<!-- 
+	- workAmount - should never be used (cause not affected by stuff). specify WorkToMake baseStat in product def instead
+	- specialProducts - Butchery\Smelted return from processed thing
+	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
+	- fixedIngredientFilter - determine ingridient set to choose from	
+	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complex recipes. Changed to allowed ones via reseach mods.
+	-->
+
+	<RecipeDef Name="MakeCarvedGood" Abstract="True">
+		<workSkill>Crafting</workSkill>
+		<workSkillLearnFactor>0.1</workSkillLearnFactor>
+		<effectWorking>Sculpt</effectWorking>
+		<soundWorking>Recipe_Sculpt</soundWorking>
+		<workSpeedStat>CarvingSpeed</workSpeedStat>
+		<researchPrerequisite>Blocked</researchPrerequisite>
+	</RecipeDef>
+
+
+	<RecipeDef ParentName="MakeCarvedGood">
+		<defName>MakeFigurine</defName>
+		<label>make figurine</label>
+		<description>Make small pawn figurines for sale.</description>
+		<jobString>Making figurines.</jobString>
+		<fixedIngredientFilter>
+			<exceptedCategories>
+				<li>StoneCobbles</li>
+			</exceptedCategories>
+			<exceptedThingDefs>
+				<li>WoodLog</li>
+				<li>Bone</li>
+			</exceptedThingDefs>
+			<categories>
+				<li>StoneCobbles</li>
+			</categories>
+			<thingDefs>
+				<li>WoodLog</li>
+				<li>Bone</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Figurine>1</Figurine>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneCobbles</li>
+					</categories>
+					<thingDefs>
+						<li>WoodLog</li>
+						<li>Bone</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+</RecipeDefs>

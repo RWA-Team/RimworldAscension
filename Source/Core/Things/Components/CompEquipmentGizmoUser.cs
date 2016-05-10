@@ -9,7 +9,7 @@ namespace RA
 
         public bool SpawnedAndWell(Pawn pawn)
         {
-            if (pawn.SpawnedInWorld && !pawn.Downed)
+            if (pawn.Spawned && !pawn.Downed)
                 return true;
             return false;
         }

@@ -12,6 +12,8 @@ namespace RA
         // gets access to the comp properties
         public CompSlots_Properties Properties => (CompSlots_Properties)props;
 
+        public bool Spawned => parent.Spawned;
+
         // IThingContainerOwner requirement
         public ThingContainer GetContainer()
         {
@@ -98,10 +100,9 @@ namespace RA
         public List<ThingCategoryDef> forbiddenSubThingCategoryDefs = new List<ThingCategoryDef>();
         public int maxSlots = 1;
 
-        // Default requirement
         public CompSlots_Properties()
         {
-            compClass = typeof(CompSlots_Properties);
+            compClass = typeof(CompSlots);
         }
     }
 }

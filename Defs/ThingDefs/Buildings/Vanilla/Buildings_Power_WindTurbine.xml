@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
-
-	<ThingDef Name="BuildingBase" Abstract="True">
-		<category>Building</category>
-		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
-		<selectable>true</selectable>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<repairEffect>Repair</repairEffect>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<researchPrerequisite>Blocked</researchPrerequisite>
-	</ThingDef>
-
-
 	<ThingDef ParentName="BuildingBase">
 		<defName>WindTurbine</defName>
 		<thingClass>Building_WindTurbine</thingClass>
@@ -26,6 +13,9 @@
 			<shadowData>
 				<volume>(0.2, 1.0, 0.8)</volume>
 			</shadowData>
+			<damageData>
+				<rect>(2,0.15,1,1.4)</rect>
+			</damageData>
 		</graphicData>
 		<altitudeLayer>BuildingTall</altitudeLayer>
 		<passability>Impassable</passability>
@@ -46,20 +36,20 @@
 		</building>
 		<costList>
 			<Steel>100</Steel>
+			<Components>2</Components>
 		</costList>
 		<constructEffect>ConstructMetal</constructEffect>
 		<placeWorkers>
 			<li>PlaceWorker_WindTurbine</li>
 		</placeWorkers>
 		<comps>
-			<li>
+			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>-2000</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
-				<powerToggleable>false</powerToggleable>
 			</li>
+			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 	</ThingDef>
-	
 
 </Buildings>

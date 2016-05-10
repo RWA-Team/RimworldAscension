@@ -1,21 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-
 	<StuffCategoryDef>
 		<defName>Bone</defName>
 		<label>bone</label>
 	</StuffCategoryDef>
-	
+
 	<StuffCategoryDef>
-		<defName>StonyRaw</defName>
-		<label>raw stony</label>
+		<defName>Metal</defName>
+		<label>metal</label>
 	</StuffCategoryDef>
-	
-	<StuffCategoryDef>	<!-- ADDED by Alistaire for Mud bricks -->
-		<defName>Bricky</defName>
-		<label>bricky</label>
+
+	<!-- can't change that due to leather generation method -->
+	<StuffCategoryDef>
+		<defName>Leathery</defName>
+		<label>leather</label>
 	</StuffCategoryDef>
-	
+
+	<StuffCategoryDef>
+		<defName>Fabric</defName>
+		<label>fabric</label>
+	</StuffCategoryDef>
+		
+	<!--========================= Wood =========================-->
+
+	<StuffCategoryDef>
+		<defName>Wood</defName>
+		<label>wooden</label>
+	</StuffCategoryDef>
+
+	<StuffCategoryDef>
+		<defName>WoodLog</defName>
+		<label>wooden</label>
+	</StuffCategoryDef>
+
+	<StuffCategoryDef>
+		<defName>WoodPlank</defName>
+		<label>wooden</label>
+	</StuffCategoryDef>
+		
+	<!--========================= Stone =========================-->
+
+	<StuffCategoryDef>
+		<defName>Stone</defName>
+		<label>wooden</label>
+	</StuffCategoryDef>
+
+	<StuffCategoryDef>
+		<defName>StoneChunk</defName>
+		<label>stone</label>
+	</StuffCategoryDef>
+
+	<StuffCategoryDef>
+		<defName>StoneCobble</defName>
+		<label>stone</label>
+	</StuffCategoryDef>
+
+	<StuffCategoryDef>
+		<defName>StoneBlock</defName>
+		<label>stone</label>
+	</StuffCategoryDef>
 
 </Defs>

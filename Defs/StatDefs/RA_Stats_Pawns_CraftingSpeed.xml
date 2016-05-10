@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StatDefs>
+
+	<!-- 
+	skillNeedFactors - skill modifier bonus
+		bonusFactor - additional bonus per skill level (x1-x20)
+	
+	capacityFactors - modifier by pawn capacity
+		weight - modifier value per capacity stat
+		
+	100% skill efficiency at level 5
+	-->
+
+	<StatDef Name="Crafting" Abstract="True">
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<statFactors>
+			<li>WorkSpeedGlobal</li>
+		</statFactors>
+	</StatDef>
+
+
+	<!-- ==================== Dumb Crafting ====================-->
+
+
+	<StatDef Name="CraftingDumb" ParentName="Crafting" Abstract="True">
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>0.5</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+
+	<StatDef ParentName="CraftingDumb">
+		<defName>CookingSpeed</defName>
+		<label>cooking speed</label>
+		<description>Speed at which this person cooks meals.</description>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Cooking</skill>
+				<baseFactor>0.5</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.6</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.3</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef ParentName="CraftingDumb">
+		<defName>DisassemblingSpeed</defName>
+		<label>disassembling speed</label>
+		<description>Speed at which this person disassembles things.</description>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Crafting</skill>
+				<baseFactor>0.5</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.8</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.8</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef ParentName="CraftingDumb">
+		<defName>SmeltingSpeed</defName>
+		<label>smelting speed</label>
+		<description>Speed at which this person smelts things.</description>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Crafting</skill>
+				<baseFactor>0.5</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.5</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.3</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef ParentName="CraftingDumb">
+		<defName>WeavingSpeed</defName>
+		<label>weaving speed</label>
+		<description>Speed at which this person forms an weave threads into fabric.</description>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Crafting</skill>
+				<baseFactor>0.5</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.7</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.4</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+
+	<!-- ==================== Intellegent Crafting ====================-->
+
+
+	<StatDef Name="CraftingIntellegent" ParentName="Crafting" Abstract="True">
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>1</weight>
+			</li>
+		</capacityFactors>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Crafting</skill>
+				<baseFactor>0.5</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+	</StatDef>
+
+
+	<StatDef ParentName="CraftingIntellegent">
+		<defName>CarvingSpeed</defName>
+		<label>carivng speed</label>
+		<description>Speed at which this person carves various materials into finished goods.</description>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.75</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.5</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>	
+
+	<StatDef ParentName="CraftingIntellegent">
+		<defName>TailoringSpeed</defName>
+		<label>tailoring speed</label>
+		<description>Speed at which this person makes clothes.</description>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.9</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.75</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef ParentName="CraftingIntellegent">
+		<defName>SmithingSpeed</defName>
+		<label>smithing speed</label>
+		<description>Speed at which this person smiths or crafts weapons, machines, ammunition, and tools.</description>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.75</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.5</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef ParentName="CraftingIntellegent">
+		<defName>MouldingSpeed</defName>
+		<label>moulding speed</label>
+		<description>Speed at which this person forms an object with a particular shape out of easily manipulated material.</description>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.9</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.75</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+</StatDefs>

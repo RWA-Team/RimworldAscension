@@ -3,7 +3,7 @@
 
 	<!-- recipeDef should be the same as corresponding researchProjectDef -->
 
-	<RecipeDef Name="ResearchBase" Abstract="True">
+	<RecipeDef Name="MakeResearch" Abstract="True">
 		<jobString>Doing research.</jobString>
 		<workSkillLearnFactor>0.25</workSkillLearnFactor>
 		<allowMixingIngredients>true</allowMixingIngredients>
@@ -15,95 +15,10 @@
 	</RecipeDef>
 
 
-	<!-- ========================= NEOLITHIC ==========================-->
-		<!-- ========= Examination =========-->
+	<!-- ========================= Neolithic ==========================-->
 
 
-	<RecipeDef ParentName="ResearchBase">
-		<defName>ExamineFlora</defName>
-		<effectWorking>MakeWoodPlanks_Hand</effectWorking>
-		<soundWorking>Recipe_MakeWoodPlanks_Hand</soundWorking>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>PlantFoodRaw</li>
-					</categories>
-				</filter>
-				<count>30</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BastFibre</li>
-					</thingDefs>
-				</filter>
-				<count>30</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>WoodLog</li>
-					</thingDefs>
-				</filter>
-				<count>30</count>
-			</li>
-		</ingredients>
-	</RecipeDef>
-
-
-	<RecipeDef ParentName="ResearchBase">
-		<defName>ExamineFauna</defName>
-		<effectWorking>Surgery</effectWorking>
-		<soundWorking>Recipe_Surgery</soundWorking>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>CorpsesAnimal</li>
-					</categories>
-				</filter>
-				<count>1</count>
-			</li>
-		</ingredients>
-	</RecipeDef>
-
-
-	<RecipeDef ParentName="ResearchBase">
-		<defName>WoodWorking</defName>
-		<effectWorking>MakeWoodPlanks_Hand</effectWorking>
-		<soundWorking>Recipe_MakeWoodPlanks_Hand</soundWorking>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>WoodLog</li>
-					</thingDefs>
-				</filter>
-				<count>75</count>
-			</li>
-		</ingredients>
-	</RecipeDef>
-
-
-	<RecipeDef ParentName="ResearchBase">
-		<defName>StoneWorking</defName>
-		<effectWorking>CutStone</effectWorking>
-		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>StoneChunks</li>
-					</categories>
-				</filter>
-				<count>1</count>
-			</li>
-		</ingredients>
-	</RecipeDef>
-
-
-	<RecipeDef ParentName="ResearchBase">
+	<RecipeDef ParentName="MakeResearch">
 		<defName>BasicFarming</defName>
 		<ingredients>
 			<li>
@@ -114,12 +29,71 @@
 				</filter>
 				<count>75</count>
 			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Hay</li>
+					</thingDefs>
+				</filter>
+				<count>75</count>
+			</li>
 		</ingredients>
 	</RecipeDef>
 
+	<RecipeDef ParentName="MakeResearch">
+		<defName>Butchering</defName>
+		<effectWorking>Surgery</effectWorking>
+		<soundWorking>Recipe_Surgery</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>CorpsesAnimal</li>
+					</categories>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
 
-	<RecipeDef ParentName="ResearchBase">
-		<defName>LeatherWorking</defName>
+	<RecipeDef ParentName="MakeResearch">
+		<defName>AnimalHusbandry</defName>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeResearch">
+		<defName>Carpentry</defName>
+		<effectWorking>MakeWoodPlanks_Hand</effectWorking>
+		<soundWorking>Recipe_MakeWoodPlanks_Hand</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>225</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeResearch">
+		<defName>Masonry</defName>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_MakeBlocksStone</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneChunks</li>
+					</categories>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeResearch">
+		<defName>Tannery</defName>
 		<effectWorking>Tailor</effectWorking>
 		<soundWorking>Recipe_ButcherCorpseFlesh</soundWorking>
 		<ingredients>
@@ -129,16 +103,80 @@
 						<li>Leathers</li>
 					</categories>
 				</filter>
+				<count>150</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeResearch">
+		<defName>BoneCarving</defName>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_MakeWoodPlanks_Hand</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bone</li>
+					</thingDefs>
+				</filter>
+				<count>150</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeResearch">
+		<defName>Pottery</defName>
+		<effectWorking>MakeWoodPlanks_Hand</effectWorking>
+		<soundWorking>Recipe_MakeWoodPlanks_Hand</soundWorking>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ClumpClayGray</li>
+					</thingDefs>
+				</filter>
+				<count>150</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ClumpClayWhite</li>
+					</thingDefs>
+				</filter>
 				<count>75</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
 
-		<!-- ========= Research =========-->
-
-	<RecipeDef ParentName="ResearchBase">
-		<defName>AnimalHusbandry</defName>
+	<RecipeDef ParentName="MakeResearch">
+		<defName>Breweing</defName>
+		<!-- needs proper effect and sound set -->
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawHops</li>
+					</thingDefs>
+				</filter>
+				<count>75</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawBerries</li>
+					</thingDefs>
+				</filter>
+				<count>150</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Pot</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
 	</RecipeDef>
-
 
 </RecipeDefs>

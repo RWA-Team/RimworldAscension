@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MainTabDefs>
 
-
 	<MainTabDef>
 		<defName>Architect</defName>
-		<label>architect</label>
+		<label>designations</label>
 		<description>Designate where and what colonists should build, farm, store, and so on.</description>
-		<windowClass>RA.MainTabWindow_Architect</windowClass>
+		<windowClass>RA.RA_MainTabWindow_Architect</windowClass>
 		<order>1</order>
 		<defaultToggleKey>Tab</defaultToggleKey>
 	</MainTabDef>	
@@ -15,9 +14,8 @@
 		<defName>Research</defName>
 		<label>research</label>
 		<description>Examine things and decide on research projects.</description>
-		<windowClass>RA.MainTabWindow_Research</windowClass>
+		<windowClass>RA.RA_MainTabWindow_Research</windowClass>
 		<order>90</order>
 	</MainTabDef>
-
 
 </MainTabDefs>

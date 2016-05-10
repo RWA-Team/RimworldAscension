@@ -54,12 +54,12 @@ namespace RA
                 foreach (var currentTab in tabList)
                 {
                     var rectCurrentTabHeader = DefineTabHeaderDrawRect(currentTab);
-                    // mouseover tab
+                    // mouseover categories
                     if (Mouse.IsOver(rectCurrentTabHeader))
                     {
                         MouseoverSounds.DoRegion(rectCurrentTabHeader, SoundDefOf.MouseoverTab);
                     }
-                    // tab clicked
+                    // categories clicked
                     if (Widgets.InvisibleButton(rectCurrentTabHeader))
                     {
                         // select if not selected
@@ -80,7 +80,7 @@ namespace RA
                         tabList[tabIndex].Draw(DefineTabHeaderDrawRect(tabList[tabIndex]));
                     }
                 }
-                // draw selected tab above all others
+                // draw selected categories above all others
                 tabSelected.Draw(DefineTabHeaderDrawRect(tabSelected));
 
                 Text.Anchor = TextAnchor.UpperLeft;

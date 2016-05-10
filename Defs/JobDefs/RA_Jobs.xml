@@ -1,30 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-
-	<JobDef>
-		<defName>HaulToCell</defName>
-		<driverClass>RA.JobDriver_HaulToCell</driverClass>
-		<reportString>Hauling TargetA.</reportString>
-	</JobDef>
-
 	<JobDef>
 		<defName>Research</defName>
-		<driverClass>RA.JobDriver_DoBill_Research</driverClass>
+		<driverClass>JobDriver_DoBill</driverClass>
 		<reportString>Doing research at TargetA.</reportString>
-	</JobDef>
-
-	<JobDef>
-		<defName>DoBill</defName>
-		<driverClass>RA.JobDriver_DoBill</driverClass>
-		<reportString>Doing bill at TargetA.</reportString>
-		<suspendable>false</suspendable>
-	</JobDef>
-
-	<JobDef>
-		<defName>GoTrading</defName>
-		<driverClass>RA.JobDriver_GoTrading</driverClass>
-		<reportString>Trading.</reportString>
 	</JobDef>
 
 	<JobDef>
@@ -46,9 +26,15 @@
 	</JobDef>
 
 	<JobDef>
-		<defName>UseSurvivalGuide</defName>
+		<defName>StudyBlueprint</defName>
 		<driverClass>JobDriver_UseItem</driverClass>
-		<reportString>Using TargetA.</reportString>
+		<reportString>Study TargetA.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>TakeDrug</defName>
+		<driverClass>JobDriver_UseItem</driverClass>
+		<reportString>Start using TargetA.</reportString>
 	</JobDef>
 
 	<JobDef>
@@ -62,6 +48,18 @@
 		<defName>PutInSlot</defName>
 		<driverClass>RA.JobDriver_PutInSlot</driverClass>
 		<reportString>Putting TargetA in TargetB.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>CollectClay</defName>
+		<driverClass>RA.JobDriver_CollectClay</driverClass>
+		<reportString>Collecting clay.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>CollectSand</defName>
+		<driverClass>RA.JobDriver_CollectSand</driverClass>
+		<reportString>Collecting sand.</reportString>
 	</JobDef>
 
 
@@ -94,6 +92,16 @@
 		<driverClass>JobDriver_PlantCut</driverClass>
 		<reportString>Cutting TargetA.</reportString>
 		<alwaysShowWeapon>true</alwaysShowWeapon>
+	</JobDef>
+
+
+	<!--=================== AI jobs =====================-->
+
+
+	<JobDef>
+		<defName>SearchAndStealTargets</defName>
+		<driverClass>RA.JobDriver_SearchAndStealTargets</driverClass>
+		<reportString>Trying to steal something.</reportString>
 	</JobDef>
 
 

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PawnKindDefs>
+
+	<PawnKindDef>
+		<defName>Colonist</defName>
+		<label>colonist</label>
+		<race>Human</race>
+		<combatPower>30</combatPower>
+		<defaultFactionType>Colony</defaultFactionType>
+		<baseRecruitDifficulty>60</baseRecruitDifficulty>
+		<backstoryCategory>Civil</backstoryCategory>
+		<isFighter>false</isFighter>
+		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<apparelTags>
+			<li>Starting</li>
+		</apparelTags>
+		<apparelRequired>
+			<li>SlaveShirt</li>
+			<li>SlavePants</li>
+		</apparelRequired>
+		<apparelMoney>
+			<min>1000</min>
+			<max>1000</max>
+		</apparelMoney>
+	</PawnKindDef>
+
+</PawnKindDefs>

@@ -1,47 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
-
-	<ThingDef Name="BaseRangedWeapon" Abstract="True">
-		<category>Item</category>
-		<thingClass>ThingWithComps</thingClass>
-		<equipmentType>Primary</equipmentType>
-		<pathCost>15</pathCost>
-		<useHitPoints>True</useHitPoints>
-		<selectable>True</selectable>
-		<graphicData>
-			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<drawGUIOverlay>true</drawGUIOverlay>
-		<statBases>
-			<MaxHitPoints>100</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-			<DeteriorationRate>0.5</DeteriorationRate>
-			<SellPriceFactor>0.1</SellPriceFactor>
-		</statBases>
-		<altitudeLayer>Item</altitudeLayer>
-		<alwaysHaulable>True</alwaysHaulable>
-		<tickerType>Never</tickerType>
-		<soundInteract>InteractPistol</soundInteract>
+	<ThingDef Name="WeaponRanged" ParentName="Weapon" Abstract="True">
 		<thingCategories>
 			<li>WeaponsRanged</li>
 		</thingCategories>
-		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
-			<li>
-				<compClass>CompEquippable</compClass>
-			</li>
-			<li>
-				<compClass>CompQuality</compClass>
-			</li>
-		</comps>
 	</ThingDef>
 
-
-	<ThingDef Name="BaseProjectile" Abstract="True">
+	<ThingDef Name="Projectile" Abstract="True">
 		<category>Projectile</category>
 		<tickerType>Normal</tickerType>
 		<altitudeLayer>Projectile</altitudeLayer>
@@ -57,7 +23,7 @@
 	<!-- =================== Neolithic =================== -->
 
 
-	<ThingDef ParentName="BaseRangedWeapon">
+	<ThingDef ParentName="WeaponRanged">
 		<defName>Bow</defName>
 		<label>bow</label>
 		<description>A simple wooden bow.</description>
@@ -76,7 +42,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>Ranged_Neolithic</li>
+			<li>RangedNeolithic</li>
 		</weaponTags>
 		<verbs>
 			<li>
@@ -90,7 +56,7 @@
 		</verbs>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseProjectile">
+	<ThingDef ParentName="Projectile">
 		<defName>Arrow_Small</defName>
 		<label>arrow</label>
 		<graphicData>
@@ -106,8 +72,8 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="BaseRangedWeapon">
-		<defName>Composite_Bow</defName>
+	<ThingDef ParentName="WeaponRanged">
+		<defName>BowComposite</defName>
 		<label>bow</label>
 		<description>A advanced version of the bow, strengthened with some bone plates.</description>
 		<graphicData>
@@ -125,7 +91,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>Ranged_Neolithic</li>
+			<li>RangedNeolithic</li>
 		</weaponTags>
 		<verbs>
 			<li>
@@ -139,7 +105,7 @@
 		</verbs>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseProjectile">
+	<ThingDef ParentName="Projectile">
 		<defName>Arrow_Small</defName>
 		<label>arrow</label>
 		<graphicData>
@@ -155,8 +121,8 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="BaseRangedWeapon">
-		<defName>Thrumbo_Bow</defName>
+	<ThingDef ParentName="WeaponRanged">
+		<defName>BowThrumbo</defName>
 		<label>thrumbo horn bow</label>
 		<description>An exotiс thrumbo horn bow. Unique properties of the thrumbo horn allow it to shoot arrows with immence force.</description>
 		<graphicData>
@@ -174,7 +140,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>Ranged_Neolithic_Strong</li>
+			<li>RangedNeolithicStrong</li>
 		</weaponTags>
 		<verbs>
 			<li>
@@ -188,7 +154,7 @@
 		</verbs>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseProjectile">
+	<ThingDef ParentName="Projectile">
 		<defName>Arrow_Great</defName>
 		<label>arrow</label>
 		<graphicData>
@@ -204,7 +170,7 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="BaseRangedWeapon">
+	<ThingDef ParentName="WeaponRanged">
 		<defName>Pilum</defName>
 		<label>pilum</label>
 		<description>A bundle of pilums, non-reusable throwing spears.</description>
@@ -223,7 +189,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>Ranged_Neolithic</li>
+			<li>RangedNeolithic</li>
 		</weaponTags>
 		<verbs>
 			<li>
@@ -237,7 +203,7 @@
 		</verbs>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseProjectile">
+	<ThingDef ParentName="Projectile">
 		<defName>Pilum_Thrown</defName>
 		<label>pilum (thrown)</label>
 		<graphicData>
@@ -253,7 +219,7 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="BaseRangedWeapon">
+	<ThingDef ParentName="WeaponRanged">
 		<defName>Sling</defName>
 		<label>sling</label>
 		<description>A rudementary sling. Used to hurl stones with surprising accuracy.</description>
@@ -272,7 +238,7 @@
 			<RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
 		</statBases>
 		<weaponTags>
-			<li>Ranged_Neolithic_Weak</li>
+			<li>RangedNeolithicWeak</li>
 		</weaponTags>
 		<verbs>
 			<li>
@@ -286,7 +252,7 @@
 		</verbs>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseProjectile">
+	<ThingDef ParentName="Projectile">
 		<defName>Cobble</defName>
 		<label>cobble</label>
 		<graphicData>
@@ -302,7 +268,7 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="BaseRangedWeapon">
+	<ThingDef ParentName="WeaponRanged">
 		<defName>Tomahawk</defName>
 		<label>tomahawk</label>
 		<description>An axe, made for throwing, deadly if it hits.</description>
@@ -322,7 +288,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>Ranged_Neolithic</li>
+			<li>RangedNeolithic</li>
 		</weaponTags>
 		<verbs>
 			<li>
@@ -336,7 +302,7 @@
 		</verbs>
 	</ThingDef>
 
-	<ThingDef ParentName="BaseProjectile">
+	<ThingDef ParentName="Projectile">
 		<defName>Tomahawk_Thrown</defName>
 		<label>tomahawk</label>
 		<thingClass>RA.TomahawkThrown</thingClass>

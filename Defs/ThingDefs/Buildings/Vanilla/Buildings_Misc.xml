@@ -1,31 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
-
-	<ThingDef Name="BuildingBase" Abstract="True">
-		<category>Building</category>
-		<thingClass>Building</thingClass>
-		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
-		<selectable>true</selectable>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<repairEffect>Repair</repairEffect>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<filthLeaving>BuildingRubble</filthLeaving>
-		<researchPrerequisite>Blocked</researchPrerequisite>
-	</ThingDef>
-	
-
-	<ThingDef Name="FurnitureBase" ParentName="BuildingBase" Abstract="True">
-		<comps>
-			<li>
-				<compClass>CompQuality</compClass>
-			</li>
-		</comps>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
-	</ThingDef>
-
-
 	<ThingDef ParentName="BuildingBase">
 		<defName>SunLamp</defName>
 		<label>sun lamp</label>
@@ -38,6 +13,9 @@
 				<volume>(0.2, 0.4, 0.2)</volume>
 				<offset>(0,0,-0.1)</offset>
 			</shadowData>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
 		</graphicData>
 		<altitudeLayer>BuildingTall</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -55,26 +33,27 @@
 		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<comps>
-			<li>
-				<compClass>CompGlower</compClass>
+			<li Class="CompProperties_Glower">
 				<overlightRadius>7.0</overlightRadius>
 				<glowRadius>14</glowRadius>
 				<glowColor>(370,370,370,0)</glowColor>
 			</li>
-			<li>
+			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<startElectricalFires>true</startElectricalFires>
-				<soundPowerOn>PowerOnSmall</soundPowerOn>
-				<soundPowerOff>PowerOffSmall</soundPowerOff>
 				<basePowerConsumption>1600</basePowerConsumption>
 			</li>
+			<li Class="CompProperties_Flickable"/>
 		</comps>
 		<!-- Determined by trial and error
     This value isn't perfect because these radii use different algorithms
     but it matches in this case-->
 		<specialDisplayRadius>5.8</specialDisplayRadius>
 		<rotatable>false</rotatable>
+		<designationHotKey>U</designationHotKey>
 	</ThingDef>
+
+
 
 
 	<ThingDef ParentName="BuildingBase">
@@ -85,8 +64,12 @@
 			<texPath>Things/Building/Misc/DropBeacon</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shadowData>
-				<volume>(0.3, 0.6, 0.3)</volume>
+				<volume>(0.3, 0.4, 0.3)</volume>
+				<offset>(0,0,-0.1)</offset>
 			</shadowData>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
 		</graphicData>
 		<altitudeLayer>Waist</altitudeLayer>
 		<statBases>
@@ -96,18 +79,32 @@
 		</statBases>
 		<description>Required for orbital trading. You can only sell goods that are near an orbital trade beacon. Can be placed indoors.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
-		<specialDisplayRadius>7.9</specialDisplayRadius>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<fillPercent>0.15</fillPercent>
 		<costList>
 			<Steel>50</Steel>
+			<Components>1</Components>
 		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>40</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<pathCost>20</pathCost>
 		<rotatable>false</rotatable>
-		<!--<placeWorkers>
-      <li>PlaceWorker_NotUnderRoof</li>
-    </placeWorkers>-->
+		<placeWorkers>
+			<li>PlaceWorker_ShowTradeBeaconRadius</li>
+		</placeWorkers>
+		<designationHotKey>O</designationHotKey>
+		<researchPrerequisites>
+			<li>MicroelectronicsBasics</li>
+		</researchPrerequisites>
 	</ThingDef>
+
 
 
 	<ThingDef ParentName="BuildingBase">
@@ -118,6 +115,11 @@
 			<texPath>Things/Building/Misc/CommsConsole</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(5,4)</drawSize>
+			<damageData>
+				<rect>(0,0,3,1.8)</rect>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
 		</graphicData>
 		<altitudeLayer>BuildingTall</altitudeLayer>
 		<passability>Impassable</passability>
@@ -128,43 +130,56 @@
 			<WorkToMake>2200</WorkToMake>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<description>Communicate with nearby ships here for negotiation and trade.</description>
+		<description>Allows radio contact with remote traders as well as other factions for trade and diplomacy.</description>
 		<size>(3,2)</size>
 		<costList>
 			<Steel>120</Steel>
+			<Components>4</Components>
 		</costList>
 		<interactionCellOffset>(0,0,2)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<comps>
-			<li>
+			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<startElectricalFires>true</startElectricalFires>
 				<basePowerConsumption>200</basePowerConsumption>
 			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<designationHotkey>M</designationHotkey>
+		<researchPrerequisites>
+			<li>MicroelectronicsBasics</li>
+		</researchPrerequisites>
 	</ThingDef>
 
 
-	<!--============================== Facilities ==============================-->
-	
+	<!-- Facilities -->
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>MultiAnalyzer</defName>
 		<label>multi-analyzer</label>
-		<description>Increases research speed. Needs to be placed near research bench. One research bench can be linked to only one multi-analyzer.</description>
+		<description>Increases research speed. Needs to be placed near hi-tech research bench. One research bench can be linked to only one multi-analyzer.</description>
 		<graphicData>
 			<texPath>Things/Building/Misc/MultiAnalyzer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.15,0.15,1.7,1.7)</rect>
+			</damageData>
 		</graphicData>
+		<researchPrerequisites>
+			<li>MultiAnalyzer</li>
+		</researchPrerequisites>
 		<size>(2,2)</size>
 		<rotatable>false</rotatable>
 		<altitudeLayer>Waist</altitudeLayer>
-		<passability>Impassable</passability>
+		<passability>PassThroughOnly</passability>
 		<castEdgeShadows>true</castEdgeShadows>
-		<fillPercent>1</fillPercent>
+		<fillPercent>0.5</fillPercent>
+		<designationHotkey>N</designationHotkey>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
@@ -177,13 +192,13 @@
 			<Gold>20</Gold>
 		</costList>
 		<comps>
-			<li>
+			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<startElectricalFires>true</startElectricalFires>
 				<basePowerConsumption>200</basePowerConsumption>
 			</li>
-			<li>
-				<compClass>CompFacility</compClass>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Facility">
 				<statOffsets>
 					<ResearchSpeedFactor>0.1</ResearchSpeedFactor>
 				</statOffsets>
@@ -206,10 +221,21 @@
 				<offset>(0,0,-0.3)</offset>
 				<volume>(0.3, 0.3, 0.4)</volume>
 			</shadowData>
+			<damageData>
+				<rectN>(0.078125,0.46875,0.859375,0.53125)</rectN>
+				<rectS>(0.078125,0.46875,0.859375,0.53125)</rectS>
+				<rectE>(0.125,0.46875,0.625,0.296875)</rectE>
+				<rectW>(0.25,0.46875,0.625,0.296875)</rectW>
+				<cornerTR>Damage/Corner</cornerTR>
+			</damageData>
 		</graphicData>
+		<defaultPlacingRot>South</defaultPlacingRot>
+		<researchPrerequisites>
+			<li>VitalsMonitor</li>
+		</researchPrerequisites>
 		<altitudeLayer>Waist</altitudeLayer>
-		<passability>Impassable</passability>
-		<fillPercent>1.0</fillPercent>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.2</fillPercent>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToMake>4000</WorkToMake>
@@ -222,22 +248,23 @@
 		</costList>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<comps>
-			<li>
+			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<startElectricalFires>true</startElectricalFires>
 				<basePowerConsumption>150</basePowerConsumption>
 			</li>
-			<li>
-				<compClass>CompFacility</compClass>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Facility">
 				<statOffsets>
-					<MedicalTreatmentQualityFactor>0.041</MedicalTreatmentQualityFactor>
-					<ImmunityGainSpeedFactor>0.021</ImmunityGainSpeedFactor>
+					<MedicalTreatmentQualityFactor>0.04</MedicalTreatmentQualityFactor>
+					<ImmunityGainSpeedFactor>0.02</ImmunityGainSpeedFactor>
 				</statOffsets>
 				<maxSimultaneous>1</maxSimultaneous>
 				<mustBePlacedAdjacent>true</mustBePlacedAdjacent>
 				<canLinkToMedBedsOnly>true</canLinkToMedBedsOnly>
 			</li>
 		</comps>
+		<designationHotkey>V</designationHotkey>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
@@ -252,11 +279,18 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(2,1)</drawSize>
 			<color>(96,114,95)</color>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
 		</graphicData>
 		<altitudeLayer>Waist</altitudeLayer>
-		<passability>Impassable</passability>
+		<passability>PassThroughOnly</passability>
 		<castEdgeShadows>true</castEdgeShadows>
-		<fillPercent>1.0</fillPercent>
+		<staticSunShadowHeight>0.35</staticSunShadowHeight>
+		<fillPercent>0.5</fillPercent>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToMake>1800</WorkToMake>
@@ -269,20 +303,73 @@
 		</costList>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<comps>
-			<li>
-				<compClass>CompFacility</compClass>
+			<li Class="CompProperties_Facility">
 				<statOffsets>
-					<WorkTableWorkSpeedFactor>0.061</WorkTableWorkSpeedFactor>
+					<WorkTableWorkSpeedFactor>0.06</WorkTableWorkSpeedFactor>
 				</statOffsets>
 				<maxSimultaneous>2</maxSimultaneous>
 			</li>
 		</comps>
+		<designationHotkey>T</designationHotkey>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
 	</ThingDef>
-	
-	
+
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>FirefoamPopper</defName>
+		<label>firefoam popper</label>
+		<thingClass>Building_FirefoamPopper</thingClass>
+		<description>When touched by fire or triggered by hand, this pops and sprays a fire-extinguishing foam in a circular field around itself.</description>
+		<graphicData>
+			<texPath>Things/Building/Misc/FirefoamPopper</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shadowData>
+				<volume>(0.25, 0.5, 0.25)</volume>
+				<offset>(0,0,-0.1)</offset>
+			</shadowData>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>9.9</explosiveRadius>
+				<explosiveDamageType>Extinguish</explosiveDamageType>
+				<startWickHitPointsPercent>-1</startWickHitPointsPercent>
+				<startWickOnDamageTaken>Flame</startWickOnDamageTaken>
+				<postExplosionSpawnThingDef>FilthFireFoam</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>1</postExplosionSpawnChance>
+				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+				<explosionEffect>ExtinguisherExplosion</explosionEffect>
+			</li>
+		</comps>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Waist</altitudeLayer>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToMake>1500</WorkToMake>
+			<Flammability>1.0</Flammability>
+			<Beauty>-8</Beauty>
+		</statBases>
+		<fillPercent>0.15</fillPercent>
+		<costList>
+			<Steel>75</Steel>
+			<Components>1</Components>
+		</costList>
+		<specialDisplayRadius>9.9</specialDisplayRadius>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>25</pathCost>
+		<rotatable>false</rotatable>
+		<designationHotKey>F</designationHotKey>
+		<researchPrerequisites>
+			<li>Firefoam</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- -->
 	<ThingDef ParentName="BuildingBase">
 		<defName>Sarcophagus</defName>
 		<label>sarcophagus</label>
@@ -291,13 +378,21 @@
 			<texPath>Things/Building/Misc/Sarcophagus</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(3,4)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
 		</graphicData>
 		<description>An ornamented burial receptacle for the honored dead.</description>
 		<size>(1,2)</size>
 		<pathCost>70</pathCost>
 		<castEdgeShadows>true</castEdgeShadows>
 		<fillPercent>0.5</fillPercent>
+		<tickerType>Rare</tickerType>
 		<building>
+			<preventDeterioration>true</preventDeterioration>
 			<fullGraveGraphicData>
 				<texPath>Things/Building/Misc/SarcophagusFull</texPath>
 				<graphicClass>Graphic_Multi</graphicClass>
@@ -339,10 +434,9 @@
 			<li>
 				<compClass>CompQuality</compClass>
 			</li>
-			<li>
-				<compClass>CompArt</compClass>
-				<nameMaker>NamerSarcophagusPlate</nameMaker>
-				<descriptionMaker>ArtSarcophagusPlate</descriptionMaker>
+			<li Class="CompProperties_Art">
+				<nameMaker>ArtName_SarcophagusPlate</nameMaker>
+				<descriptionMaker>ArtDescription_SarcophagusPlate</descriptionMaker>
 				<mustBeFullGrave>true</mustBeFullGrave>
 			</li>
 		</comps>
@@ -351,8 +445,13 @@
 		<passability>PassThroughOnly</passability>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<staticSunShadowHeight>0.3</staticSunShadowHeight>
+		<designationHotkey>H</designationHotkey>
 	</ThingDef>
-	
+
+
+
+
+	<!-- Cryptosleep casket -->
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>CryptosleepCasket</defName>
@@ -363,7 +462,9 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(2, 3)</drawSize>
 		</graphicData>
-		<researchPrerequisite>Cryptosleep</researchPrerequisite>
+		<researchPrerequisites>
+			<li>Cryptosleep</li>
+		</researchPrerequisites>
 		<altitudeLayer>BuildingTall</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<pathCost>70</pathCost>
@@ -382,18 +483,18 @@
 		<costList>
 			<Steel>180</Steel>
 			<Uranium>5</Uranium>
+			<Components>4</Components>
 		</costList>
 		<comps>
-			<li>
-				<compClass>CompExplosive</compClass>
+			<li Class="CompProperties_Explosive">
 				<explosiveRadius>2.66</explosiveRadius>
 				<explosiveDamageType>Flame</explosiveDamageType>
 			</li>
+			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<staticSunShadowHeight>0.4</staticSunShadowHeight>
 	</ThingDef>
-	
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>AncientCryptosleepCasket</defName>
@@ -428,16 +529,58 @@
 			<Uranium>3</Uranium>
 		</killedLeavings>
 		<comps>
-			<li>
-				<compClass>CompExplosive</compClass>
+			<li Class="CompProperties_Explosive">
 				<explosiveRadius>2.66</explosiveRadius>
 				<explosiveDamageType>Flame</explosiveDamageType>
 			</li>
 		</comps>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<staticSunShadowHeight>0.4</staticSunShadowHeight>
 	</ThingDef>
 
+	<ThingDef ParentName="BuildingBase">
+		<defName>MarriageSpot</defName>
+		<label>marriage spot</label>
+		<Description>Designates a spot where marriage ceremonies will take place. Spectators can watch from either side.</Description>
+		<graphicData>
+			<texPath>Things/Building/Misc/MarriageSpot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,1)</drawSize>
+		</graphicData>
+		<AltitudeLayer>FloorEmplacement</AltitudeLayer>
+		<statBases>
+			<WorkToMake>0</WorkToMake>
+		</statBases>
+		<useHitPoints>False</useHitPoints>
+		<Size>(2,1)</Size>
+		<Passability>Standable</Passability>
+		<building>
+			<sowTag>SupportPlantsOnly</sowTag>
+			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+		</building>
+		<designationHotkey>I</designationHotkey>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>PartySpot</defName>
+		<label>party spot</label>
+		<Description>Designates a spot where parties will be centered. Parties use an area around the spot.</Description>
+		<graphicData>
+			<texPath>Things/Building/Misc/PartySpot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<AltitudeLayer>FloorEmplacement</AltitudeLayer>
+		<statBases>
+			<WorkToMake>0</WorkToMake>
+		</statBases>
+		<useHitPoints>False</useHitPoints>
+		<Passability>Standable</Passability>
+		<building>
+			<sowTag>SupportPlantsOnly</sowTag>
+			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+		</building>
+		<designationHotkey>Y</designationHotkey>
+	</ThingDef>
 
 </Buildings>

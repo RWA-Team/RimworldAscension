@@ -2,9 +2,22 @@
 
 namespace RA
 {
+    public class CompFade_Properties : CompProperties
+    {
+        public int lifespanTicks = -1; // Ticks up based on lifetime of comp/parent
+
+        public CompFade_Properties()
+        {
+            compClass = typeof(CompFade);
+        }
+    }
+
     public class CompFade : ThingComp
     {
         public int remainingTicks = -1; // Ticks up based on lifetime of comp/parent
+
+        public CompFade_Properties Properties => (CompFade_Properties) props;
+
         public override void PostSpawnSetup()
         {
             // Do base setup
@@ -13,16 +26,18 @@ namespace RA
             if (remainingTicks < 0)
             {
                 // Set remaining ticks to the life span amount from xml/default
-                remainingTicks = props.lifespanTicks;
+                remainingTicks = Properties.lifespanTicks;
             }
         }
+
         public override void PostExposeData()
         {
             // Base date to save
             base.PostExposeData();
             // Savwe remaing ticks to save file
-            Scribe_Values.LookValue(ref remainingTicks, "remainingTicks", props.lifespanTicks, true);
+            Scribe_Values.LookValue(ref remainingTicks, "remainingTicks", Properties.lifespanTicks, true);
         }
+
         public override void CompTick()
         {
             base.CompTick();
@@ -35,10 +50,11 @@ namespace RA
             // Get the color and set it to temporary variable
             var color = material.color;
             // Drop the color transparancy based on game ticks
-            color.a = remainingTicks / (float)props.lifespanTicks;
+            color.a = remainingTicks/(float) Properties.lifespanTicks;
             // Set the color with changed transparency back on the material
             material.color = color;
         }
+
         public override void CompTickRare()
         {
             base.CompTickRare();
@@ -51,10 +67,11 @@ namespace RA
             // Get the color and set it to temporary variable
             var color = material.color;
             // Drop the color transparancy based on game ticks
-            color.a = remainingTicks / (float)props.lifespanTicks;
+            color.a = remainingTicks/(float) Properties.lifespanTicks;
             // Set the color with changed transparency back on the material
             material.color = color;
         }
+
         public void TickDown(int down)
         {
             // Tick down based on passed params

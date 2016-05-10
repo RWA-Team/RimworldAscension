@@ -97,14 +97,14 @@ namespace RA
 		public override string GetDescriptionPart()
 		{
 			
-			return "DryingDescription".Translate(productsList, PropsDry.dryTemperature.max.ToStringTemperature(), PropsDry.TicksToDry.TicksToDaysExtendedString());
+			return "DryingDescription".Translate(productsList, PropsDry.dryTemperature.max.ToStringTemperature(), PropsDry.TicksToDry.TicksToPeriodExtendedString());
 		}
 		
 		
 		public override string CompInspectStringExtra()
 		{
 			var stringBuilder = new StringBuilder();
-			stringBuilder.AppendLine("PercentDried".Translate(Progress.ToStringPercent()) + " (" + "XDaysOfOptimalDryingLeft".Translate(((int)(PropsDry.TicksToDry - dryProgress)).TicksToDaysExtendedString()) + ")");
+			stringBuilder.AppendLine("PercentDried".Translate(Progress.ToStringPercent()) + " (" + "XDaysOfOptimalDryingLeft".Translate(((int)(PropsDry.TicksToDry - dryProgress)).TicksToPeriodExtendedString()) + ")");
 			stringBuilder.Append("DryingRate".Translate() + ": " + CurrentDryRate().ToStringPercent());
 			if (CurrentDryRate(false) <= 0f)
 			{
@@ -140,11 +140,11 @@ namespace RA
 		
 		public int TicksToDry => Mathf.RoundToInt(daysToDry * GenDate.TicksPerDay);
 
-	    public CompProperties_Dryable()
-		{
+        public CompProperties_Dryable()
+        {
             compClass = typeof(CompDryable);
-		}
-	}
+        }
+    }
 	
 	public class DryProduct
 	{

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+
+	<!-- 
+	- workAmount - should never be used (cause not affected by stuff). specify WorkToMake baseStat in product def instead
+	- specialProducts - Butchery\Smelted return from processed thing
+	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
+	- fixedIngredientFilter - determine ingridient set to choose from	
+	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complex recipes. Changed to allowed ones via reseach mods.
+	-->
+
+	<RecipeDef Name="MakeFurniture" Abstract="True">
+		<workSkill>Crafting</workSkill>
+		<workSkillLearnFactor>0.1</workSkillLearnFactor>
+		<effectWorking>Sculpt</effectWorking>
+		<soundWorking>Recipe_Sculpt</soundWorking>
+		<researchPrerequisite>Blocked</researchPrerequisite>
+	</RecipeDef>
+
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeBasket</defName>
+		<label>make basket</label>
+		<description>Make bark fiber basket.</description>
+		<jobString>Making basket.</jobString>
+		<workSpeedStat>WeavingSpeed</workSpeedStat>
+		<products>
+			<Basket>1</Basket>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BarkFibre</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>StartPack</researchPrerequisite>
+	</RecipeDef>
+
+	<!--===================== Neolithic =====================-->
+
+	<RecipeDef Name="MakeFurnitureNeolithic" ParentName="MakeFurniture" Abstract="True">
+		<workSpeedStat>CarvingSpeed</workSpeedStat>
+		<fixedIngredientFilter>
+			<exceptedCategories>
+				<li>StoneCobbles</li>
+			</exceptedCategories>
+			<exceptedThingDefs>
+				<li>WoodLog</li>
+			</exceptedThingDefs>
+			<categories>
+				<li>StoneCobbles</li>
+			</categories>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+
+
+	<RecipeDef ParentName="MakeFurnitureNeolithic">
+		<defName>MakeBedHide</defName>
+		<label>make hide bed</label>
+		<description>Make hide bed.</description>
+		<jobString>Making hide bed.</jobString>
+		<products>
+			<BedHide>1</BedHide>
+		</products>
+		<defaultIngredientFilter>
+			<categories>
+				<li>Leathers</li>
+			</categories>
+			<thingDefs>
+				<li>Hay</li>
+			</thingDefs>
+		</defaultIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneCobbles</li>
+					</categories>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>15</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Hay</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurnitureNeolithic">
+		<defName>MakeStoolNeolithic</defName>
+		<label>make primitive stool</label>
+		<description>Make primitive stool.</description>
+		<jobString>Making primitive stool.</jobString>
+		<products>
+			<StoolNeolithic>1</StoolNeolithic>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneChunks</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurnitureNeolithic">
+		<defName>MakeTableShort</defName>
+		<label>make short table</label>
+		<description>Make short table.</description>
+		<jobString>Making short table.</jobString>
+		<products>
+			<TableShort>1</TableShort>
+		</products>
+		<workAmount>1</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneCobbles</li>
+					</categories>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>50</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurnitureNeolithic">
+		<defName>MakeTableLong</defName>
+		<label>make long table</label>
+		<description>Make long table.</description>
+		<jobString>Making long table.</jobString>
+		<products>
+			<TableLong>1</TableLong>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneCobbles</li>
+					</categories>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>100</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurnitureNeolithic">
+		<defName>MakePlantPot</defName>
+		<label>make plant pot</label>
+		<description>Make plant pot.</description>
+		<jobString>Making plant pot.</jobString>
+		<products>
+			<PlantPot>1</PlantPot>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneCobbles</li>
+					</categories>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeDoorWoodLog</defName>
+		<label>make woodlog door</label>
+		<description>Make woodlog door.</description>
+		<jobString>Making woodlog door.</jobString>
+		<workSpeedStat>CarvingSpeed</workSpeedStat>
+		<products>
+			<DoorWoodLog>1</DoorWoodLog>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>30</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+</RecipeDefs>

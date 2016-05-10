@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- 
+	skillNeedFactors - skill modifier bonus
+		bonusFactor - additional bonus per skill level (x1-x20)
+	
+	capacityFactors - modifier by pawn capacity
+		weight - modifier value per capacity stat
+		
+	100% skill efficiency at level 5
+	-->
+
+	<StatDef>
+		<defName>TradePriceImprovement</defName>
+		<label>trade price improvement</label>
+		<description>When this person negotiates prices, buy and sell prices are improved by this percentage.</description>
+		<category>PawnSocial</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentTwo</toStringStyle>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Social</skill>
+				<baseFactor>0.5</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Talking</capacity>
+				<weight>0.3</weight>
+			</li>
+			<li>
+				<capacity>Hearing</capacity>
+				<weight>0.3</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+</Defs>

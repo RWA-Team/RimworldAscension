@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GameData>
+
+	<ThingDef Name="Usable" ParentName="Item" Abstract="True">
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+		</statBases>
+		<thingCategories>
+			<li>Items</li>
+		</thingCategories>
+	</ThingDef>
+
+	<!--=============== Tech Guides ====================-->
+
+	<ThingDef ParentName="Usable">
+		<defName>SurvivalGuide</defName>
+		<thingClass>RA.Blueprint</thingClass>
+		<label>survival guide</label>
+		<description>A shabby half-burned book. It looks like one of those military training guides to survive in the harsh enviroment. Some of its pages can still be read.</description>
+		<graphicData>
+			<texPath>Things/Items/Usables/SurvivalGuide</texPath>
+		</graphicData>
+		<statBases>
+			<MarketValue>2000</MarketValue>
+		</statBases>
+		<tradeTags>
+			<li>Exotic</li>
+		</tradeTags>
+		<comps>
+			<li Class="RA.CompBlueprint_Properties">
+				<researchName>StartPack</researchName>
+			</li>
+		</comps>
+	</ThingDef>
+
+</GameData>

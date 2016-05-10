@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.AI;
 
 namespace RA
 {
-    class Campfire : WorkTable_Fueled
+    class Campfire : WorkTableFueled
     {
         public bool singalling = false;
 
@@ -28,17 +27,17 @@ namespace RA
             RA_Motes.ThrowSmokeBlack_Signal(loc, size);
         }
 
-        public void CallForMilitaryAid()
-        {
-            var helpTeamParams = IncidentParmsUtility.GenerateThreatPointsParams();
-            helpTeamParams.forced = true;
-            helpTeamParams.raidArrivalMode = PawnsArriveMode.EdgeWalkIn;
+        //public void CallForMilitaryAid()
+        //{
+        //    var helpTeamParams = IncidentParmsUtility.GenerateThreatPointsParams();
+        //    helpTeamParams.forced = true;
+        //    helpTeamParams.raidArrivalMode = PawnsArriveMode.EdgeWalkIn;
 
-            var queuedIncident = new QueuedIncident(IncidentDef.Named("RaidFriendly"), helpTeamParams)
-            {
-                occurTick = Find.TickManager.TicksGame + IncidentWorker_RaidFriendly.HelpDelay.RandomInRange
-            };
-            Find.Storyteller.incidentQueue.Add(queuedIncident);
-        }
+        //    var queuedIncident = new QueuedIncident(IncidentDef.Named("RaidFriendly"), helpTeamParams)
+        //    {
+        //        occurTick = Find.TickManager.TicksGame + IncidentWorker_RaidFriendly.HelpDelay.RandomInRange
+        //    };
+        //    Find.Storyteller.incidentQueue.Add(queuedIncident);
+        //}
     }
 }

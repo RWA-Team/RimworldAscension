@@ -2,51 +2,85 @@
 <ThingDefs>
 
 	<!-- 
-	defaultOutfitTags - used to determine gear in preset outfit sets available in the outfits menu
-	equippedStatOffsets - applies offset to the pawns stat when worn
+	- defaultOutfitTags - used to determine gear in preset outfit sets available in the outfits menu
+	- equippedStatOffsets - applies offset to the pawns stat when worn
+	- worngraphicPath - used to fraw apparel texture on the pawn. shows nothing if not set
 	 -->
 
-	<ThingDef Name="Clothing_Base" Abstract="True">
-		<thingClass>Apparel</thingClass>
-		<category>Item</category>
-		<selectable>True</selectable>
-		<pathCost>10</pathCost>
-		<useHitPoints>True</useHitPoints>
-		<graphicData>
-			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<drawGUIOverlay>true</drawGUIOverlay>
-		<statBases>
-			<MaxHitPoints>100</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-			<DeteriorationRate>0.5</DeteriorationRate>
-			<SellPriceFactor>0.1</SellPriceFactor>
-		</statBases>
-		<altitudeLayer>Item</altitudeLayer>
-		<alwaysHaulable>True</alwaysHaulable>
-		<tickerType>Never</tickerType>
+	<ThingDef Name="Clothing" ParentName="Apparel" Abstract="True">
 		<thingCategories>
-			<li>Apparel</li>
+			<li>Clothing</li>
 		</thingCategories>
-		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
-			<li>
-				<compClass>CompColorable</compClass>
-			</li>
-			<li>
-				<compClass>CompQuality</compClass>
-			</li>
-		</comps>
+	</ThingDef>
+
+
+	<!--======================= Special =======================-->
+	
+	
+	<ThingDef Name="ClothingSlave" ParentName="Clothing" Abstract="True">
+		<statBases>
+			<ArmorRating_Blunt>0.03</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.03</ArmorRating_Sharp>
+			<Insulation_Cold>-5</Insulation_Cold>
+		</statBases>
+		<colorGenerator Class="ColorGenerator_Options">
+			<options>
+				<li>
+					<only>RGBA(1,0.5,0.2)</only>
+				</li>
+			</options>
+		</colorGenerator>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ClothingSlave">
+		<defName>SlaveShirt</defName>
+		<label>slave shirt</label>
+		<description>An orange shirt, used by most of the prisons to keep track of prisoners.</description>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</texPath>
+		</graphicData>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Pawn/Humanlike/Apparel/ShirtButton/ShirtButton</worngraphicPath>
+			<layers>
+				<li>OnSkin</li>
+			</layers>
+			<tags>
+				<li>Starting</li>
+			</tags>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="ClothingSlave">
+		<defName>SlavePants</defName>
+		<label>slave pants</label>
+		<description>An orange pants, used by most of the prisons to keep track of prisoners.</description>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/Various/Pants_OnMap</texPath>
+		</graphicData>
+		<apparel>
+			<bodyPartGroups>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<layers>
+				<li>OnSkin</li>
+			</layers>
+			<tags>
+				<li>Starting</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 
 	<!--======================= Neolithic =======================-->
 
 
-	<ThingDef Name="Clothing_Neolithic" ParentName="Clothing_Base" Abstract="True">
+	<ThingDef Name="ClothingNeolithic" ParentName="Clothing" Abstract="True">
 		<stuffCategories>
 			<li>Leathery</li>
 		</stuffCategories>
@@ -58,7 +92,7 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="Clothing_Neolithic">
+	<ThingDef ParentName="ClothingNeolithic">
 		<defName>Tribalwear</defName>
 		<label>tribalwear</label>
 		<description>A garment crafted without machines using neolithic tools.</description>
@@ -98,12 +132,12 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="Clothing_Neolithic">
+	<ThingDef ParentName="ClothingNeolithic">
 		<defName>Loincloth</defName>
 		<label>loincloth</label>
 		<description>Small pieces of leather to hide your nudity.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Loincloth/Loincloth</texPath>
+			<texPath>Things/Items/Apparels/Clothing/Loincloth/Loincloth</texPath>
 		</graphicData>
 		<statBases>
 			<Insulation_Cold>-10</Insulation_Cold>
@@ -112,7 +146,7 @@
 			<bodyPartGroups>
 				<li>Torso</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Loincloth/Loincloth</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Clothing/Loincloth/Loincloth</worngraphicPath>
 			<layers>
 				<li>OnSkin</li>
 			</layers>
@@ -136,22 +170,25 @@
 		</colorGenerator>
 	</ThingDef>
 
-	<ThingDef ParentName="Clothing_Neolithic">
+	<ThingDef ParentName="ClothingNeolithic">
 		<defName>Cape</defName>
 		<label>cape</label>
 		<description>A cape. Protects you from cold and curious glances.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Cape/Cape</texPath>
+			<texPath>Things/Items/Apparels/Clothing/Cape/Cape</texPath>
 		</graphicData>
 		<statBases>
 			<Insulation_Cold>-10</Insulation_Cold>
 			<Insulation_Heat>-2</Insulation_Heat>
 		</statBases>
+		<thingCategories>
+			<li>Headgear</li>
+		</thingCategories>
 		<apparel>
 			<bodyPartGroups>
 				<li>UpperHead</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Cape/Cape</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Clothing/Cape/Cape</worngraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>
@@ -180,22 +217,25 @@
 		</colorGenerator>
 	</ThingDef>
 
-	<ThingDef ParentName="Clothing_Neolithic">
-		<defName>Hat</defName>
-		<label>hat</label>
-		<description>A hat.</description>
+	<ThingDef ParentName="ClothingNeolithic">
+		<defName>HatBaggy</defName>
+		<label>baggy hat</label>
+		<description>A baggy hat.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Hat/Hat</texPath>
+			<texPath>Things/Items/Apparels/Clothing/HatBaggy/HatBaggy</texPath>
 		</graphicData>
 		<statBases>
 			<Insulation_Cold>-10</Insulation_Cold>
 			<Insulation_Heat>-2</Insulation_Heat>
 		</statBases>
+		<thingCategories>
+			<li>Headgear</li>
+		</thingCategories>
 		<apparel>
 			<bodyPartGroups>
 				<li>UpperHead</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Hat/Hat</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Clothing/HatBaggy/HatBaggy</worngraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>

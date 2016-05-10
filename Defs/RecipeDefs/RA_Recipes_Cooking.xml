@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+
+	<!-- 
+	- workAmount - should never be used (cause not affected by stuff). specify WorkToMake baseStat in product def instead
+	- specialProducts - Butchery\Smelted return from processed thing
+	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
+	- fixedIngredientFilter - determine ingridient set to choose from	
+	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
+	-->
+
+	<RecipeDef Name="Cook" Abstract="True">
+		<workSkill>Cooking</workSkill>
+		<workSkillLearnFactor>0.1</workSkillLearnFactor>
+		<workSpeedStat>CookingSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<researchPrerequisite>Blocked</researchPrerequisite>
+	</RecipeDef>
+	
+
+	<!--===================== Meals =====================-->
+	
+
+	<RecipeDef Name="CookMeal" ParentName="Cook" Abstract="True">
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+		<fixedIngredientFilter>
+			<categories>
+				<li>FoodRaw</li>
+			</categories>
+			<disallowedSpecialFilters>
+				<li>AllowPlantFood</li>
+			</disallowedSpecialFilters>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>FoodRaw</li>
+			</categories>
+			<exceptedCategories>
+				<li>EggsFertilized</li>
+			</exceptedCategories>
+			<exceptedThingDefs>
+				<li>Human_Meat</li>
+			</exceptedThingDefs>
+		</defaultIngredientFilter>
+	</RecipeDef>
+
+
+	<RecipeDef ParentName="CookMeal">
+		<defName>CookMealSimple</defName>
+		<label>cook simple meal</label>
+		<description>Cooks a straightforward meal from one ingredient.</description>
+		<jobString>Cooking simple meal.</jobString>
+		<products>
+			<MealSimple>1</MealSimple>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>FoodRaw</li>
+					</categories>
+				</filter>
+				<count>0.5</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>StartPack</researchPrerequisite>
+	</RecipeDef>	
+
+	<RecipeDef ParentName="CookMeal">
+		<defName>CookMealFine</defName>
+		<label>cook fine meal</label>
+		<description>Cooks a somewhat complex meal from a combination of raw meat and raw plant ingredients.</description>
+		<jobString>Cooking fine meal.</jobString>
+		<products>
+			<MealFine>1</MealFine>
+		</products>
+		<skillRequirements>
+			<li>
+				<skill>Cooking</skill>
+				<minLevel>6</minLevel>
+			</li>
+		</skillRequirements>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+				</filter>
+				<count>0.25</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+				</filter>
+				<count>0.25</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="CookMeal">
+		<defName>CookMealLavish</defName>
+		<label>cook lavish meal</label>
+		<description>Cooks a very complex meal from a combination of raw meat and raw plant ingredients. Much of the ingredients are wasted.</description>
+		<jobString>Cooking lavish meal.</jobString>
+		<products>
+			<MealLavish>1</MealLavish>
+		</products>
+		<skillRequirements>
+			<li>
+				<skill>Cooking</skill>
+				<minLevel>10</minLevel>
+			</li>
+		</skillRequirements>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+				</filter>
+				<count>0.5</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+				</filter>
+				<count>0.5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+	
+
+	<!--===================== Alcohol =====================-->
+	
+
+	<RecipeDef Name="CookAlcohol" ParentName="Cook" Abstract="True">
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<soundWorking>Recipe_Brewing</soundWorking>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawHops</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	
+	
+	<RecipeDef ParentName="CookAlcohol">
+		<defName>MakeBrew</defName>
+		<label>make brew</label>
+		<description>Make brew.</description>
+		<jobString>Making brew.</jobString>
+		<products>
+			<Beer>5</Beer>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawHops</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawBerries</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>Brewing</researchPrerequisite>
+	</RecipeDef>
+	
+</RecipeDefs>

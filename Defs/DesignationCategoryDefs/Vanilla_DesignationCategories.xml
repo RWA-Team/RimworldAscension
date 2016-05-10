@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- those are hidden -->
+
+	<DesignationCategoryDef>
+		<DefName>Security</DefName>
+		<label>security</label>
+		<description>Security and combat-oriented constructions.</description>
+		<order>5</order>
+	</DesignationCategoryDef>
+
+	<DesignationCategoryDef>
+		<DefName>Misc</DefName>
+		<label>misc</label>
+		<description>Miscellaneous constructibles.</description>
+		<order>4</order>
+	</DesignationCategoryDef>
+
+	<DesignationCategoryDef>
+		<DefName>Temperature</DefName>
+		<label>temperature</label>
+		<description>Things for controlling temperature.</description>
+		<order>3</order>
+	</DesignationCategoryDef>
+
+</Defs>

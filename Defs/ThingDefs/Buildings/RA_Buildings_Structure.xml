@@ -1,130 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
+	<!-- 
+	- fillPercent - determne cover multiplier vs projectiles
+	- castEdgeShadows - shadow aura around building
+	- staticSunShadowHeight - solid square shadow with set length
+	- drawerType:
+		- MapMeshOnly - doesn't draw from comps
+		- MapMeshAndRealTime - doesn't draw from comps
+		- RealTimeOnly - used for objects that change their texture (unsure)
+	- surfaceType:
+		- Item - allows place items
+		- Eat - allows place food to eat
+	 -->
 
-	<ThingDef Name="BuildingBase" Abstract="True">
-		<category>Building</category>
-		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
-		<selectable>true</selectable>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<repairEffect>Repair</repairEffect>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<filthLeaving>BuildingRubble</filthLeaving>
-		<designationCategory>Structure</designationCategory>
-		<researchPrerequisite>SurvivalGuideI</researchPrerequisite>
-	</ThingDef>
-
-
-	<!--====================== Doors ==========================-->
-	
-
-	<ThingDef ParentName="BuildingBase" Name="DoorBase" Abstract="True">
-		<thingClass>Building_Door</thingClass>
-		<blueprintClass>Blueprint_Door</blueprintClass>
-		<blueprintGraphicData>
-			<texPath>Things/Building/Door/Door_Blueprint</texPath>
-		</blueprintGraphicData>
-		<altitudeLayer>DoorMoveable</altitudeLayer>
+	<ThingDef Name="Structure" ParentName="Building" Abstract="True">
 		<fillPercent>1</fillPercent>
-		<useHitPoints>true</useHitPoints>
-		<stuffCategories>
-			<li>Woody</li>
-			<li>Stony</li>			
-		</stuffCategories>
-		<statBases>
-			<MaxHitPoints>250</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-		</statBases>
-		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-		<selectable>true</selectable>
-		<tickerType>Normal</tickerType>
 		<rotatable>false</rotatable>
 		<holdsRoof>true</holdsRoof>
-		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<blockLight>true</blockLight>
-		<drawerType>RealtimeOnly</drawerType>
 		<building>
-			<soundDoorOpenPowered>DoorOpenPowered</soundDoorOpenPowered>
-			<soundDoorClosePowered>DoorClosePowered</soundDoorClosePowered>
-			<soundDoorOpenManual>DoorOpenManual</soundDoorOpenManual>
-			<soundDoorCloseManual>DoorCloseManual</soundDoorCloseManual>
-			<ignoreNeedsPower>true</ignoreNeedsPower>
-			<canPlaceOverWall>true</canPlaceOverWall>
-		</building>
-		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
-		</comps>
-	</ThingDef>
-
-
-	<ThingDef ParentName="DoorBase">
-		<defName>Door</defName>
-		<label>door</label>
-		<description>Divides rooms. Must be manually opened and closed, which slows people down.</description>
-		<statBases>
-			<WorkToMake>850</WorkToMake>
-		</statBases>
-		<graphicData>
-			<texPath>Things/Building/Door/DoorSimple_Mover</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<uiIconPath>Things/Building/Door/DoorSimple_MenuIcon</uiIconPath>
-		<costStuffCount>25</costStuffCount>
-	</ThingDef>
-
-
-	<!--========================= Walls =============================-->
-
-
-	<ThingDef ParentName="BuildingBase" Name="Wall">
-		<defName>Wall</defName>
-		<label>wall</label>
-		<thingClass>Building</thingClass>
-		<description>An impassable wall. Capable of holding up a roof.</description>
-		<graphicData>
-			<texPath>Things/Building/Linked/Wall</texPath>
-			<graphicClass>Graphic_Appearances</graphicClass>
-			<linkType>CornerFiller</linkType>
-			<linkFlags>
-				<li>Wall</li>
-				<li>Rock</li>
-			</linkFlags>
-		</graphicData>
-		<blueprintGraphicData>
-			<texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
-		</blueprintGraphicData>
-		<uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
-		<statBases>
-			<MaxHitPoints>350</MaxHitPoints>
-			<WorkToMake>150</WorkToMake>
-			<Flammability>1.0</Flammability>
-		</statBases>
-		<costStuffCount>5</costStuffCount>
-		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-		<altitudeLayer>BuildingTall</altitudeLayer>
-		<passability>Impassable</passability>
-		<castEdgeShadows>true</castEdgeShadows>
-		<fillPercent>1</fillPercent>
-		<coversFloor>true</coversFloor>
-		<placingDraggableDimensions>1</placingDraggableDimensions>
-		<tickerType>Never</tickerType>
-		<rotatable>false</rotatable>
-		<selectable>true</selectable>
-		<neverMultiSelect>true</neverMultiSelect>
-		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<holdsRoof>true</holdsRoof>
-		<staticSunShadowHeight>1.0</staticSunShadowHeight>
-		<blockLight>true</blockLight>
-		<stuffCategories>
-			<li>Bricky</li>
-			<li>Woody</li>
-			<li>Stony</li>
-		</stuffCategories>
-		<building>
-			<isInert>true</isInert>
 			<ignoreNeedsPower>true</ignoreNeedsPower>
 		</building>
 		<damageMultipliers>
@@ -133,43 +28,167 @@
 				<multiplier>2</multiplier>
 			</li>
 		</damageMultipliers>
+		<designationCategory>Structure</designationCategory>
 	</ThingDef>
 
-	<ThingDef ParentName="Wall">
-		<defName>Palisade</defName>
-		<label>palisade</label>
-		<description>An impassable palisade. Not capable of holding up a roof.</description>
+
+	<!--====================== Doors ==========================-->
+
+
+	<ThingDef Name="StructureDoor" ParentName="Structure" Abstract="True">
+		<thingClass>Building_Door</thingClass>
 		<graphicData>
-			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<rect>(0,0.1,1,0.8)</rect>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>DoorMoveable</altitudeLayer>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+		</statBases>
+		<building>
+			<soundDoorOpenPowered>DoorOpenPowered</soundDoorOpenPowered>
+			<soundDoorClosePowered>DoorClosePowered</soundDoorClosePowered>
+			<soundDoorOpenManual>DoorOpenManual</soundDoorOpenManual>
+			<soundDoorCloseManual>DoorCloseManual</soundDoorCloseManual>
+			<canPlaceOverWall>true</canPlaceOverWall>
+		</building>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+	</ThingDef>
+
+
+	<ThingDef ParentName="StructureDoor">
+		<defName>DoorWoodLog</defName>
+		<label>woodlog door</label>
+		<description>Divides rooms. Must be manually opened and closed, which slows people down.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Structure/Doors/DoorLog_Mover</texPath>
+			<shadowData>
+				<volume>(1, 1, 0.8)</volume>
+			</shadowData>
+		</graphicData>
+		<uiIconPath>Things/Buildings/Structure/Doors/DoorLog_MenuIcon</uiIconPath>
+		<blueprintClass>Blueprint_Door</blueprintClass>
+		<blueprintGraphicData>
+			<texPath>Things/Buildings/Structure/Doors/DoorLog_MenuIcon</texPath>
+		</blueprintGraphicData>
+		<costList>
+			<WoodLog>25</WoodLog>
+		</costList>
+		<statBases>
+			<WorkToMake>850</WorkToMake>
+		</statBases>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+
+	<!--========================= Walls =============================-->
+
+
+	<ThingDef Name="StructureWall" ParentName="Structure" Abstract="True">
+		<thingClass>Building</thingClass>
+		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
 			<linkType>CornerFiller</linkType>
 			<linkFlags>
 				<li>Wall</li>
 				<li>Rock</li>
 			</linkFlags>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
 		</graphicData>
-		<blueprintGraphicData>
-			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Blueprint_Atlas</texPath>
-		</blueprintGraphicData>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToMake>150</WorkToMake>
+		</statBases>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<altitudeLayer>BuildingTall</altitudeLayer>
+		<passability>Impassable</passability>
+		<castEdgeShadows>true</castEdgeShadows>
+		<coversFloor>true</coversFloor>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<neverMultiSelect>true</neverMultiSelect>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<building>
+			<isInert>true</isInert>
+		</building>
+	</ThingDef>
+
+
+	<ThingDef ParentName="StructureWall">
+		<defName>WallLog</defName>
+		<label>log wall</label>
+		<description>A log wall. Capable of holding up a roof.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Structure/Walls/WallLog/WallLog_Atlas</texPath>
+			<color>(133,97,67)</color>
+		</graphicData>
+		<uiIconPath>Things/Buildings/Structure/Walls/WallLog/WallLog_MenuIcon</uiIconPath>
+		<costList>
+			<WoodLog>25</WoodLog>
+		</costList>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="StructureWall">
+		<defName>Palisade</defName>
+		<label>palisade</label>
+		<description>A palisade wall. Cheaper and easier to build than thick log wall, can't hold roof and more fragile.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Atlas</texPath>
+		</graphicData>
 		<uiIconPath>Things/Buildings/Structure/Walls/Palisade/Palisade_MenuIcon</uiIconPath>
-		<passability>PassThroughOnly</passability>
-		<pathCost>70</pathCost>	<!-- Yes -->
-		<altitudeLayer>Waist</altitudeLayer>
-		<fillPercent>0.65</fillPercent>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToMake>50</WorkToMake>
+		</statBases>
+		<costList>
+			<WoodLog>3</WoodLog>
+		</costList>
+		<coversFloor>false</coversFloor>
+		<holdsRoof>false</holdsRoof>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="StructureWall">
+		<defName>WallClay</defName>
+		<label>clay wall</label>
+		<description>A clay wall.</description>
+		<graphicData>
+			<texPath>Things/Building/Linked/Wall/Wall_Atlas_Bricks</texPath>
+			<color>(127,51,0)</color>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/WallBricks_MenuIcon</uiIconPath>
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
 			<WorkToMake>100</WorkToMake>
-			<Flammability>1.0</Flammability>
 		</statBases>
-		<costStuffCount>3</costStuffCount>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<staticSunShadowHeight>0.3</staticSunShadowHeight>
-		<holdsRoof>False</holdsRoof>
-		<stuffCategories>
-			<li>Woody</li>
-		</stuffCategories>
+		<costList>
+			<BlockAdobe>5</BlockAdobe>
+		</costList>
+		<researchPrerequisites>
+			<li>Pottery</li>
+		</researchPrerequisites>
 	</ThingDef>
-	
-	
+
 </Buildings>

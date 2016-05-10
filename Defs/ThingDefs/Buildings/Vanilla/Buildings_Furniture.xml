@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
+	<!--================================ Abstract bases ======================================-->
 
 	<ThingDef Name="BuildingBase" Abstract="True">
 		<category>Building</category>
@@ -12,9 +13,7 @@
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
-		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
-	
 
 	<ThingDef Name="FurnitureBase" ParentName="BuildingBase" Abstract="True">
 		<comps>
@@ -24,17 +23,15 @@
 		</comps>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 	</ThingDef>
-	
 
 	<ThingDef Name="HighQualityFurnitureBase" ParentName="BuildingBase" Abstract="True">
 		<comps>
 			<li>
 				<compClass>CompQuality</compClass>
 			</li>
-			<li>
-				<compClass>CompArt</compClass>
-				<nameMaker>NamerFurniture</nameMaker>
-				<descriptionMaker>ArtFurniture</descriptionMaker>
+			<li Class="CompProperties_Art">
+				<nameMaker>ArtName_Furniture</nameMaker>
+				<descriptionMaker>ArtDescription_Furniture</descriptionMaker>
 				<minQualityForArtistic>Excellent</minQualityForArtistic>
 			</li>
 		</comps>
@@ -46,13 +43,13 @@
 
 
 	<!--============================== Beds ==============================-->
-	
+
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>SleepingSpot</defName>
-		<ThingClass>Building_Bed</ThingClass>
 		<label>sleeping spot</label>
-		<description>Designates a spot on the ground where people should sleep. Not comfortable.</description>
+		<Description>Designates a spot on the ground where people should sleep. Not comfortable.</Description>
+		<ThingClass>Building_Bed</ThingClass>
 		<graphicData>
 			<texPath>Things/Building/Furniture/Bed/SleepSpot</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -60,9 +57,7 @@
 		</graphicData>
 		<AltitudeLayer>FloorEmplacement</AltitudeLayer>
 		<statBases>
-			<BedRestEffectiveness>0.8</BedRestEffectiveness>
 			<WorkToMake>0</WorkToMake>
-			<Beauty>-2</Beauty>
 			<Comfort>0.4</Comfort>
 		</statBases>
 		<useHitPoints>False</useHitPoints>
@@ -75,28 +70,90 @@
 			<sowTag>SupportPlantsOnly</sowTag>
 			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
 		</building>
+		<designationHotkey>C</designationHotkey>
 	</ThingDef>
-	
 
-	<ThingDef ParentName="HighQualityFurnitureBase">
-		<defName>RoyalBed</defName>
-		<label>royal bed</label>
-		<Description>A luxurious bed fit for the highborn.</Description>
+
+	<ThingDef ParentName="FurnitureBase">
+		<defName>Bed</defName>
+		<label>bed</label>
+		<Description>A cozy mattress and sheets on a frame for resting.</Description>
 		<ThingClass>Building_Bed</ThingClass>
 		<graphicData>
-			<texPath>Things/Building/Furniture/Bed/RoyalBed</texPath>
+			<texPath>Things/Building/Furniture/Bed/Bed</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3,4)</drawSize>
+			<damageData>
+				<rect>(0,0.05,1,1.95)</rect>
+			</damageData>
+		</graphicData>
+		<AltitudeLayer>Waist</AltitudeLayer>
+		<statBases>
+			<MaxHitPoints>140</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Beauty>8</Beauty>
+			<WorkToMake>870</WorkToMake>
+			<BedRestEffectiveness>1</BedRestEffectiveness>
+			<Comfort>0.75</Comfort>
+			<ImmunityGainSpeedFactor>1.1</ImmunityGainSpeedFactor>
+		</statBases>
+		<Size>(1,2)</Size>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>35</costStuffCount>
+		<building>
+			<Bed_ShowSleeperBody>False</Bed_ShowSleeperBody>
+			<Bed_HealTickInterval>2100</Bed_HealTickInterval>
+		</building>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VitalsMonitor</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<fillPercent>0.4</fillPercent>
+		<PathCost>60</PathCost>
+		<StaticSunShadowHeight>0.17</StaticSunShadowHeight>
+		<CastEdgeShadows>True</CastEdgeShadows>
+		<designationHotKey>B</designationHotKey>
+		<Passability>PassThroughOnly</Passability>
+		<DrawGUIOverlay>True</DrawGUIOverlay>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
+
+
+
+
+
+	<ThingDef ParentName="HighQualityFurnitureBase">
+		<defName>DoubleBed</defName>
+		<label>double bed</label>
+		<Description>A simple double-wide bed that fits two people.</Description>
+		<ThingClass>Building_Bed</ThingClass>
+		<graphicData>
+			<texPath>Things/Building/Furniture/Bed/DoubleBed</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<rect>(0,0.05,2,1.95)</rect>
+			</damageData>
 		</graphicData>
 		<AltitudeLayer>Waist</AltitudeLayer>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
 			<Flammability>1.0</Flammability>
-			<WorkToMake>4500</WorkToMake>
-			<Beauty>50</Beauty>
-			<BedRestEffectiveness>1.05</BedRestEffectiveness>
-			<Comfort>0.85</Comfort>
+			<WorkToMake>1740</WorkToMake>
+			<Comfort>0.75</Comfort>
+			<Beauty>8</Beauty>
+			<BedRestEffectiveness>1</BedRestEffectiveness>
 			<ImmunityGainSpeedFactor>1.1</ImmunityGainSpeedFactor>
 		</statBases>
 		<Size>(2,2)</Size>
@@ -105,14 +162,13 @@
 			<li>Woody</li>
 			<li>Stony</li>
 		</stuffCategories>
-		<costStuffCount>100</costStuffCount>
+		<costStuffCount>70</costStuffCount>
 		<building>
 			<Bed_ShowSleeperBody>False</Bed_ShowSleeperBody>
-			<Bed_HealTickInterval>2000</Bed_HealTickInterval>
+			<Bed_HealTickInterval>2100</Bed_HealTickInterval>
 		</building>
 		<comps>
-			<li>
-				<compClass>CompAffectedByFacilities</compClass>
+			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
 					<li>VitalsMonitor</li>
 				</linkableFacilities>
@@ -124,13 +180,74 @@
 		<LeaveResourcesWhenKilled>True</LeaveResourcesWhenKilled>
 		<StaticSunShadowHeight>0.17</StaticSunShadowHeight>
 		<CastEdgeShadows>True</CastEdgeShadows>
+		<designationHotKey>Y</designationHotKey>
 		<Passability>PassThroughOnly</Passability>
 		<DrawGUIOverlay>True</DrawGUIOverlay>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
 	</ThingDef>
-	
+
+
+
+	<ThingDef ParentName="HighQualityFurnitureBase">
+		<defName>RoyalBed</defName>
+		<label>royal bed</label>
+		<Description>A luxurious gold-inlaid bed fit for the highborn. Very comfy and beautiful. Fits two.</Description>
+		<ThingClass>Building_Bed</ThingClass>
+		<graphicData>
+			<texPath>Things/Building/Furniture/Bed/RoyalBed</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<rect>(0,0.05,2,1.95)</rect>
+			</damageData>
+		</graphicData>
+		<AltitudeLayer>Waist</AltitudeLayer>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<WorkToMake>4500</WorkToMake>
+			<Beauty>50</Beauty>
+			<BedRestEffectiveness>1.05</BedRestEffectiveness>
+			<Comfort>0.90</Comfort>
+			<ImmunityGainSpeedFactor>1.1</ImmunityGainSpeedFactor>
+		</statBases>
+		<Size>(2,2)</Size>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>110</costStuffCount>
+		<costList>
+			<Gold>50</Gold>
+		</costList>
+		<building>
+			<Bed_ShowSleeperBody>False</Bed_ShowSleeperBody>
+			<Bed_HealTickInterval>2000</Bed_HealTickInterval>
+		</building>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>VitalsMonitor</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<fillPercent>0.4</fillPercent>
+		<PathCost>60</PathCost>
+		<LeaveResourcesWhenKilled>True</LeaveResourcesWhenKilled>
+		<StaticSunShadowHeight>0.17</StaticSunShadowHeight>
+		<CastEdgeShadows>True</CastEdgeShadows>
+		<designationHotKey>R</designationHotKey>
+		<Passability>PassThroughOnly</Passability>
+		<DrawGUIOverlay>True</DrawGUIOverlay>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
 
 	<ThingDef ParentName="FurnitureBase">
 		<defName>HospitalBed</defName>
@@ -168,8 +285,7 @@
 			<bed_defaultMedical>true</bed_defaultMedical>
 		</building>
 		<comps>
-			<li>
-				<compClass>CompAffectedByFacilities</compClass>
+			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
 					<li>VitalsMonitor</li>
 				</linkableFacilities>
@@ -180,17 +296,21 @@
 		<LeaveResourcesWhenKilled>True</LeaveResourcesWhenKilled>
 		<StaticSunShadowHeight>0.17</StaticSunShadowHeight>
 		<CastEdgeShadows>True</CastEdgeShadows>
+		<designationHotkey>H</designationHotkey>
 		<Passability>PassThroughOnly</Passability>
 		<DrawGUIOverlay>True</DrawGUIOverlay>
-		<researchPrerequisite>HospitalBed</researchPrerequisite>
+		<researchPrerequisites>
+			<li>HospitalBed</li>
+		</researchPrerequisites>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
 		</placeWorkers>
 	</ThingDef>
 
 
+
+
 	<!--=========================== Animal beds ===============================-->
-	
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>AnimalSleepingSpot</defName>
@@ -216,7 +336,6 @@
 			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
 		</building>
 	</ThingDef>
-	
 
 	<ThingDef ParentName="FurnitureBase">
 		<defName>AnimalSleepingBox</defName>
@@ -231,6 +350,13 @@
 		<graphicData>
 			<texPath>Things/Building/Misc/AnimalBed/AnimalSleepBox</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<rect>(0.05,0.05,0.9,0.9)</rect>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
 		</graphicData>
 		<stuffCategories>
 			<li>Metallic</li>
@@ -254,7 +380,6 @@
 			<ImmunityGainSpeedFactor>1.05</ImmunityGainSpeedFactor>
 		</statBases>
 	</ThingDef>
-	
 
 	<ThingDef ParentName="FurnitureBase">
 		<defName>AnimalBed</defName>
@@ -294,7 +419,52 @@
 
 
 	<!--======================= Basic domestic furniture ==============================-->
-	
+
+
+	<ThingDef ParentName="FurnitureBase">
+		<defName>Stool</defName>
+		<label>stool</label>
+		<graphicData>
+			<texPath>Things/Building/Furniture/Stool</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shadowData>
+				<volume>(0.3, 0.6, 0.3)</volume>
+			</shadowData>
+			<damageData>
+				<rectN>(0.125,0.296875,0.734375,0.421875)</rectN>
+				<rectS>(0.125,0.296875,0.734375,0.421875)</rectS>
+				<rectE>(0.234375,0.296875,0.5,0.546875)</rectE>
+				<rectW>(0.234375,0.296875,0.5,0.546875)</rectW>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>Waist</altitudeLayer>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>750</WorkToMake>
+			<Flammability>1.0</Flammability>
+			<Beauty>3</Beauty>
+			<Comfort>0.5</Comfort>
+		</statBases>
+		<description>A simple platform on which to sit.</description>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>15</costStuffCount>
+		<pathCost>30</pathCost>
+		<designationHotKey>T</designationHotKey>
+		<fillPercent>0.30</fillPercent>
+		<building>
+			<isSittable>true</isSittable>
+		</building>
+	</ThingDef>
+
 
 	<ThingDef ParentName="HighQualityFurnitureBase">
 		<defName>DiningChair</defName>
@@ -306,6 +476,12 @@
 			<shadowData>
 				<volume>(0.3, 0.6, 0.3)</volume>
 			</shadowData>
+			<damageData>
+				<rectN>(0.25,0.234375,0.5,0.28125)</rectN>
+				<rectS>(0.25,0.234375,0.5,0.28125)</rectS>
+				<rectE>(0.28125,0.25,0.453125,0.25)</rectE>
+				<rectW>(0.28125,0.25,0.453125,0.25)</rectW>
+			</damageData>
 		</graphicData>
 		<altitudeLayer>Waist</altitudeLayer>
 		<statBases>
@@ -323,12 +499,13 @@
 		</stuffCategories>
 		<costStuffCount>60</costStuffCount>
 		<pathCost>30</pathCost>
+		<designationHotKey>J</designationHotKey>
 		<fillPercent>0.35</fillPercent>
 		<building>
 			<isSittable>true</isSittable>
 		</building>
 	</ThingDef>
-	
+
 
 	<ThingDef ParentName="FurnitureBase">
 		<defName>Armchair</defName>
@@ -338,8 +515,14 @@
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(3,3)</drawSize>
 			<shadowData>
-				<volume>(0.3, 0.6, 0.3)</volume>
+				<volume>(0.6, 0.6, 0.6)</volume>
 			</shadowData>
+			<damageData>
+				<rectN>(0,0,1,0.703125)</rectN>
+				<rectS>(0.09375,0,0.84375,1)</rectS>
+				<rectE>(0,0,0.84375,0.625)</rectE>
+				<rectW>(0.15625,0,0.84375,0.625)</rectW>
+			</damageData>
 		</graphicData>
 		<altitudeLayer>Waist</altitudeLayer>
 		<statBases>
@@ -358,13 +541,150 @@
 		<costStuffCount>100</costStuffCount>
 		<pathCost>30</pathCost>
 		<fillPercent>0.40</fillPercent>
+		<designationHotKey>N</designationHotKey>
 		<building>
 			<isSittable>true</isSittable>
 		</building>
 	</ThingDef>
 
 
+
+
+	<!-- Table base -->
+	<ThingDef Abstract="True" ParentName="BuildingBase" Name="TableBase">
+		<thingClass>Building</thingClass>
+		<altitudeLayer>Waist</altitudeLayer>
+		<description>People eat off tables when chairs are placed facing them.</description>
+		<passability>PassThroughOnly</passability>
+		<castEdgeShadows>true</castEdgeShadows>
+		<pathCost>60</pathCost>
+		<fillPercent>0.4</fillPercent>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<surfaceType>Eat</surfaceType>
+		<comps>
+			<li>
+				<compClass>CompGatherSpot</compClass>
+			</li>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+
+
+	<ThingDef ParentName="TableBase">
+		<defName>TableShort</defName>
+		<label>table (short)</label>
+		<graphicData>
+			<texPath>Things/Building/Furniture/TableShort</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<damageData>
+				<rect>(0.05,0.27,1.9,1.73)</rect>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>1500</WorkToMake>
+			<Flammability>1.0</Flammability>
+			<Beauty>8</Beauty>
+		</statBases>
+		<size>(2,2)</size>
+		<costStuffCount>50</costStuffCount>
+		<rotatable>false</rotatable>
+	</ThingDef>
+
+
+	<ThingDef ParentName="TableBase">
+		<defName>TableLong</defName>
+		<label>table (long)</label>
+		<graphicData>
+			<texPath>Things/Building/Furniture/TableLong</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,6)</drawSize>
+			<damageData>
+				<rectN>(0,0.27,2,3.73)</rectN>
+				<rectS>(0,0.27,2,3.73)</rectS>
+				<rectE>(0.125,0.27,3.75,1.73)</rectE>
+				<rectW>(0.125,0.27,3.75,1.73)</rectW>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToMake>3000</WorkToMake>
+			<Flammability>1.0</Flammability>
+			<Beauty>12</Beauty>
+		</statBases>
+		<size>(2,4)</size>
+		<costStuffCount>95</costStuffCount>
+	</ThingDef>
+
+
+	<ThingDef ParentName="FurnitureBase">
+		<defName>PlantPot</defName>
+		<label>plant pot</label>
+		<thingClass>Building_PlantGrower</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Furniture/PlantPot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shadowData>
+				<volume>(0.3, 0.6, 0.3)</volume>
+			</shadowData>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>Waist</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.20</fillPercent>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>495</WorkToMake>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>15</costStuffCount>
+		<inspectorTabs>
+			<li>ITab_Growing</li>
+		</inspectorTabs>
+		<description>Plant decorative flowers here to improve the mood of people nearby.</description>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+		<fertility>1.0</fertility>
+		<designationHotKey>P</designationHotKey>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<building>
+			<defaultPlantToGrow>PlantDaylily</defaultPlantToGrow>
+			<plantsDestroyWithMe>true</plantsDestroyWithMe>
+			<sowTag>Decorative</sowTag>
+		</building>
+		<rotatable>false</rotatable>
+	</ThingDef>
+
+
 	<!-- ======================== Lighting ======================= -->
+
 
 
 	<ThingDef Abstract="True" Name="StandingLampBase" ParentName="BuildingBase">
@@ -388,15 +708,17 @@
 				<volume>(0.3, 0.6, 0.3)</volume>
 				<offset>(0,0,-0.1)</offset>
 			</shadowData>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
 		</graphicData>
 		<comps>
-			<li>
+			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>150</basePowerConsumption>
 				<shortCircuitInRain>false</shortCircuitInRain>
-				<soundPowerOn>PowerOnSmall</soundPowerOn>
-				<soundPowerOff>PowerOffSmall</soundPowerOff>
 			</li>
+			<li Class="CompProperties_Flickable"/>
 			<li>
 				<compClass>CompQuality</compClass>
 			</li>
@@ -407,15 +729,15 @@
 			<Flammability>1.0</Flammability>
 		</statBases>
 	</ThingDef>
-	
+
 
 	<ThingDef ParentName="StandingLampBase" >
 		<defName>StandingLamp</defName>
 		<label>standing lamp</label>
 		<description>Standing lamp that lights an area.</description>
+		<designationHotKey>L</designationHotKey>
 		<comps>
-			<li>
-				<compClass>CompGlower</compClass>
+			<li Class="CompProperties_Glower">
 				<glowRadius>12</glowRadius>
 				<glowColor>(217,217,208,0)</glowColor>
 			</li>
@@ -425,45 +747,52 @@
 	<ThingDef ParentName="StandingLampBase">
 		<defName>StandingLamp_Red</defName>
 		<label>standing lamp (red)</label>
+		<designationHotKey>O</designationHotKey>
 		<description>Standing lamp that lights an area in red.</description>
 		<comps>
-			<li>
-				<compClass>CompGlower</compClass>
+			<li Class="CompProperties_Glower">
 				<glowRadius>12</glowRadius>
 				<glowColor>(217,0,0,0)</glowColor>
 			</li>
 		</comps>
-		<researchPrerequisite>ColoredLights</researchPrerequisite>
+		<researchPrerequisites>
+			<li>ColoredLights</li>
+		</researchPrerequisites>
 	</ThingDef>
-	
 
 	<ThingDef ParentName="StandingLampBase">
 		<defName>StandingLamp_Green</defName>
 		<label>standing lamp (green)</label>
 		<description>Standing lamp that lights an area in green.</description>
+		<designationHotKey>K</designationHotKey>
 		<comps>   
-			<li>
-				<compClass>CompGlower</compClass>
+			<li Class="CompProperties_Glower">
 				<glowRadius>12</glowRadius>
 				<glowColor>(0,217,0,0)</glowColor>
 			</li>
 		</comps>
-		<researchPrerequisite>ColoredLights</researchPrerequisite>
+		<researchPrerequisites>
+			<li>ColoredLights</li>
+		</researchPrerequisites>
 	</ThingDef>
 
 	<ThingDef ParentName="StandingLampBase">
 		<defName>StandingLamp_Blue</defName>
 		<label>standing lamp (blue)</label>
 		<description>Standing lamp that lights an area in blue.</description>
+		<designationHotKey>M</designationHotKey>
 		<comps>
-			<li>
-				<compClass>CompGlower</compClass>
+			<li Class="CompProperties_Glower">
 				<glowRadius>12</glowRadius>
 				<glowColor>(0,0,217,0)</glowColor>
 			</li>
 		</comps>
-		<researchPrerequisite>ColoredLights</researchPrerequisite>
+		<researchPrerequisites>
+			<li>ColoredLights</li>
+		</researchPrerequisites>
 	</ThingDef>
+
+
 
 
 	<!--============================== Storage ==============================-->
@@ -503,6 +832,9 @@
 						<li>Weapons</li>
 						<li>Apparel</li>
 					</categories>
+					<thingDefs>
+						<li>ArtilleryShell</li>
+					</thingDefs>
 				</filter>
 			</fixedStorageSettings>
 			<defaultStorageSettings>
@@ -517,9 +849,17 @@
 		<inspectorTabs>
 			<li>ITab_Storage</li>
 		</inspectorTabs>
+		<designationHotKey>I</designationHotKey>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<surfaceType>Item</surfaceType>
 	</ThingDef>
-	
+
+
+
+
+
+
+
+
 
 </Buildings>

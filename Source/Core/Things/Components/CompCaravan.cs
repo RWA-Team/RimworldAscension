@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using RimWorld;
+﻿using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -12,20 +11,21 @@ namespace RA
         public string cartFullTexturePath;
         public string wheelTexturePath;
         public string harnessTexturePath;
+
         public CompCaravan_Properties()
         {
-            compClass = typeof(CompCaravan_Properties);
+            compClass = typeof(CompCaravan);
         }
     }
 
     public class CompCaravan : ThingComp
     {
-        public List<Thing> cargo = new List<Thing>();
-
         public Graphic cartEmptyTexture;
         public Graphic cartFullTexture;
         public Graphic wheelTexture;
         public Graphic harnessTexture;
+
+        public Pawn carrier;
 
         // destroys the cart once carrier is down
         public bool broken;
@@ -45,12 +45,14 @@ namespace RA
 
         public CompCaravan_Properties Properties => (CompCaravan_Properties)props;
 
-        public bool SpawnedAndWell(Pawn pawn)
+        public override void Initialize(CompProperties props)
         {
-            if (pawn.SpawnedInWorld && !pawn.Downed)
-                return true;
-            return false;
+            base.Initialize(props);
+
+            carrier = parent as Pawn;
         }
+
+        public bool SpawnedAndWell => carrier.Spawned && !carrier.Downed;
 
         public override void PostSpawnSetup()
         {
@@ -63,22 +65,15 @@ namespace RA
         {
             base.CompTick();
 
-            if (SpawnedAndWell(parent as Pawn))
+            if (SpawnedAndWell)
             {
                 SetTexturesPosition();
-
-                var pawn = parent as Pawn;
-                if (pawn.pather.Moving)
+                if (carrier.pather.Moving)
                 {
                     // rotate rotor by parent's move speed value
-                    var degree = pawn.GetStatValue(StatDefOf.MoveSpeed) / (GenTicks.TicksPerRealtimeSecond * wheelRadius);
+                    var degree = carrier.GetStatValue(StatDefOf.MoveSpeed) / (GenDate.SecondsToTicks(1) * wheelRadius);
                     RotateWheelByDegree(degree);
                 }
-            }
-            else if (broken == false)
-            {
-                broken = true;
-                PostDestroy();
             }
         }
 
@@ -131,7 +126,7 @@ namespace RA
         // draw cart, harness and wheels overlay over caravan muffalo if it's in good condition
         public override void PostDraw()
         {
-            if (!broken)
+            if (SpawnedAndWell)
             {
                 //Harness
                 var matrix = default(Matrix4x4);
@@ -143,10 +138,10 @@ namespace RA
                 var matrix2 = default(Matrix4x4);
                 var offset = new Vector3(0f, s.y + num2, -1f + num1).RotatedBy(parent.Rotation.AsAngle);
                 matrix2.SetTRS(parent.DrawPos + offset + Altitudes.AltIncVect, num.ToQuat(), s);
-                if (cargo != null && cargo.Count > 0)
-                    Graphics.DrawMesh(parent.Rotation == Rot4.West ? MeshPool.plane10Flip : MeshPool.plane10, matrix2, cartFullTexture.MatAt(parent.Rotation), 0);
-                else
-                    Graphics.DrawMesh(parent.Rotation == Rot4.West ? MeshPool.plane10Flip : MeshPool.plane10, matrix2, cartEmptyTexture.MatAt(parent.Rotation), 0);
+                Graphics.DrawMesh(parent.Rotation == Rot4.West ? MeshPool.plane10Flip : MeshPool.plane10, matrix2,
+                    carrier.inventory.container.Count > 0
+                        ? cartFullTexture.MatAt(parent.Rotation)
+                        : cartEmptyTexture.MatAt(parent.Rotation), 0);
 
                 //Wheels
                 var matrix3 = default(Matrix4x4);
@@ -163,16 +158,6 @@ namespace RA
                     Graphics.DrawMesh(parent.Rotation == Rot4.West ? MeshPool.plane10Flip : MeshPool.plane10, matrix3, rotor % 30 == 0 ? wheelTexture.MatBack : wheelTexture.MatFront, 0);
                 }
             }
-        }
-
-        public override void PostDestroy(DestroyMode mode = DestroyMode.Kill)
-        {
-            foreach (var thing in cargo)
-            {
-                Thing newThing;
-                GenDrop.TryDropSpawn(thing, parent.Position, ThingPlaceMode.Near, out newThing);
-            }
-            cargo.Clear();
         }
 
         public void LoadTextures()

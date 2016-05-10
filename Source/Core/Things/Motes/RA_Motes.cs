@@ -37,7 +37,7 @@ namespace RA
         public static void ThrowSmokeBlack_Signal(Vector3 loc, float size)
         {
             // throw smoke for a second period each 6 seconds
-            if (Find.TickManager.TicksGame % 2 == 0 && (Find.TickManager.TicksGame % (GenDate.TicksPerRealSecond * 7) < GenDate.TicksPerRealSecond))
+            if (Find.TickManager.TicksGame % 2 == 0 && (Find.TickManager.TicksGame % (GenDate.SecondsToTicks(1) * 7) < GenDate.SecondsToTicks(1)))
             {
                 ThrowSmoke(loc, size, "Mote_SmokeBlack_Signal");
             }

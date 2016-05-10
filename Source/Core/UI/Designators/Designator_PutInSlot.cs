@@ -12,6 +12,7 @@ namespace RA
     {
         public static readonly Texture2D texPutInArrow = ContentFinder<Texture2D>.Get("UI/Icons/PutIn");
         private static readonly Texture2D texOccupiedSlotBG = SolidColorMaterials.NewSolidColorTexture(1f, 1f, 1f, 0.1f);
+        private static readonly Texture2D BGTex = ContentFinder<Texture2D>.Get("UI/Widgets/DesButBG");
 
         public CompSlots slotsComp;
 
@@ -197,6 +198,9 @@ namespace RA
 
         // allows rectangular selection
         public override int DraggableDimensions => 2;
+
+        // draws number of selected objects
+        public override bool DragDrawMeasurements => true;
 
         // returning string text assigning false reason to AcceptanceReport
         public override AcceptanceReport CanDesignateCell(IntVec3 cell)

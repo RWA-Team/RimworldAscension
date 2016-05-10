@@ -1,55 +1,80 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="ResourceBase" Abstract="True">
-		<thingClass>ThingWithComps</thingClass>
-		<label>unspecified resource</label>
-		<category>Item</category>
-		<resourceReadoutPriority>Middle</resourceReadoutPriority>
-		<useHitPoints>true</useHitPoints>
-		<selectable>true</selectable>
-		<altitudeLayer>Item</altitudeLayer>
-		<stackLimit>75</stackLimit>
-		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
-		</comps>
-		<alwaysHaulable>true</alwaysHaulable>
-		<drawGUIOverlay>true</drawGUIOverlay>
-		<rotatable>false</rotatable>
-		<pathCost>15</pathCost>
+	<!-- 
+	statBases - base stat values for the thing
+	default values:
+		- Flammability = 0
+		- MaxHitPoints = 100
+		
+	stuffProps:	
+		statOffsets - stuff based offset values
+		statFactors - stuff based multiplier values
+		stuffCommonality - weight chance to appear in trader stock	
+	
+	Work only in statBases:
+		Blunt\SharpDamageMultiplier
+	-->
+
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Bone</defName>
+		<label>bone</label>
+		<description>Primitive crafting material.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/Bone</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<color>(216,220,216)</color>
+		</graphicData>
+		<thingCategories>
+			<li>ResourcesProcessed</li>
+		</thingCategories>
+		<statBases>
+			<MarketValue>5</MarketValue>
+			<SharpDamageMultiplier>1.2</SharpDamageMultiplier>
+			<BluntDamageMultiplier>0.8</BluntDamageMultiplier>
+		</statBases>
+		<stuffProps>
+			<categories>
+				<li>Bone</li>
+			</categories>
+			<color>(216,220,216)</color>
+			<soundImpactStuff>BulletImpactWood</soundImpactStuff>
+			<soundMeleeHitSharp>MeleeHit_Wood</soundMeleeHitSharp>
+			<soundMeleeHitBlunt>MeleeHit_Wood</soundMeleeHitBlunt>
+			<smeltable>false</smeltable>
+			<statOffsets>
+				<Beauty>3</Beauty>
+			</statOffsets>
+			<statFactors>
+				<Flammability>0.5</Flammability>
+				<MaxHitPoints>0.8</MaxHitPoints>
+				<WorkToMake>0.8</WorkToMake>
+				<MarketValue>1.2</MarketValue>
+				<Comfort>1.2</Comfort>
+				<Beauty>1.2</Beauty>
+				<TrapMeleeDamage>1.2</TrapMeleeDamage>
+				<MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
+			</statFactors>
+		</stuffProps>
 	</ThingDef>
 
 
-	<!--===================== Organic products =====================-->
+	<!--===================== Wood =====================-->
 
 
-	<ThingDef ParentName="ResourceBase">
-		<defName>WoodLog</defName>
-		<label>wood</label>
-		<description>Wood from trees or other fibrous plants. Useful for building structures, weapons, and even simple prosthetics. A raw stick of wood can be used as a weapon in a pinch.</description>
-		<graphicData>
-			<texPath>Things/Item/Resource/WoodLog</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-		</graphicData>
-		<thingCategories>
-			<li>ResourcesRaw</li>
-		</thingCategories>
+	<ThingDef Name="ResourceWood" ParentName="ResourceOrganic" Abstract="True">
 		<soundInteract>Wood_Drop</soundInteract>
 		<soundDrop>Wood_Drop</soundDrop>
 		<statBases>
-			<MarketValue>1.4</MarketValue>
-			<MaxHitPoints>120</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-			<DeteriorationRate>1</DeteriorationRate>
-			<SharpDamageMultiplier>0.4</SharpDamageMultiplier>
+			<DeteriorationRate>2</DeteriorationRate>
+			<SharpDamageMultiplier>0.5</SharpDamageMultiplier>
+			<MaxBurningTempCelsius>500</MaxBurningTempCelsius>
+			<BurnDurationHours>1</BurnDurationHours>
 		</statBases>
 		<stuffProps>
-			<appearance>Planks</appearance>
 			<stuffAdjective>wooden</stuffAdjective>
 			<categories>
-				<li>Woody</li>
+				<li>Wood</li>
 			</categories>
 			<color>(133,97,67)</color>
 			<constructEffect>ConstructWood</constructEffect>
@@ -60,14 +85,36 @@
 				<Beauty>2</Beauty>
 			</statOffsets>
 			<statFactors>
+				<MaxHitPoints>1</MaxHitPoints>
+				<Beauty>1</Beauty>
 				<Flammability>1</Flammability>
-				<MaxHitPoints>0.5</MaxHitPoints>
-				<Beauty>1.25</Beauty>
-				<Flammability>1</Flammability>
-				<WorkToMake>0.7</WorkToMake>
-				<DoorOpenSpeed>1.2</DoorOpenSpeed>
-				<MeleeWeapon_Cooldown>0.9</MeleeWeapon_Cooldown>
+				<WorkToMake>1</WorkToMake>
+				<DoorOpenSpeed>1</DoorOpenSpeed>
+				<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
 			</statFactors>
+		</stuffProps>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ResourceWood">
+		<defName>WoodLog</defName>
+		<label>wood</label>
+		<description>Wood from trees or other fibrous plants. Useful for building structures, weapons, and even simple prosthetics. A raw stick of wood can be used as a weapon in a pinch.</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/WoodLog</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<statBases>
+			<MarketValue>1.4</MarketValue>
+			<MaxHitPoints>120</MaxHitPoints>
+		</statBases>
+		<stuffProps>
+			<categories>
+				<li>WoodLog</li>
+			</categories>
 		</stuffProps>
 		<isBodyPartOrImplant>true</isBodyPartOrImplant>
 		<techHediffsTags>
@@ -76,10 +123,185 @@
 	</ThingDef>
 
 
-	<!--===================== Textiles =====================-->
+	<!--===================== Stone =====================-->
+
+
+	<ThingDef Name="ResourceStone" ParentName="Resource" Abstract="True">
+		<statBases>
+			<Flammability>0</Flammability>
+			<BluntDamageMultiplier>1.25</BluntDamageMultiplier>
+		</statBases>
+		<soundInteract>Stone_Drop</soundInteract>
+		<soundDrop>Stone_Drop</soundDrop>
+		<stuffProps>
+			<categories>
+				<li>Stone</li>
+			</categories>
+			<soundImpactStuff>BulletImpactGround</soundImpactStuff>
+			<soundMeleeHitSharp>MeleeHit_Stone</soundMeleeHitSharp>
+			<soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
+			<statFactors>
+				<Flammability>0.3</Flammability>
+				<MaxHitPoints>1.5</MaxHitPoints>
+				<WorkToMake>2.5</WorkToMake>
+				<MarketValue>1.2</MarketValue>
+				<Comfort>0.5</Comfort>
+				<Beauty>0.8</Beauty>
+				<DoorOpenSpeed>0.7</DoorOpenSpeed>
+				<MeleeWeapon_Cooldown>1.2</MeleeWeapon_Cooldown>
+				<TrapMeleeDamage>1.5</TrapMeleeDamage>
+			</statFactors>
+		</stuffProps>
+	</ThingDef>
+
+	<!--======== StoneChunks ========-->
+
+	<ThingDef Name="ResourceStoneChunk" ParentName="ResourceStone" Abstract="True">
+		<graphicData>
+			<texPath>Things/Item/Chunk/ChunkStone</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Beauty>-10</Beauty>
+			<Cleanliness>-2</Cleanliness>
+		</statBases>
+		<fillPercent>0.4</fillPercent>
+		<soundDrop>ChunkRock_Drop</soundDrop>
+		<passability>PassThroughOnly</passability>
+		<pathCost>55</pathCost>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<designateHaulable>true</designateHaulable>
+		<saveCompressible>true</saveCompressible>
+		<stackLimit>1</stackLimit>
+		<tradeability>Never</tradeability>
+		<thingCategories>
+			<li>StoneChunks</li>
+		</thingCategories>
+		<stuffProps>
+			<categories>
+				<li>StoneChunk</li>
+			</categories>
+			<statOffsets>
+				<Beauty>-10</Beauty>
+				<Cleanliness>-2</Cleanliness>
+			</statOffsets>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceStoneChunk">
+		<defName>ChunkSandstone</defName>
+		<label>sandstone chunk</label>
+		<graphicData>
+			<color>(126,104,94)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(126,104,94)</color>
+			<stuffAdjective>sandstone</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceStoneChunk">
+		<defName>ChunkGranite</defName>
+		<label>granite chunk</label>
+		<graphicData>
+			<color>(105,95,97)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(105,95,97)</color>
+			<stuffAdjective>granite</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceStoneChunk">
+		<defName>ChunkLimestone</defName>
+		<label>limestone chunk</label>
+		<graphicData>
+			<color>(158,153,135)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(158,153,135)</color>
+			<stuffAdjective>limestone</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceStoneChunk">
+		<defName>ChunkSlate</defName>
+		<label>slate chunk</label>
+		<graphicData>
+			<color>(90,90,90)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(90,90,90)</color>
+			<stuffAdjective>slate</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceStoneChunk">
+		<defName>ChunkMarble</defName>
+		<label>marble chunk</label>
+		<graphicData>
+			<color>(132,135,132)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(132,135,132)</color>
+			<stuffAdjective>marble</stuffAdjective>
+		</stuffProps>
+	</ThingDef>	
+
+	<!--======== Stone Other ========-->	
+
+	<ThingDef ParentName="ResourceStone">
+		<defName>StoneCobbles</defName>
+		<label>stone cobbles</label>
+		<description>Various sized stone cobbles.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/StoneCobbles</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingCategories>
+			<li>StoneCobbles</li>
+		</thingCategories>
+		<stuffCategories>
+			<li>StoneChunk</li>
+		</stuffCategories>
+		<stuffProps>
+			<categories>
+				<li>StoneCobble</li>
+			</categories>
+		</stuffProps>
+	</ThingDef>
 	
 
-	<ThingDef ParentName="ResourceBase">
+	<ThingDef ParentName="ResourceStone">
+		<defName>StoneBlocks</defName>
+		<label>stone blocks</label>
+		<description>Stone blocks.</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/StoneBlocks</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingCategories>
+			<li>StoneBlocks</li>
+		</thingCategories>
+		<stuffCategories>
+			<li>StoneChunk</li>
+		</stuffCategories>
+		<stuffProps>
+			<categories>
+				<li>StoneBlock</li>
+			</categories>
+			<statOffsets>
+				<Beauty>1</Beauty>
+			</statOffsets>
+		</stuffProps>
+	</ThingDef>
+
+
+	<!--===================== Fabric ====================-->
+
+
+	<!-- 	<ThingDef ParentName="Resource">
 		<defName>Linen</defName>
 		<label>linen</label>
 		<description>Linen woven from linen pulp.</description>
@@ -106,7 +328,7 @@
 	</ThingDef>
 	
 	
-	<ThingDef ParentName="ResourceBase">
+	<ThingDef ParentName="Resource">
 		<defName>Cloth</defName>
 		<label>cloth</label>
 		<description>Cloth woven from cotton lint.</description>
@@ -153,6 +375,6 @@
 				</li>
 			</options>
 		</colorGeneratorInTraderStock>
-	</ThingDef>
-	
+	</ThingDef> -->
+
 </Defs>
