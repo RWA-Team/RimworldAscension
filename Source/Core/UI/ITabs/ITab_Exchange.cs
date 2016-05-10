@@ -14,7 +14,7 @@ namespace RA
 
         public ITab_Exchange()
         {
-            size = new Vector2(500f, 400f);
+            size = new Vector2(UIUtil.ITabWindowWidth, 400f);
             labelKey = "Exchange";
         }
 
@@ -32,26 +32,24 @@ namespace RA
         {
             var mainRect = new Rect(0f, 0f, size.x, size.y).ContractedBy(UIUtil.DefaultMargin);
 
-            // negate deal button
-            var negateButtonRect = new Rect(mainRect.x, mainRect.y, 200f, 40f)
-                    .CenteredOnXIn(mainRect);
-            {
-                if (Widgets.TextButton(negateButtonRect, "Negate Deal"))
-                {
-                    tradeCenter.NegateTradeDeal();
-                    var currentITab = (MainTabWindow_Inspect)MainTabDefOf.Inspect.Window;
-                    currentITab.CloseOpenTab();
-                }
-            }
-
             // trade balance label
-            var tradeBalanceRect = new Rect(mainRect.x, negateButtonRect.yMax, mainRect.width, UIUtil.TextHeight)
+            var tradeBalanceRect = new Rect(mainRect.x, mainRect.y, 200f, 35f)
                 .CenteredOnXIn(mainRect);
+            Widgets.DrawWindowBackground(tradeBalanceRect);
             DrawTradeBalance(tradeBalanceRect);
+
+            // negate deal button
+            var negateButtonRect = new Rect(tradeBalanceRect.x - 120f, tradeBalanceRect.y, 120f, tradeBalanceRect.height);
+            if (Widgets.TextButton(negateButtonRect, "Negate Deal"))
+            {
+                tradeCenter.NegateTradeDeal();
+                var currentITab = (MainTabWindow_Inspect) MainTabDefOf.Inspect.Window;
+                currentITab.CloseOpenTab();
+            }
 
             // column headers labels
             Text.Anchor = TextAnchor.MiddleCenter;
-            var colonyLabelRect = new Rect(mainRect.x, tradeBalanceRect.y, mainRect.width/2, UIUtil.TextHeight);
+            var colonyLabelRect = new Rect(mainRect.x, tradeBalanceRect.yMax, mainRect.width/2, UIUtil.TextHeight);
             Widgets.Label(colonyLabelRect, "Colony offer:");
             var traderLabelRect = new Rect(colonyLabelRect.xMax, colonyLabelRect.y, colonyLabelRect.width,
                 colonyLabelRect.height);
@@ -91,7 +89,7 @@ namespace RA
                     ? Color.red
                     : Color.white;
             Text.Anchor = TextAnchor.MiddleCenter;
-            Widgets.Label(rect, "Trade balance: " + tradeBalance.ToStringMoney());
+            Widgets.Label(rect, string.Format("<b>Trade balance: {0}</b>", tradeBalance.ToStringMoney()));
             UIUtil.ResetText();
         }
     }

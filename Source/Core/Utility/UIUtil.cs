@@ -20,6 +20,8 @@ namespace RA
         public const float ITabTopIndent = 10f;
         // height of button to open ITab
         public const float ITabInvokeButtonHeight = 30f;
+        // default width for ITab window
+        public const float ITabWindowWidth = 432f;
         // default height for small text field
         public const float TextHeight = 25f;
         // height of main tabs selection panel

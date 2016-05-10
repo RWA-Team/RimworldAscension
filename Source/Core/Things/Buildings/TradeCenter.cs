@@ -147,11 +147,15 @@ namespace RA
         public float ThingFinalCost(Thing thing, TradeAction tradeAction)
         {
             var priceTypeFactor = trader.TraderKind.PriceTypeFor(thing.def, tradeAction).PriceMultiplier();
+            // additional sell price reduction based on SellPriceFactor stat
             var priceSellFactor = thing.GetStatValue(StatDefOf.SellPriceFactor);
             var priceNegotiatorFactor = negotiator.GetStatValue(StatDefOf.TradePriceImprovement);
+            // additional sell price reduction based on difficulty baseSellPriceFactor stat
             var priceDifficultyFactor = Find.Storyteller.difficulty.baseSellPriceFactor;
+            // small random (seed is TraderKind based) price diviation for variety of values (x0.9-x1.1 multiplier)
             var priceRandomFactor = TradeUtil.RandomPriceFactorFor(trader.RandomPriceFactorSeed, thing.def);
 
+            // same price base for selling/buying
             var price = thing.MarketValue * priceTypeFactor * priceRandomFactor;
 
             if (tradeAction == TradeAction.PlayerSells)
