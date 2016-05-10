@@ -7,14 +7,43 @@
 	- worngraphicPath - used to fraw apparel texture on the pawn. shows nothing if not set
 	 -->
 
+<<<<<<< HEAD
 	<ThingDef Name="ApparelVarious" ParentName="Apparel" Abstract="True">
 		<thingCategories>
 			<li>ApparelVarious</li>
+=======
+	<ThingDef Name="Apparel" Abstract="True">
+		<thingClass>Apparel</thingClass>
+		<category>Item</category>
+		<selectable>True</selectable>
+		<pathCost>10</pathCost>
+		<useHitPoints>True</useHitPoints>
+		<graphicData>
+			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>0.5</DeteriorationRate>
+			<SellPriceFactor>0.1</SellPriceFactor>
+		</statBases>
+		<altitudeLayer>Item</altitudeLayer>
+		<alwaysHaulable>True</alwaysHaulable>
+		<tickerType>Never</tickerType>
+		<thingCategories>
+			<li>Various</li>
+>>>>>>> origin/Wivex-branch
 		</thingCategories>
 	</ThingDef>
 
 
+<<<<<<< HEAD
 	<ThingDef ParentName="ApparelVarious">
+=======
+	<ThingDef ParentName="Apparel">
+>>>>>>> origin/Wivex-branch
 		<defName>Backpack</defName>
 		<label>backpack</label>
 		<description>A backpack is a bag with straps that go over your shoulders, so that you can carry things on your back when you are walking or climbing.</description>
@@ -62,7 +91,11 @@
 		</comps>
 	</ThingDef>
 
+<<<<<<< HEAD
 	<ThingDef ParentName="ApparelVarious">
+=======
+	<ThingDef ParentName="Apparel">
+>>>>>>> origin/Wivex-branch
 		<defName>Toolbelt</defName>
 		<label>toolbelt</label>
 		<description>A toolbelt to keep your tools to yourself.</description>
@@ -109,7 +142,11 @@
 		</comps>
 	</ThingDef>
 
+<<<<<<< HEAD
 	<ThingDef ParentName="ApparelVarious">
+=======
+	<ThingDef ParentName="Apparel">
+>>>>>>> origin/Wivex-branch
 		<defName>Headdress</defName>
 		<label>headdress</label>
 		<description>A headdress.</description>

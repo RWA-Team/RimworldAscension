@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+
+	<!-- 
+	fillPercent - determne cover multiplier vs projectiles
+	castEdgeShadows - shadow aura around building
+	staticSunShadowHeight - solid square shadow with set length
+	 -->
+
+	<ThingDef Name="Container" Abstract="True">
+		<category>Building</category>
+		<thingClass>RA.Container</thingClass>
+		<defName>BulletImpactWood</defName>  
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<holdsRoof>false</holdsRoof>
+		<filthLeaving>BuildingRubble</filthLeaving>
+		<Passability>PassThroughOnly</Passability>	
+		<castEdgeShadows>true</castEdgeShadows>
+		<Size>(1,1)</Size>
+		<building>
+			<preventDeterioration>true</preventDeterioration>
+		</building>
+		<AltitudeLayer>ItemImportant</AltitudeLayer>
+		<surfaceType>Item</surfaceType>
+		<hasTooltip>true</hasTooltip>
+		<tickerType>Normal</tickerType>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+			<li>RA.ITab_Container_Gear</li>
+		</inspectorTabs>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<DesignationCategory>Furniture</DesignationCategory>
+	</ThingDef>
+
+
+	<!--==================== Neolithic ====================-->
+
+
+	<ThingDef ParentName="Container">
+		<defName>Pot</defName>
+		<label>pot</label>
+		<Description>A big clay pot used to preserve food. Slightly decrease rotting process.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(141,86,65)</color>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>1000</WorkToMake>
+		</statBases>
+		<costList>
+			<Pot>1</Pot>
+		</costList>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Foods</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+		</building>
+		<comps>
+			<li Class="RA.CompContainer_Properties">
+				<itemsCap>3</itemsCap>
+				<rotModifier>0.75</rotModifier>
+			</li>
+		</comps>
+		<researchPrerequisite>Pottery</researchPrerequisite>
+	</ThingDef>
+
+	<ThingDef ParentName="Container">
+		<defName>Basket</defName>
+		<label>basket</label>
+		<Description>A bast fiber based basket. Used to store various things inside.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Containers/Basket/Basket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>1000</WorkToMake>
+			<Flammability>1</Flammability>
+		</statBases>
+		<costList>
+			<Basket>1</Basket>
+		</costList>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Root</li>
+					</categories>
+					<exceptedCategories>
+						<li>Corpses</li>
+					</exceptedCategories>
+				</filter>
+			</fixedStorageSettings>
+		</building>
+		<comps>
+			<li Class="RA.CompContainer_Properties">
+				<itemsCap>3</itemsCap>
+			</li>
+		</comps>
+	</ThingDef>
+
+</Buildings>

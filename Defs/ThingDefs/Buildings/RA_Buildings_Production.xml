@@ -329,11 +329,19 @@
 	</ThingDef>
 
 	<ThingDef ParentName="WorkTableNeolithic">
+<<<<<<< HEAD
 		<DefName>TableWeaponRangedNeolithic</DefName>
 		<label>hunter table</label>
 		<Description>A worktable equipped for ranged weapons production.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableWeaponRanged/Neolithic/TableWeaponRangedNeolithic</texPath>
+=======
+		<DefName>TableHunter</DefName>
+		<label>hunter table</label>
+		<Description>A worktable equipped for ranged weapons production.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/TableHunter/TableHunter</texPath>
+>>>>>>> origin/Wivex-branch
 		</graphicData>
 		<recipes>
 			<li>MakeTrapDeadfall</li>

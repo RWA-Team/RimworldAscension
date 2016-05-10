@@ -33,7 +33,11 @@
 		</fixedIngredientFilter>
 		<defaultIngredientFilter>
 			<thingDefs>
+<<<<<<< HEAD:Defs/RecipeDefs/RA_Recipes_WeaponsMelee.xml
 				<li>BarkFibre</li>
+=======
+				<li>BastFibre</li>
+>>>>>>> origin/Wivex-branch:Defs/RecipeDefs/RA_Recipes_Weapons_Melee.xml
 			</thingDefs>
 			<categories>
 				<li>Leathers</li>
@@ -64,7 +68,11 @@
 				<li>Bone</li>
 			</exceptedThingDefs>
 			<categories>
+<<<<<<< HEAD:Defs/RecipeDefs/RA_Recipes_WeaponsMelee.xml
 				<li>StoneCobbles</li>
+=======
+				<li>StoneBlocks</li>
+>>>>>>> origin/Wivex-branch:Defs/RecipeDefs/RA_Recipes_Weapons_Melee.xml
 			</categories>
 			<thingDefs>
 				<li>WoodLog</li>
@@ -94,7 +102,11 @@
 				<li>Bone</li>
 			</exceptedThingDefs>
 			<categories>
+<<<<<<< HEAD:Defs/RecipeDefs/RA_Recipes_WeaponsMelee.xml
 				<li>StoneCobbles</li>
+=======
+				<li>StoneBlocks</li>
+>>>>>>> origin/Wivex-branch:Defs/RecipeDefs/RA_Recipes_Weapons_Melee.xml
 			</categories>
 			<thingDefs>
 				<li>Bone</li>

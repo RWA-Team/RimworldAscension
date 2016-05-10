@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- 
+	statBases - base stat values for the thing
+	default values:
+		- Flammability = 0
+		- MaxHitPoints = 100
+		
+	stuffProps:	
+		statOffsets - stuff based offset values
+		statFactors - stuff based multiplier values
+		stuffCommonality - weight chance to appear in trader stock	
+	
+	Work only in statBases:
+		Blunt\SharpDamageMultiplier
+	-->
+
+	<ThingDef Name="Resource" Abstract="True">
+		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
+		<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<stackLimit>75</stackLimit>
+		<alwaysHaulable>true</alwaysHaulable>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<rotatable>false</rotatable>
+		<pathCost>15</pathCost>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<comps>
+			<li>
+				<compClass>CompForbiddable</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	
+	<!--==================== Raw Clay Products ====================-->
+	
+
+	<ThingDef Name="ResourceRawClayProduct" ParentName="Resource" Abstract="True">
+		<thingCategories>
+			<li>ResourcesRawClay</li>
+		</thingCategories>
+		<tradeability>Never</tradeability>
+	</ThingDef>
+
+	<!-- raw pottery -->
+
+	<ThingDef ParentName="ResourceRawClayProduct">
+		<defName>RawPot</defName>
+		<label>raw pot</label>
+		<description>An unfired pot.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(147,135,106)</color>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceRawClayProduct">
+		<defName>RawCeramics</defName>
+		<label>raw ceramics</label>
+		<description>An unfired ceramics.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/RawClayProducts/RawCeramics</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(52,124,98)</color>
+		</graphicData>
+	</ThingDef>
+	
+	<!-- raw clay blocks -->
+
+	<ThingDef Name="ResourceRawClayProductBlock" ParentName="ResourceRawClayProduct" Abstract="True">
+		<graphicData>
+			<texPath>Things/Items/Resources/RawClayProducts/RawBlocksClay</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingDef>
+
+
+	<ThingDef ParentName="ResourceRawClayProductBlock">
+		<defName>RawBlockAdobe</defName>
+		<label>raw adobe block</label>
+		<description>A pile of unfired adobe blocks.</description>
+		<graphicData>
+			<color>(127,106,0)</color>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceRawClayProductBlock">
+		<defName>RawBrick</defName>
+		<label>raw brick</label>
+		<description>A pile of unfired bricks.</description>
+		<graphicData>
+			<color>(127,51,0)</color>
+		</graphicData>
+	</ThingDef>
+
+</Defs>

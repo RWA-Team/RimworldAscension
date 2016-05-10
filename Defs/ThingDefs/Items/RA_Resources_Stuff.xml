@@ -256,7 +256,12 @@
 		<label>stone cobbles</label>
 		<description>Various sized stone cobbles.</description>
 		<graphicData>
+<<<<<<< HEAD
 			<texPath>Things/Items/Resources/StoneCobbles</texPath>
+=======
+			<texPath>Things/Items/Resources/StoneCobble</texPath>
+			<!-- <texPath>Things/Item/Resource/StoneBlocks</texPath> -->
+>>>>>>> origin/Wivex-branch
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<thingCategories>

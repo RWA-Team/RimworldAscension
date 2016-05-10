@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+<<<<<<< HEAD
+=======
+	<JobDef>
+		<defName>HaulToCell</defName>
+		<driverClass>RA.JobDriver_HaulToCell</driverClass>
+		<reportString>Hauling TargetA.</reportString>
+	</JobDef>
+
+>>>>>>> origin/Wivex-branch
 	<JobDef>
 		<defName>Research</defName>
 		<driverClass>JobDriver_DoBill</driverClass>

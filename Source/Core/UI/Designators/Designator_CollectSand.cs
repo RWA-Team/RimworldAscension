@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace RA
@@ -9,7 +10,11 @@ namespace RA
         {
             defaultLabel = "Collect Sand";
             defaultDesc = "Collect sand from sand tiles";
+<<<<<<< HEAD
             icon = RA_Assets.Missing;
+=======
+            icon = ContentFinder<Texture2D>.Get("Missing");
+>>>>>>> origin/Wivex-branch
 
             designationDef = DefDatabase<DesignationDef>.GetNamed("CollectSand");
             allowedTerrain = new List<TerrainDef>
