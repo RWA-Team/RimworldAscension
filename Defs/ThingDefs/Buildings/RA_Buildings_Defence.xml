@@ -2,50 +2,34 @@
 <ThingDefs>
 
 	<!-- 
-	fillPercent - determne cover multiplier vs projectiles
-	castEdgeShadows - shadow aura around building
-	staticSunShadowHeight - solid square shadow with set length
+	- fillPercent - determne cover multiplier vs projectiles
+	- castEdgeShadows - shadow aura around building
+	- staticSunShadowHeight - solid square shadow with set length
+	- drawerType:
+		- MapMeshOnly - doesn't draw from comps
+		- MapMeshAndRealTime - doesn't draw from comps
+		- RealTimeOnly - used for objects that change their texture (unsure)
+	- surfaceType:
+		- Item - allows place items
+		- Eat - allows place food to eat
 	 -->
 
-	<ThingDef Name="BuildingBase" Abstract="True">
-		<category>Building</category>
-		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
-		<selectable>true</selectable>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<repairEffect>Repair</repairEffect>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<filthLeaving>BuildingRubble</filthLeaving>
+	<ThingDef Name="Defence" ParentName="Building" Abstract="True">
 		<designationCategory>Defence</designationCategory>
-		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 	
 	
-	<ThingDef Name="Minified" Abstract="True">
-		<thingClass>MinifiedThing</thingClass>
-		<category>Item</category>
-		<useHitPoints>true</useHitPoints>
-		<selectable>true</selectable>
-		<altitudeLayer>Item</altitudeLayer>
-		<drawerType>RealtimeOnly</drawerType>
+	<ThingDef Name="MinifiedDefence" ParentName="Minified" Abstract="True">
 		<thingCategories>
-			<li>Furniture</li>
+			<li>MinifiedDefences</li>
 		</thingCategories>
-		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
-		</comps>
-		<alwaysHaulable>true</alwaysHaulable>
-		<rotatable>false</rotatable>
-		<pathCost>15</pathCost>
 	</ThingDef>
 
 
-	<!--==================== Traps ======================== -->
+	<!--==================== Traps ========================-->
 
 
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="Defence">
 		<defName>TrapDeadfall</defName>
 		<label>deadfall trap</label>
 		<thingClass>Building_TrapRearmable</thingClass>
@@ -80,12 +64,12 @@
 		</building>
 	</ThingDef>
 
-	<ThingDef ParentName="Minified">
+	<ThingDef ParentName="MinifiedDefence">
 		<defName>TrapDeadfallMinified</defName>
 		<label>deadfall trap</label>
 		<stuffCategories>
-			<li>WoodPlank</li>
-			<li>StoneBlock</li>
+			<li>Wood</li>
+			<li>StoneCobble</li>
 			<li>Bone</li>
 		</stuffCategories>
 	</ThingDef>

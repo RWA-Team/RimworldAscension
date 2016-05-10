@@ -6,6 +6,8 @@
 	- harvestTag - determine what designator allows harvesting
 	-->
 
+	<!--==================== Base Abstracts ========================-->
+
 	<ThingDef Name="Plant" Abstract="True">
 		<category>Plant</category>
 		<thingClass>Plant</thingClass>
@@ -25,15 +27,12 @@
 		</graphicData>
 		<pathCost>10</pathCost>
 		<ingestible>
-			<preferability>Plant</preferability>
+			<foodType>Plant</foodType>
+			<preferability>NeverForNutrition</preferability>
 		</ingestible>
 		<plant>
-			<dieIfLeafless>true</dieIfLeafless>
-			<harvestDestroys>true</harvestDestroys>
 			<soundHarvesting>Harvest_Standard</soundHarvesting>
 			<soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
-			<shootsSeeds>false</shootsSeeds>
-			<harvestTag>Standard</harvestTag>
 			<sowWork>150</sowWork>
 			<fertilityMin>0.5</fertilityMin>
 			<fertilityFactorGrowthRate>1.0</fertilityFactorGrowthRate>
@@ -44,12 +43,23 @@
 			</visualSizeRange>
 		</plant>
 	</ThingDef>
-	
-	
-	<!-- ============== Hidden (sow tags added via research mods) ============== -->
+
+	<!--==================== Plants ========================-->
+
+	<ThingDef Name="PlantEatable" ParentName="Plant" Abstract="True">
+		<plant>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestDestroys>true</harvestDestroys>
+			<shootsSeeds>false</shootsSeeds>
+			<harvestTag>Standard</harvestTag>
+		</plant>
+	</ThingDef>
 
 
-	<ThingDef ParentName="Plant">
+	<!-- ========== Hidden (sow tags added via research mods) ========== -->
+
+
+	<ThingDef ParentName="PlantEatable">
 		<defName>PlantCorn</defName>
 		<label>corn plant</label>
 		<description>A large grain plant which produces ears of delicious yellow seeds. Takes a relatively long time to grow, but yields lots of food, takes a long time to spoil, and can be happily eaten raw. Needs fertile soil to grow well.</description>
@@ -76,7 +86,7 @@
 		</plant>
 	</ThingDef>	
 
-	<ThingDef ParentName="Plant">
+	<ThingDef ParentName="PlantEatable">
 		<defName>PlantRice</defName>
 		<label>rice plant</label>
 		<description>A low grain plant that thrives in rich soil and yields food fast, but is not nice to eat uncooked.</description>

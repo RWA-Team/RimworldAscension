@@ -12,7 +12,6 @@
 
 	<!--===================== Firing =====================-->
 
-
 	<RecipeDef Name="Firing" Abstract="True">
 		<workSkill>Crafting</workSkill>
 		<workSkillLearnFactor>0.1</workSkillLearnFactor>

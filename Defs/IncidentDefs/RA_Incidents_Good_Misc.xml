@@ -1,86 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <IncidentDefs>
 
-
 	<IncidentDef>
-		<!-- forced via special action -->
-		<defName>RaidFriendly</defName>
-		<workerClass>RA.IncidentWorker_RaidFriendly</workerClass>
-		<chance>0</chance>
-		<pointsScaleable>true</pointsScaleable>
+		<defName>TraderCaravanArrival</defName>
+		<workerClass>RA.RA_IncidentWorker_TraderCaravanArrival</workerClass>
+		<baseChance>3</baseChance>
 	</IncidentDef>
-	
-
-	<IncidentDef>
-		<defName>TraderArrival</defName>
-		<workerClass>RA.IncidentWorker_TraderArrival</workerClass>
-		<chance>9</chance>
-	</IncidentDef>
-	
-
-	<IncidentDef>
-		<defName>TravelerGroup</defName>
-		<workerClass>IncidentWorker_TravelerGroup</workerClass>
-		<chance>8</chance>
-		<pointsScaleable>true</pointsScaleable>
-	</IncidentDef>
-	
-
-	<IncidentDef>
-		<defName>VisitorGroup</defName>
-		<workerClass>IncidentWorker_VisitorGroup</workerClass>
-		<chance>8</chance>
-		<pointsScaleable>true</pointsScaleable>
-	</IncidentDef>
-	
-
-	<IncidentDef>
-		<defName>WandererJoin</defName>
-		<workerClass>IncidentWorker_WandererJoin</workerClass>
-		<chance>15</chance>
-		<populationEffect>Increase</populationEffect>
-	</IncidentDef>
-	
-
-	<IncidentDef>
-		<defName>ResourcePodCrash</defName>
-		<workerClass>IncidentWorker_ResourcePodCrash</workerClass>
-		<chance>0</chance>
-	</IncidentDef>
-	
-
-	<IncidentDef>
-		<defName>RefugeePodCrash</defName>
-		<workerClass>IncidentWorker_RefugeePodCrash</workerClass>
-		<chance>1.5</chance>
-		<populationEffect>Increase</populationEffect>
-	</IncidentDef>
-	
-
-	<IncidentDef>
-		<defName>PsychicSoothe</defName>
-		<workerClass>IncidentWorker_PsychicSoothe</workerClass>
-		<chance>1.0</chance>
-		<minRefireDays>30</minRefireDays>
-		<durationDays>
-			<min>1.5</min>
-			<max>3.5</max>
-		</durationDays>
-	</IncidentDef> 
-	
-
-	<IncidentDef>
-		<defName>SelfTame</defName>
-		<workerClass>IncidentWorker_SelfTame</workerClass>
-		<chance>0.75</chance>
-	</IncidentDef>
-	
-
-	<IncidentDef>
-		<defName>FarmAnimalsWanderIn</defName>
-		<workerClass>IncidentWorker_FarmAnimalsWanderIn</workerClass>
-		<chance>0.5</chance>
-	</IncidentDef>
-
 
 </IncidentDefs>

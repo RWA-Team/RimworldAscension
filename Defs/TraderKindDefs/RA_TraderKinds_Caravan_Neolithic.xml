@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DefPackage-TraderKindDef>
+
+	<!-- minified things should be placed here in their installed form -->
+
+	<TraderKindDef>
+		<defName>Caravan_Neolithic</defName>
+		<label>tribal trader</label>
+		<stockGenerators>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Silver</thingDef>
+				<countRange>
+					<min>800</min>
+					<max>1300</max>
+				</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>WoodLog</thingDef>
+				<price>Cheap</price>
+				<countRange>
+					<min>225</min>
+					<max>750</max>
+				</countRange>
+			</li>
+			<li Class="StockGenerator_Category">
+				<categoryDef>ResourcesRaw</categoryDef>
+				<thingDefCountRange>
+					<min>2</min>
+					<max>4</max>
+				</thingDefCountRange>
+				<price>Cheap</price>
+				<totalPriceRange>
+					<min>1000</min>
+					<max>2000</max>
+				</totalPriceRange>
+			</li>
+			<li Class="StockGenerator_Category">
+				<categoryDef>FoodRaw</categoryDef>
+				<thingDefCountRange>
+					<min>3</min>
+					<max>5</max>
+				</thingDefCountRange>
+				<price>Cheap</price>
+				<totalPriceRange>
+					<min>400</min>
+					<max>1000</max>
+				</totalPriceRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>HerbalMedicine</thingDef>
+				<price>Expensive</price>
+				<countRange>
+					<min>10</min>
+					<max>20</max>
+				</countRange>
+			</li>
+			<li Class="StockGenerator_Animals">
+				<checkTemperature>true</checkTemperature>
+				<tradeTags>
+					<li>StandardAnimal</li>
+				</tradeTags>
+				<kindCountRange>
+					<min>2</min>
+					<max>4</max>
+				</kindCountRange>
+				<countRange>
+					<min>2</min>
+					<max>5</max>
+				</countRange>
+			</li>
+<!-- 			<li Class="StockGenerator_Category">
+				<categoryDef>Weapons</categoryDef>
+				<maxTechLevel>Neolithic</maxTechLevel>
+				<thingDefCountRange>
+					<min>5</min>
+					<max>10</max>
+				</thingDefCountRange>
+				<totalPriceRange>
+					<min>1000</min>
+					<max>5000</max>
+				</totalPriceRange>
+			</li> -->
+<!-- 			<li Class="StockGenerator_Category">
+				<categoryDef>Clothing</categoryDef>
+				<maxTechLevel>Neolithic</maxTechLevel>
+				<thingDefCountRange>
+					<min>5</min>
+					<max>10</max>
+				</thingDefCountRange>
+				<totalPriceRange>
+					<min>1000</min>
+					<max>5000</max>
+				</totalPriceRange>
+			</li> -->
+			<li Class="StockGenerator_Slaves">
+				<countRange>
+					<min>2</min>
+					<max>3</max>
+				</countRange>
+			</li>
+			<li Class="StockGenerator_BuyWeirdOrganic" />
+		</stockGenerators>
+	</TraderKindDef>
+
+</DefPackage-TraderKindDef>

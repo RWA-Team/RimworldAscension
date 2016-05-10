@@ -3,7 +3,7 @@
 
 	<!-- recipeDef should be the same as corresponding researchProjectDef -->
 
-	<RecipeDef Name="Research" Abstract="True">
+	<RecipeDef Name="MakeResearch" Abstract="True">
 		<jobString>Doing research.</jobString>
 		<workSkillLearnFactor>0.25</workSkillLearnFactor>
 		<allowMixingIngredients>true</allowMixingIngredients>
@@ -18,7 +18,7 @@
 	<!-- ========================= Neolithic ==========================-->
 
 
-	<RecipeDef ParentName="Research">
+	<RecipeDef ParentName="MakeResearch">
 		<defName>BasicFarming</defName>
 		<ingredients>
 			<li>
@@ -40,7 +40,7 @@
 		</ingredients>
 	</RecipeDef>
 
-	<RecipeDef ParentName="Research">
+	<RecipeDef ParentName="MakeResearch">
 		<defName>Butchering</defName>
 		<effectWorking>Surgery</effectWorking>
 		<soundWorking>Recipe_Surgery</soundWorking>
@@ -56,11 +56,11 @@
 		</ingredients>
 	</RecipeDef>
 
-	<RecipeDef ParentName="Research">
+	<RecipeDef ParentName="MakeResearch">
 		<defName>AnimalHusbandry</defName>
 	</RecipeDef>
 
-	<RecipeDef ParentName="Research">
+	<RecipeDef ParentName="MakeResearch">
 		<defName>Carpentry</defName>
 		<effectWorking>MakeWoodPlanks_Hand</effectWorking>
 		<soundWorking>Recipe_MakeWoodPlanks_Hand</soundWorking>
@@ -76,7 +76,7 @@
 		</ingredients>
 	</RecipeDef>
 
-	<RecipeDef ParentName="Research">
+	<RecipeDef ParentName="MakeResearch">
 		<defName>Masonry</defName>
 		<effectWorking>CutStone</effectWorking>
 		<soundWorking>Recipe_MakeBlocksStone</soundWorking>
@@ -92,7 +92,7 @@
 		</ingredients>
 	</RecipeDef>
 
-	<RecipeDef ParentName="Research">
+	<RecipeDef ParentName="MakeResearch">
 		<defName>Tannery</defName>
 		<effectWorking>Tailor</effectWorking>
 		<soundWorking>Recipe_ButcherCorpseFlesh</soundWorking>
@@ -108,7 +108,7 @@
 		</ingredients>
 	</RecipeDef>
 
-	<RecipeDef ParentName="Research">
+	<RecipeDef ParentName="MakeResearch">
 		<defName>BoneCarving</defName>
 		<effectWorking>CutStone</effectWorking>
 		<soundWorking>Recipe_MakeWoodPlanks_Hand</soundWorking>
@@ -124,7 +124,7 @@
 		</ingredients>
 	</RecipeDef>
 
-	<RecipeDef ParentName="Research">
+	<RecipeDef ParentName="MakeResearch">
 		<defName>Pottery</defName>
 		<effectWorking>MakeWoodPlanks_Hand</effectWorking>
 		<soundWorking>Recipe_MakeWoodPlanks_Hand</soundWorking>
@@ -132,7 +132,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayRed</li>
+						<li>ClumpClayGray</li>
 					</thingDefs>
 				</filter>
 				<count>150</count>
@@ -148,7 +148,7 @@
 		</ingredients>
 	</RecipeDef>
 
-	<RecipeDef ParentName="Research">
+	<RecipeDef ParentName="MakeResearch">
 		<defName>Breweing</defName>
 		<!-- needs proper effect and sound set -->
 		<ingredients>

@@ -6,7 +6,7 @@ namespace RA
     {
         public static bool SelectableNow(this Thing t)
         {
-            if (!t.def.selectable || !t.SpawnedInWorld || IsInContainer(t))
+            if (!t.def.selectable || !t.Spawned || IsInContainer(t))
             {
                 return false;
             }

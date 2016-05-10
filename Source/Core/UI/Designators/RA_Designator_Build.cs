@@ -80,20 +80,15 @@ namespace RA
         public override void ProcessInput(Event ev)
         {
             var buildingDef = PlacingDef as ThingDef;
-            //can't use build options selector if chosen def or stuff
-            if (buildingDef == null || (!buildingDef.MadeFromStuff && !buildingDef.Minifiable))
-            {
-                base.ProcessInput(ev);
-            }
-            // else, select build options
-            else
+            // select build options
+            if (buildingDef != null && (buildingDef.MadeFromStuff || buildingDef.Minifiable))
             {
                 var buildOptions = new List<FloatMenuOption>();
                 // minifiable things build options
                 if (buildingDef.Minifiable)
                 {
                     var minifiables = Find.ListerThings.ThingsOfDef(buildingDef.minifiedDef);
-                    if (Game.GodMode || minifiables.Count > 0)
+                    if (minifiables.Count > 0)
                     {
                         foreach (var minifiable in minifiables)
                         {
@@ -110,6 +105,16 @@ namespace RA
                             });
                             buildOptions.Add(option);
                         }
+                    }
+                    else if (Game.GodMode)
+                    {
+                        var optionLabel = buildingDef.LabelCap;
+                        var option = new FloatMenuOption(optionLabel, () =>
+                        {
+                            DesignatorManager.Select(this);
+                            stuffDef = GenStuff.RandomStuffFor(buildingDef.minifiedDef);
+                        });
+                        buildOptions.Add(option);
                     }
                 }
                 // traditional build options
@@ -143,7 +148,7 @@ namespace RA
                     // install designator for minified
                     if (buildingDef.Minifiable)
                     {
-                        buildOptions.FirstOrDefault().action.Invoke();
+                        buildOptions.FirstOrDefault().action();
                     }
                     // build designator for everything else
                     else
@@ -156,6 +161,11 @@ namespace RA
                 {
                     Messages.Message("NoStuffsToBuildWith".Translate(), MessageSound.RejectInput);
                 }
+            }
+            //can't use build options selector if chosen def or stuff
+            else
+            {
+                base.ProcessInput(ev);
             }
         }
 
@@ -180,7 +190,7 @@ namespace RA
             foreach (var blueprint in blueprints)
             {
                 var blueprint_Install = blueprint as Blueprint_Install;
-                if (blueprint_Install?.miniToInstall == minifiedThing)
+                if (blueprint_Install?.MiniToInstallOrBuildingToReinstall == minifiedThing)
                 {
                     return true;
                 }
@@ -191,7 +201,7 @@ namespace RA
         // added special Graphic_StuffBased implementation
         public override void DrawPanelReadout(ref float curY, float width)
         {
-            var buildableDef = PlacingDef as ThingDef;
+            var buildingDef = PlacingDef as ThingDef;
 
             // special Graphic_StuffBased implementation
             var baseGraphic = PlacingDef.graphic as Graphic_StuffBased;
@@ -201,7 +211,7 @@ namespace RA
             ThingDef tempStuff = null;
             if (PlacingDef.costStuffCount <= 0 && stuffDef != null)
             {
-                if (buildableDef != null && buildableDef.Minifiable)
+                if (buildingDef != null && (buildingDef.MadeFromStuff || buildingDef.Minifiable))
                 {
                     tempStuff = stuffDef;
                 }
@@ -212,8 +222,8 @@ namespace RA
             foreach (var thingCount in list)
             {
                 Texture2D resourceTexture;
-                if (buildableDef != null && buildableDef.Minifiable)
-                    resourceTexture = buildableDef.uiIcon;
+                if (buildingDef != null && buildingDef.Minifiable)
+                    resourceTexture = buildingDef.uiIcon;
                 else if (PlacingDef != null)
                     resourceTexture = thingCount.thingDef.uiIcon;
                 else
@@ -240,9 +250,9 @@ namespace RA
             }
             if (tempStuff != null) stuffDef = tempStuff;
 
-            if (buildableDef != null)
+            if (buildingDef != null)
             {
-                Widgets.InfoCardButton(0f, curY, buildableDef, stuffDef);
+                Widgets.InfoCardButton(0f, curY, buildingDef, stuffDef);
             }
             else
             {

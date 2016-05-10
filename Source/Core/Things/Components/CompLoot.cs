@@ -7,7 +7,7 @@ using Verse.AI;
 
 namespace RA
 {
-    class CompLoot : ThingComp
+    public class CompLoot : ThingComp
     {
         public List<ThingCount> LootCounters => (props as CompLoot_Properties).lootCounters;
 
@@ -28,10 +28,8 @@ namespace RA
                 // Setup a new command
                 var gizmoLoot = new Command_Action
                 {
-                    // not used, but need to be defined, so that gizmo could accept actions
+                    // Command icon
                     icon = parent.def.uiIcon,
-                    //// Command icon
-                    //icon = ContentFinder<Texture2D>.Get("Missing"),
                     // Command label
                     defaultLabel = "Loot",
                     // Command description
@@ -51,7 +49,7 @@ namespace RA
             Find.DesignationManager.AddDesignation(new Designation(parent, DesignationDefOf.Deconstruct));
         }
 
-        public override void PostDestroy(DestroyMode mode = DestroyMode.Vanish)
+        public override void PostDestroy(DestroyMode mode, bool wasSpawned)
         {
             // Check destroy mod passed
             if (mode == DestroyMode.Deconstruct)
@@ -60,20 +58,21 @@ namespace RA
             }
         }
 
-        // used to spawn things after scavenge action
-        public virtual void SpawnLoot()
+        // used to spawn things after looting action
+        public void SpawnLoot()
         {
             var lootList = new List<Thing>();
 
             foreach (var counter in LootCounters)
             {
+                var remainingCount = counter.count;
                 do
                 {
                     var thing = ThingMaker.MakeThing(counter.thingDef);
-                    thing.stackCount = Mathf.Min(thing.def.stackLimit, counter.count);
-                    counter.count -= thing.stackCount;
+                    thing.stackCount = Mathf.Min(thing.def.stackLimit, remainingCount);
+                    remainingCount -= thing.stackCount;
                     lootList.Add(thing);
-                } while (counter.count > 0);
+                } while (remainingCount > 0);
             }
 
             foreach (var thing in lootList)
@@ -87,7 +86,6 @@ namespace RA
     {
         public List<ThingCount> lootCounters = new List<ThingCount>();
 
-        // Default requirement
         public CompLoot_Properties()
         {
             compClass = typeof(CompLoot);

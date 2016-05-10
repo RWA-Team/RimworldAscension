@@ -59,6 +59,10 @@
 		<tickerType>Normal</tickerType>
 		<selectable>true</selectable>
 		<useHitPoints>false</useHitPoints>
+		<building>
+			<deconstructible>false</deconstructible>
+			<claimable>false</claimable>
+		</building>
 	</ThingDef>
 	
 

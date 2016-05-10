@@ -2,21 +2,7 @@
 <Buildings>
 
 
-	<ThingDef Name="BuildingBase" Abstract="True">
-		<category>Building</category>
-		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
-		<selectable>true</selectable>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<repairEffect>Repair</repairEffect>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<filthLeaving>BuildingRubble</filthLeaving>
-		<researchPrerequisite>Blocked</researchPrerequisite>
-	</ThingDef>
-
-
 	<!--========================= Doors =============================-->
-
 
 	<ThingDef ParentName="BuildingBase" Name="DoorBase" Abstract="True">
 		<thingClass>Building_Door</thingClass>
@@ -56,11 +42,11 @@
 			<canPlaceOverWall>true</canPlaceOverWall>
 		</building>
 		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
+			<li Class="CompProperties_Forbiddable"/>
 		</comps>
 	</ThingDef>
+
+
 
 	<ThingDef ParentName="DoorBase">
 		<defName>Door</defName>
@@ -72,6 +58,9 @@
 		<graphicData>
 			<texPath>Things/Building/Door/DoorSimple_Mover</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<rect>(0,0.1,1,0.8)</rect>
+			</damageData>
 		</graphicData>
 		<uiIconPath>Things/Building/Door/DoorSimple_MenuIcon</uiIconPath>
 		<costStuffCount>25</costStuffCount>
@@ -89,22 +78,32 @@
 		<graphicData>
 			<texPath>Things/Building/Door/Autodoor_Mover</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<rect>(0,0.1,1,0.8)</rect>
+			</damageData>
 		</graphicData>
 		<uiIconPath>Things/Building/Door/Autodoor_MenuIcon</uiIconPath>
 		<costList>
 			<Steel>40</Steel>
+			<Components>2</Components>
 		</costList>
 		<costStuffCount>25</costStuffCount>
 		<comps>
-			<li>
+			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>50</basePowerConsumption>
 			</li>
+			<li Class="CompProperties_Breakdownable"/>
 		</comps>
+		<designationHotKey>O</designationHotKey>
 	</ThingDef>
 
 
+
+
+
 	<!--========================= Walls =============================-->
+
 
 
 	<ThingDef ParentName="BuildingBase" Name="Wall">
@@ -121,6 +120,16 @@
 				<li>Wall</li>
 				<li>Rock</li>
 			</linkFlags>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
 		</graphicData>
 		<blueprintGraphicData>
 			<texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
@@ -164,6 +173,5 @@
 		</damageMultipliers>
 		<designationHotKey>B</designationHotKey>
 	</ThingDef>
-
 
 </Buildings>

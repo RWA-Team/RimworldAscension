@@ -13,7 +13,7 @@
 		<category>PawnWork</category>
 		<defaultBaseValue>1</defaultBaseValue>
 		<toStringStyle>PercentZero</toStringStyle>
-		<capacityFactors>
+<!-- 		<capacityFactors>
 			<li>
 				<capacity>Consciousness</capacity>
 				<weight>1</weight>
@@ -26,7 +26,7 @@
 				<capacity>Sight</capacity>
 				<weight>0.7</weight>
 			</li>
-		</capacityFactors>
+		</capacityFactors> -->
 	</StatDef>
 	
 

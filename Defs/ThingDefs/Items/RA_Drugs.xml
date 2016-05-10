@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- 
+	- ingestible
+		- joy - joy per uit consumed
+	- hediffGivers:
+		- chance - chance to get that hediff when unit consumed (0-1f)
+	-->
+	
+	<ThingDef Name="Drug" ParentName="Item" Abstract="True">
+		<thingClass>Meal</thingClass>
+		<stackLimit>10</stackLimit>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+		</statBases>
+<!-- 		<ingestible>
+			<preferability>NeverForNutrition</preferability>
+			<joyKind>Chemical</joyKind>
+			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+			<isPleasureDrug>true</isPleasureDrug>
+		</ingestible> -->
+		<thingCategories>
+			<li>Drugs</li>
+		</thingCategories>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Drug">
+		<defName>Beer</defName>
+		<label>beer</label>
+		<description>The first beverage besides water ever consumed by mankind. Beer can taste good, but its main effect is intoxication. Excessive consumption can lead to alcohol addiction.</description>
+		<graphicData>
+			<texPath>Things/Item/Drug/Beer</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<DeteriorationRate>0</DeteriorationRate>
+			<MarketValue>9</MarketValue>
+		</statBases>
+<!-- 		<ingestible>
+			<nutrition>0.08</nutrition>
+			<joy>0.17</joy>
+			<joyKind>Chemical</joyKind>
+			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+			<soundEat>Ingest_Beer</soundEat>
+			<isPleasureDrug>true</isPleasureDrug>
+			<hediffGivers>
+				<li>
+					<chance>1</chance>
+					<hediffDef>IntoxicationBeer</hediffDef>
+				</li>
+			</hediffGivers>
+		</ingestible> -->
+	</ThingDef>
+
+</Defs>

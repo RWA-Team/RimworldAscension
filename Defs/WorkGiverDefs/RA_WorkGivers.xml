@@ -2,19 +2,12 @@
 <WorkGivers>
 
 	<!-- 
-	singleBillGiverDef - determine the building which uses this workgiver (required)
+	- scanThings (true)- make workgiver check for PotentialWorkThingsGlobal 
+	- scanCells - make workgiver check for PotentialWorkCellsGlobal
+	- singleBillGiverDef - determine the building which uses this workgiver (required)
 	-->
 
-	<WorkGiverDef>
-		<defName>Research</defName>
-		<giverClass>RA.WorkGiver_DoBill_Research</giverClass>
-		<workType>Research</workType>
-		<verb>research</verb>
-		<gerund>researching at</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>
+	<!--=================== Hauling =====================-->
 
 	<WorkGiverDef>
 		<defName>HaulToTrade</defName>
@@ -29,23 +22,11 @@
 	</WorkGiverDef>
 
 	<WorkGiverDef>
-		<defName>HaulGeneral</defName>
-		<giverClass>RA.WorkGiver_HaulGeneral</giverClass>
-		<workType>Hauling</workType>
-		<verb>haul</verb>
-		<gerund>hauling</gerund>
-		<priorityInType>10</priorityInType>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>
-
-	<WorkGiverDef>
 		<defName>Uninstall</defName>
 		<giverClass>WorkGiver_Uninstall</giverClass>
 		<!-- workType changed to hauling compare to vanilla -->
 		<workType>Hauling</workType>
-		<priorityInType>195</priorityInType>
+		<priorityInType>200</priorityInType>
 		<verb>uninstall</verb>
 		<gerund>uninstalling</gerund>
 		<requiredCapacities>
@@ -53,8 +34,46 @@
 		</requiredCapacities>
 	</WorkGiverDef>
 
+	<WorkGiverDef>
+		<defName>CollectClay</defName>
+		<giverClass>RA.WorkGiver_CollectClay</giverClass>
+		<workType>Hauling</workType>
+		<scanThings>false</scanThings>
+		<scanCells>true</scanCells>
+		<priorityInType>100</priorityInType>
+		<verb>collect</verb>
+		<gerund>collecting</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>CollectSand</defName>
+		<giverClass>RA.WorkGiver_CollectSand</giverClass>
+		<workType>Hauling</workType>
+		<scanThings>false</scanThings>
+		<scanCells>true</scanCells>
+		<priorityInType>100</priorityInType>
+		<verb>collect</verb>
+		<gerund>collecting</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
 
 	<!--=================== Crafting =====================-->
+	
+	<WorkGiverDef>
+		<defName>Research</defName>
+		<giverClass>RA.WorkGiver_DoBill_Research</giverClass>
+		<workType>Research</workType>
+		<verb>research</verb>
+		<gerund>researching at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>	
 
 	<WorkGiverDef>
 		<defName>RefillBurner</defName>
@@ -80,9 +99,7 @@
 		</requiredCapacities>
 	</WorkGiverDef>
 
-
 	<!--=================== Work with tools =====================-->
-
 
 	<WorkGiverDef>
 		<defName>PlantsCut</defName>
@@ -154,6 +171,5 @@
 			<li>Manipulation</li>
 		</requiredCapacities>
 	</WorkGiverDef>
-
 
 </WorkGivers>

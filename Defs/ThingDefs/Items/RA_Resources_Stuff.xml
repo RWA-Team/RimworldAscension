@@ -16,40 +16,6 @@
 		Blunt\SharpDamageMultiplier
 	-->
 
-	<ThingDef Name="Resource" Abstract="True">
-		<thingClass>ThingWithComps</thingClass>
-		<category>Item</category>
-		<resourceReadoutPriority>Middle</resourceReadoutPriority>
-		<useHitPoints>true</useHitPoints>
-		<selectable>true</selectable>
-		<altitudeLayer>Item</altitudeLayer>
-		<stackLimit>75</stackLimit>
-		<alwaysHaulable>true</alwaysHaulable>
-		<drawGUIOverlay>true</drawGUIOverlay>
-		<rotatable>false</rotatable>
-		<pathCost>15</pathCost>
-		<statBases>
-			<Flammability>1</Flammability>
-		</statBases>
-		<soundInteract>Standard_Drop</soundInteract>
-		<soundDrop>Standard_Drop</soundDrop>
-		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
-		</comps>
-	</ThingDef>
-
-
-	<ThingDef Name="ResourceOrganic" ParentName="Resource" Abstract="True" >
-		<socialPropernessMatters>true</socialPropernessMatters>
-		<statBases>
-			<DeteriorationRate>5</DeteriorationRate>
-		</statBases>
-		<tickerType>Rare</tickerType>
-	</ThingDef>
-
-
 	<ThingDef ParentName="ResourceOrganic">
 		<defName>Bone</defName>
 		<label>bone</label>
@@ -60,7 +26,7 @@
 			<color>(216,220,216)</color>
 		</graphicData>
 		<thingCategories>
-			<li>ResourcesRefined</li>
+			<li>ResourcesProcessed</li>
 		</thingCategories>
 		<statBases>
 			<MarketValue>5</MarketValue>
@@ -105,9 +71,6 @@
 			<MaxBurningTempCelsius>500</MaxBurningTempCelsius>
 			<BurnDurationHours>1</BurnDurationHours>
 		</statBases>
-		<thingCategories>
-			<li>Fuel</li>
-		</thingCategories>
 		<stuffProps>
 			<stuffAdjective>wooden</stuffAdjective>
 			<categories>
@@ -232,9 +195,6 @@
 		<graphicData>
 			<color>(126,104,94)</color>
 		</graphicData>
-		<butcherProducts>
-			<BlocksSandstone>20</BlocksSandstone>
-		</butcherProducts>
 		<stuffProps>
 			<color>(126,104,94)</color>
 			<stuffAdjective>sandstone</stuffAdjective>
@@ -247,9 +207,6 @@
 		<graphicData>
 			<color>(105,95,97)</color>
 		</graphicData>
-		<butcherProducts>
-			<BlocksGranite>20</BlocksGranite>  
-		</butcherProducts>
 		<stuffProps>
 			<color>(105,95,97)</color>
 			<stuffAdjective>granite</stuffAdjective>
@@ -262,9 +219,6 @@
 		<graphicData>
 			<color>(158,153,135)</color>
 		</graphicData>
-		<butcherProducts>
-			<BlocksLimestone>20</BlocksLimestone>
-		</butcherProducts>
 		<stuffProps>
 			<color>(158,153,135)</color>
 			<stuffAdjective>limestone</stuffAdjective>
@@ -277,9 +231,6 @@
 		<graphicData>
 			<color>(90,90,90)</color>
 		</graphicData>
-		<butcherProducts>
-			<BlocksSlate>20</BlocksSlate>
-		</butcherProducts>
 		<stuffProps>
 			<color>(90,90,90)</color>
 			<stuffAdjective>slate</stuffAdjective>
@@ -292,18 +243,40 @@
 		<graphicData>
 			<color>(132,135,132)</color>
 		</graphicData>
-		<butcherProducts>
-			<BlocksMarble>20</BlocksMarble>
-		</butcherProducts>
 		<stuffProps>
 			<color>(132,135,132)</color>
 			<stuffAdjective>marble</stuffAdjective>
 		</stuffProps>
+	</ThingDef>	
+
+	<!--======== Stone Other ========-->	
+
+	<ThingDef ParentName="ResourceStone">
+		<defName>StoneCobbles</defName>
+		<label>stone cobbles</label>
+		<description>Various sized stone cobbles.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/StoneCobbles</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingCategories>
+			<li>StoneCobbles</li>
+		</thingCategories>
+		<stuffCategories>
+			<li>StoneChunk</li>
+		</stuffCategories>
+		<stuffProps>
+			<categories>
+				<li>StoneCobble</li>
+			</categories>
+		</stuffProps>
 	</ThingDef>
+	
 
-	<!--======== StoneBlocks ========-->
-
-	<ThingDef Name="ResourceStoneBlock" ParentName="ResourceStone" Abstract="True">
+	<ThingDef ParentName="ResourceStone">
+		<defName>StoneBlocks</defName>
+		<label>stone blocks</label>
+		<description>Stone blocks.</description>
 		<graphicData>
 			<texPath>Things/Item/Resource/StoneBlocks</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -311,6 +284,9 @@
 		<thingCategories>
 			<li>StoneBlocks</li>
 		</thingCategories>
+		<stuffCategories>
+			<li>StoneChunk</li>
+		</stuffCategories>
 		<stuffProps>
 			<categories>
 				<li>StoneBlock</li>
@@ -320,110 +296,6 @@
 			</statOffsets>
 		</stuffProps>
 	</ThingDef>
-
-	<ThingDef ParentName="ResourceStoneBlock">
-		<defName>BlocksSandstone</defName>
-		<label>sandstone blocks</label>
-		<description>Blocks of solid sandstone. Sandstone is a relatively soft rock and chips easily.</description>
-		<graphicData>
-			<color>(126,104,94)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.0</MarketValue>
-			<SharpDamageMultiplier>0.4</SharpDamageMultiplier>
-		</statBases>
-		<stuffProps>
-			<color>(126,104,94)</color>
-			<stuffAdjective>sandstone</stuffAdjective>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceStoneBlock">
-		<defName>BlocksLimestone</defName>
-		<label>limestone blocks</label>
-		<description>Blocks of solid limestone.</description>
-		<graphicData>
-			<color>(158,153,135)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.4</MarketValue>
-			<SharpDamageMultiplier>0.6</SharpDamageMultiplier>
-		</statBases>
-		<stuffProps>
-			<color>(158,153,135)</color>
-			<stuffAdjective>limestone</stuffAdjective>
-			<statFactors>
-				<MarketValue>0.6</MarketValue>
-				<MaxHitPoints>1.6</MaxHitPoints>
-				<Beauty>1</Beauty>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceStoneBlock">
-		<defName>BlocksGranite</defName>
-		<label>granite blocks</label>
-		<description>Blocks of solid granite. Granite is a very hard stone.</description>
-		<graphicData>
-			<color>(105,95,97)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.4</MarketValue>
-			<SharpDamageMultiplier>0.7</SharpDamageMultiplier>
-		</statBases>
-		<stuffProps>
-			<color>(105,95,97)</color>
-			<stuffAdjective>granite</stuffAdjective>
-			<statFactors>
-				<MarketValue>0.6</MarketValue>
-				<MaxHitPoints>1.8</MaxHitPoints>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceStoneBlock">
-		<defName>BlocksSlate</defName>
-		<label>slate blocks</label>
-		<description>Blocks of solid slate. A dull-looking rock that chips easily.</description>
-		<graphicData>
-			<color>(70,70,70)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.0</MarketValue>
-			<SharpDamageMultiplier>0.6</SharpDamageMultiplier>
-		</statBases>
-		<stuffProps>
-			<color>(70,70,70)</color>
-			<stuffAdjective>slate</stuffAdjective>
-			<statFactors>
-				<WorkToMake>1.5</WorkToMake>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceStoneBlock">
-		<defName>BlocksMarble</defName>
-		<label>marble blocks</label>
-		<description>Blocks of solid marble. Marble is a soft, beautiful stone, known for being easy to sculpt.</description>
-		<graphicData>
-			<color>(132,135,132)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.8</MarketValue>
-		</statBases>
-		<stuffProps>
-			<color>(132,135,132)</color>
-			<stuffAdjective>marble</stuffAdjective>
-			<statOffsets>
-				<Beauty>3</Beauty>
-			</statOffsets>
-			<statFactors>
-				<Beauty>1.5</Beauty>
-				<MarketValue>0.8</MarketValue>
-			</statFactors>
-		</stuffProps>
-	</ThingDef>
-
 
 
 	<!--===================== Fabric ====================-->

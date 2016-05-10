@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--==================== Abstracts ========================-->
+
+	<ThingDef Name="Race" Abstract="True">
+		<thingClass>Pawn</thingClass>
+		<category>Pawn</category>
+		<selectable>true</selectable>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Pawn</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<hasTooltip>true</hasTooltip>
+		<soundImpactDefault>BulletImpactFlesh</soundImpactDefault>
+		<inspectorTabs>
+			<li>ITab_Pawn_Health</li>
+			<li>ITab_Pawn_Needs</li>
+			<li>ITab_Pawn_Character</li>
+			<li>ITab_Pawn_Training</li>
+			<li>ITab_Pawn_Gear</li>
+			<li>ITab_Pawn_Guest</li>
+			<li>ITab_Pawn_Prisoner</li>
+			<li>ITab_Pawn_Social</li>
+		</inspectorTabs>
+		<comps>
+			<li>
+				<compClass>CompAttachBase</compClass>
+			</li>
+		</comps>
+		<drawGUIOverlay>true</drawGUIOverlay>
+	</ThingDef>
+
+	<ThingDef Name="RaceAnimal" ParentName="Race" Abstract="True">
+		<statBases>
+			<Flammability>1.0</Flammability>
+			<LeatherAmount>20</LeatherAmount>
+		</statBases>
+		<race>
+			<thinkTreeMain>Animal</thinkTreeMain>
+			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+			<minFoodPreferability>NeverForNutrition</minFoodPreferability>
+			<hasGenders>true</hasGenders>
+			<nameGenerator>NamerAnimalGeneric</nameGenerator>
+			<manhunterOnDamageChance>0.0125</manhunterOnDamageChance>
+			<nameOnNuzzleChance>0.5</nameOnNuzzleChance>
+			<hediffGiverSets>
+				<li>OrganicStandard</li>
+			</hediffGiverSets>
+		</race>
+		<recipes>
+			<li>ExciseCarcinoma</li>
+			<li>RemoveBodyPart</li>
+			<li>Euthanize</li>
+		</recipes>
+	</ThingDef>
+
+	<!--==================== Animals ========================-->
+
+	<ThingDef ParentName="RaceAnimal">
+		<defName>PackMuffalo</defName>
+		<label>pack muffalo</label>
+		<description>A large herding herbivore descended from buffalo and adapted for some exotic environment. Peaceful unless disturbed.</description>
+		<statBases>
+			<MoveSpeed>3.6</MoveSpeed>
+			<ComfyTemperatureMin>-45</ComfyTemperatureMin>
+			<MarketValue>500</MarketValue>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<defaultCooldownTicks>100</defaultCooldownTicks>
+				<meleeDamageBaseAmount>10</meleeDamageBaseAmount>
+				<meleeDamageDef>Blunt</meleeDamageDef>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CompProperties_Milkable">
+				<milkDef>Milk</milkDef>
+				<milkIntervalDays>2</milkIntervalDays>
+				<milkAmount>6</milkAmount>
+			</li>
+			<li Class="CompProperties_Shearable">
+				<woolDef>MuffaloWool</woolDef>
+				<shearIntervalDays>30</shearIntervalDays>
+				<woolAmount>100</woolAmount>
+			</li>
+			<li Class="RA.CompCaravan_Properties">
+				<cartEmptyTexturePath>Things/Special/CaravanCart/CartEmpty</cartEmptyTexturePath>
+				<cartFullTexturePath>Things/Special/CaravanCart/CartFull</cartFullTexturePath>
+				<wheelTexturePath>Things/Special/CaravanCart/Wheel</wheelTexturePath>
+				<harnessTexturePath>Things/Special/CaravanCart/Harness</harnessTexturePath>
+			</li>
+		</comps>
+		<race>
+			<herdAnimal>true</herdAnimal>
+			<body>QuadrupedAnimalWithHooves</body>
+			<baseBodySize>2.0</baseBodySize>
+			<baseHealthScale>1.75</baseHealthScale>
+			<foodType>VegetarianRoughAnimal</foodType>
+			<leatherColor>(67,103,115)</leatherColor>
+			<leatherInsulation>1.5</leatherInsulation>
+			<gestationPeriodDays>30</gestationPeriodDays>
+			<wildness>0.5</wildness>
+			<nuzzleChancePerHour>0.02</nuzzleChancePerHour>
+			<lifeExpectancy>15</lifeExpectancy>
+			<lifeStageAges>
+				<li>
+					<def>AnimalBaby</def>
+					<minAge>0</minAge>
+				</li>
+				<li>
+					<def>AnimalJuvenile</def>
+					<minAge>0.25</minAge>
+				</li>
+				<li>
+					<def>AnimalAdult</def>
+					<minAge>1</minAge>
+					<soundWounded>Pawn_Muffalo_Wounded</soundWounded>
+					<soundDeath>Pawn_Muffalo_Death</soundDeath>
+					<soundCall>Pawn_Muffalo_Call</soundCall>
+					<soundAngry>Pawn_Muffalo_Angry</soundAngry>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+		</race>
+		<tradeTags>
+			<li>StandardAnimal</li>
+		</tradeTags>
+	</ThingDef>
+
+</Defs>

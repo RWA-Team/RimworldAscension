@@ -16,8 +16,7 @@
 			<shaderType>Transparent</shaderType>
 		</graphicData>
 		<comps>
-			<li>
-				<compClass>RA.CompFade</compClass>
+			<li Class="RA.CompFade_Properties">
 				<lifespanTicks>3600000</lifespanTicks>
 			</li>
 		</comps>
@@ -27,6 +26,5 @@
 		<selectable>false</selectable>
 		<tickerType>Rare</tickerType>
 	</ThingDef>
-
 
 </Buildings>

@@ -4,7 +4,7 @@ using Verse;
 
 namespace RA
 {
-    class MapComp_CameraShaker : MapComponent
+    public class MapComp_CameraShaker : MapComponent
     {
         public const float ShakeDecayRate = 0.5f;
         public const float ShakeFrequency = 24f;
@@ -38,6 +38,7 @@ namespace RA
             }
         }
 
+        // called each tick after all other "updates", like tickers, drawing, debug info and so on
         public override void MapComponentUpdate()
         {
             if (curShakeMag > 0)

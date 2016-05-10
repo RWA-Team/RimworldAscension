@@ -13,7 +13,7 @@ namespace RA
         public List<Pawn> allowedPawns = new List<Pawn>();
         public static List<Pawn> allowedPawns_Transfer;
 
-        public virtual void FindTrainee()
+        public virtual void TryAssignTraining()
         {
             foreach (var pawn in allowedPawns)
             {
@@ -96,7 +96,7 @@ namespace RA
             if (Find.CameraMap.CurrentZoom == CameraZoomRange.Closest && (Find.Selector.IsSelected(this) || Find.Selector.IsSelected(pawn)))
             {
                 // throws text mote with applied damage each time damage taken
-                MoteThrower.ThrowText(new Vector3(Position.x + 0.5f, Position.y, Position.z + 1f), dinfo.Amount.ToString(), GenDate.TicksPerRealSecond);
+                MoteThrower.ThrowText(new Vector3(Position.x + 0.5f, Position.y, Position.z + 1f), dinfo.Amount.ToString(), GenDate.SecondsToTicks(1));
             }
         }
 
@@ -105,12 +105,12 @@ namespace RA
             base.Tick();
 
             // check every second
-            if (Find.TickManager.TicksGame % GenTicks.TicksPerRealtimeSecond == 0)
+            if (this.IsHashIntervalTick(GenDate.SecondsToTicks(1)))
             {
                 // if dummy is not reserved by colonists
                 if (!Find.Reservations.IsReserved(this, Faction))
                 {
-                    FindTrainee();
+                    TryAssignTraining();
                 }
             }
         }

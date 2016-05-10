@@ -1,19 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResearchProjectDefs>
 
-	<!-- ========================= Special Research Surrogates ==========================-->
-
-	<!--used to hide buldings-->
-	<ResearchProjectDef>
-		<defName>Blocked</defName>
+	<ResearchProjectDef Name="Blocked" Abstract="True">
 		<prerequisites>
 			<li>Blocked</li>
 		</prerequisites>		
 	</ResearchProjectDef>
 
+	<!-- ========================= Special Research Surrogates ==========================-->
+
+	<!--used to hide buldings-->
+	<ResearchProjectDef ParentName="Blocked">
+		<defName>Blocked</defName>	
+	</ResearchProjectDef>
+
 	<!--used to learn the basics-->
 	<ResearchProjectDef>
 		<defName>StartPack</defName>
+		<description>Having studied what's left of survival guide you've found, you got the basic concepts of how to survive in the harsh enviroment around you. Having no advanced tools or materials, you'll have to make your own, from the very basic one.</description>
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
@@ -111,11 +115,6 @@
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.Tannery</specialAction>
-			</li>
-		</researchMods>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>

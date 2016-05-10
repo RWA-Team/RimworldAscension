@@ -15,8 +15,7 @@
 		<constructEffect>ConstructDirt</constructEffect>
 		<AcceptTerrainSourceFilth>True</AcceptTerrainSourceFilth>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<designationCategory>Floor</designationCategory>
-		<researchPrerequisite>Blocked</researchPrerequisite>
+		<designationCategory>Floors</designationCategory>
 	</TerrainDef>
 	
 
@@ -33,7 +32,9 @@
 		<costList>
 			<Hay>3</Hay>
 		</costList>
-		<researchPrerequisite>StartPack</researchPrerequisite>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
 	</TerrainDef>
 	
 
@@ -48,7 +49,9 @@
 			<WorkToMake>700</WorkToMake>
 			<Beauty>2</Beauty>
 		</statBases>
-		<researchPrerequisite>Masonry</researchPrerequisite>
+		<researchPrerequisites>
+			<li>Masonry</li>
+		</researchPrerequisites>
 	</TerrainDef>
 
 

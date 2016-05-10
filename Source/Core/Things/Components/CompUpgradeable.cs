@@ -85,7 +85,6 @@ namespace RA
         public ThingDef upgradeTargetDef = new ThingDef();
         public float upgradeDiscountMultiplier = 0.5f;
 
-        // Default requirement
         public CompUpgradeable_Properties()
         {
             compClass = typeof(CompUpgradeable);

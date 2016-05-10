@@ -1,62 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GameData>
 
-
-	<ThingDef Name="ResourceBase" Abstract="True">
-		<thingClass>ThingWithComps</thingClass>
-		<category>Item</category>
-		<resourceReadoutPriority>Middle</resourceReadoutPriority>
-		<useHitPoints>true</useHitPoints>
+	<ThingDef Name="Usable" ParentName="Item" Abstract="True">
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
 		<statBases>
-			<Flammability>1.0</Flammability>
+			<MaxHitPoints>50</MaxHitPoints>
 		</statBases>
-		<selectable>true</selectable>
-		<altitudeLayer>Item</altitudeLayer>
-		<stackLimit>75</stackLimit>
-		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
-		</comps>
-		<alwaysHaulable>true</alwaysHaulable>
-		<rotatable>false</rotatable>
-		<pathCost>15</pathCost>
+		<thingCategories>
+			<li>Items</li>
+		</thingCategories>
 	</ThingDef>
-
 
 	<!--=============== Tech Guides ====================-->
 
-
-	<ThingDef ParentName="ResourceBase">
+	<ThingDef ParentName="Usable">
 		<defName>SurvivalGuide</defName>
 		<thingClass>RA.Blueprint</thingClass>
 		<label>survival guide</label>
 		<description>A shabby half-burned book. It looks like one of those military training guides to survive in the harsh enviroment. Some of its pages can still be read.</description>
 		<graphicData>
 			<texPath>Things/Items/Usables/SurvivalGuide</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<resourceReadoutPriority>First</resourceReadoutPriority>
-		<stackLimit>1</stackLimit>
-		<tradeNeverStack>true</tradeNeverStack>
-		<useHitPoints>true</useHitPoints>
 		<statBases>
 			<MarketValue>2000</MarketValue>
-			<MaxHitPoints>80</MaxHitPoints>
 		</statBases>
-		<thingCategories>
-			<li>Items</li>
-		</thingCategories>
-		<drawGUIOverlay>false</drawGUIOverlay>
 		<tradeTags>
 			<li>Exotic</li>
 		</tradeTags>
 		<comps>
-			<li Class="RA.CompBlueprintParams_Properties">
+			<li Class="RA.CompBlueprint_Properties">
 				<researchName>StartPack</researchName>
 			</li>
 		</comps>
 	</ThingDef>
-
 
 </GameData>

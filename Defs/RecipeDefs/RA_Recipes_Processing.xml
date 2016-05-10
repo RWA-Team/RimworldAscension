@@ -7,13 +7,12 @@
 	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
 	- fixedIngredientFilter - determine ingridient set to choose from	
 	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
-	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complex recipes. Changed to allowed ones via reseach mods.
 	-->
 
 	<!--===================== Moulding =====================-->
 
-
-	<RecipeDef Name="Pottery" Abstract="True">
+	<RecipeDef Name="MakePottery" Abstract="True">
 		<workSpeedStat>MouldingSpeed</workSpeedStat>
 		<workSkill>Crafting</workSkill>
 		<workSkillLearnFactor>0.1</workSkillLearnFactor>
@@ -23,7 +22,7 @@
 	</RecipeDef>
 
 
-	<RecipeDef ParentName="Pottery">
+	<RecipeDef ParentName="MakePottery">
 		<defName>MakeRawBlockAdobe</defName>
 		<label>make raw adobe brick</label>
 		<description>Mix clay and hay into raw adobe block.</description>
@@ -34,7 +33,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayRed</li>
+						<li>ClumpClayGray</li>
 					</thingDefs>
 				</filter>
 				<count>25</count>
@@ -50,7 +49,7 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>ClumpClayRed</li>
+				<li>ClumpClayGray</li>
 				<li>Hay</li>
 			</thingDefs>
 		</fixedIngredientFilter>
@@ -59,7 +58,7 @@
 		</products>
 	</RecipeDef>
 
-	<RecipeDef ParentName="Pottery">
+	<RecipeDef ParentName="MakePottery">
 		<defName>MakeRawBrick</defName>
 		<label>make raw brick</label>
 		<description>Turn clay into raw brick.</description>
@@ -70,7 +69,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayRed</li>
+						<li>ClumpClayGray</li>
 					</thingDefs>
 				</filter>
 				<count>25</count>
@@ -78,7 +77,7 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>ClumpClayRed</li>
+				<li>ClumpClayGray</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
@@ -86,7 +85,7 @@
 		</products>
 	</RecipeDef>
 
-	<RecipeDef ParentName="Pottery">
+	<RecipeDef ParentName="MakePottery">
 		<defName>MakeRawPot</defName>
 		<label>make raw pot</label>
 		<description>Turn clay into raw pot.</description>
@@ -95,7 +94,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayRed</li>
+						<li>ClumpClayGray</li>
 					</thingDefs>
 				</filter>
 				<count>20</count>
@@ -103,7 +102,7 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>ClumpClayRed</li>
+				<li>ClumpClayGray</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
@@ -111,7 +110,7 @@
 		</products>
 	</RecipeDef>
 
-	<RecipeDef ParentName="Pottery">
+	<RecipeDef ParentName="MakePottery">
 		<defName>MakeRawCeramics</defName>
 		<label>make raw ceramics</label>
 		<description>Turn clay into raw ceramic goods.</description>
@@ -236,15 +235,45 @@
 
 	<!--===================== Disassembling =====================-->
 
-
 	<RecipeDef Name="Disassembling" Abstract="True">
 		<workSpeedStat>DisassemblingSpeed</workSpeedStat>
 		<workSkill>Crafting</workSkill>
 		<workSkillLearnFactor>0.1</workSkillLearnFactor>
 	</RecipeDef>
-
+	
 
 	<RecipeDef ParentName="Disassembling">
+		<defName>MakeStoneCobbles</defName>
+		<label>make stone cobbles</label>
+		<description>Cuts rock chunks into saller stone cobbles.</description>
+		<jobString>Cutting stone chunks into cobbles.</jobString>
+		<efficiencyStat>RefiningEfficiency</efficiencyStat>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_MakeBlocksStone</soundWorking>
+		<targetCountAdjustment>50</targetCountAdjustment>
+		<workAmount>1600</workAmount>
+		<fixedIngredientFilter>
+			<categories>
+				<li>StoneChunks</li>
+			</categories>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneChunks</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<products>
+			<StoneCobbles>20</StoneCobbles>
+		</products>
+		<researchPrerequisite>Masonry</researchPrerequisite>
+	</RecipeDef>
+
+<!-- 	<RecipeDef ParentName="Disassembling">
 		<defName>MakeBlocksStone</defName>
 		<label>make stone blocks</label>
 		<description>Cuts rock chunks into usable stone blocks.</description>
@@ -273,7 +302,7 @@
 			</li>
 		</ingredients>
 		<researchPrerequisite>Masonry</researchPrerequisite>
-	</RecipeDef>
+	</RecipeDef> -->
 
 	<RecipeDef ParentName="Disassembling">
 		<defName>ButcherCorpse</defName>

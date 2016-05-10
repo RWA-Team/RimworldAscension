@@ -20,7 +20,7 @@ namespace RA
             {
                 return;
             }
-            foreach (var current in Find.ListerPawns.FreeColonists.Where(current => !current.Destroyed))
+            foreach (var current in Find.MapPawns.FreeColonists.Where(current => !current.Destroyed))
             {
                 if (current.holder == null)
                 {

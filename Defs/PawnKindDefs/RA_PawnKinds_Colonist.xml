@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <PawnKindDefs>
 
-
 	<PawnKindDef>
 		<defName>Colonist</defName>
 		<label>colonist</label>
@@ -24,6 +23,5 @@
 			<max>1000</max>
 		</apparelMoney>
 	</PawnKindDef>
-
 
 </PawnKindDefs>

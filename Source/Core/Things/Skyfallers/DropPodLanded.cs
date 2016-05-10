@@ -6,7 +6,7 @@ using Random = System.Random;
 
 namespace RA
 {
-    public class DropPodLanded : ThingWithComps
+    public class DropPodLanded : Building
     {
         public static readonly SoundDef OpenSound = SoundDef.Named("DropPodOpen"); // Open sound
 
@@ -37,21 +37,11 @@ namespace RA
             }
         }
 
-        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
-        {
-            // Call base destory method
-            base.Destroy(mode);
-
-            // Check destroy mod passed
-            if (mode == DestroyMode.Deconstruct)
-            {
-                SpawnCargo();
-            }
-        }
-
         // used to spawn things after delay automatically
-        public void SpawnCargo()
+        public void Deploy()
         {
+            // Play open sound
+            OpenSound.PlayOneShot(Position);
             // loop over all contents
             foreach (var thing in cargo.containedThings)
             {
@@ -66,14 +56,12 @@ namespace RA
                     // Record a tale
                     TaleRecorder.RecordTale(TaleDef.Named("LandedInPod"), pawn);
 
-                    if (pawn.kindDef == DefDatabase<PawnKindDef>.GetNamed("SpaceSlaverDead"))
+                    // kill slavers
+                    if (pawn.kindDef.defName == "SpaceSlaverDead")
                         HealthUtility.GiveInjuriesToKill(pawn);
                 }
             }
-            // All contents dealt with, clear list
             cargo.containedThings.Clear();
-            // Play open sound
-            OpenSound.PlayOneShot(Position);
         }
 
         public override void ExposeData()

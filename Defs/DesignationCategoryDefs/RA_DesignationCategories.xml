@@ -6,27 +6,25 @@
 	- considered not to be used: security, floors, temperature
 	 -->
 
-	<DesignationCategoryDef Name="BuildingCategory" Abstract="True">
-		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_Deconstruct</li>
-		</specialDesignatorClasses>
-	</DesignationCategoryDef>
+
+	<!--====================== Designations ======================-->
 
 
-	<!--============================== Designations ==============================-->
-
-
-	<DesignationCategoryDef ParentName="BuildingCategory">
+	<DesignationCategoryDef>
 		<defName>Orders</defName>
 		<label>orders</label>
 		<description>Designate specific interactions with specific things.</description>
 		<order>900</order>
 		<specialDesignatorClasses>
+			<li>Designator_Cancel</li>
+			<li>Designator_Deconstruct</li>
+			<li>Designator_RemoveFloor</li>
+			<li>Designator_Uninstall</li>
 			<li>Designator_Haul</li>
 			<li>Designator_PlantsCut</li>
 			<li>Designator_PlantsHarvest</li>
 			<li>Designator_PlantsHarvestWood</li>
+			<li>RA.Designator_CollectClay</li>
 			<li>Designator_Hunt</li>
 			<li>Designator_Claim</li>
 			<li>Designator_Strip</li>
@@ -36,7 +34,7 @@
 		</specialDesignatorClasses>
 	</DesignationCategoryDef>	
 
-	<DesignationCategoryDef ParentName="BuildingCategory">
+	<DesignationCategoryDef>
 		<DefName>Zone</DefName>
 		<label>zone/Area</label>
 		<description>Designate zones and areas where colonists will do certain activities.</description>
@@ -57,10 +55,10 @@
 	</DesignationCategoryDef>
 
 
-	<!--============================== Buildings ==============================-->
+	<!--====================== Buildings ======================-->
 
 
-	<DesignationCategoryDef ParentName="BuildingCategory">
+	<DesignationCategoryDef>
 		<DefName>Structure</DefName>
 		<label>structure</label>
 		<description>Structural constructions like walls and floors.</description>
@@ -68,62 +66,55 @@
 	</DesignationCategoryDef>
 
 	<DesignationCategoryDef>
-		<DefName>Floor</DefName>
+		<DefName>Floors</DefName>
 		<label>floor</label>
 		<description>Flooring.</description>
 		<order>700</order>
-		<specialDesignatorClasses>
-			<li>Designator_Cancel</li>
-			<li>Designator_RemoveFloor</li>
-		</specialDesignatorClasses>
 	</DesignationCategoryDef>	
 
-	<DesignationCategoryDef ParentName="BuildingCategory">
+	<DesignationCategoryDef>
 		<DefName>Production</DefName>
 		<label>production</label>
 		<description>Buildings for producing finished goods.</description>
 		<order>600</order>
 	</DesignationCategoryDef>
 
-	<DesignationCategoryDef ParentName="BuildingCategory">
+	<DesignationCategoryDef>
 		<DefName>Furniture</DefName>
 		<label>furniture</label>
 		<description>Designations for placing made furniture.</description>
 		<order>500</order>
-		<specialDesignatorClasses>
-			<li>Designator_Uninstall</li>
-		</specialDesignatorClasses>
 	</DesignationCategoryDef>
 
-	<DesignationCategoryDef ParentName="BuildingCategory">
+	<DesignationCategoryDef>
 		<DefName>Defence</DefName>
 		<label>defence</label>
 		<description>Defence and combat-oriented constructions.</description>
 		<order>300</order>
 	</DesignationCategoryDef>	
 
-	<DesignationCategoryDef ParentName="BuildingCategory">
+	<DesignationCategoryDef>
 		<DefName>Utility</DefName>
 		<label>utility</label>
 		<description>Various utility buildings.</description>
 		<order>200</order>
 	</DesignationCategoryDef>
 
-	<DesignationCategoryDef ParentName="BuildingCategory">
+	<DesignationCategoryDef>
 		<DefName>Joy</DefName>
 		<label>joy</label>
 		<description>Entertaining or pleasurable things for colonists to enjoy.</description>
 		<order>100</order>
 	</DesignationCategoryDef>
 
-	<DesignationCategoryDef ParentName="BuildingCategory">
+	<DesignationCategoryDef>
 		<DefName>Power</DefName>
 		<label>power</label>
 		<description>Electricity production, transmission, and management.</description>
 		<order>75</order>
 	</DesignationCategoryDef>	
 
-	<DesignationCategoryDef ParentName="BuildingCategory">
+	<DesignationCategoryDef>
 		<DefName>Ship</DefName>
 		<label>ship</label>
 		<description>Components of your escape ship.</description>

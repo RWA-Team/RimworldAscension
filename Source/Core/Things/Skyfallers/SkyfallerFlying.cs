@@ -54,8 +54,7 @@ namespace RA
             if (ticksToImpact <= 0)
             {
                 // Hit the ground
-                // explosion damage multiplier 1f ~ 100 damage
-                SkyfallerUtility.Impact(this, impactResultThing, 20f);
+                SkyfallerUtil.Impact(this, impactResultThing);
             }
             // If we havent already played the sound and we are low enough
             if (!impactSoundPlayed && ticksToImpact < 100)

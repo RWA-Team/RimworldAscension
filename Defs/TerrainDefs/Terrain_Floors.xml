@@ -12,12 +12,13 @@
 		<statBases>
 			<WorkToMake>135</WorkToMake>
 		</statBases>
-		<designationCategory>Floors</designationCategory>
 		<Fertility>0</Fertility>
 		<constructEffect>ConstructDirt</constructEffect>
 		<AcceptTerrainSourceFilth>True</AcceptTerrainSourceFilth>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<researchPrerequisite>Blocked</researchPrerequisite>
+		<researchPrerequisites>
+			<li>Blocked</li>
+		</researchPrerequisites>
 	</TerrainDef>
 
 
@@ -143,7 +144,6 @@
 
 	<TerrainDef Name="CarpetBase" ParentName="FloorBase" Abstract="True">
 		<texturePath>Terrain/Surfaces/Carpet</texturePath>
-		<ResearchPrerequisite>CarpetMaking</ResearchPrerequisite>
 		<CostList>
 			<Cloth>7</Cloth>
 		</CostList>

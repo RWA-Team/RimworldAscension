@@ -15,7 +15,7 @@ namespace RA
         public static readonly Texture2D EmptyTex = SolidColorMaterials.NewSolidColorTexture(Color.gray);
         public static readonly Texture2D IconBGTex = ContentFinder<Texture2D>.Get("UI/Widgets/DesButBG");
 
-        public WorkTable_Fueled burner;
+        public WorkTableFueled burner;
 
         public ITab_Fuel()
         {
@@ -26,7 +26,7 @@ namespace RA
 
         protected override void FillTab()
         {
-            burner = SelThing as WorkTable_Fueled;
+            burner = SelThing as WorkTableFueled;
 
             const float MarginSize = 5f;
             const float TextHeight = 25f;
@@ -54,7 +54,7 @@ namespace RA
                 Widgets.DrawMenuSection(fuelRect);
                 // contract actual size after drawing BG
                 fuelRect = fuelRect.ContractedBy(MarginSize);
-                // if fuel tank not mmpty
+                // if fuel tank not empty
                 if (burner.fuelContainer.Count > 0)
                 {
 

@@ -2,29 +2,23 @@
 <Buildings>
 
 	<!-- 
-	fillPercent - determne cover multiplier vs projectiles
-	castEdgeShadows - shadow aura around building
-	staticSunShadowHeight - solid square shadow with set length
+	- fillPercent - determne cover multiplier vs projectiles
+	- castEdgeShadows - shadow aura around building
+	- staticSunShadowHeight - solid square shadow with set length
+	- drawerType:
+		- MapMeshOnly - doesn't draw from comps
+		- MapMeshAndRealTime - doesn't draw from comps
+		- RealTimeOnly - used for objects that change their texture (unsure)
+	- surfaceType:
+		- Item - allows place items
+		- Eat - allows place food to eat
 	 -->
 
-	<ThingDef Name="Structure" Abstract="True">
-		<category>Building</category>
-		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<repairEffect>Repair</repairEffect>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<filthLeaving>BuildingRubble</filthLeaving>
-		<useHitPoints>true</useHitPoints>
+	<ThingDef Name="Structure" ParentName="Building" Abstract="True">
 		<fillPercent>1</fillPercent>
 		<rotatable>false</rotatable>
-		<selectable>true</selectable>
 		<holdsRoof>true</holdsRoof>
 		<blockLight>true</blockLight>
-		<staticSunShadowHeight>1.0</staticSunShadowHeight>
-		<statBases>
-			<Flammability>1.0</Flammability>
-		</statBases>
 		<building>
 			<ignoreNeedsPower>true</ignoreNeedsPower>
 		</building>
@@ -35,7 +29,6 @@
 			</li>
 		</damageMultipliers>
 		<designationCategory>Structure</designationCategory>
-		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
 
 
@@ -44,12 +37,11 @@
 
 	<ThingDef Name="StructureDoor" ParentName="Structure" Abstract="True">
 		<thingClass>Building_Door</thingClass>
-		<blueprintClass>Blueprint_Door</blueprintClass>
-		<blueprintGraphicData>
-			<texPath>Things/Building/Door/Door_Blueprint</texPath>
-		</blueprintGraphicData>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<rect>(0,0.1,1,0.8)</rect>
+			</damageData>
 		</graphicData>
 		<altitudeLayer>DoorMoveable</altitudeLayer>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
@@ -66,9 +58,7 @@
 			<canPlaceOverWall>true</canPlaceOverWall>
 		</building>
 		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
+			<li Class="CompProperties_Forbiddable"/>
 		</comps>
 	</ThingDef>
 
@@ -77,19 +67,28 @@
 		<defName>DoorWoodLog</defName>
 		<label>woodlog door</label>
 		<description>Divides rooms. Must be manually opened and closed, which slows people down.</description>
-		<stuffCategories>
-			<li>WoodLog</li>	
-		</stuffCategories>
-		<costStuffCount>25</costStuffCount>
+		<graphicData>
+			<texPath>Things/Buildings/Structure/Doors/DoorLog_Mover</texPath>
+			<shadowData>
+				<volume>(1, 1, 0.8)</volume>
+			</shadowData>
+		</graphicData>
+		<uiIconPath>Things/Buildings/Structure/Doors/DoorLog_MenuIcon</uiIconPath>
+		<blueprintClass>Blueprint_Door</blueprintClass>
+		<blueprintGraphicData>
+			<texPath>Things/Buildings/Structure/Doors/DoorLog_MenuIcon</texPath>
+		</blueprintGraphicData>
+		<costList>
+			<WoodLog>25</WoodLog>
+		</costList>
 		<statBases>
 			<WorkToMake>850</WorkToMake>
 		</statBases>
-		<graphicData>
-			<texPath>Things/Buildings/Structure/Doors/DoorLog_Mover</texPath>
-		</graphicData>
-		<researchPrerequisite>StartPack</researchPrerequisite>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
 	</ThingDef>
-	
+
 
 	<!--========================= Walls =============================-->
 
@@ -103,12 +102,21 @@
 				<li>Wall</li>
 				<li>Rock</li>
 			</linkFlags>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>350</MaxHitPoints>
 			<WorkToMake>150</WorkToMake>
 		</statBases>
-		<costStuffCount>5</costStuffCount>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<altitudeLayer>BuildingTall</altitudeLayer>
 		<passability>Impassable</passability>
@@ -129,16 +137,15 @@
 		<description>A log wall. Capable of holding up a roof.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Structure/Walls/WallLog/WallLog_Atlas</texPath>
-			<color>(216,220,216)</color>
+			<color>(133,97,67)</color>
 		</graphicData>
-		<blueprintGraphicData>
-			<texPath>Things/Buildings/Structure/Walls/WallLog/WallLog_Atlas</texPath>
-		</blueprintGraphicData>
 		<uiIconPath>Things/Buildings/Structure/Walls/WallLog/WallLog_MenuIcon</uiIconPath>
-		<stuffCategories>
-			<li>WoodLog</li>	
-		</stuffCategories>
-		<researchPrerequisite>StartPack</researchPrerequisite>
+		<costList>
+			<WoodLog>25</WoodLog>
+		</costList>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
 	</ThingDef>
 
 	<ThingDef ParentName="StructureWall">
@@ -148,24 +155,40 @@
 		<graphicData>
 			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Atlas</texPath>
 		</graphicData>
-		<blueprintGraphicData>
-			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Atlas</texPath>
-		</blueprintGraphicData>
 		<uiIconPath>Things/Buildings/Structure/Walls/Palisade/Palisade_MenuIcon</uiIconPath>
 		<statBases>
-			<MaxHitPoints>250</MaxHitPoints>
-			<WorkToMake>100</WorkToMake>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToMake>50</WorkToMake>
 		</statBases>
-		<stuffCategories>
-			<li>WoodLog</li>	
-		</stuffCategories>
-		<costStuffCount>3</costStuffCount>
+		<costList>
+			<WoodLog>3</WoodLog>
+		</costList>
 		<coversFloor>false</coversFloor>
 		<holdsRoof>false</holdsRoof>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<castEdgeShadows>false</castEdgeShadows>
-		<researchPrerequisite>StartPack</researchPrerequisite>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
 	</ThingDef>
 
+	<ThingDef ParentName="StructureWall">
+		<defName>WallClay</defName>
+		<label>clay wall</label>
+		<description>A clay wall.</description>
+		<graphicData>
+			<texPath>Things/Building/Linked/Wall/Wall_Atlas_Bricks</texPath>
+			<color>(127,51,0)</color>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/WallBricks_MenuIcon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToMake>100</WorkToMake>
+		</statBases>
+		<costList>
+			<BlockAdobe>5</BlockAdobe>
+		</costList>
+		<researchPrerequisites>
+			<li>Pottery</li>
+		</researchPrerequisites>
+	</ThingDef>
 
 </Buildings>

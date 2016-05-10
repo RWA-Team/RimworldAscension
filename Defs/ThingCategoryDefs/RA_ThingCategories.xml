@@ -9,34 +9,21 @@
 </ThingCategoryDef>
 		
 	<ThingCategoryDef>
-		<defName>Consumables</defName>
-		<label>consumables</label>
+		<defName>Ingestibles</defName>
+		<label>ingestibles</label>
 		<parent>Root</parent>
 	</ThingCategoryDef>
-
-		<ThingCategoryDef>
-			<defName>Medicine</defName>
-			<label>medicine</label>
-			<parent>Consumables</parent>
-			<iconPath>Ui/Icons/ThingCategories/Medicine</iconPath>
-		</ThingCategoryDef>
-
-		<ThingCategoryDef>
-			<defName>Drugs</defName>
-			<label>drugs</label>
-			<parent>Consumables</parent>
-		</ThingCategoryDef>
 		
 		<ThingCategoryDef>
-			<defName>Foods</defName>
+			<defName>Food</defName>
 			<label>food</label>
-			<parent>Consumables</parent>
+			<parent>Ingestibles</parent>
 		</ThingCategoryDef>
 		
 			<ThingCategoryDef>
-				<defName>FoodMeals</defName>
-				<label>meals</label>
-				<parent>Foods</parent>
+				<defName>FoodPrepared</defName>
+				<label>preprared food</label>
+				<parent>Food</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
 				<iconPath>Ui/Icons/ThingCategories/FoodMeals</iconPath>
 			</ThingCategoryDef>
@@ -44,27 +31,28 @@
 			<ThingCategoryDef>
 				<defName>FoodRaw</defName>
 				<label>raw food</label>
-				<parent>Foods</parent>
+				<parent>Food</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
 				<iconPath>Ui/Icons/ThingCategories/FoodRaw</iconPath>
 			</ThingCategoryDef>
-			
+				
+				<!-- can't change name due to code based generation -->
 				<ThingCategoryDef>
-					<defName>MeatRaw</defName>
+					<defName>Meat</defName>
 					<label>meat</label>
 					<parent>FoodRaw</parent>
 					<iconPath>Ui/Icons/ThingCategories/MeatRaw</iconPath>
 				</ThingCategoryDef>
 
 				<ThingCategoryDef>
-					<defName>FoodRawPlant</defName>
-					<label>vegetarian</label>
+					<defName>Plants</defName>
+					<label>eatable plants</label>
 					<parent>FoodRaw</parent>
 					<iconPath>Ui/Icons/ThingCategories/PlantFoodRaw</iconPath>
 				</ThingCategoryDef>
 				
 				<ThingCategoryDef>
-					<defName>OtherFoodRaw</defName>
+					<defName>AnimalProductRaw</defName>
 					<label>animal products</label>
 					<parent>FoodRaw</parent>
 					<iconPath>Ui/Icons/ThingCategories/AnimalProductRaw</iconPath>
@@ -73,16 +61,35 @@
 					<ThingCategoryDef>
 						<defName>EggsUnfertilized</defName>
 						<label>eggs (unfert.)</label>
-						<parent>OtherFoodRaw</parent>
+						<parent>AnimalProductRaw</parent>
 						<iconPath>Ui/Icons/ThingCategories/EggsUnfertilized</iconPath>
 					</ThingCategoryDef>
 
 					<ThingCategoryDef>
 						<defName>EggsFertilized</defName>
 						<label>eggs (fert.)</label>
-						<parent>OtherFoodRaw</parent>
+						<parent>AnimalProductRaw</parent>
 						<iconPath>Ui/Icons/ThingCategories/EggsFertilized</iconPath>
 					</ThingCategoryDef>
+
+		<ThingCategoryDef>
+			<defName>Medicines</defName>
+			<label>medicines</label>
+			<parent>Ingestibles</parent>
+			<iconPath>Ui/Icons/ThingCategories/Medicine</iconPath>
+		</ThingCategoryDef>
+
+		<ThingCategoryDef>
+			<defName>Drugs</defName>
+			<label>drugs</label>
+			<parent>Ingestibles</parent>
+		</ThingCategoryDef>
+		
+			<ThingCategoryDef>
+				<defName>Alcohol</defName>
+				<label>alcohol</label>
+				<parent>Drugs</parent>
+			</ThingCategoryDef>
 					
 	<ThingCategoryDef>
 		<defName>Resources</defName>
@@ -91,8 +98,8 @@
 	</ThingCategoryDef>
 			
 		<ThingCategoryDef>
-			<defName>ResourcesRefined</defName>
-			<label>refined resources</label>
+			<defName>ResourcesProcessed</defName>
+			<label>processed resources</label>
 			<parent>Resources</parent>
 			<resourceReadoutRoot>true</resourceReadoutRoot>
 			<iconPath>Ui/Icons/ThingCategories/Manufactured</iconPath>
@@ -101,17 +108,17 @@
 			<ThingCategoryDef>
 				<defName>StoneBlocks</defName>
 				<label>stone blocks</label>
-				<parent>ResourcesRefined</parent>
+				<parent>ResourcesProcessed</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
-				<iconPath>Ui/Icons/ThingCategories/StoneBlocks</iconPath>
 			</ThingCategoryDef>
 			
 			<ThingCategoryDef>
 				<defName>Fabric</defName>
 				<label>fabric</label>
-				<parent>ResourcesRefined</parent>
+				<parent>ResourcesProcessed</parent>
 			</ThingCategoryDef>
 								
+				<!-- can't change name due to code generation -->
 				<ThingCategoryDef>
 					<defName>Leathers</defName>
 					<label>leather</label>
@@ -123,7 +130,6 @@
 					<defName>Textile</defName>
 					<label>textile</label>
 					<parent>Fabric</parent>
-					<iconPath>Ui/Icons/ThingCategories/Leathers</iconPath>
 				</ThingCategoryDef>
 	
 		<ThingCategoryDef>
@@ -135,99 +141,71 @@
 		</ThingCategoryDef>
 		
 			<ThingCategoryDef>
+				<defName>StoneCobbles</defName>
+				<label>stone cobbles</label>
+				<parent>ResourcesProcessed</parent>
+			</ThingCategoryDef>
+		
+			<ThingCategoryDef>
 				<defName>Clay</defName>
 				<label>clay</label>
 				<parent>ResourcesRaw</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
 			</ThingCategoryDef>
-		
-			<ThingCategoryDef>
-				<defName>RawProductsClay</defName>
-				<label>raw clay products</label>
-				<parent>ResourcesRaw</parent>
-				<resourceReadoutRoot>true</resourceReadoutRoot>
-			</ThingCategoryDef>
-
-			<ThingCategoryDef>
-			  <defName>Unfinished</defName>
-			  <label>unfinished</label>
-			  <parent>ResourcesRaw</parent>
-			</ThingCategoryDef>
-		
-			<ThingCategoryDef>
-				<defName>Chunks</defName>
-				<label>chunks</label>
-				<parent>ResourcesRaw</parent>
-				<resourceReadoutRoot>true</resourceReadoutRoot>
-			</ThingCategoryDef>
-			
-				<ThingCategoryDef>
-					<defName>StoneChunks</defName>
-					<label>stone chunks</label>
-					<parent>Chunks</parent>
-					<resourceReadoutRoot>true</resourceReadoutRoot>
-					<iconPath>Ui/Icons/ThingCategories/StoneChunks</iconPath>
-				</ThingCategoryDef>
-				
-			<ThingCategoryDef>
-				<defName>Corpses</defName>
-				<label>corpses</label>
-				<parent>ResourcesRaw</parent>
-			</ThingCategoryDef>
-
-				<ThingCategoryDef>
-					<defName>CorpsesHumanlike</defName>
-					<label>humanlike corpses</label>
-					<parent>Corpses</parent>
-				</ThingCategoryDef>
-
-				<ThingCategoryDef>
-					<defName>CorpsesAnimal</defName>
-					<label>animal corpses</label>
-					<parent>Corpses</parent>
-				</ThingCategoryDef>
-
-				<ThingCategoryDef>
-					<defName>CorpsesMechanoid</defName>
-					<label>mechanoid corpses</label>
-					<parent>Corpses</parent>
-				</ThingCategoryDef>
-				
-			<ThingCategoryDef>
-				<defName>Fuel</defName>
-				<label>fuel</label>
-				<parent>ResourcesRaw</parent>
-			</ThingCategoryDef>
 				
 	<ThingCategoryDef>
-		<defName>Manufactured</defName>
-		<label>finished goods</label>
+		<defName>Items</defName>
+		<label>Items</label>
 		<parent>Root</parent>
+		<iconPath>Ui/Icons/ThingCategories/Medicine</iconPath>
 	</ThingCategoryDef>
-
+	
 		<ThingCategoryDef>
-			<defName>Items</defName>
-			<label>tradeables</label>
-			<parent>Manufactured</parent>
-			<iconPath>Ui/Icons/ThingCategories/Medicine</iconPath>
+			<defName>TradeGoods</defName>
+			<label>trade goods</label>
+			<parent>Items</parent>
 		</ThingCategoryDef>
 
 		<ThingCategoryDef>
-			<defName>Furniture</defName>
-			<label>furniture</label>
-			<parent>Manufactured</parent>
+			<defName>Minified</defName>
+			<label>minified things</label>
+			<parent>Items</parent>
 		</ThingCategoryDef>
 
+			<ThingCategoryDef>
+				<defName>MinifiedFurniture</defName>
+				<label>furniture</label>
+				<parent>Minified</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>MinifiedDecorations</defName>
+				<label>decorations</label>
+				<parent>Minified</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>MinifiedDefences</defName>
+				<label>defences</label>
+				<parent>Minified</parent>
+			</ThingCategoryDef>
+
 		<ThingCategoryDef>
-			<defName>Art</defName>
-			<label>decorations</label>
-			<parent>Manufactured</parent>
+		  <defName>UnfinishedGoods</defName>
+		  <label>unfinished goods</label>
+		  <parent>Items</parent>
 		</ThingCategoryDef>
+	
+			<ThingCategoryDef>
+				<defName>ClayProductsUnfired</defName>
+				<label>unfired clay products</label>
+				<parent>UnfinishedGoods</parent>
+			</ThingCategoryDef>
 			
 		<ThingCategoryDef>
 			<defName>BodyPartsAndImplants</defName>
 			<label>body parts</label>
-			<parent>Manufactured</parent>
+			<parent>Items</parent>
 		</ThingCategoryDef>
 		
 	<ThingCategoryDef>
@@ -247,10 +225,10 @@
 				<label>melee weapons</label>
 				<parent>Weapons</parent>
 			</ThingCategoryDef>
-			
+
 				<ThingCategoryDef>
-					<defName>Tools</defName>
-					<label>tools</label>
+					<defName>WeaponsMeleeNeolithic</defName>
+					<label>neolithic melee weapons</label>
 					<parent>WeaponsMelee</parent>
 				</ThingCategoryDef>
 
@@ -261,10 +239,10 @@
 			</ThingCategoryDef>
 
 				<ThingCategoryDef>
-					<defName>Grenades</defName>
-					<label>grenades</label>
+					<defName>WeaponsRangedNeolithic</defName>
+					<label>neolithic ranged weapons</label>
 					<parent>WeaponsRanged</parent>
-				</ThingCategoryDef>		
+				</ThingCategoryDef>	
 
 		<ThingCategoryDef>
 			<defName>Apparel</defName>
@@ -276,6 +254,69 @@
 				<defName>Headgear</defName>
 				<label>headgear</label>
 				<parent>Apparel</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>Clothing</defName>
+				<label>clothing</label>
+				<parent>Apparel</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>Armor</defName>
+				<label>armor</label>
+				<parent>Apparel</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>ApparelVarious</defName>
+				<label>various</label>
+				<parent>Apparel</parent>
+			</ThingCategoryDef>
+		
+	<ThingCategoryDef>
+		<defName>Refuse</defName>
+		<label>refuse</label>
+		<parent>Root</parent>
+	</ThingCategoryDef>
+		
+		<ThingCategoryDef>
+			<defName>Chunks</defName>
+			<label>chunks</label>
+			<parent>Refuse</parent>
+			<resourceReadoutRoot>true</resourceReadoutRoot>
+		</ThingCategoryDef>
+		
+			<ThingCategoryDef>
+				<defName>StoneChunks</defName>
+				<label>stone chunks</label>
+				<parent>Chunks</parent>
+				<resourceReadoutRoot>true</resourceReadoutRoot>
+				<iconPath>Ui/Icons/ThingCategories/StoneChunks</iconPath>
+			</ThingCategoryDef>
+			
+		<ThingCategoryDef>
+			<defName>Corpses</defName>
+			<label>corpses</label>
+			<parent>Refuse</parent>
+		</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>CorpsesHumanlike</defName>
+				<label>humanlike corpses</label>
+				<parent>Corpses</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>CorpsesAnimal</defName>
+				<label>animal corpses</label>
+				<parent>Corpses</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>CorpsesMechanoid</defName>
+				<label>mechanoid corpses</label>
+				<parent>Corpses</parent>
 			</ThingCategoryDef>
 
 </ThingCategoryDefs>

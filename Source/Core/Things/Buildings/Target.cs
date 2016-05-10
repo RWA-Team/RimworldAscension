@@ -12,7 +12,7 @@ namespace RA
         public int interactionCellOffset = 1;
         public static int interactionCellOffset_Transfer;
 
-        public override void FindTrainee()
+        public override void TryAssignTraining()
         {
             foreach (var pawn in allowedPawns)
             {
@@ -150,7 +150,7 @@ namespace RA
             float projectileDamage = weaponDef.Verbs[0].projectileDef?.projectile.damageAmountBase ?? 0;
             var cooldown = weaponDef.GetStatValueAbstract(StatDefOf.RangedWeapon_Cooldown);
             float burstCount = weaponDef.Verbs[0].burstShotCount;
-            var burstShotsInterval = weaponDef.Verbs[0].ticksBetweenBurstShots / GenTicks.TicksPerRealtimeSecond;
+            var burstShotsInterval = weaponDef.Verbs[0].ticksBetweenBurstShots / GenDate.SecondsToTicks(1);
 
             return projectileDamage * burstCount * hitReport.TotalHitChance / (cooldown + (burstCount - 1) * burstShotsInterval);
         }

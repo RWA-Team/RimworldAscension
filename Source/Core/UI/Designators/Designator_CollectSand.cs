@@ -9,7 +9,7 @@ namespace RA
         {
             defaultLabel = "Collect Sand";
             defaultDesc = "Collect sand from sand tiles";
-            designationIconPath = "Missing";
+            icon = RA_Assets.Missing;
 
             designationDef = DefDatabase<DesignationDef>.GetNamed("CollectSand");
             allowedTerrain = new List<TerrainDef>

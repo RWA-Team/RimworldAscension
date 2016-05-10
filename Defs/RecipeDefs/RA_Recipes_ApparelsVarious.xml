@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RecipeDefs>
+
+	<!-- 
+	- workAmount - should never be used (cause not affected by stuff). specify WorkToMake baseStat in product def instead
+	- specialProducts - Butchery\Smelted return from processed thing
+	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
+	- fixedIngredientFilter - determine ingridient set to choose from	
+	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
+	-->
+
+	<!-- ========================= Neolithic =========================-->
+
+	<RecipeDef  ParentName="MakeClothingNeolithic">
+		<defName>MakeBackpack</defName>
+		<label>make backpack</label>
+		<description>Makes a backpack. Can be used to carry additional weapons.</description>
+		<products>
+			<Backpack>1</Backpack>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+	
+	<RecipeDef  ParentName="MakeClothingNeolithic">
+		<defName>MakeToolbelt</defName>
+		<label>make toolbelt</label>
+		<description>Makes a toolbelt. Can be used to carry additional work tools.</description>
+		<products>
+			<Toolbelt>1</Toolbelt>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+</RecipeDefs>

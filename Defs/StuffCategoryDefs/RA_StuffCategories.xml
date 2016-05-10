@@ -47,13 +47,18 @@
 	</StuffCategoryDef>
 
 	<StuffCategoryDef>
-		<defName>StoneBlock</defName>
+		<defName>StoneChunk</defName>
 		<label>stone</label>
 	</StuffCategoryDef>
 
 	<StuffCategoryDef>
-		<defName>StoneChunk</defName>
-		<label>rough stone</label>
-	</StuffCategoryDef>	
+		<defName>StoneCobble</defName>
+		<label>stone</label>
+	</StuffCategoryDef>
+
+	<StuffCategoryDef>
+		<defName>StoneBlock</defName>
+		<label>stone</label>
+	</StuffCategoryDef>
 
 </Defs>

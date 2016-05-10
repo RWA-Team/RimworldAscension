@@ -31,7 +31,7 @@ namespace RA
             Widgets.Label(labelRect, "Pawns allowed to train here:");
             Text.Font = GameFont.Small;
 
-            var pawnsCount = Find.ListerPawns.FreeColonistsSpawnedCount;
+            var pawnsCount = Find.MapPawns.FreeColonistsSpawnedCount;
             var pawnsRowsCount = pawnsCount % 2 == 1 ? pawnsCount / 2 + 1 : pawnsCount / 2;
 
             var tableRect = new Rect(0f, labelRect.height, size.x, size.y - labelRect.height - 3f);
@@ -49,17 +49,17 @@ namespace RA
             var currentX = scrollRect.x + sideMargin;
             var currentY = scrollRect.y;
 
-            foreach (var pawn in Find.ListerPawns.FreeColonistsSpawned)
+            foreach (var pawn in Find.MapPawns.FreeColonistsSpawned)
             {
                 var allowedFlag = false;
 
-                var currentPawn_rect = new Rect(currentX, currentY, (scrollRect.width - sideMargin * 2) / 2, pawnField_height);
+                var currentPawnRect = new Rect(currentX, currentY, (scrollRect.width - sideMargin * 2) / 2, pawnField_height);
 
                 // check if flag should be set already
                 if (dummy.allowedPawns.Contains(pawn))
                     allowedFlag = true;
 
-                Widgets.LabelCheckbox(currentPawn_rect, pawn.LabelCap, ref allowedFlag);
+                Widgets.LabelCheckbox(currentPawnRect, pawn.LabelCap, ref allowedFlag);
 
                 // check if flag set to "true"
                 if (allowedFlag && !dummy.allowedPawns.Contains(pawn))
@@ -75,7 +75,7 @@ namespace RA
                     currentX = scrollRect.x + sideMargin;
                 }
                 else
-                    currentX += currentPawn_rect.width + sideMargin;
+                    currentX += currentPawnRect.width + sideMargin;
             }
             if (scrollRect.height > tableRect.height)
                 Widgets.EndScrollView();

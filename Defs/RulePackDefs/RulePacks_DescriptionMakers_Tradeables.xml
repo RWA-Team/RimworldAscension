@@ -4,7 +4,7 @@
 	<RulePackDef>
 		<defName>ArtFigurine</defName>
 		<include>	
-			<li>ArtUtility</li>
+			<li>ArtNameUtility</li>
 		</include>
 		<rulePack>
 			<rulesStrings>

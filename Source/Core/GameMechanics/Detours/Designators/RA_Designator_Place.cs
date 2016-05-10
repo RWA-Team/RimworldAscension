@@ -32,7 +32,11 @@ namespace RA
                 {
                     if (PlacingDef.defName.Contains("TradingPost"))
                     {
-                        GenDraw.DrawFieldEdges(Building_TradingPost.TradeableCells(Gen.MouseCell(), (int)PlacingDef.specialDisplayRadius + 1).ToList());
+                        GenDraw.DrawFieldEdges(
+                            FindUtil.SquareAreaAround(Gen.MouseCell(),
+                                (int) PlacingDef.specialDisplayRadius +
+                                Mathf.Max(PlacingDef.Size.x, PlacingDef.Size.z)/2)
+                                .Where(cell => cell.Walkable() && cell.InBounds()).ToList());
                     }
                     else
                         GenDraw.DrawRadiusRing(Gen.MouseCell(), PlacingDef.specialDisplayRadius);

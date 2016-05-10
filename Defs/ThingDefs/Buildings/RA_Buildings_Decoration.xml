@@ -2,38 +2,62 @@
 <ThingDefs>
 
 	<!-- 
-	Building_Art class - adds beauty value stat to inpection string
-	Building_Art_Shadowed class - allows casting of fading shadows from stuffed things
-	terrainAffordanceNeeded - type of terrain required to be build upon (no difference in Light/Heavy in the game so far)
-	fillPercent - determne cover multiplier vs projectiles
+	- fillPercent - determne cover multiplier vs projectiles
+	- castEdgeShadows - shadow aura around building
+	- staticSunShadowHeight - solid square shadow with set length
+	- drawerType:
+		- MapMeshOnly - doesn't draw from comps
+		- MapMeshAndRealTime - doesn't draw from comps
+		- RealTimeOnly - used for objects that change their texture (unsure)
+	- surfaceType:
+		- Item - allows place items
+		- Eat - allows place food to eat
+	- Building_Art class - adds beauty value stat to inpection string
+	- Building_Art_Shadowed class - allows casting of fading shadows from stuffed things
+	- terrainAffordanceNeeded - type of terrain required to be build upon (no difference in Light/Heavy in the game so far)
 	 -->
+	 
+	<!--==================== Base Abstracts ========================-->
 
-	<ThingDef Name="Decoration" Abstract="True">
-		<thingClass>Building_Art</thingClass>
+	<ThingDef Name="Building" Abstract="True">
+		<thingClass>Building</thingClass>
 		<category>Building</category>
 		<selectable>true</selectable>
-		<altitudeLayer>Waist</altitudeLayer>
-		<rotatable>false</rotatable>
-		<fillPercent>1</fillPercent>
-		<passability>PassThroughOnly</passability>
-		<useHitPoints>true</useHitPoints>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<repairEffect>Repair</repairEffect>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
+		<passability>PassThroughOnly</passability>
+		<useHitPoints>true</useHitPoints>
 		<statBases>
 			<Flammability>1.0</Flammability>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>100</WorkToMake>
+			<MarketValue>1</MarketValue>
 		</statBases>
+	</ThingDef>
+	
+
+	<ThingDef Name="Minified" ParentName="Item" Abstract="True">
+		<thingClass>MinifiedThing</thingClass>
+	</ThingDef>	
+	
+	<!--==================== Decorations ========================-->
+	
+	<ThingDef Name="Decoration" ParentName="Building" Abstract="True">
+		<thingClass>Building_Art</thingClass>
+		<altitudeLayer>BuildingTall</altitudeLayer>
+		<rotatable>false</rotatable>
+		<fillPercent>1</fillPercent>
 		<comps>
 			<li>
 				<compClass>CompQuality</compClass>
 			</li>
-			<li>
-				<compClass>CompArt</compClass>
-				<nameMaker>NamerSculpture</nameMaker>
-				<descriptionMaker>ArtSculpture</descriptionMaker>
-			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>ArtName_Sculpture</nameMaker>
+				<descriptionMaker>ArtDescription_Sculpture</descriptionMaker>
+			</li> 
 			<li>
 				<compClass>RA.CompFadingShadowThrower</compClass>
 			</li>
@@ -42,11 +66,14 @@
 			<li>ITab_Art</li>
 		</inspectorTabs>
 		<DesignationCategory>Furniture</DesignationCategory>
-		<researchPrerequisite>Blocked</researchPrerequisite>
 	</ThingDef>
-
-
-	<!--===================== Neolithic =====================-->
+	
+	
+	<ThingDef Name="MinifiedDecoration" ParentName="Minified" Abstract="True">
+		<thingCategories>
+			<li>MinifiedDecorations</li>
+		</thingCategories>
+	</ThingDef>
 
 
 	<ThingDef ParentName="Decoration">
@@ -74,10 +101,16 @@
 		</costList>
 		<stuffCategories>
 			<li>Wood</li>
-			<li>Stone</li>
 		</stuffCategories>
-		<minifiedDef>MinifiedSculpture</minifiedDef>
+		<minifiedDef>MinifiedTotem</minifiedDef>
+		<researchPrerequisites>
+			<li>Blocked</li>
+		</researchPrerequisites>
 	</ThingDef>
 
+	<ThingDef ParentName="MinifiedDecoration">
+		<defName>MinifiedTotem</defName>
+		<label>totem</label>
+	</ThingDef>
 
 </ThingDefs>

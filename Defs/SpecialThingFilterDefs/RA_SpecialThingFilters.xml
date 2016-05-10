@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SpecialThingFilters>
+
+	<SpecialThingFilterDef>
+		<defName>AllowTools</defName>
+		<label>allow tools</label>
+		<description>Allow weapons which can be used for work.</description>
+		<parentCategory>WeaponsMelee</parentCategory>
+		<allowedByDefault>True</allowedByDefault>
+		<workerClass>RA.SpecialThingFilterWorker_Tools</workerClass>
+	</SpecialThingFilterDef>
+
+</SpecialThingFilters>

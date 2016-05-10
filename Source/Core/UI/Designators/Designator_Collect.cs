@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
-using UnityEngine;
 using Verse;
 
 namespace RA
@@ -9,7 +8,6 @@ namespace RA
     {
         public DesignationDef designationDef;
         public List<TerrainDef> allowedTerrain;
-        public string designationIconPath;
 
         // allows rectangular selection
         public override int DraggableDimensions => 2;
@@ -18,8 +16,6 @@ namespace RA
 
         public Designator_Collect()
         {
-            icon = ContentFinder<Texture2D>.Get(designationIconPath);
-
             soundDragSustain = SoundDefOf.DesignateDragStandard;
             soundDragChanged = SoundDefOf.DesignateDragStandardChanged;
             soundSucceeded = SoundDefOf.DesignateHarvest;

@@ -14,20 +14,19 @@ namespace RA
 
         private const float TitleShift = 15f;
 
-        //// required for drawing animation
-        //public static readonly List<Texture2D> FramesList = ContentFinder<Texture2D>.GetAllInFolder("UI/MainMenu/Animation").ToList();
-        //public static int currentFrame = 0;
-        //public static int ticksCounter = 0;
-
         private static readonly Texture2D IconBlog = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Blog");
         private static readonly Texture2D IconForums = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Forums");
         private static readonly Texture2D IconTwitter = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Twitter");
         private static readonly Texture2D IconBook = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Book");
         private static readonly Vector2 PaneSize = new Vector2(450f, 450f);
-        private static readonly Texture2D TexTitle = ContentFinder<Texture2D>.Get("UI/MainMenu/GameTitle");
         private static readonly Vector2 TitleSize = new Vector2(1024f, 200f);
         private static readonly Texture2D TexLudeonLogo = ContentFinder<Texture2D>.Get("UI/HeroArt/LudeonLogoSmall");
         private static readonly Vector2 LudeonLogoSize = new Vector2(200f, 58f);
+
+        //// required for drawing animation
+        //public static readonly List<Texture2D> FramesList = ContentFinder<Texture2D>.GetAllInFolder("UI/MainMenu/Animation").ToList();
+        //public static int currentFrame = 0;
+        //public static int ticksCounter = 0;
 
         //public static void DrawAnimation(Rect rect, int ticksPerFrame)
         //{
@@ -70,7 +69,7 @@ namespace RA
             // game title
             var titleRect = new Rect((Screen.width - adjust.x) / 2f + TitleShift, initialRect.y - adjust.y + TitleShift, adjust.x, adjust.y);
             //titleRect.x = Screen.width - adjust.x - 50f;
-            GUI.DrawTexture(titleRect, TexTitle, ScaleMode.StretchToFill, true);
+            GUI.DrawTexture(titleRect, RA_Assets.MainMenuTitle, ScaleMode.StretchToFill, true);
 
             // tribute to tynan under the main game title
             var creditRect = titleRect;
@@ -137,23 +136,24 @@ namespace RA
             list.Add(item);
             item = new ListableOption_WebLink("HelpTranslate".Translate(), "http://ludeon.com/forums/index.php?topic=2933.0", IconForums);
             list.Add(item);
-            var num = OptionListingUtility.DrawOptionListing(rect, list);
-            GUI.BeginGroup(rect);
-            if (Game.Mode == GameMode.Entry && Widgets.ImageButton(new Rect(0f, num + 10f, 64f, 32f), LanguageDatabase.activeLanguage.icon))
-            {
-                var list3 = new List<FloatMenuOption>();
-                foreach (var current in LanguageDatabase.AllLoadedLanguages)
-                {
-                    var localLang = current;
-                    list3.Add(new FloatMenuOption(localLang.FriendlyNameNative, delegate
-                    {
-                        LanguageDatabase.SelectLanguage(localLang);
-                        Prefs.Save();
-                    }));
-                }
-                Find.WindowStack.Add(new FloatMenu(list3));
-            }
-            GUI.EndGroup();
+            OptionListingUtility.DrawOptionListing(rect, list);
+            // TODO: check how to fix english lang BadText
+            //GUI.BeginGroup(rect);
+            //if (Game.Mode == GameMode.Entry && Widgets.ImageButton(new Rect(0f, num + 10f, 64f, 32f), LanguageDatabase.activeLanguage.icon))
+            //{
+            //    var list3 = new List<FloatMenuOption>();
+            //    foreach (var current in LanguageDatabase.AllLoadedLanguages)
+            //    {
+            //        var localLang = current;
+            //        list3.Add(new FloatMenuOption(localLang.FriendlyNameNative, delegate
+            //        {
+            //            LanguageDatabase.SelectLanguage(localLang);
+            //            Prefs.Save();
+            //        }));
+            //    }
+            //    Find.WindowStack.Add(new FloatMenu(list3));
+            //}
+            //GUI.EndGroup();
         }
 
         public static void DoMainMenuButtons(Rect rect, bool anyWorldFiles, bool anyMapFiles, Action backToGameButtonAction = null)
@@ -168,7 +168,8 @@ namespace RA
                     item = new ListableOption("Quick Start", delegate
                     {
                         Application.LoadLevel("Gameplay");
-                        Find.RootRoot.Start();
+
+                        Find.RootRoot.Init();
                     });
                     list.Add(item);
                 }

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingCategoryDefs>
+
+	<!-- those categories are hidden -->
+
+	<ThingCategoryDef>
+		<defName>Foods</defName>
+		<label>foods</label>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>FoodMeals</defName>
+		<label>meals</label>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>MeatRaw</defName>
+		<label>meat</label>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>PlantFoodRaw</defName>
+		<label>vegetarian</label>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>Manufactured</defName>
+		<label>manufactured</label>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>Textiles</defName>
+		<label>textiles</label>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>Medicine</defName>
+		<label>medicine</label>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>Art</defName>
+		<label>art</label>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>Grenades</defName>
+		<label>grenades</label>
+	</ThingCategoryDef>
+
+</ThingCategoryDefs>

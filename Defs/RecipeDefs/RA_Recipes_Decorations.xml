@@ -7,10 +7,10 @@
 	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
 	- fixedIngredientFilter - determine ingridient set to choose from	
 	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
-	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complex recipes. Changed to allowed ones via reseach mods.
 	-->
 
-	<RecipeDef Name="Decoration" Abstract="True">
+	<RecipeDef Name="MakeDecoration" Abstract="True">
 		<workSkill>Crafting</workSkill>
 		<workSkillLearnFactor>0.1</workSkillLearnFactor>
 		<effectWorking>Sculpt</effectWorking>
@@ -18,11 +18,9 @@
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</RecipeDef>
 
-
 	<!--===================== Neolithic =====================-->
 
-
-	<RecipeDef ParentName="Decoration">
+	<RecipeDef ParentName="MakeDecoration">
 		<defName>MakeTotem</defName>
 		<label>make totem</label>
 		<description>Make totem.</description>
@@ -30,11 +28,17 @@
 		<workSpeedStat>CarvingSpeed</workSpeedStat>
 		<fixedIngredientFilter>
 			<exceptedCategories>
-				<li>StoneBlocks</li>
+				<li>StoneCobbles</li>
 			</exceptedCategories>
 			<exceptedThingDefs>
 				<li>WoodLog</li>
 			</exceptedThingDefs>
+			<categories>
+				<li>StoneCobbles</li>
+			</categories>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
 			<Totem>1</Totem>
@@ -43,7 +47,7 @@
 			<li>
 				<filter>
 					<categories>
-						<li>StoneBlocks</li>
+						<li>StoneCobbles</li>
 					</categories>
 					<thingDefs>
 						<li>WoodLog</li>
