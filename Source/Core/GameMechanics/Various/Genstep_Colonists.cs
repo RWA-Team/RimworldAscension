@@ -17,7 +17,6 @@ namespace RA
             foreach (var colonist in MapInitData.colonists)
             {
                 colonist.SetFactionDirect(Faction.OfColony);
-<<<<<<< HEAD:Source/Core/GameMechanics/Various/Genstep_Colonists.cs
                 PawnComponentsUtility.AddAndRemoveDynamicComponents(colonist);
                 colonist.needs.mood.thoughts.TryGainThought(ThoughtDefOf.NewColonyOptimism);
                 foreach (var pawn in MapInitData.colonists)
@@ -29,10 +28,6 @@ namespace RA
                         colonist.needs.mood.thoughts.TryGainThought(thought_SocialMemory);
                     }
                 }
-=======
-                PawnUtility.AddAndRemoveComponentsAsAppropriate(colonist);
-                colonist.needs.mood.thoughts.TryGainThought(ThoughtDefOf.NewColonyOptimism);
->>>>>>> origin/Wivex-branch:Source/Core/GameMechanics/Genstep_Colonists.cs
                 // damage colonists due to falling in ship wreck
                 ApplyMinorInjuries(colonist);
             }
@@ -155,11 +150,7 @@ namespace RA
         public static void ApplyMinorInjuries(Pawn pawn)
         {
             var hediffSet = pawn.health.hediffSet;
-<<<<<<< HEAD:Source/Core/GameMechanics/Various/Genstep_Colonists.cs
             for (var i = 0; i < 5; i++)
-=======
-            for (int i = 0; i < 5; i++)
->>>>>>> origin/Wivex-branch:Source/Core/GameMechanics/Genstep_Colonists.cs
             {
                 var bodyPartRecord = HittablePartsViolence(hediffSet).RandomElementByWeight(x => x.absoluteFleshCoverage);
                 var amount = Rand.RangeInclusive(1, 5);

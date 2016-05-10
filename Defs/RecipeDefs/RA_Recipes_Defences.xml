@@ -31,11 +31,7 @@
 				<li>Bone</li>
 			</exceptedThingDefs>
 			<categories>
-<<<<<<< HEAD:Defs/RecipeDefs/RA_Recipes_Defences.xml
 				<li>StoneCobbles</li>
-=======
-				<li>StoneBlocks</li>
->>>>>>> origin/Wivex-branch:Defs/RecipeDefs/RA_Recipes_Defence.xml
 			</categories>
 			<thingDefs>
 				<li>WoodLog</li>

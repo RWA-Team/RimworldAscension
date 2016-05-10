@@ -7,24 +7,7 @@
 	- singleBillGiverDef - determine the building which uses this workgiver (required)
 	-->
 
-<<<<<<< HEAD
 	<!--=================== Hauling =====================-->
-=======
-	<WorkGiverDef>
-		<defName>Research</defName>
-		<giverClass>RA.WorkGiver_DoBill_Research</giverClass>
-		<workType>Research</workType>
-		<verb>research</verb>
-		<gerund>researching at</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>	
-
-
-	<!--=================== Hauling =====================-->
-
->>>>>>> origin/Wivex-branch
 
 	<WorkGiverDef>
 		<defName>HaulToTrade</defName>
@@ -60,35 +43,6 @@
 		<priorityInType>100</priorityInType>
 		<verb>collect</verb>
 		<gerund>collecting</gerund>
-<<<<<<< HEAD
-=======
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>
-
-	<WorkGiverDef>
-		<defName>CollectSand</defName>
-		<giverClass>RA.WorkGiver_CollectSand</giverClass>
-		<workType>Hauling</workType>
-		<scanThings>false</scanThings>
-		<scanCells>true</scanCells>
-		<priorityInType>100</priorityInType>
-		<verb>collect</verb>
-		<gerund>collecting</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>
-
-	<WorkGiverDef>
-		<defName>HaulGeneral</defName>
-		<giverClass>RA.WorkGiver_HaulGeneral</giverClass>
-		<workType>Hauling</workType>
-		<verb>haul</verb>
-		<gerund>hauling</gerund>
-		<priorityInType>10</priorityInType>
->>>>>>> origin/Wivex-branch
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>

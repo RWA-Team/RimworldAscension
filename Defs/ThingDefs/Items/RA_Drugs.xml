@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-<<<<<<< HEAD
 	<!-- 
 	- ingestible
 		- joy - joy per uit consumed
@@ -25,43 +24,6 @@
 		<thingCategories>
 			<li>Drugs</li>
 		</thingCategories>
-=======
-	<ThingDef Name="Drug" Abstract="True">
-		<thingClass>Meal</thingClass>
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<stackLimit>10</stackLimit>
-		<category>Item</category>
-		<socialPropernessMatters>true</socialPropernessMatters>
-		<resourceReadoutPriority>First</resourceReadoutPriority>
-		<useHitPoints>true</useHitPoints>
-		<selectable>true</selectable>
-		<altitudeLayer>Item</altitudeLayer>
-		<statBases>
-			<MaxHitPoints>50</MaxHitPoints>
-			<Flammability>1.0</Flammability>
-		</statBases>
-		<ingestible>
-			<preferability>NeverForNutrition</preferability>
-			<joyKind>Chemical</joyKind>
-			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
-			<soundEat>Ingest_Beer</soundEat>
-			<isPleasureDrug>true</isPleasureDrug>
-		</ingestible>
-		<thingCategories>
-			<li>Drugs</li>
-		</thingCategories>
-		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
-		</comps>
-		<alwaysHaulable>true</alwaysHaulable>
-		<drawGUIOverlay>true</drawGUIOverlay>
-		<rotatable>false</rotatable>
-		<pathCost>15</pathCost>
->>>>>>> origin/Wivex-branch
 	</ThingDef>
 
 
@@ -78,12 +40,7 @@
 			<DeteriorationRate>0</DeteriorationRate>
 			<MarketValue>9</MarketValue>
 		</statBases>
-<<<<<<< HEAD
 <!-- 		<ingestible>
-=======
-		<ingestible>
-			<preferability>NeverForNutrition</preferability>
->>>>>>> origin/Wivex-branch
 			<nutrition>0.08</nutrition>
 			<joy>0.17</joy>
 			<joyKind>Chemical</joyKind>
@@ -93,17 +50,10 @@
 			<hediffGivers>
 				<li>
 					<chance>1</chance>
-<<<<<<< HEAD
 					<hediffDef>IntoxicationBeer</hediffDef>
 				</li>
 			</hediffGivers>
 		</ingestible> -->
-=======
-					<hediffDef>Alcohol</hediffDef>
-				</li>
-			</hediffGivers>
-		</ingestible>
->>>>>>> origin/Wivex-branch
 	</ThingDef>
 
 </Defs>

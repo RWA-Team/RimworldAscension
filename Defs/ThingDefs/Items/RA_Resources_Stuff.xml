@@ -58,9 +58,7 @@
 		</stuffProps>
 	</ThingDef>
 
-
 	<!--===================== Wood =====================-->
-
 
 	<ThingDef Name="ResourceWood" ParentName="ResourceOrganic" Abstract="True">
 		<soundInteract>Wood_Drop</soundInteract>
@@ -94,7 +92,7 @@
 			</statFactors>
 		</stuffProps>
 	</ThingDef>
-
+	
 
 	<ThingDef ParentName="ResourceWood">
 		<defName>WoodLog</defName>
@@ -122,9 +120,7 @@
 		</techHediffsTags>
 	</ThingDef>
 
-
 	<!--===================== Stone =====================-->
-
 
 	<ThingDef Name="ResourceStone" ParentName="Resource" Abstract="True">
 		<statBases>
@@ -256,12 +252,7 @@
 		<label>stone cobbles</label>
 		<description>Various sized stone cobbles.</description>
 		<graphicData>
-<<<<<<< HEAD
 			<texPath>Things/Items/Resources/StoneCobbles</texPath>
-=======
-			<texPath>Things/Items/Resources/StoneCobble</texPath>
-			<!-- <texPath>Things/Item/Resource/StoneBlocks</texPath> -->
->>>>>>> origin/Wivex-branch
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<thingCategories>
@@ -302,9 +293,7 @@
 		</stuffProps>
 	</ThingDef>
 
-
 	<!--===================== Fabric ====================-->
-
 
 	<!-- 	<ThingDef ParentName="Resource">
 		<defName>Linen</defName>

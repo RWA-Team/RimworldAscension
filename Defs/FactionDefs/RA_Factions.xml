@@ -26,20 +26,12 @@
 		</hairTags>
 		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
 		<homeIconColor>(255,220,84)</homeIconColor>
-	</FactionDef>	
-<<<<<<< HEAD
-
-
-	<!-- ========================= Neolithic =========================-->
-
-
-=======
+	</FactionDef>
 	
 	
 	<!-- ========================= Neolithic =========================-->
 	
 
->>>>>>> origin/Wivex-branch
 	<FactionDef Name="Faction" Abstract="True">
 		<canMakeRandomly>true</canMakeRandomly>
 		<raidCommonality>100</raidCommonality>
@@ -55,15 +47,8 @@
 		</naturalColonyGoodwill>
 		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
 		<homeIconColor>(50,200,50)</homeIconColor>
-<<<<<<< HEAD
 		<!-- <hidden>true</hidden> -->
 	</FactionDef>
-
-=======
-		<hidden>true</hidden>
-	</FactionDef>
-	
->>>>>>> origin/Wivex-branch
 
 	<FactionDef Name="FactionNeolithic" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
@@ -75,11 +60,7 @@
 			<li>Tribal</li>
 		</hairTags>
 	</FactionDef>
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> origin/Wivex-branch
 
 	<FactionDef ParentName="FactionNeolithic">
 		<defName>Tribe</defName>
@@ -92,12 +73,9 @@
 				<li>Muffalo_Leather</li>
 			</thingDefs>
 		</apparelStuffFilter>
-<<<<<<< HEAD
 		<caravanTraderKinds>
 			<li>Caravan_Neolithic</li>
 		</caravanTraderKinds>
-=======
->>>>>>> origin/Wivex-branch
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
@@ -164,11 +142,7 @@
 			</thingDefs>
 		</apparelStuffFilter>
 		<pawnGroupMakers>
-<<<<<<< HEAD
 			<li Class="PawnGroupMaker_Normal">
-=======
-			<li>
->>>>>>> origin/Wivex-branch
 				<options>
 					<li>
 						<selectionWeight>150</selectionWeight>

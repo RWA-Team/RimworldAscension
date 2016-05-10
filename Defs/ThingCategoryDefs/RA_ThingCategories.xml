@@ -141,29 +141,9 @@
 		</ThingCategoryDef>
 		
 			<ThingCategoryDef>
-<<<<<<< HEAD
 				<defName>StoneCobbles</defName>
 				<label>stone cobbles</label>
 				<parent>ResourcesProcessed</parent>
-=======
-				<defName>Clay</defName>
-				<label>clay</label>
-				<parent>ResourcesRaw</parent>
-				<resourceReadoutRoot>true</resourceReadoutRoot>
-			</ThingCategoryDef>
-		
-			<ThingCategoryDef>
-				<defName>ResourcesRawClay</defName>
-				<label>raw clay products</label>
-				<parent>ResourcesRaw</parent>
-				<resourceReadoutRoot>true</resourceReadoutRoot>
-			</ThingCategoryDef>
-
-			<ThingCategoryDef>
-			  <defName>Unfinished</defName>
-			  <label>unfinished</label>
-			  <parent>ResourcesRaw</parent>
->>>>>>> origin/Wivex-branch
 			</ThingCategoryDef>
 		
 			<ThingCategoryDef>
@@ -245,15 +225,12 @@
 				<label>melee weapons</label>
 				<parent>Weapons</parent>
 			</ThingCategoryDef>
-<<<<<<< HEAD
 
 				<ThingCategoryDef>
 					<defName>WeaponsMeleeNeolithic</defName>
 					<label>neolithic melee weapons</label>
 					<parent>WeaponsMelee</parent>
 				</ThingCategoryDef>
-=======
->>>>>>> origin/Wivex-branch
 
 			<ThingCategoryDef>
 				<defName>WeaponsRanged</defName>
@@ -280,22 +257,18 @@
 			</ThingCategoryDef>
 
 			<ThingCategoryDef>
-<<<<<<< HEAD
 				<defName>Clothing</defName>
 				<label>clothing</label>
 				<parent>Apparel</parent>
 			</ThingCategoryDef>
 
 			<ThingCategoryDef>
-=======
->>>>>>> origin/Wivex-branch
 				<defName>Armor</defName>
 				<label>armor</label>
 				<parent>Apparel</parent>
 			</ThingCategoryDef>
 
 			<ThingCategoryDef>
-<<<<<<< HEAD
 				<defName>ApparelVarious</defName>
 				<label>various</label>
 				<parent>Apparel</parent>
@@ -344,17 +317,6 @@
 				<defName>CorpsesMechanoid</defName>
 				<label>mechanoid corpses</label>
 				<parent>Corpses</parent>
-=======
-				<defName>Clothing</defName>
-				<label>clothing</label>
-				<parent>Apparel</parent>
-			</ThingCategoryDef>
-
-			<ThingCategoryDef>
-				<defName>Various</defName>
-				<label>various</label>
-				<parent>Apparel</parent>
->>>>>>> origin/Wivex-branch
 			</ThingCategoryDef>
 
 </ThingCategoryDefs>

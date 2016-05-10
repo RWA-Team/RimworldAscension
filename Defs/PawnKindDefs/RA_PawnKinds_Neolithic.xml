@@ -10,11 +10,7 @@
 	- defaultFactionType- used as precaution or debug tool if faction is not set
 	 -->
 
-<<<<<<< HEAD:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 	<PawnKindDef Name="PawnNeolithic" Abstract="True">
-=======
-	<PawnKindDef Name="Neolithic" Abstract="True">
->>>>>>> origin/Wivex-branch:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 		<race>Human</race>
 		<backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
 		<backstoryCategory>Tribal</backstoryCategory>
@@ -34,17 +30,9 @@
 		</apparelTags>
 	</PawnKindDef>
 
-<<<<<<< HEAD:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 	<!-- ========================= Tribals =========================-->	
 	
 	<PawnKindDef ParentName="PawnNeolithic">
-=======
-
-	<!-- ========================= Tribals =========================-->
-	
-	
-	<PawnKindDef ParentName="Neolithic">
->>>>>>> origin/Wivex-branch:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 		<defName>TribalMessenger</defName>
 		<label>messenger</label>
 		<combatPower>10</combatPower>
@@ -55,11 +43,7 @@
 		</apparelRequired>
 	</PawnKindDef>
 
-<<<<<<< HEAD:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 	<PawnKindDef ParentName="PawnNeolithic">
-=======
-	<PawnKindDef ParentName="Neolithic">
->>>>>>> origin/Wivex-branch:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 		<defName>TribalMerchant</defName>
 		<label>merchant</label>
 		<combatPower>10</combatPower>
@@ -70,11 +54,7 @@
 		</apparelRequired>
 	</PawnKindDef>
 
-<<<<<<< HEAD:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 	<PawnKindDef ParentName="PawnNeolithic">
-=======
-	<PawnKindDef ParentName="Neolithic">
->>>>>>> origin/Wivex-branch:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 		<defName>TribalScout</defName>
 		<label>scout</label>
 		<combatPower>40</combatPower>
@@ -89,11 +69,7 @@
 		</weaponTags>
 	</PawnKindDef>
 
-<<<<<<< HEAD:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 	<PawnKindDef ParentName="PawnNeolithic">
-=======
-	<PawnKindDef ParentName="Neolithic">
->>>>>>> origin/Wivex-branch:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 		<defName>TribalWarrior</defName>
 		<label>warrior</label>
 		<combatPower>100</combatPower>
@@ -113,11 +89,7 @@
 		</weaponTags>
 	</PawnKindDef>
 
-<<<<<<< HEAD:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 	<PawnKindDef ParentName="PawnNeolithic">
-=======
-	<PawnKindDef ParentName="Neolithic">
->>>>>>> origin/Wivex-branch:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 		<defName>TribalHunter</defName>
 		<label>hunter</label>
 		<combatPower>130</combatPower>
@@ -134,11 +106,7 @@
 		</weaponTags>
 	</PawnKindDef>
 
-<<<<<<< HEAD:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 	<PawnKindDef ParentName="PawnNeolithic">
-=======
-	<PawnKindDef ParentName="Neolithic">
->>>>>>> origin/Wivex-branch:Defs/PawnKindDefs/RA_PawnKinds_Neolithic.xml
 		<defName>TribalWarchief</defName>
 		<label>warchief</label>
 		<combatPower>250</combatPower>
@@ -227,8 +195,7 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<!-- ========================= Ferals =========================-->
-	
+	<!-- ========================= Ferals =========================-->	
 
 	<PawnKindDef ParentName="Neolithic">
 		<defName>FeralWarrior</defName>

@@ -8,12 +8,8 @@
 	 -->
 	 
 	<!--==================== Base Abstracts ========================-->
-
-<<<<<<< HEAD
+	
 	<ThingDef Name="Apparel" ParentName="Item" Abstract="True">
-=======
-	<ThingDef Name="Armor" Abstract="True">
->>>>>>> origin/Wivex-branch
 		<thingClass>Apparel</thingClass>
 		<graphicData>
 			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
@@ -24,24 +20,15 @@
 			<DeteriorationRate>0.5</DeteriorationRate>
 			<SellPriceFactor>0.1</SellPriceFactor>
 		</statBases>
-<<<<<<< HEAD
-=======
 		<altitudeLayer>Item</altitudeLayer>
 		<alwaysHaulable>True</alwaysHaulable>
 		<tickerType>Never</tickerType>
 		<thingCategories>
 			<li>Armor</li>
 		</thingCategories>
->>>>>>> origin/Wivex-branch
-		<comps>
-			<li>
-				<compClass>CompQuality</compClass>
-			</li>
-		</comps>
-<<<<<<< HEAD
 	</ThingDef>	
 	
-	<!--==================== Armor ========================-->	
+	<!--==================== Armor ====================-->	
 
 	<ThingDef Name="Armor" ParentName="Apparel" Abstract="True">
 		<thingCategories>
@@ -49,13 +36,7 @@
 		</thingCategories>
 	</ThingDef>
 
-=======
-	</ThingDef>
-
->>>>>>> origin/Wivex-branch
-
-	<!-- ========================= Head =========================-->
-
+	<!--==================== Head ====================-->
 
 	<ThingDef Name="ArmorHead" ParentName="Armor" Abstract="True">
 		<thingCategories>
@@ -87,11 +68,7 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
-<<<<<<< HEAD
 			<worngraphicPath>Things/Items/Apparels/Armor/ArmorBone/HeadBone</worngraphicPath>
-=======
-			<worngraphicPath>Things/Items/Apparels/Armor/ArmorBone//HeadBone</worngraphicPath>
->>>>>>> origin/Wivex-branch
 			<tags>
 				<li>ArmorBone</li>
 			</tags>

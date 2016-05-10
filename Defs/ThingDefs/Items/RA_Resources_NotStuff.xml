@@ -16,46 +16,6 @@
 		Blunt\SharpDamageMultiplier
 	-->
 
-<<<<<<< HEAD:Defs/ThingDefs/Items/RA_Resources_NotStuff.xml
-=======
-	<ThingDef Name="Resource" Abstract="True">
-		<thingClass>ThingWithComps</thingClass>
-		<category>Item</category>
-		<resourceReadoutPriority>Middle</resourceReadoutPriority>
-		<useHitPoints>true</useHitPoints>
-		<selectable>true</selectable>
-		<altitudeLayer>Item</altitudeLayer>
-		<stackLimit>75</stackLimit>
-		<alwaysHaulable>true</alwaysHaulable>
-		<drawGUIOverlay>true</drawGUIOverlay>
-		<rotatable>false</rotatable>
-		<pathCost>15</pathCost>
-		<statBases>
-			<Flammability>1</Flammability>
-		</statBases>
-		<soundInteract>Standard_Drop</soundInteract>
-		<soundDrop>Standard_Drop</soundDrop>
-		<comps>
-			<li>
-				<compClass>CompForbiddable</compClass>
-			</li>
-		</comps>
-	</ThingDef>
-
-
-	<ThingDef Name="ResourceOrganic" ParentName="Resource" Abstract="True" >
-		<socialPropernessMatters>true</socialPropernessMatters>
-		<statBases>
-			<DeteriorationRate>5</DeteriorationRate>
-		</statBases>
-		<tickerType>Rare</tickerType>
-	</ThingDef>
-
-
-	<!--=================== Plant Resources ===================-->
-
-
->>>>>>> origin/Wivex-branch:Defs/ThingDefs/Items/RA_Resources.xml
 	<ThingDef ParentName="ResourceOrganic">
 		<defName>BarkFibre</defName>
 		<label>bark fibre</label>
@@ -78,11 +38,7 @@
 		<description>This plant was selectively bred for centuries by settlers. It is sometimes also called &quot;healer's hand&quot; by tribespeople - a nickname it owes to its five major medicinal virtues.</description>
 		<thingClass>Medicine</thingClass>
 		<graphicData>
-<<<<<<< HEAD:Defs/ThingDefs/Items/RA_Resources_NotStuff.xml
 			<texPath>Things/Plant/Healroot</texPath>
-=======
-			<texPath>Things/Plant/Xerigium</texPath>
->>>>>>> origin/Wivex-branch:Defs/ThingDefs/Items/RA_Resources.xml
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<statBases>
@@ -266,9 +222,7 @@
 		</comps>
 	</ThingDef> -->
 
-
 	<!--========================= Clay =========================-->
-
 
 	<ThingDef Name="ResourceClay" ParentName="Resource" Abstract="True">
 		<statBases>
@@ -282,33 +236,7 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 	</ThingDef>
-<<<<<<< HEAD:Defs/ThingDefs/Items/RA_Resources_NotStuff.xml
-=======
-
-
-	<ThingDef ParentName="ResourceClay">
-		<defName>ClumpClayGray</defName>
-		<label>gray clay clumps</label>
-		<description>Clumps of gray clay.</description>
-		<graphicData>
-			<color>(127,51,0)</color>
-		</graphicData>
-		<tradeability>Never</tradeability>
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceClay">
-		<defName>ClumpClayWhite</defName>
-		<label>white clay clumps</label>
-		<description>Clumps of white clay.</description>
-		<graphicData>
-			<color>(52,124,98)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>20</MarketValue>
-		</statBases>
-	</ThingDef>
->>>>>>> origin/Wivex-branch:Defs/ThingDefs/Items/RA_Resources.xml
-
+	
 	<!-- Clay Blocks -->
 
 	<ThingDef ParentName="ResourceClay">

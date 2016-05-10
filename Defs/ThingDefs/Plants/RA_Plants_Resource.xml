@@ -5,46 +5,7 @@
 	- sowTags - determines where this plant can be grown
 	- harvestTag - determine what designator allows harvesting
 	-->
-
-<<<<<<< HEAD
-=======
-	<ThingDef Name="Plant" Abstract="True">
-		<category>Plant</category>
-		<thingClass>Plant</thingClass>
-		<altitudeLayer>LowPlant</altitudeLayer>
-		<useHitPoints>True</useHitPoints>
-		<statBases>
-			<Flammability>0.8</Flammability>
-			<Beauty>1</Beauty>
-		</statBases>
-		<tickerType>Long</tickerType>
-		<selectable>true</selectable>
-		<neverMultiSelect>True</neverMultiSelect>
-		<drawerType>MapMeshOnly</drawerType>
-		<graphicData>
-			<graphicClass>Graphic_Random</graphicClass>
-			<shaderType>CutoutPlant</shaderType>
-		</graphicData>
-		<pathCost>10</pathCost>
-		<ingestible>
-			<preferability>Plant</preferability>
-		</ingestible>
-		<plant>
-			<soundHarvesting>Harvest_Standard</soundHarvesting>
-			<soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
-			<sowWork>150</sowWork>
-			<fertilityMin>0.5</fertilityMin>
-			<fertilityFactorGrowthRate>1.0</fertilityFactorGrowthRate>
-			<topWindExposure>0.1</topWindExposure>
-			<visualSizeRange>
-				<min>0.3</min>
-				<max>1.00</max>
-			</visualSizeRange>
-		</plant>
-	</ThingDef>
-
-
->>>>>>> origin/Wivex-branch
+	
 	<ThingDef ParentName="Plant">
 		<defName>PlantBush</defName>
 		<label>bush</label>
@@ -66,11 +27,7 @@
 		<plant>
 			<leaflessGraphicPath>Things/Plant/Bush_Leafless</leaflessGraphicPath>
 			<harvestWork>100</harvestWork>
-<<<<<<< HEAD
 			<harvestedThingDef>BarkFibre</harvestedThingDef>
-=======
-			<harvestedThingDef>BastFibre</harvestedThingDef>
->>>>>>> origin/Wivex-branch
 			<harvestYield>5</harvestYield>
 			<fertilityMin>0.4</fertilityMin>
 			<wildClusterSizeRange>
@@ -131,11 +88,7 @@
 			<Beauty>1</Beauty>
 		</statBases>
 		<graphicData>
-<<<<<<< HEAD
 			<texPath>Things/Plant/Healroot</texPath>
-=======
-			<texPath>Things/Plant/Xerigium</texPath>
->>>>>>> origin/Wivex-branch
 		</graphicData>
 		<ingestible>
 			<nutrition>0.05</nutrition>

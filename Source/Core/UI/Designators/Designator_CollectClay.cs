@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using RimWorld;
-using UnityEngine;
 using Verse;
 
 namespace RA
@@ -11,11 +9,7 @@ namespace RA
         {
             defaultLabel = "Collect Clay";
             defaultDesc = "Collect clay from mud or shallow water tiles";
-<<<<<<< HEAD
             icon = RA_Assets.Missing;
-=======
-            icon = ContentFinder<Texture2D>.Get("Missing");
->>>>>>> origin/Wivex-branch
 
             designationDef = DefDatabase<DesignationDef>.GetNamed("CollectClay");
             allowedTerrain = new List<TerrainDef>

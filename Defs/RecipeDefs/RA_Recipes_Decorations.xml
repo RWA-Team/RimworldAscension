@@ -34,11 +34,7 @@
 				<li>WoodLog</li>
 			</exceptedThingDefs>
 			<categories>
-<<<<<<< HEAD
 				<li>StoneCobbles</li>
-=======
-				<li>StoneBlocks</li>
->>>>>>> origin/Wivex-branch
 			</categories>
 			<thingDefs>
 				<li>WoodLog</li>
