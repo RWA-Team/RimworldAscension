@@ -139,6 +139,9 @@ namespace RA
             }
             traderGoodsCost = 0;
 
+            pendingItemsCounter.Clear();
+            pendingResourcesCounters.Clear();
+
             Messages.Message("Unfinished Deal Negated", MessageSound.Negative);
         }
         
@@ -154,7 +157,7 @@ namespace RA
             var priceDifficultyFactor = Find.Storyteller.difficulty.baseSellPriceFactor;
             // small random (seed is TraderKind based) price diviation for variety of values (x0.9-x1.1 multiplier)
             var priceRandomFactor = TradeUtil.RandomPriceFactorFor(trader.RandomPriceFactorSeed, thing.def);
-
+            
             // same price base for selling/buying
             var price = thing.MarketValue * priceTypeFactor * priceRandomFactor;
 
@@ -166,7 +169,7 @@ namespace RA
                 price = Mathf.Max(price, 0.01f);
 
                 var buyPrice = ThingFinalCost(thing, TradeAction.PlayerBuys);
-                if (price >= buyPrice)
+                if (price > buyPrice)
                 {
                     Log.ErrorOnce("Skill of negotitator trying to put sell price above buy price.", 65387);
                     price = buyPrice;

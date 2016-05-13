@@ -7,11 +7,15 @@ namespace RA
 {
     public class RA_Tradeable : Tradeable
     {
-        public TradeCenter tradeCenter;
+        public new float PriceFor(TradeAction action)
+        {
+            var tradeCenter = TradeUtil.FindOccupiedTradeCenter();
+            return tradeCenter.ThingFinalCost(AnyThing, action);
+        }
 
         public new virtual void ResolveTrade()
         {
-            tradeCenter = TradeUtil.FindOccupiedTradeCenter();
+            var tradeCenter = TradeUtil.FindOccupiedTradeCenter();
 
             // goods offered by colony
             if (ActionToDo == TradeAction.PlayerSells)
@@ -71,7 +75,8 @@ namespace RA
                     // trasfer sellable to the trader exchange container
                     tradeCenter.traderStock.TransferToContainer(transferedThing, tradeCenter.traderExchangeContainer, transferedThing.stackCount);
                     // update trader goods total cost
-                    tradeCenter.traderGoodsCost += tradeCenter.ThingFinalCost(transferedThing, TradeAction.PlayerBuys);
+                    tradeCenter.traderGoodsCost += tradeCenter.ThingFinalCost(transferedThing, TradeAction.PlayerBuys)*
+                                                   transferedThing.stackCount;
                     CheckTeachOpportunity(transferedThing);
                 }
             }

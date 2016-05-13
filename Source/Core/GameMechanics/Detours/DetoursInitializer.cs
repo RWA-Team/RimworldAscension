@@ -4,6 +4,7 @@ using System.Reflection;
 using RimWorld;
 using Verse;
 using Verse.AI;
+using Verse.AI.Group;
 
 namespace RA
 {
@@ -133,6 +134,11 @@ namespace RA
             var newGetDominantIngredient = typeof(RA_Toils_Recipe).GetMethod("GetDominantIngredient", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaGetDominantIngredient, newGetDominantIngredient);
 
+            //// CR aim pie
+            //var vanillaStanceDraw = typeof(Stance_Warmup).GetMethod("StanceDraw", BindingFlags.Instance | BindingFlags.Public);
+            //var newStanceDraw = typeof(RA_Stance_Warmup).GetMethod("StanceDraw", BindingFlags.Instance | BindingFlags.Public);
+            //TryDetourFromTo(vanillaStanceDraw, newStanceDraw);
+
             // added support for fuel burners
             var vanillaDoRecipeWork = typeof(Toils_Recipe).GetMethod("DoRecipeWork", BindingFlags.Static | BindingFlags.Public);
             var newDoRecipeWork = typeof(RA_Toils_Recipe).GetMethod("DoRecipeWork", BindingFlags.Static | BindingFlags.Public);
@@ -142,6 +148,11 @@ namespace RA
             var vanillaColonistsHaveResearchBench = typeof(ListerBuildings).GetMethod("ColonistsHaveResearchBench", BindingFlags.Instance | BindingFlags.Public);
             var newColonistsHaveResearchBench = typeof(RA_ListerBuildings).GetMethod("ColonistsHaveResearchBench", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaColonistsHaveResearchBench, newColonistsHaveResearchBench);
+
+            // send Notify_PawnTookDamage signal to the LordToil
+            var vanillaNotify_PawnTookDamage = typeof(Lord).GetMethod("Notify_PawnTookDamage", BindingFlags.Instance | BindingFlags.Public);
+            var newNotify_PawnTookDamage = typeof(RA_Lord).GetMethod("Notify_PawnTookDamage", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaNotify_PawnTookDamage, newNotify_PawnTookDamage);
 
             #endregion
 
@@ -165,6 +176,11 @@ namespace RA
             var vanillaResolveTrade = typeof(Tradeable).GetMethod("ResolveTrade", BindingFlags.Instance | BindingFlags.Public);
             var newResolveTrade = typeof(RA_Tradeable).GetMethod("ResolveTrade", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaResolveTrade, newResolveTrade);
+
+            // adjusted price calculation
+            var vanillaPriceFor = typeof(Tradeable).GetMethod("PriceFor", BindingFlags.Instance | BindingFlags.Public);
+            var newPriceFor = typeof(RA_Tradeable).GetMethod("PriceFor", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaPriceFor, newPriceFor);
 
             // make trade sessions individual per trade center
             var vanillaSetupWith = typeof(TradeSession).GetMethod("SetupWith", BindingFlags.Static | BindingFlags.Public);

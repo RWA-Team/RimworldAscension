@@ -33,30 +33,29 @@ namespace RA
             var mainRect = new Rect(0f, 0f, size.x, size.y).ContractedBy(UIUtil.DefaultMargin);
 
             // trade balance label
-            var tradeBalanceRect = new Rect(mainRect.x, mainRect.y, 200f, 35f)
+            var tradeBalanceRect = new Rect(mainRect.x, mainRect.y, 200f, 30f)
                 .CenteredOnXIn(mainRect);
-            Widgets.DrawWindowBackground(tradeBalanceRect);
             DrawTradeBalance(tradeBalanceRect);
-
-            // negate deal button
-            var negateButtonRect = new Rect(tradeBalanceRect.x - 120f, tradeBalanceRect.y, 120f, tradeBalanceRect.height);
-            if (Widgets.TextButton(negateButtonRect, "Negate Deal"))
-            {
-                tradeCenter.NegateTradeDeal();
-                var currentITab = (MainTabWindow_Inspect) MainTabDefOf.Inspect.Window;
-                currentITab.CloseOpenTab();
-            }
 
             // column headers labels
             Text.Anchor = TextAnchor.MiddleCenter;
-            var colonyLabelRect = new Rect(mainRect.x, tradeBalanceRect.yMax, mainRect.width/2, UIUtil.TextHeight);
+            var colonyLabelRect = new Rect(mainRect.x, tradeBalanceRect.yMax, mainRect.width/2, tradeBalanceRect.height);
             Widgets.Label(colonyLabelRect, "Colony offer:");
             var traderLabelRect = new Rect(colonyLabelRect.xMax, colonyLabelRect.y, colonyLabelRect.width,
                 colonyLabelRect.height);
             Widgets.Label(traderLabelRect, "Trader offer:");
 
+            // negate deal button
+            var negateButtonRect = new Rect(colonyLabelRect.x, colonyLabelRect.y, 80f, colonyLabelRect.height).CenteredOnXIn(mainRect);
+            if (Widgets.TextButton(negateButtonRect, "Negate"))
+            {
+                tradeCenter.NegateTradeDeal();
+                var currentITab = (MainTabWindow_Inspect)MainTabDefOf.Inspect.Window;
+                currentITab.CloseOpenTab();
+            }
+
             // exchange table
-            var colonyRect = new Rect(mainRect.x, colonyLabelRect.yMax, mainRect.width/2,
+            var colonyRect = new Rect(mainRect.x, colonyLabelRect.yMax + UIUtil.DefaultMargin, mainRect.width/2,
                 mainRect.height - colonyLabelRect.yMax);
             Widgets.DrawWindowBackground(colonyRect);
             UIUtil.DrawItemsList(colonyRect, ref scrollPosition_Colony, tradeCenter.colonyExchangeContainer.ToList(), thing =>
@@ -64,7 +63,8 @@ namespace RA
                 Thing unused;
                 tradeCenter.colonyExchangeContainer.TryDrop(thing, tradeCenter.InteractionCell,
                     ThingPlaceMode.Near, out unused);
-                tradeCenter.colonyGoodsCost -= tradeCenter.ThingFinalCost(thing, TradeAction.PlayerSells);
+                tradeCenter.colonyGoodsCost -= tradeCenter.ThingFinalCost(thing, TradeAction.PlayerSells)*
+                                               thing.stackCount;
             });
             var traderRect = new Rect(colonyRect)
             {
@@ -74,7 +74,8 @@ namespace RA
             UIUtil.DrawItemsList(traderRect, ref scrollPosition_Trader, tradeCenter.traderExchangeContainer.ToList(), thing =>
             {
                 tradeCenter.traderExchangeContainer.TransferToContainer(thing, tradeCenter.traderStock, thing.stackCount);
-                tradeCenter.traderGoodsCost -= tradeCenter.ThingFinalCost(thing, TradeAction.PlayerBuys);
+                tradeCenter.traderGoodsCost -= tradeCenter.ThingFinalCost(thing, TradeAction.PlayerBuys)*
+                                               thing.stackCount;
             });
 
             UIUtil.ResetText();
@@ -86,7 +87,7 @@ namespace RA
             GUI.color = tradeBalance > 0
                 ? Color.green
                 : tradeBalance < 0
-                    ? Color.red
+                    ? Color.yellow
                     : Color.white;
             Text.Anchor = TextAnchor.MiddleCenter;
             Widgets.Label(rect, string.Format("<b>Trade balance: {0}</b>", tradeBalance.ToStringMoney()));

@@ -62,7 +62,7 @@ namespace RA
             Widgets.EndScrollView();
         }
 
-        public static void DrawItemsList(Rect rect, ref Vector2 scrollPosition, List<Thing> itemsList, Action<Thing> RemoveAction)
+        public static void DrawItemsList(Rect rect, ref Vector2 scrollPosition, List<Thing> itemsList, Action<Thing> removeAction)
         {
             ResetText();
             Widgets.DrawWindowBackground(rect);
@@ -91,7 +91,7 @@ namespace RA
                             {
                                 Find.WindowStack.Add(new Dialog_InfoCard(thing));
                             }));
-                            list.Add(new FloatMenuOption("Remove", () => RemoveAction(thing)));
+                            list.Add(new FloatMenuOption("Remove", () => removeAction(thing)));
                             Find.WindowStack.Add(new FloatMenu(list, thing.LabelCap));
                         }
 

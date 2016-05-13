@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -16,6 +15,15 @@ namespace RA
         public override void Init()
         {
             Data.selectedTradeCenter.trader = Data.trader;
+            Data.trader.mindState.wantsToTradeWithColony = true;
+            if (Data.trader.trader == null)
+            {
+                Data.trader.trader = new Pawn_TraderTracker(Data.trader) {traderKind = Data.traderKindDef};
+            }
+            Log.Message("CasualInterruptibleNow " + Data.trader.CasualInterruptibleNow());
+            Log.Message("TraderKind " + (Data.trader.TraderKind == null));
+            Log.Message("trader.Goods " + Data.trader.trader.Goods);
+            Log.Message("CanTradeNow " + Data.trader.CanTradeNow);
             // transfer all carrier inventory to the trade center
             while (Data.carrier.inventory.container.Count > 0)
             {
@@ -23,7 +31,6 @@ namespace RA
                 Data.carrier.inventory.container.TransferToContainer(transferedThing, Data.selectedTradeCenter.traderStock,
                     transferedThing.stackCount);
             }
-            Data.trader.mindState.wantsToTradeWithColony = true;
 
             // find close, but not adjucent to the trade cell for carrier to station at
             IntVec3 destination;
@@ -39,7 +46,7 @@ namespace RA
             foreach (var pawn in lord.ownedPawns)
             {
                 if (pawn == Data.trader)
-                    pawn.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("Station"));
+                    pawn.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("StationAt"), Data.traderDest);
                 else if (pawn == Data.carrier)
                     pawn.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("StationAt"), Data.carrierDest);
                 else

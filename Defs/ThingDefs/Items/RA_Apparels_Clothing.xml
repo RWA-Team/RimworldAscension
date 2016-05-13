@@ -13,9 +13,7 @@
 		</thingCategories>
 	</ThingDef>
 
-
-	<!--======================= Special =======================-->
-	
+	<!--======================= Special =======================-->	
 	
 	<ThingDef Name="ClothingSlave" ParentName="Clothing" Abstract="True">
 		<statBases>
@@ -76,9 +74,7 @@
 		</apparel>
 	</ThingDef>
 
-
 	<!--======================= Neolithic =======================-->
-
 
 	<ThingDef Name="ClothingNeolithic" ParentName="Clothing" Abstract="True">
 		<stuffCategories>
@@ -130,7 +126,6 @@
 			</options>
 		</colorGenerator>
 	</ThingDef>
-
 
 	<ThingDef ParentName="ClothingNeolithic">
 		<defName>Loincloth</defName>
@@ -263,6 +258,5 @@
 			</options>
 		</colorGenerator>
 	</ThingDef>
-
 
 </ThingDefs>

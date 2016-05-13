@@ -1,5 +1,4 @@
 ﻿using System;
-using RimWorld;
 using Verse;
 using Verse.AI;
 
@@ -7,7 +6,7 @@ namespace RA
 {
     public static class RA_Toils
     {
-        public static Toil DepositHauledThingInContainer(TargetIndex containerInd, Action postDepositAction = null)
+        public static Toil DepositHauledThingInContainer(TargetIndex containerInd, Action<Thing> depositAction = null)
         {
             var toil = new Toil();
             toil.initAction = delegate
@@ -22,11 +21,9 @@ namespace RA
                 var thingContainerOwner = curJob.GetTarget(containerInd).Thing as IThingContainerOwner;
                 if (thingContainerOwner != null)
                 {
+                    depositAction(actor.carrier.CarriedThing);
                     var num = actor.carrier.CarriedThing.stackCount;
-                    actor.carrier.CarriedThing.SetForbidden(false);
                     actor.carrier.container.TransferToContainer(actor.carrier.CarriedThing, thingContainerOwner.GetContainer(), num);
-
-                    postDepositAction();
                 }
                 else if (curJob.GetTarget(containerInd).Thing.def.Minifiable)
                 {

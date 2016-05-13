@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI.Group;
@@ -6,7 +7,7 @@ using Verse.AI.Group;
 namespace RA
 {
     // all Triggers are single use and need to initialized for each case of application
-
+    // transition position in list matters
     public class RA_LordJob_TradeWithColony : LordJob
     {
         public Faction faction;
@@ -29,15 +30,15 @@ namespace RA
             var arriveAtChillSpot = new LordToil_CaravanTravel(chillSpot);
             mainGraph.lordToils.Add(arriveAtChillSpot);
 
-            var waitAtChillSpot = new RA_LordToil_DefendTraderCaravan();
-            mainGraph.lordToils.Add(waitAtChillSpot);
-            var transitionToChill = new Transition(arriveAtChillSpot, waitAtChillSpot);
+            var caravanStation = new LordToil_CaravanStation();
+            mainGraph.lordToils.Add(caravanStation);
+            var transitionToChill = new Transition(arriveAtChillSpot, caravanStation);
             transitionToChill.triggers.Add(new Trigger_Memo("TravelArrived"));
             mainGraph.transitions.Add(transitionToChill);
 
             var unloadGoods = new LordToil_UnloadGoods();
             mainGraph.lordToils.Add(unloadGoods);
-            var transitionToUnloadGoods = new Transition(waitAtChillSpot, unloadGoods);
+            var transitionToUnloadGoods = new Transition(caravanStation, unloadGoods);
             transitionToUnloadGoods.triggers.Add(new Trigger_CanTrade());
             mainGraph.transitions.Add(transitionToUnloadGoods);
 
@@ -45,7 +46,10 @@ namespace RA
             mainGraph.lordToils.Add(trade);
             var transitionToTrade = new Transition(unloadGoods, trade);
             transitionToTrade.triggers.Add(new Trigger_Memo("TravelArrived"));
-            transitionToTrade.preActions.Add(new TransitionAction_TransferTradeData());
+            transitionToTrade.preActions.Add(new TransitionAction_Custom(() =>
+            {
+                transitionToTrade.target.data = (LordToilData_Trade)transitionToTrade.sources.FirstOrDefault().data;
+            }));
             mainGraph.transitions.Add(transitionToTrade);
 
             var loadGoods = new LordToil_LoadGoods();
@@ -54,14 +58,20 @@ namespace RA
             transitionToLoadGoods.triggers.Add(new Trigger_TicksPassed(GenDate.TicksPerHour*6));
             transitionToLoadGoods.preActions.Add(
                 new TransitionAction_Message("MessageTraderCaravanLeaving".Translate(faction.name)));
-            transitionToLoadGoods.preActions.Add(new TransitionAction_TransferTradeData());
+            transitionToLoadGoods.preActions.Add(new TransitionAction_Custom(() =>
+            {
+                transitionToLoadGoods.target.data = (LordToilData_Trade)transitionToLoadGoods.sources.FirstOrDefault().data;
+            }));
             mainGraph.transitions.Add(transitionToLoadGoods);
 
             var leaveColony = new LordToil_ExitMapAndEscortCarriers();
             mainGraph.lordToils.Add(leaveColony);
             var transitionToLeaveColony = new Transition(loadGoods, leaveColony);
             transitionToLeaveColony.triggers.Add(new Trigger_Memo("TravelArrived"));
-            transitionToLeaveColony.preActions.Add(new TransitionAction_TransferTradeData());
+            transitionToLeaveColony.preActions.Add(new TransitionAction_Custom(() =>
+            {
+                transitionToLeaveColony.target.data = (LordToilData_Trade)transitionToLeaveColony.sources.FirstOrDefault().data;
+            }));
             mainGraph.transitions.Add(transitionToLeaveColony);
 
             // attaching defence and flee subgraph
@@ -74,33 +84,44 @@ namespace RA
         public StateGraph TraderDefence(List<LordToil> sourceLordToils)
         {
             var graph = new StateGraph();
-            var lordDefence = new RA_LordToil_DefendTraderCaravan();
-            graph.lordToils.Add(lordDefence);
-            // TODO: check if works properly without breaking current shooting or chosen targets
-            // adds recursive transition to itself when pawns harmed again
-            var transitionToDefence = new Transition(lordDefence, lordDefence);
-            transitionToDefence.sources.AddRange(sourceLordToils);
-            transitionToDefence.triggers.Add(new Trigger_PawnHarmed());
-            graph.transitions.Add(transitionToDefence);
 
-            // adds transitions to flee, rescueing wounded
             var toilFlee = new LordToil_TakeWoundedGuest();
             graph.lordToils.Add(toilFlee);
-            var transitionToFlee = new Transition(lordDefence, toilFlee);
+
+            var toilDefence = new LordToil_DefendCaravan();
+            graph.lordToils.Add(toilDefence);
+
+            var transitionToFlee = new Transition(toilDefence, toilFlee);
             transitionToFlee.sources.AddRange(sourceLordToils);
             transitionToFlee.triggers.Add(new Trigger_ImportantCaravanPeopleLost());
-            transitionToFlee.preActions.Add(
-                new TransitionAction_Message(
-                    "MessageVisitorsTakingWounded".Translate(faction.def.pawnsPlural.CapitalizeFirst(), faction.name)));
+            transitionToFlee.preActions.Add(new TransitionAction_Message(
+                "MessageVisitorsTakingWounded".Translate(faction.def.pawnsPlural.CapitalizeFirst(), faction.name)));
+            transitionToFlee.preActions.Add(new TransitionAction_WakeAll());
             graph.transitions.Add(transitionToFlee);
 
-            // adds transitions back to the current sourceToil
-            foreach (var lordToil in sourceLordToils)
+            // for each lordToil added transition to the defence lordToil, and it's toils index is kept to get back to it later
+            foreach (var currentToil in sourceLordToils)
             {
-                var transitionToSource = new Transition(lordDefence, lordToil);
-                transitionToSource.triggers.Add(new Trigger_TicksPassed(GenDate.TicksPerHour));
-                graph.transitions.Add(transitionToSource);
+                var transitionToDefence = new Transition(currentToil, toilDefence);
+                transitionToDefence.triggers.Add(new Trigger_PawnHarmed());
+                // keep the toil index that actually triggered transition as reference to return back to
+                transitionToDefence.preActions.Add(new TransitionAction_Custom(() =>
+                {
+                    toilDefence.Data.initialLordToilIndex = sourceLordToils.IndexOf(currentToil);
+                }));
+                transitionToDefence.preActions.Add(new TransitionAction_WakeAll());
+                graph.transitions.Add(transitionToDefence);
             }
+
+            // adds transitions back to the initial lordToil, initialize target toil with temporary null
+            var transitionToSource = new Transition(toilDefence, null);
+            transitionToSource.triggers.Add(new Trigger_Memo("DefenceSuccessful"));
+            // asign target toil to return towith transitionAction
+            transitionToSource.preActions.Add(new TransitionAction_Custom(() =>
+            {
+                transitionToSource.target = sourceLordToils[toilDefence.Data.initialLordToilIndex];
+            }));
+            graph.transitions.Add(transitionToSource);
 
             return graph;
         }
