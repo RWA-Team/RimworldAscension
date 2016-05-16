@@ -178,7 +178,7 @@
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHay</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>None</shaderType>
+			<shaderType>CutoutComplex</shaderType>
 			<drawSize>(1,2)</drawSize>
 		</graphicData>
 		<PathCost>20</PathCost>
@@ -190,14 +190,13 @@
 			<Comfort>0.5</Comfort>
 		</statBases>
 		<costList>
-			<WoodLog>10</WoodLog>
 			<Hay>20</Hay>
+			<WoodLog>10</WoodLog>
 		</costList>
 		<researchPrerequisites>
 			<li>StartPack</li>
 		</researchPrerequisites>
-	</ThingDef>	
-
+	</ThingDef>
 
 	<ThingDef ParentName="Bed">
 		<defName>BedHide</defName>
@@ -206,7 +205,6 @@
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHide/BedHide</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>Cutout</shaderType>
 			<drawSize>(1,2)</drawSize>
 		</graphicData>
 		<PathCost>20</PathCost>
@@ -363,12 +361,12 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="Table">
+<!-- 	<ThingDef ParentName="Table">
 		<defName>TableShort</defName>
 		<label>short table</label>
 		<graphicData>
 			<texPath>Things/Building/Furniture/TableShort</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
+			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(4,4)</drawSize>
 			<damageData>
 				<rect>(0.05,0.27,1.9,1.73)</rect>
@@ -401,7 +399,7 @@
 		<stuffCategories>
 			<li>WoodPlank</li>
 		</stuffCategories>
-	</ThingDef>
+	</ThingDef> -->
 
 	<ThingDef ParentName="Table">
 		<defName>TableLong</defName>

@@ -61,9 +61,9 @@ namespace RA
 
             // warrior table
             TryAllowToCraft("MakeShiv", "StoneCobbles");
-            TryAllowToCraft("MakeSpearPrimitive", "StoneCobbles", true, "Carpentry");
-            TryAllowToCraft("MakeAxePrimitive", "StoneCobbles", true, "Carpentry");
-            TryAllowToCraft("MakeHammerPrimitive", "StoneCobbles", true, "Carpentry");
+            TryAllowToCraft("MakeSpearNeolithic", "StoneCobbles", true, "Carpentry");
+            TryAllowToCraft("MakeAxeNeolithic", "StoneCobbles", true, "Carpentry");
+            TryAllowToCraft("MakeHammerNeolithic", "StoneCobbles", true, "Carpentry");
         }
 
         public static void BoneCarving()
@@ -79,9 +79,9 @@ namespace RA
 
             // warrior table
             TryAllowToCraft("MakeShiv", "Bone");
-            TryAllowToCraft("MakeSpearPrimitive", "Bone", true, "Carpentry");
-            TryAllowToCraft("MakeAxePrimitive", "Bone", true, "Carpentry");
-            TryAllowToCraft("MakeHammerPrimitive", "Bone", true, "Carpentry");
+            TryAllowToCraft("MakeSpearNeolithic", "Bone", true, "Carpentry");
+            TryAllowToCraft("MakeAxeNeolithic", "Bone", true, "Carpentry");
+            TryAllowToCraft("MakeHammerNeolithic", "Bone", true, "Carpentry");
         }
 
         #endregion

@@ -23,10 +23,11 @@ namespace RA
 
                 var ghostCol = CanDesignateCell(intVec).Accepted ? new Color(0.5f, 1f, 0.6f, 0.4f) : new Color(1f, 0f, 0f, 0.4f);
 
-                // special Graphic_StuffBased implementation
-                var baseGraphic = PlacingDef.graphic as Graphic_StuffBased;
+                //// special Graphic_StuffBased implementation
+                //var baseGraphic = PlacingDef.graphic as Graphic_StuffBased;
+                //GhostDrawer.DrawGhostThing(Gen.MouseCell(), placingRot, (ThingDef)PlacingDef, baseGraphic?.categorizedGraphics[baseGraphic.currentCategory], ghostCol, AltitudeLayer.Blueprint);
 
-                GhostDrawer.DrawGhostThing(Gen.MouseCell(), placingRot, (ThingDef)PlacingDef, baseGraphic?.categorizedGraphics[baseGraphic.currentCategory], ghostCol, AltitudeLayer.Blueprint);
+                DrawGhost(ghostCol);
 
                 if (CanDesignateCell(intVec).Accepted && PlacingDef.specialDisplayRadius > 0.01f)
                 {

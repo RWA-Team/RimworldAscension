@@ -8,7 +8,7 @@
 	- drawerType:
 		- MapMeshOnly - doesn't draw from comps
 		- MapMeshAndRealTime - doesn't draw from comps
-		- RealTimeOnly - used for objects that change their texture (unsure)
+		- RealtimeOnly - used for objects that change their texture (unsure)
 	- surfaceType:
 		- Item - allows place items
 		- Eat - allows place food to eat
@@ -100,7 +100,7 @@
 			<Totem>1</Totem>
 		</costList>
 		<stuffCategories>
-			<li>Wood</li>
+			<li>WoodLog</li>
 		</stuffCategories>
 		<minifiedDef>MinifiedTotem</minifiedDef>
 		<researchPrerequisites>
@@ -111,6 +111,9 @@
 	<ThingDef ParentName="MinifiedDecoration">
 		<defName>MinifiedTotem</defName>
 		<label>totem</label>
+		<stuffCategories>
+			<li>WoodLog</li>
+		</stuffCategories>
 	</ThingDef>
 
 </ThingDefs>
