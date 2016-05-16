@@ -1,21 +1,26 @@
 ﻿using Verse;
 using Verse.AI.Group;
 
-public class LordToilData_CaravanDefence : LordToilData
+namespace RA
 {
-    public int combatTimer;
-    public int initialLordToilIndex;
-
-    public LordToilData_CaravanDefence() {}
-
-    public LordToilData_CaravanDefence(int combatTimer)
+    public class LordToilData_CaravanDefence : LordToilData
     {
-        this.combatTimer = combatTimer;
-    }
+        public int combatTimer;
+        public int initialLordToilIndex;
 
-    public override void ExposeData()
-    {
-        Scribe_Values.LookValue(ref combatTimer, "combatTimer");
-        Scribe_Values.LookValue(ref initialLordToilIndex, "initialLordToilIndex");
+        public LordToilData_CaravanDefence()
+        {
+        }
+
+        public LordToilData_CaravanDefence(int combatTimer)
+        {
+            this.combatTimer = combatTimer;
+        }
+
+        public override void ExposeData()
+        {
+            Scribe_Values.LookValue(ref combatTimer, "combatTimer");
+            Scribe_Values.LookValue(ref initialLordToilIndex, "initialLordToilIndex");
+        }
     }
 }

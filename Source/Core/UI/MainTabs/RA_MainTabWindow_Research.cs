@@ -54,7 +54,20 @@ namespace RA
 
         public override void DoWindowContents(Rect tabRect)
         {
-            base.DoWindowContents(tabRect);
+            // MainTabWindow.DoWindowContents
+            if (Anchor == MainTabWindowAnchor.Left)
+            {
+                currentWindowRect.x = 0f;
+            }
+            else
+            {
+                currentWindowRect.x = Screen.width - currentWindowRect.width;
+            }
+            currentWindowRect.y = Screen.height - 35 - currentWindowRect.height;
+            if (def.concept != null)
+            {
+                ConceptDatabase.KnowledgeDemonstrated(def.concept, KnowledgeAmount.GuiFrame);
+            }
 
             // throws message if no research bench is build yet
             if (!noBenchWarned)
@@ -70,8 +83,7 @@ namespace RA
             Text.Font = GameFont.Medium;
             Text.Anchor = TextAnchor.UpperCenter;
             Widgets.Label(new Rect(0f, 0f, tabRect.width, 300f), "Research".Translate());
-            Text.Anchor = TextAnchor.UpperLeft;
-            Text.Font = GameFont.Small;
+            UIUtil.ResetText();
 
             var rectSidePanel = new Rect(0f, 75f, 330f, tabRect.height - 75f);
             DrawSidePanel(rectSidePanel);

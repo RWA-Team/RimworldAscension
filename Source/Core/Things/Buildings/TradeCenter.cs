@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
@@ -11,9 +12,9 @@ namespace RA
         public ThingContainer colonyExchangeContainer, traderExchangeContainer, traderStock;
         public float colonyGoodsCost, traderGoodsCost;
 
-        public List<Thing> pendingItemsCounter;
-        public Dictionary<ThingDef, int> pendingResourcesCounters;
-        
+        public List<Thing> pendingItemsCounter = new List<Thing>();
+        public Dictionary<ThingDef, int> pendingResourcesCounters = new Dictionary<ThingDef, int>();
+
         public Pawn trader, negotiator;
 
         public TradeCenter()
@@ -21,9 +22,6 @@ namespace RA
             colonyExchangeContainer = new ThingContainer(this, false);
             traderExchangeContainer = new ThingContainer(this, false);
             traderStock = new ThingContainer(this, false);
-
-            pendingItemsCounter = new List<Thing>();
-            pendingResourcesCounters = new Dictionary<ThingDef, int>();
         }
 
         // required for using IThingContainerOwner, to use modified HaulToContainer job (HaulToTrade)
@@ -40,8 +38,9 @@ namespace RA
 
         // area where things are counted as tradeables
         public IEnumerable<IntVec3> TradeableCells
-            => FindUtil.SquareAreaAround(Position, (int) def.specialDisplayRadius + Mathf.Max(def.Size.x, def.Size.z)/2)
-                .Where(cell => cell.Walkable() && cell.InBounds());
+            => FindUtil.SquareAreaAround(Position, Mathf.RoundToInt(def.specialDisplayRadius),
+                    this.OccupiedRect().Cells)
+                    .Where(cell => cell.Walkable() && cell.InBounds());
         
         // things in tradeable area, except for already pending for sell (only single items, not stackable resources)
         public IEnumerable<Thing> SellablesAround =>
@@ -75,80 +74,112 @@ namespace RA
 
         public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn pawn)
         {
-            if (!NoMoreTradeablesToHaul)
+            if (pendingItemsCounter.Any())
             {
                 yield return new FloatMenuOption("Negate current trade deal", NegateTradeDeal);
             }
         }
 
-        public bool NoMoreTradeablesToHaul => pendingItemsCounter.Any();
-
-        // regenerates things/resource requests to haul to the trading post and tries to resolve trade deal every 250 ticks
-        public override void TickRare()
+        public void TryResolveTradeDeal()
         {
-            if (trader != null)
+            if (trader != null && pendingItemsCounter.NullOrEmpty() && traderExchangeContainer.Any() && TradeBalance >= 0)
             {
-                // deal successful
-                if (traderExchangeContainer.Any() && TradeBalance >= 0)
+                pendingItemsCounter.Clear();
+                pendingResourcesCounters.Clear();
+
+                colonyGoodsCost = 0;
+                traderGoodsCost = 0;
+
+                // transfer all sold items and pawns to the trader
+                while (colonyExchangeContainer.Any())
                 {
-                    ResolveTradeDeal();
+                    var transferedThing = colonyExchangeContainer.FirstOrDefault();
+
+                    var transferedPawn = transferedThing as Pawn;
+                    if (transferedPawn != null)
+                    {
+                        transferedPawn.PreSold(negotiator, trader);
+                        trader.AddToStock(transferedPawn);
+
+                        // give all your pawns and prisoners in the colony negative though about slave trading
+                        if (transferedPawn.RaceProps.Humanlike)
+                        {
+                            foreach (var pawn in Find.MapPawns.FreeColonistsAndPrisoners)
+                            {
+                                pawn.needs.mood.thoughts.TryGainThought(ThoughtDefOf.KnowPrisonerSold);
+                            }
+                        }
+                    }
+
+                    colonyExchangeContainer.TransferToContainer(transferedThing, traderStock, transferedThing.stackCount);
                 }
+
+                // transfer all bought pawns to the colony
+                foreach (Pawn pawn in traderExchangeContainer)
+                {
+                    pawn.SetFaction(Faction.OfColony);
+                    trader.GiveSoldThingToBuyer(pawn, pawn);
+                }
+                // transfer all bought items around
+                traderExchangeContainer.TryDropAll(InteractionCell, ThingPlaceMode.Near);
+
+                negotiator = null;
+
+                Messages.Message("Deal Resolved", MessageSound.Benefit);
             }
-        }
-
-        public void ResolveTradeDeal()
-        {
-            // transfer all sold items to the trader
-            while (colonyExchangeContainer.Any())
-            {
-                var transferedThing = colonyExchangeContainer.FirstOrDefault();
-                colonyExchangeContainer.TransferToContainer(transferedThing, traderStock, transferedThing.stackCount);
-            }
-            colonyGoodsCost = 0;
-
-            // transfer prisoners to the colony
-            foreach (var pawn in traderExchangeContainer)
-            {
-                if (pawn is Pawn)
-                    TradeUtility.MakePrisonerOfColony(pawn as Pawn);
-            }
-            traderGoodsCost = 0;
-
-            // scatter bought items around
-            traderExchangeContainer.TryDropAll(InteractionCell, ThingPlaceMode.Near);
-
-            Messages.Message("Trade Deal Resolved", MessageSound.Benefit);
         }
 
         // items returned to their owners
         public void NegateTradeDeal()
         {
-            // unforbid all pending forbidden sellables
-            foreach (var thing in pendingItemsCounter)
-                thing.SetForbidden(false);
-
-            // scatter offered items around
-            colonyExchangeContainer.TryDropAll(InteractionCell, ThingPlaceMode.Near);
-            colonyGoodsCost = 0;
-
-            // transfer all unsold items to the trader
-            while (traderExchangeContainer.Count > 0)
+            if (traderExchangeContainer.Any() || colonyExchangeContainer.Any())
             {
-                var transferedThing = traderExchangeContainer.FirstOrDefault();
-                traderExchangeContainer.TransferToContainer(transferedThing, traderStock, transferedThing.stackCount);
+                // unforbid all possibly forbidden sellables
+                foreach (var thing in pendingItemsCounter)
+                    thing.SetForbidden(false);
+                foreach (var thing in colonyExchangeContainer)
+                    thing.SetForbidden(false);
+
+                // scatter offered items around
+                colonyExchangeContainer.TryDropAll(InteractionCell, ThingPlaceMode.Near);
+                colonyGoodsCost = 0;
+
+                // transfer all unsold items to the trader
+                while (traderExchangeContainer.Any())
+                {
+                    var transferedThing = traderExchangeContainer.FirstOrDefault();
+                    traderExchangeContainer.TransferToContainer(transferedThing, traderStock, transferedThing.stackCount);
+                }
+                traderGoodsCost = 0;
+
+                pendingItemsCounter.Clear();
+                pendingResourcesCounters.Clear();
+
+                negotiator = null;
+
+                Messages.Message("Unfinished Deal Negated", MessageSound.Negative);
             }
-            traderGoodsCost = 0;
-
-            pendingItemsCounter.Clear();
-            pendingResourcesCounters.Clear();
-
-            Messages.Message("Unfinished Deal Negated", MessageSound.Negative);
         }
-        
+
+        public void TraderLeaves()
+        {
+            NegateTradeDeal();
+            
+            // transfer all carrier inventory to the trade center
+            while (traderStock.Any())
+            {
+                trader.AddToStock(traderStock.FirstOrDefault());
+            }
+
+            trader = null;
+        }
+
         public float TradeBalance => colonyGoodsCost - traderGoodsCost;
 
-        public float ThingFinalCost(Thing thing, TradeAction tradeAction)
+        public float ThingTypeFinalCost(Thing thing, TradeAction tradeAction, int preferedCount = -1)
         {
+            if (thing.def == ThingDefOf.Silver) return preferedCount == -1 ? thing.stackCount : preferedCount;
+
             var priceTypeFactor = trader.TraderKind.PriceTypeFor(thing.def, tradeAction).PriceMultiplier();
             // additional sell price reduction based on SellPriceFactor stat
             var priceSellFactor = thing.GetStatValue(StatDefOf.SellPriceFactor);
@@ -168,7 +199,7 @@ namespace RA
                 price *= TradeUtil.TradePricePostFactorCurve.Evaluate(price);
                 price = Mathf.Max(price, 0.01f);
 
-                var buyPrice = ThingFinalCost(thing, TradeAction.PlayerBuys);
+                var buyPrice = ThingTypeFinalCost(thing, TradeAction.PlayerBuys);
                 if (price > buyPrice)
                 {
                     Log.ErrorOnce("Skill of negotitator trying to put sell price above buy price.", 65387);
@@ -179,12 +210,21 @@ namespace RA
             {
                 price /= priceNegotiatorFactor;
             }
+            
+            // TODO: check rounding for massive trade deals (equalizing trade balance)
+            price = (float) Math.Round(price, 2);
 
-            if (price > 99.5f)
-            {
-                price = Mathf.Round(price);
-            }
+            price *= preferedCount == -1 ? thing.stackCount : preferedCount;
+
             return price;
+        }
+
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            if (trader != null)
+                NegateTradeDeal();
+
+            base.Destroy(mode);
         }
 
         public override Graphic Graphic
@@ -210,7 +250,6 @@ namespace RA
 
             Scribe_Values.LookValue(ref colonyGoodsCost, "colonyGoodsCost");
             Scribe_Values.LookValue(ref traderGoodsCost, "traderGoodsCost");
-            
         }
     }
 }

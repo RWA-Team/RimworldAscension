@@ -1,7 +1,7 @@
 ﻿using RA;
 using Verse;
 
-namespace RimworldAscension.Core.GameMechanics.Detours.Various
+namespace RA
 {
     public class RA_Stance_Warmup : Stance_Warmup
     {

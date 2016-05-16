@@ -40,8 +40,9 @@ namespace RA
             yield return RA_Toils.DepositHauledThingInContainer(DestIndex, thing =>
             {
                 var tradeCenter = TargetThingB as TradeCenter;
-                tradeCenter.colonyGoodsCost += tradeCenter.ThingFinalCost(thing, TradeAction.PlayerSells) *
-                                               thing.stackCount;
+                tradeCenter.colonyGoodsCost += tradeCenter.ThingTypeFinalCost(thing, TradeAction.PlayerSells);
+                tradeCenter.pendingItemsCounter.Remove(thing);
+                tradeCenter.TryResolveTradeDeal();
             });
         }
     }

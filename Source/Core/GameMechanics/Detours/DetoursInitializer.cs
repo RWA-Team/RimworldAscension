@@ -154,6 +154,11 @@ namespace RA
             var newNotify_PawnTookDamage = typeof(RA_Lord).GetMethod("Notify_PawnTookDamage", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaNotify_PawnTookDamage, newNotify_PawnTookDamage);
 
+            // remove trader generation from visitor group
+            var vanillaTryExecute = typeof(IncidentWorker_VisitorGroup).GetMethod("TryExecute", BindingFlags.Instance | BindingFlags.Public);
+            var newTryExecute = typeof(RA_IncidentWorker_VisitorGroup).GetMethod("TryExecute", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaTryExecute, newTryExecute);
+
             #endregion
 
             #region TRADE
@@ -177,6 +182,11 @@ namespace RA
             var newResolveTrade = typeof(RA_Tradeable).GetMethod("ResolveTrade", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaResolveTrade, newResolveTrade);
 
+            // resolve trade for pawns
+            var vanillaResolveTradePawn = typeof(Tradeable_Pawn).GetMethod("ResolveTrade", BindingFlags.Instance | BindingFlags.Public);
+            var newResolveTradePawn = typeof(RA_Tradeable_Pawn).GetMethod("ResolveTrade", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaResolveTradePawn, newResolveTradePawn);
+
             // adjusted price calculation
             var vanillaPriceFor = typeof(Tradeable).GetMethod("PriceFor", BindingFlags.Instance | BindingFlags.Public);
             var newPriceFor = typeof(RA_Tradeable).GetMethod("PriceFor", BindingFlags.Instance | BindingFlags.Public);
@@ -186,6 +196,11 @@ namespace RA
             var vanillaSetupWith = typeof(TradeSession).GetMethod("SetupWith", BindingFlags.Static | BindingFlags.Public);
             var newSetupWith = typeof(RA_TradeSession).GetMethod("SetupWith", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaSetupWith, newSetupWith);
+
+            // assign Pawn_TraderTracker based on pawn caravan role, not mindState.wantsToTradeWithColony
+            var vanillaAddAndRemoveDynamicComponents = typeof(PawnComponentsUtility).GetMethod("AddAndRemoveDynamicComponents", BindingFlags.Static | BindingFlags.Public);
+            var newAddAndRemoveDynamicComponents = typeof(RA_PawnComponentsUtility).GetMethod("AddAndRemoveDynamicComponents", BindingFlags.Static | BindingFlags.Public);
+            TryDetourFromTo(vanillaAddAndRemoveDynamicComponents, newAddAndRemoveDynamicComponents);
 
             #endregion
 

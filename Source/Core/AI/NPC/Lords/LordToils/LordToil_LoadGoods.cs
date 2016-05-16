@@ -57,6 +57,8 @@ namespace RA
                 if (Data.carrier.Position == Data.carrierDest)
                 {
                     lord.ReceiveMemo("TravelArrived");
+
+                    Data.selectedTradeCenter.TraderLeaves();
                 }
             }
         }

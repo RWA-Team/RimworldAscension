@@ -204,25 +204,4 @@
 		</ingredients>
 	</RecipeDef>
 
-	<RecipeDef ParentName="MakeFurniture">
-		<defName>MakeDoorWoodLog</defName>
-		<label>make woodlog door</label>
-		<description>Make woodlog door.</description>
-		<jobString>Making woodlog door.</jobString>
-		<workSpeedStat>CarvingSpeed</workSpeedStat>
-		<products>
-			<DoorWoodLog>1</DoorWoodLog>
-		</products>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>WoodLog</li>
-					</thingDefs>
-				</filter>
-				<count>30</count>
-			</li>
-		</ingredients>
-	</RecipeDef>
-
 </RecipeDefs>

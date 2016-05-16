@@ -13,10 +13,10 @@ namespace RA
             new CurvePoint(200000f, 0.2f)
         };
 
-        public static TradeCenter FindOccupiedTradeCenter(Pawn trader = null)
+        public static TradeCenter FindOccupiedTradeCenter(Pawn negotiatior = null)
         {
             return Find.ListerBuildings.AllBuildingsColonistOfClass<TradeCenter>()
-                    .FirstOrDefault(building => trader == null ? building.trader != null : building.trader == trader);
+                    .FirstOrDefault(tradeCenter => negotiatior == null ? tradeCenter.negotiator != null : tradeCenter.negotiator == negotiatior);
         }
 
         public static IEnumerable<Thing> AllSellableThings
@@ -28,7 +28,7 @@ namespace RA
                     var items = new List<Thing>();
                     foreach (var tradeCenter in Find.ListerBuildings.AllBuildingsColonistOfClass<TradeCenter>())
                         items.AddRange(tradeCenter.SellablesAround);
-                    return items;
+                    return items.Concat(Find.MapPawns.PrisonersOfColonySpawned.Cast<Thing>());
                 }
                 return null;
             }

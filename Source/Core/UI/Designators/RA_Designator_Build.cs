@@ -201,13 +201,12 @@ namespace RA
         // added special Graphic_StuffBased implementation
         public override void DrawPanelReadout(ref float curY, float width)
         {
-            var buildingDef = PlacingDef as ThingDef;
-
             // special Graphic_StuffBased implementation
             var baseGraphic = PlacingDef.graphic as Graphic_StuffBased;
             if (stuffDef != null && baseGraphic != null)
                 icon = (Texture2D)baseGraphic.categorizedGraphics[stuffDef.stuffProps.categories[0].defName].MatSingle.mainTexture;
 
+            var buildingDef = PlacingDef as ThingDef;
             ThingDef tempStuff = null;
             if (PlacingDef.costStuffCount <= 0 && stuffDef != null)
             {
@@ -218,7 +217,8 @@ namespace RA
                 stuffDef = null;
             }
             Text.Font = GameFont.Tiny;
-            var list = PlacingDef.CostListAdjusted(stuffDef, false);
+            var list = PlacingDef.CostListAdjusted(tempStuff ?? stuffDef, false);
+
             foreach (var thingCount in list)
             {
                 Texture2D resourceTexture;
@@ -272,7 +272,20 @@ namespace RA
                 var num = dragger.Dragging ? dragger.DragCells.Count : 1;
                 var num2 = 0f;
                 var vector = Event.current.mousePosition + DragPriceDrawOffset;
-                var list = PlacingDef.CostListAdjusted(stuffDef, false);
+
+                var buildingDef = PlacingDef as ThingDef;
+                ThingDef tempStuff = null;
+                if (PlacingDef.costStuffCount <= 0 && stuffDef != null)
+                {
+                    if (buildingDef != null && (buildingDef.MadeFromStuff || buildingDef.Minifiable))
+                    {
+                        tempStuff = stuffDef;
+                    }
+                    stuffDef = null;
+                }
+                Text.Font = GameFont.Tiny;
+                var list = PlacingDef.CostListAdjusted(tempStuff ?? stuffDef, false);
+
                 foreach (var thingCount in list)
                 {
                     var top = vector.y + num2;
@@ -293,6 +306,7 @@ namespace RA
                     GUI.color = Color.white;
                     num2 += 29f;
                 }
+                if (tempStuff != null) stuffDef = tempStuff;
             }
         }
 

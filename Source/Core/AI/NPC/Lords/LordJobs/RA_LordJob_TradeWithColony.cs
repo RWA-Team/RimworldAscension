@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI.Group;
@@ -46,32 +45,23 @@ namespace RA
             mainGraph.lordToils.Add(trade);
             var transitionToTrade = new Transition(unloadGoods, trade);
             transitionToTrade.triggers.Add(new Trigger_Memo("TravelArrived"));
-            transitionToTrade.preActions.Add(new TransitionAction_Custom(() =>
-            {
-                transitionToTrade.target.data = (LordToilData_Trade)transitionToTrade.sources.FirstOrDefault().data;
-            }));
+            // transit toil data to the next toil
+            transitionToTrade.preActions.Add(new TransitionAction_Custom(() => trade.data = unloadGoods.Data));
             mainGraph.transitions.Add(transitionToTrade);
 
             var loadGoods = new LordToil_LoadGoods();
             mainGraph.lordToils.Add(loadGoods);
             var transitionToLoadGoods = new Transition(trade, loadGoods);
-            transitionToLoadGoods.triggers.Add(new Trigger_TicksPassed(GenDate.TicksPerHour*6));
+            transitionToLoadGoods.triggers.Add(new Trigger_TicksPassed(GenDate.TicksPerHour));
             transitionToLoadGoods.preActions.Add(
                 new TransitionAction_Message("MessageTraderCaravanLeaving".Translate(faction.name)));
-            transitionToLoadGoods.preActions.Add(new TransitionAction_Custom(() =>
-            {
-                transitionToLoadGoods.target.data = (LordToilData_Trade)transitionToLoadGoods.sources.FirstOrDefault().data;
-            }));
+            transitionToLoadGoods.preActions.Add(new TransitionAction_Custom(() => loadGoods.data = trade.Data));
             mainGraph.transitions.Add(transitionToLoadGoods);
 
             var leaveColony = new LordToil_ExitMapAndEscortCarriers();
             mainGraph.lordToils.Add(leaveColony);
             var transitionToLeaveColony = new Transition(loadGoods, leaveColony);
             transitionToLeaveColony.triggers.Add(new Trigger_Memo("TravelArrived"));
-            transitionToLeaveColony.preActions.Add(new TransitionAction_Custom(() =>
-            {
-                transitionToLeaveColony.target.data = (LordToilData_Trade)transitionToLeaveColony.sources.FirstOrDefault().data;
-            }));
             mainGraph.transitions.Add(transitionToLeaveColony);
 
             // attaching defence and flee subgraph

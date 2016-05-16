@@ -63,8 +63,8 @@ namespace RA
                 Thing unused;
                 tradeCenter.colonyExchangeContainer.TryDrop(thing, tradeCenter.InteractionCell,
                     ThingPlaceMode.Near, out unused);
-                tradeCenter.colonyGoodsCost -= tradeCenter.ThingFinalCost(thing, TradeAction.PlayerSells)*
-                                               thing.stackCount;
+                tradeCenter.colonyGoodsCost -= tradeCenter.ThingTypeFinalCost(thing, TradeAction.PlayerSells);
+                tradeCenter.TryResolveTradeDeal();
             });
             var traderRect = new Rect(colonyRect)
             {
@@ -74,8 +74,8 @@ namespace RA
             UIUtil.DrawItemsList(traderRect, ref scrollPosition_Trader, tradeCenter.traderExchangeContainer.ToList(), thing =>
             {
                 tradeCenter.traderExchangeContainer.TransferToContainer(thing, tradeCenter.traderStock, thing.stackCount);
-                tradeCenter.traderGoodsCost -= tradeCenter.ThingFinalCost(thing, TradeAction.PlayerBuys)*
-                                               thing.stackCount;
+                tradeCenter.traderGoodsCost -= tradeCenter.ThingTypeFinalCost(thing, TradeAction.PlayerBuys);
+                tradeCenter.TryResolveTradeDeal();
             });
 
             UIUtil.ResetText();
