@@ -28,9 +28,7 @@
 		</researchMods>
 	</ResearchProjectDef>
 
-
 	<!-- ========================= Neolithic Tech Level ==========================-->
-
 
 	<ResearchProjectDef>
 		<defName>BasicFarming</defName>

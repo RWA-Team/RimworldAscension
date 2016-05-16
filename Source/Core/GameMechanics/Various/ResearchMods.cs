@@ -50,7 +50,7 @@ namespace RA
 
         public static void Masonry()
         {
-            AddDesignator(new Designator_SmoothFloor(), "Floor");
+            AddDesignator(new Designator_SmoothFloor(), "Floors");
 
             // craftsman table
             TryAllowToCraft("MakeFigurine", "StoneCobbles");
