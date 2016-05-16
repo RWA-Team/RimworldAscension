@@ -24,8 +24,7 @@ namespace RA
 
             yield return Toils_Reserve.Reserve(CarryThingIndex);
             yield return Toils_Reserve.ReserveQueue(CarryThingIndex);
-
-            // TODO check that
+            
             //Gather tradeables loop
             {
                 var extractTarget = Toils_JobTransforms.ExtractNextTargetFromQueue(CarryThingIndex);
@@ -38,13 +37,13 @@ namespace RA
             }
 
             yield return Toils_Haul.CarryHauledThingToContainer();
-            yield return RA_Toils.DepositHauledThingInContainer(DestIndex, PostTradeAction);
-        }
-
-        public void PostTradeAction()
-        {
-            var tradeCenter = TargetThingB as TradeCenter;
-            tradeCenter.colonyGoodsCost += tradeCenter.ThingFinalCost(TargetThingA, TradeAction.PlayerSells);
+            yield return RA_Toils.DepositHauledThingInContainer(DestIndex, thing =>
+            {
+                var tradeCenter = TargetThingB as TradeCenter;
+                tradeCenter.colonyGoodsCost += tradeCenter.ThingTypeFinalCost(thing, TradeAction.PlayerSells);
+                tradeCenter.pendingItemsCounter.Remove(thing);
+                tradeCenter.TryResolveTradeDeal();
+            });
         }
     }
 }

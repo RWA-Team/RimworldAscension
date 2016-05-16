@@ -51,7 +51,7 @@
 		<description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
 		<minifiedDef>TrapDeadfallMinified</minifiedDef>
 		<costList>
-			<TrapDeadfallMinified>1</TrapDeadfallMinified>
+			<TrapDeadfall>1</TrapDeadfall>
 		</costList>
 		<building>
 			<isTrap>true</isTrap>

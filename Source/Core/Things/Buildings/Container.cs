@@ -18,6 +18,10 @@ namespace RA
                 thing.def.category == ThingCategory.Item)
             .ToList();
 
+        // TODO: might hit performance
+        public bool Full => Spawned && StoredItems.Count >= comp.Properties.itemsCap &&
+                            !StoredItems.Exists(thing => stackCount < thing.def.stackLimit);
+
         // Executed when building is spawned on map (after loading too)
         public override void SpawnSetup()
         {
@@ -26,7 +30,7 @@ namespace RA
             comp = this.TryGetComp<CompContainer>();
             if (comp == null)
             {
-                Log.Error("No CompContainer included for this Building_Storage");
+                Log.Error("No CompContainer included for this Container");
             }
         }
 

@@ -2,18 +2,21 @@
 using Verse;
 using Verse.AI.Group;
 
-public class LordToilData_Trade : LordToilData
+namespace RA
 {
-    public TradeCenter selectedTradeCenter;
-    public Pawn trader, carrier;
-    public IntVec3 traderDest, carrierDest;
-
-    public override void ExposeData()
+    public class LordToilData_Trade : LordToilData
     {
-        Scribe_References.LookReference(ref selectedTradeCenter, "selectedTradeCenter");
-        Scribe_References.LookReference(ref trader, "trader");
-        Scribe_References.LookReference(ref carrier, "carrier");
-        Scribe_Values.LookValue(ref traderDest, "traderDest");
-        Scribe_Values.LookValue(ref carrierDest, "carrierDest");
+        public TradeCenter selectedTradeCenter;
+        public Pawn trader, carrier;
+        public IntVec3 traderDest, carrierDest;
+
+        public override void ExposeData()
+        {
+            Scribe_References.LookReference(ref selectedTradeCenter, "selectedTradeCenter");
+            Scribe_References.LookReference(ref trader, "trader");
+            Scribe_References.LookReference(ref carrier, "carrier");
+            Scribe_Values.LookValue(ref traderDest, "traderDest");
+            Scribe_Values.LookValue(ref carrierDest, "carrierDest");
+        }
     }
 }

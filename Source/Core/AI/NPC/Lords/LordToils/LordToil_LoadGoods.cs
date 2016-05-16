@@ -22,7 +22,7 @@ namespace RA
             foreach (var pawn in lord.ownedPawns)
             {
                 if (pawn == Data.trader)
-                    pawn.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("Station"));
+                    pawn.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("StationAt"), Data.traderDest);
                 else if (pawn == Data.carrier)
                     pawn.mindState.duty = new PawnDuty(DefDatabase<DutyDef>.GetNamed("StationAt"), Data.carrierDest)
                     {
@@ -57,6 +57,8 @@ namespace RA
                 if (Data.carrier.Position == Data.carrierDest)
                 {
                     lord.ReceiveMemo("TravelArrived");
+
+                    Data.selectedTradeCenter.TraderLeaves();
                 }
             }
         }

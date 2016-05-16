@@ -139,7 +139,6 @@
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToMake>2700</WorkToMake>
 		</statBases>
-		<tickerType>Rare</tickerType>
 		<description>A small tent with hundreds of trinkets to be sold.</description>
 		<size>(3,3)</size>
 		<castEdgeShadows>true</castEdgeShadows>

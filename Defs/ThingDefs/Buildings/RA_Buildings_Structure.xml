@@ -31,9 +31,7 @@
 		<designationCategory>Structure</designationCategory>
 	</ThingDef>
 
-
 	<!--====================== Doors ==========================-->
-
 
 	<ThingDef Name="StructureDoor" ParentName="Structure" Abstract="True">
 		<thingClass>Building_Door</thingClass>
@@ -69,6 +67,7 @@
 		<description>Divides rooms. Must be manually opened and closed, which slows people down.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Structure/Doors/DoorLog_Mover</texPath>
+			<drawSize>(1.4,1.3)</drawSize>
 			<shadowData>
 				<volume>(1, 1, 0.8)</volume>
 			</shadowData>
@@ -89,9 +88,7 @@
 		</researchPrerequisites>
 	</ThingDef>
 
-
 	<!--========================= Walls =============================-->
-
 
 	<ThingDef Name="StructureWall" ParentName="Structure" Abstract="True">
 		<thingClass>Building</thingClass>
@@ -137,11 +134,10 @@
 		<description>A log wall. Capable of holding up a roof.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Structure/Walls/WallLog/WallLog_Atlas</texPath>
-			<color>(133,97,67)</color>
 		</graphicData>
 		<uiIconPath>Things/Buildings/Structure/Walls/WallLog/WallLog_MenuIcon</uiIconPath>
 		<costList>
-			<WoodLog>25</WoodLog>
+			<WoodLog>5</WoodLog>
 		</costList>
 		<researchPrerequisites>
 			<li>StartPack</li>
@@ -176,7 +172,7 @@
 		<description>A clay wall.</description>
 		<graphicData>
 			<texPath>Things/Building/Linked/Wall/Wall_Atlas_Bricks</texPath>
-			<color>(127,51,0)</color>
+			<color>(124,82,26)</color>
 		</graphicData>
 		<uiIconPath>Things/Building/Linked/WallBricks_MenuIcon</uiIconPath>
 		<statBases>

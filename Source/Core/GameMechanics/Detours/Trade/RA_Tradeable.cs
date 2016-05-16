@@ -9,10 +9,15 @@ namespace RA
     {
         public TradeCenter tradeCenter;
 
+        public new float PriceFor(TradeAction action)
+        {
+            if (tradeCenter == null) tradeCenter = TradeUtil.FindOccupiedTradeCenter(TradeSession.playerNegotiator);
+            return tradeCenter.ThingTypeFinalCost(AnyThing, action, 1);
+        }
+
         public new virtual void ResolveTrade()
         {
-            tradeCenter = TradeUtil.FindOccupiedTradeCenter();
-
+            if (tradeCenter == null) tradeCenter = TradeUtil.FindOccupiedTradeCenter(TradeSession.playerNegotiator);
             // goods offered by colony
             if (ActionToDo == TradeAction.PlayerSells)
             {
@@ -40,7 +45,7 @@ namespace RA
                             tradeCenter.pendingResourcesCounters.Add(currentThing.def, offerCount);
                     }
                     // clears placed blueprints for minified things
-                    currentThing.PreSold(TradeSession.playerNegotiator, TradeSession.trader);
+                    currentThing.PreSold(tradeCenter.negotiator, tradeCenter.trader);
                     tradeCenter.pendingItemsCounter.Add(currentThing);
                     thingsColony.Remove(currentThing);
                 }
@@ -71,7 +76,7 @@ namespace RA
                     // trasfer sellable to the trader exchange container
                     tradeCenter.traderStock.TransferToContainer(transferedThing, tradeCenter.traderExchangeContainer, transferedThing.stackCount);
                     // update trader goods total cost
-                    tradeCenter.traderGoodsCost += tradeCenter.ThingFinalCost(transferedThing, TradeAction.PlayerBuys);
+                    tradeCenter.traderGoodsCost += tradeCenter.ThingTypeFinalCost(transferedThing, TradeAction.PlayerBuys);
                     CheckTeachOpportunity(transferedThing);
                 }
             }

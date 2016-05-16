@@ -14,7 +14,7 @@ namespace RA
 
         public ITab_Exchange()
         {
-            size = new Vector2(500f, 400f);
+            size = new Vector2(UIUtil.ITabWindowWidth, 400f);
             labelKey = "Exchange";
         }
 
@@ -32,33 +32,30 @@ namespace RA
         {
             var mainRect = new Rect(0f, 0f, size.x, size.y).ContractedBy(UIUtil.DefaultMargin);
 
-            // negate deal button
-            var negateButtonRect = new Rect(mainRect.x, mainRect.y, 200f, 40f)
-                    .CenteredOnXIn(mainRect);
-            {
-                if (Widgets.TextButton(negateButtonRect, "Negate Deal"))
-                {
-                    tradeCenter.NegateTradeDeal();
-                    var currentITab = (MainTabWindow_Inspect)MainTabDefOf.Inspect.Window;
-                    currentITab.CloseOpenTab();
-                }
-            }
-
             // trade balance label
-            var tradeBalanceRect = new Rect(mainRect.x, negateButtonRect.yMax, mainRect.width, UIUtil.TextHeight)
+            var tradeBalanceRect = new Rect(mainRect.x, mainRect.y, 200f, 30f)
                 .CenteredOnXIn(mainRect);
             DrawTradeBalance(tradeBalanceRect);
 
             // column headers labels
             Text.Anchor = TextAnchor.MiddleCenter;
-            var colonyLabelRect = new Rect(mainRect.x, tradeBalanceRect.y, mainRect.width/2, UIUtil.TextHeight);
+            var colonyLabelRect = new Rect(mainRect.x, tradeBalanceRect.yMax, mainRect.width/2, tradeBalanceRect.height);
             Widgets.Label(colonyLabelRect, "Colony offer:");
             var traderLabelRect = new Rect(colonyLabelRect.xMax, colonyLabelRect.y, colonyLabelRect.width,
                 colonyLabelRect.height);
             Widgets.Label(traderLabelRect, "Trader offer:");
 
+            // negate deal button
+            var negateButtonRect = new Rect(colonyLabelRect.x, colonyLabelRect.y, 80f, colonyLabelRect.height).CenteredOnXIn(mainRect);
+            if (Widgets.TextButton(negateButtonRect, "Negate"))
+            {
+                tradeCenter.NegateTradeDeal();
+                var currentITab = (MainTabWindow_Inspect)MainTabDefOf.Inspect.Window;
+                currentITab.CloseOpenTab();
+            }
+
             // exchange table
-            var colonyRect = new Rect(mainRect.x, colonyLabelRect.yMax, mainRect.width/2,
+            var colonyRect = new Rect(mainRect.x, colonyLabelRect.yMax + UIUtil.DefaultMargin, mainRect.width/2,
                 mainRect.height - colonyLabelRect.yMax);
             Widgets.DrawWindowBackground(colonyRect);
             UIUtil.DrawItemsList(colonyRect, ref scrollPosition_Colony, tradeCenter.colonyExchangeContainer.ToList(), thing =>
@@ -66,7 +63,8 @@ namespace RA
                 Thing unused;
                 tradeCenter.colonyExchangeContainer.TryDrop(thing, tradeCenter.InteractionCell,
                     ThingPlaceMode.Near, out unused);
-                tradeCenter.colonyGoodsCost -= tradeCenter.ThingFinalCost(thing, TradeAction.PlayerSells);
+                tradeCenter.colonyGoodsCost -= tradeCenter.ThingTypeFinalCost(thing, TradeAction.PlayerSells);
+                tradeCenter.TryResolveTradeDeal();
             });
             var traderRect = new Rect(colonyRect)
             {
@@ -76,7 +74,8 @@ namespace RA
             UIUtil.DrawItemsList(traderRect, ref scrollPosition_Trader, tradeCenter.traderExchangeContainer.ToList(), thing =>
             {
                 tradeCenter.traderExchangeContainer.TransferToContainer(thing, tradeCenter.traderStock, thing.stackCount);
-                tradeCenter.traderGoodsCost -= tradeCenter.ThingFinalCost(thing, TradeAction.PlayerBuys);
+                tradeCenter.traderGoodsCost -= tradeCenter.ThingTypeFinalCost(thing, TradeAction.PlayerBuys);
+                tradeCenter.TryResolveTradeDeal();
             });
 
             UIUtil.ResetText();
@@ -88,10 +87,10 @@ namespace RA
             GUI.color = tradeBalance > 0
                 ? Color.green
                 : tradeBalance < 0
-                    ? Color.red
+                    ? Color.yellow
                     : Color.white;
             Text.Anchor = TextAnchor.MiddleCenter;
-            Widgets.Label(rect, "Trade balance: " + tradeBalance.ToStringMoney());
+            Widgets.Label(rect, string.Format("<b>Trade balance: {0}</b>", tradeBalance.ToStringMoney()));
             UIUtil.ResetText();
         }
     }

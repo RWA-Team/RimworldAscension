@@ -34,8 +34,7 @@ namespace RA
                     {
                         GenDraw.DrawFieldEdges(
                             FindUtil.SquareAreaAround(Gen.MouseCell(),
-                                (int) PlacingDef.specialDisplayRadius +
-                                Mathf.Max(PlacingDef.Size.x, PlacingDef.Size.z)/2)
+                                Mathf.RoundToInt(PlacingDef.specialDisplayRadius))
                                 .Where(cell => cell.Walkable() && cell.InBounds()).ToList());
                     }
                     else

@@ -6,7 +6,7 @@
 	- equippedStatOffsets - applies offset to the pawns stat when worn
 	- worngraphicPath - used to fraw apparel texture on the pawn. shows nothing if not set
 	 -->
-	 
+
 	<!--==================== Base Abstracts ========================-->
 
 	<ThingDef Name="Apparel" ParentName="Item" Abstract="True">
@@ -24,9 +24,12 @@
 			<li>
 				<compClass>CompQuality</compClass>
 			</li>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
 		</comps>
 	</ThingDef>	
-	
+
 	<!--==================== Armor ========================-->	
 
 	<ThingDef Name="Armor" ParentName="Apparel" Abstract="True">
@@ -35,9 +38,7 @@
 		</thingCategories>
 	</ThingDef>
 
-
 	<!-- ========================= Head =========================-->
-
 
 	<ThingDef Name="ArmorHead" ParentName="Armor" Abstract="True">
 		<thingCategories>
@@ -76,9 +77,7 @@
 		</apparel>
 	</ThingDef>
 
-
 	<!-- ========================= Chest =========================-->
-
 
 	<ThingDef Name="ArmorChest" ParentName="Armor" Abstract="True">
 		<apparel>
@@ -116,11 +115,10 @@
 				<li>ArmorBone</li>
 			</tags>
 		</apparel>
+		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
 
-
 	<!-- ========================= Shields =========================-->
-
 
 	<ThingDef Name="ArmorShield" ParentName="Armor" Abstract="True">
 		<thingClass>RA.Shield</thingClass>

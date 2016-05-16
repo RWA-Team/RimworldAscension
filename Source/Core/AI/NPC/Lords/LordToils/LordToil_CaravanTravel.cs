@@ -8,7 +8,7 @@ namespace RA
 {
 	public class LordToil_CaravanTravel : LordToil
     {
-        public const float AllArrivedCheckRadius = 20f;
+        public const float AllArrivedCheckRadius = 10f;
 
         public LordToilData_Travel Data => (LordToilData_Travel)data;
         public override IntVec3 FlagLoc => Data.dest;
@@ -61,7 +61,15 @@ namespace RA
         {
             if (Find.TickManager.TicksGame % 205 == 0)
             {
-                var arrived = lord.ownedPawns.All(pawn => pawn.Position.InHorDistOf(FlagLoc, AllArrivedCheckRadius) && pawn.CanReach(FlagLoc, PathEndMode.ClosestTouch, Danger.Deadly));
+                var arrived =
+                    lord.ownedPawns.Where(
+                        pawn =>
+                            pawn.GetCaravanRole() == TraderCaravanRole.Trader ||
+                            pawn.GetCaravanRole() == TraderCaravanRole.Carrier)
+                        .All(
+                            pawn =>
+                                pawn.Position.InHorDistOf(FlagLoc, AllArrivedCheckRadius) &&
+                                pawn.CanReach(FlagLoc, PathEndMode.ClosestTouch, Danger.Deadly));
                 if (arrived)
                 {
                     lord.ReceiveMemo("TravelArrived");
