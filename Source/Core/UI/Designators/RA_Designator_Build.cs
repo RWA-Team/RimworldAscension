@@ -14,10 +14,11 @@ namespace RA
         public const float DragPriceDrawNumberX = 29f;
         
         public ThingDef stuffDef;
+        public ThingDef thingDef;
 
         public RA_Designator_Build(BuildableDef entDef) : base(entDef)
         {
-            var thingDef = entDef as ThingDef;
+            thingDef = entDef as ThingDef;
             if (thingDef != null)
             {
                 if (thingDef.MadeFromStuff)
@@ -35,20 +36,10 @@ namespace RA
         protected override Color IconDrawColor => stuffDef?.stuffProps.color ?? PlacingDef.IconDrawColor;
 
         // required to use replacement for private stuffDef in vanilla Designator_Build
-        public override string Label
-        {
-            get
-            {
-                var thingDef = entDef as ThingDef;
-                return thingDef != null ? GenLabel.ThingLabel(thingDef, stuffDef) : entDef.label;
-            }
-        }
+        public override string Label => thingDef != null ? GenLabel.ThingLabel(thingDef, stuffDef) : entDef.label;
 
         // determine conditions of hiding similar gizmos. Added Graphic_StuffBased support
-        public override bool GroupsWith(Gizmo other)
-        {
-            return PlacingDef == (other as RA_Designator_Build)?.PlacingDef;
-        }
+        public override bool GroupsWith(Gizmo other) => PlacingDef == (other as RA_Designator_Build)?.PlacingDef;
 
         // added Graphic_StuffBased support
         public override void SelectedUpdate()
@@ -61,7 +52,6 @@ namespace RA
                 baseGraphic.currentCategory = stuffDef.stuffProps.categories[0].defName;
 
             var intVec = Gen.MouseCell();
-            var thingDef = PlacingDef as ThingDef;
             if (thingDef != null && (thingDef.EverTransmitsPower || thingDef.ConnectToPower))
             {
                 OverlayDrawHandler.DrawPowerGridOverlayThisFrame();
@@ -79,15 +69,14 @@ namespace RA
         // use install designator instead of build for all defs with minifiable option enabled
         public override void ProcessInput(Event ev)
         {
-            var buildingDef = PlacingDef as ThingDef;
             // select build options
-            if (buildingDef != null && (buildingDef.MadeFromStuff || buildingDef.Minifiable))
+            if (thingDef != null && (thingDef.MadeFromStuff || thingDef.Minifiable))
             {
                 var buildOptions = new List<FloatMenuOption>();
                 // minifiable things build options
-                if (buildingDef.Minifiable)
+                if (thingDef.Minifiable)
                 {
-                    var minifiables = Find.ListerThings.ThingsOfDef(buildingDef.minifiedDef);
+                    var minifiables = Find.ListerThings.ThingsOfDef(thingDef.minifiedDef);
                     if (minifiables.Count > 0)
                     {
                         foreach (var minifiable in minifiables)
@@ -108,11 +97,11 @@ namespace RA
                     }
                     else if (Game.GodMode)
                     {
-                        var optionLabel = buildingDef.LabelCap;
+                        var optionLabel = thingDef.LabelCap;
                         var option = new FloatMenuOption(optionLabel, () =>
                         {
                             DesignatorManager.Select(this);
-                            stuffDef = GenStuff.RandomStuffFor(buildingDef.minifiedDef);
+                            stuffDef = GenStuff.RandomStuffFor(thingDef.minifiedDef);
                         });
                         buildOptions.Add(option);
                     }
@@ -122,7 +111,7 @@ namespace RA
                 {
                     foreach (var resourceDef in Find.ResourceCounter.AllCountedAmounts.Keys)
                     {
-                        if (resourceDef.IsStuff && resourceDef.stuffProps.CanMake(buildingDef) &&
+                        if (resourceDef.IsStuff && resourceDef.stuffProps.CanMake(thingDef) &&
                             (Game.GodMode || Find.ListerThings.ThingsOfDef(resourceDef).Count > 0))
                         {
                             var localStuffDef = resourceDef;
@@ -146,7 +135,7 @@ namespace RA
 
                     // call designator for pressing gizmo itself
                     // install designator for minified
-                    if (buildingDef.Minifiable)
+                    if (thingDef.Minifiable)
                     {
                         buildOptions.FirstOrDefault().action();
                     }
@@ -198,38 +187,23 @@ namespace RA
             return false;
         }
 
-        // added special Graphic_StuffBased implementation
+        // added special case for minified things
         public override void DrawPanelReadout(ref float curY, float width)
         {
-            // special Graphic_StuffBased implementation
-            var baseGraphic = PlacingDef.graphic as Graphic_StuffBased;
-            if (stuffDef != null && baseGraphic != null)
-                icon = (Texture2D)baseGraphic.categorizedGraphics[stuffDef.stuffProps.categories[0].defName].MatSingle.mainTexture;
+            //// special Graphic_StuffBased implementation
+            //var baseGraphic = PlacingDef.graphic as Graphic_StuffBased;
+            //if (stuffDef != null && baseGraphic != null)
+            //    icon = (Texture2D)baseGraphic.categorizedGraphics[stuffDef.stuffProps.categories[0].defName].MatSingle.mainTexture;
 
-            var buildingDef = PlacingDef as ThingDef;
-            ThingDef tempStuff = null;
-            if (PlacingDef.costStuffCount <= 0 && stuffDef != null)
+            // special case for minified things
+            var costList = thingDef != null && thingDef.Minifiable
+                ? new List<ThingCount> { new ThingCount(thingDef, 1) }
+                : PlacingDef.CostListAdjusted(stuffDef);
+
+            UIUtil.ResetText();
+            foreach (var thingCount in costList)
             {
-                if (buildingDef != null && (buildingDef.MadeFromStuff || buildingDef.Minifiable))
-                {
-                    tempStuff = stuffDef;
-                }
-                stuffDef = null;
-            }
-            Text.Font = GameFont.Tiny;
-            var list = PlacingDef.CostListAdjusted(tempStuff ?? stuffDef, false);
-
-            foreach (var thingCount in list)
-            {
-                Texture2D resourceTexture;
-                if (buildingDef != null && buildingDef.Minifiable)
-                    resourceTexture = buildingDef.uiIcon;
-                else if (PlacingDef != null)
-                    resourceTexture = thingCount.thingDef.uiIcon;
-                else
-                resourceTexture = TexUI.UnknownThing;
-
-                GUI.DrawTexture(new Rect(0f, curY, 20f, 20f), resourceTexture);
+                GUI.DrawTexture(new Rect(0f, curY, 20f, 20f), thingCount.thingDef.uiIcon);
                 if (thingCount.thingDef != null &&
                     thingCount.thingDef.resourceReadoutPriority != ResourceCountPriority.Uncounted &&
                     Find.ResourceCounter.GetCount(thingCount.thingDef) < thingCount.count)
@@ -248,11 +222,10 @@ namespace RA
                 Widgets.Label(new Rect(60f, curY + 2f, width2, num), text);
                 curY += num;
             }
-            if (tempStuff != null) stuffDef = tempStuff;
 
-            if (buildingDef != null)
+            if (thingDef != null)
             {
-                Widgets.InfoCardButton(0f, curY, buildingDef, stuffDef);
+                Widgets.InfoCardButton(0f, curY, thingDef, stuffDef);
             }
             else
             {
@@ -263,6 +236,7 @@ namespace RA
 
         // draws texture and build cost while building
         // modified call for InfoRect
+        // added special case for minified things
         public override void DrawMouseAttachments()
         {
             if (useMouseIcon) GenUI.DrawMouseAttachment(icon, string.Empty);
@@ -272,41 +246,30 @@ namespace RA
                 var num = dragger.Dragging ? dragger.DragCells.Count : 1;
                 var num2 = 0f;
                 var vector = Event.current.mousePosition + DragPriceDrawOffset;
+                
+                var costList = thingDef != null && thingDef.Minifiable
+                    ? new List<ThingCount> {new ThingCount(thingDef, 1)}
+                    : PlacingDef.CostListAdjusted(stuffDef);
 
-                var buildingDef = PlacingDef as ThingDef;
-                ThingDef tempStuff = null;
-                if (PlacingDef.costStuffCount <= 0 && stuffDef != null)
-                {
-                    if (buildingDef != null && (buildingDef.MadeFromStuff || buildingDef.Minifiable))
-                    {
-                        tempStuff = stuffDef;
-                    }
-                    stuffDef = null;
-                }
-                Text.Font = GameFont.Tiny;
-                var list = PlacingDef.CostListAdjusted(tempStuff ?? stuffDef, false);
-
-                foreach (var thingCount in list)
+                UIUtil.ResetText();
+                foreach (var thingCount in costList)
                 {
                     var top = vector.y + num2;
                     var position = new Rect(vector.x, top, 27f, 27f);
                     GUI.DrawTexture(position, thingCount.thingDef.uiIcon);
                     var rect = new Rect(vector.x + 29f, top, 999f, 29f);
-                    var num3 = num * thingCount.count;
+                    var num3 = num*thingCount.count;
                     var text = num3.ToString();
                     if (Find.ResourceCounter.GetCount(thingCount.thingDef) < num3)
                     {
                         GUI.color = Color.red;
                         text = text + " (" + "NotEnoughStoredLower".Translate() + ")";
                     }
-                    Text.Font = GameFont.Small;
                     Text.Anchor = TextAnchor.MiddleLeft;
                     Widgets.Label(rect, text);
-                    Text.Anchor = TextAnchor.UpperLeft;
-                    GUI.color = Color.white;
+                    UIUtil.ResetText();
                     num2 += 29f;
                 }
-                if (tempStuff != null) stuffDef = tempStuff;
             }
         }
 

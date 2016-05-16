@@ -183,7 +183,6 @@
 		</graphicData>
 		<PathCost>20</PathCost>
 		<fillPercent>0</fillPercent>
-		<altitudeLayer>LowPlant</altitudeLayer>
 		<statBases>
 			<Beauty>-5</Beauty>
 			<WorkToMake>100</WorkToMake>
@@ -212,7 +211,6 @@
 		</graphicData>
 		<PathCost>20</PathCost>
 		<fillPercent>0</fillPercent>
-		<altitudeLayer>LowPlant</altitudeLayer>
 		<statBases>
 			<Beauty>-1</Beauty>
 			<WorkToMake>100</WorkToMake>
@@ -226,7 +224,6 @@
 		<stuffCategories>
 			<li>Leathery</li>
 		</stuffCategories>
-		<costStuffCount>1</costStuffCount>
 		<researchPrerequisites>
 			<li>Blocked</li>
 		</researchPrerequisites>
@@ -292,6 +289,7 @@
 			<shaderType>Cutout</shaderType>
 			<drawSize>(0.8,0.8)</drawSize>
 		</graphicData>
+		<rotatable>false</rotatable>
 		<minifiedDef>StoolNeolithicMinified</minifiedDef>
 		<costList>
 			<StoolNeolithic>1</StoolNeolithic>
@@ -302,7 +300,9 @@
 			<Beauty>3</Beauty>
 			<Comfort>0.5</Comfort>
 		</statBases>
-		<rotatable>false</rotatable>
+		<stuffCategories>
+			<li>StoneChunk</li>
+		</stuffCategories>
 		<researchPrerequisites>
 			<li>Masonry</li>
 		</researchPrerequisites>
@@ -316,7 +316,7 @@
 		</stuffCategories>
 	</ThingDef>
 
-	<ThingDef ParentName="Stool">
+<!-- 	<ThingDef ParentName="Stool">
 		<defName>Stool</defName>
 		<label>stool</label>
 		<description>A simple platform on which to sit.</description>
@@ -345,7 +345,7 @@
 		<stuffCategories>
 			<li>WoodLog</li>
 		</stuffCategories>
-	</ThingDef>
+	</ThingDef> -->
 
 	<!--======================= Tables ==============================-->
 
@@ -386,6 +386,9 @@
 		<costList>
 			<TableShort>1</TableShort>
 		</costList>
+		<stuffCategories>
+			<li>WoodPlank</li>
+		</stuffCategories>
 		<rotatable>false</rotatable>
 		<researchPrerequisites>
 			<li>StartPack</li>
@@ -428,6 +431,9 @@
 		<costList>
 			<TableLong>1</TableLong>
 		</costList>
+		<stuffCategories>
+			<li>WoodPlank</li>
+		</stuffCategories>
 		<researchPrerequisites>
 			<li>StartPack</li>
 		</researchPrerequisites>
@@ -510,6 +516,9 @@
 		<inspectorTabs>
 			<li>ITab_Growing</li>
 		</inspectorTabs>
+		<stuffCategories>
+			<li>WoodLog</li>
+		</stuffCategories>
 		<researchPrerequisites>
 			<li>StartPack</li>
 		</researchPrerequisites>
