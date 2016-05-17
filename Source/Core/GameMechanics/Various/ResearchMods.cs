@@ -22,8 +22,6 @@ namespace RA
 
         public static void Butchering()
         {
-            AddDesignator(new Designator_Slaughter(), "Orders");
-
             // all meat based pawns
             foreach (var pawnDef in DefDatabase<ThingDef>.AllDefs.Where(pawnDef => pawnDef.race?.IsFlesh == true))
             {
