@@ -159,6 +159,11 @@ namespace RA
             var newTryExecute = typeof(RA_IncidentWorker_VisitorGroup).GetMethod("TryExecute", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaTryExecute, newTryExecute);
 
+            // make effecter trigger deteriorate used tools
+            var vanillaTrigger = typeof(Effecter).GetMethod("Trigger", BindingFlags.Instance | BindingFlags.Public);
+            var newTrigger = typeof(RA_Effecter).GetMethod("Trigger", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaTrigger, newTrigger);
+
             #endregion
 
             #region TRADE

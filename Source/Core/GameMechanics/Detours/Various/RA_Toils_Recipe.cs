@@ -18,14 +18,14 @@ namespace RA
             {
                 var actor = toil.actor;
                 var curJob = actor.jobs.curJob;
-                var jobDriver_DoBill = (JobDriver_DoBill) actor.jobs.curDriver;
+                var curDriver = actor.jobs.curDriver as JobDriver_DoBill;
 
                 // burner support injection
                 var burner = curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
                 if (burner != null && burner.internalTemp > burner.compFueled.Properties.operatingTemp)
                 {
-                    jobDriver_DoBill.SetNextToil(RA_Toils.WaitUntilBurnerReady());
-                    jobDriver_DoBill.ReadyForNextToil();
+                    curDriver.SetNextToil(RA_Toils.WaitUntilBurnerReady());
+                    curDriver.ReadyForNextToil();
                 }
                 else
                 {
@@ -34,25 +34,22 @@ namespace RA
                     var unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
                     if (unfinishedThing != null && unfinishedThing.Initialized)
                     {
-                        // research injection
-                        jobDriver_DoBill.workLeft = researchComp == null
-                            ? unfinishedThing.workLeft
-                            : startedResearch.totalCost -
-                              Find.ResearchManager.ProgressOf(startedResearch);
+                        curDriver.workLeft = unfinishedThing.workLeft;
                     }
                     else
                     {
                         // research injection
-                        jobDriver_DoBill.workLeft = researchComp == null
+                        curDriver.workLeft = researchComp == null
                             ? curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff)
                             : startedResearch.totalCost -
                               Find.ResearchManager.ProgressOf(startedResearch);
+
                         if (unfinishedThing != null)
                         {
-                            unfinishedThing.workLeft = jobDriver_DoBill.workLeft;
+                            unfinishedThing.workLeft = curDriver.workLeft;
                         }
                     }
-                    jobDriver_DoBill.billStartTick = Find.TickManager.TicksGame;
+                    curDriver.billStartTick = Find.TickManager.TicksGame;
                     curJob.bill.Notify_DoBillStarted();
                 }
             };
@@ -86,8 +83,8 @@ namespace RA
                     ? actor.GetStatValue(curJob.RecipeDef.workSpeedStat)
                     : 1f;
 
-                var jobDriver_DoBill = (JobDriver_DoBill) actor.jobs.curDriver;
-                var building_WorkTable = jobDriver_DoBill.BillGiver as Building_WorkTable;
+                var curDriver = actor.jobs.curDriver as JobDriver_DoBill;
+                var building_WorkTable = curDriver.BillGiver as Building_WorkTable;
                 if (building_WorkTable != null)
                 {
                     workProgress *= building_WorkTable.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor);
@@ -98,27 +95,33 @@ namespace RA
                     workProgress *= 30f;
                 }
 
-                jobDriver_DoBill.workLeft -= workProgress;
+                curDriver.workLeft -= workProgress;
                 if (unfinishedThing != null)
                 {
-                    unfinishedThing.workLeft = jobDriver_DoBill.workLeft;
+                    unfinishedThing.workLeft = curDriver.workLeft;
                 }
 
-                //// research table support injection
+                // research injection
                 var researchComp = curJob.GetTarget(TargetIndex.A).Thing.TryGetComp<CompResearcher>();
-                if (researchComp != null && Find.ResearchManager.currentProj != null &&
-                    Find.ResearchManager.currentProj == startedResearch)
+                if (researchComp != null)
                 {
-                    Find.ResearchManager.MakeProgress(workProgress, actor);
+                    if (Find.ResearchManager.currentProj != null && Find.ResearchManager.currentProj == startedResearch)
+                    {
+                        Find.ResearchManager.MakeProgress(workProgress, actor);
+                    }
+                    else
+                    {
+                        curDriver.ReadyForNextToil();
+                    }
+                }
+                else if (curDriver.workLeft <= 0f)
+                {
+                    curDriver.ReadyForNextToil();
                 }
 
-                if (jobDriver_DoBill.workLeft <= 0f)
-                {
-                    jobDriver_DoBill.ReadyForNextToil();
-                }
                 if (curJob.bill.recipe.UsesUnfinishedThing)
                 {
-                    var num2 = Find.TickManager.TicksGame - jobDriver_DoBill.billStartTick;
+                    var num2 = Find.TickManager.TicksGame - curDriver.billStartTick;
                     if (num2 >= 3000 && num2%1000 == 0)
                     {
                         actor.jobs.CheckForJobOverride();
@@ -133,9 +136,12 @@ namespace RA
                 var actor = toil.actor;
                 var curJob = actor.CurJob;
                 var unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
-                return 1f -
-                       ((JobDriver_DoBill) actor.jobs.curDriver).workLeft/
-                       curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff);
+                var researchComp = curJob.GetTarget(TargetIndex.A).Thing.TryGetComp<CompResearcher>();
+                // research injection
+                return researchComp == null
+                    ? 1f - ((JobDriver_DoBill) actor.jobs.curDriver).workLeft/
+                      curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff)
+                    : Find.ResearchManager.PercentComplete(startedResearch);
             });
             toil.FailOn(() => toil.actor.CurJob.bill.suspended);
             return toil;

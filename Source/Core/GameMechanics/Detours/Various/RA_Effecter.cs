@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace RA
@@ -12,6 +11,7 @@ namespace RA
         {
         }
 
+        // make effecter trigger deteriorate used tools
         public new void Trigger(TargetInfo A, TargetInfo B)
         {
             base.Trigger(A, B);
@@ -20,28 +20,19 @@ namespace RA
             // colonist triggers effecter
             if (A.HasThing && (pawn = A.Thing as Pawn) != null && pawn.Faction == Faction.OfColony)
             {
-                // has weapon with tags
-                List<string> weaponTags;
-                if (!(weaponTags = pawn.equipment?.Primary?.def.weaponTags).NullOrEmpty())
+                CompTool toolComp;
+                // pawn carries tool
+                if ((toolComp = pawn.equipment.Primary.TryGetComp<CompTool>()) != null)
                 {
-                    // pawn carries tool
-                    if (weaponTags.Exists(tag => tag.Contains("Tool")))
+                    // tool is used for the corresponding job
+                    if (toolComp.Allows("Mining") && MineUtility.MineableInCell(B.Cell) != null ||
+                        toolComp.Allows("PlantCutting") && B.HasThing && B.Thing is Plant ||
+                        toolComp.Allows("Construction") && B.HasThing && B.Thing is Building)
                     {
-                        var tool = pawn.equipment.Primary;
-                        // tool is used for the corresponding job
-                        Thing mineable;
-                        if ((mineable = MineUtility.MineableInCell(B.Cell)) != null && weaponTags.Exists(tag => tag.Contains("Mining")))
-                        {
-                            //tool.HitPoints -= tool.IsHashIntervalTick(TicksPerOneDamage)
-
-                            /// tools should be made via comp for weapons
-                            /// with worktype params, use params and so on
-                        }
+                        toolComp.ToolUseTick();
                     }
-
                 }
             }
         }
-
     }
 }
