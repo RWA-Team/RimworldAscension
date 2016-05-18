@@ -118,12 +118,10 @@ namespace RA
                 targetQueueB = new List<TargetInfo>(chosenIngThings.Count),
                 numToBringList = new List<int>(chosenIngThings.Count)
             };
-            for (var k = 0; k < chosenIngThings.Count; k++)
+            foreach (var ingridient in chosenIngThings)
             {
-                // pre reservation is made to assure that current researcher is cleaning the bench, not some other pawn with research skill
-                pawn.Reserve(chosenIngThings[k].thing);
-                doBill.targetQueueB.Add(chosenIngThings[k].thing);
-                doBill.numToBringList.Add(chosenIngThings[k].count);
+                doBill.targetQueueB.Add(ingridient.thing);
+                doBill.numToBringList.Add(ingridient.count);
             }
             doBill.haulMode = HaulMode.ToCellNonStorage;
             doBill.bill = bill;

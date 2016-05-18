@@ -39,10 +39,16 @@ namespace RA
                     else
                     {
                         // research injection
-                        curDriver.workLeft = researchComp == null
-                            ? curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff)
-                            : startedResearch.totalCost -
-                              Find.ResearchManager.ProgressOf(startedResearch);
+                        if (researchComp != null)
+                        {
+                            (curJob.bill as Bill_Production).storeMode = BillStoreMode.DropOnFloor;
+                            curDriver.workLeft = startedResearch.totalCost -
+                                                 Find.ResearchManager.ProgressOf(startedResearch);
+                        }
+                        else
+                        {
+                            curDriver.workLeft = curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff);
+                        }
 
                         if (unfinishedThing != null)
                         {
@@ -109,7 +115,7 @@ namespace RA
                     {
                         Find.ResearchManager.MakeProgress(workProgress, actor);
                     }
-                    else
+                    if (Find.ResearchManager.currentProj != startedResearch)
                     {
                         curDriver.ReadyForNextToil();
                     }

@@ -4,6 +4,7 @@
 	<!-- recipeDef should be the same as corresponding researchProjectDef -->
 
 	<RecipeDef Name="MakeResearch" Abstract="True">
+		<label>research</label>
 		<jobString>Doing research.</jobString>
 		<workSkillLearnFactor>0.25</workSkillLearnFactor>
 		<allowMixingIngredients>true</allowMixingIngredients>
