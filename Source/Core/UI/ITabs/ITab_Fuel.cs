@@ -3,18 +3,12 @@ using System.Text;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using static RA.RA_Assets;
 
 namespace RA
 {
     public class ITab_Fuel : ITab
     {
-        public static readonly Texture2D FullTexFuel = SolidColorMaterials.NewSolidColorTexture(new Color(0.7f, 0.7f, 1f));
-        public static readonly Texture2D FullTexFuelCount = SolidColorMaterials.NewSolidColorTexture(new Color(0f, 0.7f, 1f));
-        public static readonly Texture2D FullTexBurnerLow = SolidColorMaterials.NewSolidColorTexture(new Color(1f, 0.41f, 0f));
-        public static readonly Texture2D FullTexBurnerHight = SolidColorMaterials.NewSolidColorTexture(new Color(0.75f, 0f, 0f));
-        public static readonly Texture2D EmptyTex = SolidColorMaterials.NewSolidColorTexture(Color.gray);
-        public static readonly Texture2D IconBGTex = ContentFinder<Texture2D>.Get("UI/Widgets/DesButBG");
-
         public WorkTableFueled burner;
 
         public ITab_Fuel()
@@ -57,7 +51,6 @@ namespace RA
                 // if fuel tank not empty
                 if (burner.fuelContainer.Count > 0)
                 {
-
                     if (Widgets.InvisibleButton(fuelRect))
                     {
                         var options = new List<FloatMenuOption>
@@ -84,8 +77,9 @@ namespace RA
                         var burningLabelRect = new Rect(fuelIconRect.width + MarginSize, 0f, fuelRect.width - (fuelIconRect.width + MarginSize), fuelIconRect.height / 2);
                         Widgets.Label(burningLabelRect, "Burning progress:");
                         var burningBarRect = new Rect(burningLabelRect.x, burningLabelRect.height, burningLabelRect.width, burningLabelRect.height);
-                        var fillPercentBurningProgress = burner.currentFuelBurnDuration / fuel.GetStatValue(StatDef.Named("BurnDurationHours"));
-                        Widgets.FillableBar(burningBarRect, fillPercentBurningProgress, FullTexFuel, EmptyTex, false);
+                        
+                        var percentBurnDuration = burner.currentFuelBurnDuration / (fuel.GetStatValue(StatDef.Named("BurnDurationHours")) * GenDate.TicksPerHour);
+                        Widgets.FillableBar(burningBarRect, percentBurnDuration, FullTexFuel, EmptyTex, false);
 
                         // fuel count fillable bar
                         var fuelCountBarRect = new Rect(0f, burningBarRect.yMax + MarginSize, fuelRect.width, 20f);
@@ -128,10 +122,10 @@ namespace RA
                     var burnerLabelRect = new Rect(0f, sliderRect.yMax, burnerRect.width, TextHeight);
                     Widgets.Label(burnerLabelRect, "Internal temperature:");
                     var burnerBarRect = new Rect(0f, burnerLabelRect.yMax, burnerRect.width, TextHeight);
-                    var fillPercentRequiredHeat = Mathf.Min(burner.internalTemp / burner.compFueled.Properties.operatingTemp, 1f);
-                    Widgets.FillableBar(burnerBarRect, fillPercentRequiredHeat, fillPercentRequiredHeat == 1 ? FullTexBurnerHight : FullTexBurnerLow, EmptyTex, false);
+                    var percentRequiredHeat = Mathf.Min(burner.internalTemp / burner.compFueled.Properties.operatingTemp, 1f);
+                    Widgets.FillableBar(burnerBarRect, percentRequiredHeat, percentRequiredHeat == 1 ? FullTexBurnerHight : FullTexBurnerLow, EmptyTex, false);
                     // line, indiciting operating temp, when internal is above that
-                    if (fillPercentRequiredHeat == 1)
+                    if (percentRequiredHeat == 1)
                         Widgets.DrawLineVertical(burnerBarRect.x + burnerBarRect.width * (1 -burner.compFueled.Properties.operatingTemp / burner.internalTemp), burnerBarRect.y, burnerBarRect.height);
                     Widgets.Label(burnerBarRect, burner.internalTemp.ToString("F1") + " °C");
 

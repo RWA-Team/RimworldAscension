@@ -21,8 +21,9 @@
 		<label>bark fibre</label>
 		<description>A bunch of bark fibre.</description>
 		<graphicData>
+			<shaderType>Cutout</shaderType>
 			<texPath>Things/Items/Resources/BarkFibre</texPath>
-			<color>(133,97,67)</color>
+			<color>(174,124,0)</color>
 		</graphicData>
 		<soundInteract>Grain_Drop</soundInteract>
 		<soundDrop>Grain_Drop</soundDrop>
@@ -145,36 +146,6 @@
 		</ingestible>
 		<tradeability>Never</tradeability>
 		<techLevel>Neolithic</techLevel>
-	</ThingDef>	
-
-	<ThingDef ParentName="OrganicProductBase">
-		<defName>Hay</defName>
-		<label>hay</label>
-		<description>A bunch of hay used for feeding animals and certain constructions. Tradeable, naturally for a low price.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/Hay</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-		</graphicData>
-		<stackLimit>200</stackLimit>
-		<thingCategories>
-			<li>PlantFibres</li>
-			<li>PlantFoodRaw</li>
-		</thingCategories>
-		<statBases>
-			<MarketValue>0.1</MarketValue>
-		</statBases>
-		<comps>
-			<li Class="CompProperties_Rottable">
-				<daysToRotStart>90</daysToRotStart>
-			</li>
-		</comps>
-		<ingestible>
-			<preferability>Raw</preferability>
-			<nutrition>0.04</nutrition>
-			<eatEffect>EatVegetarian</eatEffect>
-			<soundEat>RawVegetable_Eat</soundEat>
-		</ingestible>
-		<techLevel>Neolithic</techLevel>
 	</ThingDef>
 
 	<ThingDef ParentName="OrganicProductBase">
@@ -245,7 +216,7 @@
 		<label>gray clay clumps</label>
 		<description>Clumps of gray clay.</description>
 		<graphicData>
-			<color>(127,51,0)</color>
+			<color>(128,128,140)</color>
 		</graphicData>
 		<tradeability>Never</tradeability>
 	</ThingDef>
@@ -255,7 +226,7 @@
 		<label>white clay clumps</label>
 		<description>Clumps of white clay.</description>
 		<graphicData>
-			<color>(52,124,98)</color>
+			<color>(220,220,220)</color>
 		</graphicData>
 		<statBases>
 			<MarketValue>20</MarketValue>

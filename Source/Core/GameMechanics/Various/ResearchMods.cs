@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace RA
@@ -22,15 +23,14 @@ namespace RA
 
         public static void Butchering()
         {
-            AddDesignator(new Designator_Slaughter(), "Orders");
-
             // all meat based pawns
             foreach (var pawnDef in DefDatabase<ThingDef>.AllDefs.Where(pawnDef => pawnDef.race?.IsFlesh == true))
             {
                 if (pawnDef.butcherProducts.NullOrEmpty())
                     pawnDef.butcherProducts = new List<ThingCount>();
                 // each pawn generate it's (body size)x5 bone amount
-                pawnDef.butcherProducts.Add(new ThingCount(ThingDef.Named("Bone"), (int) pawnDef.race.baseBodySize*5));
+                pawnDef.butcherProducts.Add(new ThingCount(ThingDef.Named("Bone"),
+                    pawnDef.race.baseBodySize < 1 ? 5 : Mathf.RoundToInt(pawnDef.race.baseBodySize)*5));
             }
         }
 
@@ -50,7 +50,7 @@ namespace RA
 
         public static void Masonry()
         {
-            AddDesignator(new Designator_SmoothFloor(), "Floor");
+            AddDesignator(new Designator_SmoothFloor(), "Floors");
 
             // craftsman table
             TryAllowToCraft("MakeFigurine", "StoneCobbles");
@@ -61,9 +61,9 @@ namespace RA
 
             // warrior table
             TryAllowToCraft("MakeShiv", "StoneCobbles");
-            TryAllowToCraft("MakeSpearPrimitive", "StoneCobbles", true, "Carpentry");
-            TryAllowToCraft("MakeAxePrimitive", "StoneCobbles", true, "Carpentry");
-            TryAllowToCraft("MakeHammerPrimitive", "StoneCobbles", true, "Carpentry");
+            TryAllowToCraft("MakeSpearNeolithic", "StoneCobbles", true, "Carpentry");
+            TryAllowToCraft("MakeAxeNeolithic", "StoneCobbles", true, "Carpentry");
+            TryAllowToCraft("MakeHammerNeolithic", "StoneCobbles", true, "Carpentry");
         }
 
         public static void BoneCarving()
@@ -79,9 +79,9 @@ namespace RA
 
             // warrior table
             TryAllowToCraft("MakeShiv", "Bone");
-            TryAllowToCraft("MakeSpearPrimitive", "Bone", true, "Carpentry");
-            TryAllowToCraft("MakeAxePrimitive", "Bone", true, "Carpentry");
-            TryAllowToCraft("MakeHammerPrimitive", "Bone", true, "Carpentry");
+            TryAllowToCraft("MakeSpearNeolithic", "Bone", true, "Carpentry");
+            TryAllowToCraft("MakeAxeNeolithic", "Bone", true, "Carpentry");
+            TryAllowToCraft("MakeHammerNeolithic", "Bone", true, "Carpentry");
         }
 
         #endregion

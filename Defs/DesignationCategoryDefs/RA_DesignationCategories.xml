@@ -6,9 +6,7 @@
 	- considered not to be used: security, floors, temperature
 	 -->
 
-
 	<!--====================== Designations ======================-->
-
 
 	<DesignationCategoryDef>
 		<defName>Orders</defName>
@@ -26,6 +24,7 @@
 			<li>Designator_PlantsHarvestWood</li>
 			<li>RA.Designator_CollectClay</li>
 			<li>Designator_Hunt</li>
+			<li>Designator_Slaughter</li>
 			<li>Designator_Claim</li>
 			<li>Designator_Strip</li>
 			<li>Designator_RearmTrap</li>
@@ -54,9 +53,7 @@
 		</specialDesignatorClasses>
 	</DesignationCategoryDef>
 
-
 	<!--====================== Buildings ======================-->
-
 
 	<DesignationCategoryDef>
 		<DefName>Structure</DefName>

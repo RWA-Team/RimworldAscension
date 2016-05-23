@@ -5,7 +5,9 @@
 
 	<RecipeDef Name="MakeResearch" Abstract="True">
 		<jobString>Doing research.</jobString>
+		<workSkill>Research</workSkill>
 		<workSkillLearnFactor>0.25</workSkillLearnFactor>
+		<workSpeedStat>ResearchSpeed</workSpeedStat>
 		<allowMixingIngredients>true</allowMixingIngredients>
 		<fixedIngredientFilter>
 			<categories>
@@ -14,9 +16,7 @@
 		</fixedIngredientFilter>
 	</RecipeDef>
 
-
 	<!-- ========================= Neolithic ==========================-->
-
 
 	<RecipeDef ParentName="MakeResearch">
 		<defName>BasicFarming</defName>
@@ -71,7 +71,7 @@
 						<li>WoodLog</li>
 					</thingDefs>
 				</filter>
-				<count>225</count>
+				<count>150</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -87,7 +87,7 @@
 						<li>StoneChunks</li>
 					</categories>
 				</filter>
-				<count>10</count>
+				<count>3</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -166,7 +166,7 @@
 						<li>RawBerries</li>
 					</thingDefs>
 				</filter>
-				<count>150</count>
+				<count>75</count>
 			</li>
 			<li>
 				<filter>
@@ -174,7 +174,7 @@
 						<li>Pot</li>
 					</thingDefs>
 				</filter>
-				<count>3</count>
+				<count>1</count>
 			</li>
 		</ingredients>
 	</RecipeDef>

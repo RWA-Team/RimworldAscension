@@ -8,7 +8,7 @@
 	- drawerType:
 		- MapMeshOnly - doesn't draw from comps
 		- MapMeshAndRealTime - doesn't draw from comps
-		- RealTimeOnly - used for objects that change their texture (unsure)
+		- RealtimeOnly - used for objects that change their texture (unsure)
 	- surfaceType:
 		- Item - allows place items
 		- Eat - allows place food to eat
@@ -16,11 +16,14 @@
 	- Building_Art_Shadowed class - allows casting of fading shadows from stuffed things
 	- terrainAffordanceNeeded - type of terrain required to be build upon (no difference in Light/Heavy in the game so far)
 	 -->
-	 
+
 	<!--==================== Base Abstracts ========================-->
 
 	<ThingDef Name="Building" Abstract="True">
 		<thingClass>Building</thingClass>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
 		<category>Building</category>
 		<selectable>true</selectable>
 		<drawerType>MapMeshAndRealTime</drawerType>
@@ -37,14 +40,14 @@
 			<MarketValue>1</MarketValue>
 		</statBases>
 	</ThingDef>
-	
+
 
 	<ThingDef Name="Minified" ParentName="Item" Abstract="True">
 		<thingClass>MinifiedThing</thingClass>
 	</ThingDef>	
-	
+
 	<!--==================== Decorations ========================-->
-	
+
 	<ThingDef Name="Decoration" ParentName="Building" Abstract="True">
 		<thingClass>Building_Art</thingClass>
 		<altitudeLayer>BuildingTall</altitudeLayer>
@@ -67,8 +70,8 @@
 		</inspectorTabs>
 		<DesignationCategory>Furniture</DesignationCategory>
 	</ThingDef>
-	
-	
+
+
 	<ThingDef Name="MinifiedDecoration" ParentName="Minified" Abstract="True">
 		<thingCategories>
 			<li>MinifiedDecorations</li>
@@ -100,7 +103,7 @@
 			<Totem>1</Totem>
 		</costList>
 		<stuffCategories>
-			<li>Wood</li>
+			<li>WoodLog</li>
 		</stuffCategories>
 		<minifiedDef>MinifiedTotem</minifiedDef>
 		<researchPrerequisites>
@@ -111,6 +114,9 @@
 	<ThingDef ParentName="MinifiedDecoration">
 		<defName>MinifiedTotem</defName>
 		<label>totem</label>
+		<stuffCategories>
+			<li>WoodLog</li>
+		</stuffCategories>
 	</ThingDef>
 
 </ThingDefs>

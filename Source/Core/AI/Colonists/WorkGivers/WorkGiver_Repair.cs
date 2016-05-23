@@ -13,7 +13,7 @@ namespace RA
 
         public WorkGiver_Repair()
         {
-            workTypeName = "Construction";
+            workType = "Construction";
         }
 
         public Job ActualJob(Thing target)

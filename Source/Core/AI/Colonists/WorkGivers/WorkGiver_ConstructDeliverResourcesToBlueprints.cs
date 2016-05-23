@@ -1,5 +1,4 @@
-﻿
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 using Verse.AI;
 
@@ -9,6 +8,7 @@ namespace RA
     {
         public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForGroup(ThingRequestGroup.Blueprint);
 
+        // when building over plants, make designation instead of immediate job order to cut them
         public override Job JobOnThing(Pawn pawn, Thing t)
         {
             if (t.Faction != pawn.Faction)
@@ -25,9 +25,7 @@ namespace RA
             {
                 if (thing.def.category == ThingCategory.Plant)
                 {
-                    // SINGLE CHANGE FROM VANILLA WorkGiver, make designation instead of immediate cutting plants
-                    //return new Job(JobDefOf.CutPlant, thing);
-
+                    // changed part
                     if (Find.DesignationManager.DesignationOn(thing, DesignationDefOf.CutPlant) == null && Find.DesignationManager.DesignationOn(thing, DesignationDefOf.HarvestPlant) == null)
                         Find.DesignationManager.AddDesignation(new Designation(thing, DesignationDefOf.CutPlant));
                     return null;

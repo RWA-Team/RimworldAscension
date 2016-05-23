@@ -90,7 +90,7 @@ namespace RA
             }
         }
 
-        public List<ThingAmount> chosenIngThings = new List<ThingAmount>();
+        public List<ThingAmount> chosenIngridiens = new List<ThingAmount>();
 
         public static readonly IntRange ReCheckFailedBillTicksRange = new IntRange(500, 600);
 
@@ -193,7 +193,7 @@ namespace RA
                             }
                             else
                             {
-                                if (TryFindBestBillIngredients(bill2, pawn, thing, chosenIngThings))
+                                if (TryFindBestBillIngredients(bill2, pawn, thing, chosenIngridiens))
                                 {
                                     bill = bill2;
                                     break;
@@ -237,13 +237,13 @@ namespace RA
             }
             var job2 = new Job(JobDefOf.DoBill, thing)
             {
-                targetQueueB = new List<TargetInfo>(chosenIngThings.Count),
-                numToBringList = new List<int>(chosenIngThings.Count)
+                targetQueueB = new List<TargetInfo>(chosenIngridiens.Count),
+                numToBringList = new List<int>(chosenIngridiens.Count)
             };
-            for (var k = 0; k < chosenIngThings.Count; k++)
+            for (var k = 0; k < chosenIngridiens.Count; k++)
             {
-                job2.targetQueueB.Add(chosenIngThings[k].thing);
-                job2.numToBringList.Add(chosenIngThings[k].count);
+                job2.targetQueueB.Add(chosenIngridiens[k].thing);
+                job2.numToBringList.Add(chosenIngridiens[k].count);
             }
             job2.haulMode = HaulMode.ToCellNonStorage;
             job2.bill = bill;

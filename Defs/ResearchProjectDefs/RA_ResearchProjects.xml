@@ -28,60 +28,13 @@
 		</researchMods>
 	</ResearchProjectDef>
 
-
 	<!-- ========================= Neolithic Tech Level ==========================-->
-
-
-	<ResearchProjectDef>
-		<defName>BasicFarming</defName>
-		<label>basic farming</label>
-		<description>Learn how to grow simple domestic plants.</description>
-		<totalCost>3000</totalCost>
-		<prerequisites>
-			<li>StartPack</li>
-		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.BasicFarming</specialAction>
-			</li>
-		</researchMods>
-	</ResearchProjectDef>
-
-	<ResearchProjectDef>
-		<defName>Butchering</defName>
-		<label>butchering</label>
-		<description>Learn how to process animal corpses.</description>
-		<totalCost>2000</totalCost>
-		<prerequisites>
-			<li>StartPack</li>
-		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.Butchering</specialAction>
-			</li>
-		</researchMods>
-	</ResearchProjectDef>
-
-	<ResearchProjectDef>
-		<defName>AnimalHusbandry</defName>
-		<label>animal husbandry</label>
-		<description>Learn how to tame and control wild animals.</description>
-		<totalCost>4000</totalCost>
-		<prerequisites>
-			<li>StartPack</li>
-		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.AnimalHusbandry</specialAction>
-			</li>
-		</researchMods>
-	</ResearchProjectDef>
 
 	<ResearchProjectDef>
 		<defName>Carpentry</defName>
 		<label>carpentry</label>
 		<description>Allows you perform elaborate wooden carving to make wooden trade crafts and base for tools and weapons.</description>
-		<totalCost>1000</totalCost>
+		<totalCost>100</totalCost>
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
@@ -96,7 +49,7 @@
 		<defName>Masonry</defName>
 		<label>masonry</label>
 		<description>Allows you to cut stone chunks into blocks and allows you perform elaborate stone carving to make stone trade crafts and sharp blades.</description>
-		<totalCost>2000</totalCost>
+		<totalCost>125</totalCost>
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
@@ -108,20 +61,10 @@
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
-		<defName>Tannery</defName>
-		<label>tannery</label>
-		<description>Allows you to craft apparel and various stuff from animal hides.</description>
-		<totalCost>2500</totalCost>
-		<prerequisites>
-			<li>StartPack</li>
-		</prerequisites>
-	</ResearchProjectDef>
-
-	<ResearchProjectDef>
 		<defName>BoneCarving</defName>
 		<label>bone carving</label>
 		<description>Allows you perform elaborate bone carving to make bone trade crafts and sharp blades.</description>
-		<totalCost>4000</totalCost>
+		<totalCost>300</totalCost>
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
@@ -133,10 +76,65 @@
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
+		<defName>Tannery</defName>
+		<label>tannery</label>
+		<description>Allows you to craft apparel and various stuff from animal hides.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>StartPack</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>BasicFarming</defName>
+		<label>basic farming</label>
+		<description>Learn how to grow simple domestic plants.</description>
+		<totalCost>150</totalCost>
+		<prerequisites>
+			<li>StartPack</li>
+		</prerequisites>
+		<researchMods>
+			<li>
+				<specialAction>RA.ResearchMods.BasicFarming</specialAction>
+			</li>
+		</researchMods>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Butchering</defName>
+		<label>butchering</label>
+		<description>Learn how to process animal corpses.</description>
+		<totalCost>100</totalCost>
+		<prerequisites>
+			<li>StartPack</li>
+		</prerequisites>
+		<researchMods>
+			<li>
+				<specialAction>RA.ResearchMods.Butchering</specialAction>
+			</li>
+		</researchMods>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>AnimalHusbandry</defName>
+		<label>animal husbandry</label>
+		<description>Learn how to tame and control wild animals.</description>
+		<totalCost>200</totalCost>
+		<prerequisites>
+			<li>StartPack</li>
+		</prerequisites>
+		<researchMods>
+			<li>
+				<specialAction>RA.ResearchMods.AnimalHusbandry</specialAction>
+			</li>
+		</researchMods>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
 		<defName>Pottery</defName>
 		<label>pottery</label>
 		<description>Allows you to make ceramics out of clay.</description>
-		<totalCost>5000</totalCost>
+		<totalCost>300</totalCost>
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
@@ -146,7 +144,7 @@
 		<defName>Brewing</defName>
 		<label>brewing</label>
 		<description>Allows to make brew.</description>
-		<totalCost>4000</totalCost>
+		<totalCost>450</totalCost>
 		<prerequisites>
 			<li>Pottery</li>
 		</prerequisites>

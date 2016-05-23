@@ -4,12 +4,13 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 using static System.String;
+using static RA.RA_Motes;
 
 namespace RA
 {
     public class WorkTableFueled : Building_WorkTable, IThingContainerOwner
     {
-        public const float MinBurningTemp = 100f;
+        public const float MinBurningTemp = 300f;
         public const float HeatChangePerTick = 0.5f;
 
         public static readonly string fireTex_path = "Overlays/Fire";
@@ -102,7 +103,7 @@ namespace RA
 
         public virtual void ThrowSmoke(Vector3 loc, float size)
         {
-            RA_Motes.ThrowSmokeWhite(loc, size);
+            ThrowSmokeWhite(loc, size);
         }
 
         public bool ManuallyOperated
@@ -118,17 +119,19 @@ namespace RA
             }
         }
 
-        public bool Burning
-        {
-            get
-            {
-                if (internalTemp >= MinBurningTemp)
-                    return true;
-                return false;
-            }
-        }
+        public bool Burning => internalTemp >= MinBurningTemp;
 
         public bool ShouldAutoConsume => compFlickable?.SwitchIsOn ?? false;
+
+        // used to determine of using bills is possible
+        public override bool UsableNow => compFueled == null
+                                          || internalTemp > compFueled.Properties.operatingTemp
+                                          || fuelContainer.Count > 0 && fuelContainer[0].stackCount > 0;
+
+        // no fuel or fuel stack is too small
+        public bool RequireMoreFuel => fuelContainer.Count == 0 ||
+                                       (fuelContainer[0].stackCount / (float)fuelContainer[0].def.stackLimit <=
+                                        fuelStackRefillPercent);
 
         // adjust internal temperature according to the current inner temperature
         public void AdjustInternalTemp()
@@ -141,33 +144,35 @@ namespace RA
                 if (internalTemp < currentFuelMaxTemp)
                 {
                     // limits the increase value to the fuel stat
-                    internalTemp += HeatChangePerTick + internalTemp < currentFuelMaxTemp ? HeatChangePerTick : currentFuelMaxTemp - internalTemp;
+                    internalTemp += HeatChangePerTick + internalTemp < currentFuelMaxTemp
+                        ? HeatChangePerTick
+                        : currentFuelMaxTemp - internalTemp;
                 }
             }
-            // else, burn next fuel unit
+            // if nothing burns, lower inner temperature
             else
             {
-                // only pawn can burn fuel, and when it's needed
-                if (fuelContainer.Count > 0 && fuelContainer[0].stackCount > 0)
+                // try burn next fuel unit
+                if (fuelContainer.FirstOrDefault()?.stackCount > 0 && ShouldAutoConsume ||
+                    (internalTemp < compFueled.Properties.operatingTemp && ManuallyOperated))
                 {
-                    // burn everthing in auto mode and only if necessary in manual mode
-                    if (ShouldAutoConsume || (internalTemp <= compFueled.Properties.operatingTemp && ManuallyOperated))
-                    {
-                        currentFuelBurnDuration = (int)fuelContainer[0].GetStatValue(StatDef.Named("BurnDurationHours"))*GenDate.TicksPerHour;
-                        currentFuelMaxTemp = fuelContainer[0].GetStatValue(StatDef.Named("MaxBurningTempCelsius"));
-                        if (--fuelContainer[0].stackCount == 0)
-                            fuelContainer.Clear();
-                    }
+                    currentFuelBurnDuration =
+                        (int) fuelContainer[0].GetStatValue(StatDef.Named("BurnDurationHours"))*
+                        GenDate.TicksPerHour;
+                    currentFuelMaxTemp = fuelContainer[0].GetStatValue(StatDef.Named("MaxBurningTempCelsius"));
+                    if (--fuelContainer.FirstOrDefault().stackCount == 0)
+                        fuelContainer.Clear();
                 }
-                // if no more fuel to burn, lower inner temperature
                 else
                 {
+                    // lower inner temperature
                     var surroundTemp = Position.GetTemperature();
-
                     if (internalTemp > surroundTemp)
                     {
                         // limits the decrease value to the local temperature
-                        internalTemp -= internalTemp - HeatChangePerTick > surroundTemp ? HeatChangePerTick : internalTemp - surroundTemp;
+                        internalTemp -= internalTemp - HeatChangePerTick > surroundTemp
+                            ? HeatChangePerTick
+                            : internalTemp - surroundTemp;
                     }
                 }
             }
@@ -195,31 +200,15 @@ namespace RA
             Find.GlowGrid.RegisterGlower(compGlower);
         }
 
-        // used to determine of using bills is possible
-        public override bool UsableNow => compFueled == null
-                                          || internalTemp > compFueled.Properties.operatingTemp
-                                          || fuelContainer.Count > 0 && fuelContainer[0].stackCount > 0;
-
-        public bool RequireMoreFuel()
-        {
-            // no fuel or fuel stack is too small
-            if (fuelContainer.Count == 0 || fuelContainer[0].stackCount / (float)fuelContainer[0].def.stackLimit <= fuelStackRefillPercent)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         // adds graphic overlays to the burner
         public override void DrawAt(Vector3 drawLoc)
         {
             Graphic.Draw(drawLoc, Rot4.North, this);
-
+            
             TryDrawCurrentFuel(drawLoc + compFueled.Properties.fuelDrawOffset);
             TryDrawRandomFire(drawLoc + compFueled.Properties.fireDrawOffset);
 
-            if (!Burning && RequireMoreFuel())
+            if (!Burning && RequireMoreFuel)
             {
                 OverlayDrawer.DrawOverlay(this, OverlayTypes.OutOfFuel);
             }
@@ -230,7 +219,7 @@ namespace RA
             if (Burning && compFueled.Properties.fireDrawOffset != Vector3.zero)
             {
                 var maxFireScale = compFueled.Properties.fireDrawScale;
-
+                
                 // changes fire graphic every 15 ticks async
                 if (this.IsHashIntervalTick(15))
                 {

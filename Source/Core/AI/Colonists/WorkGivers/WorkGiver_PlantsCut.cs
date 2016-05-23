@@ -12,7 +12,7 @@ namespace RA
 
         public WorkGiver_PlantsCut()
         {
-            workTypeName = "PlantCutting";
+            workType = "PlantCutting";
         }
 
         public Job ActualJob(Thing target)

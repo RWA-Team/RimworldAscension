@@ -8,20 +8,15 @@
 		<label>foods</label>
 	</ThingCategoryDef>
 
-	<ThingCategoryDef>
+<!-- 	<ThingCategoryDef>
 		<defName>FoodMeals</defName>
 		<label>meals</label>
-	</ThingCategoryDef>
+	</ThingCategoryDef> -->
 
-	<ThingCategoryDef>
-		<defName>MeatRaw</defName>
-		<label>meat</label>
-	</ThingCategoryDef>
-
-	<ThingCategoryDef>
+<!-- 	<ThingCategoryDef>
 		<defName>PlantFoodRaw</defName>
 		<label>vegetarian</label>
-	</ThingCategoryDef>
+	</ThingCategoryDef> -->
 
 	<ThingCategoryDef>
 		<defName>Manufactured</defName>

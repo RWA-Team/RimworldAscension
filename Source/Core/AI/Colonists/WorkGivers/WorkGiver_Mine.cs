@@ -14,7 +14,7 @@ namespace RA
 
         public WorkGiver_Mine()
         {
-            workTypeName = "Mining";
+            workType = "Mining";
         }
 
         public Job ActualJob(Thing target)

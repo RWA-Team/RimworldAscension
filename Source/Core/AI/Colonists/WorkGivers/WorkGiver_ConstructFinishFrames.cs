@@ -13,7 +13,7 @@ namespace RA
 
         public WorkGiver_ConstructFinishFrames()
         {
-            workTypeName = "Construction";
+            workType = "Construction";
         }
 
         public Job ActualJob(Thing target)

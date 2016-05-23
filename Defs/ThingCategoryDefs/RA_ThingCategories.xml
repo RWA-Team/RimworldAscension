@@ -21,7 +21,8 @@
 		</ThingCategoryDef>
 		
 			<ThingCategoryDef>
-				<defName>FoodPrepared</defName>
+				<!-- <defName>FoodPrepared</defName> -->
+				<defName>FoodMeals</defName>
 				<label>preprared food</label>
 				<parent>Food</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
@@ -38,14 +39,15 @@
 				
 				<!-- can't change name due to code based generation -->
 				<ThingCategoryDef>
-					<defName>Meat</defName>
+					<defName>MeatRaw</defName>
 					<label>meat</label>
 					<parent>FoodRaw</parent>
 					<iconPath>Ui/Icons/ThingCategories/MeatRaw</iconPath>
 				</ThingCategoryDef>
 
 				<ThingCategoryDef>
-					<defName>Plants</defName>
+					<!-- <defName>Plants</defName> -->
+					<defName>PlantFoodRaw</defName>
 					<label>eatable plants</label>
 					<parent>FoodRaw</parent>
 					<iconPath>Ui/Icons/ThingCategories/PlantFoodRaw</iconPath>

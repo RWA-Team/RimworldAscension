@@ -46,9 +46,9 @@
 		<ingredients>
 			<li>
 				<filter>
-					<categories>
+<!-- 					<categories>
 						<li>StoneCobbles</li>
-					</categories>
+					</categories> -->
 					<thingDefs>
 						<li>WoodLog</li>
 					</thingDefs>

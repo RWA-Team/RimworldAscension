@@ -37,6 +37,15 @@ namespace RA
             }
         }
 
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            base.Destroy(mode);
+            if (mode == DestroyMode.Deconstruct)
+            {
+                Deploy();
+            }
+        }
+
         // used to spawn things after delay automatically
         public void Deploy()
         {

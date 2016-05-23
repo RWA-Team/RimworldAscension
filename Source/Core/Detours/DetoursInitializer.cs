@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using RimworldAscension.Core.Detours.Jobs;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -119,6 +120,16 @@ namespace RA
             var newButtonSubtle = typeof(RA_WidgetsSubtle).GetMethod("ButtonSubtle", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaButtonSubtle, newButtonSubtle);
 
+            // delay CheckGameOver first call
+            var vanillaCheckGameOver = typeof(GameEnder).GetMethod("CheckGameOver", BindingFlags.Instance | BindingFlags.Public);
+            var newCheckGameOver = typeof(RA_GameEnder).GetMethod("CheckGameOver", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaCheckGameOver, newCheckGameOver);
+
+            // delay GameEndTick first call
+            var vanillaGameEndTick = typeof(GameEnder).GetMethod("GameEndTick", BindingFlags.Instance | BindingFlags.Public);
+            var newGameEndTick = typeof(RA_GameEnder).GetMethod("GameEndTick", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaGameEndTick, newGameEndTick);
+
             // changed initial game start message
             var vanillaInitNewGeneratedMap = typeof(MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
             var newInitNewGeneratedMap = typeof(RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
@@ -158,6 +169,26 @@ namespace RA
             var vanillaTryExecute = typeof(IncidentWorker_VisitorGroup).GetMethod("TryExecute", BindingFlags.Instance | BindingFlags.Public);
             var newTryExecute = typeof(RA_IncidentWorker_VisitorGroup).GetMethod("TryExecute", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaTryExecute, newTryExecute);
+
+            // make effecter trigger deteriorate used tools
+            var vanillaTrigger = typeof(Effecter).GetMethod("Trigger", BindingFlags.Instance | BindingFlags.Public);
+            var newTrigger = typeof(RA_Effecter).GetMethod("Trigger", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaTrigger, newTrigger);
+            
+            //// change vanilla threat points generation
+            //var vanillaDefaultParmsNow = typeof(IncidentMakerUtility).GetMethod("DefaultParmsNow", BindingFlags.Static | BindingFlags.Public);
+            //var newDefaultParmsNow = typeof(RA_IncidentMakerUtility).GetMethod("DefaultParmsNow", BindingFlags.Static | BindingFlags.Public);
+            //TryDetourFromTo(vanillaDefaultParmsNow, newDefaultParmsNow);
+
+            // fixes bug for decreased carry capacity
+            var vanillaJumpToCollectNextIntoHandsForBill = typeof(JobDriver_DoBill).GetMethod("JumpToCollectNextIntoHandsForBill", BindingFlags.Static | BindingFlags.NonPublic);
+            var newJumpToCollectNextIntoHandsForBill = typeof(RA_JobDriver_DoBill).GetMethod("JumpToCollectNextIntoHandsForBill", BindingFlags.Static | BindingFlags.Public);
+            TryDetourFromTo(vanillaJumpToCollectNextIntoHandsForBill, newJumpToCollectNextIntoHandsForBill);
+
+            // skip message prompt for research recipes
+            var vanillaNotify_IterationCompleted = typeof(Bill_Production).GetMethod("Notify_IterationCompleted", BindingFlags.Instance | BindingFlags.Public);
+            var newNotify_IterationCompleted = typeof(RA_Bill_Production).GetMethod("Notify_IterationCompleted", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaNotify_IterationCompleted, newNotify_IterationCompleted);
 
             #endregion
 
@@ -239,20 +270,6 @@ namespace RA
             var vanillaBackgroundOnGUI = typeof(UI_BackgroundMain).GetMethod("BackgroundOnGUI", BindingFlags.Instance | BindingFlags.Public);
             var newBackgroundOnGUI = typeof(RA_UI_BackgroundMain).GetMethod("BackgroundOnGUI", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaBackgroundOnGUI, newBackgroundOnGUI);
-
-            #endregion
-            
-            #region GAMEEND
-
-            // delay CheckGameOver first call
-            var vanillaCheckGameOver = typeof(GameEnder).GetMethod("CheckGameOver", BindingFlags.Instance | BindingFlags.Public);
-            var newCheckGameOver = typeof(RA_GameEnder).GetMethod("CheckGameOver", BindingFlags.Instance | BindingFlags.Public);
-            TryDetourFromTo(vanillaCheckGameOver, newCheckGameOver);
-
-            // delay GameEndTick first call
-            var vanillaGameEndTick = typeof(GameEnder).GetMethod("GameEndTick", BindingFlags.Instance | BindingFlags.Public);
-            var newGameEndTick = typeof(RA_GameEnder).GetMethod("GameEndTick", BindingFlags.Instance | BindingFlags.Public);
-            TryDetourFromTo(vanillaGameEndTick, newGameEndTick);
 
             #endregion
 

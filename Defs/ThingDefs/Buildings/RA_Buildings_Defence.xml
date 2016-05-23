@@ -68,7 +68,7 @@
 		<defName>TrapDeadfallMinified</defName>
 		<label>deadfall trap</label>
 		<stuffCategories>
-			<li>Wood</li>
+			<li>WoodLog</li>
 			<li>StoneCobble</li>
 			<li>Bone</li>
 		</stuffCategories>

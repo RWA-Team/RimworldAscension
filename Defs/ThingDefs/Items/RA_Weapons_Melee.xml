@@ -151,8 +151,15 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<comps>
+			<li Class="RA.CompTool_Properties">
+				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
+				<workTypes>
+					<li>PlantCutting</li>
+				</workTypes>
+			</li>
+		</comps>
 		<weaponTags>
-			<li>PlantCuttingTool</li>
 			<li>MeleeNeolithic</li>
 		</weaponTags>
 	</ThingDef>
@@ -180,6 +187,14 @@
 				<meleeDamageDef>Blunt</meleeDamageDef>
 			</li>
 		</verbs>
+		<comps>
+			<li Class="RA.CompTool_Properties">
+				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
+				<workTypes>
+					<li>Construction</li>
+				</workTypes>
+			</li>
+		</comps>
 		<weaponTags>
 			<li>ConstructionTool</li>
 			<li>MeleeNeolithic</li>
@@ -205,9 +220,6 @@
 				<meleeDamageDef>Blunt</meleeDamageDef>
 			</li>
 		</verbs>
-		<weaponTags>
-			<li>CleaningTool</li>
-		</weaponTags>
 	</ThingDef>
 
 
@@ -234,10 +246,15 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
-		<weaponTags>
-			<li>ConstructionTool</li>
-			<li>PlantCuttingTool</li>
-		</weaponTags>
+		<comps>
+			<li Class="RA.CompTool_Properties">
+				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
+				<workTypes>
+					<li>PlantCutting</li>
+					<li>Construction</li>
+				</workTypes>
+			</li>
+		</comps>
 		<techLevel>Midworld</techLevel>
 	</ThingDef>
 

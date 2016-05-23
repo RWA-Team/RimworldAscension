@@ -232,3 +232,5 @@ $RECYCLE.BIN/
 *.csproj
 *.sln
 Source/Properties/AssemblyInfo.cs
+Source/Properties/Settings.Designer.cs
+Source/Properties/Settings.settings

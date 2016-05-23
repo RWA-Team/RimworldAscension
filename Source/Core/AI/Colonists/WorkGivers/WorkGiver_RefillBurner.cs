@@ -54,7 +54,7 @@ namespace RA
         
         public IEnumerable<Thing> UnreservedBurnersToRefill(Pawn pawn)
         {
-            return Find.ListerBuildings.AllBuildingsColonistOfClass<WorkTableFueled>().Where(burner => burner.RequireMoreFuel() && pawn.CanReserve(burner)).Cast<Thing>();
+            return Find.ListerBuildings.AllBuildingsColonistOfClass<WorkTableFueled>().Where(burner => burner.RequireMoreFuel && pawn.CanReserve(burner)).Cast<Thing>();
         }
 
         public WorkTableFueled ClosestBurnerToRefill(Pawn pawn)
