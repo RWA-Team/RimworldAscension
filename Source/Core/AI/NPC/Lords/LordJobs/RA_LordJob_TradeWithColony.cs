@@ -52,7 +52,7 @@ namespace RA
             var loadGoods = new LordToil_LoadGoods();
             mainGraph.lordToils.Add(loadGoods);
             var transitionToLoadGoods = new Transition(trade, loadGoods);
-            transitionToLoadGoods.triggers.Add(new Trigger_TicksPassed(GenDate.TicksPerHour));
+            transitionToLoadGoods.triggers.Add(new Trigger_TicksPassed(GenDate.TicksPerHour*4));
             transitionToLoadGoods.preActions.Add(
                 new TransitionAction_Message("MessageTraderCaravanLeaving".Translate(faction.name)));
             transitionToLoadGoods.preActions.Add(new TransitionAction_Custom(() => loadGoods.data = trade.Data));

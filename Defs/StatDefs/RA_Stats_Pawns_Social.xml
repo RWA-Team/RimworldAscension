@@ -8,7 +8,8 @@
 	capacityFactors - modifier by pawn capacity
 		weight - modifier value per capacity stat
 		
-	100% skill efficiency at level 5
+	100% skill efficiency at level 6 (practitioner)
+	skill efficiency range x0.4 - x2.4
 	-->
 
 	<StatDef>
@@ -21,7 +22,7 @@
 		<skillNeedFactors>
 			<li Class="SkillNeed_BaseBonus">
 				<skill>Social</skill>
-				<baseFactor>0.5</baseFactor>
+				<baseFactor>0.4</baseFactor>
 				<bonusFactor>0.1</bonusFactor>
 			</li>
 		</skillNeedFactors>

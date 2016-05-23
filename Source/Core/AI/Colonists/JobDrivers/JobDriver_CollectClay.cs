@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -9,8 +10,9 @@ namespace RA
     public class JobDriver_CollectClay : JobDriver
     {
         public const float RareResourceSpawnChance = 0.5f;
-
         public const TargetIndex CellInd = TargetIndex.A;
+
+        public int collectDuration;
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
@@ -18,7 +20,7 @@ namespace RA
 
             yield return Toils_Reserve.Reserve(CellInd);
             yield return Toils_Goto.GotoCell(CellInd, PathEndMode.Touch);
-            yield return CollectClay(GenDate.TicksPerHour*6);
+            yield return CollectClay(GenDate.TicksPerHour*2);
         }
 
         public Toil CollectClay(int ticksToCollect)
@@ -30,6 +32,7 @@ namespace RA
             {
                 pawn.jobs.curDriver.ticksLeftThisToil =
                     Mathf.RoundToInt(ticksToCollect*pawn.GetStatValue(StatDef.Named("CollectingSpeed")));
+                collectDuration = pawn.jobs.curDriver.ticksLeftThisToil;
             };
             toil.AddFinishAction(() =>
             {
@@ -49,8 +52,20 @@ namespace RA
                 if (Find.TerrainGrid.TerrainAt(targetCell) == TerrainDef.Named("WaterShallow"))
                 {
                     Find.TerrainGrid.SetTerrain(targetCell, DefDatabase<TerrainDef>.GetNamed("WaterDeep"));
-                    foreach (var thing in Find.ThingGrid.ThingsAt(targetCell))
-                        GenPlace.TryPlaceThing(thing, targetCell, ThingPlaceMode.Near);
+
+                    var list = new List<Thing>(Find.ThingGrid.ThingsListAtFast(targetCell)
+                        .Where(thing => thing.def.category == ThingCategory.Item ||
+                                        thing.def.category == ThingCategory.Pawn));
+                    foreach (var thing in list)
+                    {
+                        Thing dummy;
+                        // despawn thing to spawn again with TryPlaceThing
+                        thing.DeSpawn();
+                        if (!GenPlace.TryPlaceThing(thing, thing.Position, ThingPlaceMode.Near, out dummy))
+                        {
+                            Log.Error("No free spot for " + thing);
+                        }
+                    }
                 }
 
                 // spawn resources
@@ -69,7 +84,15 @@ namespace RA
             toil.defaultCompleteMode = ToilCompleteMode.Delay;
             toil.FailOnCellMissingDesignation(CellInd, DefDatabase<DesignationDef>.GetNamed("CollectClay"));
             toil.WithEffect(() => EffecterDef.Named("CutStone"), CellInd);
+            toil.WithProgressBar(CellInd, () => 1f - (float) pawn.jobs.curDriver.ticksLeftThisToil/collectDuration);
             return toil;
+        }
+        
+        public override void ExposeData()
+        {
+            base.ExposeData();
+
+            Scribe_Values.LookValue(ref collectDuration, "collectDuration");
         }
     }
 }

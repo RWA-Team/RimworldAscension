@@ -36,38 +36,5 @@ namespace RA
             };
             return toil;
         }
-
-        // ignites burner to start consume fuel, if needed
-        public static Toil WaitUntilBurnerReady()
-        {
-            var toil = new Toil();
-            toil.initAction = () =>
-            {
-                var actor = toil.actor;
-                var burner = toil.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
-
-                if (burner == null)
-                {
-                    return;
-                }
-                actor.pather.StopDead();
-            };
-            toil.tickAction = () =>
-            {
-                var burner = toil.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
-
-                if (burner.internalTemp > burner.compFueled.Properties.operatingTemp)
-                    toil.actor.jobs.curDriver.ReadyForNextToil();
-            };
-            // fails if no more heat generation and temperature is no enough
-            toil.FailOn(() =>
-            {
-                var burner = toil.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
-
-                return burner.currentFuelBurnDuration == 0 && !burner.UsableNow;
-            });
-            toil.defaultCompleteMode = ToilCompleteMode.Never;
-            return toil;
-        }
     }
 }

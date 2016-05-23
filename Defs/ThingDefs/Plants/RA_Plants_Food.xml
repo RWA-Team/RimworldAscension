@@ -6,44 +6,6 @@
 	- harvestTag - determine what designator allows harvesting
 	-->
 
-	<!--==================== Base Abstracts ========================-->
-
-	<ThingDef Name="Plant" Abstract="True">
-		<category>Plant</category>
-		<thingClass>Plant</thingClass>
-		<altitudeLayer>LowPlant</altitudeLayer>
-		<useHitPoints>True</useHitPoints>
-		<statBases>
-			<Flammability>0.8</Flammability>
-			<Beauty>1</Beauty>
-		</statBases>
-		<tickerType>Long</tickerType>
-		<selectable>true</selectable>
-		<neverMultiSelect>True</neverMultiSelect>
-		<drawerType>MapMeshOnly</drawerType>
-		<graphicData>
-			<graphicClass>Graphic_Random</graphicClass>
-			<shaderType>CutoutPlant</shaderType>
-		</graphicData>
-		<pathCost>10</pathCost>
-		<ingestible>
-			<foodType>Plant</foodType>
-			<preferability>NeverForNutrition</preferability>
-		</ingestible>
-		<plant>
-			<soundHarvesting>Harvest_Standard</soundHarvesting>
-			<soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
-			<sowWork>150</sowWork>
-			<fertilityMin>0.5</fertilityMin>
-			<fertilityFactorGrowthRate>1.0</fertilityFactorGrowthRate>
-			<topWindExposure>0.1</topWindExposure>
-			<visualSizeRange>
-				<min>0.3</min>
-				<max>1.00</max>
-			</visualSizeRange>
-		</plant>
-	</ThingDef>
-
 	<!--==================== Plants ========================-->
 
 	<ThingDef Name="PlantEatable" ParentName="Plant" Abstract="True">
@@ -55,9 +17,7 @@
 		</plant>
 	</ThingDef>
 
-
 	<!-- ========== Hidden (sow tags added via research mods) ========== -->
-
 
 	<ThingDef ParentName="PlantEatable">
 		<defName>PlantCorn</defName>

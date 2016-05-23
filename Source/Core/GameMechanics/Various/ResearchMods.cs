@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace RA
@@ -28,7 +29,8 @@ namespace RA
                 if (pawnDef.butcherProducts.NullOrEmpty())
                     pawnDef.butcherProducts = new List<ThingCount>();
                 // each pawn generate it's (body size)x5 bone amount
-                pawnDef.butcherProducts.Add(new ThingCount(ThingDef.Named("Bone"), (int) pawnDef.race.baseBodySize*5));
+                pawnDef.butcherProducts.Add(new ThingCount(ThingDef.Named("Bone"),
+                    pawnDef.race.baseBodySize < 1 ? 5 : Mathf.RoundToInt(pawnDef.race.baseBodySize)*5));
             }
         }
 

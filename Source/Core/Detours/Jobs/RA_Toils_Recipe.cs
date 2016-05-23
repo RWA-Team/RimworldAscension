@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -20,44 +21,33 @@ namespace RA
                 var curJob = actor.jobs.curJob;
                 var curDriver = actor.jobs.curDriver as JobDriver_DoBill;
 
-                // burner support injection
-                var burner = curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
-                if (burner != null && burner.internalTemp > burner.compFueled.Properties.operatingTemp)
+                var unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
+                if (unfinishedThing != null && unfinishedThing.Initialized)
                 {
-                    curDriver.SetNextToil(RA_Toils.WaitUntilBurnerReady());
-                    curDriver.ReadyForNextToil();
+                    curDriver.workLeft = unfinishedThing.workLeft;
                 }
                 else
                 {
+                    // research injection
                     var researchComp =
                         toil.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing.TryGetComp<CompResearcher>();
-                    var unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
-                    if (unfinishedThing != null && unfinishedThing.Initialized)
+                    if (researchComp != null)
                     {
-                        curDriver.workLeft = unfinishedThing.workLeft;
+                        curDriver.workLeft = startedResearch.totalCost -
+                                             Find.ResearchManager.ProgressOf(startedResearch);
                     }
                     else
                     {
-                        // research injection
-                        if (researchComp != null)
-                        {
-                            (curJob.bill as Bill_Production).storeMode = BillStoreMode.DropOnFloor;
-                            curDriver.workLeft = startedResearch.totalCost -
-                                                 Find.ResearchManager.ProgressOf(startedResearch);
-                        }
-                        else
-                        {
-                            curDriver.workLeft = curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff);
-                        }
-
-                        if (unfinishedThing != null)
-                        {
-                            unfinishedThing.workLeft = curDriver.workLeft;
-                        }
+                        curDriver.workLeft = curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff);
                     }
-                    curDriver.billStartTick = Find.TickManager.TicksGame;
-                    curJob.bill.Notify_DoBillStarted();
+
+                    if (unfinishedThing != null)
+                    {
+                        unfinishedThing.workLeft = curDriver.workLeft;
+                    }
                 }
+                curDriver.billStartTick = Find.TickManager.TicksGame;
+                curJob.bill.Notify_DoBillStarted();
             };
             toil.tickAction = () =>
             {
@@ -65,6 +55,15 @@ namespace RA
                 var curJob = actor.jobs.curJob;
 
                 actor.GainComfortFromCellIfPossible();
+
+                // burner support injection
+                var burner = curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
+                if (burner != null && burner.internalTemp < burner.compFueled.Properties.operatingTemp)
+                {
+                    Log.Message("waiting");
+                    return;
+                }
+                Log.Message("working");
 
                 var unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
                 if (unfinishedThing != null && unfinishedThing.Destroyed)
@@ -78,7 +77,7 @@ namespace RA
                 var billGiverWithTickAction =
                     curJob.GetTarget(TargetIndex.A).Thing as IBillGiverWithTickAction;
                 billGiverWithTickAction?.BillTick();
-
+                
                 if (curJob.RecipeDef.workSkill != null)
                 {
                     actor.skills.GetSkill(curJob.RecipeDef.workSkill)
@@ -91,9 +90,13 @@ namespace RA
 
                 var curDriver = actor.jobs.curDriver as JobDriver_DoBill;
                 var building_WorkTable = curDriver.BillGiver as Building_WorkTable;
+                var researchComp = curJob.GetTarget(TargetIndex.A).Thing.TryGetComp<CompResearcher>();
                 if (building_WorkTable != null)
                 {
-                    workProgress *= building_WorkTable.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor);
+                    // research injection
+                    workProgress *= researchComp == null
+                        ? building_WorkTable.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor)
+                        : building_WorkTable.GetStatValue(StatDefOf.ResearchSpeedFactor);
                 }
 
                 if (DebugSettings.fastCrafting)
@@ -108,7 +111,6 @@ namespace RA
                 }
 
                 // research injection
-                var researchComp = curJob.GetTarget(TargetIndex.A).Thing.TryGetComp<CompResearcher>();
                 if (researchComp != null)
                 {
                     if (Find.ResearchManager.currentProj != null && Find.ResearchManager.currentProj == startedResearch)
@@ -117,7 +119,20 @@ namespace RA
                     }
                     if (Find.ResearchManager.currentProj != startedResearch)
                     {
-                        curDriver.ReadyForNextToil();
+                        actor.jobs.EndCurrentJob(JobCondition.Succeeded);
+                        // scatter around all ingridients
+                        foreach (var cell in building_WorkTable.IngredientStackCells)
+                        {
+                            var ingridients = Find.ThingGrid.ThingsListAtFast(cell).Where(thing => thing.def.category == ThingCategory.Item);
+                            Thing dummy;
+                            // despawn thing to spawn again with TryPlaceThing
+                            ingridients.FirstOrDefault().DeSpawn();
+                            if (!GenPlace.TryPlaceThing(ingridients.FirstOrDefault(), building_WorkTable.InteractionCell,
+                                ThingPlaceMode.Near, out dummy))
+                            {
+                                Log.Error("No free spot for " + ingridients);
+                            }
+                        }
                     }
                 }
                 else if (curDriver.workLeft <= 0f)
@@ -149,7 +164,12 @@ namespace RA
                       curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff)
                     : Find.ResearchManager.PercentComplete(startedResearch);
             });
-            toil.FailOn(() => toil.actor.CurJob.bill.suspended);
+            toil.FailOn(() =>
+            {
+                var burner = toil.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
+                // burner fails if no more heat generation and temperature is not enough
+                return toil.actor.CurJob.bill.suspended || burner.currentFuelBurnDuration == 0 && !burner.UsableNow;
+            });
             return toil;
         }
 

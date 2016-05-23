@@ -68,7 +68,7 @@
 		<statBases>
 			<DeteriorationRate>2</DeteriorationRate>
 			<SharpDamageMultiplier>0.5</SharpDamageMultiplier>
-			<MaxBurningTempCelsius>500</MaxBurningTempCelsius>
+			<MaxBurningTempCelsius>1000</MaxBurningTempCelsius>
 			<BurnDurationHours>1</BurnDurationHours>
 		</statBases>
 		<stuffProps>

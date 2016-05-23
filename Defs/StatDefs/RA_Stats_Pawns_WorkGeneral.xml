@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- 
+	skillNeedFactors - skill modifier bonus
+		bonusFactor - additional bonus per skill level (x1-x20)
+	
+	capacityFactors - modifier by pawn capacity
+		weight - modifier value per capacity stat
+		
+	100% skill efficiency at level 6 (practitioner)
+	skill efficiency range x0.4 - x2.4
+	-->
+
+	<StatDef>
+		<defName>MiningSpeed</defName>
+		<label>mining speed</label>
+		<description>A multiplier on the speed at which this person mines rock.</description>
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<statFactors>
+			<li>WorkSpeedGlobal</li>
+		</statFactors>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Mining</skill>
+				<baseFactor>0.4</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>1</weight>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.9</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.5</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef>
+		<defName>SmoothingSpeed</defName>
+		<label>smoothing speed</label>
+		<description>A multiplier on the speed at which this person smooths floors.</description>
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<statFactors>
+			<li>WorkSpeedGlobal</li>
+		</statFactors>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Construction</skill>
+				<baseFactor>0.4</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>1</weight>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.9</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.3</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef>
+		<defName>ResearchSpeed</defName>
+		<label>research speed</label>
+		<description>This person does research at this speed.</description>
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<statFactors>
+			<li>WorkSpeedGlobal</li>
+		</statFactors>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Research</skill>
+				<baseFactor>0.4</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>1</weight>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.9</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.5</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef>
+		<defName>ConstructionSpeed</defName>
+		<label>construction speed</label>
+		<description>Speed at which this person constructs and repairs buildings.</description>
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<statFactors>
+			<li>WorkSpeedGlobal</li>
+		</statFactors>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Construction</skill>
+				<baseFactor>0.4</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>1</weight>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.9</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.5</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef>
+		<defName>PlantWorkSpeed</defName>
+		<label>plant work speed</label>
+		<description>Speed at which this person sows and harvests plants.</description>
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<statFactors>
+			<li>WorkSpeedGlobal</li>
+		</statFactors>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Growing</skill>
+				<baseFactor>0.4</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>1</weight>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.9</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.5</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef>
+		<defName>HarvestFailChance</defName>
+		<label>harvest fail chance</label>
+		<description>The chance that this person will accidentally destroy the harvest instead of collecting it.</description>
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<skillNeedFactors>
+			<li Class="SkillNeed_Direct">
+				<skill>Growing</skill>
+				<factorsPerLevel>
+					<li>0.50</li>
+					<li>0.40</li>
+					<li>0.30</li>
+					<li>0.25</li>
+					<li>0.20</li>
+					<li>0.15</li>
+					<li>0.125</li>
+					<li>0.10</li>
+					<li>0.075</li>
+					<li>0.05</li>
+					<li>0.04</li>
+					<li>0.03</li>
+					<li>0.02</li>
+					<li>0.01</li>
+					<li>0.01</li>
+					<li>0.01</li>
+					<li>0.0</li>
+					<li>0.0</li>
+					<li>0.0</li>
+					<li>0.0</li>
+					<li>0.0</li>
+				</factorsPerLevel>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>0.35</weight>
+				<useReciprocal>true</useReciprocal>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.35</weight>
+				<useReciprocal>true</useReciprocal>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.1</weight>
+				<useReciprocal>true</useReciprocal>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+	<StatDef>
+		<defName>FixBrokenDownBuildingFailChance</defName>
+		<label>repair fail chance</label>
+		<description>The chance that this person will fail to repair a broken down building.</description>
+		<category>PawnWork</category>
+		<defaultBaseValue>1</defaultBaseValue>
+		<toStringStyle>PercentZero</toStringStyle>
+		<skillNeedFactors>
+			<li Class="SkillNeed_Direct">
+				<skill>Construction</skill>
+				<factorsPerLevel>
+					<li>0.25</li>
+					<li>0.2</li>
+					<li>0.15</li>
+					<li>0.12</li>
+					<li>0.1</li>
+					<li>0.07</li>
+					<li>0.05</li>
+					<li>0.04</li>
+					<li>0.03</li>
+					<li>0.025</li>
+					<li>0.02</li>
+					<li>0.015</li>
+					<li>0.01</li>
+					<li>0.01</li>
+					<li>0.01</li>
+					<li>0.01</li>
+					<li>0.0</li>
+					<li>0.0</li>
+					<li>0.0</li>
+					<li>0.0</li>
+					<li>0.0</li>
+				</factorsPerLevel>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>0.35</weight>
+				<useReciprocal>true</useReciprocal>
+			</li>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.35</weight>
+				<useReciprocal>true</useReciprocal>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.2</weight>
+				<useReciprocal>true</useReciprocal>
+			</li>
+		</capacityFactors>
+	</StatDef>
+
+</Defs>

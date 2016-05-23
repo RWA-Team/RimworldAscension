@@ -106,7 +106,7 @@
 
 
 
-	<ThingDef ParentName="BuildingBase" Name="Wall">
+	<ThingDef ParentName="BuildingBase">
 		<defName>Wall</defName>
 		<label>wall</label>
 		<thingClass>Building</thingClass>

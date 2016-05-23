@@ -8,7 +8,8 @@
 	capacityFactors - modifier by pawn capacity
 		weight - modifier value per capacity stat
 		
-	100% skill efficiency at level 5
+	100% skill efficiency at level 6 (practitioner)
+	skill efficiency range x0.4 - x2.4
 	-->
 
 	<StatDef Name="Crafting" Abstract="True">
@@ -41,7 +42,7 @@
 		<skillNeedFactors>
 			<li Class="SkillNeed_BaseBonus">
 				<skill>Cooking</skill>
-				<baseFactor>0.5</baseFactor>
+				<baseFactor>0.4</baseFactor>
 				<bonusFactor>0.1</bonusFactor>
 			</li>
 		</skillNeedFactors>
@@ -64,7 +65,7 @@
 		<skillNeedFactors>
 			<li Class="SkillNeed_BaseBonus">
 				<skill>Crafting</skill>
-				<baseFactor>0.5</baseFactor>
+				<baseFactor>0.4</baseFactor>
 				<bonusFactor>0.1</bonusFactor>
 			</li>
 		</skillNeedFactors>
@@ -87,7 +88,7 @@
 		<skillNeedFactors>
 			<li Class="SkillNeed_BaseBonus">
 				<skill>Crafting</skill>
-				<baseFactor>0.5</baseFactor>
+				<baseFactor>0.4</baseFactor>
 				<bonusFactor>0.1</bonusFactor>
 			</li>
 		</skillNeedFactors>
@@ -110,7 +111,7 @@
 		<skillNeedFactors>
 			<li Class="SkillNeed_BaseBonus">
 				<skill>Crafting</skill>
-				<baseFactor>0.5</baseFactor>
+				<baseFactor>0.4</baseFactor>
 				<bonusFactor>0.1</bonusFactor>
 			</li>
 		</skillNeedFactors>
@@ -140,7 +141,7 @@
 		<skillNeedFactors>
 			<li Class="SkillNeed_BaseBonus">
 				<skill>Crafting</skill>
-				<baseFactor>0.5</baseFactor>
+				<baseFactor>0.4</baseFactor>
 				<bonusFactor>0.1</bonusFactor>
 			</li>
 		</skillNeedFactors>

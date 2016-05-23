@@ -48,7 +48,9 @@ namespace RA
                 return null;
             }
 
-            if (!pawn.CanReserve(researchBench) || !pawn.CanReach(researchBench.InteractionCell, PathEndMode.OnCell, Danger.Some) || researchBench.IsBurning() || researchBench.IsForbidden(pawn))
+            if (!pawn.CanReserve(researchBench) ||
+                !pawn.CanReach(researchBench.InteractionCell, PathEndMode.OnCell, Danger.Some) ||
+                researchBench.IsBurning() || researchBench.IsForbidden(pawn))
             {
                 return null;
             }
@@ -57,7 +59,8 @@ namespace RA
             if (billGiver.BillStack.Count == 1)
             {
                 // clear bill stack if research is finished or changed
-                if (billGiver.BillStack[0].recipe.defName != Find.ResearchManager.currentProj.defName || Find.ResearchManager.IsFinished(ResearchProjectDef.Named(billGiver.BillStack[0].recipe.defName)))
+                if (billGiver.BillStack[0].recipe.defName != Find.ResearchManager.currentProj.defName ||
+                    Find.ResearchManager.IsFinished(ResearchProjectDef.Named(billGiver.BillStack[0].recipe.defName)))
                 {
                     billGiver.BillStack.Clear();
                 }
@@ -78,7 +81,7 @@ namespace RA
                 bill = billGiver.BillStack[0];
             }
 
-            if (!TryFindBestBillIngredients(bill, pawn, researchBench, chosenIngThings))
+            if (!TryFindBestBillIngredients(bill, pawn, researchBench, chosenIngridiens))
             {
                 if (FloatMenuMaker.making)
                 {
@@ -111,15 +114,16 @@ namespace RA
             {
                 return haulAside;
             }
-
+            
             // gather ingridients and do bill
             var doBill = new Job(JobDefOf.Research, researchBench)
             {
-                targetQueueB = new List<TargetInfo>(chosenIngThings.Count),
-                numToBringList = new List<int>(chosenIngThings.Count)
+                targetQueueB = new List<TargetInfo>(chosenIngridiens.Count),
+                numToBringList = new List<int>(chosenIngridiens.Count)
             };
-            foreach (var ingridient in chosenIngThings)
+            foreach (var ingridient in chosenIngridiens)
             {
+                Log.Message(ingridient.thing + " " + ingridient.count);
                 doBill.targetQueueB.Add(ingridient.thing);
                 doBill.numToBringList.Add(ingridient.count);
             }

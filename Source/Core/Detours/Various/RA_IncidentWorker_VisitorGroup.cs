@@ -27,7 +27,7 @@ namespace RA
             {
                 label = "LetterLabelSingleVisitorArrives".Translate();
                 text2 = "SingleVisitorArrives".Translate(list[0].story.adulthood.title.ToLower(), parms.faction.name,
-                    list[0].Name);
+                    list[0].Name, string.Empty);
                 text2 = text2.AdjustedFor(list[0]);
             }
             else

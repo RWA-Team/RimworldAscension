@@ -20,7 +20,7 @@ namespace RA
 
         // TODO: might hit performance
         public bool Full => Spawned && StoredItems.Count >= comp.Properties.itemsCap &&
-                            !StoredItems.Exists(thing => stackCount < thing.def.stackLimit);
+                            !StoredItems.Exists(thing => thing.stackCount < thing.def.stackLimit);
 
         // Executed when building is spawned on map (after loading too)
         public override void SpawnSetup()
