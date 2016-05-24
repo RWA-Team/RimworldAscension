@@ -17,14 +17,14 @@ namespace RA
 
         public void ToolUseTick()
         {
-            Log.Message("ticks " + wearTicks);
+            //Log.Message("ticks " + wearTicks);
             if (wearTicks-- <= 0) parent.TakeDamage(new DamageInfo(DamageDefOf.Deterioration, 1));
         }
 
         public override void PostSpawnSetup()
         {
             wearTicks = Props.workTicksPerHealthPercent;
-            Log.Message("initial ticks " + wearTicks);
+            //Log.Message("initial ticks " + wearTicks);
         }
 
         // adds work designators to pawns of tool equipped
@@ -47,7 +47,7 @@ namespace RA
         public override void PostExposeData()
         {
             Scribe_Values.LookValue(ref wearTicks, "wearTicks");
-            Log.Message("restored ticks " + wearTicks);
+            //Log.Message("restored ticks " + wearTicks);
         }
     }
 
