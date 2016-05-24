@@ -60,10 +60,8 @@ namespace RA
                 var burner = curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
                 if (burner != null && burner.internalTemp < burner.compFueled.Properties.operatingTemp)
                 {
-                    Log.Message("waiting");
                     return;
                 }
-                Log.Message("working");
 
                 var unfinishedThing = curJob.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
                 if (unfinishedThing != null && unfinishedThing.Destroyed)
@@ -123,14 +121,17 @@ namespace RA
                         // scatter around all ingridients
                         foreach (var cell in building_WorkTable.IngredientStackCells)
                         {
-                            var ingridients = Find.ThingGrid.ThingsListAtFast(cell).Where(thing => thing.def.category == ThingCategory.Item);
-                            Thing dummy;
-                            // despawn thing to spawn again with TryPlaceThing
-                            ingridients.FirstOrDefault().DeSpawn();
-                            if (!GenPlace.TryPlaceThing(ingridients.FirstOrDefault(), building_WorkTable.InteractionCell,
-                                ThingPlaceMode.Near, out dummy))
+                            var ingridientsOnCell = Find.ThingGrid.ThingsListAtFast(cell)?.Where(thing => thing.def.category == ThingCategory.Item).ToList();
+                            if (!ingridientsOnCell.NullOrEmpty())
                             {
-                                Log.Error("No free spot for " + ingridients);
+                                Thing dummy;
+                                // despawn thing to spawn again with TryPlaceThing
+                                ingridientsOnCell.FirstOrDefault().DeSpawn();
+                                if (!GenPlace.TryPlaceThing(ingridientsOnCell.FirstOrDefault(), building_WorkTable.InteractionCell,
+                                    ThingPlaceMode.Near, out dummy))
+                                {
+                                    Log.Error("No free spot for " + ingridientsOnCell);
+                                }
                             }
                         }
                     }
@@ -168,7 +169,7 @@ namespace RA
             {
                 var burner = toil.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
                 // burner fails if no more heat generation and temperature is not enough
-                return toil.actor.CurJob.bill.suspended || burner.currentFuelBurnDuration == 0 && !burner.UsableNow;
+                return toil.actor.CurJob.bill.suspended || burner?.currentFuelBurnDuration == 0 && !burner.UsableNow;
             });
             return toil;
         }

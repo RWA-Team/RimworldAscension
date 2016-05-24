@@ -123,7 +123,6 @@ namespace RA
             };
             foreach (var ingridient in chosenIngridiens)
             {
-                Log.Message(ingridient.thing + " " + ingridient.count);
                 doBill.targetQueueB.Add(ingridient.thing);
                 doBill.numToBringList.Add(ingridient.count);
             }

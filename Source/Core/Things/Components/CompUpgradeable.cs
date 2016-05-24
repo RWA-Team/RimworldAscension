@@ -52,8 +52,6 @@ namespace RA
         public void UpgradeBuilding()
         {
             parent.Destroy();
-
-            Log.Message("upgradeTargetDef stuff =" + GenStuff.DefaultStuffFor(Properties.upgradeTargetDef));
             
             // NOTE: GenStuff.DefaultStuffFor require more default stuff types
             PlaceFrameForBuild(Properties.upgradeTargetDef, parent.Position, parent.Rotation, Faction.OfColony, GenStuff.DefaultStuffFor(Properties.upgradeTargetDef));
@@ -63,11 +61,9 @@ namespace RA
         {
             var frame = (Frame)ThingMaker.MakeThing(sourceDef.frameDef, stuff);
             frame.SetFactionDirect(faction);
-            Log.Message("material needed =" + frame.MaterialsNeeded());
+
             foreach (var resource in frame.MaterialsNeeded())
             {
-                Log.Message("resource def =" + resource.thingDef);
-                Log.Message("resource count =" + resource.count);
                 var resource1 = ThingMaker.MakeThing(resource.thingDef);
                 resource1.stackCount = (int)Math.Round(resource.count * Properties.upgradeDiscountMultiplier);
                 frame.resourceContainer.TryAdd(resource1);
