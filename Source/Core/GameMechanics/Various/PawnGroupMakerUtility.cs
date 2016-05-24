@@ -27,13 +27,13 @@ namespace RimWorld
             //This can happen now if our arrival mode/style has modified our points below
             //the threshold where we can make any pawns. In this case, just give us some points
             //to play with to make something at least.
-            parms.points = Mathf.Max(parms.points, parms.faction.def.MinPointsToGeneratePawnGroup() * 1.05f);
+            parms.points = Mathf.Max(parms.points, parms.faction.def.MinPointsToGenerateNormalPawnGroup() * 1.05f);
 
             //Choose a PawnGroupMaker
             PawnGroupMaker chosenGroupMaker;
             var usableGroupMakers = parms.faction.def.pawnGroupMakers.Where(gm => gm.CanGenerateFrom(parms));
-            if (!usableGroupMakers.TryRandomElementByWeight(gm => gm.commonality, out chosenGroupMaker))
-            {
+            if (!((IList<PawnGroupMaker>)usableGroupMakers).TryRandomElementByWeight(gm => gm.commonality, out chosenGroupMaker))
+            {//If it's stupid but it works, it's still sometimes pretty fucking stupid. http://i.imgur.com/qfeQ7Ya.png
                 Log.Error("Faction " + parms.faction + " of def " + parms.faction.def + " has no PawnGroupMakers that can generate for parms " + parms);
                 yield break;
             }
@@ -54,11 +54,11 @@ namespace RimWorld
 
                 var sb = new StringBuilder();
 
-                sb.AppendLine("======== FACTION: " + fac.name + " (" + fac.def.defName + ") min=" + fac.def.MinPointsToGeneratePawnGroup() + " =======");
+                sb.AppendLine("======== FACTION: " + fac.name + " (" + fac.def.defName + ") min=" + fac.def.MinPointsToGenerateNormalPawnGroup() + " =======");
 
                 Action<float> addLog = points =>
                 {
-                    if (points < fac.def.MinPointsToGeneratePawnGroup())
+                    if (points < fac.def.MinPointsToGenerateNormalPawnGroup())
                         return;
 
                     var parms = new IncidentParms();
