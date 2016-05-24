@@ -31,10 +31,10 @@ namespace RimWorld
 
             //Choose a PawnGroupMaker
             PawnGroupMaker chosenGroupMaker;
-			var usableGroupMakers = parms.faction.def.pawnGroupMakers.Where(gm => gm.CanGenerateFrom(parms));
+            var usableGroupMakers = parms.faction.def.pawnGroupMakers.Where(gm => gm.CanGenerateFrom(parms));
             if (!((IList<PawnGroupMaker>)usableGroupMakers).TryRandomElementByWeight(gm => gm.commonality, out chosenGroupMaker))
-			{   //If it's stupid but it works, it's still sometimes pretty fucking stupid. http://i.imgur.com/qfeQ7Ya.png
-				Log.Error("Faction " + parms.faction + " of def " + parms.faction.def + " has no PawnGroupMakers that can generate for parms " + parms);
+            {//If it's stupid but it works, it's still sometimes pretty fucking stupid. http://i.imgur.com/qfeQ7Ya.png
+                Log.Error("Faction " + parms.faction + " of def " + parms.faction.def + " has no PawnGroupMakers that can generate for parms " + parms);
                 yield break;
             }
 
