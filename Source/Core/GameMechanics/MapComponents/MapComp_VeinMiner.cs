@@ -23,7 +23,7 @@ namespace RA
                         var adjucentMineable = MineUtility.MineableInCell(cell);
                         if (adjucentMineable.def == designatedMineable.def)
                         {
-                            AutoUtility.TryAutoDesignate(new Designator_Mine(), "Mine", adjucentMineable);
+                            AutoUtil.TryAutoDesignate(new Designator_Mine(), "Mine", adjucentMineable);
                         }
                     }
                 }

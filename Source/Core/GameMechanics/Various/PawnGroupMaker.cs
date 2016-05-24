@@ -102,7 +102,7 @@ namespace RimWorld
                     if (parms.generateMeleeOnly && g.kind.weaponTags.Any(tag => tag != MeleeWeaponTag))
                         continue;
 
-                    if (parms.raidStrategy != null && !parms.raidStrategy.Worker.AllowChoosePawnGenOption(g, chosenGroups))
+                    if (parms.raidStrategy != null && !parms.raidStrategy.Worker.CanUsePawnGenOption(g, chosenGroups))
                         continue;
 
                     allowedGroups.Add(g);
@@ -158,7 +158,7 @@ namespace RimWorld
             }
 
             //Ensure we can at least afford the cheapest group of the faction
-            maxGroupCost = Mathf.Max(maxGroupCost, faction.def.MinPointsToGeneratePawnGroup() * 1.2f);
+            maxGroupCost = Mathf.Max(maxGroupCost, faction.def.MinPointsToGenerateNormalPawnGroup() * 1.2f);
 
             //Todo ensure we have the points to get the pawn type we require
 

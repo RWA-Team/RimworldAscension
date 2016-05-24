@@ -36,7 +36,7 @@ namespace ArchitectSense
             Texture2D tex = icon;
             if( tex == null )
                 tex = BaseContent.BadTex;
-            GUI.DrawTexture( buttonRect, BGTex );
+            //GUI.DrawTexture( buttonRect, BGTex );		//Orphaned global form a different mod? -Ratys
             MouseoverSounds.DoRegion( buttonRect, SoundDefOf.MouseoverButtonCommand );
             GUI.color = IconDrawColor * transparency;
             Widgets.DrawTextureFitted( new Rect( buttonRect ), tex, iconDrawScale * 0.85f, iconProportions, iconTexCoords );
