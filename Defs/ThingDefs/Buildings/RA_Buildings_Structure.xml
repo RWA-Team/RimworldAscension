@@ -171,7 +171,7 @@
 		<description>A clay wall.</description>
 		<graphicData>
 			<texPath>Things/Building/Linked/Wall/Wall_Atlas_Bricks</texPath>
-			<color>(124,82,27)</color>
+			<color>(124,82,26)</color>
 		</graphicData>
 		<uiIconPath>Things/Building/Linked/WallBricks_MenuIcon</uiIconPath>
 		<statBases>
