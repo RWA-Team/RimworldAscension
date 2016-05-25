@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<ThingDef Name="CR_TEST_AmmoBase" Abstract="True">
+		<thingClass>RA.CR.AmmoThing</thingClass>
+		<label>unspecified ammunition</label>
+		<category>Item</category>
+		<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<stackLimit>500</stackLimit>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+		<alwaysHaulable>true</alwaysHaulable>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<rotatable>false</rotatable>
+		<pathCost>15</pathCost>
+		<tradeTags>
+			<li>CR_Ammo</li>
+		</tradeTags>
+		<tradeability>Sellable</tradeability>
+	</ThingDef>
+	
+	<ThingDef Class="RA.CR.AmmoDef" Name="CR_TEST_AmmoArrowBase" ParentName="CR_TEST_AmmoBase" Abstract="True">
+		<description>Simple arrow design with a cutting head attached to a wooden shaft.</description>
+		<statBases>
+			<Weight>0.11</Weight>
+			<Bulk>0.11</Bulk>
+		</statBases>
+		<thingCategories>
+			<li>CR_TEST_AmmoArrows</li>
+		</thingCategories>
+		<stackLimit>200</stackLimit>
+	</ThingDef>
+
+	<ThingDef Class="RA.CR.AmmoDef" ParentName="CR_TEST_AmmoArrowBase">
+		<defName>CR_TEST_Ammo_Arrow_Stone</defName>
+		<label>CR_TEST arrow (stone)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Neolithic/Arrow/Stone</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.17</MarketValue>
+		</statBases>
+		<linkedProjectile>CR_TEST_Projectile_Arrow_Stone</linkedProjectile>
+		<ammoClass>CR_TEST_StoneArrow</ammoClass>
+	</ThingDef>
+
+</ThingDefs>

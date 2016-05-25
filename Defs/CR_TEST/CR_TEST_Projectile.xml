@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+	
+	<ThingDef Name="CR_TEST_BaseBullet" Abstract="True">
+		<category>Projectile</category>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<thingClass>RA.CR.BulletCR</thingClass>
+		<label>bullet</label>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<graphicData>
+			<shaderType>Transparent</shaderType>
+		</graphicData>
+		<projectile Class="RA.CR.ProjectilePropertiesCR"/>
+	</ThingDef>
+	
+	<ThingDef Name="CR_TEST_BaseArrowProjectile" ParentName="CR_TEST_BaseBullet" Abstract="true">
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<speed>44</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="CR_TEST_BaseArrowProjectile">
+		<defName>CR_TEST_Projectile_Arrow_Stone</defName>
+		<label>CR_TEST arrow (stone)</label>
+		<projectile>
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetration>0.15</armorPenetration>
+		</projectile>
+	</ThingDef>
+	
+</ThingDefs>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingCategoryDefs>
+
+	<ThingCategoryDef>
+		<defName>CR_TEST_Ammo</defName>
+		<label>CR_TEST_ammunition</label>
+		<parent>Weapons</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>CR_TEST_AmmoNeolithic</defName>
+		<label>CR_TEST_neolithic</label>
+		<parent>CR_TEST_Ammo</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>CR_TEST_AmmoArrows</defName>
+		<label>CR_TEST_arrows</label>
+		<parent>CR_TEST_AmmoNeolithic</parent>
+	</ThingCategoryDef>
+
+</ThingCategoryDefs>

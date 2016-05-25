@@ -12,10 +12,10 @@ namespace RA.CR
     {
         #region Fields
 
-        public static StatDef Bulk = StatDef.Named( "Bulk" ); // for items in inventory
+        public static StatDef Bulk = StatDef.Named("CR_TEST_Bulk"); // for items in inventory
         public static StatDef CarryBulk = StatDef.Named( "CarryBulk" ); // pawn capacity
         public static StatDef CarryWeight = StatDef.Named( "CarryWeight" ); // pawn capacity
-        public static StatDef Weight = StatDef.Named( "Weight" ); // items in inventory
+        public static StatDef Weight = StatDef.Named("CR_TEST_Weight"); // items in inventory
         public static StatDef WornBulk = StatDef.Named( "WornBulk" ); // apparel offsets
         public static StatDef WornWeight = StatDef.Named( "WornWeight" ); // apparel offsets
         private static float _labelSize = -1f;
