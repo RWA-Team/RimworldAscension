@@ -14,12 +14,12 @@ namespace RA
 
         public string workType;
 
-        public Job DoJobWithTool(Pawn pawn, IEnumerable<Thing> availableTargets, Func<Thing, Job> ActualJob)
+        public Job DoJobWithTool(Pawn pawn, IEnumerable<Thing> availableTargets, Func<Thing, Job> ActualJob, bool shouldKeepTheTool = false)
         {
             // has available job targets
             if (availableTargets.Any())
             {
-                var closestAvailableTarget = GenClosest.ClosestThing_Global_Reachable(pawn.Position, availableTargets, PathEndMode.Touch, TraverseParms.For(pawn));
+                var closestAvailableTarget = GenClosest.ClosestThing_Global(pawn.Position, availableTargets);
                 // hands free
                 if (pawn.equipment.Primary == null)
                 {
@@ -27,16 +27,7 @@ namespace RA
                     if (!TryEquipToolFromSlots(pawn))
                     {
                         // then search for free tool
-                        if (TryFindAvailableTool(pawn))
-                        {
-                            //reserve target for future work
-                            if (pawn.CanReserve(closestAvailableTarget))
-                            {
-                                pawn.Reserve(closestAvailableTarget);
-                            }
-                            // equip nearest tool
-                            return new Job(JobDefOf.Equip, closestAvailableTool);
-                        }
+                        TryFindAvailableTool(pawn);
                     }
                 }
                 // hands occupied
@@ -57,11 +48,7 @@ namespace RA
                             reservedWeapon = pawn.equipment.Primary;
                         }
                         // then search for free tool
-                        if (TryFindAvailableTool(pawn))
-                        {
-                            // equip nearest tool
-                            return new Job(JobDefOf.Equip, closestAvailableTool);
-                        }
+                        TryFindAvailableTool(pawn);
                     }
                 }
             }
@@ -92,8 +79,8 @@ namespace RA
                     // proper tool in hands
                     if (IsProperTool(pawn.equipment.Primary))
                     {
-                        // keep tool in hands, cause other jobs of the same worktype is being done
-                        if (!ShouldKeepTool(pawn))
+                        // keep tool in hands, cause other jobs of the same worktype are available
+                        if (!shouldKeepTheTool)
                         {
                             // has place to store tool
                             if (StorageCellExists(pawn))
@@ -140,30 +127,6 @@ namespace RA
         public bool IsProperTool(Thing thing)
         {
             return thing.TryGetComp<CompTool>()?.Allows(workType) ?? false;
-        }
-
-        // keeps current tool equipped if there are available unfinished jobs for this tool type
-        public bool ShouldKeepTool(Pawn pawn)
-        {
-            var toolComp = pawn.equipment.Primary.TryGetComp<CompTool>();
-            if (toolComp.Allows("Construction") && (pawn.workSettings.WorkIsActive(WorkTypeDefOf.Construction) &&
-                                                    WorkGiver_ConstructFinishFrames.hasPotentialJobs ||
-                                                    pawn.workSettings.WorkIsActive(WorkTypeDefOf.Repair) &&
-                                                    WorkGiver_Repair.hasPotentialJobs))
-            {
-                return true;
-            }
-            if (toolComp.Allows("Mining") && pawn.workSettings.WorkIsActive(WorkTypeDefOf.Mining) &&
-                WorkGiver_Mine.hasPotentialJobs)
-            {
-                return true;
-            }
-            if (toolComp.Allows("PlantCutting") && pawn.workSettings.WorkIsActive(WorkTypeDefOf.PlantCutting) &&
-                WorkGiver_PlantsCut.hasPotentialJobs)
-            {
-                return true;
-            }
-            return false;
         }
 
         public bool TryEquipToolFromSlots(Pawn pawn)
@@ -234,20 +197,25 @@ namespace RA
             return false;
         }
 
-        public bool TryFindAvailableTool(Pawn pawn)
+        public Job TryFindAvailableTool(Pawn pawn)
         {
             // find proper tools of the specific work type
-            IEnumerable<Thing> availableTools = Find.ListerThings.AllThings.FindAll(tool => IsProperTool(tool) && !tool.IsForbidden(pawn.Faction) && pawn.CanReserveAndReach(tool, PathEndMode.ClosestTouch, pawn.NormalMaxDanger()));
+            IEnumerable<Thing> availableTools = Find.ListerThings.AllThings.FindAll(tool => IsProperTool(tool) && !tool.IsForbidden(pawn.Faction) && pawn.CanReserveAndReach(tool, PathEndMode.ClosestTouch,pawn.NormalMaxDanger()));
 
             if (availableTools.Any())
             {
                 // find closest reachable tool of the specific work type
-                closestAvailableTool = GenClosest.ClosestThing_Global_Reachable(pawn.Position, availableTools, PathEndMode.ClosestTouch, TraverseParms.For(pawn)) as ThingWithComps;
+                closestAvailableTool = GenClosest.ClosestThing_Global(pawn.Position, availableTools) as ThingWithComps;
 
-                return true;
+                if (closestAvailableTool != null)
+                {
+                    // reserve and equip nearest tool
+                    pawn.Reserve(closestAvailableTool);
+                    return new Job(JobDefOf.Equip, closestAvailableTool);
+                }
             }
 
-            return false;
+            return null;
         }
 
         public Job ReturnTool(Pawn pawn)

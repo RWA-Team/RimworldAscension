@@ -293,7 +293,7 @@ namespace RA
             {
                 pawn2 = corpse.innerPawn;
             }
-            if ((def.fixedBillGiverDefs?.Contains(thing.def) ?? false) || ThingRequestGroup.PotentialBillGiver.Includes(thing.def))
+            if (def.fixedBillGiverDefs?.Contains(thing.def) ?? false)
             {
                 return true;
             }
