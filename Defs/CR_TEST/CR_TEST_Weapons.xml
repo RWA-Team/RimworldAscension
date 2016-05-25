@@ -71,8 +71,8 @@
 			<CR_TEST_AimEfficiency>0.35</CR_TEST_AimEfficiency>
 			<CR_TEST_ShotSpread>1</CR_TEST_ShotSpread>
 			<CR_TEST_SwayFactor>2</CR_TEST_SwayFactor>
-			<Bulk>3.00</Bulk>
-			<Weight>2.00</Weight>
+			<CR_TEST_Bulk>3.00</CR_TEST_Bulk>
+			<CR_TEST_Weight>2.00</CR_TEST_Weight>
 			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
 		</statBases>
 		<weaponTags>
