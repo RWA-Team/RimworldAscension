@@ -1,14 +1,13 @@
-﻿using CommunityCoreLibrary;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
-namespace Combat_Realism
+namespace RA.CR
 {
-    public class ITabInjector : SpecialInjector
+    public static class ITabInjector
     {
         #region Methods
 
-        public override bool Inject()
+        public static bool Inject()
         {
             // get reference to lists of itabs
             var itabs = ThingDefOf.Human.inspectorTabs;

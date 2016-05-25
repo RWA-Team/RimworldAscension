@@ -8,7 +8,7 @@ using Verse.AI;
 using Verse.Sound;
 using UnityEngine;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     // Class is cloned from Building_TurretGun with various changes made to support fire modes and ammo
     public class Building_TurretGunCR : Building_Turret

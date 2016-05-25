@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public static class Utility_Loadouts
     {

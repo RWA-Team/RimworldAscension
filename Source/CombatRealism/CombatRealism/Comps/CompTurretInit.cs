@@ -6,7 +6,7 @@ using System.Text;
 using RimWorld;
 using Verse;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public class CompTurretInit : ThingComp
     {

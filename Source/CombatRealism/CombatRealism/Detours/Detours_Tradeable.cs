@@ -6,7 +6,7 @@ using RimWorld;
 using Verse;
 using UnityEngine;
 
-namespace Combat_Realism.Detours
+namespace RA.CR
 {
     internal static class Detours_Tradeable
     {

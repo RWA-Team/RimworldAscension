@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Verse;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public class LoadoutAssignment : IExposable
     {

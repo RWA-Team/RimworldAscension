@@ -2,7 +2,7 @@ using System;
 using Verse;
 using RimWorld;
 
-namespace Combat_Realism
+namespace RA.CR
 {
 	public class Verb_ShootCROneUse : Verb_ShootCR
 	{

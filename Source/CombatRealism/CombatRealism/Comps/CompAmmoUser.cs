@@ -8,9 +8,9 @@ using Verse;
 using Verse.AI;
 using Verse.Sound;
 
-namespace Combat_Realism
+namespace RA.CR
 {
-    public class CompAmmoUser : CommunityCoreLibrary.CompRangedGizmoGiver
+    public class CompAmmoUser : ThingComp
     {
         #region Fields
         
@@ -390,7 +390,7 @@ namespace Combat_Realism
                     action = action,
                     defaultLabel = hasMagazine ? "CR_ReloadLabel".Translate() : "",
                     defaultDesc = "CR_ReloadDesc".Translate(),
-                    icon = this.currentAmmo == null ? ContentFinder<Texture2D>.Get("UI/Buttons/Reload", true) : CommunityCoreLibrary.Def_Extensions.IconTexture(this.selectedAmmo)
+                    icon = this.currentAmmo == null ? ContentFinder<Texture2D>.Get("UI/Buttons/Reload", true) : null //TODO: CommunityCoreLibrary.Def_Extensions.IconTexture(this.selectedAmmo)
                 };
                 yield return reloadCommandGizmo;
             }

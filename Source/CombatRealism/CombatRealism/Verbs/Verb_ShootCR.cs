@@ -5,7 +5,7 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace Combat_Realism
+namespace RA.CR
 {
 	public class Verb_ShootCR : Verb_LaunchProjectileCR
     {

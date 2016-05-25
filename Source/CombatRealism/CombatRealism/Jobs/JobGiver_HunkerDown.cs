@@ -7,7 +7,7 @@ using Verse;
 using Verse.AI;
 using UnityEngine;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     class JobGiver_HunkerDown : ThinkNode_JobGiver
     {

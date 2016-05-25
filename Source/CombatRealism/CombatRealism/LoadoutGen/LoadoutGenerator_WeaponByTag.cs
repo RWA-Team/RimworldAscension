@@ -6,7 +6,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public class LoadoutGenerator_WeaponByTag : LoadoutGenerator_List
     {

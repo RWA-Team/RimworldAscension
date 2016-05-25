@@ -6,7 +6,7 @@ using Verse;
 using Verse.Sound;
 using RimWorld;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public class BulletCR : ProjectileCR
     {

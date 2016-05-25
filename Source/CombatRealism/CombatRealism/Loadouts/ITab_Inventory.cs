@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Verse;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public class ITab_Inventory : ITab_Pawn_Gear
     {

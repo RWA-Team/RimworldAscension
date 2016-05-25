@@ -5,9 +5,8 @@ using System.Text;
 using RimWorld;
 using Verse;
 using UnityEngine;
-using CommunityCoreLibrary;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public class Command_Reload : Command_Action
     {

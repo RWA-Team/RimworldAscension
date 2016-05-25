@@ -7,7 +7,7 @@ using Verse;
 using Verse.AI;
 using UnityEngine;
 
-namespace Combat_Realism.Detours
+namespace RA.CR
 {
     internal static class Detours_WorkGiver_HunterHunt
     {

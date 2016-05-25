@@ -7,7 +7,7 @@ using Verse;
 using Verse.Sound;
 using UnityEngine;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public class CompInventory : ThingComp
     {

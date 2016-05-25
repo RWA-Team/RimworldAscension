@@ -5,11 +5,10 @@ using System.Text;
 using RimWorld;
 using Verse;
 using UnityEngine;
-using CommunityCoreLibrary;
 
-namespace Combat_Realism
+namespace RA.CR
 {
-    public class AmmoInjector : SpecialInjector
+    public class AmmoInjector
     {
         private const string enableTradeTag = "CR_AutoEnableTrade";             // The trade tag which designates ammo defs for being automatically switched to Tradeability.Stockable
         private const string enableCraftingTag = "CR_AutoEnableCrafting";        // The trade tag which designates ammo defs for having their crafting recipes automatically added to the crafting table
@@ -24,7 +23,7 @@ namespace Combat_Realism
             }
         }
 
-        public override bool Inject()
+        public bool Inject()
         {
             // Initialize list of all weapons so we don't have to iterate through all the defs, all the time
             Utility.allWeaponDefs.Clear();
@@ -42,7 +41,8 @@ namespace Combat_Realism
             // Find all ammo using guns
             foreach (ThingDef weaponDef in Utility.allWeaponDefs)
             {
-                CompProperties_AmmoUser props = weaponDef.GetCompProperty<CompProperties_AmmoUser>();
+                //CompProperties_AmmoUser props = weaponDef.GetCompProperty<CompProperties_AmmoUser>();
+                CompProperties_AmmoUser props = (CompProperties_AmmoUser) weaponDef.comps.Find(x => x is CompProperties_AmmoUser);
                 if (props != null && props.ammoSet != null && !props.ammoSet.ammoTypes.NullOrEmpty())
                 {
                     foreach(ThingDef curDef in props.ammoSet.ammoTypes)

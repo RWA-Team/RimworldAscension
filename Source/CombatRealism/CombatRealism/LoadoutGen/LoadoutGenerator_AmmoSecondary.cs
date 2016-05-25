@@ -6,7 +6,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     class LoadoutGenerator_AmmoSecondary : LoadoutGenerator_AmmoPrimary
     {

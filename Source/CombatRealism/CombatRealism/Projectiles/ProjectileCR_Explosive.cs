@@ -1,7 +1,7 @@
 using System;
 using Verse;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     //Cloned from vanilla, completely unmodified
     public class ProjectileCR_Explosive : ProjectileCR

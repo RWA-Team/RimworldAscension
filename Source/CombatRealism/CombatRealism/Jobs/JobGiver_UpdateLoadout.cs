@@ -7,7 +7,7 @@ using Verse;
 using Verse.AI;
 using UnityEngine;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public class JobGiver_UpdateLoadout : ThinkNode_JobGiver
     {

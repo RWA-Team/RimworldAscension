@@ -7,7 +7,7 @@ using Verse;
 using UnityEngine;
 using Verse.Sound;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     // Cloned from Verse.Command_VerbTarget which is internal for no goddamn reason
     public class Command_VerbTarget : Command

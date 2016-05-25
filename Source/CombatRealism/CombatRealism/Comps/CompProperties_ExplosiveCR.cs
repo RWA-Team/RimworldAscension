@@ -6,7 +6,7 @@ using RimWorld;
 using Verse;
 using UnityEngine;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public class CompProperties_ExplosiveCR : CompProperties
     {

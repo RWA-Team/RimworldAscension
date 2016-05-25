@@ -5,7 +5,7 @@ using System.Text;
 using RimWorld;
 using Verse;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     // Cloned from vanilla DamageWorker_Flame, only change is inheritance from DamageWorker_AddInjuryCR so we can have the new armor system apply to this as well
     public class DamageWorker_FlameCR : DamageWorker_AddInjuryCR

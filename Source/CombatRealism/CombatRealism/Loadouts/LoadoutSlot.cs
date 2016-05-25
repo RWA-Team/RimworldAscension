@@ -1,5 +1,4 @@
-﻿using CommunityCoreLibrary;
-using RimWorld;
+﻿using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     // this has been reduced to a thingCount at this point, with the exception of the added default count bit
     // -- Fluffy

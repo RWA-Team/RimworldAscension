@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Verse;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     /// <summary>
     /// Custom damage worker using new armor system, cloned from DamageWorker_AddInjury

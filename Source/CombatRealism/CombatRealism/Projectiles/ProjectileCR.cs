@@ -7,7 +7,7 @@ using Verse.Sound;
 using RimWorld;
 using UnityEngine;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public abstract class ProjectileCR : ThingWithComps
     {

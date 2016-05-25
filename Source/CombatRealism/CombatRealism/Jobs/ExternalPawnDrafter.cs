@@ -2,7 +2,7 @@
 using Verse;
 using Verse.AI;
 
-namespace Combat_Realism
+namespace RA.CR
 {
     public static class ExternalPawnDrafter
     {
