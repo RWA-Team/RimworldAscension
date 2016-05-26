@@ -8,7 +8,7 @@ using Verse;
 
 namespace RA.CR
 {
-    public class CompFireModes : ThingComp
+    public class CompFireModes : CompEquipmentGizmoProvider
     {
         public CompProperties_FireModes Props
         {

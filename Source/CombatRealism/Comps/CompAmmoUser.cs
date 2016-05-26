@@ -10,7 +10,7 @@ using Verse.Sound;
 
 namespace RA.CR
 {
-    public class CompAmmoUser : ThingComp
+    public class CompAmmoUser : CompEquipmentGizmoProvider
     {
         #region Fields
         

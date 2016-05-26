@@ -28,8 +28,8 @@
 	<ThingDef Class="RA.CR.AmmoDef" Name="CR_TEST_AmmoArrowBase" ParentName="CR_TEST_AmmoBase" Abstract="True">
 		<description>Simple arrow design with a cutting head attached to a wooden shaft.</description>
 		<statBases>
-			<Weight>0.11</Weight>
-			<Bulk>0.11</Bulk>
+			<CR_TEST_Weight>0.11</CR_TEST_Weight>
+			<CR_TEST_Bulk>0.11</CR_TEST_Bulk>
 		</statBases>
 		<thingCategories>
 			<li>CR_TEST_AmmoArrows</li>
@@ -41,7 +41,8 @@
 		<defName>CR_TEST_Ammo_Arrow_Stone</defName>
 		<label>CR_TEST arrow (stone)</label>
 		<graphicData>
-			<texPath>Things/Ammo/Neolithic/Arrow/Stone</texPath>
+			<!--<texPath>Things/Ammo/Neolithic/Arrow/Stone</texPath>-->
+			<texPath>Things/Projectile/Arrow_Small</texPath>
 			<graphicClass>Graphic_StackCount</graphicClass>
 		</graphicData>
 		<statBases>
