@@ -10,10 +10,10 @@ Ascend your colony of survivors from the primitive savagery to the magnificence 
 [Vanilla Rimworld Game Primer](https://docs.google.com/document/d/1pIZyKif0bFbBWten4drrm7kfSSfvBoJPgG9-ywfN8j8/pub "Used to preserve the Rimworld atmosphere")
 
 ### Credits:
-*Wivex (Forum page Maintainer,Coder)
-*tapkevich (XML guy,Coder?)
-*Skullywag (coder, artist, defs editor)
-*Alistaire (artist, defs editor, coder)
-*Mrofa (lead artist, coder)
-*Shinzy (artist)
-*Ratyz ()
+*	Wivex (Forum page Maintainer,Coder)
+*	tapkevich (XML guy,Coder?)
+*	Skullywag (coder, artist, defs editor)
+*	Alistaire (artist, defs editor, coder)
+*	Mrofa (lead artist, coder)
+*	Shinzy (artist)
+*	Ratyz ()
