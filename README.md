@@ -7,4 +7,13 @@ Ascend your colony of survivors from the primitive savagery to the magnificence 
 *	[Database](https://docs.google.com/spreadsheets/d/1GWdXpsvWhbrTpQGCtf2dzW-NKYoW4wV_Z-cigJmmKgE/edit?usp=sharing "Contains lists of things and all required parameters for content balancing")
 
 
-[Vanilla Rimworld Game Primer](https://docs.google.com/document/d/1pIZyKif0bFbBWten4drrm7kfSSfvBoJPgG9-ywfN8j8/pub "Use to preserve the Rimworld atmosphere")
+[Vanilla Rimworld Game Primer](https://docs.google.com/document/d/1pIZyKif0bFbBWten4drrm7kfSSfvBoJPgG9-ywfN8j8/pub "Used to preserve the Rimworld atmosphere")
+
+### Credits:
+*Wivex (Forum page Maintainer,Coder)
+*tapkevich (XML guy,Coder?)
+*Skullywag (coder, artist, defs editor)
+*Alistaire (artist, defs editor, coder)
+*Mrofa (lead artist, coder)
+*Shinzy (artist)
+*Ratyz ()
