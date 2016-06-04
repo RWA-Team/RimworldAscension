@@ -145,9 +145,10 @@
 			<texPath>Things/Buildings/Production/Kiln</texPath>
 			<shaderType>Cutout</shaderType>
 			<color>(141,86,65)</color>
-			<drawSize>(3,3)</drawSize>
+			<drawSize>(3.1,3.1)</drawSize>
 			<shadowData>
-				<volume>(0, 0, 0)</volume>
+				<volume>(2.1, 1, 2.1)</volume>
+				<offset>(0.0,0,0)</offset>
 			</shadowData>
 		</graphicData>
 		<Size>(3,3)</Size>
@@ -195,7 +196,7 @@
 		<graphicData>
 			<drawSize>(3.4,1.2)</drawSize>
 			<shadowData>
-				<volume>(3.4, 0.5, 1.2)</volume>
+				<volume>(2.9, 0.5, 0.9)</volume>
 			</shadowData>
 		</graphicData>
 		<statBases>
@@ -241,7 +242,7 @@
 			<drawRotated>false</drawRotated>
 			<drawSize>(1.1,1.1)</drawSize>
 			<shadowData>
-				<volume>(1, 0.5, 1)</volume>
+				<volume>(0.5, 0.5, 0.5)</volume>
 			</shadowData>
 		</graphicData>
 		<Size>(1,1)</Size>
@@ -264,7 +265,7 @@
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableMason/Neolithic/TableMasonNeolithic</texPath>
 			<shadowData>
-				<volume>(1, 0.5, 1)</volume>
+				<volume>(0.5, 0.5, 0.5)</volume>
 			</shadowData>
 		</graphicData>
 		<statBases>
