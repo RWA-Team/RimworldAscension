@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+
+	<!-- 
+	- fillPercent - determne cover multiplier vs projectiles
+	- castEdgeShadows - shadow aura around building
+	- staticSunShadowHeight - solid square shadow with set length
+	- drawerType:
+		- MapMeshOnly - doesn't draw from comps
+		- MapMeshAndRealTime - doesn't draw from comps
+		- RealTimeOnly - used for objects that need to change their textures on difference circustances (otherwise require manual map mesh redraw)
+	- surfaceType:
+		- Item - allows place items
+		- Eat - allows place food to eat
+	 -->
+
+	<ThingDef Name="BuildingUtility" ParentName="Building" Abstract="True">
+		<designationCategory>Utility</designationCategory>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BuildingUtility">
+		<defName>Grave</defName>
+		<label>grave</label>
+		<thingClass>Building_Grave</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Misc/GraveEmpty</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,4)</drawSize>
+			<shadowData>
+				<volume>(0.45, 0.5, 0.45)</volume>
+			</shadowData>
+		</graphicData>
+		<constructEffect>ConstructDirt</constructEffect>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<description>Place the dead in graves to give them a decent final resting place.</description>
+		<size>(1,2)</size>
+		<statBases>
+			<WorkToMake>650</WorkToMake>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<building>
+			<isInert>true</isInert>
+			<preventDeterioration>true</preventDeterioration>
+			<fullGraveGraphicData>
+				<texPath>Things/Building/Misc/GraveFull</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>(3,4)</drawSize>
+				<shadowData>
+				 <volume>(0.45, 0.5, 0.45)</volume>
+				 <offset>(0,0,-0.60)</offset>
+			    </shadowData>	
+			</fullGraveGraphicData>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Corpses</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<filter>
+					<categories>
+						<li>CorpsesHumanlike</li>
+					</categories>
+				</filter>
+			</defaultStorageSettings>
+		</building>
+		<inspectorTabs>
+			<li>ITab_Storage</li>
+		</inspectorTabs>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
+	</ThingDef>
+
+
+	<ThingDef Name="BuildingUtilityTarget" ParentName="BuildingUtility">
+		<defName>Dummy</defName>
+		<thingClass>RA.Dummy</thingClass>
+		<label>dummy</label>
+		<description>An abstract representation of a human figure, on which your pawns can practice their melee skills. Pawns will begin training routine if their life needs are fulfilled and they have nothing else to do.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Utility/TrainingStands/Dummy</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+			<shadowData>
+				<volume>(0.3, 0.5, 0.3)</volume>
+				<offset>(0,0,-0.3)</offset>
+			</shadowData>	
+		</graphicData>
+		<altitudeLayer>Waist</altitudeLayer>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<statBases>
+			<WorkToMake>500</WorkToMake>
+		</statBases>
+		
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<costList>
+			<WoodLog>10</WoodLog>
+			<Hay>30</Hay>
+		</costList>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<pathCost>30</pathCost>
+		<rotatable>true</rotatable>
+		<inspectorTabs>
+			<li>RA.ITab_AllowedColonists</li>
+		</inspectorTabs>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingUtilityTarget">
+		<defName>Target</defName>
+		<thingClass>RA.Target</thingClass>
+		<label>target</label>
+		<description>Classic shooting target, on which your pawns can practice their shooting skills. Pawns will begin training routine if their life needs are fulfilled and they have nothing else to do.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Utility/TrainingStands/Target</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+			<shadowData>
+				<volume>(0.3, 0.3, 0.3)</volume>
+				<offset>(0,0,0)</offset>
+			</shadowData>
+		</graphicData>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<fillPercent>0.3</fillPercent>
+	</ThingDef>
+
+
+	<ThingDef ParentName="BuildingUtility">
+		<defName>TradingPost</defName>
+		<label>trading post</label>
+		<thingClass>RA.TradeCenter</thingClass>
+		<drawerType>RealtimeOnly</drawerType>
+		<graphicData>
+			<texPath>Things/Buildings/Utility/TradingPost/TradingPost</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>(3.2,3.2)</drawSize>
+		</graphicData>
+		<passability>Impassable</passability>
+		<altitudeLayer>BuildingTall</altitudeLayer>
+		<pathCost>150</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToMake>2700</WorkToMake>
+		</statBases>
+		<description>A small tent with hundreds of trinkets to be sold.</description>
+		<size>(3,3)</size>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>1.0</fillPercent>
+		<costList>
+			<WoodLog>50</WoodLog>
+		</costList>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costStuffCount>100</costStuffCount>
+		<specialDisplayRadius>10</specialDisplayRadius>
+		<inspectorTabs>
+			<li>RA.ITab_Exchange</li>
+		</inspectorTabs>
+	</ThingDef>
+
+</Buildings>

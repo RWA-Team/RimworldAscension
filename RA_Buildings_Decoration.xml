@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<!-- 
+	- fillPercent - determne cover multiplier vs projectiles
+	- castEdgeShadows - shadow aura around building
+	- staticSunShadowHeight - solid square shadow with set length
+	- drawerType:
+		- MapMeshOnly - doesn't draw from comps
+		- MapMeshAndRealTime - doesn't draw from comps
+		- RealtimeOnly - used for objects that change their texture (unsure)
+	- surfaceType:
+		- Item - allows place items
+		- Eat - allows place food to eat
+	- Building_Art class - adds beauty value stat to inpection string
+	- Building_Art_Shadowed class - allows casting of fading shadows from stuffed things
+	- terrainAffordanceNeeded - type of terrain required to be build upon (no difference in Light/Heavy in the game so far)
+	 -->
+
+	<!--==================== Base Abstracts ========================-->
+
+	<ThingDef Name="Building" Abstract="True">
+		<thingClass>Building</thingClass>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<category>Building</category>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+		<passability>PassThroughOnly</passability>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<Flammability>1.0</Flammability>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>100</WorkToMake>
+			<MarketValue>1</MarketValue>
+		</statBases>
+	</ThingDef>
+
+
+	<ThingDef Name="Minified" ParentName="Item" Abstract="True">
+		<thingClass>MinifiedThing</thingClass>
+	</ThingDef>	
+
+	<!--==================== Decorations ========================-->
+
+	<ThingDef Name="Decoration" ParentName="Building" Abstract="True">
+		<thingClass>Building_Art</thingClass>
+		<altitudeLayer>BuildingTall</altitudeLayer>
+		<rotatable>false</rotatable>
+		<fillPercent>1</fillPercent>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>ArtName_Sculpture</nameMaker>
+				<descriptionMaker>ArtDescription_Sculpture</descriptionMaker>
+			</li> 
+			<li>
+				<compClass>RA.CompFadingShadowThrower</compClass>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>ITab_Art</li>
+		</inspectorTabs>
+		<DesignationCategory>Furniture</DesignationCategory>
+	</ThingDef>
+
+
+	<ThingDef Name="MinifiedDecoration" ParentName="Minified" Abstract="True">
+		<thingCategories>
+			<li>MinifiedDecorations</li>
+		</thingCategories>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Decoration">
+		<defName>Totem</defName>
+		<label>totem</label>
+		<size>(1,2)</size>
+		<description>A person-sized piece of material sculpted into an artistic form.</description>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<texPath>Things/Buildings/Decoration/Totem</texPath>
+			<drawSize>(2.1,2.1)</drawSize>
+			<shadowData>
+				<volume>(0.45, 0.85, 0.45)</volume>
+				<offset>(0,0,-0.60)</offset>
+			</shadowData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Beauty>40</Beauty>
+			<WorkToMake>48000</WorkToMake>
+		</statBases>
+		<costList>
+			<Totem>1</Totem>
+		</costList>
+		<stuffCategories>
+			<li>WoodLog</li>
+		</stuffCategories>
+		<minifiedDef>MinifiedTotem</minifiedDef>
+		<researchPrerequisites>
+			<li>Blocked</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="MinifiedDecoration">
+		<defName>MinifiedTotem</defName>
+		<label>totem</label>
+		<stuffCategories>
+			<li>WoodLog</li>
+		</stuffCategories>
+	</ThingDef>
+
+</ThingDefs>

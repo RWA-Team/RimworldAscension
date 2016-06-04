@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<!-- 
+	- fillPercent - determne cover multiplier vs projectiles
+	- castEdgeShadows - shadow aura around building
+	- staticSunShadowHeight - solid square shadow with set length
+	- drawerType:
+		- MapMeshOnly - doesn't draw from comps
+		- MapMeshAndRealTime - doesn't draw from comps
+		- RealtimeOnly - used for objects that change their texture (unsure)
+	- surfaceType:
+		- Item - allows place items
+		- Eat - allows place food to eat
+	- sowTag - allows to grow plants there
+	 -->
+
+	<ThingDef Name="WorkTable" ParentName="Building" Abstract="True">
+		<thingClass>Building_WorkTable</thingClass>
+		<graphicData>
+			<shaderType>CutoutComplex</shaderType>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shadowData>
+				<volume>(3, 0.5, 1)</volume>
+				<offset>(0,0,-0.1)</offset>
+			</shadowData>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<altitudeLayer>Waist</altitudeLayer>
+		<surfaceType>Item</surfaceType>
+		<Size>(3,1)</Size>
+		<fillPercent>0.5</fillPercent>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<DesignationCategory>Production</DesignationCategory>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+			<li>
+				<compClass>RA.CompFadingShadowThrower</compClass>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+	</ThingDef>
+
+
+	<ThingDef Name="WorkTableFueled" ParentName="WorkTable" Abstract="True">
+		<thingClass>RA.WorkTableFueled</thingClass>
+		<drawerType>RealtimeOnly</drawerType>
+		<passability>Impassable</passability>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+		</graphicData>
+		<!-- 		<comps>
+			<li Class="CompProperties_Flickable"/>
+		</comps> -->
+		<placeWorkers>
+			<li>PlaceWorker_Heater</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<inspectorTabs>
+			<li>RA.ITab_Fuel</li>
+		</inspectorTabs>
+	</ThingDef>
+
+
+	<ThingDef ParentName="WorkTableFueled">
+		<defName>Campfire</defName>
+		<label>campfire</label>
+		<description>Cooks meals and produces heat. As with all heat sources, it must be placed indoors so it has a closed space to heat.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/Campfire</texPath>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(1.1,1.1)</drawSize>
+			<shadowData>
+				<volume>(0, 0, 0)</volume>
+			</shadowData>
+		</graphicData>
+		<Size>(1,1)</Size>
+		<building>
+			<isMealSource>true</isMealSource>
+		</building>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToMake>200</WorkToMake>
+		</statBases>
+		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
+		<stuffCategories>
+			<li>StoneCobble</li>
+		</stuffCategories>
+		<costStuffCount>10</costStuffCount>
+		<comps>
+			<li>
+				<compClass>CompGatherSpot</compClass>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>10</glowRadius>
+				<glowColor>(252,187,113,0)</glowColor>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>21</heatPerSecond>
+				<heatPushMaxTemperature>28</heatPushMaxTemperature>
+			</li>
+			<li Class="RA.CompFueled_Properties">
+				<operatingTemp>500</operatingTemp>
+				<fireDrawOffset>(0,0,0.1)</fireDrawOffset>
+				<smokeDrawOffset>(0,0,0.1)</smokeDrawOffset>
+				<fuelDrawOffset>(0,0,0.01)</fuelDrawOffset>
+				<fuelDrawScale>0.8</fuelDrawScale>
+			</li>
+		</comps>
+		<recipes>
+			<li>CookMealSimple</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTableFueled">
+		<defName>Kiln</defName>
+		<label>kiln</label>
+		<description>An impovised kiln used to produce ceramics and building blocks out of raw mud.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/Kiln</texPath>
+			<shaderType>Cutout</shaderType>
+			<color>(141,86,65)</color>
+			<drawSize>(3.1,3.1)</drawSize>
+			<shadowData>
+				<volume>(2.1, 1, 2.1)</volume>
+				<offset>(0.0,0,0)</offset>
+			</shadowData>
+		</graphicData>
+		<Size>(3,3)</Size>
+		<interactionCellOffset>(0, 0, -2)</interactionCellOffset>
+		<fillPercent>0.6</fillPercent>
+		<statBases>
+			<MaxHitPoints>180</MaxHitPoints>
+			<WorkToMake>2000</WorkToMake>
+		</statBases>
+		<costList>
+			<ClumpClayGray>60</ClumpClayGray>
+		</costList>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(252,187,113,0)</glowColor>
+			</li>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>21</heatPerSecond>
+				<heatPushMaxTemperature>25</heatPushMaxTemperature>
+			</li>
+			<li Class="RA.CompFueled_Properties">
+				<operatingTemp>500</operatingTemp>
+				<fireDrawOffset>(0,-0.1,-0.65)</fireDrawOffset>
+				<smokeDrawOffset>(0.5,-0.1,1.6)</smokeDrawOffset>
+				<fuelDrawOffset>(0,-0.1,-0.8)</fuelDrawOffset>
+			</li>
+		</comps>
+		<recipes>
+			<li>FirePot</li>
+			<li>FireCeramics</li>
+			<li>FireBlocksAdobe</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>Pottery</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+
+	<!-- ==================== Neolithic Tables =====================-->
+
+
+	<ThingDef Name="WorkTableNeolithic" ParentName="WorkTable" Abstract="True">
+		<graphicData>
+			<drawSize>(3.4,1.2)</drawSize>
+			<shadowData>
+				<volume>(2.9, 0.5, 0.9)</volume>
+			</shadowData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToMake>500</WorkToMake>
+			<Cleanliness>-3</Cleanliness>
+		</statBases>
+		<stuffCategories>
+			<li>StoneChunk</li>
+		</stuffCategories>
+		<costStuffCount>3</costStuffCount>
+	</ThingDef>
+
+
+	<ThingDef ParentName="WorkTableNeolithic">
+		<defName>TableResearchNeolithic</defName>
+		<label>research table</label>
+		<description>Study surround materials here to research new things.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/TableResearch/Neolithic/TableResearchNeolithic</texPath>
+		</graphicData>
+		<!-- 		<statBases>
+			<ResearchSpeedFactor>0.5</ResearchSpeedFactor>
+		</statBases> -->
+		<comps>
+			<li>
+				<compClass>RA.CompResearcher</compClass>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+		<inspectorTabs/>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTableNeolithic">
+		<DefName>TableButcherNeolithic</DefName>
+		<label>butcher table</label>
+		<Description>A heavy table for butchering dead creatures into pieces of raw meat.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/TableButcher/Neolithic/TableButcherNeolithic</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+			<drawSize>(1.1,1.1)</drawSize>
+			<shadowData>
+				<volume>(0.5, 0.5, 0.5)</volume>
+			</shadowData>
+		</graphicData>
+		<Size>(1,1)</Size>
+		<costStuffCount>1</costStuffCount>
+		<statBases>
+			<Cleanliness>-15</Cleanliness>
+		</statBases>
+		<recipes>
+			<li>ButcherCorpse</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>Butchering</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTableNeolithic">
+		<DefName>TableMasonNeolithic</DefName>
+		<label>mason table</label>
+		<Description>A work table equipped to cut rough stone into usable blocks.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/TableMason/Neolithic/TableMasonNeolithic</texPath>
+			<shadowData>
+				<volume>(0.5, 0.5, 0.5)</volume>
+			</shadowData>
+		</graphicData>
+		<statBases>
+			<Cleanliness>-5</Cleanliness>
+		</statBases>
+		<recipes>
+			<li>MakeStoneCobbles</li>
+			<li>MakeStoolNeolithic</li>
+			<!-- <li>MakeTableNeolithic</li> -->
+		</recipes>
+		<researchPrerequisites>
+			<li>Masonry</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTableNeolithic">
+		<DefName>TableCraftsmanNeolithic</DefName>
+		<label>craftsman table</label>
+		<Description>A table and tools to craft various stuff.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/TableCraftsman/Neolithic/TableCraftsmanNeolithic</texPath>
+		</graphicData>
+		<statBases>
+			<Cleanliness>-1</Cleanliness>
+		</statBases>
+		<recipes>
+			<li>MakeBasket</li>
+			<li>MakeBedHide</li>
+			<li>MakeTotem</li>
+			<li>MakeFigurine</li>
+			<li>MakeRawPot</li>
+			<li>MakePlantPot</li>
+			<li>MakeRawCeramics</li>
+			<li>MakeBroom</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTableNeolithic">
+		<DefName>TableWeaponMeleeNeolithic</DefName>
+		<label>warrior table</label>
+		<Description>A worktable equipped for melee weapons production.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/TableWeaponMelee/Neolithic/TableWeaponMeleeNeolithic</texPath>
+		</graphicData>
+		<recipes>
+			<li>MakeShiv</li>
+			<li>MakeSpearNeolithic</li>
+			<li>MakeClub</li>
+			<li>MakeAxeNeolithic</li>
+			<li>MakeHammerNeolithic</li>
+			<li>MakeShieldTribal</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>Blocked</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTableNeolithic">
+		<DefName>TableWeaponRangedNeolithic</DefName>
+		<label>hunter table</label>
+		<Description>A worktable equipped for ranged weapons production.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/TableWeaponRanged/Neolithic/TableWeaponRangedNeolithic</texPath>
+		</graphicData>
+		<recipes>
+			<li>MakeTrapDeadfall</li>
+			<li>MakeBow</li>
+			<li>MakeBowComposite</li>
+			<li>MakeBowThrumbo</li>
+			<li>MakeTomahawk</li>
+			<li>MakePilum</li>
+			<li>MakeSling</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTableNeolithic">
+		<DefName>TableTailorNeolithic</DefName>
+		<label>tanner table</label>
+		<Description>A worktable for crafting leather clothings from raw hides.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/TableTailor/Neolithic/TableTailorNeolithic</texPath>
+		</graphicData>
+		<recipes>
+			<li>MakeLoincloth</li>
+			<li>MakeTribalwear</li>
+			<li>MakeHatBaggy</li>
+			<li>MakeCape</li>
+			<li>MakeBackpack</li>
+			<li>MakeToolbelt</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>Tannery</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTableNeolithic">
+		<DefName>TableBrewerNeolithic</DefName>
+		<label>brewer table</label>
+		<ThingClass>Building_WorkTable</ThingClass>
+		<Description>A work station with all the equipment needed to make brew.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/TableBrewer/Neolithic/TableBrewerNeolithic</texPath>
+			<drawSize>(3.7,1.4)</drawSize>
+		</graphicData>
+		<recipes>
+			<li>MakeBrew</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>Brewing</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+</ThingDefs>
