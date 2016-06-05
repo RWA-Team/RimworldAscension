@@ -7,11 +7,6 @@ namespace RA
 {
     public class WorkGiver_Mine : WorkGiver_WorkWithTools
     {
-        //used to keep current tool equipped if there are available unfinished jobs for this tool type
-        public static bool hasPotentialJobs;
-        
-        public Thing closestAvailableVein;
-
         public WorkGiver_Mine()
         {
             workType = "Mining";
@@ -32,9 +27,7 @@ namespace RA
 
             var availableTargets = designatedTargets.Where(target => pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()));
 
-            hasPotentialJobs = availableTargets.Any();
-
-            return DoJobWithTool(pawn, availableTargets, ActualJob);
+            return DoJobWithTool(pawn, availableTargets, ActualJob, availableTargets.Any());
         }
     }
 }

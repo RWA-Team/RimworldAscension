@@ -62,9 +62,7 @@
 		<reportString>Collecting sand.</reportString>
 	</JobDef>
 
-
 	<!--=================== Work with tools =====================-->
-
 
 	<JobDef>
 		<defName>Mine</defName>
@@ -94,15 +92,12 @@
 		<alwaysShowWeapon>true</alwaysShowWeapon>
 	</JobDef>
 
-
 	<!--=================== AI jobs =====================-->
-
 
 	<JobDef>
 		<defName>SearchAndStealTargets</defName>
 		<driverClass>RA.JobDriver_SearchAndStealTargets</driverClass>
 		<reportString>Trying to steal something.</reportString>
 	</JobDef>
-
 
 </Defs>
