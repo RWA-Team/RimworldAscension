@@ -91,12 +91,12 @@
 	<ThingDef Name="Wall" ParentName="Structure" Abstract="True">
 		<thingClass>Building</thingClass>
 		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
 			<linkType>CornerFiller</linkType>
 			<linkFlags>
 				<li>Wall</li>
 				<li>Rock</li>
 			</linkFlags>
+			<graphicClass>Graphic_Single</graphicClass>
 			<damageData>
 				<cornerTL>Damage/Corner</cornerTL>
 				<cornerTR>Damage/Corner</cornerTR>
@@ -147,6 +147,7 @@
 		<label>palisade</label>
 		<description>A palisade wall. Cheaper and easier to build than thick log wall, can't hold roof and more fragile.</description>
 		<graphicData>
+			<linkType>Basic</linkType>
 			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Atlas</texPath>
 		</graphicData>
 		<uiIconPath>Things/Buildings/Structure/Walls/Palisade/Palisade_MenuIcon</uiIconPath>

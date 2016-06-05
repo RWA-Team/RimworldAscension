@@ -100,7 +100,6 @@
 			<nutrition>0.15</nutrition>
 		</ingestible>
 		<plant>
-			<harvestTag>Standard</harvestTag>
 			<leaflessGraphicPath>Things/Plant/Grass_Leafless</leaflessGraphicPath>
 			<harvestWork>40</harvestWork>
 			<harvestedThingDef>Hay</harvestedThingDef>

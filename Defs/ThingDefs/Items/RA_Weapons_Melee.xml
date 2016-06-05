@@ -155,7 +155,7 @@
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
 				<workTypes>
-					<li>PlantCutting</li>
+					<li>Woodchopping</li>
 				</workTypes>
 			</li>
 		</comps>

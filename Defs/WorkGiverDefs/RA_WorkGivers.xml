@@ -6,7 +6,7 @@
 	- scanCells - make workgiver check for PotentialWorkCellsGlobal
 	- singleBillGiverDef - determine the building which uses this workgiver (required)
 	-->	
-	
+
 	<WorkGiverDef Name="WorkGiver" Abstract="True">
 		<giverClass>WorkGiver_DoBill</giverClass>
 		<requiredCapacities>
@@ -136,11 +136,11 @@
 	</WorkGiverDef>
 
 	<WorkGiverDef ParentName="WorkGiver">
-		<defName>PlantsCut</defName>
-		<giverClass>RA.WorkGiver_PlantsCut</giverClass>
+		<defName>ChopWood</defName>
+		<giverClass>RA.WorkGiver_ChopWood</giverClass>
 		<workType>PlantCutting</workType>	
-		<verb>cut</verb>
-		<gerund>cutting</gerund>
+		<verb>chop</verb>
+		<gerund>chopping</gerund>
 	</WorkGiverDef>
 
 	<WorkGiverDef ParentName="WorkGiver">
@@ -176,6 +176,17 @@
 		<verb>construct</verb>
 		<gerund>constructing</gerund>
 		<priorityInType>100</priorityInType>
+	</WorkGiverDef>
+
+	<!-- ============= Hunting ============= -->
+
+	<WorkGiverDef ParentName="WorkGiver">
+		<defName>HunterHunt</defName>
+		<giverClass>RA.WorkGiver_Hunt</giverClass>
+		<label>hunt</label>
+		<workType>Hunting</workType>
+		<verb>hunt</verb>
+		<gerund>hunting</gerund>
 	</WorkGiverDef>
 
 </WorkGivers>

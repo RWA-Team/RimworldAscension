@@ -13,4 +13,10 @@
 		<targetType>Cell</targetType>
 	</DesignationDef>
 
+	<DesignationDef>
+		<defName>ChopWood</defName>
+		<texturePath>Designations/CutPlant</texturePath>
+		<targetType>Thing</targetType>
+	</DesignationDef>
+
 </DesignationDefs>
