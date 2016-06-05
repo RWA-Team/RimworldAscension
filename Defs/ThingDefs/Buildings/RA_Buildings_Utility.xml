@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
 	<!-- 
@@ -30,6 +30,9 @@
 			<texPath>Things/Building/Misc/GraveEmpty</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(3,4)</drawSize>
+			<shadowData>
+				<volume>(0.45, 0.5, 0.45)</volume>
+			</shadowData>
 		</graphicData>
 		<constructEffect>ConstructDirt</constructEffect>
 		<altitudeLayer>FloorEmplacement</altitudeLayer>
@@ -47,6 +50,10 @@
 				<texPath>Things/Building/Misc/GraveFull</texPath>
 				<graphicClass>Graphic_Multi</graphicClass>
 				<drawSize>(3,4)</drawSize>
+				<shadowData>
+				 <volume>(0.45, 0.5, 0.45)</volume>
+				 <offset>(0,0,-0.60)</offset>
+			    </shadowData>	
 			</fullGraveGraphicData>
 			<fixedStorageSettings>
 				<filter>
@@ -84,6 +91,10 @@
 			<texPath>Things/Buildings/Utility/TrainingStands/Dummy</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(2.5,2.5)</drawSize>
+			<shadowData>
+				<volume>(0.3, 0.5, 0.3)</volume>
+				<offset>(0,0,-0.3)</offset>
+			</shadowData>	
 		</graphicData>
 		<altitudeLayer>Waist</altitudeLayer>
 		<interactionCellOffset>(0,0,1)</interactionCellOffset>
@@ -91,7 +102,7 @@
 		<statBases>
 			<WorkToMake>500</WorkToMake>
 		</statBases>
-		<castEdgeShadows>true</castEdgeShadows>
+		
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>false</useHitPoints>
 		<tickerType>Normal</tickerType>
@@ -116,6 +127,10 @@
 			<texPath>Things/Buildings/Utility/TrainingStands/Target</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1,1)</drawSize>
+			<shadowData>
+				<volume>(0.3, 0.3, 0.3)</volume>
+				<offset>(0,0,0)</offset>
+			</shadowData>
 		</graphicData>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<fillPercent>0.3</fillPercent>
@@ -131,7 +146,7 @@
 			<texPath>Things/Buildings/Utility/TradingPost/TradingPost</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>Transparent</shaderType>
-			<drawSize>(3,3)</drawSize>
+			<drawSize>(3.2,3.2)</drawSize>
 		</graphicData>
 		<passability>Impassable</passability>
 		<altitudeLayer>BuildingTall</altitudeLayer>
