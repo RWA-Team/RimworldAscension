@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
 	<!-- 
@@ -196,7 +196,6 @@
 			</li>
 		</comps>
 		<weaponTags>
-			<li>ConstructionTool</li>
 			<li>MeleeNeolithic</li>
 		</weaponTags>
 	</ThingDef>	
@@ -229,7 +228,7 @@
 	<ThingDef ParentName="WeaponMelee">
 		<defName>Multitool</defName>
 		<label>multitool</label>
-		<description>A survival grade, all-in-one hammer- and axe-type tool used for construction and woodcutting. Performs perfectly in any environment, according to the manufacturer.</description>
+		<description>A survival grade hammer and axe tool used for construction and woodcutting. Performs perfectly in any environment, according to the manufacturer.</description>
 		<equippedAngleOffset>-65</equippedAngleOffset>
 		<statBases>
 			<MarketValue>500</MarketValue>
@@ -250,7 +249,7 @@
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
 				<workTypes>
-					<li>PlantCutting</li>
+					<li>Woodchopping</li>
 					<li>Construction</li>
 				</workTypes>
 			</li>

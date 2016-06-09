@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ResearchProjectDefs>
 
 	<ResearchProjectDef Name="Blocked" Abstract="True">
@@ -17,7 +17,7 @@
 	<!--used to learn the basics-->
 	<ResearchProjectDef>
 		<defName>StartPack</defName>
-		<description>Having studied what's left of survival guide you've found, you got the basic concepts of how to survive in the harsh enviroment around you. Having no advanced tools or materials, you'll have to make your own, from the very basic one.</description>
+		<description>Having studied what's left of survival guide you found, you have the basic concepts of how to survive in the harsh enviroment around you. Having no advanced tools or materials, you'll have to make your own.</description>
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
@@ -33,7 +33,7 @@
 	<ResearchProjectDef>
 		<defName>Carpentry</defName>
 		<label>carpentry</label>
-		<description>Allows you perform elaborate wooden carving to make wooden trade crafts and base for tools and weapons.</description>
+		<description>Allows you perform elaborate wooden carvings to make wooden trade crafts and bases for tools and weapons.</description>
 		<totalCost>100</totalCost>
 		<prerequisites>
 			<li>StartPack</li>
@@ -143,7 +143,7 @@
 	<ResearchProjectDef>
 		<defName>Brewing</defName>
 		<label>brewing</label>
-		<description>Allows to make brew.</description>
+		<description>Allows you to make brew.</description>
 		<totalCost>450</totalCost>
 		<prerequisites>
 			<li>Pottery</li>

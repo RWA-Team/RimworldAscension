@@ -180,7 +180,6 @@
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelRequired>
-			<li>ShieldBone</li>	
 			<li>Headdress</li>			
 		</apparelRequired>
 		<apparelTags>

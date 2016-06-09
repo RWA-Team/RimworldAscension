@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
 	<!-- 
@@ -102,7 +102,7 @@
 	<ThingDef ParentName="Container">
 		<defName>Pot</defName>
 		<label>pot</label>
-		<Description>A big clay pot used to preserve food. Slightly decrease rotting process.</Description>
+		<Description>A big clay pot used to preserve food. Slightly slows rotting process.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -201,7 +201,7 @@
 	<ThingDef ParentName="Bed">
 		<defName>BedHide</defName>
 		<label>hide bed</label>
-		<Description>A makeshift bed, makes you feel like in stone age.</Description>
+		<Description>A makeshift bed, makes you feel like you're in the stone age.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHide/BedHide</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -223,7 +223,7 @@
 			<li>Leathery</li>
 		</stuffCategories>
 		<researchPrerequisites>
-			<li>Blocked</li>
+			<li>StartPack</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -485,7 +485,7 @@
 		<defName>PlantPot</defName>
 		<thingClass>Building_PlantGrower</thingClass>
 		<label>plant pot</label>
-		<description>Plant decorative flowers here to improve the mood of people nearby.</description>
+		<description>Plant decorative flowers here to improve the mood of nearby people.</description>
 		<graphicData>
 			<texPath>Things/Building/Furniture/PlantPot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
