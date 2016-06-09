@@ -23,13 +23,8 @@ namespace RA
                     (target as Frame).MaterialsNeeded().Count == 0 &&
                     pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()));
 
-        // keep tool if it could be used for other jobs
-        public override bool ShouldKeepTool(Pawn pawn)
-            => base.ShouldKeepTool(pawn) ||
-               pawn.workSettings.WorkIsActive(WorkTypeDefOf.Repair) && WorkGiver_Repair.AvailableTargets(pawn).Any();
-
         // NonScanJob performed everytime previous(current) job is completed
         public override Job NonScanJob(Pawn pawn)
-            => DoJobWithTool(pawn, AvailableTargets(pawn), ActualJob, ShouldKeepTool);
+            => DoJobWithTool(pawn, AvailableTargets(pawn), ActualJob);
     }
 }

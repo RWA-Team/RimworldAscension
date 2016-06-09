@@ -91,23 +91,6 @@ namespace RA
             }
             bill.suspended = false;
 
-            // Reserve research table
-            if (pawn.CanReserveAndReach(researchBench, PathEndMode.OnCell, Danger.Some))
-                pawn.Reserve(researchBench);
-
-            // Reserve all rubbish on the table for the researcher
-            {
-                foreach (var cell in billGiver.IngredientStackCells)
-                {
-                    var thing = Find.ThingGrid.ThingAt(cell, ThingCategory.Item);
-                    if (thing != null)
-                    {
-                        if (pawn.CanReserveAndReach(thing, PathEndMode.OnCell, Danger.Some))
-                            pawn.Reserve(thing);
-                    }
-                }
-            }
-
             // clear the work table
             var haulAside = WorkGiverUtility.HaulStuffOffBillGiverJob(pawn, billGiver, null);
             if (haulAside != null)

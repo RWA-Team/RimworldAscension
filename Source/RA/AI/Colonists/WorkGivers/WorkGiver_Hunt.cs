@@ -23,11 +23,8 @@ namespace RA
                 .Select(designation => designation.target.Thing)
                 .Where(target => pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()));
 
-        // this orkgiver doesn't make pawn to return the tool (weapon)
-        public override bool ShouldKeepTool(Pawn pawn) => true;
-
         // NonScanJob performed everytime previous(current) job is completed
         public override Job NonScanJob(Pawn pawn)
-            => DoJobWithTool(pawn, AvailableTargets(pawn), ActualJob, ShouldKeepTool);
+            => DoJobWithTool(pawn, AvailableTargets(pawn), ActualJob);
     }
 }

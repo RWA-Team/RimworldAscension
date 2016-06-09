@@ -26,6 +26,6 @@ namespace RA
 
         // NonScanJob performed everytime previous(current) job is completed
         public override Job NonScanJob(Pawn pawn)
-            => DoJobWithTool(pawn, AvailableTargets(pawn), ActualJob, ShouldKeepTool);
+            => DoJobWithTool(pawn, AvailableTargets(pawn), ActualJob);
     }
 }

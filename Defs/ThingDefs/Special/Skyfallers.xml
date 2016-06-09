@@ -44,7 +44,8 @@
 		<label>Flying debris</label>
 		<thingClass>RA.DebrisFlying</thingClass>
 		<graphicData>
-			<texPath>Things/Item/Chunk/ChunkSlag/MetalDebrisB</texPath>
+			<!-- <texPath>Things/Item/Chunk/ChunkSlag/MetalDebrisB</texPath> -->
+			<texPath>Things/Special/Skyfallers/Meteorites/Meteor3</texPath>
 		</graphicData>
 	</ThingDef>
 

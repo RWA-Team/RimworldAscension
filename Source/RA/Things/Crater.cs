@@ -1,4 +1,5 @@
 ﻿
+using UnityEngine;
 using Verse;
 
 namespace RA
@@ -6,11 +7,12 @@ namespace RA
     public class Crater : ThingWithComps
     {
         public float impactRadius;
+        public int craterNumber;
 
         public override void SpawnSetup()
         {
             base.SpawnSetup();
-            
+
             foreach (var cell in GenRadial.RadialCellsAround(Position, impactRadius, true))
             {
                 // set open terrain underneath to gravel
@@ -19,9 +21,12 @@ namespace RA
                 {
                     Find.TerrainGrid.SetTerrain(cell, DefDatabase<TerrainDef>.GetNamed("Gravel"));
                 }
-
             }
+
+            craterNumber = Find.ListerThings.ThingsOfDef(def).Count;
         }
+
+        public override Vector3 DrawPos => base.DrawPos + new Vector3(0, craterNumber/1000f, 0);
 
         // change drawsize of the crater if specific radius is set
         public override Graphic Graphic
@@ -38,11 +43,10 @@ namespace RA
 
         public override void ExposeData()
         {
-            // Base data to save
             base.ExposeData();
-
-            // Save tickstoimpact to save file
+            
             Scribe_Values.LookValue(ref impactRadius, "impactRadius");
+            Scribe_Values.LookValue(ref craterNumber, "craterNumber");
         }
     }
 }

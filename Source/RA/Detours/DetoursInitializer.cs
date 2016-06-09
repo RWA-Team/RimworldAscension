@@ -201,15 +201,32 @@ namespace RA
             var newNotify_IterationCompleted = typeof(RA_Bill_Production).GetMethod("Notify_IterationCompleted", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaNotify_IterationCompleted, newNotify_IterationCompleted);
 
-            // make plant cut designator work on plants with no harvest tags only
+            // make plant cut designator work on plants with "Cut" harvest tag only
             var vanillaCanDesignateThing = typeof(Designator_Plants).GetMethod("CanDesignateThing", BindingFlags.Instance | BindingFlags.Public);
             var newCanDesignateThing = typeof(RA_Designator_Plants).GetMethod("CanDesignateThing", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaCanDesignateThing, newCanDesignateThing);
 
-            // make plant harvest designator work on plants with "Standart" harvest tag only
+            // make plant harvest designator work on plants with "Harvest" harvest tag only
             var vanillaCanDesignateThing2 = typeof(Designator_PlantsHarvest).GetMethod("CanDesignateThing", BindingFlags.Instance | BindingFlags.Public);
             var newCanDesignateThing2 = typeof(RA_Designator_PlantsHarvest).GetMethod("CanDesignateThing", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaCanDesignateThing2, newCanDesignateThing2);
+
+            // make mine designator work after special research is made
+            var vanillaCanDesignateThing3 = typeof(Designator_Mine).GetMethod("CanDesignateThing", BindingFlags.Instance | BindingFlags.Public);
+            var newCanDesignateThing3 = typeof(RA_Designator_Mine).GetMethod("CanDesignateThing", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaCanDesignateThing3, newCanDesignateThing3);
+
+            // interrupt current job if pawn drops tool while doing it
+            var vanillaNotify_Dropped = typeof(CompEquippable).GetMethod("Notify_Dropped", BindingFlags.Instance | BindingFlags.Public);
+            var newNotify_Dropped = typeof(RA_CompEquippable).GetMethod("Notify_Dropped", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaNotify_Dropped, newNotify_Dropped);
+
+            // changes vanilla "wood" harvest tag to the "chop"
+            var vanillaIsTree = typeof(PlantProperties).GetProperty("IsTree", BindingFlags.Instance | BindingFlags.Public);
+            var vanillaIsTree_Getter = vanillaIsTree.GetGetMethod();
+            var newIsTree = typeof(RA_PlantProperties).GetProperty("IsTree", BindingFlags.Instance | BindingFlags.Public);
+            var newIsTree_Getter = newIsTree.GetGetMethod();
+            TryDetourFromTo(vanillaIsTree_Getter, newIsTree_Getter);
 
             #endregion
 

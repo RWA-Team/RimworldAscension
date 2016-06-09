@@ -14,8 +14,7 @@ namespace RA
 
         public string workType;
 
-        public Job DoJobWithTool(Pawn pawn, IEnumerable<Thing> availableTargets, Func<Thing, Job> ActualJob,
-            Func<Pawn, bool> ShouldKeepTool)
+        public Job DoJobWithTool(Pawn pawn, IEnumerable<Thing> availableTargets, Func<Thing, Job> ActualJob)
         {
             // has available job targets
             if (availableTargets.Any())
@@ -28,13 +27,14 @@ namespace RA
                     // do the vanilla job with tool in hands
                     return ActualJob(closestAvailableTarget);
                 }
-                
+
                 // or find the tool for work
                 return TryEquipTool(pawn);
             }
-            
+
             // drop tool and haul it to stockpile, if necessary
-            if (IsProperTool(pawn.equipment.Primary) && !ShouldKeepTool(pawn) && pawn.equipment.Primary.TryGetComp<CompTool>().wasAutoEquipped)
+            if (pawn.equipment.Primary != null && !ShouldKeepTool(pawn) &&
+                pawn.equipment.Primary.TryGetComp<CompTool>().wasAutoEquipped)
             {
                 return TryReturnTool(pawn);
             }
@@ -48,12 +48,28 @@ namespace RA
         }
 
         // keep tool if it could be used for other jobs
-        public virtual bool ShouldKeepTool(Pawn pawn)
+        public bool ShouldKeepTool(Pawn pawn)
         {
-            // pawn is ready to hunt
-            if (pawn.workSettings.WorkIsActive(WorkTypeDefOf.Hunting) &&
-                (pawn.equipment.Primary?.TryGetComp<CompTool>()?.Allows("Hunting") ?? false) &&
-                WorkGiver_Hunt.AvailableTargets(pawn).Any())
+            if (pawn.equipment.Primary.TryGetComp<CompTool>().Allows("Hunting") &&
+                pawn.workSettings.WorkIsActive(WorkTypeDefOf.Hunting) && WorkGiver_Hunt.AvailableTargets(pawn).Any())
+            {
+                return true;
+            }
+            if (pawn.equipment.Primary.TryGetComp<CompTool>().Allows("Construction") &&
+                (pawn.workSettings.WorkIsActive(WorkTypeDefOf.Construction) &&
+                 WorkGiver_ConstructFinishFrames.AvailableTargets(pawn).Any()) ||
+                (pawn.workSettings.WorkIsActive(WorkTypeDefOf.Repair) && WorkGiver_Repair.AvailableTargets(pawn).Any()))
+            {
+                return true;
+            }
+            if (pawn.equipment.Primary.TryGetComp<CompTool>().Allows("Mining") &&
+                pawn.workSettings.WorkIsActive(WorkTypeDefOf.Mining) && WorkGiver_Mine.AvailableTargets(pawn).Any())
+            {
+                return true;
+            }
+            if (pawn.equipment.Primary.TryGetComp<CompTool>().Allows("Woodchopping") &&
+                pawn.workSettings.WorkIsActive(WorkTypeDefOf.PlantCutting) &&
+                WorkGiver_ChopWood.AvailableTargets(pawn).Any())
             {
                 return true;
             }

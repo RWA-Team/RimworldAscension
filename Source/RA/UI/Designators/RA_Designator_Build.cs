@@ -213,9 +213,12 @@ namespace RA
                 Widgets.Label(new Rect(26f, curY + 2f, 50f, 100f), thingCount.count.ToString());
                 GUI.color = Color.white;
 
+                // special case for minified things
                 var text = thingCount.thingDef == null
                     ? "(" + "UnchosenStuff".Translate() + ")"
-                    : thingCount.thingDef.LabelCap;
+                    : thingCount.thingDef.Minifiable
+                        ? "minified " + thingCount.thingDef.LabelCap
+                        : thingCount.thingDef.LabelCap;
 
                 var width2 = width - 60f;
                 var num = Text.CalcHeight(text, width2) - 2f;
