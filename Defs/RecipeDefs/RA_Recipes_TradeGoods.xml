@@ -23,7 +23,7 @@
 	<RecipeDef ParentName="MakeCarvedGood">
 		<defName>MakeFigurine</defName>
 		<label>make figurine</label>
-		<description>Make small pawn figurines that can be solf for a profit.</description>
+		<description>Make small pawn figurines that can be sold for a profit.</description>
 		<jobString>Making figurines.</jobString>
 		<fixedIngredientFilter>
 			<exceptedCategories>
