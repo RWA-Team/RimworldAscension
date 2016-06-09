@@ -196,7 +196,6 @@
 			</li>
 		</comps>
 		<weaponTags>
-			<li>ConstructionTool</li>
 			<li>MeleeNeolithic</li>
 		</weaponTags>
 	</ThingDef>	
@@ -250,7 +249,7 @@
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
 				<workTypes>
-					<li>PlantCutting</li>
+					<li>Woodchopping</li>
 					<li>Construction</li>
 				</workTypes>
 			</li>

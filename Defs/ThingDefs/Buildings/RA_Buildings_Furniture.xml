@@ -223,7 +223,7 @@
 			<li>Leathery</li>
 		</stuffCategories>
 		<researchPrerequisites>
-			<li>Blocked</li>
+			<li>StartPack</li>
 		</researchPrerequisites>
 	</ThingDef>
 

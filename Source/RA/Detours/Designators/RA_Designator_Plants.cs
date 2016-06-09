@@ -11,8 +11,10 @@ namespace RA
             if (Find.DesignationManager.DesignationOn(thing, designationDef) == null)
             {
                 var plant = thing as Plant;
-                if (plant?.def.plant != null && plant.HarvestableNow && plant.def.plant.harvestTag == default(string))
-                    return true;
+                if (plant?.def.plant != null)
+                {
+                    return plant.def.plant.harvestTag != "Chop" || !plant.HarvestableNow;
+                }
                 return "MessageMustDesignatePlants".Translate();
             }
             return false;

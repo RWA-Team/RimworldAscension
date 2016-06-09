@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Plants>
+
+	<!-- 
+	- sowTags - determines where this plant can be grown
+	- harvestTag - determine what designator allows harvesting
+	- fertilityFactorGrowthRate (0.5)
+	-->
+
+	<!--==================== Base Abstracts ========================-->
+
+	<ThingDef Name="Plant" Abstract="True">
+		<category>Plant</category>
+		<thingClass>Plant</thingClass>
+		<altitudeLayer>LowPlant</altitudeLayer>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<Flammability>0.8</Flammability>
+			<Beauty>1</Beauty>
+		</statBases>
+		<tickerType>Long</tickerType>
+		<selectable>true</selectable>
+		<drawerType>MapMeshOnly</drawerType>
+		<graphicData>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>CutoutPlant</shaderType>
+		</graphicData>
+		<pathCost>10</pathCost>
+		<ingestible>
+			<foodType>Plant</foodType>
+			<preferability>NeverForNutrition</preferability>
+		</ingestible>
+		<plant>
+			<harvestTag>Gather</harvestTag>
+			<soundHarvesting>Harvest_Standard</soundHarvesting>
+			<soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
+			<sowWork>150</sowWork>
+			<fertilityMin>0.5</fertilityMin>
+			<topWindExposure>0.1</topWindExposure>
+			<visualSizeRange>
+				<min>0.3</min>
+				<max>1</max>
+			</visualSizeRange>
+		</plant>
+	</ThingDef>
+
+	<!--==================== Wild Harvestable ========================-->
+
+	<ThingDef Name="WildBush" ParentName="Plant" Abstract="True">
+		<fillPercent>0.25</fillPercent>
+		<pathCost>30</pathCost>
+		<plant>
+			<wildClusterRadius>4</wildClusterRadius>
+			<wildClusterSizeRange>
+				<min>2</min>
+				<max>5</max>
+			</wildClusterSizeRange>
+			<visualSizeRange>
+				<min>0.7</min>
+				<max>1.1</max>
+			</visualSizeRange>
+		</plant>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="WildBush">
+		<defName>PlantBush</defName>
+		<label>bush</label>
+		<description>A short shrub. Does not typically talk.</description>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plant/Bush</texPath>
+			<shadowData>
+				<volume>(0.37, 0.2, 0.37)</volume>
+			</shadowData>
+		</graphicData>
+		<ingestible>
+			<nutrition>0.17</nutrition>
+		</ingestible>
+		<plant>
+			<leaflessGraphicPath>Things/Plant/Bush_Leafless</leaflessGraphicPath>
+			<harvestWork>2000</harvestWork>
+			<harvestedThingDef>BarkFibre</harvestedThingDef>
+			<harvestYield>5</harvestYield>
+			<fertilityMin>0.4</fertilityMin>
+			<growDays>6</growDays>
+			<topWindExposure>0.3</topWindExposure>
+		</plant>
+	</ThingDef>
+
+	<ThingDef Name="WildBushEatable" ParentName="WildBush">
+		<defName>PlantAgave</defName>
+		<label>agave</label>
+		<description>A large-leafed desert plant with edible flowers and stalks.</description>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Plant/Agave</texPath>
+			<shadowData>
+				<volume>(0.2, 0.6, 0.2)</volume>
+			</shadowData>
+		</graphicData>
+		<ingestible>
+			<nutrition>0.12</nutrition>
+		</ingestible>
+		<plant>
+			<harvestedThingDef>RawAgave</harvestedThingDef>
+			<harvestYield>30</harvestYield>
+			<harvestWork>3000</harvestWork>
+			<fertilityMin>0.3</fertilityMin>
+			<wildCommonalityMaxFraction>3.0</wildCommonalityMaxFraction>
+			<growDays>2.22</growDays>
+			<topWindExposure>0.3</topWindExposure>
+			<fertilityFactorGrowthRate>0.5</fertilityFactorGrowthRate>
+		</plant>
+	</ThingDef>
+
+	<ThingDef ParentName="WildBushEatable">
+		<defName>PlantRaspberry</defName>
+		<label>raspberry bush</label>
+		<description>A bushy plant which yields delicious red berries.</description>
+		<graphicData>
+			<texPath>Things/Plant/Raspberry</texPath>
+			<shadowData>
+				<volume>(0.6, 0.2, 0.6)</volume>
+			</shadowData>
+		</graphicData>
+		<ingestible>
+			<nutrition>0.25</nutrition>
+		</ingestible>
+		<plant>
+			<leaflessGraphicPath>Things/Plant/Bush_Leafless</leaflessGraphicPath>
+			<harvestWork>2000</harvestWork>
+			<harvestedThingDef>RawBerries</harvestedThingDef>
+			<growDays>3</growDays>
+		</plant>
+	</ThingDef>
+
+</Plants>
