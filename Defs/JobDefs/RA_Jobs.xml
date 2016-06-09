@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 	<JobDef>
@@ -21,20 +21,20 @@
 	<JobDef>
 		<defName>MakeSignalSmoke</defName>
 		<driverClass>RA.JobDriver_MakeSignalSmoke</driverClass>
-		<reportString>Sending signal smoke signs at TargetA.</reportString>
+		<reportString>Sending smoke signals at TargetA.</reportString>
 		<suspendable>false</suspendable>
 	</JobDef>
 
 	<JobDef>
 		<defName>StudyBlueprint</defName>
 		<driverClass>JobDriver_UseItem</driverClass>
-		<reportString>Study TargetA.</reportString>
+		<reportString>Studying TargetA.</reportString>
 	</JobDef>
 
 	<JobDef>
 		<defName>TakeDrug</defName>
 		<driverClass>JobDriver_UseItem</driverClass>
-		<reportString>Start using TargetA.</reportString>
+		<reportString>Using TargetA.</reportString>
 	</JobDef>
 
 	<JobDef>
@@ -62,7 +62,9 @@
 		<reportString>Collecting sand.</reportString>
 	</JobDef>
 
+
 	<!--=================== Work with tools =====================-->
+
 
 	<JobDef>
 		<defName>Mine</defName>
@@ -92,12 +94,15 @@
 		<alwaysShowWeapon>true</alwaysShowWeapon>
 	</JobDef>
 
+
 	<!--=================== AI jobs =====================-->
+
 
 	<JobDef>
 		<defName>SearchAndStealTargets</defName>
 		<driverClass>RA.JobDriver_SearchAndStealTargets</driverClass>
 		<reportString>Trying to steal something.</reportString>
 	</JobDef>
+
 
 </Defs>
