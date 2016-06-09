@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 	<StatDef>
 		<defName>MaxBurningTempCelsius</defName>
 		<label>max burning temperature</label>
-		<description>Max temperature this fuel type provides when burn.</description>
+		<description>The maximum temperature this fuel type provides when burn.</description>
 		<category>BasicsNonPawn</category>
 		<defaultBaseValue>0</defaultBaseValue>
 		<minValue>0</minValue>
@@ -17,7 +17,7 @@
 	<StatDef>
 		<defName>BurnDurationHours</defName>
 		<label>burn duration of single unit</label>
-		<description>How much hours it takes to burn one unit.</description>
+		<description>How many hours it takes to burn one unit.</description>
 		<category>BasicsNonPawn</category>
 		<defaultBaseValue>0</defaultBaseValue>
 		<minValue>0</minValue>

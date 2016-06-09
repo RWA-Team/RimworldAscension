@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <RecipeDefs>
 
 	<!-- 
@@ -174,7 +174,7 @@
 	<RecipeDef ParentName="MakeWeaponMeleeNeolithicWoodBased">
 		<defName>MakeAxeNeolithic</defName>
 		<label>make primitive axe</label>
-		<description>Makes s a crude neolithic axe. ould be used as tool for cutting trees.</description>
+		<description>Makes a crude neolithic axe. Can be used as tool for cutting trees as well.</description>
 		<products>
 			<AxeNeolithic>1</AxeNeolithic>
 		</products>
@@ -204,7 +204,7 @@
 	<RecipeDef ParentName="MakeWeaponMeleeNeolithicWoodBased">
 		<defName>MakeHammerNeolithic</defName>
 		<label>make primitive hammer</label>
-		<description>Makes s a crude neolithic hammer. Could be used as tool for contruction and repaire.</description>
+		<description>Makes a crude neolithic hammer. Can be used as tool for contruction and repaire as well.</description>
 		<products>
 			<HammerNeolithic>1</HammerNeolithic>
 		</products>
@@ -234,7 +234,7 @@
 	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
 		<defName>MakeBroom</defName>
 		<label>make broom</label>
-		<description>Makes simple broom. Used for sweeping floors</description>
+		<description>Makes a simple broom. Used for sweeping floors</description>
 		<products>
 			<Broom>1</Broom>
 		</products>
