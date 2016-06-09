@@ -58,7 +58,7 @@
 	<ThingDef ParentName="ClayProductUnfired">
 		<defName>RawCeramics</defName>
 		<label>raw ceramics</label>
-		<description>An unfired ceramics.</description>
+		<description>Unfired ceramics.</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/RawClayProducts/RawCeramics</texPath>
 			<color>(52,124,98)</color>
