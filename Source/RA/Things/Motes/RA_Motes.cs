@@ -8,8 +8,10 @@ namespace RA
     {
         public static void ThrowSmoke(Vector3 loc, float size, string moteDefName)
         {
-            var moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDef.Named(moteDefName));
-            moteThrown.ScaleUniform = Rand.Range(1.5f, 2.5f) * size;
+            if (!loc.ShouldSpawnMotesAt()) return;
+
+            var moteThrown = (MoteThrown) ThingMaker.MakeThing(ThingDef.Named(moteDefName));
+            moteThrown.ScaleUniform = Rand.Range(1.5f, 2.5f)*size;
             moteThrown.exactRotationRate = Rand.Range(-0.5f, 0.5f);
             moteThrown.exactPosition = loc;
             moteThrown.SetVelocityAngleSpeed(Rand.Range(30, 40), Rand.Range(0.008f, 0.012f));
@@ -29,6 +31,14 @@ namespace RA
         {
             // Only throw smoke every 10 ticks
             if (Find.TickManager.TicksGame % 10 == 0)
+            {
+                ThrowSmoke(loc, size, "Mote_SmokeWhite");
+            }
+        }
+
+        public static void ThrowSmokeTrail(Vector3 loc, float size)
+        {
+            if (Find.TickManager.TicksGame % 2 == 0)
             {
                 ThrowSmoke(loc, size, "Mote_SmokeWhite");
             }

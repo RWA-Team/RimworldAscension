@@ -124,6 +124,11 @@ namespace RA
             var newCheckGameOver = typeof(RA_GameEnder).GetMethod("CheckGameOver", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaCheckGameOver, newCheckGameOver);
 
+            // special spawns for skyfaller impact explosion (otherwise things are damaged by eplosion even if spawned after that, but without delay)
+            var vanillaTrySpawnExplosionThing = typeof(Explosion).GetMethod("TrySpawnExplosionThing", BindingFlags.Instance | BindingFlags.NonPublic);
+            var newTrySpawnExplosionThing = typeof(RA_Explosion).GetMethod("TrySpawnExplosionThing", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaTrySpawnExplosionThing, newTrySpawnExplosionThing);
+
             // delay GameEndTick first call
             var vanillaGameEndTick = typeof(GameEnder).GetMethod("GameEndTick", BindingFlags.Instance | BindingFlags.Public);
             var newGameEndTick = typeof(RA_GameEnder).GetMethod("GameEndTick", BindingFlags.Instance | BindingFlags.Public);
