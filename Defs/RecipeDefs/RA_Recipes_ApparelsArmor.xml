@@ -52,4 +52,24 @@
 		<researchPrerequisite>Carpentry</researchPrerequisite>
 	</RecipeDef>
 
+	<RecipeDef  ParentName="MakeArmor">
+		<defName>MakeHelmTurtle</defName>
+		<label>make turtle helm</label>
+		<description>Makes a turtle helm.</description>
+		<products>
+			<HelmTurtle>1</HelmTurtle>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>TurtleShell</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>StartPack</researchPrerequisite>
+	</RecipeDef>
+
 </RecipeDefs>

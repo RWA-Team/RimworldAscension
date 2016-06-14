@@ -23,7 +23,7 @@
 
 
 	<RecipeDef ParentName="MakePottery">
-		<defName>MakeRawBlockAdobe</defName>
+		<defName>MakeBrickAdobeRaw</defName>
 		<label>make raw adobe brick</label>
 		<description>Mix clay and hay into raw adobe block.</description>
 		<jobString>Making raw adobe block.</jobString>
@@ -33,7 +33,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayGray</li>
+						<li>ClayClumpGray</li>
 					</thingDefs>
 				</filter>
 				<count>25</count>
@@ -49,17 +49,17 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>ClumpClayGray</li>
+				<li>ClayClumpGray</li>
 				<li>Hay</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
-			<RawBlockAdobe>25</RawBlockAdobe>
+			<BrickAdobeRaw>25</BrickAdobeRaw>
 		</products>
 	</RecipeDef>
 
 	<RecipeDef ParentName="MakePottery">
-		<defName>MakeRawBrick</defName>
+		<defName>MakeBrickRaw</defName>
 		<label>make raw brick</label>
 		<description>Turn clay into raw brick.</description>
 		<jobString>Making raw brick.</jobString>
@@ -69,7 +69,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayGray</li>
+						<li>ClayClumpGray</li>
 					</thingDefs>
 				</filter>
 				<count>25</count>
@@ -77,16 +77,16 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>ClumpClayGray</li>
+				<li>ClayClumpGray</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
-			<RawBrick>25</RawBrick>
+			<BrickRaw>25</BrickRaw>
 		</products>
 	</RecipeDef>
 
 	<RecipeDef ParentName="MakePottery">
-		<defName>MakeRawPot</defName>
+		<defName>MakePotRaw</defName>
 		<label>make raw pot</label>
 		<description>Turn clay into raw pot.</description>
 		<jobString>Shaping pot.</jobString>
@@ -94,7 +94,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayGray</li>
+						<li>ClayClumpGray</li>
 					</thingDefs>
 				</filter>
 				<count>20</count>
@@ -102,16 +102,41 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>ClumpClayGray</li>
+				<li>ClayClumpGray</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
-			<RawPot>1</RawPot>
+			<PotRaw>1</PotRaw>
 		</products>
 	</RecipeDef>
 
 	<RecipeDef ParentName="MakePottery">
-		<defName>MakeRawCeramics</defName>
+		<defName>MakePotPlantRaw</defName>
+		<label>make raw plant pot</label>
+		<description>Turn clay into raw plant pot.</description>
+		<jobString>Shaping plant pot.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ClayClumpGray</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ClayClumpGray</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<PotPlantRaw>1</PotPlantRaw>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakePottery">
+		<defName>MakeCeramicsRaw</defName>
 		<label>make raw ceramics</label>
 		<description>Turn clay into raw ceramic goods.</description>
 		<jobString>Making raw ceramics.</jobString>
@@ -119,7 +144,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ClumpClayWhite</li>
+						<li>ClayClumpWhite</li>
 					</thingDefs>
 				</filter>
 				<count>10</count>
@@ -127,11 +152,11 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>ClumpClayWhite</li>
+				<li>ClayClumpWhite</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
-			<RawCeramics>1</RawCeramics>
+			<CeramicsRaw>1</CeramicsRaw>
 		</products>
 	</RecipeDef>
 
@@ -152,7 +177,7 @@
 	</RecipeDef>
 
 
-<!-- 	<RecipeDef ParentName="Weaving">
+	<!-- 	<RecipeDef ParentName="Weaving">
 		<defName>WeaveFabricCotton</defName>
 		<label>weave fabric cotton</label>
 		<description>Turn cotton into a sheet of cotton fabric.</description>
@@ -240,7 +265,7 @@
 		<workSkill>Crafting</workSkill>
 		<workSkillLearnFactor>0.1</workSkillLearnFactor>
 	</RecipeDef>
-	
+
 
 	<RecipeDef ParentName="Disassembling">
 		<defName>MakeStoneCobbles</defName>
@@ -267,13 +292,14 @@
 				<count>1</count>
 			</li>
 		</ingredients>
-		<products>
-			<StoneCobbles>20</StoneCobbles>
-		</products>
+		<!-- used to get cobbles of the same stuff type -->
+		<specialProducts>
+			<li>Butchery</li>
+		</specialProducts>
 		<researchPrerequisite>Masonry</researchPrerequisite>
 	</RecipeDef>
 
-<!-- 	<RecipeDef ParentName="Disassembling">
+	<RecipeDef ParentName="Disassembling">
 		<defName>MakeBlocksStone</defName>
 		<label>make stone blocks</label>
 		<description>Cuts rock chunks into usable stone blocks.</description>
@@ -283,9 +309,6 @@
 		<soundWorking>Recipe_MakeBlocksStone</soundWorking>
 		<targetCountAdjustment>50</targetCountAdjustment>
 		<workAmount>1600</workAmount>
-		<specialProducts>
-			<li>Butchery</li>
-		</specialProducts>
 		<fixedIngredientFilter>
 			<categories>
 				<li>StoneChunks</li>
@@ -301,8 +324,12 @@
 				<count>1</count>
 			</li>
 		</ingredients>
+		<!-- used to get blocks of the same stuff type -->
+		<specialProducts>
+			<li>Smelted</li>
+		</specialProducts>
 		<researchPrerequisite>Masonry</researchPrerequisite>
-	</RecipeDef> -->
+	</RecipeDef>
 
 	<RecipeDef ParentName="Disassembling">
 		<defName>ButcherCorpse</defName>
@@ -384,12 +411,12 @@
 		<workSkillLearnFactor>0.1</workSkillLearnFactor>
 		<effectWorking>Smelt</effectWorking>
 		<soundWorking>Recipe_Smelt</soundWorking>
-<!-- 		<recipeUsers>
+		<!-- 		<recipeUsers>
 			<li>CraftsmanTable</li>
 		</recipeUsers>
 		<researchPrerequisite>Pottery</researchPrerequisite> -->
 	</RecipeDef>
-	
+
 
 	<RecipeDef ParentName="Smelting">
 		<defName>SmeltMetalSlag</defName>

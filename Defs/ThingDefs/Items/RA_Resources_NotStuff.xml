@@ -16,6 +16,25 @@
 		Blunt\SharpDamageMultiplier
 	-->
 
+	<!--==================== Base Abstracts ========================-->
+
+	<ThingDef Name="Resource" ParentName="Item" Abstract="True">
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		<stackLimit>75</stackLimit>
+	</ThingDef>
+	
+	<ThingDef Name="ResourceOrganic" ParentName="Resource" Abstract="True" >
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<statBases>
+			<DeteriorationRate>5</DeteriorationRate>
+		</statBases>
+		<tickerType>Rare</tickerType>
+	</ThingDef>
+	
+
 	<ThingDef ParentName="ResourceOrganic">
 		<defName>BarkFibre</defName>
 		<label>bark fibre</label>
@@ -34,29 +53,22 @@
 	</ThingDef>
 
 	<ThingDef ParentName="ResourceOrganic">
-		<defName>Xerigium</defName>
-		<label>xerigium</label>
-		<description>This plant was selectively bred for centuries by settlers. It is sometimes also called &quot;healer's hand&quot; by tribespeople - a nickname it owes to its five major medicinal virtues.</description>
-		<thingClass>Medicine</thingClass>
+		<defName>Coal</defName>
+		<label>coal</label>
+		<description>Coal.</description>
 		<graphicData>
-			<texPath>Things/Plant/Healroot</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<texPath>Things/Items/Resources/Coal</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>100</MaxHitPoints>
-			<MarketValue>5</MarketValue>
-			<MedicalPotency>0.75</MedicalPotency>
-			<DeteriorationRate>5</DeteriorationRate>
+			<MaxBurningTempCelsius>1500</MaxBurningTempCelsius>
+			<BurnDurationHours>4</BurnDurationHours>
 		</statBases>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
 		<thingCategories>
-			<li>Medicine</li>
+			<li>ResourcesRaw</li>
 		</thingCategories>
-		<tickerType>Rare</tickerType>
-		<comps>
-			<li Class="CompProperties_Rottable">
-				<daysToRotStart>150</daysToRotStart>
-			</li>
-		</comps>
 	</ThingDef>
 
 	<!-- 	<ThingDef ParentName="OrganicProductBase">
@@ -193,11 +205,26 @@
 		</comps>
 	</ThingDef> -->
 
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>TurtleShell</defName>
+		<label>turtle shell</label>
+		<description>A turtle shell.</description>
+		<graphicData>
+			<shaderType>Cutout</shaderType>
+			<texPath>Things/Items/Resources/TurtleShell</texPath>
+			<color>(174,124,0)</color>
+		</graphicData>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<tradeability>Never</tradeability>
+	</ThingDef>
 
 	<!--========================= Clay =========================-->
 
-
-	<ThingDef Name="ResourceClay" ParentName="Resource" Abstract="True">
+	<ThingDef Name="Clay" ParentName="Resource" Abstract="True">
 		<statBases>
 			<Flammability>0</Flammability>
 		</statBases>
@@ -205,14 +232,13 @@
 			<li>Clay</li>
 		</thingCategories>
 		<graphicData>
-			<texPath>Things/Items/Resources/ClumpClay</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Things/Items/Resources/ClayClump</texPath>
 		</graphicData>
 	</ThingDef>
 
 
-	<ThingDef ParentName="ResourceClay">
-		<defName>ClumpClayGray</defName>
+	<ThingDef ParentName="Clay">
+		<defName>ClayClumpGray</defName>
 		<label>gray clay clumps</label>
 		<description>Clumps of gray clay.</description>
 		<graphicData>
@@ -221,8 +247,8 @@
 		<tradeability>Never</tradeability>
 	</ThingDef>
 
-	<ThingDef ParentName="ResourceClay">
-		<defName>ClumpClayWhite</defName>
+	<ThingDef ParentName="Clay">
+		<defName>ClayClumpWhite</defName>
 		<label>white clay clumps</label>
 		<description>Clumps of white clay.</description>
 		<graphicData>
@@ -233,39 +259,43 @@
 		</statBases>
 	</ThingDef>
 
-	<!-- Clay Blocks -->
+	<!--========================= Sand =========================-->
 
-	<ThingDef Name="ResourceBlockClay" ParentName="Resource" Abstract="True">
-		<graphicData>
-			<texPath>Things/Items/Resources/BlocksClay</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<soundInteract>Stone_Drop</soundInteract>
-		<soundDrop>Stone_Drop</soundDrop>
+	<ThingDef Name="Sand" ParentName="Resource" Abstract="True">
 		<statBases>
 			<Flammability>0</Flammability>
 		</statBases>
 		<thingCategories>
-			<li>ResourcesProcessed</li>
+			<li>Sand</li>
 		</thingCategories>
+		<graphicData>
+			<texPath>Things/Items/Resources/Sand/Sand</texPath>
+			<shaderType>CutoutComplex</shaderType>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
 	</ThingDef>
 
-	<ThingDef ParentName="ResourceBlockClay">
-		<defName>BlockAdobe</defName>
-		<label>adobe block</label>
-		<description>A fired adobe block. Can be used for contruction</description>
+
+	<ThingDef ParentName="Sand">
+		<defName>Sand</defName>
+		<label>sand</label>
+		<description>A bag of sand.</description>
 		<graphicData>
 			<color>(124,82,26)</color>
 		</graphicData>
+		<tradeability>Never</tradeability>
 	</ThingDef>
 
-	<ThingDef ParentName="ResourceBlockClay">
-		<defName>Brick</defName>
-		<label>brick</label>
-		<description>A simple red brick. Can be used for contruction</description>
+	<ThingDef ParentName="Sand">
+		<defName>SandWhite</defName>
+		<label>white sand</label>
+		<description>A bag of white sand.</description>
 		<graphicData>
-			<color>(127,51,0)</color>
+			<color>(220,220,220)</color>
 		</graphicData>
+		<statBases>
+			<MarketValue>20</MarketValue>
+		</statBases>
 	</ThingDef>
 
 </Defs>

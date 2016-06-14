@@ -217,7 +217,7 @@ namespace RA
                 var text = thingCount.thingDef == null
                     ? "(" + "UnchosenStuff".Translate() + ")"
                     : thingCount.thingDef.Minifiable
-                        ? "minified " + thingCount.thingDef.LabelCap
+                        ? "Minified " + thingCount.thingDef.LabelCap
                         : thingCount.thingDef.LabelCap;
 
                 var width2 = width - 60f;

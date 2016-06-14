@@ -117,6 +117,89 @@
 		<stuffCategories>
 			<li>WoodLog</li>
 		</stuffCategories>
+	</ThingDef>	
+	
+	<ThingDef ParentName="Furniture">
+		<defName>PlantPot</defName>
+		<label>plant pot</label>
+		<thingClass>Building_PlantGrower</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Furniture/PlantPot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shadowData>
+				<volume>(0.3, 0.6, 0.3)</volume>
+			</shadowData>
+			<damageData>
+				<rect>(0.2,0.2,0.6,0.6)</rect>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<altitudeLayer>Waist</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.20</fillPercent>
+		<statBases>
+			<WorkToMake>495</WorkToMake>
+		</statBases>
+		<costList>
+			<PlantPot>1</PlantPot>
+		</costList>
+		<inspectorTabs>
+			<li>ITab_Growing</li>
+		</inspectorTabs>
+		<description>Plant decorative flowers here to improve the mood of people nearby.</description>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+		<fertility>1.0</fertility>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<building>
+			<defaultPlantToGrow>PlantDaylily</defaultPlantToGrow>
+			<plantsDestroyWithMe>true</plantsDestroyWithMe>
+			<sowTag>Decorative</sowTag>
+		</building>
+		<minifiedDef>PlantPotMinified</minifiedDef>
+		<researchPrerequisites>
+			<li>Pottery</li>
+		</researchPrerequisites>
+	</ThingDef>	
+
+	<ThingDef ParentName="MinifiedDecoration">
+		<defName>PlantPotMinified</defName>
+		<label>plant pot</label>
+	</ThingDef>
+
+	<!--======================= Light Sources =======================-->
+
+	<ThingDef ParentName="Furniture">
+		<defName>Torch</defName>
+		<label>wood torch</label>
+		<description>A temporary light source which burns for a few days.</description>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Lights/Torch</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<pathCost>50</pathCost>
+		<constructEffect>ConstructDirt</constructEffect>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<statBases>
+			<MaxHitPoints>20</MaxHitPoints>
+			<WorkToMake>1</WorkToMake>
+		</statBases>
+		<selectable>true</selectable>
+		<size>(1,1)</size>
+		<costList>
+			<WoodLog>1</WoodLog>
+		</costList>
+		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
+		<designationCategory>Furniture</designationCategory>
+		<rotatable>false</rotatable>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
 	</ThingDef>
 
 </ThingDefs>

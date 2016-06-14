@@ -10,7 +10,7 @@ namespace RA
 {
     public class Designator_PutInSlot : Designator
     {
-        public static readonly Texture2D texPutInArrow = ContentFinder<Texture2D>.Get("UI/Icons/PutIn");
+        public static readonly Texture2D texPutInArrow = ContentFinder<Texture2D>.Get("UI/Gizmoes/PutIn");
         private static readonly Texture2D texOccupiedSlotBG = SolidColorMaterials.NewSolidColorTexture(1f, 1f, 1f, 0.1f);
         private static readonly Texture2D BGTex = ContentFinder<Texture2D>.Get("UI/Widgets/DesButBG");
 

@@ -12,9 +12,7 @@ namespace RA
             impactResultThing = (DropPodLanded)ThingMaker.MakeThing(ThingDef.Named("ShipWreckLanded"));
             (impactResultThing as DropPodLanded).cargo = cargo;
 
-            // fixed rotAngle, without tick based rotation
-            rotSpeed = 0;
-            rotAngle = 45;
+            rotSpeed = 3;
         }
     }
 }

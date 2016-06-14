@@ -116,6 +116,41 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="MakeWeaponMeleeNeolithicWoodBased">
+		<defName>MakeSwordNeolithic</defName>
+		<label>make primitive sword</label>
+		<description>Makes a crude neolithic shiv.</description>
+		<products>
+			<Shiv>1</Shiv>
+		</products>
+		<fixedIngredientFilter>
+			<exceptedCategories>
+				<li>StoneCobbles</li>
+			</exceptedCategories>
+			<categories>
+				<li>StoneCobbles</li>
+			</categories>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneCobbles</li>
+					</categories>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithicWoodBased">
 		<defName>MakeSpearNeolithic</defName>
 		<label>make primitive spear</label>
 		<description>Makes a crude neolithic spear.</description>

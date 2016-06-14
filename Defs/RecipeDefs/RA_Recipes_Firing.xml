@@ -31,7 +31,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>RawPot</li>
+						<li>PotRaw</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -39,11 +39,37 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>RawPot</li>
+				<li>PotRaw</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
 			<Pot>1</Pot>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="Firing">
+		<defName>FirePlantPot</defName>
+		<label>fire plant pot</label>
+		<description>Finish plant pot with firing.</description>
+		<jobString>Firing pot.</jobString>
+		<workAmount>300</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>PotPlantRaw</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>PotPlantRaw</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<PlantPot>1</PlantPot>
 		</products>
 	</RecipeDef>
 
@@ -57,7 +83,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>RawCeramics</li>
+						<li>CeramicsRaw</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -65,7 +91,7 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>RawCeramics</li>
+				<li>CeramicsRaw</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
@@ -80,18 +106,18 @@
 		<jobString>Firing adobe block.</jobString>
 		<workAmount>300</workAmount>
 		<products>
-			<BlockAdobe>25</BlockAdobe>
+			<BrickAdobe>25</BrickAdobe>
 		</products>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>RawBlockAdobe</li>
+				<li>BrickAdobeRaw</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<ingredients>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>RawBlockAdobe</li>
+						<li>BrickAdobeRaw</li>
 					</thingDefs>
 				</filter>
 				<count>25</count>
@@ -109,7 +135,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>RawBrick</li>
+						<li>BrickRaw</li>
 					</thingDefs>
 				</filter>
 				<count>25</count>
@@ -117,7 +143,7 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>RawBrick</li>
+				<li>BrickRaw</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
