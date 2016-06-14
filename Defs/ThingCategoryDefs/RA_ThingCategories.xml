@@ -113,6 +113,20 @@
 				<parent>ResourcesProcessed</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
 			</ThingCategoryDef>
+		
+			<ThingCategoryDef>
+				<defName>Bricks</defName>
+				<label>bricks</label>
+				<parent>ResourcesProcessed</parent>
+				<resourceReadoutRoot>true</resourceReadoutRoot>
+			</ThingCategoryDef>
+		
+			<ThingCategoryDef>
+				<defName>MetalBars</defName>
+				<label>metal bars</label>
+				<parent>ResourcesProcessed</parent>
+				<resourceReadoutRoot>true</resourceReadoutRoot>
+			</ThingCategoryDef>
 			
 			<ThingCategoryDef>
 				<defName>Fabric</defName>
@@ -151,6 +165,13 @@
 			<ThingCategoryDef>
 				<defName>Clay</defName>
 				<label>clay</label>
+				<parent>ResourcesRaw</parent>
+				<resourceReadoutRoot>true</resourceReadoutRoot>
+			</ThingCategoryDef>
+		
+			<ThingCategoryDef>
+				<defName>Sand</defName>
+				<label>sabd</label>
 				<parent>ResourcesRaw</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
 			</ThingCategoryDef>
@@ -199,7 +220,7 @@
 		</ThingCategoryDef>
 	
 			<ThingCategoryDef>
-				<defName>ClayProductsUnfired</defName>
+				<defName>ClayProductsRaw</defName>
 				<label>unfired clay products</label>
 				<parent>UnfinishedGoods</parent>
 			</ThingCategoryDef>

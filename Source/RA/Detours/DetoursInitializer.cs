@@ -139,6 +139,11 @@ namespace RA
             var newInitNewGeneratedMap = typeof(RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaInitNewGeneratedMap, newInitNewGeneratedMap);
 
+            // tries to assign existing stuff type, instead of some random one, as default
+            var vanillaDefaultStuffFor = typeof(GenStuff).GetMethod("DefaultStuffFor", BindingFlags.Static | BindingFlags.Public);
+            var newDefaultStuffFor = typeof(RA_GenStuff).GetMethod("DefaultStuffFor", BindingFlags.Static | BindingFlags.Public);
+            TryDetourFromTo(vanillaDefaultStuffFor, newDefaultStuffFor);
+
             // changed initial colonists count
             var vanillaGenerateDefaultColonistsWithFaction = typeof(MapInitData).GetMethod("GenerateDefaultColonistsWithFaction", BindingFlags.Static | BindingFlags.Public);
             var newGenerateDefaultColonistsWithFaction = typeof(RA_MapInitData).GetMethod("GenerateDefaultColonistsWithFaction", BindingFlags.Static | BindingFlags.Public);

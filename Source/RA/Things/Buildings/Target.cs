@@ -37,7 +37,7 @@ namespace RA
             {
                 defaultDesc = "Increase interaction cell offset",
                 defaultLabel = "Increase Range",
-                icon = ContentFinder<Texture2D>.Get("UI/Icons/Upgrade"),
+                icon = ContentFinder<Texture2D>.Get("UI/Gizmoes/IncreaseRange"),
                 activateSound = SoundDef.Named("Click"),
                 action = IncreaseRange
             };
@@ -47,7 +47,7 @@ namespace RA
             {
                 defaultDesc = "Decrease interaction cell offset",
                 defaultLabel = "Decrease Range",
-                icon = ContentFinder<Texture2D>.Get("UI/Icons/Upgrade"),
+                icon = ContentFinder<Texture2D>.Get("UI/Gizmoes/DecreaseRange"),
                 activateSound = SoundDef.Named("Click"),
                 action = DecreaseRange
             };

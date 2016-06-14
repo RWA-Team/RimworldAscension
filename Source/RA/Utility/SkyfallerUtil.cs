@@ -95,7 +95,7 @@ namespace RA
                 Find.Map.components.Add(new MapCompCameraShaker());
             
             // Do a bit of camera shake for added effect
-            MapCompCameraShaker.DoShake(impactRadius * 0.025f);
+            MapCompCameraShaker.DoShake(impactRadius * 0.02f);
 
             // spawn the crater, rotated to the random angle, to provide visible variety
             GenSpawn.Spawn(crater, skyfaller.Position, Rot4.North);
@@ -122,7 +122,7 @@ namespace RA
             if (instigator.def.defName == "MeteoriteFlying")
             {
                 explosion.postExplosionSpawnChance = 0.25f;
-                explosion.postExplosionSpawnThingDef = ThingDef.Named("StoneCobbles");
+                explosion.postExplosionSpawnThingDef = ThingDef.Named("CobbleSlate");
             }
 
             explosion.ExplosionStart(null);

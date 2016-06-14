@@ -53,7 +53,7 @@
 	<RecipeDef  ParentName="MakeClothingNeolithic">
 		<defName>MakeTribalwear</defName>
 		<label>make tribalwear</label>
-		<description>Makes tribalwear. Most common MakeClothing among local tribes.</description>
+		<description>Makes tribalwear. Most common clothing among local tribes.</description>
 		<products>
 			<Tribalwear>1</Tribalwear>
 		</products>
@@ -65,6 +65,25 @@
 					</categories>
 				</filter>
 				<count>35</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+	
+	<RecipeDef  ParentName="MakeClothingNeolithic">
+		<defName>MakeParka</defName>
+		<label>make parka</label>
+		<description>Makes parka. Keeps you warm in cold temperature.</description>
+		<products>
+			<Parka>1</Parka>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+				</filter>
+				<count>75</count>
 			</li>
 		</ingredients>
 	</RecipeDef>

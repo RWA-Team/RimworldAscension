@@ -23,10 +23,9 @@ namespace RA
             }
 
             // special skyfaller spawning
-            if (thingDef == ThingDef.Named("StoneCobbles"))
+            if (thingDef == ThingDef.Named("CobbleSlate"))
             {
-                var impactResultThing = ThingMaker.MakeThing(ThingDef.Named("StoneCobbles"),
-                    ThingDef.Named("ChunkSlate"));
+                var impactResultThing = ThingMaker.MakeThing(ThingDef.Named("CobbleSlate"));
                 impactResultThing.stackCount = Rand.RangeInclusive(1, 10);
                 GenPlace.TryPlaceThing(impactResultThing, cell, ThingPlaceMode.Near);
                 return;
