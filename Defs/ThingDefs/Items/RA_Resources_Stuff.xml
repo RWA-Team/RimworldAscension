@@ -5,15 +5,16 @@
 	statBases - base stat values for the thing
 	default values:
 		- Flammability = 0
-		- MaxHitPoints = 100
-		
+		- MaxHitPoints = 100		
 	stuffProps:	
 		statOffsets - stuff based offset values
 		statFactors - stuff based multiplier values
-		stuffCommonality - weight chance to appear in trader stock	
-	
+		stuffCommonality - weight chance to appear in trader stock		
 	Work only in statBases:
 		Blunt\SharpDamageMultiplier
+	Special Products used to aquire stuff based resources of the same stuff type, without making new recipes for each subtype
+		butcherProducts
+		smeltProducts
 	-->
 
 	<ThingDef ParentName="ResourceOrganic">
@@ -58,9 +59,7 @@
 		</stuffProps>
 	</ThingDef>
 
-
 	<!--===================== Wood =====================-->
-
 
 	<ThingDef Name="ResourceWood" ParentName="ResourceOrganic" Abstract="True">
 		<soundInteract>Wood_Drop</soundInteract>
@@ -101,8 +100,8 @@
 		<label>wood</label>
 		<description>Wood from trees or other fibrous plants. Useful for building structures, weapons, and even simple prosthetics. A raw stick of wood can be used as a weapon in a pinch.</description>
 		<graphicData>
-			<texPath>Things/Item/Resource/WoodLog</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
+			<texPath>Things/Items/Resources/WoodLog</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<thingCategories>
 			<li>ResourcesRaw</li>
@@ -122,11 +121,31 @@
 		</techHediffsTags>
 	</ThingDef>
 
+	<ThingDef ParentName="ResourceWood">
+		<defName>WoodPlank</defName>
+		<label>wood</label>
+		<description>Wood plank.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/WoodPlank</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<thingCategories>
+			<li>ResourcesProcessed</li>
+		</thingCategories>
+		<statBases>
+			<MarketValue>1.4</MarketValue>
+			<MaxHitPoints>120</MaxHitPoints>
+		</statBases>
+		<stuffProps>
+			<categories>
+				<li>WoodPlank</li>
+			</categories>
+		</stuffProps>
+	</ThingDef>
 
 	<!--===================== Stone =====================-->
 
-
-	<ThingDef Name="ResourceStone" ParentName="Resource" Abstract="True">
+	<ThingDef Name="Stone" ParentName="Resource" Abstract="True">
 		<statBases>
 			<Flammability>0</Flammability>
 			<BluntDamageMultiplier>1.25</BluntDamageMultiplier>
@@ -156,7 +175,7 @@
 
 	<!--======== StoneChunks ========-->
 
-	<ThingDef Name="ResourceStoneChunk" ParentName="ResourceStone" Abstract="True">
+	<ThingDef Name="StoneChunks" ParentName="Stone" Abstract="True">
 		<graphicData>
 			<texPath>Things/Item/Chunk/ChunkStone</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -189,7 +208,7 @@
 		</stuffProps>
 	</ThingDef>
 
-	<ThingDef ParentName="ResourceStoneChunk">
+	<ThingDef ParentName="StoneChunks">
 		<defName>ChunkSandstone</defName>
 		<label>sandstone chunk</label>
 		<graphicData>
@@ -199,9 +218,15 @@
 			<color>(126,104,94)</color>
 			<stuffAdjective>sandstone</stuffAdjective>
 		</stuffProps>
+		<butcherProducts>
+			<BlockSandstone>20</BlockSandstone>  
+		</butcherProducts>
+		<smeltProducts>
+			<CobbleSandstone>20</CobbleSandstone>
+		</smeltProducts>
 	</ThingDef>
 
-	<ThingDef ParentName="ResourceStoneChunk">
+	<ThingDef ParentName="StoneChunks">
 		<defName>ChunkGranite</defName>
 		<label>granite chunk</label>
 		<graphicData>
@@ -211,9 +236,15 @@
 			<color>(105,95,97)</color>
 			<stuffAdjective>granite</stuffAdjective>
 		</stuffProps>
+		<butcherProducts>
+			<BlockGranite>20</BlockGranite>  
+		</butcherProducts>
+		<smeltProducts>
+			<CobbleGranite>20</CobbleGranite>
+		</smeltProducts>
 	</ThingDef>
 
-	<ThingDef ParentName="ResourceStoneChunk">
+	<ThingDef ParentName="StoneChunks">
 		<defName>ChunkLimestone</defName>
 		<label>limestone chunk</label>
 		<graphicData>
@@ -223,9 +254,15 @@
 			<color>(158,153,135)</color>
 			<stuffAdjective>limestone</stuffAdjective>
 		</stuffProps>
+		<butcherProducts>
+			<BlockLimestone>20</BlockLimestone>  
+		</butcherProducts>
+		<smeltProducts>
+			<CobbleLimestone>20</CobbleLimestone>
+		</smeltProducts>
 	</ThingDef>
 
-	<ThingDef ParentName="ResourceStoneChunk">
+	<ThingDef ParentName="StoneChunks">
 		<defName>ChunkSlate</defName>
 		<label>slate chunk</label>
 		<graphicData>
@@ -235,9 +272,15 @@
 			<color>(90,90,90)</color>
 			<stuffAdjective>slate</stuffAdjective>
 		</stuffProps>
+		<butcherProducts>
+			<BlockSlate>20</BlockSlate>  
+		</butcherProducts>
+		<smeltProducts>
+			<CobbleSlate>20</CobbleSlate>
+		</smeltProducts>
 	</ThingDef>
 
-	<ThingDef ParentName="ResourceStoneChunk">
+	<ThingDef ParentName="StoneChunks">
 		<defName>ChunkMarble</defName>
 		<label>marble chunk</label>
 		<graphicData>
@@ -247,46 +290,135 @@
 			<color>(132,135,132)</color>
 			<stuffAdjective>marble</stuffAdjective>
 		</stuffProps>
-	</ThingDef>	
+		<butcherProducts>
+			<BlockMarble>20</BlockMarble>  
+		</butcherProducts>
+		<smeltProducts>
+			<CobbleMarble>20</CobbleMarble>
+		</smeltProducts>
+	</ThingDef>
 
-	<!--======== Stone Other ========-->	
-
-	<ThingDef ParentName="ResourceStone">
-		<defName>StoneCobbles</defName>
-		<label>stone cobbles</label>
-		<description>Various sized stone cobbles.</description>
+	<ThingDef ParentName="StoneChunks">
+		<defName>ChunkObsidian</defName>
+		<label>obsidian chunk</label>
 		<graphicData>
-			<texPath>Things/Items/Resources/StoneCobbles</texPath>
+			<color>(32,57,61)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(32,57,61)</color>
+			<stuffAdjective>obsidian</stuffAdjective>
+		</stuffProps>
+		<butcherProducts>
+			<BlockObsidian>20</BlockObsidian>  
+		</butcherProducts>
+		<smeltProducts>
+			<CobbleObsidian>20</CobbleObsidian>
+		</smeltProducts>
+	</ThingDef>
+
+	<!--======== Stone Cobbles ========-->
+
+	<ThingDef Name="StoneCobbles" ParentName="Stone" Abstract="True">
+		<description>Various sized cobbles.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/StoneCobble</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<thingCategories>
 			<li>StoneCobbles</li>
 		</thingCategories>
-		<stuffCategories>
-			<li>StoneChunk</li>
-		</stuffCategories>
 		<stuffProps>
 			<categories>
 				<li>StoneCobble</li>
 			</categories>
 		</stuffProps>
 	</ThingDef>
-	
 
-	<ThingDef ParentName="ResourceStone">
-		<defName>StoneBlocks</defName>
+
+	<ThingDef ParentName="StoneCobbles">
+		<defName>CobbleSandstone</defName>
+		<label>sandstone cobbles</label>
+		<graphicData>
+			<color>(126,104,94)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(126,104,94)</color>
+			<stuffAdjective>sandstone</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="StoneCobbles">
+		<defName>CobbleGranite</defName>
+		<label>granite cobbles</label>
+		<graphicData>
+			<color>(105,95,97)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(105,95,97)</color>
+			<stuffAdjective>granite</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="StoneCobbles">
+		<defName>CobbleLimestone</defName>
+		<label>limestone cobbles</label>
+		<graphicData>
+			<color>(158,153,135)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(158,153,135)</color>
+			<stuffAdjective>limestone</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="StoneCobbles">
+		<defName>CobbleSlate</defName>
+		<label>slate cobbles</label>
+		<graphicData>
+			<color>(90,90,90)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(90,90,90)</color>
+			<stuffAdjective>slate</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="StoneCobbles">
+		<defName>CobbleMarble</defName>
+		<label>marble cobbles</label>
+		<graphicData>
+			<color>(132,135,132)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(132,135,132)</color>
+			<stuffAdjective>marble</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="StoneCobbles">
+		<defName>CobbleObsidian</defName>
+		<label>obsidian cobbles</label>
+		<graphicData>
+			<color>(32,57,61)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(32,57,61)</color>
+			<stuffAdjective>obsidian</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<!--======== Stone Blocks ========-->	
+
+	<ThingDef Name="StoneBlock" ParentName="Stone" Abstract="True">
 		<label>stone blocks</label>
 		<description>Stone blocks.</description>
 		<graphicData>
-			<texPath>Things/Item/Resource/StoneBlocks</texPath>
+			<texPath>Things/Items/Resources/Block</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<thingCategories>
 			<li>StoneBlocks</li>
 		</thingCategories>
-		<stuffCategories>
-			<li>StoneChunk</li>
-		</stuffCategories>
 		<stuffProps>
 			<categories>
 				<li>StoneBlock</li>
@@ -298,8 +430,201 @@
 	</ThingDef>
 
 
-	<!--===================== Fabric ====================-->
+	<ThingDef ParentName="StoneBlock">
+		<defName>BlockSandstone</defName>
+		<label>sandstone blocks</label>
+		<graphicData>
+			<color>(126,104,94)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(126,104,94)</color>
+			<stuffAdjective>sandstone</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
 
+	<ThingDef ParentName="StoneBlock">
+		<defName>BlockGranite</defName>
+		<label>granite blocks</label>
+		<graphicData>
+			<color>(105,95,97)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(105,95,97)</color>
+			<stuffAdjective>granite</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="StoneBlock">
+		<defName>BlockLimestone</defName>
+		<label>limestone blocks</label>
+		<graphicData>
+			<color>(158,153,135)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(158,153,135)</color>
+			<stuffAdjective>limestone</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="StoneBlock">
+		<defName>BlockSlate</defName>
+		<label>slate blocks</label>
+		<graphicData>
+			<color>(90,90,90)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(90,90,90)</color>
+			<stuffAdjective>slate</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="StoneBlock">
+		<defName>BlockMarble</defName>
+		<label>marble blocks</label>
+		<graphicData>
+			<color>(132,135,132)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(132,135,132)</color>
+			<stuffAdjective>marble</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="StoneBlock">
+		<defName>BlockObsidian</defName>
+		<label>obsidian blocks</label>
+		<graphicData>
+			<color>(32,57,61)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(32,57,61)</color>
+			<stuffAdjective>obsidian</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<!--===================== Clay Bricks ====================-->
+
+	<ThingDef Name="Brick" ParentName="Resource">
+		<defName>Brick</defName>
+		<label>brick</label>
+		<description>A simple red brick. Can be used for contruction</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/Block</texPath>
+			<color>(127,51,0)</color>
+		</graphicData>
+		<soundInteract>Stone_Drop</soundInteract>
+		<soundDrop>Stone_Drop</soundDrop>
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>Bricks</li>
+		</thingCategories>
+		<stuffProps>
+			<categories>
+				<li>Brick</li>
+			</categories>
+			<color>(127,51,0)</color>
+			<stuffAdjective>brick</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="Brick">
+		<defName>BrickAdobe</defName>
+		<label>adobe brick</label>
+		<description>A fired adobe brick. Can be used for contruction</description>
+		<graphicData>
+			<color>(124,82,26)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(124,82,26)</color>
+			<stuffAdjective>adobe</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<!--===================== Metal =====================-->
+
+	<ThingDef Name="Metal" ParentName="Resource" Abstract="True">
+		<description>Metal bars.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/MetalBar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<BluntDamageMultiplier>1.25</BluntDamageMultiplier>
+			<SharpDamageMultiplier>1.25</SharpDamageMultiplier>
+		</statBases>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<thingCategories>
+			<li>MetalBars</li>
+		</thingCategories>
+		<stuffProps>
+			<stuffAdjective>metal</stuffAdjective>
+			<categories>
+				<li>Metal</li>
+			</categories>
+			<soundImpactStuff>BulletImpactMetal</soundImpactStuff>
+			<soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+			<soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+			<statFactors>
+				<MarketValue>1.2</MarketValue>
+			</statFactors>
+		</stuffProps>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="Metal">
+		<defName>MetalBarCopper</defName>
+		<label>copper bars</label>
+		<graphicData>
+			<color>(237,118,60)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(237,118,60)</color>
+			<stuffAdjective>copper</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="Metal">
+		<defName>MetalBarIron</defName>
+		<label>iron bars</label>
+		<graphicData>
+			<color>(75,75,75)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(75,75,75)</color>
+			<stuffAdjective>iron</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="Metal">
+		<defName>MetalBarBronze</defName>
+		<label>bronze bars</label>
+		<graphicData>
+			<color>(130,100,45)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(130,100,45)</color>
+			<stuffAdjective>bronze</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="Metal">
+		<defName>MetalBarSteel</defName>
+		<label>steel bars</label>
+		<graphicData>
+			<color>(125,125,125)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(125,125,125)</color>
+			<stuffAdjective>steel</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<!--===================== Fabric ====================-->
 
 	<!-- 	<ThingDef ParentName="Resource">
 		<defName>Linen</defName>

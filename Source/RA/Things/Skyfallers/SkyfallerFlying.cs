@@ -13,43 +13,23 @@ namespace RA
         // ticks after spaning to impact
         public int ticksToImpact = Rand.RangeInclusive(120, 300);
         public bool impactSoundPlayed;
-        
-        // flying rotation params
-        public int rotSpeed = 10;
-        public int rotAngle;
 
         // needs to be assigned in inherited SpawnSetup()
         public Thing impactResultThing;
 
-        // ajust the fying position according to ticksToImpact
-        public override Vector3 DrawPos
-        {
-            get
-            {
-                // Adjust the vector based on things altitude
-                var result = Position.ToVector3ShiftedWithAltitude(AltitudeLayer.FlyingItem);
-                // Get a float from tickstoimpact
-                var num = ticksToImpact * ticksToImpact * 0.01f;
-                // set offsets
-                result.x -= num * 0.4f;
-                result.z += num * 0.6f;
-                // Return
-                return result;
-            }
-        }
+        // flying rotation params
+        public int rotSpeed;
+        public int rotAngle;
+
+        // ajust the flying position
+        public override Vector3 DrawPos => SkyfallerUtil.SkyfallerPositionChange(Position, ticksToImpact);
 
         public override void Tick()
         {
-            // If the pod is inflight, slight ending delay here to stop smoke motes covering the crash
-            if (ticksToImpact > 8)
-            {
-                // Throw some smoke and fire glow trails
-                MoteThrower.ThrowSmoke(DrawPos, 2f);
-                MoteThrower.ThrowFireGlow(DrawPos.ToIntVec3(), 1.5f);
-            }
+            RA_Motes.ThrowSmokeTrail(DrawPos, 1f);
             // Drop the ticks to impact
             ticksToImpact--;
-            rotAngle = (rotAngle + rotSpeed) % 360;
+            rotAngle = (rotAngle + rotSpeed)%360;
             // If we have hit the ground
             if (ticksToImpact <= 0)
             {

@@ -2,7 +2,6 @@
 using RimWorld;
 using Verse;
 using Verse.Sound;
-using Random = System.Random;
 
 namespace RA
 {
@@ -18,13 +17,10 @@ namespace RA
             // Do base setup
             base.SpawnSetup();
 
-            // probability for the cell to throw smoke motes, halved  with each iteration
-            var chance = 1f;
             foreach (var cell in GenAdj.CellsOccupiedBy(this))
             {
-                if (chance > new Random().NextDouble())
+                if (Rand.Value < 0.5f)
                     damagedCells.Add(cell);
-                chance /= 2;
             }
         }
 

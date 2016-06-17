@@ -46,6 +46,7 @@ namespace RA
             SkyfallerUtil.MakeShipWreckCrashingAt(MapGenerator.PlayerStartSpot, listsToGenerate, 110,
                 startedDirectInEditor);
 
+            IntVec3 dropCell;
             // Create damaged drop pods with dead pawns
             for (var i = 0; i < CrushingDropPodsCount; i++)
             {
@@ -55,26 +56,25 @@ namespace RA
                         DefDatabase<PawnKindDef>.GetNamed("SpaceSlaverDead").defaultFactionType));
 
                 // Find a location to drop
-                IntVec3 dropCell;
-                if (!RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(MapGenerator.PlayerStartSpot, 10, out dropCell))
-                    dropCell = CellFinder.RandomClosewalkCellNear(MapGenerator.PlayerStartSpot, 30);
-
+                 dropCell = CellFinder.RandomClosewalkCellNear(MapGenerator.PlayerStartSpot, 10);
                 // Drop a drop pod containg our pawn
                 SkyfallerUtil.MakeDropPodCrashingAt(dropCell, new DropPodInfo {SingleContainedThing = pawn});
             }
 
-            // Create flying debris
-            for (var i = 0; i < Rand.RangeInclusive(20, 40); i++)
+            // Create metal debris
+            for (var i = 0; i < Rand.RangeInclusive(30, 40); i++)
             {
                 // Find a location to drop
-                IntVec3 dropCell;
-                if (
-                    !RCellFinder.TryFindRandomCellOutsideColonyNearTheCenterOfTheMap(MapGenerator.PlayerStartSpot, 10,
-                        out dropCell))
-                    dropCell = CellFinder.RandomClosewalkCellNear(MapGenerator.PlayerStartSpot, 30);
-
-                // Drop a drop pod containg our pawn
+                dropCell = CellFinder.RandomClosewalkCellNear(MapGenerator.PlayerStartSpot, 40);
                 SkyfallerUtil.MakeDebrisCrashingAt(dropCell);
+            }
+
+            // Create meteorites
+            for (var i = 0; i < 10; i++)
+            {
+                // Find a location to drop
+                dropCell = CellFinder.RandomClosewalkCellNear(MapGenerator.PlayerStartSpot, 20);
+                SkyfallerUtil.MakeMeteoriteCrashingAt(dropCell);
             }
         }
 

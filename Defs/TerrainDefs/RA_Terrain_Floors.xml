@@ -17,14 +17,14 @@
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<designationCategory>Floors</designationCategory>
 	</TerrainDef>
-	
+
 
 	<TerrainDef ParentName="Floor">
 		<DefName>HayFloor</DefName>
 		<label>hay floor</label>
 		<RenderPrecedence>260</RenderPrecedence>
 		<Description>Cheepest flooring possible.</Description>
-		<texturePath>Things/Buildings/Structure/Floors/HayFloor</texturePath>
+		<texturePath>Terrains/Floors/HayFloor</texturePath>
 		<statBases>
 			<Flammability>3</Flammability>
 			<WorkToMake>20</WorkToMake>
@@ -36,10 +36,46 @@
 			<li>StartPack</li>
 		</researchPrerequisites>
 	</TerrainDef>
-	
+
+	<!-- ==================== Soil =====================-->
+
+	<TerrainDef ParentName="Floor">
+		<DefName>SoilCultivated</DefName>
+		<label>cultivated soil</label>
+		<RenderPrecedence>260</RenderPrecedence>
+		<Description>A cultivated soil.</Description>
+		<texturePath>Terrains/SoilCultivated</texturePath>
+		<statBases>
+			<Flammability>3</Flammability>
+			<WorkToMake>20</WorkToMake>
+		</statBases>
+		<costList>
+			<Hay>3</Hay>
+		</costList>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+	</TerrainDef>
+
+	<TerrainDef ParentName="Floor">
+		<DefName>SoilFertilized</DefName>
+		<label>fertilized soil</label>
+		<RenderPrecedence>260</RenderPrecedence>
+		<Description>A fertilized soil.</Description>
+		<texturePath>Terrains/SoilFertilized</texturePath>
+		<statBases>
+			<Flammability>3</Flammability>
+			<WorkToMake>20</WorkToMake>
+		</statBases>
+		<costList>
+			<Hay>3</Hay>
+		</costList>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+	</TerrainDef>
 
 	<!-- ==================== Stone Floors =====================-->
-
 
 	<TerrainDef Name="FloorBlock" ParentName="Floor" Abstract="True">
 		<RenderPrecedence>220</RenderPrecedence>
@@ -50,7 +86,7 @@
 			<Beauty>2</Beauty>
 		</statBases>
 		<researchPrerequisites>
-			<li>Masonry</li>
+			<li>Blocked</li>
 		</researchPrerequisites>
 	</TerrainDef>
 

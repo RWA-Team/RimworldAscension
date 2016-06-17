@@ -21,6 +21,11 @@
 		<defName>Fabric</defName>
 		<label>fabric</label>
 	</StuffCategoryDef>
+
+	<StuffCategoryDef>
+		<defName>Brick</defName>
+		<label>brick</label>
+	</StuffCategoryDef>
 		
 	<!--========================= Wood =========================-->
 

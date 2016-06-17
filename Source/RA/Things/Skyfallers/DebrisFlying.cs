@@ -6,9 +6,10 @@ namespace RA
     {
         public override void SpawnSetup()
         {
-            // Do base setup
             base.SpawnSetup();
-            
+
+            rotSpeed = 20;
+
             impactResultThing = ThingMaker.MakeThing(ThingDef.Named("ChunkSlagSteel"));
         }
     }

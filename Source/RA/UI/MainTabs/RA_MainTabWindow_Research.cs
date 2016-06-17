@@ -10,8 +10,8 @@ namespace RA
 {
     public class RA_MainTabWindow_Research : MainTabWindow_Research
     {
-        public Texture2D texSortByCost = ContentFinder<Texture2D>.Get("UI/Buttons/SortByCost");
-        public Texture2D texSortByName = ContentFinder<Texture2D>.Get("UI/Buttons/SortByName");
+        public Texture2D texSortByCost = ContentFinder<Texture2D>.Get("UI/Icons/SortByCost");
+        public Texture2D texSortByName = ContentFinder<Texture2D>.Get("UI/Icons/SortByName");
 
         public static readonly Texture2D BarFillTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.8f, 0.85f));
         public static readonly Texture2D BarBgTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.1f, 0.1f, 0.1f));

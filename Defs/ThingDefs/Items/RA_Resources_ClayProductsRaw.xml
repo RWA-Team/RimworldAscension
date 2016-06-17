@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- 
+	statBases - base stat values for the thing
+	default values:
+		- Flammability = 0
+		- MaxHitPoints = 100
+		
+	stuffProps:	
+		statOffsets - stuff based offset values
+		statFactors - stuff based multiplier values
+		stuffCommonality - weight chance to appear in trader stock	
+	
+	Work only in statBases:
+		Blunt\SharpDamageMultiplier
+	-->
+	
+	<!--=============== Clay Products Raw ===================-->	
+
+	<ThingDef Name="ClayProductRaw" ParentName="Resource" Abstract="True">
+		<thingCategories>
+			<li>ClayProductsRaw</li>
+		</thingCategories>
+		<tradeability>Never</tradeability>
+	</ThingDef>
+
+	<!-- raw pottery -->
+
+	<ThingDef ParentName="ClayProductRaw">
+		<defName>PotRaw</defName>
+		<label>raw pot</label>
+		<description>An unfired pot.</description>
+		<graphicData>
+			<texPath>Missing</texPath>
+			<color>(147,135,106)</color>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="ClayProductRaw">
+		<defName>PotPlantRaw</defName>
+		<label>raw plant pot</label>
+		<description>An unfired plant pot.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
+			<color>(147,135,106)</color>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="ClayProductRaw">
+		<defName>CeramicsRaw</defName>
+		<label>raw ceramics</label>
+		<description>Raw ceramics.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/ClayProductsRaw/CeramicsRaw</texPath>
+			<color>(52,124,98)</color>
+		</graphicData>
+	</ThingDef>
+	
+	<!-- raw clay brick -->
+	
+	<ThingDef Name="BrickRaw" ParentName="ClayProductRaw">
+		<defName>BrickRaw</defName>
+		<label>raw brick</label>
+		<description>A pile of unfired bricks.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/ClayProductsRaw/BrickRaw</texPath>
+			<color>(127,51,0)</color>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="BrickRaw">
+		<defName>BrickAdobeRaw</defName>
+		<label>raw adobe brick</label>
+		<description>A pile of unfired adobe bricks.</description>
+		<graphicData>
+			<color>(127,106,0)</color>
+		</graphicData>
+	</ThingDef>
+
+</Defs>

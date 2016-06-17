@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace RA
@@ -8,8 +9,11 @@ namespace RA
         public Designator_CollectClay()
         {
             defaultLabel = "Collect Clay";
-            defaultDesc = "Collect clay from mud or shallow water tiles";
-            icon = Assets.Missing;
+            defaultDesc = "Collect clay from mud, rich soil or shallow water tiles";
+            LongEventHandler.ExecuteWhenFinished(delegate
+            {
+                icon = ContentFinder<Texture2D>.Get("UI/Gizmoes/CollectClay");
+            });
 
             designationDef = DefDatabase<DesignationDef>.GetNamed("CollectClay");
             allowedTerrain = new List<TerrainDef>
