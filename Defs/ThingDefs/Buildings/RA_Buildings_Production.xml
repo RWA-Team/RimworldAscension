@@ -142,13 +142,11 @@
 		<label>kiln</label>
 		<description>An impovised kiln used to produce ceramics and building blocks out of raw mud.</description>
 		<graphicData>
-			<texPath>Things/Buildings/Production/Kiln</texPath>
-			<shaderType>Cutout</shaderType>
-			<color>(141,86,65)</color>
+			<texPath>Things/Buildings/Production/Kiln/Kiln</texPath>
 			<drawSize>(3.1,3.1)</drawSize>
 			<shadowData>
-				<volume>(2.1, 1, 2.1)</volume>
-				<offset>(0.0,0,0)</offset>
+				<volume></volume>
+				<offset></offset>
 			</shadowData>
 		</graphicData>
 		<Size>(3,3)</Size>
@@ -161,6 +159,10 @@
 		<costList>
 			<ClayClumpGray>60</ClayClumpGray>
 		</costList>
+		<stuffCategories>
+			<li>StoneCobble</li>
+		</stuffCategories>
+		<costStuffCount>40</costStuffCount>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<comps>
 			<li Class="CompProperties_Glower">

@@ -19,7 +19,7 @@ namespace RA
                 var building = cell.GetThingList().Find(thing => thing.def.category == ThingCategory.Building);
                 if (building == null)
                 {
-                    Find.TerrainGrid.SetTerrain(cell, DefDatabase<TerrainDef>.GetNamed("Gravel"));
+                    Find.TerrainGrid.SetTerrain(cell, DefDatabase<TerrainDef>.GetNamed("Slate_Rough"));
                 }
             }
 

@@ -8,23 +8,17 @@ namespace RA
 {
     public class WorkGiver_Hunt : WorkGiver_WorkWithTools
     {
-        public Thing closestAvailableVein;
+        public override string WorkType => "Hunting";
 
-        public WorkGiver_Hunt()
-        {
-            workType = "Hunting";
-        }
+        public override Job JobWithTool(TargetInfo target) => new Job(JobDefOf.Hunt, target.Thing);
 
-        public Job ActualJob(Thing target) => new Job(JobDefOf.Hunt, target);
+        public override List<TargetInfo> Targets(Pawn pawn)
+            => AvailableTargets(pawn);
 
         // search things throught designations is faster than searching designations through all things
-        public static IEnumerable<Thing> AvailableTargets(Pawn pawn)
+        public static List<TargetInfo> AvailableTargets(Pawn pawn)
             => Find.DesignationManager.DesignationsOfDef(DesignationDefOf.Hunt)
-                .Select(designation => designation.target.Thing)
-                .Where(target => pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()));
-
-        // NonScanJob performed everytime previous(current) job is completed
-        public override Job NonScanJob(Pawn pawn)
-            => DoJobWithTool(pawn, AvailableTargets(pawn), ActualJob);
+                .Select(designation => designation.target)
+                .Where(target => pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger())).ToList();
     }
 }
