@@ -8,7 +8,6 @@ namespace RA
     public class SkyfallerFlying : Thing
     {
         public static readonly SoundDef LandSound = SoundDef.Named("DropPodFall"); // Landing sound
-        public static readonly Material ShadowMat = MaterialPool.MatFrom("Things/Special/DropPodShadow", ShaderDatabase.Transparent); // The shadow graphic of the droppod
 
         // ticks after spaning to impact
         public int ticksToImpact = Rand.RangeInclusive(120, 300);
@@ -53,7 +52,7 @@ namespace RA
             // rotate skyfaller texture while flying
             matrix.SetTRS(DrawPos + Altitudes.AltIncVect, Quaternion.AngleAxis(rotAngle, Vector3.up), SizeVector);
             // Draw new angled graphic
-            Graphics.DrawMesh(MeshPool.plane10, matrix, Graphic.MatAt(Rotation), 0);
+            Graphics.DrawMesh(MeshPool.plane10, matrix, Graphic.MatAt(Rotation, this), 0);
         }
 
         // saves importand data to save file

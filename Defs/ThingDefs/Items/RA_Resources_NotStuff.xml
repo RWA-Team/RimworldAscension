@@ -71,6 +71,25 @@
 		</thingCategories>
 	</ThingDef>
 
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Tallow</defName>
+		<label>tallow</label>
+		<description>Tallow.</description>
+		<graphicData>
+			<shaderType>Cutout</shaderType>
+			<texPath>Things/Items/Resources/Tallow</texPath>
+		</graphicData>
+		<statBases>
+			<MaxBurningTempCelsius>200</MaxBurningTempCelsius>
+			<BurnDurationHours>1</BurnDurationHours>
+		</statBases>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+	</ThingDef>
+
 	<!-- 	<ThingDef ParentName="OrganicProductBase">
 		<defName>Flax</defName>
 		<label>flax</label>

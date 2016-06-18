@@ -25,7 +25,6 @@
 		<thingClass>RA.DropPodFlying</thingClass>
 		<graphicData>
 			<texPath>Things/Special/DropPod</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
 	</ThingDef>
@@ -45,7 +44,8 @@
 		<label>flying debris</label>
 		<thingClass>RA.DebrisFlying</thingClass>
 		<graphicData>
-			<texPath>Things/Item/Chunk/ChunkSlag/MetalDebrisB</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<texPath>Things/Item/Chunk/ChunkSlag</texPath>
 		</graphicData>
 	</ThingDef>
 

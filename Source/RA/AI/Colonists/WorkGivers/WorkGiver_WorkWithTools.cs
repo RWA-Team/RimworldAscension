@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using Verse;
@@ -8,43 +7,59 @@ using static RA.MapCompDataStorage;
 
 namespace RA
 {
-    public class WorkGiver_WorkWithTools : WorkGiver
+    public abstract class WorkGiver_WorkWithTools : WorkGiver
     {
         public ThingWithComps closestAvailableTool;
 
-        public string workType;
+        public virtual string WorkType => default(string);
+        public virtual List<TargetInfo> Targets(Pawn pawn) => default(List<TargetInfo>);
+        public virtual Job JobWithTool(TargetInfo target) => default(Job);
 
-        public Job DoJobWithTool(Pawn pawn, IEnumerable<Thing> availableTargets, Func<Thing, Job> ActualJob)
+        // NonScanJob performed everytime previous(current) job is completed
+        public override Job NonScanJob(Pawn pawn)
         {
             // has available job targets
-            if (availableTargets.Any())
+            if (!Targets(pawn).NullOrEmpty())
             {
-                var closestAvailableTarget = GenClosest.ClosestThing_Global(pawn.Position, availableTargets);
+                var closestAvailableTarget = Targets(pawn).FirstOrDefault().HasThing
+                    ? GenClosest.ClosestThing_Global(pawn.Position, Targets(pawn).Select(target=>target.Thing))
+                    : (TargetInfo) ClosestTargetCell(pawn);
 
-                // if proper tool equipped, do the job
-                if (IsProperTool(pawn.equipment.Primary))
-                {
-                    // do the vanilla job with tool in hands
-                    return ActualJob(closestAvailableTarget);
-                }
-
-                // or find the tool for work
-                return TryEquipTool(pawn);
+                // if proper tool equipped, do the job, otherwise find the tool for work
+                return IsProperTool(pawn.equipment.Primary)
+                    ? JobWithTool(closestAvailableTarget)
+                    : TryEquipTool(pawn);
             }
-
+            
             // drop tool and haul it to stockpile, if necessary
             if (pawn.equipment.Primary != null && !ShouldKeepTool(pawn) &&
                 pawn.equipment.Primary.TryGetComp<CompTool>().wasAutoEquipped)
             {
                 return TryReturnTool(pawn);
             }
-
+            
             if (PawnCarriedWeaponBefore(pawn))
             {
                 EquipPreviousWeapon(pawn);
             }
 
             return null;
+        }
+
+        public IntVec3 ClosestTargetCell(Pawn pawn)
+        {
+            var searchRange = 9999f;
+            var result = default(IntVec3);
+            foreach (IntVec3 cell in Targets(pawn))
+            {
+                var lengthHorizontalSquared = (cell - pawn.Position).LengthHorizontalSquared;
+                if (lengthHorizontalSquared < searchRange)
+                {
+                    result = cell;
+                    searchRange = lengthHorizontalSquared;
+                }
+            }
+            return result;
         }
 
         // keep tool if it could be used for other jobs
@@ -119,7 +134,7 @@ namespace RA
 
         public bool IsProperTool(Thing thing)
         {
-            return thing?.TryGetComp<CompTool>()?.Allows(workType) ?? false;
+            return thing?.TryGetComp<CompTool>()?.Allows(WorkType) ?? false;
         }
 
         public Job TryEquipFreeTool(Pawn pawn)

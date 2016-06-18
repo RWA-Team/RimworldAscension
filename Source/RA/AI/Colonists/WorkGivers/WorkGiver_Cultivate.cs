@@ -6,9 +6,9 @@ using Verse.AI;
 
 namespace RA
 {
-    public class WorkGiver_Mine : WorkGiver_WorkWithTools
+    public class WorkGiver_Cultivate : WorkGiver_WorkWithTools
     {
-        public override string WorkType => "Mining";
+        public override string WorkType => "Digging";
 
         public override Job JobWithTool(TargetInfo target) => new Job(JobDefOf.Mine, target, 1500, true);
 
