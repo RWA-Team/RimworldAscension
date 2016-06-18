@@ -524,7 +524,7 @@
 			<categories>
 				<li>Brick</li>
 			</categories>
-			<color>(127,51,0)</color>
+			<color>(157,71,30)</color>
 			<stuffAdjective>brick</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
@@ -534,10 +534,10 @@
 		<label>adobe brick</label>
 		<description>A fired adobe brick. Can be used for contruction</description>
 		<graphicData>
-			<color>(130,97,26)</color>
+			<color>(130,107,26)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(130,97,26)</color>
+			<color>(130,107,26)</color>
 			<stuffAdjective>adobe</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
@@ -580,10 +580,10 @@
 		<defName>MetalBarCopper</defName>
 		<label>copper bars</label>
 		<graphicData>
-			<color>(72,45,20)</color>
+			<color>(102,75,50)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(72,45,20)</color>
+			<color>(102,75,50)</color>
 			<stuffAdjective>copper</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
