@@ -510,7 +510,7 @@
 		<description>A simple red brick. Can be used for contruction</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/Block</texPath>
-			<color>(177,91,50)</color>
+			<color>(200,91,50)</color>
 		</graphicData>
 		<soundInteract>Stone_Drop</soundInteract>
 		<soundDrop>Stone_Drop</soundDrop>
@@ -524,7 +524,7 @@
 			<categories>
 				<li>Brick</li>
 			</categories>
-			<color>(177,91,50)</color>
+			<color>(200,91,50)</color>
 			<stuffAdjective>brick</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
@@ -534,10 +534,10 @@
 		<label>adobe brick</label>
 		<description>A fired adobe brick. Can be used for contruction</description>
 		<graphicData>
-			<color>(150,127,46)</color>
+			<color>(150,140,46)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(150,127,46)</color>
+			<color>(150,140,46)</color>
 			<stuffAdjective>adobe</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
