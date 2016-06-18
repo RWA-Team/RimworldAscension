@@ -302,10 +302,10 @@
 		<defName>ChunkObsidian</defName>
 		<label>obsidian chunk</label>
 		<graphicData>
-			<color>(32,57,61)</color>
+			<color>(32,20,61)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(32,57,61)</color>
+			<color>(32,20,61)</color>
 			<stuffAdjective>obsidian</stuffAdjective>
 		</stuffProps>
 		<butcherProducts>
