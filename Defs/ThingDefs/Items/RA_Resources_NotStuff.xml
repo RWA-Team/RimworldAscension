@@ -281,7 +281,7 @@
 		<label>sand</label>
 		<description>A bag of sand.</description>
 		<graphicData>
-			<color>(124,124,26)</color>
+			<color>(154,154,26)</color>
 		</graphicData>
 		<tradeability>Never</tradeability>
 	</ThingDef>
