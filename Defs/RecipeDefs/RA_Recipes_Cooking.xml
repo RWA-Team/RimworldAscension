@@ -146,11 +146,6 @@
 	<RecipeDef Name="CookAlcohol" ParentName="Cook" Abstract="True">
 		<allowMixingIngredients>true</allowMixingIngredients>
 		<soundWorking>Recipe_Brewing</soundWorking>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>RawHops</li>
-			</thingDefs>
-		</fixedIngredientFilter>
 	</RecipeDef>
 	
 	
@@ -160,17 +155,17 @@
 		<description>Make brew.</description>
 		<jobString>Making brew.</jobString>
 		<products>
-			<Beer>5</Beer>
+			<Brew>5</Brew>
 		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawBerries</li>
+			</thingDefs>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+		</fixedIngredientFilter>
 		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>RawHops</li>
-					</thingDefs>
-				</filter>
-				<count>10</count>
-			</li>
 			<li>
 				<filter>
 					<thingDefs>
@@ -178,6 +173,14 @@
 					</thingDefs>
 				</filter>
 				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Leathers</li>
+					</categories>
+				</filter>
+				<count>5</count>
 			</li>
 		</ingredients>
 		<researchPrerequisite>Brewing</researchPrerequisite>

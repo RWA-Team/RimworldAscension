@@ -12,6 +12,8 @@ namespace RA
             // Do base setup
             base.SpawnSetup();
 
+            rotSpeed = 7;
+
             impactResultThing = (DropPodLanded)ThingMaker.MakeThing(ThingDef.Named("DropPodLanded"));
             (impactResultThing as DropPodLanded).cargo = cargo;
         }

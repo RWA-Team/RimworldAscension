@@ -12,6 +12,8 @@
 	- surfaceType:
 		- Item - allows place items
 		- Eat - allows place food to eat
+	- linkFlags:
+		- Custom1 - linker for roads
 	 -->
 
 	<ThingDef Name="Structure" ParentName="Building" Abstract="True">
@@ -118,7 +120,6 @@
 		<castEdgeShadows>true</castEdgeShadows>
 		<coversFloor>true</coversFloor>
 		<placingDraggableDimensions>1</placingDraggableDimensions>
-		<neverMultiSelect>true</neverMultiSelect>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<building>
 			<isInert>true</isInert>
@@ -167,9 +168,9 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Wall">
-		<defName>WallClay</defName>
-		<label>clay wall</label>
-		<description>A clay wall.</description>
+		<defName>Wall</defName>
+		<label>wall</label>
+		<description>A wall.</description>
 		<graphicData>
 			<texPath>Things/Building/Linked/Wall/Wall_Atlas_Bricks</texPath>
 			<color>(124,82,26)</color>
@@ -179,11 +180,65 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<WorkToMake>100</WorkToMake>
 		</statBases>
-		<costList>
-			<BlockAdobe>5</BlockAdobe>
-		</costList>
+		<stuffCategories>
+			<li>StoneBlock</li>
+			<li>Brick</li>
+		</stuffCategories>
+		<costStuffCount>5</costStuffCount>
 		<researchPrerequisites>
 			<li>Pottery</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!--========================= Roads =============================-->
+
+	<ThingDef Name="Road" ParentName="Structure" Abstract="True">
+		<thingClass>Building</thingClass>
+		<graphicData>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Custom1</li>
+			</linkFlags>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToMake>100</WorkToMake>
+		</statBases>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<passability>Standable</passability>
+		<coversFloor>true</coversFloor>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<terrainAffordanceNeeded>Any</terrainAffordanceNeeded>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Road">
+		<defName>RoadCobble</defName>
+		<label>cobble road</label>
+		<description>A cobble road.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Structure/Roads/RoadCobble/RoadCobble_Atlas</texPath>
+		</graphicData>
+		<uiIconPath>Things/Buildings/Structure/Roads/RoadCobble/RoadCobble_MenuIcon</uiIconPath>
+		<stuffCategories>
+			<li>StoneCobble</li>
+		</stuffCategories>
+		<costStuffCount>3</costStuffCount>
+		<pathCost>-3</pathCost>
+		<researchPrerequisites>
+			<li>Masonry</li>
 		</researchPrerequisites>
 	</ThingDef>
 

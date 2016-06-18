@@ -54,11 +54,11 @@
 
 
 	<ThingDef ParentName="ArmorHead">
-		<defName>HeadBone</defName>
+		<defName>MaskSkull</defName>
 		<label>bone mask</label>
 		<description>A bone mask.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Armor/ArmorBone/HeadBone</texPath>
+			<texPath>Things/Items/Apparels/Armor/Neolithic/MaskSkull/MaskSkull</texPath>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
@@ -70,10 +70,115 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Armor/ArmorBone/HeadBone</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Armor/Neolithic/MaskSkull/MaskSkull</worngraphicPath>
 			<tags>
 				<li>ArmorBone</li>
 			</tags>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorHead">
+		<defName>HelmTurtle</defName>
+		<label>turtle helm</label>
+		<description>A helm from turtle shell.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Armor/Neolithic/HelmetTurtle/HelmetTurtle</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+		</statBases>
+		<apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Armor/Neolithic/HelmetTurtle/HelmetTurtle</worngraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorHead">
+		<defName>Bascinet</defName>
+		<label>bascinet</label>
+		<description>A bascinet.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+		</statBases>
+		<apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</worngraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorHead">
+		<defName>HelmFull</defName>
+		<label>full helm</label>
+		<description>A full helm.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Armor/Medieval/HelmFull/HelmFull</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+		</statBases>
+		<apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/HelmFull/HelmFull</worngraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorHead">
+		<defName>HelmetNasal</defName>
+		<label>nasal helmet</label>
+		<description>A nasal helmet.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Armor/Medieval/HelmetNasal/HelmetNasal</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+		</statBases>
+		<apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/HelmetNasal/HelmetNasal</worngraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorHead">
+		<defName>Kettlehat</defName>
+		<label>turtle helm</label>
+		<description>A helm from turtle shell.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Armor/Medieval/Kettlehat/Kettlehat</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+		</statBases>
+		<apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Kettlehat/Kettlehat</worngraphicPath>
 		</apparel>
 	</ThingDef>
 
@@ -94,7 +199,7 @@
 		<label>bone armor</label>
 		<description>A bone armor chespiece.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Armor/ArmorBone/ArmorBone</texPath>
+			<texPath>Things/Items/Apparels/Armor/Neolithic/ArmorBone/ArmorBone</texPath>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
@@ -110,10 +215,88 @@
 				<li>Torso</li>
 				<li>Shoulders</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Armor/ArmorBone/ArmorBone</worngraphicPath>
+			<worngraphicPath>Things/Items/Apparels/Armor/Neolithic/ArmorBone/ArmorBone</worngraphicPath>
 			<tags>
 				<li>ArmorBone</li>
 			</tags>
+		</apparel>
+		<colorGenerator Class="ColorGenerator_StandardApparel" />
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorChest">
+		<defName>ArmorPlate</defName>
+		<label>plate armor</label>
+		<description>A plate armor.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Armor/Medieval/ArmorPlate/ArmorPlate</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.1</MoveSpeed>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/ArmorPlate/ArmorPlate</worngraphicPath>
+		</apparel>
+		<colorGenerator Class="ColorGenerator_StandardApparel" />
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorChest">
+		<defName>Hauberk</defName>
+		<label>hauberk</label>
+		<description>A hauberk.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Armor/Medieval/Hauberk/Hauberk</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.1</MoveSpeed>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Hauberk/Hauberk</worngraphicPath>
+		</apparel>
+		<colorGenerator Class="ColorGenerator_StandardApparel" />
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorChest">
+		<defName>Gambeson</defName>
+		<label>gambeson</label>
+		<description>A gambeson.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Armor/Medieval/Gambeson/Gambeson</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.1</MoveSpeed>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Gambeson/Gambeson</worngraphicPath>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
@@ -155,6 +338,21 @@
 		<description>A shield made of various bones put together with leather and wood. Looks intimidating.</description>
 		<graphicData>
 			<texPath>Things/Items/Apparels/Shields/ShieldBone</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+		</statBases>
+		<stuffCategories>
+			<li>Bone</li>
+		</stuffCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorShield">
+		<defName>ShieldMetal</defName>
+		<label>metal shield</label>
+		<description>A metal shield.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Shields/ShieldMetal</texPath>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>

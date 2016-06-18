@@ -15,7 +15,7 @@
 
 	<DesignationDef>
 		<defName>ChopWood</defName>
-		<texturePath>Designations/CutPlant</texturePath>
+		<texturePath>UI/Icons/ChopWood</texturePath>
 		<targetType>Thing</targetType>
 	</DesignationDef>
 

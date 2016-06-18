@@ -124,6 +124,11 @@ namespace RA
             var newCheckGameOver = typeof(RA_GameEnder).GetMethod("CheckGameOver", BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaCheckGameOver, newCheckGameOver);
 
+            // special spawns for skyfaller impact explosion (otherwise things are damaged by eplosion even if spawned after that, but without delay)
+            var vanillaTrySpawnExplosionThing = typeof(Explosion).GetMethod("TrySpawnExplosionThing", BindingFlags.Instance | BindingFlags.NonPublic);
+            var newTrySpawnExplosionThing = typeof(RA_Explosion).GetMethod("TrySpawnExplosionThing", BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaTrySpawnExplosionThing, newTrySpawnExplosionThing);
+
             // delay GameEndTick first call
             var vanillaGameEndTick = typeof(GameEnder).GetMethod("GameEndTick", BindingFlags.Instance | BindingFlags.Public);
             var newGameEndTick = typeof(RA_GameEnder).GetMethod("GameEndTick", BindingFlags.Instance | BindingFlags.Public);
@@ -133,6 +138,11 @@ namespace RA
             var vanillaInitNewGeneratedMap = typeof(MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
             var newInitNewGeneratedMap = typeof(RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap", BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaInitNewGeneratedMap, newInitNewGeneratedMap);
+
+            // tries to assign existing stuff type, instead of some random one, as default
+            var vanillaDefaultStuffFor = typeof(GenStuff).GetMethod("DefaultStuffFor", BindingFlags.Static | BindingFlags.Public);
+            var newDefaultStuffFor = typeof(RA_GenStuff).GetMethod("DefaultStuffFor", BindingFlags.Static | BindingFlags.Public);
+            TryDetourFromTo(vanillaDefaultStuffFor, newDefaultStuffFor);
 
             // changed initial colonists count
             var vanillaGenerateDefaultColonistsWithFaction = typeof(MapInitData).GetMethod("GenerateDefaultColonistsWithFaction", BindingFlags.Static | BindingFlags.Public);

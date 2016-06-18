@@ -14,12 +14,13 @@
 	</ThingDef>
 
 	<!--======================= Special =======================-->	
-	
+
 	<ThingDef Name="ClothingSlave" ParentName="Clothing" Abstract="True">
 		<statBases>
 			<ArmorRating_Blunt>0.03</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.03</ArmorRating_Sharp>
 			<Insulation_Cold>-5</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
 		</statBases>
 		<colorGenerator Class="ColorGenerator_Options">
 			<options>
@@ -89,6 +90,34 @@
 
 
 	<ThingDef ParentName="ClothingNeolithic">
+		<defName>Parka</defName>
+		<label>parka</label>
+		<description>A thick parka for staying warm in even the coldest of temperatures.</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Clothing/Parka/Parka</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<WorkToMake>1000</WorkToMake>
+			<ArmorRating_Sharp>0.03</ArmorRating_Sharp>
+			<ArmorRating_Heat>0.03</ArmorRating_Heat>
+			<Insulation_Cold>-40</Insulation_Cold>
+			<Insulation_Heat>-3</Insulation_Heat>
+		</statBases>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+			</bodyPartGroups>
+			<worngraphicPath>Things/Items/Apparels/Clothing/Parka/Parka</worngraphicPath>
+			<layers>
+				<li>Shell</li>
+			</layers>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="ClothingNeolithic">
 		<defName>Tribalwear</defName>
 		<label>tribalwear</label>
 		<description>A garment crafted without machines using neolithic tools.</description>
@@ -97,6 +126,7 @@
 		</graphicData>
 		<statBases>
 			<Insulation_Cold>-10</Insulation_Cold>
+			<Insulation_Heat>10</Insulation_Heat>
 		</statBases>
 		<apparel>
 			<bodyPartGroups>
@@ -135,7 +165,8 @@
 			<texPath>Things/Items/Apparels/Clothing/Loincloth/Loincloth</texPath>
 		</graphicData>
 		<statBases>
-			<Insulation_Cold>-10</Insulation_Cold>
+			<Insulation_Cold>-5</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
 		</statBases>
 		<apparel>
 			<bodyPartGroups>
@@ -174,7 +205,7 @@
 		</graphicData>
 		<statBases>
 			<Insulation_Cold>-10</Insulation_Cold>
-			<Insulation_Heat>-2</Insulation_Heat>
+			<Insulation_Heat>5</Insulation_Heat>
 		</statBases>
 		<thingCategories>
 			<li>Headgear</li>
@@ -220,8 +251,8 @@
 			<texPath>Things/Items/Apparels/Clothing/HatBaggy/HatBaggy</texPath>
 		</graphicData>
 		<statBases>
-			<Insulation_Cold>-10</Insulation_Cold>
-			<Insulation_Heat>-2</Insulation_Heat>
+			<Insulation_Cold>-7</Insulation_Cold>
+			<Insulation_Heat>7</Insulation_Heat>
 		</statBases>
 		<thingCategories>
 			<li>Headgear</li>
