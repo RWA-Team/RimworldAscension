@@ -82,7 +82,7 @@
 	</WorkGiverDef>
 
 	<WorkGiverDef ParentName="WorkGiver">
-		<defName>TableBrewerNeolithic</defName>
+		<defName>Brew</defName>
 		<label>brew booze</label>
 		<workType>Cooking</workType>
 		<verb>brew</verb>
@@ -100,9 +100,21 @@
 		<label>sow crops</label>
 		<giverClass>RA.RA_WorkGiver_GrowerSow</giverClass>
 		<workType>Growing</workType>
-		<priorityInType>50</priorityInType>
+		<priorityInType>100</priorityInType>
 		<verb>sow</verb>
 		<gerund>sowing</gerund>
+		<scanThings>false</scanThings>
+		<scanCells>true</scanCells>
+	</WorkGiverDef>
+
+	<WorkGiverDef ParentName="WorkGiver">
+		<defName>CultivateLand</defName>
+		<label>cultivate land</label>
+		<giverClass>RA.WorkGiver_CultivateLand</giverClass>
+		<workType>Growing</workType>
+		<priorityInType>75</priorityInType>
+		<verb>cultivate</verb>
+		<gerund>cultivating</gerund>
 		<scanThings>false</scanThings>
 		<scanCells>true</scanCells>
 	</WorkGiverDef>
@@ -110,11 +122,11 @@
 	<!--=================== Crafting =====================-->
 
 	<WorkGiverDef ParentName="WorkGiver">
-		<defName>RefillBurner</defName>
-		<giverClass>RA.WorkGiver_RefillBurner</giverClass>
+		<defName>RefuelBurner</defName>
+		<giverClass>RA.WorkGiver_RefuelBurner</giverClass>
 		<workType>Crafting</workType>
-		<verb>refilling</verb>
-		<gerund>refilling</gerund>
+		<verb>refueling</verb>
+		<gerund>refueling</gerund>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>

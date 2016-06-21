@@ -25,7 +25,7 @@ namespace RA
         // ignites burner to start consume fuel, if needed
         public Toil WaitUntilBurnerReady()
         {
-            var burner = CurJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
+            var burner = CurJob.GetTarget(TargetIndex.A).Thing as RA_Building_WorkTable;
 
             var toil = new Toil
             {
@@ -39,12 +39,12 @@ namespace RA
                 },
                 tickAction = () =>
                 {
-                    if (burner.internalTemp > burner.compFueled.Properties.operatingTemp)
-                        ReadyForNextToil();
+                    //if (burner.internalTemp > burner.compFueled.Properties.operatingTemp)
+                    //    ReadyForNextToil();
                 }
             };
             // fails if no more heat generation and temperature is no enough
-            toil.FailOn(() => burner.currentFuelBurnDuration == 0 && !burner.UsableNow);
+            //toil.FailOn(() => burner.currentFuelBurnDuration == 0 && !burner.UsableNow);
             toil.defaultCompleteMode = ToilCompleteMode.Never;
             return toil;
         }
@@ -63,7 +63,7 @@ namespace RA
                 }
             };
             // fails if no more heat generation and temperature is no enough
-            toil.FailOn(() => campfire.currentFuelBurnDuration == 0 && !campfire.UsableNow);
+            //toil.FailOn(() => campfire.currentFuelBurnDuration == 0 && !campfire.UsableNow);
             toil.defaultCompleteMode = ToilCompleteMode.Delay;
             toil.defaultDuration = ticks;
             //toil.AddFinishAction(campfire.CallForMilitaryAid);

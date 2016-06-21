@@ -346,11 +346,48 @@
 
 
 	<ThingDef ParentName="Stool">
-		<defName>StoolNeolithic</defName>
-		<label>stool</label>
+		<defName>StoolNeolithicStone</defName>
+		<label>stone stool</label>
 		<description>A primitive simple stool you can sit on.</description>
 		<graphicData>
-			<texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithic</texPath>
+			<texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithicStone</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(0.8,0.8)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<minifiedDef>StoolNeolithicStoneMinified</minifiedDef>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>750</WorkToMake>
+			<Beauty>3</Beauty>
+			<Comfort>0.5</Comfort>
+		</statBases>
+		<costList>
+			<StoolNeolithicStone>1</StoolNeolithicStone>
+		</costList>
+		<stuffCategories>
+			<li>StoneChunk</li>
+		</stuffCategories>
+		<researchPrerequisites>
+			<li>Masonry</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="MinifiedFurniture">
+		<defName>StoolNeolithicStoneMinified</defName>
+		<label>stone stool</label>
+		<stuffCategories>
+			<li>StoneChunk</li>
+		</stuffCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="Stool">
+		<defName>StoolNeolithicWood</defName>
+		<label>wooden stool</label>
+		<description>A primitive simple stool you can sit on.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithicWood</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>Cutout</shaderType>
 			<drawSize>(0.8,0.8)</drawSize>
@@ -364,21 +401,21 @@
 			<Comfort>0.5</Comfort>
 		</statBases>
 		<costList>
-			<StoolNeolithic>1</StoolNeolithic>
+			<StoolNeolithicWood>1</StoolNeolithicWood>
 		</costList>
 		<stuffCategories>
-			<li>StoneChunk</li>
+			<li>WoodLog</li>
 		</stuffCategories>
 		<researchPrerequisites>
-			<li>Masonry</li>
+			<li>StartPack</li>
 		</researchPrerequisites>
 	</ThingDef>
 
 	<ThingDef ParentName="MinifiedFurniture">
-		<defName>StoolNeolithicMinified</defName>
+		<defName>StoolNeolithicWoodMinified</defName>
 		<label>stool</label>
 		<stuffCategories>
-			<li>StoneChunk</li>
+			<li>WoodLog</li>
 		</stuffCategories>
 	</ThingDef>
 
@@ -399,10 +436,10 @@
 
 
 	<ThingDef ParentName="Table">
-		<defName>TableNeolithic</defName>
-		<label>short table</label>
+		<defName>TableNeolithicStone</defName>
+		<label>short stone table</label>
 		<graphicData>
-			<texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithic</texPath>
+			<texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithicStone</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1.2,1.2)</drawSize>
 			<damageData>
@@ -420,9 +457,9 @@
 			<li>StoneChunk</li>
 		</stuffCategories>
 		<costList>
-			<TableNeolithic>1</TableNeolithic>
+			<TableNeolithicStone>1</TableNeolithicStone>
 		</costList>
-		<minifiedDef>TableNeolithicMinified</minifiedDef>
+		<minifiedDef>TableNeolithicStoneMinified</minifiedDef>
 		<rotatable>false</rotatable>
 		<researchPrerequisites>
 			<li>Masonry</li>
@@ -430,7 +467,45 @@
 	</ThingDef>
 
 	<ThingDef ParentName="MinifiedFurniture">
-		<defName>TableNeolithicMinified</defName>
+		<defName>TableNeolithicStoneMinified</defName>
+		<label>short table</label>
+		<stuffCategories>
+			<li>StoneChunk</li>
+		</stuffCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="Table">
+		<defName>TableNeolithicWood</defName>
+		<label>short wood table</label>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithicWood</texPath>
+			<drawSize>(1.2,1.2)</drawSize>
+			<damageData>
+				<rect>(0.05,0.27,1.9,1.73)</rect>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<statBases>
+			<Beauty>3</Beauty>
+		</statBases>
+		<stuffCategories>
+			<li>StoneChunk</li>
+		</stuffCategories>
+		<costList>
+			<TableNeolithicWood>1</TableNeolithicWood>
+		</costList>
+		<minifiedDef>TableNeolithicWoodMinified</minifiedDef>
+		<rotatable>false</rotatable>
+		<researchPrerequisites>
+			<li>Masonry</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="MinifiedFurniture">
+		<defName>TableNeolithicWoodMinified</defName>
 		<label>short table</label>
 		<stuffCategories>
 			<li>StoneChunk</li>

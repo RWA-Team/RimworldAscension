@@ -6,19 +6,19 @@ using Verse.AI;
 
 namespace RA
 {
-    public class WorkGiver_RefillBurner : WorkGiver
+    public class WorkGiver_RefuelBurner : WorkGiver
     {
         IEnumerable<Thing> targetBurners;
 
         public override bool ShouldSkip(Pawn pawn)
         {
-            targetBurners = UnreservedBurnersToRefill(pawn);
+            targetBurners = UnreservedBurnersToRefuel(pawn);
             return !targetBurners.Any();
         }
 
         public override Job NonScanJob(Pawn pawn)
         {
-            var closestBurner = ClosestBurnerToRefill(pawn);
+            var closestBurner = ClosestBurnerToRefuel(pawn);
 
             if (closestBurner != null)
             {
@@ -43,7 +43,7 @@ namespace RA
                         numToCarry = closestBurner.fuelContainer[0].def.stackLimit - closestBurner.fuelContainer[0].stackCount;
                     }
 
-                    return new Job(DefDatabase<JobDef>.GetNamed("RefillBurner"), closestFuel, closestBurner)
+                    return new Job(DefDatabase<JobDef>.GetNamed("RefuelBurner"), closestFuel, closestBurner.parent)
                     {
                         maxNumToCarry = numToCarry
                     };
@@ -52,14 +52,14 @@ namespace RA
             return null;
         }
         
-        public IEnumerable<Thing> UnreservedBurnersToRefill(Pawn pawn)
+        public IEnumerable<Thing> UnreservedBurnersToRefuel(Pawn pawn)
         {
-            return Find.ListerBuildings.AllBuildingsColonistOfClass<WorkTableFueled>().Where(burner => burner.RequireMoreFuel && pawn.CanReserve(burner)).Cast<Thing>();
+            return Find.ListerThings.AllThings.Where(thing => thing.TryGetComp<CompFueled>()!=null && thing.TryGetComp<CompFueled>().RequireMoreFuel && pawn.CanReserve(thing));
         }
 
-        public WorkTableFueled ClosestBurnerToRefill(Pawn pawn)
+        public CompFueled ClosestBurnerToRefuel(Pawn pawn)
         {
-            return (WorkTableFueled)GenClosest.ClosestThing_Global_Reachable(pawn.Position, targetBurners, PathEndMode.Touch, TraverseParms.For(pawn, pawn.NormalMaxDanger()));
+            return GenClosest.ClosestThing_Global_Reachable(pawn.Position, targetBurners, PathEndMode.Touch, TraverseParms.For(pawn, pawn.NormalMaxDanger())).TryGetComp<CompFueled>();
         }
     }
 }
