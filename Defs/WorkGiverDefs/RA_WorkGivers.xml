@@ -93,6 +93,20 @@
 		<priorityInType>50</priorityInType>
 	</WorkGiverDef>
 
+	<!-- ============= Growing ============= -->
+
+	<WorkGiverDef ParentName="WorkGiver">
+		<defName>GrowerSow</defName>
+		<label>sow crops</label>
+		<giverClass>RA.RA_WorkGiver_GrowerSow</giverClass>
+		<workType>Growing</workType>
+		<priorityInType>50</priorityInType>
+		<verb>sow</verb>
+		<gerund>sowing</gerund>
+		<scanThings>false</scanThings>
+		<scanCells>true</scanCells>
+	</WorkGiverDef>
+
 	<!--=================== Crafting =====================-->
 
 	<WorkGiverDef ParentName="WorkGiver">
