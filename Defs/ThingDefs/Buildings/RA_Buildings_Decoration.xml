@@ -146,7 +146,7 @@
 		<inspectorTabs>
 			<li>ITab_Growing</li>
 		</inspectorTabs>
-		<description>Plant decorative flowers here to improve the mood of people nearby.</description>
+		<description>A pot to plant decorative flowers in to improve the beauty of the room it's in.</description>
 		<comps>
 			<li Class="CompProperties_Forbiddable"/>
 		</comps>
