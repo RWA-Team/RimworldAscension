@@ -216,7 +216,7 @@
 	<ThingDef ParentName="WorkTableNeolithic">
 		<defName>TableResearchNeolithic</defName>
 		<label>research table</label>
-		<description>Study surround materials here to research new things.</description>
+		<description>Study surrounding materials here to research new things.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableResearch/Neolithic/TableResearchNeolithic</texPath>
 		</graphicData>
@@ -237,7 +237,7 @@
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableButcherNeolithic</DefName>
 		<label>butcher table</label>
-		<Description>A heavy table for butchering dead creatures into pieces of raw meat.</Description>
+		<Description>A heavy table for butchering dead creatures into pieces of raw meat and hide.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableButcher/Neolithic/TableButcherNeolithic</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -286,7 +286,7 @@
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableCraftsmanNeolithic</DefName>
 		<label>craftsman table</label>
-		<Description>A table and tools to craft various stuff.</Description>
+		<Description>A table with tools to craft various things.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableCraftsman/Neolithic/TableCraftsmanNeolithic</texPath>
 		</graphicData>
@@ -310,7 +310,7 @@
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableWeaponMeleeNeolithic</DefName>
 		<label>warrior table</label>
-		<Description>A worktable equipped for melee weapons production.</Description>
+		<Description>A worktable with tools to make primitive melee weapons.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableWeaponMelee/Neolithic/TableWeaponMeleeNeolithic</texPath>
 		</graphicData>
@@ -331,7 +331,7 @@
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableWeaponRangedNeolithic</DefName>
 		<label>hunter table</label>
-		<Description>A worktable equipped for ranged weapons production.</Description>
+		<Description>A worktable with tools to make primitive ranged weapons.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableWeaponRanged/Neolithic/TableWeaponRangedNeolithic</texPath>
 		</graphicData>
@@ -352,7 +352,7 @@
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableTailorNeolithic</DefName>
 		<label>tanner table</label>
-		<Description>A worktable for crafting leather clothings from raw hides.</Description>
+		<Description>A worktable for crafting leather clothing from raw hides.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableTailor/Neolithic/TableTailorNeolithic</texPath>
 		</graphicData>

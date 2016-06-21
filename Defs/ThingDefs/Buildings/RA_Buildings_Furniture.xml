@@ -196,7 +196,7 @@
 	<ThingDef ParentName="Bed">
 		<defName>BedHay</defName>
 		<label>hay bed</label>
-		<Description>A makeshift bed, made of hay and small branches.</Description>
+		<Description>A makeshift bed, made of hay and small branches. Just a step above sleeping on the ground.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHay</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -252,7 +252,7 @@
 	<ThingDef ParentName="Bed">
 		<defName>BedHideDouble</defName>
 		<label>hide bed</label>
-		<Description>A makeshift bed, makes you feel like you're in the stone age.</Description>
+		<Description>A large makeshift bed, makes you feel like you're in the stone age. Fits two.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHideDouble/BedHideDouble</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -306,7 +306,7 @@
 	<ThingDef ParentName="Bed">
 		<defName>AnimalSleepingBox</defName>
 		<label>animal hay sleeping box</label>
-		<description>A small box for animals to sleep in. Fits smaller animals like chickens, cats, or small dogs.</description>
+		<description>A small box for animals to sleep in. Fits small animals like chickens, cats, or small dogs.</description>
 		<size>(1,1)</size>
 		<rotatable>false</rotatable>
 		<graphicData>

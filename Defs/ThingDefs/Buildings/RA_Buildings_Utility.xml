@@ -86,7 +86,7 @@
 		<defName>Dummy</defName>
 		<thingClass>RA.Dummy</thingClass>
 		<label>dummy</label>
-		<description>An abstract representation of a human figure, on which your pawns can practice their melee skills. Pawns will begin training routine if their life needs are fulfilled and they have nothing else to do.</description>
+		<description>An abstract representation of a human figure, on which your pawns can practice their melee skills. Pawns will begin training routine if their needs are fulfilled and they have nothing else to do.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Utility/TrainingStands/Dummy</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
