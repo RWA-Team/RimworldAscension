@@ -5,138 +5,167 @@
 	- scanThings (true)- make workgiver check for PotentialWorkThingsGlobal 
 	- scanCells - make workgiver check for PotentialWorkCellsGlobal
 	- singleBillGiverDef - determine the building which uses this workgiver (required)
-	-->
+	-->	
+
+	<WorkGiverDef Name="WorkGiver" Abstract="True">
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>	
 
 	<!--=================== Hauling =====================-->
 
-	<WorkGiverDef>
+	<WorkGiverDef ParentName="WorkGiver">
 		<defName>HaulToTrade</defName>
 		<giverClass>RA.WorkGiver_HaulToTrade</giverClass>
 		<workType>Hauling</workType>
 		<verb>haul</verb>
 		<gerund>hauling</gerund>
 		<priorityInType>500</priorityInType>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
 	</WorkGiverDef>
 
-	<WorkGiverDef>
+	<WorkGiverDef ParentName="WorkGiver">
 		<defName>Uninstall</defName>
 		<giverClass>WorkGiver_Uninstall</giverClass>
 		<!-- workType changed to hauling compare to vanilla -->
 		<workType>Hauling</workType>
-		<priorityInType>200</priorityInType>
 		<verb>uninstall</verb>
 		<gerund>uninstalling</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
+		<priorityInType>200</priorityInType>
 	</WorkGiverDef>
 
-	<WorkGiverDef>
+	<WorkGiverDef ParentName="WorkGiver">
 		<defName>CollectClay</defName>
 		<giverClass>RA.WorkGiver_CollectClay</giverClass>
 		<workType>Hauling</workType>
 		<scanThings>false</scanThings>
 		<scanCells>true</scanCells>
-		<priorityInType>100</priorityInType>
 		<verb>collect</verb>
 		<gerund>collecting</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
+		<priorityInType>100</priorityInType>
 	</WorkGiverDef>
 
-	<WorkGiverDef>
+	<WorkGiverDef ParentName="WorkGiver">
 		<defName>CollectSand</defName>
 		<giverClass>RA.WorkGiver_CollectSand</giverClass>
 		<workType>Hauling</workType>
 		<scanThings>false</scanThings>
 		<scanCells>true</scanCells>
-		<priorityInType>100</priorityInType>
 		<verb>collect</verb>
 		<gerund>collecting</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
+		<priorityInType>100</priorityInType>
 	</WorkGiverDef>
 
-	<!--=================== Crafting =====================-->
-	
-	<WorkGiverDef>
+	<!--=================== Reserach =====================-->
+
+	<WorkGiverDef ParentName="WorkGiver">
 		<defName>Research</defName>
 		<giverClass>RA.WorkGiver_DoBill_Research</giverClass>
 		<workType>Research</workType>
 		<verb>research</verb>
 		<gerund>researching at</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>	
+	</WorkGiverDef>
 
-	<WorkGiverDef>
+	<!--=================== Cooking =====================-->
+
+	<WorkGiverDef ParentName="WorkGiver">
+		<defName>Butcher</defName>
+		<label>butcher creatures</label>
+		<workType>Cooking</workType>
+		<verb>butcher</verb>
+		<gerund>butchering at</gerund>
+		<fixedBillGiverDefs>
+			<li>TableButcherNeolithic</li>
+		</fixedBillGiverDefs>
+		<priorityInType>200</priorityInType>
+	</WorkGiverDef>
+
+	<WorkGiverDef ParentName="WorkGiver">
+		<defName>TableBrewerNeolithic</defName>
+		<label>brew booze</label>
+		<workType>Cooking</workType>
+		<verb>brew</verb>
+		<gerund>brewing</gerund>
+		<fixedBillGiverDefs>
+			<li>Brewery</li>
+		</fixedBillGiverDefs>
+		<priorityInType>50</priorityInType>
+	</WorkGiverDef>
+
+	<!-- ============= Growing ============= -->
+
+	<WorkGiverDef ParentName="WorkGiver">
+		<defName>GrowerSow</defName>
+		<label>sow crops</label>
+		<giverClass>RA.RA_WorkGiver_GrowerSow</giverClass>
+		<workType>Growing</workType>
+		<priorityInType>50</priorityInType>
+		<verb>sow</verb>
+		<gerund>sowing</gerund>
+		<scanThings>false</scanThings>
+		<scanCells>true</scanCells>
+	</WorkGiverDef>
+
+	<!--=================== Crafting =====================-->
+
+	<WorkGiverDef ParentName="WorkGiver">
 		<defName>RefillBurner</defName>
 		<giverClass>RA.WorkGiver_RefillBurner</giverClass>
 		<workType>Crafting</workType>
-		<priorityInType>100</priorityInType>
 		<verb>refilling</verb>
 		<gerund>refilling</gerund>
 		<requiredCapacities>
 			<li>Manipulation</li>
 		</requiredCapacities>
-	</WorkGiverDef>
+		<priorityInType>100</priorityInType>
+	</WorkGiverDef>	
 
-	<WorkGiverDef>
-		<defName>DoBills_CraftingGeneral</defName>
-		<giverClass>RA.WorkGiver_DoBill</giverClass>
+	<WorkGiverDef ParentName="WorkGiver">
+		<defName>CraftingGeneral</defName>
 		<workType>Crafting</workType>
 		<priorityInType>10</priorityInType>
 		<verb>crafting</verb>
 		<gerund>crafting at</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
+		<fixedBillGiverDefs>
+			<li>TableMasonNeolithic</li>
+			<li>TableCraftsmanNeolithic</li>
+			<li>TableWeaponMeleeNeolithic</li>
+			<li>TableWeaponRangedNeolithic</li>
+			<li>TableTailorNeolithic</li>
+			<li>Kiln</li>
+		</fixedBillGiverDefs>
 	</WorkGiverDef>
 
 	<!--=================== Work with tools =====================-->
 
-	<WorkGiverDef>
-		<defName>PlantsCut</defName>
-		<giverClass>RA.WorkGiver_PlantsCut</giverClass>
-		<workType>PlantCutting</workType>	
-		<verb>cut</verb>
-		<gerund>cutting</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
+	<WorkGiverDef ParentName="WorkGiver">
+		<defName>ConstructDeliverResourcesToBlueprints</defName>
+		<giverClass>RA.WorkGiver_ConstructDeliverResourcesToBlueprints</giverClass>
+		<!-- workType changed to hauling compare to vanilla -->
+		<workType>Hauling</workType>
+		<verb>haul</verb>
+		<gerund>hauling</gerund>
+		<priorityInType>500</priorityInType>
 	</WorkGiverDef>
 
-	<WorkGiverDef>
+	<WorkGiverDef ParentName="WorkGiver">
+		<defName>ChopWood</defName>
+		<giverClass>RA.WorkGiver_ChopWood</giverClass>
+		<workType>PlantCutting</workType>	
+		<verb>chop</verb>
+		<gerund>chopping</gerund>
+	</WorkGiverDef>
+
+	<WorkGiverDef ParentName="WorkGiver">
 		<defName>Mine</defName>
 		<giverClass>RA.WorkGiver_Mine</giverClass>
 		<workType>Mining</workType>	
 		<verb>mine</verb>
 		<gerund>mining</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
 	</WorkGiverDef>
 
-	<WorkGiverDef>
-		<defName>ConstructDeliverResourcesToBlueprints</defName>
-		<giverClass>RA.WorkGiver_ConstructDeliverResourcesToBlueprints</giverClass>
-		<!-- workType changed to hauling compare to vanilla -->
-		<workType>Hauling</workType>
-		<priorityInType>500</priorityInType>
-		<verb>haul</verb>
-		<gerund>hauling</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
-	</WorkGiverDef>
-
-	<WorkGiverDef>
+	<WorkGiverDef ParentName="WorkGiver">
 		<defName>ConstructDeliverResourcesToFrames</defName>
 		<giverClass>WorkGiver_ConstructDeliverResourcesToFrames</giverClass>
 		<!-- workType changed to hauling compare to vanilla -->
@@ -144,32 +173,34 @@
 		<priorityInType>400</priorityInType>
 		<verb>haul</verb>
 		<gerund>hauling</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
 	</WorkGiverDef>
 
-	<WorkGiverDef>
+	<WorkGiverDef ParentName="WorkGiver">
 		<defName>Repair</defName>
 		<giverClass>RA.WorkGiver_Repair</giverClass>
 		<workType>Repair</workType>
 		<verb>repair</verb>
 		<gerund>repairing</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
 	</WorkGiverDef>
 
-	<WorkGiverDef>
+	<WorkGiverDef ParentName="WorkGiver">
 		<defName>ConstructFinishFrames</defName>
 		<giverClass>RA.WorkGiver_ConstructFinishFrames</giverClass>
 		<workType>Construction</workType>
-		<priorityInType>100</priorityInType>
 		<verb>construct</verb>
 		<gerund>constructing</gerund>
-		<requiredCapacities>
-			<li>Manipulation</li>
-		</requiredCapacities>
+		<priorityInType>100</priorityInType>
+	</WorkGiverDef>
+
+	<!-- ============= Hunting ============= -->
+
+	<WorkGiverDef ParentName="WorkGiver">
+		<defName>HunterHunt</defName>
+		<giverClass>RA.WorkGiver_Hunt</giverClass>
+		<label>hunt</label>
+		<workType>Hunting</workType>
+		<verb>hunt</verb>
+		<gerund>hunting</gerund>
 	</WorkGiverDef>
 
 </WorkGivers>

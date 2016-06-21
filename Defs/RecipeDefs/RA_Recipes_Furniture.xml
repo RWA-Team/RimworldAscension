@@ -65,54 +65,7 @@
 			</thingDefs>
 		</fixedIngredientFilter>
 	</RecipeDef>
-
-
-	<RecipeDef ParentName="MakeFurnitureNeolithic">
-		<defName>MakeBedHide</defName>
-		<label>make hide bed</label>
-		<description>Make hide bed.</description>
-		<jobString>Making hide bed.</jobString>
-		<products>
-			<BedHide>1</BedHide>
-		</products>
-		<defaultIngredientFilter>
-			<categories>
-				<li>Leathers</li>
-			</categories>
-			<thingDefs>
-				<li>Hay</li>
-			</thingDefs>
-		</defaultIngredientFilter>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>StoneCobbles</li>
-					</categories>
-					<thingDefs>
-						<li>WoodLog</li>
-					</thingDefs>
-				</filter>
-				<count>15</count>
-			</li>
-			<li>
-				<filter>
-					<categories>
-						<li>Leathers</li>
-					</categories>
-				</filter>
-				<count>10</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>Hay</li>
-					</thingDefs>
-				</filter>
-				<count>25</count>
-			</li>
-		</ingredients>
-	</RecipeDef>
+	
 
 	<RecipeDef ParentName="MakeFurnitureNeolithic">
 		<defName>MakeStoolNeolithic</defName>
@@ -135,71 +88,22 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="MakeFurnitureNeolithic">
-		<defName>MakeTableShort</defName>
-		<label>make short table</label>
-		<description>Make short table.</description>
-		<jobString>Making short table.</jobString>
+		<defName>MakeTableNeolithic</defName>
+		<label>make primitive table</label>
+		<description>Make primitive table.</description>
+		<jobString>Making primitive table.</jobString>
 		<products>
-			<TableShort>1</TableShort>
+			<TableNeolithic>1</TableNeolithic>
 		</products>
 		<workAmount>1</workAmount>
 		<ingredients>
 			<li>
 				<filter>
 					<categories>
-						<li>StoneCobbles</li>
+						<li>StoneChunks</li>
 					</categories>
-					<thingDefs>
-						<li>WoodLog</li>
-					</thingDefs>
 				</filter>
-				<count>50</count>
-			</li>
-		</ingredients>
-	</RecipeDef>
-
-	<RecipeDef ParentName="MakeFurnitureNeolithic">
-		<defName>MakeTableLong</defName>
-		<label>make long table</label>
-		<description>Make long table.</description>
-		<jobString>Making long table.</jobString>
-		<products>
-			<TableLong>1</TableLong>
-		</products>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>StoneCobbles</li>
-					</categories>
-					<thingDefs>
-						<li>WoodLog</li>
-					</thingDefs>
-				</filter>
-				<count>100</count>
-			</li>
-		</ingredients>
-	</RecipeDef>
-
-	<RecipeDef ParentName="MakeFurnitureNeolithic">
-		<defName>MakePlantPot</defName>
-		<label>make plant pot</label>
-		<description>Make plant pot.</description>
-		<jobString>Making plant pot.</jobString>
-		<products>
-			<PlantPot>1</PlantPot>
-		</products>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>StoneCobbles</li>
-					</categories>
-					<thingDefs>
-						<li>WoodLog</li>
-					</thingDefs>
-				</filter>
-				<count>10</count>
+				<count>1</count>
 			</li>
 		</ingredients>
 	</RecipeDef>

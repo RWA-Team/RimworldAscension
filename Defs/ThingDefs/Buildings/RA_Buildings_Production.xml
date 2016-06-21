@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
 	<!-- 
@@ -142,12 +142,11 @@
 		<label>kiln</label>
 		<description>An impovised kiln used to produce ceramics and building blocks out of raw mud.</description>
 		<graphicData>
-			<texPath>Things/Buildings/Production/Kiln</texPath>
-			<shaderType>Cutout</shaderType>
-			<color>(141,86,65)</color>
-			<drawSize>(3,3)</drawSize>
+			<texPath>Things/Buildings/Production/Kiln/Kiln</texPath>
+			<drawSize>(3.1,3.1)</drawSize>
 			<shadowData>
-				<volume>(0, 0, 0)</volume>
+				<volume></volume>
+				<offset></offset>
 			</shadowData>
 		</graphicData>
 		<Size>(3,3)</Size>
@@ -158,8 +157,12 @@
 			<WorkToMake>2000</WorkToMake>
 		</statBases>
 		<costList>
-			<ClumpClayGray>60</ClumpClayGray>
+			<ClayClumpGray>60</ClayClumpGray>
 		</costList>
+		<stuffCategories>
+			<li>StoneCobble</li>
+		</stuffCategories>
+		<costStuffCount>40</costStuffCount>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<comps>
 			<li Class="CompProperties_Glower">
@@ -195,7 +198,7 @@
 		<graphicData>
 			<drawSize>(3.4,1.2)</drawSize>
 			<shadowData>
-				<volume>(3.4, 0.5, 1.2)</volume>
+				<volume>(2.9, 0.5, 0.9)</volume>
 			</shadowData>
 		</graphicData>
 		<statBases>
@@ -241,7 +244,7 @@
 			<drawRotated>false</drawRotated>
 			<drawSize>(1.1,1.1)</drawSize>
 			<shadowData>
-				<volume>(1, 0.5, 1)</volume>
+				<volume>(0.5, 0.5, 0.5)</volume>
 			</shadowData>
 		</graphicData>
 		<Size>(1,1)</Size>
@@ -264,7 +267,7 @@
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableMason/Neolithic/TableMasonNeolithic</texPath>
 			<shadowData>
-				<volume>(1, 0.5, 1)</volume>
+				<volume>(0.5, 0.5, 0.5)</volume>
 			</shadowData>
 		</graphicData>
 		<statBases>
@@ -273,7 +276,7 @@
 		<recipes>
 			<li>MakeStoneCobbles</li>
 			<li>MakeStoolNeolithic</li>
-			<!-- <li>MakeTableNeolithic</li> -->
+			<li>MakeTableNeolithic</li>
 		</recipes>
 		<researchPrerequisites>
 			<li>Masonry</li>
@@ -292,12 +295,11 @@
 		</statBases>
 		<recipes>
 			<li>MakeBasket</li>
-			<li>MakeBedHide</li>
 			<li>MakeTotem</li>
 			<li>MakeFigurine</li>
-			<li>MakeRawPot</li>
-			<li>MakePlantPot</li>
-			<li>MakeRawCeramics</li>
+			<li>MakePotRaw</li>
+			<li>MakePotPlantRaw</li>
+			<li>MakeCeramicsRaw</li>
 			<li>MakeBroom</li>
 		</recipes>
 		<researchPrerequisites>
@@ -314,6 +316,7 @@
 		</graphicData>
 		<recipes>
 			<li>MakeShiv</li>
+			<li>MakeSwordNeolithic</li>
 			<li>MakeSpearNeolithic</li>
 			<li>MakeClub</li>
 			<li>MakeAxeNeolithic</li>
@@ -356,6 +359,7 @@
 		<recipes>
 			<li>MakeLoincloth</li>
 			<li>MakeTribalwear</li>
+			<li>MakeParka</li>
 			<li>MakeHatBaggy</li>
 			<li>MakeCape</li>
 			<li>MakeBackpack</li>

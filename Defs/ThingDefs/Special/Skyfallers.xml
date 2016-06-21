@@ -6,6 +6,7 @@
 
 
 	<ThingDef Name="SkyfallerFlying" Abstract="True">
+		<thingClass>RA.SkyfallerFlying</thingClass>
 		<category>Skyfaller</category>
 		<tickerType>Normal</tickerType>
 		<altitudeLayer>MetaOverlays</altitudeLayer>
@@ -20,18 +21,17 @@
 
 	<ThingDef ParentName="SkyfallerFlying">
 		<defName>DropPodFlying</defName>
-		<label>Flying drop pod</label>
+		<label>flying drop pod</label>
 		<thingClass>RA.DropPodFlying</thingClass>
 		<graphicData>
 			<texPath>Things/Special/DropPod</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
 	</ThingDef>
 
 	<ThingDef ParentName="SkyfallerFlying">
 		<defName>ShipWreckFlying</defName>
-		<label>Flying ship wreck</label>
+		<label>flying ship wreck</label>
 		<thingClass>RA.ShipWreckFlying</thingClass>
 		<graphicData>
 			<texPath>Things/Special/Skyfallers/ShipWreckFlying</texPath>
@@ -41,10 +41,20 @@
 
 	<ThingDef ParentName="SkyfallerFlying">
 		<defName>DebrisFlying</defName>
-		<label>Flying debris</label>
+		<label>flying debris</label>
 		<thingClass>RA.DebrisFlying</thingClass>
 		<graphicData>
-			<texPath>Things/Item/Chunk/ChunkSlag/MetalDebrisB</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<texPath>Things/Item/Chunk/ChunkSlag</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="SkyfallerFlying">
+		<defName>MeteoriteFlying</defName>
+		<label>flying meteorite</label>
+		<graphicData>
+			<texPath>Things/Special/Skyfallers/Meteorite</texPath>
+			<drawSize>(1.3,1.3)</drawSize>
 		</graphicData>
 	</ThingDef>
 

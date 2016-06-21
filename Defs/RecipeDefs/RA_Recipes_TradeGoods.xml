@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <RecipeDefs>
 
 	<!-- 
@@ -23,7 +23,7 @@
 	<RecipeDef ParentName="MakeCarvedGood">
 		<defName>MakeFigurine</defName>
 		<label>make figurine</label>
-		<description>Make small pawn figurines for sale.</description>
+		<description>Make small pawn figurines that can be sold for a profit.</description>
 		<jobString>Making figurines.</jobString>
 		<fixedIngredientFilter>
 			<exceptedCategories>

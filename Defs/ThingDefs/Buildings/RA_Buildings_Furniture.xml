@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
 	<!-- 
@@ -102,7 +102,7 @@
 	<ThingDef ParentName="Container">
 		<defName>Pot</defName>
 		<label>pot</label>
-		<Description>A big clay pot used to preserve food. Slightly decrease rotting process.</Description>
+		<Description>A big clay pot used to preserve food. Slightly slows rotting process.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -170,7 +170,29 @@
 		</placeWorkers>
 	</ThingDef>
 
-	<!-- is built directly -->
+
+	<ThingDef ParentName="Bed">
+		<defName>SleepingSpot</defName>
+		<label>sleeping spot</label>
+		<description>Designates a spot on the ground where people should sleep. Not comfortable.</description>
+		<graphicData>
+			<texPath>Things/Building/Furniture/Bed/SleepSpot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<statBases>
+			<WorkToMake>1000</WorkToMake>
+			<Comfort>0.4</Comfort>
+		</statBases>
+		<useHitPoints>False</useHitPoints>
+		<building>
+			<Bed_HealTickInterval>3000</Bed_HealTickInterval>
+			<sowTag>SupportPlantsOnly</sowTag>
+			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+		</building>
+	</ThingDef>
+
 	<ThingDef ParentName="Bed">
 		<defName>BedHay</defName>
 		<label>hay bed</label>
@@ -201,7 +223,7 @@
 	<ThingDef ParentName="Bed">
 		<defName>BedHide</defName>
 		<label>hide bed</label>
-		<Description>A makeshift bed, makes you feel like in stone age.</Description>
+		<Description>A makeshift bed, makes you feel like you're in the stone age.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHide/BedHide</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -215,33 +237,80 @@
 			<BedRestEffectiveness>0.9</BedRestEffectiveness>
 			<Comfort>0.5</Comfort>
 		</statBases>
-		<minifiedDef>BedHideMinified</minifiedDef>
 		<costList>
-			<BedHide>1</BedHide>
+			<WoodLog>10</WoodLog>
 		</costList>
 		<stuffCategories>
 			<li>Leathery</li>
 		</stuffCategories>
+		<costStuffCount>30</costStuffCount>
 		<researchPrerequisites>
-			<li>Blocked</li>
+			<li>StartPack</li>
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>BedHideMinified</defName>
+	<ThingDef ParentName="Bed">
+		<defName>BedHideDouble</defName>
 		<label>hide bed</label>
+		<Description>A makeshift bed, makes you feel like you're in the stone age.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHideDouble/BedHideDouble</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0,0.05,2,1.95)</rect>
+			</damageData>
+		</graphicData>
+		<Size>(2,2)</Size>
+		<PathCost>20</PathCost>
+		<fillPercent>0</fillPercent>
+		<statBases>
+			<Beauty>-1</Beauty>
+			<WorkToMake>100</WorkToMake>
+			<BedRestEffectiveness>0.9</BedRestEffectiveness>
+			<Comfort>0.5</Comfort>
+		</statBases>
+		<costList>
+			<WoodLog>20</WoodLog>
+		</costList>
 		<stuffCategories>
 			<li>Leathery</li>
 		</stuffCategories>
+		<costStuffCount>75</costStuffCount>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="Bed">
+		<defName>AnimalSleepingSpot</defName>
+		<label>animal sleeping spot</label>
+		<description>Designates a spot on the ground where animals should sleep.</description>
+		<size>(1,1)</size>
+		<useHitPoints>False</useHitPoints>
+		<graphicData>
+			<texPath>Things/Building/Misc/AnimalBed/AnimalSleepSpot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>2000</WorkToMake>
+		</statBases>
+		<building>
+			<bed_humanlike>false</bed_humanlike>
+			<Bed_HealTickInterval>3000</Bed_HealTickInterval>
+			<sowTag>SupportPlantsOnly</sowTag>
+			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+		</building>
 	</ThingDef>
 
 	<ThingDef ParentName="Bed">
 		<defName>AnimalSleepingBox</defName>
-		<label>animal sleeping box</label>
+		<label>animal hay sleeping box</label>
 		<description>A small box for animals to sleep in. Fits smaller animals like chickens, cats, or small dogs.</description>
+		<size>(1,1)</size>
 		<rotatable>false</rotatable>
 		<graphicData>
-			<texPath>Things/Building/Misc/AnimalBed/AnimalSleepBox</texPath>
+			<texPath>Things/Buildings/Furniture/Beds/Neolithic/AnimalBoxHay</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
@@ -252,16 +321,15 @@
 			<ImmunityGainSpeedFactor>1.05</ImmunityGainSpeedFactor>
 		</statBases>
 		<costList>
-			<WoodLog>5</WoodLog>
+			<WoodLog>8</WoodLog>
 			<Hay>15</Hay>
 		</costList>
 		<building>
 			<bed_humanlike>false</bed_humanlike>
 			<bed_maxBodySize>0.55</bed_maxBodySize>
 		</building>
-		<!-- enabled via research mods -->
 		<researchPrerequisites>
-			<li>Blocked</li>
+			<li>StartPack</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -289,15 +357,15 @@
 		</graphicData>
 		<rotatable>false</rotatable>
 		<minifiedDef>StoolNeolithicMinified</minifiedDef>
-		<costList>
-			<StoolNeolithic>1</StoolNeolithic>
-		</costList>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<WorkToMake>750</WorkToMake>
 			<Beauty>3</Beauty>
 			<Comfort>0.5</Comfort>
 		</statBases>
+		<costList>
+			<StoolNeolithic>1</StoolNeolithic>
+		</costList>
 		<stuffCategories>
 			<li>StoneChunk</li>
 		</stuffCategories>
@@ -313,37 +381,6 @@
 			<li>StoneChunk</li>
 		</stuffCategories>
 	</ThingDef>
-
-<!-- 	<ThingDef ParentName="Stool">
-		<defName>Stool</defName>
-		<label>stool</label>
-		<description>A simple platform on which to sit.</description>
-		<graphicData>
-			<texPath>Things/Building/Furniture/Stool</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-		</graphicData>
-		<statBases>
-			<MaxHitPoints>75</MaxHitPoints>
-			<WorkToMake>750</WorkToMake>
-			<Beauty>3</Beauty>
-			<Comfort>0.5</Comfort>
-		</statBases>
-		<minifiedDef>StoolMinified</minifiedDef>
-		<costList>
-			<Stool>1</Stool>
-		</costList>
-		<researchPrerequisites>
-			<li>Blocked</li>
-		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>StoolMinified</defName>
-		<label>stool</label>
-		<stuffCategories>
-			<li>WoodLog</li>
-		</stuffCategories>
-	</ThingDef> -->
 
 	<!--======================= Tables ==============================-->
 
@@ -361,13 +398,13 @@
 	</ThingDef>
 
 
-<!-- 	<ThingDef ParentName="Table">
-		<defName>TableShort</defName>
+	<ThingDef ParentName="Table">
+		<defName>TableNeolithic</defName>
 		<label>short table</label>
 		<graphicData>
-			<texPath>Things/Building/Furniture/TableShort</texPath>
+			<texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithic</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(4,4)</drawSize>
+			<drawSize>(1.2,1.2)</drawSize>
 			<damageData>
 				<rect>(0.05,0.27,1.9,1.73)</rect>
 				<cornerTL>Damage/Corner</cornerTL>
@@ -377,156 +414,26 @@
 			</damageData>
 		</graphicData>
 		<statBases>
-			<Beauty>8</Beauty>
+			<Beauty>3</Beauty>
 		</statBases>
-		<size>(2,2)</size>
-		<minifiedDef>TableShortMinified</minifiedDef>
-		<costList>
-			<TableShort>1</TableShort>
-		</costList>
 		<stuffCategories>
-			<li>WoodPlank</li>
+			<li>StoneChunk</li>
 		</stuffCategories>
+		<costList>
+			<TableNeolithic>1</TableNeolithic>
+		</costList>
+		<minifiedDef>TableNeolithicMinified</minifiedDef>
 		<rotatable>false</rotatable>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Masonry</li>
 		</researchPrerequisites>
 	</ThingDef>
 
 	<ThingDef ParentName="MinifiedFurniture">
-		<defName>TableShortMinified</defName>
+		<defName>TableNeolithicMinified</defName>
 		<label>short table</label>
 		<stuffCategories>
-			<li>WoodPlank</li>
-		</stuffCategories>
-	</ThingDef> -->
-
-	<ThingDef ParentName="Table">
-		<defName>TableLong</defName>
-		<label>long table</label>
-		<graphicData>
-			<texPath>Things/Building/Furniture/TableLong</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(4,6)</drawSize>
-			<damageData>
-				<rectN>(0,0.27,2,3.73)</rectN>
-				<rectS>(0,0.27,2,3.73)</rectS>
-				<rectE>(0.125,0.27,3.75,1.73)</rectE>
-				<rectW>(0.125,0.27,3.75,1.73)</rectW>
-				<cornerTL>Damage/Corner</cornerTL>
-				<cornerTR>Damage/Corner</cornerTR>
-				<cornerBL>Damage/Corner</cornerBL>
-				<cornerBR>Damage/Corner</cornerBR>
-			</damageData>
-		</graphicData>
-		<statBases>
-			<MaxHitPoints>150</MaxHitPoints>
-			<WorkToMake>3000</WorkToMake>
-			<Beauty>12</Beauty>
-		</statBases>
-		<size>(2,4)</size>
-		<minifiedDef>TableLongMinified</minifiedDef>
-		<costList>
-			<TableLong>1</TableLong>
-		</costList>
-		<stuffCategories>
-			<li>WoodPlank</li>
-		</stuffCategories>
-		<researchPrerequisites>
-			<li>StartPack</li>
-		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>TableLongMinified</defName>
-		<label>long table</label>
-		<stuffCategories>
-			<li>WoodPlank</li>
-		</stuffCategories>
-	</ThingDef>
-
-	<!--======================= Light Sources =======================-->
-
-	<ThingDef ParentName="Furniture">
-		<defName>Torch</defName>
-		<label>wood torch</label>
-		<description>A temporary light source which burns for a few days.</description>
-		<thingClass>Building</thingClass>
-		<category>Building</category>
-		<graphicData>
-			<texPath>Things/Buildings/Furniture/Lights/Torch</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<altitudeLayer>FloorEmplacement</altitudeLayer>
-		<pathCost>50</pathCost>
-		<constructEffect>ConstructDirt</constructEffect>
-		<tickerType>Normal</tickerType>
-		<drawerType>RealtimeOnly</drawerType>
-		<statBases>
-			<MaxHitPoints>20</MaxHitPoints>
-			<WorkToMake>250</WorkToMake>
-		</statBases>
-		<selectable>true</selectable>
-		<size>(1,1)</size>
-		<costList>
-			<WoodLog>10</WoodLog>
-		</costList>
-		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
-		<designationCategory>Furniture</designationCategory>
-		<rotatable>false</rotatable>
-		<researchPrerequisites>
-			<li>StartPack</li>
-		</researchPrerequisites>
-	</ThingDef>
-
-	<!--======================= Decorations =======================-->
-
-	<ThingDef ParentName="Furniture">
-		<defName>PlantPot</defName>
-		<thingClass>Building_PlantGrower</thingClass>
-		<label>plant pot</label>
-		<description>Plant decorative flowers here to improve the mood of people nearby.</description>
-		<graphicData>
-			<texPath>Things/Building/Furniture/PlantPot</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<damageData>
-				<rect>(0.2,0.2,0.6,0.6)</rect>
-			</damageData>
-		</graphicData>
-		<statBases>
-			<WorkToMake>495</WorkToMake>
-		</statBases>
-		<fillPercent>0.20</fillPercent>
-		<rotatable>false</rotatable>
-		<minifiedDef>PlantPotMinified</minifiedDef>
-		<fertility>1.0</fertility>
-		<building>
-			<defaultPlantToGrow>PlantDaylily</defaultPlantToGrow>
-			<plantsDestroyWithMe>true</plantsDestroyWithMe>
-			<sowTag>Decorative</sowTag>
-		</building>
-		<costList>
-			<PlantPot>1</PlantPot>
-		</costList>
-		<comps>
-			<li Class="CompProperties_Forbiddable"/>
-		</comps>
-		<inspectorTabs>
-			<li>ITab_Growing</li>
-		</inspectorTabs>
-		<stuffCategories>
-			<li>WoodLog</li>
-		</stuffCategories>
-		<researchPrerequisites>
-			<li>StartPack</li>
-		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>PlantPotMinified</defName>
-		<label>plant pot</label>
-		<stuffCategories>
-			<li>WoodLog</li>
+			<li>StoneChunk</li>
 		</stuffCategories>
 	</ThingDef>
 

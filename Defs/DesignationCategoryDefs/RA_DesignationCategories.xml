@@ -21,7 +21,7 @@
 			<li>Designator_Haul</li>
 			<li>Designator_PlantsCut</li>
 			<li>Designator_PlantsHarvest</li>
-			<li>Designator_PlantsHarvestWood</li>
+			<li>RA.Designator_ChopWood</li>
 			<li>RA.Designator_CollectClay</li>
 			<li>Designator_Hunt</li>
 			<li>Designator_Slaughter</li>
