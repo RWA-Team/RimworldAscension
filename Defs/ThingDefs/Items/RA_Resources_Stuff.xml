@@ -59,6 +59,22 @@
 		</stuffProps>
 	</ThingDef>
 
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>LeatherStrip</defName>
+		<label>leather strips</label>
+		<description>Leather strips.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/LeatherStrip</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stuffCategories>
+			<li>Leathers</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>ResourcesProcessed</li>
+		</thingCategories>
+	</ThingDef>
+
 	<!--===================== Wood =====================-->
 
 	<ThingDef Name="ResourceWood" ParentName="ResourceOrganic" Abstract="True">
@@ -177,7 +193,7 @@
 
 	<ThingDef Name="StoneChunks" ParentName="Stone" Abstract="True">
 		<graphicData>
-			<texPath>Things/Item/Chunk/ChunkStone</texPath>
+			<texPath>Things/Items/Resources/StoneChunk</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<statBases>

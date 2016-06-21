@@ -2,14 +2,21 @@
 <DesignationDefs>
 
 	<DesignationDef>
+		<defName>Mine</defName>
+		<texturePath>UI/Icons/Mine</texturePath>
+		<targetType>Cell</targetType>
+		<removeIfBuildingDespawned>true</removeIfBuildingDespawned>
+	</DesignationDef>
+
+	<DesignationDef>
 		<defName>CollectClay</defName>
-		<texturePath>Designations/Mine</texturePath>
+		<texturePath>UI/Icons/Collect</texturePath>
 		<targetType>Cell</targetType>
 	</DesignationDef>
 
 	<DesignationDef>
 		<defName>CollectSand</defName>
-		<texturePath>Designations/Mine</texturePath>
+		<texturePath>UI/Icons/Collect</texturePath>
 		<targetType>Cell</targetType>
 	</DesignationDef>
 
@@ -17,6 +24,12 @@
 		<defName>ChopWood</defName>
 		<texturePath>UI/Icons/ChopWood</texturePath>
 		<targetType>Thing</targetType>
+	</DesignationDef>
+
+	<DesignationDef>
+		<defName>CultivateLand</defName>
+		<texturePath>UI/Icons/Dig</texturePath>
+		<targetType>Cell</targetType>
 	</DesignationDef>
 
 </DesignationDefs>

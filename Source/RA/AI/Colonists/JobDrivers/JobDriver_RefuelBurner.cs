@@ -5,7 +5,7 @@ using Verse.AI;
 
 namespace RA
 {
-    public class JobDriver_RefillBurner : JobDriver
+    public class JobDriver_RefuelBurner : JobDriver
     {
         public const TargetIndex FuelIndex = TargetIndex.A;
         public const TargetIndex BurnerIndex = TargetIndex.B;
@@ -90,7 +90,7 @@ namespace RA
                     Log.Error(actor + " tried to place hauled thing in container but is not hauling anything.");
                     return;
                 }
-                var thingContainerOwner = curJob.GetTarget(burnerIndex).Thing as IThingContainerOwner;
+                var thingContainerOwner = curJob.GetTarget(burnerIndex).Thing.TryGetComp<CompFueled>() as IThingContainerOwner;
                 if (thingContainerOwner != null)
                 {
                     var num = actor.carrier.CarriedThing.stackCount;

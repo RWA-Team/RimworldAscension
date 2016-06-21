@@ -13,7 +13,7 @@ namespace RA
         {
             base.SpawnSetup();
 
-            foreach (var cell in GenRadial.RadialCellsAround(Position, impactRadius, true))
+            foreach (var cell in GenRadial.RadialCellsAround(Position, impactRadius - 1, true))
             {
                 // set open terrain underneath to gravel
                 var building = cell.GetThingList().Find(thing => thing.def.category == ThingCategory.Building);

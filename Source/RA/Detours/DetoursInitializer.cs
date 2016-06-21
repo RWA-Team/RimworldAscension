@@ -208,6 +208,15 @@ namespace RA
             var newAllDesignators_Getter = newAllDesignators.GetGetMethod();
             TryDetourFromTo(vanillaAllDesignators_Getter, newAllDesignators_Getter);
 
+            // allows to select which cells of the building could be used to hold ingridients
+            var vanillaIngredientStackCells = typeof(Building_WorkTable).GetProperty("IngredientStackCells",
+                BindingFlags.Instance | BindingFlags.Public);
+            var vanillaIngredientStackCells_Getter = vanillaIngredientStackCells.GetGetMethod();
+            var newIngredientStackCells = typeof(RA_Building_WorkTable).GetProperty("IngredientStackCells",
+                BindingFlags.Instance | BindingFlags.Public);
+            var newIngredientStackCells_Getter = newIngredientStackCells.GetGetMethod();
+            TryDetourFromTo(vanillaIngredientStackCells_Getter, newIngredientStackCells_Getter);
+
             // change the way to determine the research bench availability
             var vanillaColonistsHaveResearchBench = typeof (ListerBuildings).GetMethod("ColonistsHaveResearchBench",
                 BindingFlags.Instance | BindingFlags.Public);

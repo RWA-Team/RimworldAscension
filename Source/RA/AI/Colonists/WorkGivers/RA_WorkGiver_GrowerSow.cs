@@ -9,11 +9,13 @@ namespace RA
     {
         public override Job JobOnCell(Pawn pawn, IntVec3 cell)
         {
+            // first run check to improve performance
             if (!pawn.CanReserve(cell) || cell.IsForbidden(pawn)) return null;
 
+            // set plant to grow
             DetermineWantedPlantDef(cell);
 
-            // cut improper plants in cell
+            // cut improper plants in current cell
             var plant = Find.ThingGrid.ThingAt<Plant>(cell);
             if (plant != null)
             {
@@ -39,24 +41,46 @@ namespace RA
                 return null;
             }
             
-            Log.Message("20");
+            // haul aside objects that block growing
             var haulGarbageAsideJob = HaulGarbageAsideJob(cell, pawn);
             if (haulGarbageAsideJob != null)
             {
-                Log.Message("21");
                 return haulGarbageAsideJob;
             }
 
-            Log.Message("22");
+            // cultivate or fertilize soil if needed
+            var growingZone = Find.ZoneManager.ZoneAt(cell) as RA_Zone_Growing;
+            if (growingZone != null)
+            {
+                if (growingZone.needsFertilization && cell.GetTerrain().defName.Contains("Cultivated"))
+                {
+                    return pawn.CanReach(cell, PathEndMode.ClosestTouch, pawn.NormalMaxDanger())
+                        ? new Job(DefDatabase<JobDef>.GetNamedSilentFail("Fertilize"), cell)
+                        : null;
+                }
+                if (growingZone.needsCultivation && !cell.GetTerrain().defName.Contains("Cultivated") && !cell.GetTerrain().defName.Contains("Fertilized"))
+                {
+                    if (!Find.DesignationManager.AllDesignationsAt(cell).Any())
+                    {
+                        Find.DesignationManager.AddDesignation(new Designation(cell,
+                            DefDatabase<DesignationDef>.GetNamedSilentFail("CultivateLand")));
+                    }
+                    return null;
+                }
+            }
+
+
+            // last check for allowed planting
             if (wantedPlantDef.CanEverPlantAt(cell))
             {
-                Log.Message("23");
+                // plant
                 return new Job(JobDefOf.Sow, cell)
                 {
                     plantDefToSow = wantedPlantDef
                 };
             }
 
+            // default exit
             return null;
         }
 
@@ -68,6 +92,7 @@ namespace RA
                     .FirstOrDefault();
         }
 
+        // determines what cut designator to apply, based on the plant type
         public void DesignatePlantToCut(Thing thing)
         {
             if (thing.def.plant.IsTree)
@@ -76,7 +101,6 @@ namespace RA
             else if ((thing as Plant).HarvestableNow)
                 Find.DesignationManager.AddDesignation(new Designation(thing, DesignationDefOf.HarvestPlant));
             else Find.DesignationManager.AddDesignation(new Designation(thing, DesignationDefOf.CutPlant));
-            Log.Message("12");
         }
     }
 }

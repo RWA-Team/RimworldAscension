@@ -72,6 +72,56 @@
 	</ThingDef>
 
 	<ThingDef ParentName="ResourceOrganic">
+		<defName>Charcoal</defName>
+		<label>coal</label>
+		<description>Charcoal.</description>
+		<graphicData>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<texPath>Things/Items/Resources/Charcoal</texPath>
+			<shaderType>Cutout</shaderType>
+		</graphicData>
+		<statBases>
+			<MaxBurningTempCelsius>1000</MaxBurningTempCelsius>
+			<BurnDurationHours>8</BurnDurationHours>
+		</statBases>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Mulch</defName>
+		<label>mulch</label>
+		<description>Mulch.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/Mulch</texPath>
+			<shaderType>Cutout</shaderType>
+		</graphicData>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Ash</defName>
+		<label>ash</label>
+		<description>Ash.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/Ash</texPath>
+			<shaderType>Cutout</shaderType>
+		</graphicData>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceOrganic">
 		<defName>Tallow</defName>
 		<label>tallow</label>
 		<description>Tallow.</description>

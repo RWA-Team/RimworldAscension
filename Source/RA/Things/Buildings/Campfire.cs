@@ -5,7 +5,7 @@ using Verse.AI;
 
 namespace RA
 {
-    class Campfire : WorkTableFueled
+    class Campfire : RA_Building_WorkTable
     {
         public bool singalling = false;
 
@@ -22,10 +22,10 @@ namespace RA
             });
         }
 
-        public override void ThrowSmoke(Vector3 loc, float size)
-        {
-            RA_Motes.ThrowSmokeBlack_Signal(loc, size);
-        }
+        //public override void ThrowSmoke(Vector3 loc, float size)
+        //{
+        //    RA_Motes.ThrowSmokeBlack_Signal(loc, size);
+        //}
 
         //public void CallForMilitaryAid()
         //{

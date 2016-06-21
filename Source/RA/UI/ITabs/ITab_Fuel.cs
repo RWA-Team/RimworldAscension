@@ -9,7 +9,7 @@ namespace RA
 {
     public class ITab_Fuel : ITab
     {
-        public WorkTableFueled burner;
+        public CompFueled burner;
 
         public ITab_Fuel()
         {
@@ -20,7 +20,7 @@ namespace RA
 
         protected override void FillTab()
         {
-            burner = SelThing as WorkTableFueled;
+            burner = SelThing.TryGetComp<CompFueled>();
 
             const float MarginSize = 5f;
             const float TextHeight = 25f;
@@ -58,7 +58,7 @@ namespace RA
                             new FloatMenuOption("Fuel Info",
                                 () => { Find.WindowStack.Add(new Dialog_InfoCard(burner.fuelContainer[0])); }),
                             new FloatMenuOption("Fuel Drop".Translate(),
-                                () => { burner.fuelContainer.TryDropAll(burner.InteractionCell, ThingPlaceMode.Near); })
+                                () => { burner.fuelContainer.TryDropAll(burner.parent.Position, ThingPlaceMode.Near); })
                         };
 
                         Find.WindowStack.Add(new FloatMenu(options, string.Empty));
@@ -112,11 +112,11 @@ namespace RA
                 {
                     Text.Anchor = TextAnchor.MiddleCenter;
 
-                    // refill percent slider
+                    // refuel percent slider
                     var sliderLabelRect = new Rect(0f, 0f, burnerRect.width, TextHeight);
-                    Widgets.Label(sliderLabelRect, "Refill at " + burner.fuelStackRefillPercent.ToStringPercent());
+                    Widgets.Label(sliderLabelRect, "Refuel at " + burner.fuelStackRefuelPercent.ToStringPercent());
                     var sliderRect = new Rect(0f, sliderLabelRect.height - 2.5f, burnerRect.width, TextHeight / 2);
-                    burner.fuelStackRefillPercent = GUI.HorizontalSlider(sliderRect, burner.fuelStackRefillPercent, 0f, 1f);
+                    burner.fuelStackRefuelPercent = GUI.HorizontalSlider(sliderRect, burner.fuelStackRefuelPercent, 0f, 1f);
 
                     // burner fillable bar
                     var burnerLabelRect = new Rect(0f, sliderRect.yMax, burnerRect.width, TextHeight);

@@ -16,7 +16,7 @@
 	 -->
 
 	<ThingDef Name="WorkTable" ParentName="Building" Abstract="True">
-		<thingClass>Building_WorkTable</thingClass>
+		<thingClass>RA.RA_Building_WorkTable</thingClass>
 		<graphicData>
 			<shaderType>CutoutComplex</shaderType>
 			<graphicClass>Graphic_Multi</graphicClass>

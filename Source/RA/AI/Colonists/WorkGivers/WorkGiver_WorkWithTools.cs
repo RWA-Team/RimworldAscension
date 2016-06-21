@@ -88,6 +88,12 @@ namespace RA
             {
                 return true;
             }
+            if (pawn.equipment.Primary.TryGetComp<CompTool>().Allows("Digging") &&
+                pawn.workSettings.WorkIsActive(WorkTypeDefOf.Growing) &&
+                WorkGiver_CultivateLand.AvailableTargets(pawn).Any())
+            {
+                return true;
+            }
             return false;
         }
 
