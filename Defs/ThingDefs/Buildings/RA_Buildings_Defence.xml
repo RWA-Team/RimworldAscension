@@ -48,7 +48,7 @@
 			<TrapMeleeDamage>50</TrapMeleeDamage>
 			<TrapSpringChance>0.8</TrapSpringChance>
 		</statBases>
-		<description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
+		<description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on the victim's head or torso.</description>
 		<minifiedDef>TrapDeadfallMinified</minifiedDef>
 		<costList>
 			<TrapDeadfall>1</TrapDeadfall>

@@ -57,7 +57,7 @@ namespace RA
                 actor.GainComfortFromCellIfPossible();
 
                 // burner support injection
-                var burner = curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
+                var burner = curJob.GetTarget(TargetIndex.A).Thing.TryGetComp<CompFueled>();
                 if (burner != null && burner.internalTemp < burner.compFueled.Properties.operatingTemp)
                 {
                     return;
@@ -164,12 +164,6 @@ namespace RA
                     ? 1f - ((JobDriver_DoBill) actor.jobs.curDriver).workLeft/
                       curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff)
                     : Find.ResearchManager.PercentComplete(startedResearch);
-            });
-            toil.FailOn(() =>
-            {
-                var burner = toil.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
-                // burner fails if no more heat generation and temperature is not enough
-                return toil.actor.CurJob.bill.suspended || burner?.currentFuelBurnDuration == 0 && !burner.UsableNow;
             });
             return toil;
         }

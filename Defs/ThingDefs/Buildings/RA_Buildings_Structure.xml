@@ -94,10 +94,6 @@
 		<thingClass>Building</thingClass>
 		<graphicData>
 			<linkType>CornerFiller</linkType>
-			<linkFlags>
-				<li>Wall</li>
-				<li>Rock</li>
-			</linkFlags>
 			<graphicClass>Graphic_Single</graphicClass>
 			<damageData>
 				<cornerTL>Damage/Corner</cornerTL>
@@ -132,6 +128,10 @@
 		<label>log wall</label>
 		<description>A log wall. Capable of holding up a roof.</description>
 		<graphicData>
+			<linkFlags>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
 			<texPath>Things/Buildings/Structure/Walls/WallLog/WallLog_Atlas</texPath>
 		</graphicData>
 		<uiIconPath>Things/Buildings/Structure/Walls/WallLog/WallLog_MenuIcon</uiIconPath>
@@ -148,6 +148,9 @@
 		<label>palisade</label>
 		<description>A palisade wall. Cheaper and easier to build than thick log wall, can't hold roof and more fragile.</description>
 		<graphicData>
+			<linkFlags>
+				<li>Custom1</li>
+			</linkFlags>
 			<linkType>Basic</linkType>
 			<texPath>Things/Buildings/Structure/Walls/Palisade/Palisade_Atlas</texPath>
 		</graphicData>
@@ -172,6 +175,10 @@
 		<label>wall</label>
 		<description>A wall.</description>
 		<graphicData>
+			<linkFlags>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
 			<texPath>Things/Building/Linked/Wall/Wall_Atlas_Bricks</texPath>
 			<color>(124,82,26)</color>
 		</graphicData>
@@ -197,7 +204,7 @@
 		<graphicData>
 			<linkType>Basic</linkType>
 			<linkFlags>
-				<li>Custom1</li>
+				<li>Custom2</li>
 			</linkFlags>
 			<graphicClass>Graphic_Single</graphicClass>
 			<damageData>

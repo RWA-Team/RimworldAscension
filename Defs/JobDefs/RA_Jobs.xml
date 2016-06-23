@@ -14,8 +14,8 @@
 	</JobDef>
 
 	<JobDef>
-		<defName>RefillBurner</defName>
-		<driverClass>RA.JobDriver_RefillBurner</driverClass>
+		<defName>RefuelBurner</defName>
+		<driverClass>RA.JobDriver_RefuelBurner</driverClass>
 	</JobDef>
 
 	<JobDef>
@@ -62,9 +62,15 @@
 		<reportString>Collecting sand.</reportString>
 	</JobDef>
 
+	<JobDef>
+		<defName>FertilizeLand</defName>
+		<driverClass>RA.JobDriver_FertilizeLand</driverClass>
+		<reportString>Fertilizing TargetA.</reportString>
+		<alwaysShowWeapon>true</alwaysShowWeapon>
+	</JobDef>
 
 	<!--=================== Work with tools =====================-->
-
+	<!-- redefined, to set alwaysShowWeapon as true -->
 
 	<JobDef>
 		<defName>Mine</defName>
@@ -94,15 +100,19 @@
 		<alwaysShowWeapon>true</alwaysShowWeapon>
 	</JobDef>
 
+	<JobDef>
+		<defName>CultivateLand</defName>
+		<driverClass>RA.JobDriver_CultivateLand</driverClass>
+		<reportString>Cultivating TargetA.</reportString>
+		<alwaysShowWeapon>true</alwaysShowWeapon>
+	</JobDef>
 
 	<!--=================== AI jobs =====================-->
-
 
 	<JobDef>
 		<defName>SearchAndStealTargets</defName>
 		<driverClass>RA.JobDriver_SearchAndStealTargets</driverClass>
 		<reportString>Trying to steal something.</reportString>
 	</JobDef>
-
 
 </Defs>

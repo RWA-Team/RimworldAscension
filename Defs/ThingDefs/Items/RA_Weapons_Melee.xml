@@ -251,6 +251,7 @@
 				<workTypes>
 					<li>Woodchopping</li>
 					<li>Construction</li>
+					<li>Digging</li>
 				</workTypes>
 			</li>
 		</comps>

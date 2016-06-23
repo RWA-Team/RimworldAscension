@@ -59,6 +59,22 @@
 		</stuffProps>
 	</ThingDef>
 
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>LeatherStrip</defName>
+		<label>leather strips</label>
+		<description>Leather strips.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/LeatherStrip</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stuffCategories>
+			<li>Leathers</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>ResourcesProcessed</li>
+		</thingCategories>
+	</ThingDef>
+
 	<!--===================== Wood =====================-->
 
 	<ThingDef Name="ResourceWood" ParentName="ResourceOrganic" Abstract="True">
@@ -177,7 +193,7 @@
 
 	<ThingDef Name="StoneChunks" ParentName="Stone" Abstract="True">
 		<graphicData>
-			<texPath>Things/Item/Chunk/ChunkStone</texPath>
+			<texPath>Things/Items/Resources/StoneChunk</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<statBases>
@@ -302,10 +318,10 @@
 		<defName>ChunkObsidian</defName>
 		<label>obsidian chunk</label>
 		<graphicData>
-			<color>(32,57,61)</color>
+			<color>(32,20,61)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(32,57,61)</color>
+			<color>(32,20,61)</color>
 			<stuffAdjective>obsidian</stuffAdjective>
 		</stuffProps>
 		<butcherProducts>
@@ -399,10 +415,10 @@
 		<defName>CobbleObsidian</defName>
 		<label>obsidian cobbles</label>
 		<graphicData>
-			<color>(32,57,61)</color>
+			<color>(32,20,61)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(32,57,61)</color>
+			<color>(32,20,61)</color>
 			<stuffAdjective>obsidian</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
@@ -494,10 +510,10 @@
 		<defName>BlockObsidian</defName>
 		<label>obsidian blocks</label>
 		<graphicData>
-			<color>(32,57,61)</color>
+			<color>(32,20,61)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(32,57,61)</color>
+			<color>(32,20,61)</color>
 			<stuffAdjective>obsidian</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
@@ -510,7 +526,7 @@
 		<description>A simple red brick. Can be used for contruction</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/Block</texPath>
-			<color>(127,51,0)</color>
+			<color>(200,80,60)</color>
 		</graphicData>
 		<soundInteract>Stone_Drop</soundInteract>
 		<soundDrop>Stone_Drop</soundDrop>
@@ -524,7 +540,7 @@
 			<categories>
 				<li>Brick</li>
 			</categories>
-			<color>(127,51,0)</color>
+			<color>(200,80,60)</color>
 			<stuffAdjective>brick</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
@@ -534,10 +550,10 @@
 		<label>adobe brick</label>
 		<description>A fired adobe brick. Can be used for contruction</description>
 		<graphicData>
-			<color>(124,82,26)</color>
+			<color>(255,230,200)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(124,82,26)</color>
+			<color>(255,230,200)</color>
 			<stuffAdjective>adobe</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
@@ -580,10 +596,10 @@
 		<defName>MetalBarCopper</defName>
 		<label>copper bars</label>
 		<graphicData>
-			<color>(237,118,60)</color>
+			<color>(142,75,50)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(237,118,60)</color>
+			<color>(142,75,50)</color>
 			<stuffAdjective>copper</stuffAdjective>
 		</stuffProps>
 	</ThingDef>

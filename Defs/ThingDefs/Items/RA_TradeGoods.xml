@@ -37,12 +37,53 @@
 		</comps>
 	</ThingDef>
 
-	<!--===================== Neolithic =====================-->
-
 	<ThingDef ParentName="TradeGood">
 		<defName>Figurine</defName>
 		<label>figurine</label>
 		<description>A handcrafted figurine or idol resembling some sort of creature. It looks valuable.</description>
+		<graphicData>
+			<texPath>Things/Items/Tradeables/Figurines</texPath>
+		</graphicData>
+		<soundInteract>Standard_Drop</soundInteract>
+		<statBases>
+			<WorkToMake>100</WorkToMake>
+			<MarketValue>100</MarketValue>
+			<MaxHitPoints>100</MaxHitPoints>
+		</statBases>
+		<stuffCategories>
+			<li>Wood</li>
+			<li>StoneCobble</li>
+			<li>Bone</li>
+		</stuffCategories>
+		<comps>
+			<li Class="CompProperties_Art">
+				<nameMaker>NamerFigurine</nameMaker>
+				<descriptionMaker>ArtFigurine</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="TradeGood">
+		<defName>Ceramics</defName>
+		<label>ceramics</label>
+		<description>Various amphoras and vials made of clay.</description>
+		<graphicData>
+			<texPath>Things/Items/Tradeables/Ceramics</texPath>
+			<color>(198,255,255)</color>
+		</graphicData>
+		<soundInteract>Standard_Drop</soundInteract>
+		<statBases>
+			<WorkToMake>100</WorkToMake>
+			<MarketValue>100</MarketValue>
+			<MaxHitPoints>100</MaxHitPoints>
+		</statBases>
+	</ThingDef>
+
+	<ThingDef ParentName="TradeGood">
+		<defName>Jewelry</defName>
+		<label>jewelry</label>
+		<description>jewelry.</description>
 		<graphicData>
 			<texPath>Things/Items/Tradeables/Figurines</texPath>
 		</graphicData>

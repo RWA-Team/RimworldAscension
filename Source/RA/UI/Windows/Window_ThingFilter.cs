@@ -5,11 +5,11 @@ namespace RA
 {
     public class Window_ThingFilter : Window
     {
-        WorkTableFueled burner;
+        CompFueled burner;
 
         public Vector2 scrollPosition = default(Vector2);
 
-        public Window_ThingFilter(WorkTableFueled burner, float offsetY)
+        public Window_ThingFilter(CompFueled burner, float offsetY)
         {
             closeOnEscapeKey = true;
             closeOnClickedOutside = true;
