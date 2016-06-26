@@ -229,8 +229,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-*.csproj
-*.sln
-Source/Properties/AssemblyInfo.cs
-Source/Properties/Settings.Designer.cs
-Source/Properties/Settings.settings
