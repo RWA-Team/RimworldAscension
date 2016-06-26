@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7461CE07-358E-4A42-B009-B97A52A44D50}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RimworldAscension</RootNamespace>
+    <AssemblyName>RimworldAscension</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>D:\000_GAMES PUT HERE\Rimworld Stuff\Rimworld Mod testing\RimWorld1135Win_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>D:\000_GAMES PUT HERE\Rimworld Stuff\Rimworld Mod testing\RimWorld1135Win_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>D:\000_GAMES PUT HERE\Rimworld Stuff\Rimworld Mod testing\RimWorld1135Win_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityScript.Lang">
+      <HintPath>D:\000_GAMES PUT HERE\Rimworld Stuff\Rimworld Mod testing\RimWorld1135Win_Data\Managed\UnityScript.Lang.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AI\Colonists\JobDrivers\JobDriver_CollectClay.cs" />
+    <Compile Include="AI\Colonists\JobDrivers\JobDriver_CollectSand.cs" />
+    <Compile Include="AI\Colonists\JobDrivers\JobDriver_CombatTraining.cs" />
+    <Compile Include="AI\Colonists\JobDrivers\JobDriver_CultivateLand.cs" />
+    <Compile Include="AI\Colonists\JobDrivers\JobDriver_FertilizeLand.cs" />
+    <Compile Include="AI\Colonists\JobDrivers\JobDriver_HaulToTrade.cs" />
+    <Compile Include="AI\Colonists\JobDrivers\JobDriver_MakeSignalSmoke.cs" />
+    <Compile Include="AI\Colonists\JobDrivers\JobDriver_PutInSlot.cs" />
+    <Compile Include="AI\Colonists\JobDrivers\JobDriver_RefuelBurner.cs" />
+    <Compile Include="AI\Colonists\JobDrivers\JobDriver_SearchAndStealTargets.cs" />
+    <Compile Include="AI\Colonists\Toils\RA_Toils.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\RA_WorkGiver_GrowerSow.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_ChopWood.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_Collect.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_CollectClay.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_CollectSand.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_ConstructDeliverResourcesToBlueprints.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_ConstructFinishFrames.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_CultivateLand.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_DoBill.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_DoBill_Research.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_HaulToTrade.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_Hunt.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_Mine.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_RefuelBurner.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_Repair.cs" />
+    <Compile Include="AI\Colonists\WorkGivers\WorkGiver_WorkWithTools.cs" />
+    <Compile Include="AI\NPC\JobGivers\JobGiver_GoTo.cs" />
+    <Compile Include="AI\NPC\JobGivers\JobGiver_Station.cs" />
+    <Compile Include="AI\NPC\Lords\LordJobs\RA_LordJob_TradeWithColony.cs" />
+    <Compile Include="AI\NPC\Lords\LordToilData\LordToilData_CaravanDefence.cs" />
+    <Compile Include="AI\NPC\Lords\LordToilData\LordToilData_Trade.cs" />
+    <Compile Include="AI\NPC\Lords\LordToils\LordToil_CaravanStation.cs" />
+    <Compile Include="AI\NPC\Lords\LordToils\LordToil_CaravanTravel.cs" />
+    <Compile Include="AI\NPC\Lords\LordToils\LordToil_DefendCaravan.cs" />
+    <Compile Include="AI\NPC\Lords\LordToils\LordToil_LoadGoods.cs" />
+    <Compile Include="AI\NPC\Lords\LordToils\LordToil_Trade.cs" />
+    <Compile Include="AI\NPC\Lords\LordToils\LordToil_UnloadGoods.cs" />
+    <Compile Include="AI\NPC\Lords\Triggers\Trigger_CanTrade.cs" />
+    <Compile Include="Components\MapComponents\MapCompCameraShaker.cs" />
+    <Compile Include="Components\MapComponents\MapCompDataStorage.cs" />
+    <Compile Include="Components\ThingComponents\CompBlueprint.cs" />
+    <Compile Include="Components\ThingComponents\CompCaravan.cs" />
+    <Compile Include="Components\ThingComponents\CompContainer.cs" />
+    <Compile Include="Components\ThingComponents\CompDryable.cs" />
+    <Compile Include="Components\ThingComponents\CompEquipmentGizmoProvider.cs" />
+    <Compile Include="Components\ThingComponents\CompEquipmentGizmoUser.cs" />
+    <Compile Include="Components\ThingComponents\CompFade.cs" />
+    <Compile Include="Components\ThingComponents\CompFadingShadowThrower.cs" />
+    <Compile Include="Components\ThingComponents\CompFueled.cs" />
+    <Compile Include="Components\ThingComponents\CompLoot.cs" />
+    <Compile Include="Components\ThingComponents\CompRebuildable.cs" />
+    <Compile Include="Components\ThingComponents\CompResearcher.cs" />
+    <Compile Include="Components\ThingComponents\CompSlots.cs" />
+    <Compile Include="Components\ThingComponents\CompTool.cs" />
+    <Compile Include="Components\ThingComponents\CompUpgradeable.cs" />
+    <Compile Include="Components\ThingComponents\CompWorktableExtended.cs" />
+    <Compile Include="Detours\AI\RA_Lord.cs" />
+    <Compile Include="Detours\Combat\RA_DamageWorker_AddInjury.cs" />
+    <Compile Include="Detours\Containers\RA_CompRottable.cs" />
+    <Compile Include="Detours\Containers\RA_GenPlace.cs" />
+    <Compile Include="Detours\Containers\RA_HaulAIUtility.cs" />
+    <Compile Include="Detours\Containers\RA_StoreUtility.cs" />
+    <Compile Include="Detours\Designators\RA_Designator_Mine.cs" />
+    <Compile Include="Detours\Designators\RA_Designator_Place.cs" />
+    <Compile Include="Detours\Designators\RA_Designator_Plants.cs" />
+    <Compile Include="Detours\Designators\RA_Designator_PlantsHarvest.cs" />
+    <Compile Include="Detours\DetoursInitializer.cs" />
+    <Compile Include="Detours\Jobs\RA_JobDriver_DoBill.cs" />
+    <Compile Include="Detours\Jobs\RA_Toils_Recipe.cs" />
+    <Compile Include="Detours\MainMenu\RA_MainMenuDrawer.cs" />
+    <Compile Include="Detours\MainMenu\RA_UI_BackgroundMain.cs" />
+    <Compile Include="Detours\Trade\RA_Pawn.cs" />
+    <Compile Include="Detours\Trade\RA_PawnComponentsUtility.cs" />
+    <Compile Include="Detours\Trade\RA_Tradeable.cs" />
+    <Compile Include="Detours\Trade\RA_Tradeable_Pawn.cs" />
+    <Compile Include="Detours\Trade\RA_TradeSession.cs" />
+    <Compile Include="Detours\UI\RA_GenDraw.cs" />
+    <Compile Include="Detours\UI\RA_Stance_Warmup.cs" />
+    <Compile Include="Detours\UI\RA_WidgetsSubtle.cs" />
+    <Compile Include="Detours\Various\RA_Bill_Production.cs" />
+    <Compile Include="Detours\Various\RA_CompEquippable.cs" />
+    <Compile Include="Detours\Various\RA_Explosion.cs" />
+    <Compile Include="Detours\Various\RA_GameEnder.cs" />
+    <Compile Include="Detours\Various\RA_GenDrop.cs" />
+    <Compile Include="Detours\Various\RA_GenStuff.cs" />
+    <Compile Include="Detours\Various\RA_IncidentMakerUtility.cs" />
+    <Compile Include="Detours\Various\RA_IncidentWorker_VisitorGroup.cs" />
+    <Compile Include="Detours\Various\RA_ListerBuildings.cs" />
+    <Compile Include="Detours\Various\RA_MapInitData.cs" />
+    <Compile Include="Detours\Various\RA_MapIniter_NewGame.cs" />
+    <Compile Include="Detours\Various\RA_PlantProperties.cs" />
+    <Compile Include="Detours\Various\RA_ReverseDesignatorDatabase.cs" />
+    <Compile Include="Detours\Various\RA_SubEffecter_ProgressBar.cs" />
+    <Compile Include="Detours\Various\RA_ThingSelectionUtility.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Genstep_Colonists.cs" />
+    <Compile Include="Incidents\RA_IncidentWorker_RaidEnemy.cs" />
+    <Compile Include="Incidents\RA_IncidentWorker_TraderCaravanArrival.cs" />
+    <Compile Include="Modularity\Detection.cs" />
+    <Compile Include="Modularity\Implementation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResearchMods.cs" />
+    <Compile Include="Things\Buildings\Campfire.cs" />
+    <Compile Include="Things\Buildings\Container.cs" />
+    <Compile Include="Things\Buildings\Dummy.cs" />
+    <Compile Include="Things\Buildings\RA_Building_WorkTable.cs" />
+    <Compile Include="Things\Buildings\Target.cs" />
+    <Compile Include="Things\Buildings\TradeCenter.cs" />
+    <Compile Include="Things\Buildings\WorkTableFueled.cs" />
+    <Compile Include="Things\Crater.cs" />
+    <Compile Include="Things\Items\Blueprint.cs" />
+    <Compile Include="Things\Items\Drug.cs" />
+    <Compile Include="Things\Items\Shield.cs" />
+    <Compile Include="Things\Motes\RA_Motes.cs" />
+    <Compile Include="Things\Projectiles\TomahawkThrown.cs" />
+    <Compile Include="Things\Skyfallers\DebrisFlying.cs" />
+    <Compile Include="Things\Skyfallers\DropPodFlying.cs" />
+    <Compile Include="Things\Skyfallers\DropPodLanded.cs" />
+    <Compile Include="Things\Skyfallers\ShipWreckFlying.cs" />
+    <Compile Include="Things\Skyfallers\ShipWreckLanded.cs" />
+    <Compile Include="Things\Skyfallers\SkyfallerFlying.cs" />
+    <Compile Include="UI\Alerts\Alert_DoResearch.cs" />
+    <Compile Include="UI\Assets.cs" />
+    <Compile Include="UI\Designators\Designator_ChopWood.cs" />
+    <Compile Include="UI\Designators\Designator_Collect.cs" />
+    <Compile Include="UI\Designators\Designator_CollectClay.cs" />
+    <Compile Include="UI\Designators\Designator_CollectSand.cs" />
+    <Compile Include="UI\Designators\Designator_PutInSlot.cs" />
+    <Compile Include="UI\Designators\RA_Designator_Build.cs" />
+    <Compile Include="UI\Designators\RA_Designator_ZoneAdd_Growing.cs" />
+    <Compile Include="UI\Graphics\Graphic_StuffBased.cs" />
+    <Compile Include="UI\ITabs\ITab_AllowedColonists.cs" />
+    <Compile Include="UI\ITabs\ITab_Container.cs" />
+    <Compile Include="UI\ITabs\ITab_Exchange.cs" />
+    <Compile Include="UI\ITabs\ITab_Fuel.cs" />
+    <Compile Include="UI\MainTabs\RA_MainTabWindow_Architect.cs" />
+    <Compile Include="UI\MainTabs\RA_MainTabWindow_Research.cs" />
+    <Compile Include="UI\Misc\RA_ArchitectCategoryTab.cs" />
+    <Compile Include="UI\Misc\SpecialThingFilterWorker_Tools.cs" />
+    <Compile Include="UI\Misc\TabDrawer.cs" />
+    <Compile Include="UI\Windows\Window_ThingFilter.cs" />
+    <Compile Include="UI\Zones\RA_Zone_Growing.cs" />
+    <Compile Include="Utility\ArmorUtil.cs" />
+    <Compile Include="Utility\FindUtil.cs" />
+    <Compile Include="Utility\SkyfallerUtil.cs" />
+    <Compile Include="Utility\TradeUtil.cs" />
+    <Compile Include="Utility\UIUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
