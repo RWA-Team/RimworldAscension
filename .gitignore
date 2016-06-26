@@ -6,6 +6,9 @@
 *.user
 *.userosscache
 *.sln.docstates
+Source/.vs
+Source/RA/[Oo]bj
+Source/RA/[Bb]in
 
 # Build results
 [Dd]ebug/
