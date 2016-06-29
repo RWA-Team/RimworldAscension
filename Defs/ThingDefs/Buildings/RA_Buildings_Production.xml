@@ -44,18 +44,10 @@
 		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
 		<DesignationCategory>Production</DesignationCategory>
 		<comps>
-			<li Class="CompProperties_AffectedByFacilities">
-				<linkableFacilities>
-					<li>ToolCabinet</li>
-				</linkableFacilities>
-			</li>
 			<li>
 				<compClass>RA.CompFadingShadowThrower</compClass>
 			</li>
 		</comps>
-		<placeWorkers>
-			<li>PlaceWorker_ShowFacilitiesConnections</li>
-		</placeWorkers>
 		<inspectorTabs>
 			<li>ITab_Bills</li>
 		</inspectorTabs>
@@ -130,11 +122,11 @@
 			</li>
 		</comps>
 		<recipes>
-			<li>CookMealSimple</li>
+			<li>MakeMeatRoasted</li>
+			<li>MakeMeatHumanRoasted</li>
+			<li>MakeMeatSmallRoasted</li>
+			<li>MakeCharcoal</li>
 		</recipes>
-		<researchPrerequisites>
-			<li>StartPack</li>
-		</researchPrerequisites>
 	</ThingDef>
 
 	<ThingDef ParentName="WorkTableFueled">
@@ -145,8 +137,8 @@
 			<texPath>Things/Buildings/Production/Kiln/Kiln</texPath>
 			<drawSize>(3.1,3.1)</drawSize>
 			<shadowData>
-				<volume></volume>
-				<offset></offset>
+				<volume/>
+				<offset/>
 			</shadowData>
 		</graphicData>
 		<Size>(3,3)</Size>
@@ -181,18 +173,19 @@
 			</li>
 		</comps>
 		<recipes>
-			<li>FirePot</li>
-			<li>FireCeramics</li>
-			<li>FireBlocksAdobe</li>
+			<li>MakeBrick</li>
+			<li>MakeCeramics</li>
+			<li>MakeBrickAdobe</li>
+			<li>MakePot</li>
+			<li>MakePotPlant</li>
+			<li>MakeLeatherHardened</li>
 		</recipes>
 		<researchPrerequisites>
-			<li>Pottery</li>
+			<li>Firing</li>
 		</researchPrerequisites>
 	</ThingDef>
 
-
 	<!-- ==================== Neolithic Tables =====================-->
-
 
 	<ThingDef Name="WorkTableNeolithic" ParentName="WorkTable" Abstract="True">
 		<graphicData>
@@ -235,6 +228,31 @@
 	</ThingDef>
 
 	<ThingDef ParentName="WorkTableNeolithic">
+		<DefName>TableCraftsmanNeolithic</DefName>
+		<label>craftsman table</label>
+		<Description>A table with tools to craft various things.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Production/TableCraftsman/Neolithic/TableCraftsmanNeolithic</texPath>
+		</graphicData>
+		<statBases>
+			<Cleanliness>-1</Cleanliness>
+		</statBases>
+		<recipes>
+			<li>MakeBasket</li>
+			<li>MakeFigurine</li>
+			<li>MakeBrickRaw</li>
+			<li>MakeBrickAdobeRaw</li>
+			<li>MakePotRaw</li>
+			<li>MakePotPlantRaw</li>
+			<li>MakeCeramicsRaw</li>
+			<li>MakeBroom</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>StartPack</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableButcherNeolithic</DefName>
 		<label>butcher table</label>
 		<Description>A heavy table for butchering dead creatures into pieces of raw meat and hide.</Description>
@@ -256,16 +274,16 @@
 			<li>ButcherCorpse</li>
 		</recipes>
 		<researchPrerequisites>
-			<li>Butchering</li>
+			<li>StartPack</li>
 		</researchPrerequisites>
 	</ThingDef>
 
 	<ThingDef ParentName="WorkTableNeolithic">
-		<DefName>TableMasonNeolithic</DefName>
-		<label>mason table</label>
-		<Description>A work table equipped to cut rough stone into usable blocks.</Description>
+		<DefName>TableStonecutterNeolithic</DefName>
+		<label>stonecutter table</label>
+		<Description>A work table equipped to cut rough stone into small stone cobbles.</Description>
 		<graphicData>
-			<texPath>Things/Buildings/Production/TableMason/Neolithic/TableMasonNeolithic</texPath>
+			<texPath>Things/Buildings/Production/TableStonecutter/Neolithic/TableStonecutterNeolithic</texPath>
 			<shadowData>
 				<volume>(0.5, 0.5, 0.5)</volume>
 			</shadowData>
@@ -274,36 +292,33 @@
 			<Cleanliness>-5</Cleanliness>
 		</statBases>
 		<recipes>
-			<li>MakeStoneCobbles</li>
-			<li>MakeStoolNeolithic</li>
-			<li>MakeTableNeolithic</li>
+			<li>MakeStoneCobble</li>
 		</recipes>
 		<researchPrerequisites>
-			<li>Masonry</li>
+			<li>StoneCutting</li>
 		</researchPrerequisites>
 	</ThingDef>
 
 	<ThingDef ParentName="WorkTableNeolithic">
-		<DefName>TableCraftsmanNeolithic</DefName>
-		<label>craftsman table</label>
-		<Description>A table with tools to craft various things.</Description>
+		<DefName>TableFurnitureMakerNeolithic</DefName>
+		<label>furniture table</label>
+		<Description>furniture maker table.</Description>
 		<graphicData>
-			<texPath>Things/Buildings/Production/TableCraftsman/Neolithic/TableCraftsmanNeolithic</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Missing</texPath>
 		</graphicData>
 		<statBases>
-			<Cleanliness>-1</Cleanliness>
+			<Cleanliness>-5</Cleanliness>
 		</statBases>
 		<recipes>
-			<li>MakeBasket</li>
-			<li>MakeTotem</li>
-			<li>MakeFigurine</li>
-			<li>MakePotRaw</li>
-			<li>MakePotPlantRaw</li>
-			<li>MakeCeramicsRaw</li>
-			<li>MakeBroom</li>
+			<li>MakeStoolNeolithicStone</li>
+			<li>MakeStoolNeolithicWood</li>
+			<li>MakeTableNeolithicStone</li>
+			<li>MakeTableNeolithicWood</li>
 		</recipes>
+		<!-- allowed via research mods -->
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Blocked</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -321,8 +336,10 @@
 			<li>MakeClub</li>
 			<li>MakeAxeNeolithic</li>
 			<li>MakeHammerNeolithic</li>
+			<li>MakeHelmetTurtle</li>
 			<li>MakeShieldTribal</li>
 		</recipes>
+		<!-- allowed via research mods -->
 		<researchPrerequisites>
 			<li>Blocked</li>
 		</researchPrerequisites>
@@ -351,7 +368,7 @@
 
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableTailorNeolithic</DefName>
-		<label>tanner table</label>
+		<label>leatherworker table</label>
 		<Description>A worktable for crafting leather clothing from raw hides.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableTailor/Neolithic/TableTailorNeolithic</texPath>
@@ -362,18 +379,18 @@
 			<li>MakeParka</li>
 			<li>MakeHatBaggy</li>
 			<li>MakeCape</li>
-			<li>MakeBackpack</li>
-			<li>MakeToolbelt</li>
+<!-- 			<li>MakeBackpackLeather</li>
+			<li>MakeToolbeltLeather</li> -->
+			<li>MakeStripsLeather</li>
 		</recipes>
 		<researchPrerequisites>
-			<li>Tannery</li>
+			<li>Leatherworking</li>
 		</researchPrerequisites>
 	</ThingDef>
 
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableBrewerNeolithic</DefName>
 		<label>brewer table</label>
-		<ThingClass>Building_WorkTable</ThingClass>
 		<Description>A work station with all the equipment needed to make brew.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableBrewer/Neolithic/TableBrewerNeolithic</texPath>
@@ -383,7 +400,149 @@
 			<li>MakeBrew</li>
 		</recipes>
 		<researchPrerequisites>
+			<li>Fermentation</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<!-- ==================== Medieval Tables =====================-->
+
+	<ThingDef ParentName="WorkTable">
+		<DefName>Furnace</DefName>
+		<label>furnace</label>
+		<Description>furnace.</Description>
+		<graphicData>
+			<texPath>Things/Building/Production/Crematorium</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<recipes>
+			<li>MakeBottle</li>
+			<li>MakeGlassPebbles</li>
+			<li>MakeBarMetal</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>GlassSmelting</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTable">
+		<DefName>TableCookFueled</DefName>
+		<label>cooking table</label>
+		<Description>cooking table.</Description>
+		<graphicData>
+			<texPath>Things/Building/Production/TableStoveFueled</texPath>
+			<drawSize>(3.5,1.5)</drawSize>
+		</graphicData>
+		<recipes>
+			<li>MakeMealSimple</li>
+			<li>MakeMealFine</li>
+			<li>MakeMealLavish</li>
+			<li>MakeMeatRoasted</li>
+			<li>MakeMeatHumanRoasted</li>
+			<li>MakeMeatSmallRoasted</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>Cooking</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTable">
+		<DefName>TableBrewerMedieval</DefName>
+		<label>brewery</label>
+		<Description>brewery.</Description>
+		<graphicData>
+			<texPath>Things/Building/Production/TableStoveFueled</texPath>
+			<drawSize>(3.5,1.5)</drawSize>
+		</graphicData>
+		<recipes>
+			<li>MakeBeer</li>
+		</recipes>
+		<researchPrerequisites>
 			<li>Brewing</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTable">
+		<DefName>TableWeaponMeleeMedieval</DefName>
+		<label>blacksmith bench</label>
+		<Description>blacksmith bench.</Description>
+		<graphicData>
+			<texPath>Things/Building/Production/TableSmithingFueled</texPath>
+			<drawSize>(3.5,1.5)</drawSize>
+		</graphicData>
+		<recipes>
+			<li>MakeHelmetNasal</li>
+			<li>MakeHelmetFull</li>
+			<li>MakeChainmail</li>
+			<li>MakePlatemail</li>
+			<li>MakeBuckler</li>
+			<li>MakeShieldKite</li>
+			<li>MakeDagger</li>
+			<li>MakeSwordLong</li>
+			<li>MakeAxe</li>
+			<li>MakePickaxe</li>
+			<li>MakeHammer</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>Smithing</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTable">
+		<DefName>TableWeaponRangedMedieval</DefName>
+		<label>marksman bench</label>
+		<Description>marksman bench.</Description>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Missing</texPath>
+			<drawSize>(3.5,1.5)</drawSize>
+		</graphicData>
+		<recipes>
+			<li>MakeCrossbow</li>
+			<li>MakeCrossbowRepeating</li>
+			<li>MakeBalista</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>Mechanics</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTable">
+		<DefName>Loom</DefName>
+		<label>loom</label>
+		<Description>loom.</Description>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Missing</texPath>
+		</graphicData>
+		<recipes>
+			<li>MakeLinen</li>
+			<li>MakeCotton</li>
+			<li>MakeWool</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>Weaving</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTable">
+		<DefName>TableFurnitureMakerMedieval</DefName>
+		<label>carpenter table</label>
+		<Description>carpenter table.</Description>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Missing</texPath>
+		</graphicData>
+		<recipes>
+			<li>MakeStool</li>
+			<li>MakeTableShort</li>
+			<li>MakeTableLong</li>
+			<li>MakeBed</li>
+			<li>MakeBedDouble</li>
+			<li>MakeChest</li>
+			<li>MakeBarrel</li>
+		</recipes>
+		<researchPrerequisites>
+			<li>Carpentry</li>
 		</researchPrerequisites>
 	</ThingDef>
 

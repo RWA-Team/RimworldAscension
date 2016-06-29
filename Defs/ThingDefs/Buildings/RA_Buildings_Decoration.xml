@@ -40,7 +40,7 @@
 			<MarketValue>1</MarketValue>
 		</statBases>
 	</ThingDef>
-
+	
 
 	<ThingDef Name="Minified" ParentName="Item" Abstract="True">
 		<thingClass>MinifiedThing</thingClass>
@@ -68,7 +68,7 @@
 		<inspectorTabs>
 			<li>ITab_Art</li>
 		</inspectorTabs>
-		<DesignationCategory>Furniture</DesignationCategory>
+		<DesignationCategory>Decoration</DesignationCategory>
 	</ThingDef>
 
 
@@ -99,25 +99,40 @@
 			<Beauty>40</Beauty>
 			<WorkToMake>48000</WorkToMake>
 		</statBases>
-		<costList>
-			<Totem>1</Totem>
-		</costList>
 		<stuffCategories>
 			<li>WoodLog</li>
 		</stuffCategories>
-		<minifiedDef>MinifiedTotem</minifiedDef>
+		<costStuffCount>75</costStuffCount>
 		<researchPrerequisites>
-			<li>Blocked</li>
+			<li>WoodCarving</li>
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="MinifiedDecoration">
-		<defName>MinifiedTotem</defName>
-		<label>totem</label>
+	<ThingDef ParentName="Decoration">
+		<defName>Cairn</defName>
+		<label>cairn</label>
+		<description>A cairn.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Decoration/Cairn</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<shadowData>
+				<volume>(0.45, 0.85, 0.45)</volume>
+				<offset>(0,0,-0.60)</offset>
+			</shadowData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Beauty>40</Beauty>
+			<WorkToMake>48000</WorkToMake>
+		</statBases>
 		<stuffCategories>
-			<li>WoodLog</li>
+			<li>StoneCobble</li>
 		</stuffCategories>
-	</ThingDef>	
+		<researchPrerequisites>
+			<li>StoneCutting</li>
+		</researchPrerequisites>
+	</ThingDef>
 	
 	<ThingDef ParentName="Furniture">
 		<defName>PlantPot</defName>
@@ -159,7 +174,7 @@
 		</building>
 		<minifiedDef>PlantPotMinified</minifiedDef>
 		<researchPrerequisites>
-			<li>Pottery</li>
+			<li>Firing</li>
 		</researchPrerequisites>
 	</ThingDef>	
 
@@ -198,7 +213,7 @@
 		<designationCategory>Furniture</designationCategory>
 		<rotatable>false</rotatable>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>AnimalDissection</li>
 		</researchPrerequisites>
 	</ThingDef>
 

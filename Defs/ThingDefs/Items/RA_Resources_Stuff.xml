@@ -59,22 +59,6 @@
 		</stuffProps>
 	</ThingDef>
 
-	<ThingDef ParentName="ResourceOrganic">
-		<defName>LeatherStrip</defName>
-		<label>leather strips</label>
-		<description>Leather strips.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/LeatherStrip</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<stuffCategories>
-			<li>Leathers</li>
-		</stuffCategories>
-		<thingCategories>
-			<li>ResourcesProcessed</li>
-		</thingCategories>
-	</ThingDef>
-
 	<!--===================== Wood =====================-->
 
 	<ThingDef Name="ResourceWood" ParentName="ResourceOrganic" Abstract="True">
@@ -563,7 +547,8 @@
 	<ThingDef Name="Metal" ParentName="Resource" Abstract="True">
 		<description>Metal bars.</description>
 		<graphicData>
-			<texPath>Things/Items/Resources/MetalBar</texPath>
+			<texPath>Missing</texPath>
+			<!-- <texPath>Things/Items/Resources/BarMetal</texPath> -->
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
@@ -575,7 +560,7 @@
 		<soundInteract>Metal_Drop</soundInteract>
 		<soundDrop>Metal_Drop</soundDrop>
 		<thingCategories>
-			<li>MetalBars</li>
+			<li>BarsMetal</li>
 		</thingCategories>
 		<stuffProps>
 			<stuffAdjective>metal</stuffAdjective>
@@ -593,7 +578,7 @@
 	
 
 	<ThingDef ParentName="Metal">
-		<defName>MetalBarCopper</defName>
+		<defName>BarMetalCopper</defName>
 		<label>copper bars</label>
 		<graphicData>
 			<color>(142,75,50)</color>
@@ -605,7 +590,7 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Metal">
-		<defName>MetalBarIron</defName>
+		<defName>BarMetalIron</defName>
 		<label>iron bars</label>
 		<graphicData>
 			<color>(75,75,75)</color>
@@ -617,7 +602,7 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Metal">
-		<defName>MetalBarBronze</defName>
+		<defName>BarMetalBronze</defName>
 		<label>bronze bars</label>
 		<graphicData>
 			<color>(130,100,45)</color>
@@ -629,7 +614,7 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Metal">
-		<defName>MetalBarSteel</defName>
+		<defName>BarMetalSteel</defName>
 		<label>steel bars</label>
 		<graphicData>
 			<color>(125,125,125)</color>
@@ -642,14 +627,34 @@
 
 	<!--===================== Fabric ====================-->
 
-	<!-- 	<ThingDef ParentName="Resource">
-		<defName>Linen</defName>
-		<label>linen</label>
-		<description>Linen woven from linen pulp.</description>
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Leather</defName>
+		<label>leather</label>
+		<description>Leather.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/Leather</texPath>
+		</graphicData>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<stuffProps>
+			<categories>
+				<li>Leather</li>
+			</categories>
+			<color>(162,106,57)</color>
+			<smeltable>false</smeltable>
+			<statFactors>
+				<MarketValue>1.2</MarketValue>
+				<Comfort>1.2</Comfort>
+				<Beauty>1.2</Beauty>
+			</statFactors>
+		</stuffProps>
+	</ThingDef>
+	
+
+	<ThingDef Name="Cloth" ParentName="ResourceOrganic" Abstract="True">
 		<graphicData>
 			<texPath>Things/Item/Resource/Cloth</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<color>(197,181,149)</color>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
@@ -659,63 +664,55 @@
 		</statBases>
 		<stuffProps>
 			<categories>
-				<li>Fabric</li>
+				<li>Cloth</li>
 			</categories>
-			<color>(197,181,149)</color>
+			<color>(162,106,57)</color>
+			<smeltable>false</smeltable>
+			<statFactors>
+				<MarketValue>1.2</MarketValue>
+				<Comfort>1.2</Comfort>
+				<Beauty>1.2</Beauty>
+			</statFactors>
 		</stuffProps>
 		<thingCategories>
-			<li>Textiles</li>
+			<li>Cloth</li>
 		</thingCategories>
-	</ThingDef>
-	
-	
-	<ThingDef ParentName="Resource">
-		<defName>Cloth</defName>
-		<label>cloth</label>
-		<description>Cloth woven from cotton lint.</description>
+	</ThingDef>	
+
+	<ThingDef ParentName="Cloth">
+		<defName>ClothLinen</defName>
+		<label>linen cloth</label>
+		<description>linen cloth.</description>
 		<graphicData>
-			<texPath>Things/Item/Resource/Cloth</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<color>(162,157,152)</color>
+			<color>(255,242,212)</color>
 		</graphicData>
-		<statBases>
-			<MaxHitPoints>100</MaxHitPoints>
-			<MarketValue>13</MarketValue>
-			<Flammability>1.0</Flammability>
-			<DeteriorationRate>2</DeteriorationRate>
-		</statBases>
 		<stuffProps>
-			<categories>
-				<li>Fabric</li>
-			</categories>
-			<color>(162,157,152)</color>
-			<allowColorGenerators>true</allowColorGenerators>
+			<color>(255,242,212)</color>
 		</stuffProps>
-		<thingCategories>
-			<li>Textiles</li>
-		</thingCategories>
-		<comps>
-			<li>
-				<compClass>CompColorable</compClass>
-			</li>
-		</comps>
-		<colorGeneratorInTraderStock Class="ColorGenerator_Options">
-			<options>
-				<li>
-					<weight>5</weight>
-					<only>RGBA(0.33,0.33,0.33,1)</only>
-				</li>
-				<li>
-					<weight>10</weight>
-					<min>RGBA(0.3,0.3,0.3,1)</min>
-					<max>RGBA(0.9,0.9,0.9,1)</max>
-				</li>
-				<li>
-					<weight>5</weight>
-					<only>RGBA(0.9,0.9,0.9,1)</only>
-				</li>
-			</options>
-		</colorGeneratorInTraderStock>
-	</ThingDef> -->
+	</ThingDef>
+
+	<ThingDef ParentName="Cloth">
+		<defName>ClothCotton</defName>
+		<label>cotton cloth</label>
+		<description>cotton cloth.</description>
+		<graphicData>
+			<color>(205,204,210)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(205,204,210)</color>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="Cloth">
+		<defName>ClothWool</defName>
+		<label>wool cloth</label>
+		<description>wool cloth.</description>
+		<graphicData>
+			<color>(141,158,186)</color>
+		</graphicData>
+		<stuffProps>
+			<color>(141,158,186)</color>
+		</stuffProps>
+	</ThingDef>
 
 </Defs>

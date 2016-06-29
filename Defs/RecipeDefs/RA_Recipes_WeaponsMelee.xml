@@ -20,7 +20,7 @@
 
 	<!-- ========================= Neolithic =========================-->
 
-	<!-- 5 - Bark fiber\[Leathers] is used as binding material -->
+	<!-- 5 - Bark fiber\[Leather] is used as binding material -->
 	<RecipeDef Name="MakeWeaponMeleeNeolithic" ParentName="MakeWeaponMelee" Abstract="True">
 		<workSpeedStat>CarvingSpeed</workSpeedStat>
 		<fixedIngredientFilter>
@@ -28,7 +28,7 @@
 				<li>BarkFibre</li>
 			</thingDefs>
 			<categories>
-				<li>Leathers</li>
+				<li>Leather</li>
 			</categories>
 		</fixedIngredientFilter>
 		<defaultIngredientFilter>
@@ -36,14 +36,14 @@
 				<li>BarkFibre</li>
 			</thingDefs>
 			<categories>
-				<li>Leathers</li>
+				<li>Leather</li>
 			</categories>
 		</defaultIngredientFilter>
 		<ingredients>
 			<li>
 				<filter>
 					<categories>
-						<li>Leathers</li>
+						<li>Leather</li>
 					</categories>
 					<thingDefs>
 						<li>BarkFibre</li>
@@ -299,4 +299,435 @@
 		<researchPrerequisite>Carpentry</researchPrerequisite>
 	</RecipeDef>
 
+	<!-- ========================= Neolithic =========================-->
+
+	<RecipeDef Name="MakeWeaponMeleeMedieval" ParentName="MakeWeaponMelee" Abstract="True">
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BarkFibre</li>
+			</thingDefs>
+			<categories>
+				<li>Leather</li>
+			</categories>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<thingDefs>
+				<li>BarkFibre</li>
+			</thingDefs>
+			<categories>
+				<li>Leather</li>
+			</categories>
+		</defaultIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Leather</li>
+					</categories>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakeBroom</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakeDagger</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakeSwordLong</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakeAxe</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakePickaxe</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakeHammer</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakeCrossbow</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakeCrossbowRepeating</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakeBalista</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakeHammer</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakeHammer</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponMeleeNeolithic">
+		<defName>MakeHammer</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+	
 </RecipeDefs>

@@ -78,9 +78,9 @@
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorHead">
-		<defName>HelmTurtle</defName>
-		<label>turtle helm</label>
-		<description>A helm from turtle shell.</description>
+		<defName>HelmetTurtle</defName>
+		<label>turtle helmet</label>
+		<description>A helmet from turtle shell.</description>
 		<graphicData>
 			<texPath>Things/Items/Apparels/Armor/Neolithic/HelmetTurtle/HelmetTurtle</texPath>
 		</graphicData>
@@ -120,11 +120,12 @@
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorHead">
-		<defName>HelmFull</defName>
-		<label>full helm</label>
-		<description>A full helm.</description>
+		<defName>HelmetFull</defName>
+		<label>full helmet</label>
+		<description>A full helmet.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Armor/Medieval/HelmFull/HelmFull</texPath>
+			<texPath>Missing</texPath>
+			<texPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</texPath>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
@@ -136,7 +137,6 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/HelmFull/HelmFull</worngraphicPath>
 		</apparel>
 	</ThingDef>
 
@@ -224,11 +224,12 @@
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorChest">
-		<defName>ArmorPlate</defName>
-		<label>plate armor</label>
-		<description>A plate armor.</description>
+		<defName>Chainmail</defName>
+		<label>platemail</label>
+		<description>A platemail.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Armor/Medieval/ArmorPlate/ArmorPlate</texPath>
+			<texPath>Missing</texPath>
+			<texPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</texPath>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
@@ -244,7 +245,34 @@
 				<li>Torso</li>
 				<li>Shoulders</li>
 			</bodyPartGroups>
-			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/ArmorPlate/ArmorPlate</worngraphicPath>
+			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
+		</apparel>
+		<colorGenerator Class="ColorGenerator_StandardApparel" />
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorChest">
+		<defName>Platemail</defName>
+		<label>platemail</label>
+		<description>A platemail.</description>
+		<graphicData>
+			<texPath>Missing</texPath>
+			<texPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<MarketValue>50</MarketValue>
+			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+		</statBases>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.1</MoveSpeed>
+		</equippedStatOffsets>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+			</bodyPartGroups>
+			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
@@ -336,7 +364,7 @@
 		<defName>ShieldBone</defName>
 		<label>bone shield</label>
 		<description>A shield made of various bones put together with leather and wood. Looks intimidating.</description>
-		<graphicData>
+		<graphicData>		
 			<texPath>Things/Items/Apparels/Shields/ShieldBone</texPath>
 		</graphicData>
 		<statBases>
@@ -348,11 +376,28 @@
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
-		<defName>ShieldMetal</defName>
-		<label>metal shield</label>
-		<description>A metal shield.</description>
+		<defName>Buckler</defName>
+		<label>buckler</label>
+		<description>A bucler.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Shields/ShieldMetal</texPath>
+			<texPath>Missing</texPath>
+			<!-- <texPath>Things/Items/Apparels/Shields/Buckler</texPath> -->
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+		</statBases>
+		<stuffCategories>
+			<li>Bone</li>
+		</stuffCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorShield">
+		<defName>ShieldKite</defName>
+		<label>kite shield</label>
+		<description>A kite shield.</description>
+		<graphicData>
+			<texPath>Missing</texPath>
+			<!-- <texPath>Things/Items/Apparels/Shields/ShieldKite</texPath> -->
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>

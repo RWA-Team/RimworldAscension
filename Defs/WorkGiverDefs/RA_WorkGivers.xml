@@ -140,7 +140,7 @@
 		<verb>crafting</verb>
 		<gerund>crafting at</gerund>
 		<fixedBillGiverDefs>
-			<li>TableMasonNeolithic</li>
+			<li>TableStonecutterNeolithic</li>
 			<li>TableCraftsmanNeolithic</li>
 			<li>TableWeaponMeleeNeolithic</li>
 			<li>TableWeaponRangedNeolithic</li>

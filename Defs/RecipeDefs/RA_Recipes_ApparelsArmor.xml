@@ -10,36 +10,46 @@
 	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complext recipes. Changed to allowed ones via reseach mods.
 	-->
 
-	<RecipeDef Name="MakeArmor" Abstract="True">
+	<!--========================= Neolithic =========================-->
+
+	<RecipeDef Name="MakeArmorNeolithic" Abstract="True">
 		<workSpeedStat>CarvingSpeed</workSpeedStat>
 		<workSkill>Crafting</workSkill>
 		<effectWorking>Smith</effectWorking>
 		<soundWorking>Recipe_Smith</soundWorking>
-		<researchPrerequisite>Blocked</researchPrerequisite>
-	</RecipeDef >
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>StripsLeather</li>
+				<li>BarkFibre</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>StripsLeather</li>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
 
 
-	<!--========================= Neolithic =========================-->
-
-	<RecipeDef  ParentName="MakeArmor">
+	<RecipeDef ParentName="MakeArmorNeolithic">
 		<defName>MakeShieldTribal</defName>
 		<label>make tribal shield</label>
 		<description>Makes a primitive wooden shield, commonly used by local tribes.</description>
 		<products>
 			<ShieldTribal>1</ShieldTribal>
 		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>Leathers</li>
-					</categories>
-					<thingDefs>
-						<li>BarkFibre</li>
-					</thingDefs>
-				</filter>
-				<count>5</count>
-			</li>
 			<li>
 				<filter>
 					<thingDefs>
@@ -49,16 +59,21 @@
 				<count>20</count>
 			</li>
 		</ingredients>
-		<researchPrerequisite>Carpentry</researchPrerequisite>
+		<researchPrerequisite>WoodCarving</researchPrerequisite>
 	</RecipeDef>
 
-	<RecipeDef  ParentName="MakeArmor">
-		<defName>MakeHelmTurtle</defName>
-		<label>make turtle helm</label>
-		<description>Makes a turtle helm.</description>
+	<RecipeDef ParentName="MakeArmorNeolithic">
+		<defName>MakeHelmetTurtle</defName>
+		<label>make turtle helmet</label>
+		<description>Makes a turtle helmet.</description>
 		<products>
-			<HelmTurtle>1</HelmTurtle>
+			<HelmetTurtle>1</HelmetTurtle>
 		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>TurtleShell</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 		<ingredients>
 			<li>
 				<filter>
@@ -69,7 +84,202 @@
 				<count>1</count>
 			</li>
 		</ingredients>
-		<researchPrerequisite>StartPack</researchPrerequisite>
+		<researchPrerequisite>BoneCarving</researchPrerequisite>
+	</RecipeDef>
+
+	<!--========================= Medieval =========================-->
+
+	<RecipeDef Name="MakeArmorMedieval" Abstract="True">
+		<workSpeedStat>SmithingSpeed</workSpeedStat>
+		<workSkill>Crafting</workSkill>
+		<effectWorking>Smith</effectWorking>
+		<soundWorking>Recipe_Smith</soundWorking>
+		<fixedIngredientFilter>
+			<categories>
+				<li>BarsMetal</li>
+			</categories>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Smithing</researchPrerequisite>
+	</RecipeDef>
+
+
+	<RecipeDef ParentName="MakeArmorMedieval">
+		<defName>MakeHelmetNasal</defName>
+		<label>make nasal helmet</label>
+		<description>Makes a nasal helmet.</description>
+		<products>
+			<HelmetNasal>1</HelmetNasal>
+		</products>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Cloth</li>
+				<li>Leather</li>
+			</categories>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Cloth</li>
+						<li>Leather</li>
+					</categories>
+				</filter>
+				<count>5</count>
+				<filter>
+					<categories>
+						<li>BarsMetal</li>
+					</categories>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeArmorMedieval">
+		<defName>MakeHelmetFull</defName>
+		<label>make full helmet</label>
+		<description>Makes a full helmet.</description>
+		<products>
+			<HelmetFull>1</HelmetFull>
+		</products>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Cloth</li>
+				<li>Leather</li>
+			</categories>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Cloth</li>
+						<li>Leather</li>
+					</categories>
+				</filter>
+				<count>5</count>
+				<filter>
+					<categories>
+						<li>BarsMetal</li>
+					</categories>
+				</filter>
+				<count>15</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeArmorMedieval">
+		<defName>MakeChainmail</defName>
+		<label>make chainmail set</label>
+		<description>Makes a chainmail set.</description>
+		<products>
+			<Chainmail>1</Chainmail>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>BarsMetal</li>
+					</categories>
+				</filter>
+				<count>50</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeArmorMedieval">
+		<defName>MakePlatemail</defName>
+		<label>make platemail set</label>
+		<description>Makes a platemail set.</description>
+		<products>
+			<Platemail>1</Platemail>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>BarsMetal</li>
+					</categories>
+				</filter>
+				<count>75</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeArmorMedieval">
+		<defName>MakeBuckler</defName>
+		<label>make buckler</label>
+		<description>Makes a buckler.</description>
+		<products>
+			<Buckler>1</Buckler>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>StripsLeather</li>
+				<li>BarkFibre</li>
+				<li>WoodPlank</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>StripsLeather</li>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodPlank</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>BarsMetal</li>
+					</categories>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeArmorMedieval">
+		<defName>MakeShieldKite</defName>
+		<label>kite shield</label>
+		<description>Makes a kite shield.</description>
+		<products>
+			<ShieldKite>1</ShieldKite>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>StripsLeather</li>
+				<li>BarkFibre</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>StripsLeather</li>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>BarsMetal</li>
+					</categories>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
 	</RecipeDef>
 
 </RecipeDefs>
