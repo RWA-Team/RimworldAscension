@@ -14,17 +14,12 @@
 	</ThingDef>
 
 
-	<ThingDef ParentName="ApparelVarious">
-		<defName>Backpack</defName>
-		<label>backpack</label>
+	<ThingDef Name="Backpack" ParentName="ApparelVarious" Abstract="True">
 		<description>A backpack is a bag with straps that go over your shoulders, so that you can carry things on your back when you are walking or climbing.</description>
 		<graphicData>
 			<texPath>Things/Items/Apparels/Various/Backpack/Backpack</texPath>
 		</graphicData>
 		<tickerType>Normal</tickerType>
-		<stuffCategories>
-			<li>Leathery</li>
-		</stuffCategories>
 		<apparel>
 			<bodyPartGroups>
 				<li>Torso</li>
@@ -62,17 +57,29 @@
 		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="ApparelVarious">
-		<defName>Toolbelt</defName>
-		<label>toolbelt</label>
+	<ThingDef ParentName="Backpack">
+		<defName>BackpackLeather</defName>
+		<label>leather backpack</label>
+		<stuffCategories>
+			<li>Leather</li>
+		</stuffCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="Backpack">
+		<defName>BackpackCloth</defName>
+		<label>cloth backpack</label>
+		<stuffCategories>
+			<li>Cloth</li>
+		</stuffCategories>
+	</ThingDef>
+	
+
+	<ThingDef Name="Toolbelt" ParentName="ApparelVarious" Abstract="True">
 		<description>A toolbelt to keep your tools to yourself.</description>
 		<graphicData>
 			<texPath>Things/Items/Apparels/Various/Toolbelt/Toolbelt</texPath>
 		</graphicData>
 		<tickerType>Normal</tickerType>
-		<stuffCategories>
-			<li>Leathery</li>
-		</stuffCategories>
 		<apparel>
 			<bodyPartGroups>
 				<li>Legs</li>
@@ -108,6 +115,23 @@
 			</li>
 		</comps>
 	</ThingDef>
+
+	<ThingDef ParentName="Toolbelt">
+		<defName>ToolbeltLeather</defName>
+		<label>leather toolbelt</label>
+		<stuffCategories>
+			<li>Leather</li>
+		</stuffCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="Toolbelt">
+		<defName>ToolbeltCloth</defName>
+		<label>cloth toolbelt</label>
+		<stuffCategories>
+			<li>Cloth</li>
+		</stuffCategories>
+	</ThingDef>
+	
 
 	<ThingDef ParentName="ApparelVarious">
 		<defName>Headdress</defName>

@@ -23,13 +23,6 @@
 	<RecipeDef Name="MakeTrapNeolithic" ParentName="MakeTrap" Abstract="True">
 		<workSpeedStat>CarvingSpeed</workSpeedStat>
 		<fixedIngredientFilter>
-			<exceptedCategories>
-				<li>StoneCobbles</li>
-			</exceptedCategories>
-			<exceptedThingDefs>
-				<li>WoodLog</li>
-				<li>Bone</li>
-			</exceptedThingDefs>
 			<categories>
 				<li>StoneCobbles</li>
 			</categories>

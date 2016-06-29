@@ -7,9 +7,17 @@ using static RA.MapCompDataStorage;
 
 namespace RA
 {
+    public enum ToolRequirementLevel : byte
+    {
+        NoToolRequired,
+        ToolPreferable,
+        ToolRequired
+    }
+
     public abstract class WorkGiver_WorkWithTools : WorkGiver
     {
         public ThingWithComps closestAvailableTool;
+        public ToolRequirementLevel targetTRL;
 
         public virtual string WorkType => default(string);
         public virtual List<TargetInfo> Targets(Pawn pawn) => default(List<TargetInfo>);
@@ -22,15 +30,23 @@ namespace RA
             if (!Targets(pawn).NullOrEmpty())
             {
                 var closestAvailableTarget = Targets(pawn).FirstOrDefault().HasThing
-                    ? GenClosest.ClosestThing_Global(pawn.Position, Targets(pawn).Select(target=>target.Thing))
+                    ? GenClosest.ClosestThing_Global(pawn.Position, Targets(pawn).Select(target => target.Thing))
                     : (TargetInfo) ClosestTargetCell(pawn);
 
-                // if proper tool equipped, do the job, otherwise find the tool for work
-                return IsProperTool(pawn.equipment.Primary)
+                targetTRL = closestAvailableTarget.HasThing
+                    ? (ToolRequirementLevel) closestAvailableTarget.Thing
+                        .GetStatValue(StatDef.Named("ToolRequirementLevel"))
+                    : (ToolRequirementLevel) closestAvailableTarget.Cell.GetTerrain()
+                        .GetStatValueAbstract(StatDef.Named("ToolRequirementLevel"));
+
+                // if proper tool equipped, do the job, otherwise try to find the tool for work, if needed
+                return targetTRL == ToolRequirementLevel.NoToolRequired || IsProperTool(pawn.equipment.Primary)
                     ? JobWithTool(closestAvailableTarget)
-                    : TryEquipTool(pawn);
+                    : targetTRL == ToolRequirementLevel.ToolPreferable
+                        ? TryEquipTool(pawn) ?? JobWithTool(closestAvailableTarget)
+                        : JobWithTool(closestAvailableTarget);
             }
-            
+
             // drop tool and haul it to stockpile, if necessary
             if (pawn.equipment.Primary != null && !ShouldKeepTool(pawn) &&
                 pawn.equipment.Primary.TryGetComp<CompTool>().wasAutoEquipped)

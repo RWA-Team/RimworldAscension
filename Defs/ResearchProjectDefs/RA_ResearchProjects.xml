@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ResearchProjectDefs>
 
+	<!--============== Special Research Surrogates ==============-->
+
+	<!--used to hide vanilla researches-->
 	<ResearchProjectDef Name="Blocked" Abstract="True">
 		<prerequisites>
 			<li>Blocked</li>
 		</prerequisites>		
 	</ResearchProjectDef>
 
-	<!-- ========================= Special Research Surrogates ==========================-->
-
-	<!--used to hide buldings-->
+	<!--used to hide buldings and recipes-->
 	<ResearchProjectDef ParentName="Blocked">
 		<defName>Blocked</defName>	
 	</ResearchProjectDef>
@@ -28,7 +29,7 @@
 		</researchMods>
 	</ResearchProjectDef>
 
-	<!-- ========================= Neolithic Tech Level ==========================-->
+	<!-- ============== Neolithic Tech Level ===============-->
 
 	<ResearchProjectDef>
 		<defName>WoodCarving</defName>
@@ -38,11 +39,11 @@
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
-		<researchMods>
+<!-- 		<researchMods>
 			<li>
 				<specialAction>RA.ResearchMods.WoodCarving</specialAction>
 			</li>
-		</researchMods>
+		</researchMods> -->
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -53,11 +54,6 @@
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.StoneCutting</specialAction>
-			</li>
-		</researchMods>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -68,27 +64,12 @@
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.BoneCarving</specialAction>
-			</li>
-		</researchMods>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
 		<defName>Leatherworking</defName>
 		<label>leatherworking</label>
 		<description>leatherworking.</description>
-		<totalCost>250</totalCost>
-		<prerequisites>
-			<li>StartPack</li>
-		</prerequisites>
-	</ResearchProjectDef>
-
-	<ResearchProjectDef>
-		<defName>LeatherHardening</defName>
-		<label>leather hardening</label>
-		<description>leather hardening.</description>
 		<totalCost>250</totalCost>
 		<prerequisites>
 			<li>StartPack</li>
@@ -103,11 +84,6 @@
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.PlantCultivation</specialAction>
-			</li>
-		</researchMods>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -118,11 +94,6 @@
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.AnimalDissection</specialAction>
-			</li>
-		</researchMods>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
@@ -133,17 +104,12 @@
 		<prerequisites>
 			<li>StartPack</li>
 		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.AnimalTaming</specialAction>
-			</li>
-		</researchMods>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
-		<defName>ClayMoulding</defName>
-		<label>clay moulding</label>
-		<description>clay moulding.</description>
+		<defName>Firing</defName>
+		<label>firing</label>
+		<description>firing.</description>
 		<totalCost>300</totalCost>
 		<prerequisites>
 			<li>StartPack</li>
@@ -156,12 +122,23 @@
 		<description>fermentation.</description>
 		<totalCost>450</totalCost>
 		<prerequisites>
-			<li>ClayMoulding</li>
+			<li>Firing</li>
 			<li>LandCultivation</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<!-- ========================= Medieval Tech Level ==========================-->
+	<!-- ============== Medieval Tech Level ===============-->
+
+	<ResearchProjectDef>
+		<defName>LeatherHardening</defName>
+		<label>leather hardening</label>
+		<description>leather hardening.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Leatherworking</li>
+			<li>Firing</li>
+		</prerequisites>
+	</ResearchProjectDef>
 
 	<ResearchProjectDef>
 		<defName>Farming</defName>
@@ -208,11 +185,22 @@
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
+		<defName>Weaving</defName>
+		<label>weaving</label>
+		<description>weaving.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Carpentry</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
 		<defName>Tailoring</defName>
 		<label>glass smelting</label>
 		<description>glass smelting.</description>
 		<totalCost>250</totalCost>
 		<prerequisites>
+			<li>Weaving</li>
 			<li>Leatherworking</li>
 		</prerequisites>
 	</ResearchProjectDef>
@@ -291,17 +279,6 @@
 
 	<ResearchProjectDef>
 		<defName>Mechanics</defName>
-		<label>mechanics</label>
-		<description>mechanics.</description>
-		<totalCost>250</totalCost>
-		<prerequisites>
-			<li>Smithing</li>
-			<li>Carpentry</li>
-		</prerequisites>
-	</ResearchProjectDef>
-
-	<ResearchProjectDef>
-		<defName>Tailoring</defName>
 		<label>mechanics</label>
 		<description>mechanics.</description>
 		<totalCost>250</totalCost>

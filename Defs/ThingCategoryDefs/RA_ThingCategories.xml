@@ -21,13 +21,24 @@
 		</ThingCategoryDef>
 		
 			<ThingCategoryDef>
-				<!-- <defName>FoodPrepared</defName> -->
-				<defName>FoodMeals</defName>
+				<defName>FoodPrepared</defName>
 				<label>preprared food</label>
 				<parent>Food</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
 				<iconPath>Ui/Icons/ThingCategories/FoodMeals</iconPath>
 			</ThingCategoryDef>
+
+				<ThingCategoryDef>
+					<defName>MeatPrepared</defName>
+					<label>prepared meat</label>
+					<parent>FoodPrepared</parent>
+				</ThingCategoryDef>
+
+				<ThingCategoryDef>
+					<defName>Meals</defName>
+					<label>meals</label>
+					<parent>FoodPrepared</parent>
+				</ThingCategoryDef>
 
 			<ThingCategoryDef>
 				<defName>FoodRaw</defName>
@@ -36,19 +47,16 @@
 				<resourceReadoutRoot>true</resourceReadoutRoot>
 				<iconPath>Ui/Icons/ThingCategories/FoodRaw</iconPath>
 			</ThingCategoryDef>
-				
-				<!-- can't change name due to code based generation -->
+
 				<ThingCategoryDef>
 					<defName>MeatRaw</defName>
-					<label>meat</label>
+					<label>raw meat</label>
 					<parent>FoodRaw</parent>
-					<iconPath>Ui/Icons/ThingCategories/MeatRaw</iconPath>
 				</ThingCategoryDef>
 
 				<ThingCategoryDef>
-					<!-- <defName>Plants</defName> -->
-					<defName>PlantFoodRaw</defName>
-					<label>eatable plants</label>
+					<defName>PlantProductRaw</defName>
+					<label>plant products</label>
 					<parent>FoodRaw</parent>
 					<iconPath>Ui/Icons/ThingCategories/PlantFoodRaw</iconPath>
 				</ThingCategoryDef>
@@ -122,7 +130,7 @@
 			</ThingCategoryDef>
 		
 			<ThingCategoryDef>
-				<defName>MetalBars</defName>
+				<defName>BarsMetal</defName>
 				<label>metal bars</label>
 				<parent>ResourcesProcessed</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
@@ -133,18 +141,16 @@
 				<label>fabric</label>
 				<parent>ResourcesProcessed</parent>
 			</ThingCategoryDef>
-								
-				<!-- can't change name due to code generation -->
-				<ThingCategoryDef>
-					<defName>Leathers</defName>
-					<label>leather</label>
-					<parent>Fabric</parent>
-					<iconPath>Ui/Icons/ThingCategories/Leathers</iconPath>
-				</ThingCategoryDef> 
 			
 				<ThingCategoryDef>
-					<defName>Textile</defName>
-					<label>textile</label>
+					<defName>Leather</defName>
+					<label>leather</label>
+					<parent>Fabric</parent>
+				</ThingCategoryDef>
+
+				<ThingCategoryDef>
+					<defName>Cloth</defName>
+					<label>cloth</label>
 					<parent>Fabric</parent>
 				</ThingCategoryDef>
 	
@@ -159,7 +165,19 @@
 			<ThingCategoryDef>
 				<defName>StoneCobbles</defName>
 				<label>stone cobbles</label>
-				<parent>ResourcesProcessed</parent>
+				<parent>ResourcesRaw</parent>
+			</ThingCategoryDef>
+		
+			<ThingCategoryDef>
+				<defName>OreMetal</defName>
+				<label>metal ore</label>
+				<parent>ResourcesRaw</parent>
+			</ThingCategoryDef>
+		
+			<ThingCategoryDef>
+				<defName>Gems</defName>
+				<label>gems</label>
+				<parent>ResourcesRaw</parent>
 			</ThingCategoryDef>
 		
 			<ThingCategoryDef>
@@ -171,9 +189,15 @@
 		
 			<ThingCategoryDef>
 				<defName>Sand</defName>
-				<label>sabd</label>
+				<label>sand</label>
 				<parent>ResourcesRaw</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
+			</ThingCategoryDef>
+				
+			<ThingCategoryDef>
+				<defName>PlantResources</defName>
+				<label>plant resources</label>
+				<parent>ResourcesRaw</parent>
 			</ThingCategoryDef>
 				
 	<ThingCategoryDef>
@@ -190,27 +214,27 @@
 		</ThingCategoryDef>
 
 		<ThingCategoryDef>
-			<defName>Minified</defName>
+			<defName>MinifiedThings</defName>
 			<label>minified things</label>
 			<parent>Items</parent>
 		</ThingCategoryDef>
 
 			<ThingCategoryDef>
 				<defName>MinifiedFurniture</defName>
-				<label>furniture</label>
-				<parent>Minified</parent>
+				<label>minified furniture</label>
+				<parent>MinifiedThings</parent>
 			</ThingCategoryDef>
 
 			<ThingCategoryDef>
 				<defName>MinifiedDecorations</defName>
-				<label>decorations</label>
-				<parent>Minified</parent>
+				<label>minified decorations</label>
+				<parent>MinifiedThings</parent>
 			</ThingCategoryDef>
 
 			<ThingCategoryDef>
 				<defName>MinifiedDefences</defName>
-				<label>defences</label>
-				<parent>Minified</parent>
+				<label>minified defences</label>
+				<parent>MinifiedThings</parent>
 			</ThingCategoryDef>
 
 		<ThingCategoryDef>

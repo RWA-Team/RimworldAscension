@@ -136,6 +136,13 @@ namespace RA
                 BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaCheckGameOver, newCheckGameOver);
 
+            // changed butcher yields
+            var vanillaButcherProducts = typeof(Pawn).GetMethod("ButcherProducts",
+                BindingFlags.Instance | BindingFlags.Public);
+            var newButcherProducts = typeof(RA_Pawn).GetMethod("ButcherProducts",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaButcherProducts, newButcherProducts);
+
             // special spawns for skyfaller impact explosion (otherwise things are damaged by eplosion even if spawned after that, but without delay)
             var vanillaTrySpawnExplosionThing = typeof (Explosion).GetMethod("TrySpawnExplosionThing",
                 BindingFlags.Instance | BindingFlags.NonPublic);

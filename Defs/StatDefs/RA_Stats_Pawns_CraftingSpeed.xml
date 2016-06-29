@@ -33,7 +33,30 @@
 			</li>
 		</capacityFactors>
 	</StatDef>
+	
 
+	<StatDef ParentName="CraftingDumb">
+		<defName>UnspecifiedCratingSpeed</defName>
+		<label>unspecified crafting speed</label>
+		<description>Speed at which this person disassembles things.</description>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Crafting</skill>
+				<baseFactor>0.4</baseFactor>
+				<bonusFactor>0.1</bonusFactor>
+			</li>
+		</skillNeedFactors>
+		<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.8</weight>
+			</li>
+			<li>
+				<capacity>Sight</capacity>
+				<weight>0.5</weight>
+			</li>
+		</capacityFactors>
+	</StatDef>
 
 	<StatDef ParentName="CraftingDumb">
 		<defName>CookingSpeed</defName>

@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+	<ThingDef Name="Food" ParentName="Item" Abstract="True">
+		<thingClass>Meal</thingClass>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+		</statBases>
+		<stackLimit>10</stackLimit>
+		<tickerType>Rare</tickerType>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<resourceReadoutPriority>Last</resourceReadoutPriority>
+		<ingestible>
+			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+		</ingestible>
+	</ThingDef>
+
+	<!-- ======================== Meat =========================-->
+
+	<ThingDef Name="MeatRaw" ParentName="Food">
+		<defName>MeatRaw</defName>
+		<label>raw meat</label>
+		<description>A piece of raw meat.</description>
+		<graphicData>
+			<texPath>Things/Items/Food/Meat/MeatRaw</texPath>
+		</graphicData>
+		<statBases>
+			<DeteriorationRate>10</DeteriorationRate>
+			<MarketValue>30</MarketValue>
+			<Beauty>-30</Beauty>
+		</statBases>
+		<thingCategories>
+			<li>MeatRaw</li>
+		</thingCategories>
+		<ingestible>
+			<foodType>Meat</foodType>
+			<preferability>Raw</preferability>
+			<nutrition>0.05</nutrition>
+			<eatEffect>EatMeat</eatEffect>
+			<soundEat>RawMeat_Eat</soundEat>
+		</ingestible>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>2</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="MeatRaw">
+		<defName>MeatSmallRaw</defName>
+		<label>small raw meat</label>
+		<graphicData>
+			<texPath>Things/Items/Food/Meat/MeatSmallRaw</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="MeatRaw">
+		<defName>MeatHumanRaw</defName>
+		<label>human raw meat</label>
+		<graphicData>
+			<texPath>Things/Item/Resource/MeatFoodRaw/MeatHuman</texPath>
+		</graphicData>
+	</ThingDef>
+
+
+	<ThingDef Name="MeatPrepared" ParentName="Food" Abstract="True">
+		<graphicData>
+			<texPath>Things/Items/Food/Meat/MeatPrepared</texPath>
+		</graphicData>
+		<thingCategories>
+			<li>FoodPrepared</li>
+		</thingCategories>
+		<ingestible>
+			<foodType>Meat, Meal, Processed</foodType>
+			<preferability>Simple</preferability>
+			<eatEffect>EatMeat</eatEffect>
+			<soundEat>RawMeat_Eat</soundEat>
+		</ingestible>
+	</ThingDef>
+
+
+	<ThingDef Name="MeatRoasted" ParentName="MeatPrepared">
+		<defName>MeatRoasted</defName>
+		<label>roasted meat</label>
+		<description>A piece of roasted meat.</description>
+		<statBases>
+			<DeteriorationRate>7</DeteriorationRate>
+			<MarketValue>50</MarketValue>
+		</statBases>
+		<ingestible>
+			<nutrition>0.8</nutrition>
+		</ingestible>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>3</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="MeatRoasted">
+		<defName>MeatSmallRoasted</defName>
+		<graphicData>
+			<texPath>Things/Items/Food/Meat/MeatSmallPrepared</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="MeatRoasted">
+		<defName>MeatHumanRoasted</defName>
+		<graphicData>
+			<texPath>Things/Item/Resource/MeatFoodRaw/MeatHuman</texPath>
+			<color>(127,106,0)</color>
+		</graphicData>
+	</ThingDef>
+
+
+	<ThingDef Name="MeatDried" ParentName="MeatPrepared">
+		<defName>MeatDried</defName>
+		<label>dried meat</label>
+		<description>A piece of dried meat.</description>
+		<graphicData>
+			<texPath>Things/Items/Food/Meat/MeatPrepared</texPath>
+			<color>(127,51,0)</color>
+		</graphicData>
+		<ingestible>
+			<nutrition>0.7</nutrition>
+		</ingestible>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>7</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="MeatDried">
+		<defName>MeatSmallDried</defName>
+		<graphicData>
+			<texPath>Things/Items/Food/Meat/MeatSmallPrepared</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="MeatDried">
+		<defName>MeatHumanDried</defName>
+		<graphicData>
+			<texPath>Things/Item/Resource/MeatFoodRaw/MeatHuman</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<!-- ======================== Meals =========================-->
+
+	<ThingDef Name="Meal" ParentName="Food" Abstract="True">
+		<thingCategories>
+			<li>Meals</li>
+		</thingCategories>
+		<ingestible>
+			<foodType>Meal, Processed</foodType>
+			<eatEffect>EatVegetarian</eatEffect>
+			<soundEat>Meal_Eat</soundEat>
+		</ingestible>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Meal">
+		<defName>MealSimple</defName>
+		<label>simple meal</label>
+		<description>A simple meal quickly cooked from a few ingredients.</description>
+		<graphicData>
+			<texPath>Things/Items/Food/Meals/MealSimple</texPath>
+		</graphicData>
+		<statBases>
+			<DeteriorationRate>20</DeteriorationRate>
+			<MarketValue>25</MarketValue>
+			<WorkToMake>300</WorkToMake>
+		</statBases>
+		<ingestible>
+			<preferability>Simple</preferability>
+			<nutrition>0.85</nutrition>
+			<joy>0.02</joy>
+		</ingestible>
+	</ThingDef>
+
+	<ThingDef ParentName="Meal">
+		<defName>MealFine</defName>
+		<label>fine meal</label>
+		<description>A complex dish assembled with care from a wide selection of ingredients.</description>
+		<graphicData>
+			<texPath>Things/Items/Food/Meals/MealFine</texPath>
+		</graphicData>
+		<statBases>
+			<DeteriorationRate>20</DeteriorationRate>
+			<MarketValue>28</MarketValue>
+			<WorkToMake>450</WorkToMake>
+		</statBases>
+		<ingestible>
+			<preferability>Fine</preferability>
+			<nutrition>0.90</nutrition>
+			<joy>0.045</joy>
+			<ingestedDirectThought>AteFineMeal</ingestedDirectThought>
+		</ingestible>
+	</ThingDef>
+
+	<ThingDef ParentName="Meal">
+		<defName>MealLavish</defName>
+		<label>lavish meal</label>
+		<description>A masterpiece of the culinary arts, this meal nourishes the body, mind, and soul.</description>
+		<graphicData>
+			<texPath>Things/Items/Food/Meals/MealLavish</texPath>
+		</graphicData>
+		<statBases>
+			<DeteriorationRate>20</DeteriorationRate>
+			<MarketValue>40</MarketValue>
+			<WorkToMake>800</WorkToMake>
+		</statBases>
+		<ingestible>
+			<preferability>Lavish</preferability>
+			<nutrition>1.00</nutrition>
+			<joy>0.065</joy>
+			<ingestedDirectThought>AteLavishMeal</ingestedDirectThought>
+		</ingestible>
+	</ThingDef>
+
+	<ThingDef ParentName="Meal">
+		<defName>MealSurvivalPack</defName>
+		<label>packaged survival meal</label>
+		<description>A high-quality packaged meal, manufactured for use in survival situations.</description>
+		<graphicData>
+			<texPath>Things/Item/Meal/SurvivalPack</texPath>
+		</graphicData>
+		<statBases>
+			<DeteriorationRate>0.5</DeteriorationRate>
+			<MarketValue>100</MarketValue>
+		</statBases>
+		<ingestible>
+			<preferability>Fine</preferability>
+			<nutrition>0.9</nutrition>
+			<joy>0.02</joy>
+		</ingestible>
+	</ThingDef>
+
+	<ThingDef ParentName="Meal">
+		<defName>MealNutrientPaste</defName>
+		<label>nutrient paste meal</label>
+		<description>A synthetic mixture of protein, carbohydrates, and vitamins, amino acids and minerals. Everything the body needs, and absolutely disgusting.</description>
+		<graphicData>
+			<texPath>Things/Item/Meal/NutrientPaste</texPath>
+		</graphicData>
+		<statBases>
+			<DeteriorationRate>20</DeteriorationRate>
+			<MarketValue>15</MarketValue>
+		</statBases>
+		<ingestible>
+			<preferability>Awful</preferability>
+			<nutrition>0.90</nutrition>
+			<joy>-0.04</joy>
+			<ingestedDirectThought>AteNutrientPasteMeal</ingestedDirectThought>
+		</ingestible>
+	</ThingDef>
+
+</ThingDefs>

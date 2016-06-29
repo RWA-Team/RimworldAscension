@@ -17,16 +17,24 @@
 		<workSkillLearnFactor>0.1</workSkillLearnFactor>
 		<effectWorking>Sculpt</effectWorking>
 		<soundWorking>Recipe_Sculpt</soundWorking>
-		<researchPrerequisite>Pottery</researchPrerequisite>
+		<researchPrerequisite>Firing</researchPrerequisite>
 	</RecipeDef>
 
 
 	<RecipeDef ParentName="Firing">
-		<defName>FirePot</defName>
+		<defName>MakePot</defName>
 		<label>fire pot</label>
 		<description>Finish pot with firing.</description>
 		<jobString>Firing pot.</jobString>
 		<workAmount>300</workAmount>
+		<products>
+			<Pot>1</Pot>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>PotRaw</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 		<ingredients>
 			<li>
 				<filter>
@@ -37,22 +45,22 @@
 				<count>1</count>
 			</li>
 		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>PotRaw</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<Pot>1</Pot>
-		</products>
 	</RecipeDef>
 
 	<RecipeDef ParentName="Firing">
-		<defName>FirePlantPot</defName>
+		<defName>MakePotPlant</defName>
 		<label>fire plant pot</label>
 		<description>Finish plant pot with firing.</description>
 		<jobString>Firing pot.</jobString>
 		<workAmount>300</workAmount>
+		<products>
+			<PlantPot>1</PlantPot>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>PotPlantRaw</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 		<ingredients>
 			<li>
 				<filter>
@@ -63,22 +71,22 @@
 				<count>1</count>
 			</li>
 		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>PotPlantRaw</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<PlantPot>1</PlantPot>
-		</products>
 	</RecipeDef>
 
 	<RecipeDef ParentName="Firing">
-		<defName>FireCeramics</defName>
+		<defName>MakeCeramics</defName>
 		<label>fire ceramics</label>
 		<description>Finish ceramics with firing.</description>
 		<jobString>Firing ceramics.</jobString>
 		<workAmount>300</workAmount>
+		<products>
+			<Ceramics>1</Ceramics>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CeramicsRaw</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 		<ingredients>
 			<li>
 				<filter>
@@ -89,21 +97,39 @@
 				<count>1</count>
 			</li>
 		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>CeramicsRaw</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<Ceramics>1</Ceramics>
-		</products>
 	</RecipeDef>
 
 	<RecipeDef ParentName="Firing">
-		<defName>FireBlocksAdobe</defName>
-		<label>fire adobe block</label>
-		<description>Finish adobe block with firing.</description>
-		<jobString>Firing adobe block.</jobString>
+		<defName>MakeBrick</defName>
+		<label>fire brick</label>
+		<description>Finish bricks with firing.</description>
+		<jobString>Firing brick.</jobString>
+		<workAmount>300</workAmount>
+		<products>
+			<Brick>25</Brick>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BrickRaw</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BrickRaw</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="Firing">
+		<defName>MakeBrickAdobe</defName>
+		<label>fire adobe bricks</label>
+		<description>Finish adobe bricks with firing.</description>
+		<jobString>Firing adobe bricks.</jobString>
 		<workAmount>300</workAmount>
 		<products>
 			<BrickAdobe>25</BrickAdobe>
@@ -123,32 +149,6 @@
 				<count>25</count>
 			</li>
 		</ingredients>
-	</RecipeDef>
-
-	<RecipeDef ParentName="Firing">
-		<defName>FireBricks</defName>
-		<label>fire brick</label>
-		<description>Finish brick with firing.</description>
-		<jobString>Firing brick.</jobString>
-		<workAmount>300</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BrickRaw</li>
-					</thingDefs>
-				</filter>
-				<count>25</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>BrickRaw</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<Brick>25</Brick>
-		</products>
 	</RecipeDef>
 
 </RecipeDefs>

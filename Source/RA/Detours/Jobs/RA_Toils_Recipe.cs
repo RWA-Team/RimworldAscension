@@ -75,7 +75,7 @@ namespace RA
                 var billGiverWithTickAction =
                     curJob.GetTarget(TargetIndex.A).Thing as IBillGiverWithTickAction;
                 billGiverWithTickAction?.BillTick();
-                
+
                 if (curJob.RecipeDef.workSkill != null)
                 {
                     actor.skills.GetSkill(curJob.RecipeDef.workSkill)
@@ -121,14 +121,19 @@ namespace RA
                         // scatter around all ingridients
                         foreach (var cell in building_WorkTable.IngredientStackCells)
                         {
-                            var ingridientsOnCell = Find.ThingGrid.ThingsListAtFast(cell)?.Where(thing => thing.def.category == ThingCategory.Item).ToList();
+                            var ingridientsOnCell =
+                                Find.ThingGrid.ThingsListAtFast(cell)?
+                                    .Where(thing => thing.def.category == ThingCategory.Item)
+                                    .ToList();
                             if (!ingridientsOnCell.NullOrEmpty())
                             {
                                 Thing dummy;
                                 // despawn thing to spawn again with TryPlaceThing
                                 ingridientsOnCell.FirstOrDefault().DeSpawn();
-                                if (!GenPlace.TryPlaceThing(ingridientsOnCell.FirstOrDefault(), building_WorkTable.InteractionCell,
-                                    ThingPlaceMode.Near, out dummy))
+                                if (
+                                    !GenPlace.TryPlaceThing(ingridientsOnCell.FirstOrDefault(),
+                                        building_WorkTable.InteractionCell,
+                                        ThingPlaceMode.Near, out dummy))
                                 {
                                     Log.Error("No free spot for " + ingridientsOnCell);
                                 }
@@ -172,17 +177,12 @@ namespace RA
         public static Thing GetDominantIngredient(RecipeDef recipe, List<Thing> ingredients)
         {
             // checks if there are any stuff ingredients used which are not forbidden in defaultIngredientFilter
-            // accepts any other stuff types
-            var disallowedFilter = recipe.defaultIngredientFilter;
-            if (disallowedFilter != null)
-            {
-                var dominantIngridient =
-                    ingredients.Find(ingredient => ingredient.def.IsStuff && !disallowedFilter.Allows(ingredient.def));
-                if (dominantIngridient != null)
-                    return dominantIngridient;
-            }
-            // no suitable stuff ingridient found
-            return ingredients.RandomElementByWeight(ing => ing.stackCount);
+            return recipe.products.FirstOrDefault().thingDef.MadeFromStuff
+                ? ingredients
+                    .Find(ingredient => ingredient.def.IsStuff &&
+                                        ingredient.def.stuffProps.CanMake(recipe.products.FirstOrDefault().thingDef) &&
+                                        (!recipe.defaultIngredientFilter?.Allows(ingredient.def) ?? true))
+                : ingredients.RandomElementByWeight(ing => ing.stackCount);
         }
     }
 }

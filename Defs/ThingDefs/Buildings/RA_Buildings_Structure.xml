@@ -36,7 +36,7 @@
 	<!--====================== Doors ==========================-->
 
 	<ThingDef Name="Door" ParentName="Structure" Abstract="True">
-		<thingClass>Building_Door</thingClass>
+		<thingClass>RA.RA_Building_Door</thingClass>
 		<graphicData>
 			<damageData>
 				<rect>(0,0.1,1,0.8)</rect>
@@ -193,7 +193,7 @@
 		</stuffCategories>
 		<costStuffCount>5</costStuffCount>
 		<researchPrerequisites>
-			<li>Pottery</li>
+			<li>Firing</li>
 		</researchPrerequisites>
 	</ThingDef>
 
