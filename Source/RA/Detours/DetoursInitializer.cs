@@ -114,6 +114,13 @@ namespace RA
                 BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaSelectableNow, newSelectableNow);
 
+            // changed how prodcut stuff type is determined and made this toil assign production cost for the Thing to the CompCraftedValue
+            var vanillaFinishRecipeAndStartStoringProduct = typeof(Toils_Recipe).GetMethod("FinishRecipeAndStartStoringProduct",
+                BindingFlags.Static | BindingFlags.Public);
+            var newFinishRecipeAndStartStoringProduct = typeof(RA_Toils_Recipe).GetMethod("FinishRecipeAndStartStoringProduct",
+                BindingFlags.Static | BindingFlags.Public);
+            TryDetourFromTo(vanillaFinishRecipeAndStartStoringProduct, newFinishRecipeAndStartStoringProduct);
+
             // added rectangular field edges support for trading post
             // added Graphic_StuffBased support
             var vanillaSelectedUpdate = typeof (Designator_Place).GetMethod("SelectedUpdate",
