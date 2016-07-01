@@ -173,6 +173,121 @@ namespace RA
             return toil;
         }
 
+        // changed how prodcut stuff type is determined and made this toil assign production cost for the Thing to the CompCraftedValue
+        public static Toil FinishRecipeAndStartStoringProduct()
+        {
+            var toil = new Toil();
+            toil.initAction = delegate
+            {
+                var actor = toil.actor;
+                var curJob = actor.jobs.curJob;
+                Thing dominantIngredient;
+                var ingredients = ProcessedIngredients(curJob, out dominantIngredient);
+                var products =
+                    GenRecipe.MakeRecipeProducts(curJob.RecipeDef, actor, ingredients, dominantIngredient).ToList();
+                curJob.bill.Notify_IterationCompleted(actor);
+                RecordsUtility.Notify_BillDone(actor, products);
+
+                // set production cost for all products
+                foreach (var product in products)
+                {
+                    var compCraftedValue = product.TryGetComp<CompCraftedValue>();
+                    compCraftedValue?.SetProductCost(ingredients, product.GetStatValue(StatDefOf.WorkToMake));
+                }
+
+                if (products.Count == 0)
+                {
+                    actor.jobs.EndCurrentJob(JobCondition.Succeeded);
+                    return;
+                }
+                if (curJob.bill.GetStoreMode() == BillStoreMode.DropOnFloor)
+                {
+                    foreach (
+                        var thing in
+                            products.Where(thing => !GenPlace.TryPlaceThing(thing, actor.Position, ThingPlaceMode.Near)))
+                    {
+                        Log.Error(string.Concat(actor, " could not drop recipe product ", thing, " near ",
+                            actor.Position));
+                    }
+                    actor.jobs.EndCurrentJob(JobCondition.Succeeded);
+                    return;
+                }
+                if (products.Count > 1)
+                {
+                    for (var j = 1; j < products.Count; j++)
+                    {
+                        if (!GenPlace.TryPlaceThing(products[j], actor.Position, ThingPlaceMode.Near))
+                        {
+                            Log.Error(string.Concat(actor, " could not drop recipe product ", products[j], " near ",
+                                actor.Position));
+                        }
+                    }
+                }
+                products[0].SetPositionDirect(actor.Position);
+                IntVec3 vec;
+                if (StoreUtility.TryFindBestBetterStoreCellFor(products[0], actor, StoragePriority.Unstored, actor.Faction,
+                    out vec))
+                {
+                    actor.carrier.TryStartCarry(products[0]);
+                    curJob.targetB = vec;
+                    curJob.targetA = products[0];
+                    curJob.maxNumToCarry = 99999;
+                    return;
+                }
+                if (!GenPlace.TryPlaceThing(products[0], actor.Position, ThingPlaceMode.Near))
+                {
+                    Log.Error(string.Concat("Bill doer could not drop product ", products[0], " near ", actor.Position));
+                }
+                actor.jobs.EndCurrentJob(JobCondition.Succeeded);
+            };
+            return toil;
+        }
+        
+        public static List<Thing> ProcessedIngredients(Job job, out Thing dominantIngredient)
+        {
+            var uft = job.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
+            if (uft != null)
+            {
+                dominantIngredient = uft.def.MadeFromStuff ? uft.ingredients.First(ing => ing.def == uft.Stuff) : null;
+                var ingredients = uft.ingredients;
+                uft.Destroy();
+                job.placedTargets = null;
+                return ingredients;
+            }
+            var list = new List<Thing>();
+            if (job.placedTargets != null)
+            {
+                foreach (var thing in job.placedTargets.Select(target => target.Thing))
+                {
+                    if (list.Contains(thing))
+                    {
+                        Log.Error("Tried to add ingredient from job placed targets twice: " + thing);
+                    }
+                    else
+                    {
+                        list.Add(thing);
+                        if (thing.Spawned)
+                        {
+                            var strippable = thing as IStrippable;
+                            strippable?.Strip();
+                        }
+                        if (job.RecipeDef.UsesUnfinishedThing)
+                        {
+                            Find.DesignationManager.RemoveAllDesignationsOn(thing);
+                            thing.DeSpawn();
+                        }
+                        else
+                        {
+                            thing.Destroy();
+                        }
+                    }
+                }
+            }
+            job.placedTargets = null;
+            dominantIngredient = list.NullOrEmpty() ? null : GetDominantIngredient(job.RecipeDef, list);
+            return list;
+        }
+
         // make recipe decide what result stuff to make based on defaultIngredientFilter as blocking Stuff types one
         public static Thing GetDominantIngredient(RecipeDef recipe, List<Thing> ingredients)
         {
