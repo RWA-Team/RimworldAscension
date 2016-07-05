@@ -10,9 +10,11 @@ namespace RA
         // flat damage reduction armor system and armor penetration
         public static int GetAfterArmorDamage(Pawn pawn, DamageInfo dInfo, BodyPartRecord bPart)
         {
-            var armorValue = dInfo.Def.armorCategory.DeflectionStat();
+            Log.Message("base damage " + dInfo.Amount);
 
-            var remainingDamage = (float)dInfo.Amount;
+            var armorStat = dInfo.Def.armorCategory.DeflectionStat();
+
+            var remainingDamage = (float) dInfo.Amount;
             if (dInfo.Def.armorCategory == DamageArmorCategory.IgnoreArmor)
             {
                 return dInfo.Amount;
@@ -31,7 +33,8 @@ namespace RA
                 var wornApparel = pawn.apparel.WornApparel;
                 foreach (var apparel in wornApparel.Where(apparel => apparel.def.apparel.CoversBodyPart(bPart)))
                 {
-                    ApplyDamageReduction(ref remainingDamage, ref armorPenetration, apparel.GetStatValue(armorValue), apparel, dInfo);
+                    ApplyDamageReduction(ref remainingDamage, ref armorPenetration, apparel.GetStatValue(armorStat),
+                        apparel, dInfo);
                     if (remainingDamage < 0.01f)
                     {
                         return 0;
@@ -39,18 +42,24 @@ namespace RA
                 }
             }
 
-            ApplyDamageReduction(ref remainingDamage, ref armorPenetration, pawn.GetStatValue(armorValue), null, dInfo);
+            ApplyDamageReduction(ref remainingDamage, ref armorPenetration, pawn.GetStatValue(armorStat), null, dInfo);
+
+            Log.Message("final damage " + Mathf.RoundToInt(remainingDamage));
 
             return Mathf.RoundToInt(remainingDamage);
         }
 
-        public static void ApplyDamageReduction(ref float damageAmount, ref float penetrationAmount, float armorValue, Thing armorThing, DamageInfo dInfo)
+        public static void ApplyDamageReduction(ref float damageAmount, ref float penetrationAmount, float armorValue,
+            Thing armorThing, DamageInfo dInfo)
         {
+            Log.Message("base armor " + armorValue);
+            Log.Message("penetrationAmount " + penetrationAmount);
             // limit armor value after AP is applied to 0
             armorValue = Mathf.Clamp(armorValue - penetrationAmount, 0, armorValue);
+            Log.Message("final armor " + armorValue);
             var blockedDamage = Mathf.Min(damageAmount, armorValue);
-            armorThing?.TakeDamage(new DamageInfo(dInfo.Def, Mathf.RoundToInt(blockedDamage), null,
-                null));
+            Log.Message("blockedDamage " + blockedDamage);
+            armorThing?.TakeDamage(new DamageInfo(dInfo.Def, Mathf.RoundToInt(blockedDamage), null, null));
             damageAmount -= blockedDamage;
         }
     }

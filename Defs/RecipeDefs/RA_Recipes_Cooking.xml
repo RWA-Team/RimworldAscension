@@ -17,7 +17,6 @@
 		<effectWorking>Cook</effectWorking>
 		<allowMixingIngredients>true</allowMixingIngredients>
 		<soundWorking>Recipe_CookMeal</soundWorking>
-		<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
 	</RecipeDef>
 
 	<!--===================== Meat =====================-->
@@ -252,7 +251,6 @@
 	<RecipeDef Name="CookAlcohol" ParentName="Cook" Abstract="True">
 		<allowMixingIngredients>true</allowMixingIngredients>
 		<soundWorking>Recipe_Brewing</soundWorking>
-		<ingredientValueGetterClass />
 	</RecipeDef>
 
 

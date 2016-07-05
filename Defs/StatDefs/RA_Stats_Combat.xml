@@ -7,7 +7,7 @@
 		<description>Additional capability to penetrate armor.</description>
 		<category>Weapon</category>
 		<defaultBaseValue>0</defaultBaseValue>
-		<toStringStyle>PercentTwo</toStringStyle>
+		<toStringStyle>FloatTwo</toStringStyle>
 		<showIfUndefined>false</showIfUndefined>
 		<parts>
 			<li Class="StatPart_Quality">

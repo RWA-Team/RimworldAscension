@@ -54,7 +54,7 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Resource">
-		<defName>StripsLeather</defName>
+		<defName>LeatherStrip</defName>
 		<label>empty bottle</label>
 		<description>An empty bottle.</description>
 		<graphicData>
@@ -72,7 +72,7 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Resource">
-		<defName>GlassPebbles</defName>
+		<defName>GlassPebble</defName>
 		<label>empty bottle</label>
 		<description>An empty bottle.</description>
 		<graphicData>

@@ -10,54 +10,72 @@ namespace RA
 
         public override float GetValueUnfinalized(StatRequest req, bool applyPostProcess = true)
         {
+            if (!req.HasThing)
+                return 0f;
+
             // market value for pawn
-            if (req.HasThing && req.Thing is Pawn)
+            if (req.Thing is Pawn)
             {
                 return base.GetValueUnfinalized(StatRequest.For(req.Def, req.StuffDef), applyPostProcess)*
                        PriceUtility.PawnQualityPriceFactor((Pawn) req.Thing);
             }
 
+            // market value for buildings
+            if (req.Thing is Building)
+            {
+                // market value from costList
+                var marketValueFromResources = 0f;
+                if (!req.Def.costList.NullOrEmpty())
+                {
+                    marketValueFromResources +=
+                        req.Def.costList.Sum(thingCount => thingCount.count * thingCount.thingDef.BaseMarketValue);
+                }
+
+                // market value from costStuffCount
+                var marketValueFromStuff = 0f;
+                if (req.StuffDef != null && req.Def.costStuffCount > 0)
+                {
+                    marketValueFromStuff += req.Def.costStuffCount / req.StuffDef.VolumePerUnit *
+                                            req.StuffDef.BaseMarketValue;
+                }
+
+                // market value from workToMake
+                var marketValueFromWork = req.Def.GetStatValueAbstract(StatDefOf.WorkToMake, req.StuffDef) *
+                                          ValuePerWorkFactor;
+
+                return marketValueFromResources + marketValueFromStuff + marketValueFromWork;
+            }
+
+            // market value for things
+            var marketValue = 0f;
+
             // market value is taken from baseStats, if MarketValue value is set there
             if (req.Def.statBases.StatListContains(StatDefOf.MarketValue))
             {
-                return base.GetValueUnfinalized(req);
+                // base market value
+                marketValue = base.GetValueUnfinalized(req);
             }
 
-            if (req.HasThing)
+            // ingredients value
+            var compCraftedValue = req.Thing.TryGetComp<CompCraftedValue>();
+            if (compCraftedValue != null)
+                marketValue += compCraftedValue.productionCost;
+            else
             {
-                // market value for Things by CompCraftedValue
-                var compCraftedValue = req.Thing.TryGetComp<CompCraftedValue>();
-                if (compCraftedValue != null)
-                    return compCraftedValue.productionCost;
-
-                // market value for Buildings
-                if (req.Thing is Building)
+                var recipe = DefDatabase<RecipeDef>.GetNamed("Make" + req.Thing.def.defName);
+                foreach (var ingredient in recipe.ingredients)
                 {
-                    // market value from costList
-                    var marketValueFromResources = 0f;
-                    if (!req.Def.costList.NullOrEmpty())
-                    {
-                        marketValueFromResources +=
-                            req.Def.costList.Sum(thingCount => thingCount.count * thingCount.thingDef.BaseMarketValue);
-                    }
-
-                    // market value from costStuffCount
-                    var marketValueFromStuff = 0f;
-                    if (req.StuffDef != null && req.Def.costStuffCount > 0)
-                    {
-                        marketValueFromStuff += req.Def.costStuffCount / req.StuffDef.VolumePerUnit *
-                                       req.StuffDef.BaseMarketValue;
-                    }
-
-                    // market value from workToMake
-                    var marketValueFromWork = req.Def.GetStatValueAbstract(StatDefOf.WorkToMake, req.StuffDef) * ValuePerWorkFactor;
-
-                    return marketValueFromResources + marketValueFromStuff + marketValueFromWork;
+                    if (ingredient.filter.AllowedThingDefs.Any(def => def.IsStuff
+                                                                      && req.Thing.def.stuffProps.CanMake(def)))
+                        marketValue += req.Thing.Stuff.BaseMarketValue *
+                                       ingredient.GetBaseCount();
+                    else
+                        marketValue += ingredient.filter.AllowedThingDefs.Average(def => def.BaseMarketValue) *
+                                       ingredient.GetBaseCount();
                 }
             }
 
-            // return default value
-            return StatDefOf.MarketValue.defaultBaseValue;
+            return marketValue;
         }
     }
 }

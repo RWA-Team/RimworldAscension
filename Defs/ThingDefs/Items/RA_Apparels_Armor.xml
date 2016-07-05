@@ -355,9 +355,6 @@
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
 		</statBases>
-		<stuffCategories>
-			<li>Wood</li>
-		</stuffCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -370,9 +367,6 @@
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
 		</statBases>
-		<stuffCategories>
-			<li>Bone</li>
-		</stuffCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -380,14 +374,13 @@
 		<label>buckler</label>
 		<description>A bucler.</description>
 		<graphicData>
-			<texPath>Missing</texPath>
-			<!-- <texPath>Things/Items/Apparels/Shields/Buckler</texPath> -->
+			<texPath>Things/Items/Apparels/Shields/Buckler/Buckler</texPath>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
 		</statBases>
 		<stuffCategories>
-			<li>Bone</li>
+			<li>Metal</li>
 		</stuffCategories>
 	</ThingDef>
 
@@ -396,14 +389,13 @@
 		<label>kite shield</label>
 		<description>A kite shield.</description>
 		<graphicData>
-			<texPath>Missing</texPath>
-			<!-- <texPath>Things/Items/Apparels/Shields/ShieldKite</texPath> -->
+			<texPath>Things/Items/Apparels/Shields/ShieldKite</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>300</MaxHitPoints>
+			<MaxHitPoints>400</MaxHitPoints>
 		</statBases>
 		<stuffCategories>
-			<li>Bone</li>
+			<li>Metal</li>
 		</stuffCategories>
 	</ThingDef>
 

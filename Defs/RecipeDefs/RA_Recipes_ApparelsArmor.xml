@@ -19,7 +19,7 @@
 		<soundWorking>Recipe_Smith</soundWorking>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>StripsLeather</li>
+				<li>LeatherStrip</li>
 				<li>BarkFibre</li>
 			</thingDefs>
 		</fixedIngredientFilter>
@@ -27,7 +27,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>StripsLeather</li>
+						<li>LeatherStrip</li>
 						<li>BarkFibre</li>
 					</thingDefs>
 				</filter>
@@ -214,7 +214,7 @@
 		</products>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>StripsLeather</li>
+				<li>LeatherStrip</li>
 				<li>BarkFibre</li>
 				<li>WoodPlank</li>
 			</thingDefs>
@@ -223,7 +223,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>StripsLeather</li>
+						<li>LeatherStrip</li>
 						<li>BarkFibre</li>
 					</thingDefs>
 				</filter>
@@ -257,7 +257,7 @@
 		</products>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>StripsLeather</li>
+				<li>LeatherStrip</li>
 				<li>BarkFibre</li>
 			</thingDefs>
 		</fixedIngredientFilter>
@@ -265,7 +265,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>StripsLeather</li>
+						<li>LeatherStrip</li>
 						<li>BarkFibre</li>
 					</thingDefs>
 				</filter>
