@@ -37,12 +37,15 @@ namespace RA
                 return;
             }
             var flag = !dinfo.InstantOldInjury;
+            
             var num = dinfo.Amount;
+            Log.Message("num " + num);
             if (flag)
             {
                 var dInfoNew = new DamageInfo(dinfo.Def, dinfo.Amount/2, dinfo.Instigator, dinfo.Part);
                 num = GetAfterArmorDamage(pawn, dInfoNew, exactPartFromDamageInfo);
             }
+            Log.Message("num new " + num);
             if (num < 0.001)
             {
                 result.deflected = true;
@@ -111,6 +114,7 @@ namespace RA
                         if (involveArmor)
                         {
                             var dInfoNew = new DamageInfo(dinfo.Def, dinfo.Amount/2, dinfo.Instigator, dinfo.Part);
+                            Log.Message("damage new " + dInfoNew.Amount);
                             hediff_Injury.Severity = GetAfterArmorDamage(pawn, dInfoNew, parent);
                         }
                         if (hediff_Injury.Severity <= 0f)
@@ -159,6 +163,7 @@ namespace RA
                     hediff_Injury.source = injury.source;
                     hediff_Injury.sourceBodyPartGroup = injury.sourceBodyPartGroup;
                     hediff_Injury.Severity = dinfo.Amount/2;
+                    Log.Message("Severity " + hediff_Injury.Severity);
                     if (involveArmor)
                     {
                         var dInfoNew = new DamageInfo(dinfo.Def, dinfo.Amount/2, dinfo.Instigator, dinfo.Part);

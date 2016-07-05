@@ -381,7 +381,7 @@
 			<li>MakeCape</li>
 <!-- 			<li>MakeBackpackLeather</li>
 			<li>MakeToolbeltLeather</li> -->
-			<li>MakeStripsLeather</li>
+			<li>MakeLeatherStrip</li>
 		</recipes>
 		<researchPrerequisites>
 			<li>Leatherworking</li>
@@ -416,8 +416,8 @@
 		</graphicData>
 		<recipes>
 			<li>MakeBottle</li>
-			<li>MakeGlassPebbles</li>
-			<li>MakeBarMetal</li>
+			<li>MakeGlassPebble</li>
+			<li>MakeMetalBar</li>
 		</recipes>
 		<researchPrerequisites>
 			<li>GlassSmelting</li>

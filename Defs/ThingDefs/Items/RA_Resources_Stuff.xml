@@ -548,7 +548,7 @@
 		<description>Metal bars.</description>
 		<graphicData>
 			<texPath>Missing</texPath>
-			<!-- <texPath>Things/Items/Resources/BarMetal</texPath> -->
+			<!-- <texPath>Things/Items/Resources/MetalBar</texPath> -->
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
@@ -578,7 +578,7 @@
 	
 
 	<ThingDef ParentName="Metal">
-		<defName>BarMetalCopper</defName>
+		<defName>MetalBarCopper</defName>
 		<label>copper bars</label>
 		<graphicData>
 			<color>(142,75,50)</color>
@@ -590,7 +590,7 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Metal">
-		<defName>BarMetalIron</defName>
+		<defName>MetalBarIron</defName>
 		<label>iron bars</label>
 		<graphicData>
 			<color>(75,75,75)</color>
@@ -602,7 +602,7 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Metal">
-		<defName>BarMetalBronze</defName>
+		<defName>MetalBarBronze</defName>
 		<label>bronze bars</label>
 		<graphicData>
 			<color>(130,100,45)</color>
@@ -614,7 +614,7 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Metal">
-		<defName>BarMetalSteel</defName>
+		<defName>MetalBarSteel</defName>
 		<label>steel bars</label>
 		<graphicData>
 			<color>(125,125,125)</color>

@@ -111,9 +111,9 @@
 
 	<RecipeDef ParentName="Moulding">
 		<defName>MakeBrickAdobeRaw</defName>
-		<label>make raw adobe brick</label>
-		<description>Mix clay and hay into raw adobe block.</description>
-		<jobString>Making raw adobe block.</jobString>
+		<label>make raw adobe bricks</label>
+		<description>Mix clay and hay into raw adobe bricks.</description>
+		<jobString>Making raw adobe bricks.</jobString>
 		<workAmount>300</workAmount>
 		<targetCountAdjustment>50</targetCountAdjustment>
 		<ingredients>
@@ -349,7 +349,7 @@
 
 
 	<RecipeDef ParentName="Disassembling">
-		<defName>MakeStripsLeather</defName>
+		<defName>MakeLeatherStrip</defName>
 		<label>make leather strips</label>
 		<description>make leather strips.</description>
 		<efficiencyStat>RefiningEfficiency</efficiencyStat>
@@ -357,7 +357,7 @@
 		<soundWorking>Recipe_MakeBlocksStone</soundWorking>
 		<workAmount>1600</workAmount>
 		<products>
-			<StripsLeather>25</StripsLeather>
+			<LeatherStrip>25</LeatherStrip>
 		</products>
 		<fixedIngredientFilter>
 			<thingDefs>
@@ -410,7 +410,7 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="Disassembling">
-		<defName>MakeBlocksStone</defName>
+		<defName>MakeStoneBlock</defName>
 		<label>make stone blocks</label>
 		<description>Cuts rock chunks into usable stone blocks.</description>
 		<jobString>Cutting stone chunks into blocks.</jobString>
@@ -527,13 +527,13 @@
 
 
 	<RecipeDef ParentName="Smelting">
-		<defName>MakeGlassPebbles</defName>
+		<defName>MakeGlassPebble</defName>
 		<label>make glass pebbles</label>
 		<description>make glass pebbles</description>
 		<jobString>making glass pebbles.</jobString>
 		<workAmount>1600</workAmount>
 		<products>
-			<GlassPebbles>5</GlassPebbles>
+			<GlassPebble>5</GlassPebble>
 		</products>
 		<ingredients>
 			<li>
@@ -543,93 +543,38 @@
 					</thingDefs>
 				</filter>
 				<count>25</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-					<thingDefs>
-						<li>SandWhite</li>
-					</thingDefs>
-		</fixedIngredientFilter>
-	</RecipeDef>
-
-	<RecipeDef ParentName="Smelting">
-		<defName>MakeBarMetal</defName>
-		<label>make metal bars</label>
-		<description>make metal bars</description>
-		<jobString>making metal bars.</jobString>
-		<workAmount>1600</workAmount>
-		<products>
-			<GlassPebbles>5</GlassPebbles>
-		</products>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>SandWhite</li>
-					</thingDefs>
-				</filter>
-				<count>25</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-					<thingDefs>
-						<li>SandWhite</li>
-					</thingDefs>
-		</fixedIngredientFilter>
-	</RecipeDef>
-
-	<RecipeDef ParentName="Smelting">
-		<defName>SmeltMetalSlag</defName>
-		<label>smelt metal slag</label>
-		<description>Extract metal from the metal slag.</description>
-		<jobString>Smelting metal from slag.</jobString>
-		<workAmount>1600</workAmount>
-		<products>
-			<Steel>10</Steel>
-		</products>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>ChunkSlagSteel</li>
-					</thingDefs>
-				</filter>
-				<count>1</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>ChunkSlagSteel</li>
+				<li>SandWhite</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 	</RecipeDef>
 
 	<RecipeDef ParentName="Smelting">
-		<defName>SmeltWeapon</defName>
-		<label>smelt weapon</label>
-		<description>Extract metal from the metal weapon.</description>
-		<jobString>Smelting metal from weapon.</jobString>
+		<defName>MakeMetalBar</defName>
+		<label>make metal bars</label>
+		<description>make metal bars</description>
+		<jobString>making metal bars.</jobString>
 		<workAmount>1600</workAmount>
-		<specialProducts>
-			<li>Smelted</li>
-		</specialProducts>
+		<products>
+			<GlassPebble>5</GlassPebble>
+		</products>
 		<ingredients>
 			<li>
 				<filter>
-					<categories>
-						<li>Weapons</li>
-					</categories>
+					<thingDefs>
+						<li>SandWhite</li>
+					</thingDefs>
 				</filter>
-				<count>1</count>
+				<count>25</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
-			<categories>
-				<li>Weapons</li>
-			</categories>
-			<specialFiltersToDisallow>
-				<li>AllowNonSmeltableWeapons</li>
-			</specialFiltersToDisallow>
+			<thingDefs>
+				<li>SandWhite</li>
+			</thingDefs>
 		</fixedIngredientFilter>
 	</RecipeDef>
 
