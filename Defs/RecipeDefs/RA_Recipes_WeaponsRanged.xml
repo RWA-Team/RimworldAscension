@@ -241,7 +241,7 @@
 				<count>20</count>
 			</li>
 		</ingredients>
-		<researchPrerequisite>StartPack</researchPrerequisite>
+		<researchPrerequisite>Survival</researchPrerequisite>
 	</RecipeDef>
 		
 	<!-- ========================= Medieval =========================-->

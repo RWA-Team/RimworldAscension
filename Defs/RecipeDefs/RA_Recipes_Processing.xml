@@ -479,7 +479,7 @@
 				<count>1</count>
 			</li>
 		</ingredients>
-		<researchPrerequisite>StartPack</researchPrerequisite>
+		<researchPrerequisite>Survival</researchPrerequisite>
 	</RecipeDef>
 
 	<RecipeDef ParentName="Disassembling">

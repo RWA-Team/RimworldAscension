@@ -33,7 +33,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>MeatRaw</li>
+						<li>Meat</li>
 					</thingDefs>
 				</filter>
 				<count>10</count>
@@ -41,19 +41,9 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>MeatRaw</li>
+				<li>Meat</li>
 			</thingDefs>
 		</fixedIngredientFilter>
-	</RecipeDef>
-
-	<RecipeDef ParentName="CookMeat">
-		<defName>MakeMeatDried</defName>
-		<label>cook dried meat</label>
-		<description>Cooks a dried meat.</description>
-		<jobString>Cooking dried meat.</jobString>
-		<products>
-			<MeatDried>1</MeatDried>
-		</products>
 	</RecipeDef>
 
 
@@ -69,7 +59,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>MeatSmallRaw</li>
+						<li>MeatSmall</li>
 					</thingDefs>
 				</filter>
 				<count>10</count>
@@ -77,19 +67,9 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>MeatSmallRaw</li>
+				<li>MeatSmall</li>
 			</thingDefs>
 		</fixedIngredientFilter>
-	</RecipeDef>
-
-	<RecipeDef ParentName="CookMeatSmall">
-		<defName>MakeMeatSmallDried</defName>
-		<label>cook small dried meat</label>
-		<description>Cooks a dried meat.</description>
-		<jobString>Cooking small dried meat.</jobString>
-		<products>
-			<MeatSmallDried>1</MeatSmallDried>
-		</products>
 	</RecipeDef>
 
 
@@ -105,7 +85,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>MeatHumanRaw</li>
+						<li>MeatHuman</li>
 					</thingDefs>
 				</filter>
 				<count>10</count>
@@ -113,19 +93,9 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>MeatHumanRaw</li>
+				<li>MeatHuman</li>
 			</thingDefs>
 		</fixedIngredientFilter>
-	</RecipeDef>
-
-	<RecipeDef ParentName="CookMeatHuman">
-		<defName>MakeMeatHumanDried</defName>
-		<label>cook human dried meat</label>
-		<description>Cooks a dried meat.</description>
-		<jobString>Cooking human dried meat.</jobString>
-		<products>
-			<MeatHumanDried>1</MeatHumanDried>
-		</products>
 	</RecipeDef>
 
 	<!--===================== Meals =====================-->
@@ -149,7 +119,7 @@
 				<li>EggsFertilized</li>
 			</exceptedCategories>
 			<exceptedThingDefs>
-				<li>MeatHumanRaw</li>
+				<li>MeatHuman</li>
 			</exceptedThingDefs>
 		</defaultIngredientFilter>
 		<researchPrerequisite>Cooking</researchPrerequisite>

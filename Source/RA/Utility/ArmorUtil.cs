@@ -10,8 +10,6 @@ namespace RA
         // flat damage reduction armor system and armor penetration
         public static int GetAfterArmorDamage(Pawn pawn, DamageInfo dInfo, BodyPartRecord bPart)
         {
-            Log.Message("base damage " + dInfo.Amount);
-
             var armorStat = dInfo.Def.armorCategory.DeflectionStat();
 
             var remainingDamage = (float) dInfo.Amount;
@@ -44,21 +42,15 @@ namespace RA
 
             ApplyDamageReduction(ref remainingDamage, ref armorPenetration, pawn.GetStatValue(armorStat), null, dInfo);
 
-            Log.Message("final damage " + Mathf.RoundToInt(remainingDamage));
-
             return Mathf.RoundToInt(remainingDamage);
         }
 
         public static void ApplyDamageReduction(ref float damageAmount, ref float penetrationAmount, float armorValue,
             Thing armorThing, DamageInfo dInfo)
         {
-            Log.Message("base armor " + armorValue);
-            Log.Message("penetrationAmount " + penetrationAmount);
             // limit armor value after AP is applied to 0
             armorValue = Mathf.Clamp(armorValue - penetrationAmount, 0, armorValue);
-            Log.Message("final armor " + armorValue);
             var blockedDamage = Mathf.Min(damageAmount, armorValue);
-            Log.Message("blockedDamage " + blockedDamage);
             armorThing?.TakeDamage(new DamageInfo(dInfo.Def, Mathf.RoundToInt(blockedDamage), null, null));
             damageAmount -= blockedDamage;
         }

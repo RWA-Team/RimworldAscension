@@ -58,8 +58,8 @@ namespace RA
 
             // ingredients value
             var compCraftedValue = req.Thing.TryGetComp<CompCraftedValue>();
-            if (compCraftedValue != null)
-                marketValue += compCraftedValue.productionCost;
+            if (compCraftedValue != null) ;
+                //marketValue += compCraftedValue.productionCost;
             else
             {
                 var recipe = DefDatabase<RecipeDef>.GetNamed("Make" + req.Thing.def.defName);

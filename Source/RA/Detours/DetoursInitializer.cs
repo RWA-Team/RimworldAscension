@@ -113,6 +113,13 @@ namespace RA
             var newSelectableNow = typeof (RA_ThingSelectionUtility).GetMethod("SelectableNow",
                 BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaSelectableNow, newSelectableNow);
+            
+            //changed inner graphic extraction for minified things
+            var vanillaExtractInnerGraphicFor = typeof(GraphicUtility).GetMethod("ExtractInnerGraphicFor",
+                BindingFlags.Static | BindingFlags.Public);
+            var newExtractInnerGraphicFor = typeof(RA_GraphicUtility).GetMethod("ExtractInnerGraphicFor",
+                BindingFlags.Static | BindingFlags.Public);
+            TryDetourFromTo(vanillaExtractInnerGraphicFor, newExtractInnerGraphicFor);
 
             // changed how prodcut stuff type is determined and made this toil assign production cost for the Thing to the CompCraftedValue
             var vanillaFinishRecipeAndStartStoringProduct = typeof(Toils_Recipe).GetMethod("FinishRecipeAndStartStoringProduct",

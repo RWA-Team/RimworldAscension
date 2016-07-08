@@ -21,11 +21,11 @@
 	<!-- ======================== Meat =========================-->
 
 	<ThingDef Name="MeatRaw" ParentName="Food">
-		<defName>MeatRaw</defName>
+		<defName>Meat</defName>
 		<label>raw meat</label>
 		<description>A piece of raw meat.</description>
 		<graphicData>
-			<texPath>Things/Items/Food/Meat/MeatRaw</texPath>
+			<texPath>Things/Items/Food/Meat/Meat</texPath>
 		</graphicData>
 		<statBases>
 			<DeteriorationRate>10</DeteriorationRate>
@@ -51,15 +51,15 @@
 	</ThingDef>
 
 	<ThingDef ParentName="MeatRaw">
-		<defName>MeatSmallRaw</defName>
+		<defName>MeatSmall</defName>
 		<label>small raw meat</label>
 		<graphicData>
-			<texPath>Things/Items/Food/Meat/MeatSmallRaw</texPath>
+			<texPath>Things/Items/Food/Meat/MeatSmall</texPath>
 		</graphicData>
 	</ThingDef>
 
 	<ThingDef ParentName="MeatRaw">
-		<defName>MeatHumanRaw</defName>
+		<defName>MeatHuman</defName>
 		<label>human raw meat</label>
 		<graphicData>
 			<texPath>Things/Item/Resource/MeatFoodRaw/MeatHuman</texPath>

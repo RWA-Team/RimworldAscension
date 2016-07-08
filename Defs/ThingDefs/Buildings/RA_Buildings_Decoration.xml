@@ -23,6 +23,12 @@
 		<thingClass>Building</thingClass>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
 		</graphicData>
 		<category>Building</category>
 		<selectable>true</selectable>
@@ -37,7 +43,6 @@
 			<Flammability>1.0</Flammability>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToMake>100</WorkToMake>
-			<MarketValue>1</MarketValue>
 		</statBases>
 	</ThingDef>
 	

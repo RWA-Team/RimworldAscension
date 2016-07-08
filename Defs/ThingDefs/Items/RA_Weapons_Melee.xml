@@ -68,6 +68,11 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<comps>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(0, 0, 0.1)</firstHandPosition>
+			</li>
+		</comps>
 		<weaponTags>
 			<li>MeleeNeolithicWeak</li>
 		</weaponTags>
@@ -229,36 +234,7 @@
 			<li>Metal</li>
 		</stuffCategories>
 	</ThingDef>
-	
 
-	<ThingDef ParentName="WeaponMelee">
-		<defName>Pickaxe</defName>
-		<label>Pickaxe</label>
-		<description>Pickaxe.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Medieval/Pickaxe</texPath>
-		</graphicData>
-		<equippedAngleOffset>-65</equippedAngleOffset>
-		<statBases>
-			<MarketValue>500</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
-		</statBases>
-		<verbs>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<meleeDamageDef>Cut</meleeDamageDef>
-			</li>
-		</verbs>
-		<comps>
-			<li Class="RA.CompTool_Properties">
-				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
-				<workTypes>
-					<li>Mining</li>
-				</workTypes>
-			</li>
-		</comps>
-	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
 		<defName>Dagger</defName>
@@ -368,6 +344,57 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="WeaponMeleeMedieval">
+		<defName>HammerBattle</defName>
+		<label>BattleHammer</label>
+		<description>Hammer.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Medieval/HammerBattle</texPath>
+		</graphicData>
+		<equippedAngleOffset>25</equippedAngleOffset>
+		<statBases>
+			<MarketValue>60</MarketValue>
+			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<meleeDamageDef>Cut</meleeDamageDef>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="WeaponMelee">
+		<defName>Pickaxe</defName>
+		<label>Pickaxe</label>
+		<description>Pickaxe.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Medieval/Pickaxe</texPath>
+		</graphicData>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<statBases>
+			<MarketValue>500</MarketValue>
+			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<meleeDamageDef>Cut</meleeDamageDef>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="RA.CompTool_Properties">
+				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
+				<workTypes>
+					<li>Mining</li>
+				</workTypes>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<!-- ========================= Midworld =========================-->

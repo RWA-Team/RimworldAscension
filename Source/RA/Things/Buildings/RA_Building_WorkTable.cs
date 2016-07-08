@@ -14,10 +14,10 @@ namespace RA
         public override void SpawnSetup()
         {
             base.SpawnSetup();
-            
+
             // required comp initialize
             compWorktableExtended = this.TryGetComp<CompWorktableExtended>();
-            
+
             // allowed cells changed
             if (!compWorktableExtended?.Properties.ingridientCells.NullOrEmpty() ?? false)
             {
@@ -47,13 +47,8 @@ namespace RA
 
         // allows to select which cells of the building could be used to hold ingridients
         public new IEnumerable<IntVec3> IngredientStackCells
-        {
-            get
-            {
-                if (compWorktableExtended?.Properties.ingridientCells.NullOrEmpty() ?? false)
-                    return allowedCells;
-                return GenAdj.CellsOccupiedBy(this);
-            }
-        }
+            => (this.TryGetComp<CompWorktableExtended>()?.Properties.ingridientCells.NullOrEmpty() ?? false)
+                ? allowedCells
+                : GenAdj.CellsOccupiedBy(this);
     }
 }

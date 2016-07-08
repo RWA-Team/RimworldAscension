@@ -13,6 +13,10 @@ namespace RA
 
         public float fuelStackRefuelPercent = 0.5f;
 
+        public bool autoBurnMode;
+        public int currentFuelBurnDuration;
+        public float currentFuelMaxTemp, internalTemp, heatPerSecond_fromXML, glowRadius_fromXML;
+
         public CompFueled_Properties Properties => (CompFueled_Properties)props;
 
         public CompFueled compFueled;
@@ -28,10 +32,6 @@ namespace RA
         public ThingFilter filterFuelCurrent = new ThingFilter();
 
         public Graphic fireGraphic, fuelGraphic;
-
-        public int currentFuelBurnDuration;
-
-        public float currentFuelMaxTemp, internalTemp, heatPerSecond_fromXML, glowRadius_fromXML;
 
         // required to use ThingContainer
         public ThingContainer GetContainer()
@@ -96,11 +96,9 @@ namespace RA
             get
             {
                 var pawn = Find.ThingGrid.ThingAt<Pawn>(parent.InteractionCell);
-                if (pawn != null && !pawn.pather.Moving
-                    && pawn.CurJob != null && pawn.CurJob.targetA != null && pawn.CurJob.targetA.HasThing
-                    && pawn.CurJob.targetA.Thing == parent)
-                    return true;
-                return false;
+                return pawn != null && !pawn.pather.Moving
+                       && pawn.CurJob != null && pawn.CurJob.targetA != null && pawn.CurJob.targetA.HasThing
+                       && pawn.CurJob.targetA.Thing == parent;
             }
         }
 
@@ -108,7 +106,7 @@ namespace RA
 
         public bool Burning => internalTemp >= MinBurningTemp;
 
-        public bool ShouldAutoConsume => compFlickable?.SwitchIsOn ?? false;
+        public bool ShouldAutoBurn => compFlickable?.SwitchIsOn ?? false;
 
         // no fuel or fuel stack is too small
         public bool RequireMoreFuel => fuelContainer.Count == 0 ||
@@ -135,7 +133,7 @@ namespace RA
             else
             {
                 // try burn next fuel unit
-                if (fuelContainer.FirstOrDefault()?.stackCount > 0 && ShouldAutoConsume ||
+                if (fuelContainer.FirstOrDefault()?.stackCount > 0 && ShouldAutoBurn ||
                     (internalTemp < compFueled.Properties.operatingTemp && ManuallyOperated))
                 {
                     currentFuelBurnDuration =
@@ -243,6 +241,7 @@ namespace RA
         public float fuelDrawScale = 1f;
         public float fireDrawScale = 1f;
         public float operatingTemp = 1000f;
+        public bool canAutoBurn = false;
 
         public CompFueled_Properties()
         {
