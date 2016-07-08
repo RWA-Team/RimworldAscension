@@ -17,7 +17,7 @@
 	<ThingDef Name="BuildingUtility" ParentName="Building" Abstract="True">
 		<designationCategory>Utility</designationCategory>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 

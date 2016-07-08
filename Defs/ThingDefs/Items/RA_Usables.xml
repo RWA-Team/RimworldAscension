@@ -31,7 +31,7 @@
 		</tradeTags>
 		<comps>
 			<li Class="RA.CompBlueprint_Properties">
-				<researchName>StartPack</researchName>
+				<researchName>Survival</researchName>
 			</li>
 		</comps>
 	</ThingDef>

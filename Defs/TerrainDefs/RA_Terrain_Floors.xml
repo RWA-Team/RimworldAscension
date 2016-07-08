@@ -33,7 +33,7 @@
 			<Hay>3</Hay>
 		</costList>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</TerrainDef>
 

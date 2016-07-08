@@ -89,7 +89,7 @@
 		</comps>
 		<minifiedDef>BasketMinified</minifiedDef>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -135,7 +135,7 @@
 		</comps>
 		<minifiedDef>ChestMinified</minifiedDef>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -181,7 +181,7 @@
 		</comps>
 		<minifiedDef>ChestMinified</minifiedDef>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -308,7 +308,7 @@
 			<WoodLog>10</WoodLog>
 		</costList>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -337,7 +337,7 @@
 		</stuffCategories>
 		<costStuffCount>30</costStuffCount>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -370,7 +370,7 @@
 		</stuffCategories>
 		<costStuffCount>75</costStuffCount>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -403,7 +403,7 @@
 		</stuffCategories>
 		<costStuffCount>75</costStuffCount>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -436,7 +436,7 @@
 		</stuffCategories>
 		<costStuffCount>75</costStuffCount>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -487,7 +487,7 @@
 			<bed_maxBodySize>0.55</bed_maxBodySize>
 		</building>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -508,8 +508,7 @@
 		<label>stone stool</label>
 		<description>A primitive simple stool you can sit on.</description>
 		<graphicData>
-			<texPath>Missing</texPath>
-			<!-- <texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithicStone</texPath> -->
+			<texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithicStone</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>Cutout</shaderType>
 			<drawSize>(0.8,0.8)</drawSize>
@@ -546,8 +545,7 @@
 		<label>wooden stool</label>
 		<description>A primitive simple stool you can sit on.</description>
 		<graphicData>
-			<texPath>Missing</texPath>
-			<!-- <texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithicWood</texPath> -->
+			<texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithicWood</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>Cutout</shaderType>
 			<drawSize>(0.8,0.8)</drawSize>
@@ -567,7 +565,7 @@
 			<li>WoodLog</li>
 		</stuffCategories>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -599,8 +597,7 @@
 		<defName>TableNeolithicStone</defName>
 		<label>short stone table</label>
 		<graphicData>
-			<texPath>Missing</texPath>
-			<!-- <texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithicStone</texPath> -->
+			<texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithicStone</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1.2,1.2)</drawSize>
 			<damageData>
@@ -639,8 +636,8 @@
 		<defName>TableNeolithicWood</defName>
 		<label>short wood table</label>
 		<graphicData>
-			<texPath>Missing</texPath>
-			<!-- <texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithicWood</texPath> -->
+			<texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithicWood/TableNeolithicWood</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(1.2,1.2)</drawSize>
 			<damageData>
 				<rect>(0.05,0.27,1.9,1.73)</rect>
@@ -653,17 +650,11 @@
 		<statBases>
 			<Beauty>3</Beauty>
 		</statBases>
-		<stuffCategories>
-			<li>StoneChunk</li>
-		</stuffCategories>
 		<costList>
 			<TableNeolithicWood>1</TableNeolithicWood>
 		</costList>
 		<minifiedDef>TableNeolithicWoodMinified</minifiedDef>
 		<rotatable>false</rotatable>
-		<researchPrerequisites>
-			<li>Masonry</li>
-		</researchPrerequisites>
 	</ThingDef>
 
 	<ThingDef ParentName="MinifiedFurniture">

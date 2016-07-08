@@ -188,12 +188,12 @@ namespace RA
                 curJob.bill.Notify_IterationCompleted(actor);
                 RecordsUtility.Notify_BillDone(actor, products);
 
-                // set production cost for all products
-                foreach (var product in products)
-                {
-                    var compCraftedValue = product.TryGetComp<CompCraftedValue>();
-                    compCraftedValue?.SetProductCost(ingredients, product.GetStatValue(StatDefOf.WorkToMake));
-                }
+                //// set production cost for all products
+                //foreach (var product in products)
+                //{
+                //    var compCraftedValue = product.TryGetComp<CompCraftedValue>();
+                //    compCraftedValue?.SetProductCost(ingredients, product.GetStatValue(StatDefOf.WorkToMake));
+                //}
 
                 if (products.Count == 0)
                 {

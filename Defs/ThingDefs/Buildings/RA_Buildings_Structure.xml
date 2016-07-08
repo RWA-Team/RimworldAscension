@@ -84,7 +84,7 @@
 			<WorkToMake>850</WorkToMake>
 		</statBases>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -139,7 +139,7 @@
 			<WoodLog>5</WoodLog>
 		</costList>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -166,7 +166,7 @@
 		<coversFloor>false</coversFloor>
 		<holdsRoof>false</holdsRoof>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
