@@ -109,7 +109,7 @@
 	<ThingDef ParentName="ResourceOrganic">
 		<defName>Coal</defName>
 		<label>coal</label>
-		<description>Coal</description>
+		<description>Coal.</description>
 		<graphicData>
 			<shaderType>Cutout</shaderType>
 			<texPath>Things/Items/Resources/Coal</texPath>
