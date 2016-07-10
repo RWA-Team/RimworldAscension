@@ -5,6 +5,7 @@
 		<thingClass>Meal</thingClass>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.8, 0.8)</drawSize>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>50</MaxHitPoints>
@@ -32,6 +33,7 @@
 			<MarketValue>30</MarketValue>
 			<Beauty>-30</Beauty>
 		</statBases>
+		<stackLimit>75</stackLimit>
 		<thingCategories>
 			<li>MeatRaw</li>
 		</thingCategories>
@@ -124,7 +126,8 @@
 		<description>A piece of dried meat.</description>
 		<graphicData>
 			<texPath>Things/Items/Food/Meat/MeatPrepared</texPath>
-			<color>(127,51,0)</color>
+			<drawSize>(0.7, 0.7)</drawSize>
+			<color>(127,70,0)</color>
 		</graphicData>
 		<ingestible>
 			<nutrition>0.7</nutrition>
