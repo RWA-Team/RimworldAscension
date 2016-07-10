@@ -192,7 +192,7 @@ namespace RA
                 //foreach (var product in products)
                 //{
                 //    var compCraftedValue = product.TryGetComp<CompCraftedValue>();
-                //    compCraftedValue?.SetProductCost(ingredients, product.GetStatValue(StatDefOf.WorkToMake));
+                //    compCraftedValue?.SetMarketValue(ingredients, product.GetStatValue(StatDefOf.WorkToMake));
                 //}
 
                 if (products.Count == 0)

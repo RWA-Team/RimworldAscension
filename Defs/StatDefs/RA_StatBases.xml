@@ -3,7 +3,7 @@
 
 	<StatDef>
 		<defName>MarketValue</defName>
-		<workerClass>StatWorker_MarketValue</workerClass>
+		<workerClass>RA.RA_StatWorker_MarketValue</workerClass>
 		<label>market value</label>
 		<description>The market value of an object. The actual trade price will be further modified by relationship status and negotitation skill.</description>
 		<category>BasicsNonPawn</category>
@@ -32,16 +32,6 @@
 				</curve>
 			</li>
 		</parts>
-	</StatDef>
-
-	<StatDef>
-		<defName>DesignValue</defName>
-		<label>design value</label>
-		<description>The design value of an object. The base value of craftable item, which is used to determine it's market value, combined with cost of required amount of work and cost of crafting materials.</description>
-		<category>BasicsNonPawn</category>
-		<toStringStyle>FloatTwo</toStringStyle>
-		<roundToFiveOver>200</roundToFiveOver>
-		<formatString>${0}</formatString>
 	</StatDef>
 
 </Defs>

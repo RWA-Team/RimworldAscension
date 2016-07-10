@@ -8,12 +8,12 @@ namespace RA
 {
     public class CompCraftedValue : ThingComp
     {
-        public const float BalanceValue = 1.4f;
+        public float marketValue;
 
         public float ValuePerWork => (props as CompCraftedValue_Properties).valuePerWorkFactor;
         public float ProfitFactor => (props as CompCraftedValue_Properties).profitFactor;
 
-        public float SetProductCost(RecipeDef recipe, List<Thing> currentIngredients)
+        public void SetMarketValue(RecipeDef recipe, List<Thing> currentIngredients)
         {
             var workValue = parent.def.GetStatValueAbstract(StatDefOf.WorkToMake)*ValuePerWork;
 
@@ -23,18 +23,11 @@ namespace RA
             var maxIngredientsValue = recipe.ingredients.Sum(ingredient =>
                 ingredient.filter.AllowedThingDefs.Max(def => def.BaseMarketValue)*ingredient.GetBaseCount());
 
-            var minMarketValue = workValue + minIngredientsValue;
-            var maxMarketValue = workValue + maxIngredientsValue;
-
-            var B = maxIngredientsValue != minIngredientsValue
-                ? (maxMarketValue - minMarketValue)/
-                  (float) Math.Pow(maxIngredientsValue - minIngredientsValue, ProfitFactor)*(BalanceValue/workValue)
+            var profitCoefficient = maxIngredientsValue != minIngredientsValue
+                ? (float) Math.Pow(maxIngredientsValue - minIngredientsValue, 1 - ProfitFactor)
                 : 0f;
 
-            var marketValue = B*(float) Math.Pow(curIngredientsValue - minIngredientsValue, ProfitFactor) +
-                              workValue + minIngredientsValue;
-
-            return marketValue;
+            marketValue = profitCoefficient*(curIngredientsValue - minIngredientsValue) + workValue + minIngredientsValue;
         }
     }
 

@@ -113,7 +113,14 @@ namespace RA
             var newSelectableNow = typeof (RA_ThingSelectionUtility).GetMethod("SelectableNow",
                 BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaSelectableNow, newSelectableNow);
-            
+
+            // draws hands on equipment, if corresponding Comp is specified
+            var vanillaDrawEquipmentAiming = typeof(PawnRenderer).GetMethod("DrawEquipmentAiming",
+                BindingFlags.Instance | BindingFlags.Public);
+            var newDrawEquipmentAiming = typeof(RA_PawnRenderer).GetMethod("DrawEquipmentAiming",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaDrawEquipmentAiming, newDrawEquipmentAiming);
+
             //changed inner graphic extraction for minified things
             var vanillaExtractInnerGraphicFor = typeof(GraphicUtility).GetMethod("ExtractInnerGraphicFor",
                 BindingFlags.Static | BindingFlags.Public);
