@@ -3,21 +3,12 @@ using Verse;
 
 namespace RA
 {
+    // hand are draw only of any position shift from Vector3.zero is set like (0, 0, 0.1f)
+    // only shifts % 0.1 are accepted by game
     public class CompHandsDrawer : ThingComp
     {
-        public static Graphic handGraphic = GraphicDatabase.Get<Graphic_Single>("Overlays/Hand", ShaderDatabase.CutoutSkin);
-        public Vector3 firstHandPos, rightHandPos;
-
-        public Vector3 DefaultFirstHandPosition => (props as CompHandsDrawer_Properties).firstHandPosition;
-        public Vector3 DefaultSecondHandPosition => (props as CompHandsDrawer_Properties).secondHandPosition;
-
-        public override void PostDraw()
-        {
-            if (DefaultFirstHandPosition != Vector3.zero)
-                handGraphic.Draw(parent.DrawPos + DefaultFirstHandPosition, parent.Rotation, parent);
-            if (DefaultSecondHandPosition != Vector3.zero)
-                handGraphic.Draw(parent.DrawPos + DefaultFirstHandPosition, parent.Rotation, parent);
-        }
+        public Vector3 FirstHandPosition => (props as CompHandsDrawer_Properties).firstHandPosition;
+        public Vector3 SecondHandPosition => (props as CompHandsDrawer_Properties).secondHandPosition;
     }
 
     public class CompHandsDrawer_Properties : CompProperties

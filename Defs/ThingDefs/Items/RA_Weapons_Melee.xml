@@ -50,7 +50,7 @@
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/Shiv</texPath>
 		</graphicData>
-		<equippedAngleOffset>-65</equippedAngleOffset>
+		<equippedAngleOffset>-35</equippedAngleOffset>
 		<statBases>
 			<MarketValue>60</MarketValue>
 			<MeleeWeapon_DamageAmount>8</MeleeWeapon_DamageAmount>
@@ -70,7 +70,7 @@
 		</verbs>
 		<comps>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(0, 0, 0.1)</firstHandPosition>
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
