@@ -55,12 +55,12 @@
 
 	<ThingDef ParentName="Resource">
 		<defName>LeatherStrip</defName>
-		<label>empty bottle</label>
-		<description>An empty bottle.</description>
+		<label>leather strips</label>
+		<description>leather strips</description>
 		<graphicData>
-			<texPath>Things/Items/Resources/Bottle</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
+			<texPath>Things/Items/Resources/LeatherStrip</texPath>
 			<shaderType>Cutout</shaderType>
+			<drawSize>(0.8, 0.8)</drawSize>
 			<color>(174,124,0)</color>
 		</graphicData>
 		<soundInteract>Grain_Drop</soundInteract>
@@ -73,20 +73,16 @@
 
 	<ThingDef ParentName="Resource">
 		<defName>GlassPebble</defName>
-		<label>empty bottle</label>
-		<description>An empty bottle.</description>
+		<label>glass pebbles</label>
+		<description>glass pebbles</description>
 		<graphicData>
-			<texPath>Things/Items/Resources/Bottle</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-			<shaderType>Cutout</shaderType>
-			<color>(174,124,0)</color>
+			<texPath>Missing</texPath>
 		</graphicData>
 		<soundInteract>Grain_Drop</soundInteract>
 		<soundDrop>Grain_Drop</soundDrop>
 		<thingCategories>
 			<li>ResourcesProcessed</li>
 		</thingCategories>
-		<tradeability>Never</tradeability>
 	</ThingDef>
 
 	<ThingDef ParentName="ResourceOrganic">
@@ -130,8 +126,8 @@
 		<label>coal</label>
 		<description>Charcoal.</description>
 		<graphicData>
-			<graphicClass>Graphic_StackCount</graphicClass>
 			<texPath>Things/Items/Resources/Charcoal</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
 			<shaderType>Cutout</shaderType>
 		</graphicData>
 		<statBases>
@@ -166,6 +162,7 @@
 		<description>Ash.</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/Ash</texPath>
+			<color>(200,200,200)</color>
 			<shaderType>Cutout</shaderType>
 		</graphicData>
 		<soundInteract>Grain_Drop</soundInteract>
@@ -203,6 +200,7 @@
 			<texPath>Things/Items/Resources/TurtleShell</texPath>
 			<color>(174,124,0)</color>
 		</graphicData>
+		<stackLimit>1</stackLimit>
 		<soundInteract>Grain_Drop</soundInteract>
 		<soundDrop>Grain_Drop</soundDrop>
 		<thingCategories>
@@ -301,7 +299,7 @@
 		<label>linen</label>
 		<description>linen.</description>
 		<graphicData>
-			<texPath>Missing</texPath>
+			<texPath>Things/Items/Resources/Linen</texPath>
 		</graphicData>
 	</ThingDef>
 

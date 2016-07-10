@@ -302,10 +302,10 @@
 		<defName>ChunkObsidian</defName>
 		<label>obsidian chunk</label>
 		<graphicData>
-			<color>(32,20,61)</color>
+			<color>(100,90,125)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(32,20,61)</color>
+			<color>(100,90,125)</color>
 			<stuffAdjective>obsidian</stuffAdjective>
 		</stuffProps>
 		<butcherProducts>
@@ -399,10 +399,10 @@
 		<defName>CobbleObsidian</defName>
 		<label>obsidian cobbles</label>
 		<graphicData>
-			<color>(32,20,61)</color>
+			<color>(100,90,125)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(32,20,61)</color>
+			<color>(100,90,125)</color>
 			<stuffAdjective>obsidian</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
@@ -494,10 +494,10 @@
 		<defName>BlockObsidian</defName>
 		<label>obsidian blocks</label>
 		<graphicData>
-			<color>(32,20,61)</color>
+			<color>(100,90,125)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(32,20,61)</color>
+			<color>(100,90,125)</color>
 			<stuffAdjective>obsidian</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
@@ -510,7 +510,7 @@
 		<description>A simple red brick. Can be used for contruction</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/Block</texPath>
-			<color>(200,80,60)</color>
+			<color>(127,51,0)</color>
 		</graphicData>
 		<soundInteract>Stone_Drop</soundInteract>
 		<soundDrop>Stone_Drop</soundDrop>
@@ -524,7 +524,7 @@
 			<categories>
 				<li>Brick</li>
 			</categories>
-			<color>(200,80,60)</color>
+			<color>(127,51,0)</color>
 			<stuffAdjective>brick</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
@@ -534,10 +534,10 @@
 		<label>adobe brick</label>
 		<description>A fired adobe brick. Can be used for contruction</description>
 		<graphicData>
-			<color>(255,230,200)</color>
+			<color>(127,106,0)</color>
 		</graphicData>
 		<stuffProps>
-			<color>(255,230,200)</color>
+			<color>(127,106,0)</color>
 			<stuffAdjective>adobe</stuffAdjective>
 		</stuffProps>
 	</ThingDef>
@@ -547,8 +547,7 @@
 	<ThingDef Name="Metal" ParentName="Resource" Abstract="True">
 		<description>Metal bars.</description>
 		<graphicData>
-			<texPath>Missing</texPath>
-			<!-- <texPath>Things/Items/Resources/MetalBar</texPath> -->
+			<texPath>Things/Items/Resources/MetalBar</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>
@@ -633,6 +632,7 @@
 		<description>Leather.</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/Leather</texPath>
+			<drawSize>(0.8, 0.8)</drawSize>
 		</graphicData>
 		<thingCategories>
 			<li>ResourcesRaw</li>

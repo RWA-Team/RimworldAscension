@@ -43,6 +43,7 @@
 		<description>A handcrafted figurine or idol resembling some sort of creature. It looks valuable.</description>
 		<graphicData>
 			<texPath>Things/Items/Tradeables/Figurines</texPath>
+			<drawSize>(1.2, 1.2)</drawSize>
 		</graphicData>
 		<soundInteract>Standard_Drop</soundInteract>
 		<statBases>
@@ -70,7 +71,7 @@
 		<description>Various amphoras and vials made of clay.</description>
 		<graphicData>
 			<texPath>Things/Items/Tradeables/Ceramics</texPath>
-			<color>(198,255,255)</color>
+			<color>(240,240,240)</color>
 		</graphicData>
 		<soundInteract>Standard_Drop</soundInteract>
 		<statBases>

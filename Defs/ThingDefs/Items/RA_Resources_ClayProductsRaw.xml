@@ -32,7 +32,7 @@
 		<label>raw pot</label>
 		<description>An unfired pot.</description>
 		<graphicData>
-			<texPath>Missing</texPath>
+			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
 			<color>(147,135,106)</color>
 		</graphicData>
 	</ThingDef>
@@ -52,8 +52,9 @@
 		<label>raw ceramics</label>
 		<description>Raw ceramics.</description>
 		<graphicData>
-			<texPath>Things/Items/Resources/ClayProductsRaw/CeramicsRaw</texPath>
-			<color>(52,124,98)</color>
+			<texPath>Things/Items/Tradeables/Ceramics</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<color>(198,255,255)</color>
 		</graphicData>
 	</ThingDef>
 	
@@ -64,8 +65,8 @@
 		<label>raw brick</label>
 		<description>A pile of unfired bricks.</description>
 		<graphicData>
-			<texPath>Things/Items/Resources/ClayProductsRaw/BrickRaw</texPath>
-			<color>(127,51,0)</color>
+			<texPath>Things/Items/Resources/BrickRaw</texPath>
+			<color>(170,70,0)</color>
 		</graphicData>
 	</ThingDef>
 
