@@ -71,7 +71,7 @@
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<apparelStuffFilter>
 			<thingDefs>
-				<li>Muffalo_Leather</li>
+				<li>Leather</li>
 			</thingDefs>
 		</apparelStuffFilter>
 		<caravanTraderKinds>
@@ -138,7 +138,7 @@
 		</startingGoodwill>
 		<apparelStuffFilter>
 			<thingDefs>
-				<li>Human_Leather</li>
+				<!-- <li>Human_Leather</li> -->
 				<li>Bone</li>
 			</thingDefs>
 		</apparelStuffFilter>

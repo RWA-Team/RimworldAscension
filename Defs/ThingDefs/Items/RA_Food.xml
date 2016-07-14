@@ -59,7 +59,8 @@
 			<texPath>Things/Items/Food/Meat/MeatSmall</texPath>
 		</graphicData>
 	</ThingDef>
-
+	
+	<!-- this def name is hardcoded in various places -->
 	<ThingDef ParentName="MeatRaw">
 		<defName>MeatHuman</defName>
 		<label>human raw meat</label>

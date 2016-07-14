@@ -45,11 +45,6 @@
 			<WorkToMake>100</WorkToMake>
 		</statBases>
 	</ThingDef>
-	
-
-	<ThingDef Name="Minified" ParentName="Item" Abstract="True">
-		<thingClass>MinifiedThing</thingClass>
-	</ThingDef>	
 
 	<!--==================== Decorations ========================-->
 
@@ -75,14 +70,7 @@
 		</inspectorTabs>
 		<DesignationCategory>Decoration</DesignationCategory>
 	</ThingDef>
-
-
-	<ThingDef Name="MinifiedDecoration" ParentName="Minified" Abstract="True">
-		<thingCategories>
-			<li>MinifiedDecorations</li>
-		</thingCategories>
-	</ThingDef>
-
+	
 
 	<ThingDef ParentName="Decoration">
 		<defName>Totem</defName>
@@ -138,7 +126,7 @@
 			<li>StoneCutting</li>
 		</researchPrerequisites>
 	</ThingDef>
-	
+
 	<ThingDef ParentName="Furniture">
 		<defName>PlantPot</defName>
 		<label>plant pot</label>
@@ -177,15 +165,11 @@
 			<plantsDestroyWithMe>true</plantsDestroyWithMe>
 			<sowTag>Decorative</sowTag>
 		</building>
-		<minifiedDef>PlantPotMinified</minifiedDef>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Firing</li>
 		</researchPrerequisites>
-	</ThingDef>	
-
-	<ThingDef ParentName="MinifiedDecoration">
-		<defName>PlantPotMinified</defName>
-		<label>plant pot</label>
 	</ThingDef>
 
 	<!--======================= Light Sources =======================-->

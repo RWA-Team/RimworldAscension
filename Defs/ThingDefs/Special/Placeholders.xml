@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Buildings>
+
+	<ThingDef>
+		<defName>Placeholder</defName>
+		<label>placeholder</label>
+		<description>placeholder</description>
+		<category>Item</category>
+		<thingClass>Thing</thingClass>
+		<menuHidden>true</menuHidden>
+		<destroyOnDrop>true</destroyOnDrop>
+	</ThingDef>
+
+</Buildings>

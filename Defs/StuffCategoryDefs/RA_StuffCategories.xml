@@ -12,6 +12,11 @@
 	</StuffCategoryDef>
 
 	<StuffCategoryDef>
+		<defName>Clay</defName>
+		<label>clay</label>
+	</StuffCategoryDef>
+
+	<StuffCategoryDef>
 		<defName>Brick</defName>
 		<label>brick</label>
 	</StuffCategoryDef>

@@ -21,7 +21,6 @@
 				<compClass>CompQuality</compClass>
 			</li>
 		</comps>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 	</ThingDef>
 
 	<ThingDef Name="HighQualityFurnitureBase" ParentName="BuildingBase" Abstract="True">
@@ -38,7 +37,6 @@
 		<inspectorTabs>
 			<li>ITab_Art</li>
 		</inspectorTabs>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 	</ThingDef>
 
 
@@ -559,7 +557,6 @@
 		<castEdgeShadows>true</castEdgeShadows>
 		<pathCost>60</pathCost>
 		<fillPercent>0.4</fillPercent>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<stuffCategories>
 			<li>Metallic</li>
@@ -690,7 +687,6 @@
 	<ThingDef Abstract="True" Name="StandingLampBase" ParentName="BuildingBase">
 		<thingClass>Building</thingClass>
 		<category>Building</category>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<altitudeLayer>Waist</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<selectable>true</selectable>
