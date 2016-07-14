@@ -180,7 +180,6 @@
 		<castEdgeShadows>true</castEdgeShadows>
 		<fillPercent>0.5</fillPercent>
 		<designationHotkey>N</designationHotkey>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
 			<WorkToMake>5000</WorkToMake>
@@ -246,7 +245,6 @@
 		<costList>
 			<Steel>180</Steel>
 		</costList>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -301,7 +299,6 @@
 		<costList>
 			<Steel>200</Steel>
 		</costList>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<comps>
 			<li Class="CompProperties_Facility">
 				<statOffsets>
@@ -347,7 +344,6 @@
 		</comps>
 		<tickerType>Normal</tickerType>
 		<altitudeLayer>Waist</altitudeLayer>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<statBases>
 			<MaxHitPoints>50</MaxHitPoints>
 			<WorkToMake>1500</WorkToMake>

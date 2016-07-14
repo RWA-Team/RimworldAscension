@@ -166,6 +166,13 @@ namespace RA
             {
                 item = new ListableOption("Continue", delegate
                 {
+                    // reloads all play data and defs
+                    LongEventHandler.QueueLongEvent(delegate
+                    {
+                        PlayDataLoader.ClearAllPlayData();
+                        PlayDataLoader.LoadAllPlayData();
+                    }, "LoadingLongEvent", true, null);
+
                     Action preLoadLevelAction = delegate
                     {
                         MapInitData.Reset();
@@ -178,6 +185,13 @@ namespace RA
                 {
                     item = new ListableOption("Quick Start", delegate
                     {
+                        // reloads all play data and defs
+                        LongEventHandler.QueueLongEvent(delegate
+                        {
+                            PlayDataLoader.ClearAllPlayData();
+                            PlayDataLoader.LoadAllPlayData();
+                        }, "LoadingLongEvent", true, null);
+
                         Application.LoadLevel("Gameplay");
 
                         Find.RootRoot.Init();
@@ -194,6 +208,13 @@ namespace RA
                 {
                     item = new ListableOption("NewColony".Translate(), delegate
                     {
+                        // reloads all play data and defs
+                        LongEventHandler.QueueLongEvent(delegate
+                        {
+                            PlayDataLoader.ClearAllPlayData();
+                            PlayDataLoader.LoadAllPlayData();
+                        }, "LoadingLongEvent", true, null);
+
                         Find.WindowStack.Add(new Page_SelectStoryteller());
                     });
                     list.Add(item);
@@ -217,6 +238,13 @@ namespace RA
             {
                 item = new ListableOption("Load".Translate(), delegate
                 {
+                    // reloads all play data and defs
+                    LongEventHandler.QueueLongEvent(delegate
+                    {
+                        PlayDataLoader.ClearAllPlayData();
+                        PlayDataLoader.LoadAllPlayData();
+                    }, "LoadingLongEvent", true, null);
+
                     CloseMainTab();
                     Find.WindowStack.Add(new Dialog_MapList_Load());
                 });

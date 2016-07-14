@@ -35,6 +35,7 @@
 			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
 			<color>(147,135,106)</color>
 		</graphicData>
+		<stackLimit>1</stackLimit>
 	</ThingDef>
 
 	<ThingDef ParentName="ClayProductRaw">
@@ -42,9 +43,10 @@
 		<label>raw plant pot</label>
 		<description>An unfired plant pot.</description>
 		<graphicData>
-			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
+			<texPath>Things/Building/Furniture/PlantPot</texPath>
 			<color>(147,135,106)</color>
 		</graphicData>
+		<stackLimit>1</stackLimit>
 	</ThingDef>
 
 	<ThingDef ParentName="ClayProductRaw">
@@ -56,6 +58,7 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<color>(198,255,255)</color>
 		</graphicData>
+		<stackLimit>1</stackLimit>
 	</ThingDef>
 	
 	<!-- raw clay brick -->

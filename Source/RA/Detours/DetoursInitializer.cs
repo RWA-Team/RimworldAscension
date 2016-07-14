@@ -114,6 +114,13 @@ namespace RA
                 BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaSelectableNow, newSelectableNow);
 
+            // added new def generators and removed redundant
+            var vanillaGenerateImpliedDefs_PreResolve = typeof(DefGenerator).GetMethod("GenerateImpliedDefs_PreResolve",
+                BindingFlags.Static | BindingFlags.Public);
+            var newGenerateImpliedDefs_PreResolve = typeof(RA_DefGenerator).GetMethod("GenerateImpliedDefs_PreResolve",
+                BindingFlags.Static | BindingFlags.Public);
+            TryDetourFromTo(vanillaGenerateImpliedDefs_PreResolve, newGenerateImpliedDefs_PreResolve);
+
             // draws hands on equipment, if corresponding Comp is specified
             var vanillaDrawEquipmentAiming = typeof(PawnRenderer).GetMethod("DrawEquipmentAiming",
                 BindingFlags.Instance | BindingFlags.Public);
