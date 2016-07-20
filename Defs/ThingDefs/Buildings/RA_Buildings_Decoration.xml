@@ -23,6 +23,12 @@
 		<thingClass>Building</thingClass>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
 		</graphicData>
 		<category>Building</category>
 		<selectable>true</selectable>
@@ -37,14 +43,8 @@
 			<Flammability>1.0</Flammability>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToMake>100</WorkToMake>
-			<MarketValue>1</MarketValue>
 		</statBases>
 	</ThingDef>
-
-
-	<ThingDef Name="Minified" ParentName="Item" Abstract="True">
-		<thingClass>MinifiedThing</thingClass>
-	</ThingDef>	
 
 	<!--==================== Decorations ========================-->
 
@@ -68,16 +68,9 @@
 		<inspectorTabs>
 			<li>ITab_Art</li>
 		</inspectorTabs>
-		<DesignationCategory>Furniture</DesignationCategory>
+		<DesignationCategory>Decoration</DesignationCategory>
 	</ThingDef>
-
-
-	<ThingDef Name="MinifiedDecoration" ParentName="Minified" Abstract="True">
-		<thingCategories>
-			<li>MinifiedDecorations</li>
-		</thingCategories>
-	</ThingDef>
-
+	
 
 	<ThingDef ParentName="Decoration">
 		<defName>Totem</defName>
@@ -99,26 +92,41 @@
 			<Beauty>40</Beauty>
 			<WorkToMake>48000</WorkToMake>
 		</statBases>
-		<costList>
-			<Totem>1</Totem>
-		</costList>
 		<stuffCategories>
 			<li>WoodLog</li>
 		</stuffCategories>
-		<minifiedDef>MinifiedTotem</minifiedDef>
+		<costStuffCount>75</costStuffCount>
 		<researchPrerequisites>
-			<li>Blocked</li>
+			<li>WoodCarving</li>
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="MinifiedDecoration">
-		<defName>MinifiedTotem</defName>
-		<label>totem</label>
+	<ThingDef ParentName="Decoration">
+		<defName>Cairn</defName>
+		<label>cairn</label>
+		<description>A cairn.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Decoration/Cairn</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<shadowData>
+				<volume>(0.45, 0.85, 0.45)</volume>
+				<offset>(0,0,-0.60)</offset>
+			</shadowData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Beauty>40</Beauty>
+			<WorkToMake>48000</WorkToMake>
+		</statBases>
 		<stuffCategories>
-			<li>WoodLog</li>
+			<li>StoneCobble</li>
 		</stuffCategories>
-	</ThingDef>	
-	
+		<researchPrerequisites>
+			<li>StoneCutting</li>
+		</researchPrerequisites>
+	</ThingDef>
+
 	<ThingDef ParentName="Furniture">
 		<defName>PlantPot</defName>
 		<label>plant pot</label>
@@ -146,7 +154,7 @@
 		<inspectorTabs>
 			<li>ITab_Growing</li>
 		</inspectorTabs>
-		<description>Plant decorative flowers here to improve the mood of people nearby.</description>
+		<description>A pot to plant decorative flowers in to improve the beauty of the room it's in.</description>
 		<comps>
 			<li Class="CompProperties_Forbiddable"/>
 		</comps>
@@ -157,15 +165,11 @@
 			<plantsDestroyWithMe>true</plantsDestroyWithMe>
 			<sowTag>Decorative</sowTag>
 		</building>
-		<minifiedDef>PlantPotMinified</minifiedDef>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
-			<li>Pottery</li>
+			<li>Firing</li>
 		</researchPrerequisites>
-	</ThingDef>	
-
-	<ThingDef ParentName="MinifiedDecoration">
-		<defName>PlantPotMinified</defName>
-		<label>plant pot</label>
 	</ThingDef>
 
 	<!--======================= Light Sources =======================-->
@@ -198,7 +202,7 @@
 		<designationCategory>Furniture</designationCategory>
 		<rotatable>false</rotatable>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>AnimalDissection</li>
 		</researchPrerequisites>
 	</ThingDef>
 

@@ -12,10 +12,10 @@
 
 	<RecipeDef Name="MakeFurniture" Abstract="True">
 		<workSkill>Crafting</workSkill>
+		<workSpeedStat>CarvingSpeed</workSpeedStat>
 		<workSkillLearnFactor>0.1</workSkillLearnFactor>
 		<effectWorking>Sculpt</effectWorking>
 		<soundWorking>Recipe_Sculpt</soundWorking>
-		<researchPrerequisite>Blocked</researchPrerequisite>
 	</RecipeDef>
 
 
@@ -43,69 +43,346 @@
 				<count>25</count>
 			</li>
 		</ingredients>
-		<researchPrerequisite>StartPack</researchPrerequisite>
+		<researchPrerequisite>Survival</researchPrerequisite>
 	</RecipeDef>
 
 	<!--===================== Neolithic =====================-->
 
-	<RecipeDef Name="MakeFurnitureNeolithic" ParentName="MakeFurniture" Abstract="True">
-		<workSpeedStat>CarvingSpeed</workSpeedStat>
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeStoolNeolithicStone</defName>
+		<label>make primitive stone stool</label>
+		<description>Make primitive stone stool.</description>
+		<jobString>Making primitive stone stool.</jobString>
+		<products>
+			<StoolNeolithicStone>1</StoolNeolithicStone>
+		</products>
 		<fixedIngredientFilter>
-			<exceptedCategories>
-				<li>StoneCobbles</li>
-			</exceptedCategories>
-			<exceptedThingDefs>
-				<li>WoodLog</li>
-			</exceptedThingDefs>
 			<categories>
-				<li>StoneCobbles</li>
+				<li>StoneChunks</li>
 			</categories>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneChunks</li>
+					</categories>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>StoneCutting</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeTableNeolithicStone</defName>
+		<label>make primitive stone table</label>
+		<description>Make primitive stone table.</description>
+		<jobString>Making primitive stone table.</jobString>
+		<products>
+			<TableNeolithicStone>1</TableNeolithicStone>
+		</products>
+		<fixedIngredientFilter>
+			<categories>
+				<li>StoneChunks</li>
+			</categories>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>StoneChunks</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>StoneCutting</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeStoolNeolithicWood</defName>
+		<label>make primitive wooden stool</label>
+		<description>Make primitive wooden stool.</description>
+		<jobString>Making primitive wooden stool.</jobString>
+		<products>
+			<StoolNeolithicWood>1</StoolNeolithicWood>
+		</products>
+		<fixedIngredientFilter>
 			<thingDefs>
 				<li>WoodLog</li>
 			</thingDefs>
 		</fixedIngredientFilter>
-	</RecipeDef>
-	
-
-	<RecipeDef ParentName="MakeFurnitureNeolithic">
-		<defName>MakeStoolNeolithic</defName>
-		<label>make primitive stool</label>
-		<description>Make primitive stool.</description>
-		<jobString>Making primitive stool.</jobString>
-		<products>
-			<StoolNeolithic>1</StoolNeolithic>
-		</products>
 		<ingredients>
 			<li>
 				<filter>
-					<categories>
-						<li>StoneChunks</li>
-					</categories>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
 				</filter>
-				<count>1</count>
+				<count>10</count>
 			</li>
 		</ingredients>
+		<researchPrerequisite>WoodCarving</researchPrerequisite>
 	</RecipeDef>
 
-	<RecipeDef ParentName="MakeFurnitureNeolithic">
-		<defName>MakeTableNeolithic</defName>
-		<label>make primitive table</label>
-		<description>Make primitive table.</description>
-		<jobString>Making primitive table.</jobString>
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeTableNeolithicWood</defName>
+		<label>make primitive wooden table</label>
+		<description>Make primitive wooden table.</description>
+		<jobString>Making primitive wooden table.</jobString>
 		<products>
-			<TableNeolithic>1</TableNeolithic>
+			<TableNeolithicWood>1</TableNeolithicWood>
 		</products>
-		<workAmount>1</workAmount>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 		<ingredients>
 			<li>
 				<filter>
-					<categories>
-						<li>StoneChunks</li>
-					</categories>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
 				</filter>
-				<count>1</count>
+				<count>25</count>
 			</li>
 		</ingredients>
+		<researchPrerequisite>WoodCarving</researchPrerequisite>
+	</RecipeDef>
+
+	<!--===================== Medieval =====================-->
+
+
+
+	Chest
+	Barrel
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeTableShort</defName>
+		<label>make short table</label>
+		<description>Make short table.</description>
+		<jobString>Making short table.</jobString>
+		<products>
+			<TableShort>1</TableShort>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodPlank</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodPlank</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeTableLong</defName>
+		<label>make long table</label>
+		<description>Make long table.</description>
+		<jobString>Making long table.</jobString>
+		<products>
+			<TableLong>1</TableLong>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodPlank</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodPlank</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeStool</defName>
+		<label>make long table</label>
+		<description>Make long table.</description>
+		<jobString>Making long table.</jobString>
+		<products>
+			<TableLong>1</TableLong>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodPlank</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodPlank</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeBed</defName>
+		<label>make bed</label>
+		<description>Make bed.</description>
+		<jobString>Making bed.</jobString>
+		<products>
+			<Bed>1</Bed>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodPlank</li>
+			</thingDefs>
+			<categories>
+				<li>Cloth</li>
+			</categories>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodPlank</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Cloth</li>
+					</categories>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeBedDouble</defName>
+		<label>make double bed</label>
+		<description>Make double bed.</description>
+		<jobString>Making double bed.</jobString>
+		<products>
+			<BedDouble>1</BedDouble>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodPlank</li>
+			</thingDefs>
+			<categories>
+				<li>Cloth</li>
+			</categories>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodPlank</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Cloth</li>
+					</categories>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeBarrel</defName>
+		<label>make barrel</label>
+		<description>Make barrel.</description>
+		<jobString>Making barrel.</jobString>
+		<products>
+			<Barrel>1</Barrel>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodPlank</li>
+			</thingDefs>
+			<categories>
+				<li>BarsMetal</li>
+			</categories>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodPlank</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>BarsMetal</li>
+					</categories>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeChest</defName>
+		<label>make barrel</label>
+		<description>Make barrel.</description>
+		<jobString>Making barrel.</jobString>
+		<products>
+			<Barrel>1</Barrel>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodPlank</li>
+			</thingDefs>
+			<categories>
+				<li>BarsMetal</li>
+			</categories>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodPlank</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>BarsMetal</li>
+					</categories>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>Carpentry</researchPrerequisite>
 	</RecipeDef>
 
 </RecipeDefs>

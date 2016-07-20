@@ -128,9 +128,6 @@
 					<categories>
 						<li>FoodRaw</li>
 					</categories>
-					<exceptedThingDefs>
-						<li>Human_Meat</li>
-					</exceptedThingDefs>
 				</filter>
 			</defaultStorageSettings>
 		</building>

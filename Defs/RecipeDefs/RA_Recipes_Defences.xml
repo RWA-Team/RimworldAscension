@@ -23,13 +23,6 @@
 	<RecipeDef Name="MakeTrapNeolithic" ParentName="MakeTrap" Abstract="True">
 		<workSpeedStat>CarvingSpeed</workSpeedStat>
 		<fixedIngredientFilter>
-			<exceptedCategories>
-				<li>StoneCobbles</li>
-			</exceptedCategories>
-			<exceptedThingDefs>
-				<li>WoodLog</li>
-				<li>Bone</li>
-			</exceptedThingDefs>
 			<categories>
 				<li>StoneCobbles</li>
 			</categories>
@@ -63,6 +56,38 @@
 				<count>20</count>
 			</li>
 		</ingredients>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeTrapNeolithic">
+		<defName>MakeBalista</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 	</RecipeDef>
 
 </RecipeDefs>

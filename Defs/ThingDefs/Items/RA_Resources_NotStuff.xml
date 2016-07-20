@@ -26,7 +26,7 @@
 		<stackLimit>75</stackLimit>
 	</ThingDef>
 	
-	<ThingDef Name="ResourceOrganic" ParentName="Resource" Abstract="True" >
+	<ThingDef Name="ResourceOrganic" ParentName="Resource" Abstract="True">
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<statBases>
 			<DeteriorationRate>5</DeteriorationRate>
@@ -34,6 +34,56 @@
 		<tickerType>Rare</tickerType>
 	</ThingDef>
 	
+
+	<ThingDef ParentName="Resource">
+		<defName>Bottle</defName>
+		<label>empty bottle</label>
+		<description>An empty bottle.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/Bottle</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<color>(174,124,0)</color>
+		</graphicData>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesProcessed</li>
+		</thingCategories>
+		<tradeability>Never</tradeability>
+	</ThingDef>
+
+	<ThingDef ParentName="Resource">
+		<defName>LeatherStrip</defName>
+		<label>leather strips</label>
+		<description>leather strips</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/LeatherStrip</texPath>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(0.8, 0.8)</drawSize>
+			<color>(174,124,0)</color>
+		</graphicData>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesProcessed</li>
+		</thingCategories>
+		<tradeability>Never</tradeability>
+	</ThingDef>
+
+	<ThingDef ParentName="Resource">
+		<defName>GlassPebble</defName>
+		<label>glass pebbles</label>
+		<description>glass pebbles</description>
+		<graphicData>
+			<texPath>Missing</texPath>
+		</graphicData>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesProcessed</li>
+		</thingCategories>
+	</ThingDef>
 
 	<ThingDef ParentName="ResourceOrganic">
 		<defName>BarkFibre</defName>
@@ -71,139 +121,75 @@
 		</thingCategories>
 	</ThingDef>
 
-	<!-- 	<ThingDef ParentName="OrganicProductBase">
-		<defName>Flax</defName>
-		<label>flax</label>
-		<description>A bunch of flax, a raw material used in linen manufacturing. On their own these are quite useless, but drying and fermentation of these plant products turns them into more valuable resources.</description>
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Charcoal</defName>
+		<label>coal</label>
+		<description>Charcoal.</description>
 		<graphicData>
-			<texPath>Things/Items/Resources/Flax</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Things/Items/Resources/Charcoal</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<shaderType>Cutout</shaderType>
 		</graphicData>
-		<stackLimit>200</stackLimit>
+		<statBases>
+			<MaxBurningTempCelsius>1000</MaxBurningTempCelsius>
+			<BurnDurationHours>8</BurnDurationHours>
+		</statBases>
 		<soundInteract>Grain_Drop</soundInteract>
 		<soundDrop>Grain_Drop</soundDrop>
 		<thingCategories>
-			<li>PlantFibres</li>
+			<li>ResourcesRaw</li>
 		</thingCategories>
-		<statBases>
-			<MarketValue>0.4</MarketValue>
-		</statBases>
-		<tradeability>Never</tradeability>
-		<techLevel>Neolithic</techLevel>
-		<comps>
-			<li Class="CompProperties_Rottable">
-				<daysToRotStart>60</daysToRotStart>
-			</li>
-			<li Class="RA.CompProperties_Dryable">
-				<daysToDry>7</daysToDry>
-				<dryProducts>
-					<li>
-						<defName>BarkFibre</defName>
-						<conversionFactor>1</conversionFactor>
-						<carryRotProgress>True</carryRotProgress>
-					</li>
-					<li>
-						<defName>LinenPulp</defName>
-						<conversionFactor>1</conversionFactor>
-						<carryRotProgress>True</carryRotProgress>
-					</li>
-				</dryProducts>
-				<dryTemperature>
-					<min>5</min>
-					<max>25</max>
-				</dryTemperature>
-			</li>
-		</comps>
 	</ThingDef>
 
-	<ThingDef ParentName="OrganicProductBase">
-		<defName>Grass</defName>
-		<label>grass</label>
-		<description>A bunch of grass used for feeding animals and desperate humans. Not tradeable as-is due to its commonality though it can be dried into more valuable and actually workable resources.</description>
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Mulch</defName>
+		<label>mulch</label>
+		<description>Mulch.</description>
 		<graphicData>
-			<texPath>Things/Items/Resources/Grass</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
+			<texPath>Things/Items/Resources/Mulch</texPath>
+			<shaderType>Cutout</shaderType>
 		</graphicData>
-		<stackLimit>200</stackLimit>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
 		<thingCategories>
-			<li>PlantFibres</li>
-			<li>PlantFoodRaw</li>
+			<li>ResourcesRaw</li>
 		</thingCategories>
-		<statBases>
-			<MarketValue>0.05</MarketValue>
-		</statBases>
-		<comps>
-			<li Class="CompProperties_Rottable">
-				<daysToRotStart>90</daysToRotStart>
-			</li>
-			<li Class="RA.CompProperties_Dryable">
-				<daysToDry>7</daysToDry>
-				<dryProducts>
-					<li>
-						<defName>Hay</defName>
-						<carryRotProgress>True</carryRotProgress>
-					</li>
-				</dryProducts>
-				<dryTemperature>
-					<min>5</min>
-					<max>30</max>
-				</dryTemperature>
-			</li>
-		</comps>
-		<ingestible>
-			<preferability>Raw</preferability>
-			<nutrition>0.07</nutrition>
-			<eatEffect>EatVegetarian</eatEffect>
-			<soundEat>RawVegetable_Eat</soundEat>
-		</ingestible>
-		<tradeability>Never</tradeability>
-		<techLevel>Neolithic</techLevel>
 	</ThingDef>
 
-	<ThingDef ParentName="OrganicProductBase">
-		<defName>CottonLint</defName>
-		<label>cotton lint</label>
-		<description>A bunch of unprocessed cotton which can be weaved into cloth at a loom.</description>
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Ash</defName>
+		<label>ash</label>
+		<description>Ash.</description>
 		<graphicData>
-			<texPath>Things/Items/Resources/Cotton</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Things/Items/Resources/Ash</texPath>
+			<color>(200,200,200)</color>
+			<shaderType>Cutout</shaderType>
 		</graphicData>
-		<stackLimit>200</stackLimit>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
 		<thingCategories>
-			<li>PlantFibres</li>
+			<li>ResourcesRaw</li>
 		</thingCategories>
-		<statBases>
-			<MarketValue>0.5</MarketValue>
-		</statBases>
-		<comps>
-			<li Class="CompProperties_Rottable">
-				<daysToRotStart>90</daysToRotStart>
-			</li>
-		</comps>
-	</ThingDef>	
+	</ThingDef>
 
-	<ThingDef ParentName="OrganicProductBase">
-		<defName>LinenPulp</defName>
-		<label>linen pulp</label>
-		<description>Linen pulp obtained by drying flax fibres.</description>
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Tallow</defName>
+		<label>tallow</label>
+		<description>Tallow.</description>
 		<graphicData>
-			<texPath>Things/Items/Resources/FibreBundle</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<color>(197,181,149)</color>
+			<shaderType>Cutout</shaderType>
+			<texPath>Things/Items/Resources/Tallow</texPath>
 		</graphicData>
-		<stackLimit>200</stackLimit>
-		<thingCategories>
-			<li>PlantFibres</li>
-		</thingCategories>
 		<statBases>
-			<MarketValue>0.5</MarketValue>
+			<MaxBurningTempCelsius>200</MaxBurningTempCelsius>
+			<BurnDurationHours>1</BurnDurationHours>
 		</statBases>
-		<comps>
-			<li Class="CompProperties_Rottable">
-				<daysToRotStart>90</daysToRotStart>
-			</li>
-		</comps>
-	</ThingDef> -->
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+	</ThingDef>
 
 	<ThingDef ParentName="ResourceOrganic">
 		<defName>TurtleShell</defName>
@@ -214,49 +200,13 @@
 			<texPath>Things/Items/Resources/TurtleShell</texPath>
 			<color>(174,124,0)</color>
 		</graphicData>
+		<stackLimit>1</stackLimit>
 		<soundInteract>Grain_Drop</soundInteract>
 		<soundDrop>Grain_Drop</soundDrop>
 		<thingCategories>
 			<li>ResourcesRaw</li>
 		</thingCategories>
 		<tradeability>Never</tradeability>
-	</ThingDef>
-
-	<!--========================= Clay =========================-->
-
-	<ThingDef Name="Clay" ParentName="Resource" Abstract="True">
-		<statBases>
-			<Flammability>0</Flammability>
-		</statBases>
-		<thingCategories>
-			<li>Clay</li>
-		</thingCategories>
-		<graphicData>
-			<texPath>Things/Items/Resources/ClayClump</texPath>
-		</graphicData>
-	</ThingDef>
-
-
-	<ThingDef ParentName="Clay">
-		<defName>ClayClumpGray</defName>
-		<label>gray clay clumps</label>
-		<description>Clumps of gray clay.</description>
-		<graphicData>
-			<color>(128,128,140)</color>
-		</graphicData>
-		<tradeability>Never</tradeability>
-	</ThingDef>
-
-	<ThingDef ParentName="Clay">
-		<defName>ClayClumpWhite</defName>
-		<label>white clay clumps</label>
-		<description>Clumps of white clay.</description>
-		<graphicData>
-			<color>(220,220,220)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>20</MarketValue>
-		</statBases>
 	</ThingDef>
 
 	<!--========================= Sand =========================-->
@@ -274,14 +224,14 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 	</ThingDef>
-
+	
 
 	<ThingDef ParentName="Sand">
-		<defName>Sand</defName>
-		<label>sand</label>
-		<description>A bag of sand.</description>
+		<defName>SandYellow</defName>
+		<label>sand yellow</label>
+		<description>A bag of yellow sand.</description>
 		<graphicData>
-			<color>(124,82,26)</color>
+			<color>(184,184,26)</color>
 		</graphicData>
 		<tradeability>Never</tradeability>
 	</ThingDef>
@@ -296,6 +246,42 @@
 		<statBases>
 			<MarketValue>20</MarketValue>
 		</statBases>
+	</ThingDef>
+	
+	<!--========================= Raw Cloth =========================-->
+
+	<ThingDef Name="PlantResources" ParentName="ResourceOrganic" Abstract="True">
+		<thingCategories>
+			<li>PlantResources</li>
+		</thingCategories>
+	</ThingDef>
+	
+
+	<ThingDef ParentName="PlantResources">
+		<defName>Linen</defName>
+		<label>linen</label>
+		<description>linen.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/Linen</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantResources">
+		<defName>Cotton</defName>
+		<label>cotton</label>
+		<description>cotton.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/Cotton</texPath>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantResources">
+		<defName>Wool</defName>
+		<label>wool</label>
+		<description>wool.</description>
+		<graphicData>
+			<texPath>Missing</texPath>
+		</graphicData>
 	</ThingDef>
 
 </Defs>

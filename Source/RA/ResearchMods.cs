@@ -18,7 +18,7 @@ namespace RA
 
         public static void BasicFarming()
         {
-            AddDesignator(new Designator_ZoneAdd_Growing(), "Zone");
+            AddDesignator(new RA_Designator_ZoneAdd_Growing(), "Zone");
         }
 
         public static void Butchering()

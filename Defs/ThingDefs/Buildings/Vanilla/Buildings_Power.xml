@@ -298,7 +298,6 @@
 		<castEdgeShadows>true</castEdgeShadows>
 		<fillPercent>0.40</fillPercent>
 		<tickerType>Normal</tickerType>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToMake>800</WorkToMake>

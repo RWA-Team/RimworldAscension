@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using Verse;
@@ -8,28 +7,44 @@ using static RA.MapCompDataStorage;
 
 namespace RA
 {
-    public class WorkGiver_WorkWithTools : WorkGiver
+    public enum ToolRequirementLevel : byte
+    {
+        NoToolRequired,
+        ToolPreferable,
+        ToolRequired
+    }
+
+    public abstract class WorkGiver_WorkWithTools : WorkGiver
     {
         public ThingWithComps closestAvailableTool;
+        public ToolRequirementLevel targetTRL;
 
-        public string workType;
+        public virtual string WorkType => default(string);
+        public virtual List<TargetInfo> Targets(Pawn pawn) => default(List<TargetInfo>);
+        public virtual Job JobWithTool(TargetInfo target) => default(Job);
 
-        public Job DoJobWithTool(Pawn pawn, IEnumerable<Thing> availableTargets, Func<Thing, Job> ActualJob)
+        // NonScanJob performed everytime previous(current) job is completed
+        public override Job NonScanJob(Pawn pawn)
         {
             // has available job targets
-            if (availableTargets.Any())
+            if (!Targets(pawn).NullOrEmpty())
             {
-                var closestAvailableTarget = GenClosest.ClosestThing_Global(pawn.Position, availableTargets);
+                var closestAvailableTarget = Targets(pawn).FirstOrDefault().HasThing
+                    ? GenClosest.ClosestThing_Global(pawn.Position, Targets(pawn).Select(target => target.Thing))
+                    : (TargetInfo) ClosestTargetCell(pawn);
 
-                // if proper tool equipped, do the job
-                if (IsProperTool(pawn.equipment.Primary))
-                {
-                    // do the vanilla job with tool in hands
-                    return ActualJob(closestAvailableTarget);
-                }
+                targetTRL = closestAvailableTarget.HasThing
+                    ? (ToolRequirementLevel) closestAvailableTarget.Thing
+                        .GetStatValue(StatDef.Named("ToolRequirementLevel"))
+                    : (ToolRequirementLevel) closestAvailableTarget.Cell.GetTerrain()
+                        .GetStatValueAbstract(StatDef.Named("ToolRequirementLevel"));
 
-                // or find the tool for work
-                return TryEquipTool(pawn);
+                // if proper tool equipped, do the job, otherwise try to find the tool for work, if needed
+                return targetTRL == ToolRequirementLevel.NoToolRequired || IsProperTool(pawn.equipment.Primary)
+                    ? JobWithTool(closestAvailableTarget)
+                    : targetTRL == ToolRequirementLevel.ToolPreferable
+                        ? TryEquipTool(pawn) ?? JobWithTool(closestAvailableTarget)
+                        : JobWithTool(closestAvailableTarget);
             }
 
             // drop tool and haul it to stockpile, if necessary
@@ -38,13 +53,29 @@ namespace RA
             {
                 return TryReturnTool(pawn);
             }
-
+            
             if (PawnCarriedWeaponBefore(pawn))
             {
                 EquipPreviousWeapon(pawn);
             }
 
             return null;
+        }
+
+        public IntVec3 ClosestTargetCell(Pawn pawn)
+        {
+            var searchRange = 9999f;
+            var result = default(IntVec3);
+            foreach (IntVec3 cell in Targets(pawn))
+            {
+                var lengthHorizontalSquared = (cell - pawn.Position).LengthHorizontalSquared;
+                if (lengthHorizontalSquared < searchRange)
+                {
+                    result = cell;
+                    searchRange = lengthHorizontalSquared;
+                }
+            }
+            return result;
         }
 
         // keep tool if it could be used for other jobs
@@ -70,6 +101,12 @@ namespace RA
             if (pawn.equipment.Primary.TryGetComp<CompTool>().Allows("Woodchopping") &&
                 pawn.workSettings.WorkIsActive(WorkTypeDefOf.PlantCutting) &&
                 WorkGiver_ChopWood.AvailableTargets(pawn).Any())
+            {
+                return true;
+            }
+            if (pawn.equipment.Primary.TryGetComp<CompTool>().Allows("Digging") &&
+                pawn.workSettings.WorkIsActive(WorkTypeDefOf.Growing) &&
+                WorkGiver_CultivateLand.AvailableTargets(pawn).Any())
             {
                 return true;
             }
@@ -119,7 +156,7 @@ namespace RA
 
         public bool IsProperTool(Thing thing)
         {
-            return thing?.TryGetComp<CompTool>()?.Allows(workType) ?? false;
+            return thing?.TryGetComp<CompTool>()?.Allows(WorkType) ?? false;
         }
 
         public Job TryEquipFreeTool(Pawn pawn)

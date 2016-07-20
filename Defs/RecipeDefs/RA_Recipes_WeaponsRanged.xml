@@ -20,9 +20,7 @@
 		<researchPrerequisite>Blocked</researchPrerequisite>
 	</RecipeDef>
 
-
 	<!-- ========================= Neolithic =========================-->
-
 
 	<RecipeDef Name="MakeWeaponRangedNeolithic" ParentName="MakeWeaponRanged" Abstract="True">
 		<workSpeedStat>CarvingSpeed</workSpeedStat>
@@ -30,10 +28,8 @@
 			<thingDefs>
 				<li>WoodLog</li>
 				<li>BarkFibre</li>
+				<li>LeatherStrip</li>
 			</thingDefs>
-			<categories>
-				<li>Leathers</li>
-			</categories>
 		</fixedIngredientFilter>
 	</RecipeDef>
 
@@ -48,11 +44,9 @@
 		<ingredients>
 			<li>
 				<filter>
-					<categories>
-						<li>Leathers</li>
-					</categories>
 					<thingDefs>
 						<li>BarkFibre</li>
+						<li>LeatherStrip</li>
 					</thingDefs>
 				</filter>
 				<count>15</count>
@@ -79,11 +73,9 @@
 		<ingredients>
 			<li>
 				<filter>
-					<categories>
-						<li>Leathers</li>
-					</categories>
 					<thingDefs>
 						<li>BarkFibre</li>
+						<li>LeatherStrip</li>
 					</thingDefs>
 				</filter>
 				<count>15</count>
@@ -122,11 +114,9 @@
 		<ingredients>
 			<li>
 				<filter>
-					<categories>
-						<li>Leathers</li>
-					</categories>
 					<thingDefs>
 						<li>BarkFibre</li>
+						<li>LeatherStrip</li>
 					</thingDefs>
 				</filter>
 				<count>15</count>
@@ -165,11 +155,9 @@
 		<ingredients>
 			<li>
 				<filter>
-					<categories>
-						<li>Leathers</li>
-					</categories>
 					<thingDefs>
 						<li>BarkFibre</li>
+						<li>LeatherStrip</li>
 					</thingDefs>
 				</filter>
 				<count>5</count>
@@ -208,11 +196,9 @@
 		<ingredients>
 			<li>
 				<filter>
-					<categories>
-						<li>Leathers</li>
-					</categories>
 					<thingDefs>
 						<li>BarkFibre</li>
+						<li>LeatherStrip</li>
 					</thingDefs>
 				</filter>
 				<count>5</count>
@@ -236,7 +222,7 @@
 		</ingredients>
 	</RecipeDef>
 
-	<RecipeDef ParentName="MakeWeaponRanged">
+	<RecipeDef ParentName="MakeWeaponRangedNeolithic">
 		<defName>MakeSling</defName>
 		<label>make sling</label>
 		<description>Makes the simpliest ranged weapon, a sling.</description>
@@ -244,28 +230,86 @@
 		<products>
 			<Sling>1</Sling>
 		</products>
-		<fixedIngredientFilter>
-			<categories>
-				<li>Leathers</li>
-			</categories>
-			<thingDefs>
-				<li>BarkFibre</li>
-			</thingDefs>
-		</fixedIngredientFilter>
 		<ingredients>
 			<li>
 				<filter>
-					<categories>
-						<li>Leathers</li>
-					</categories>
 					<thingDefs>
 						<li>BarkFibre</li>
+						<li>LeatherStrip</li>
 					</thingDefs>
 				</filter>
 				<count>20</count>
 			</li>
 		</ingredients>
-		<researchPrerequisite>StartPack</researchPrerequisite>
+		<researchPrerequisite>Survival</researchPrerequisite>
+	</RecipeDef>
+		
+	<!-- ========================= Medieval =========================-->
+
+	<RecipeDef ParentName="MakeWeaponRangedNeolithic">
+		<defName>MakeCrossbow</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Mechanics</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="MakeWeaponRangedNeolithic">
+		<defName>MakeCrossbowRepeating</defName>
+		<label>make broom</label>
+		<description>Makes a simple broom. Used for sweeping floors</description>
+		<products>
+			<Broom>1</Broom>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>			
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>Mechanics</researchPrerequisite>
 	</RecipeDef>
 
 </RecipeDefs>

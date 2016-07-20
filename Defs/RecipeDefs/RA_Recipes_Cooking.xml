@@ -16,12 +16,89 @@
 		<workSpeedStat>CookingSpeed</workSpeedStat>
 		<effectWorking>Cook</effectWorking>
 		<allowMixingIngredients>true</allowMixingIngredients>
-		<researchPrerequisite>Blocked</researchPrerequisite>
+		<soundWorking>Recipe_CookMeal</soundWorking>
 	</RecipeDef>
-	
+
+	<!--===================== Meat =====================-->
+
+	<RecipeDef Name="CookMeat" ParentName="Cook">
+		<defName>MakeMeatRoasted</defName>
+		<label>cook roasted meat</label>
+		<description>Cooks a roasted meat.</description>
+		<jobString>Cooking roasted meat.</jobString>
+		<products>
+			<MeatRoasted>1</MeatRoasted>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Meat</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Meat</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+
+
+	<RecipeDef Name="CookMeatSmall">
+		<defName>MakeMeatSmallRoasted</defName>
+		<label>cook roasted small meat</label>
+		<description>Cooks a roasted small meat.</description>
+		<jobString>Cooking roasted small meat.</jobString>
+		<products>
+			<MeatSmallRoasted>1</MeatSmallRoasted>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MeatSmall</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>MeatSmall</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+
+
+	<RecipeDef Name="CookMeatHuman">
+		<defName>MakeMeatHumanRoasted</defName>
+		<label>cook roasted human meat</label>
+		<description>Cooks a roasted human meat.</description>
+		<jobString>Cooking roasted human meat.</jobString>
+		<products>
+			<MeatHumanRoasted>1</MeatHumanRoasted>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MeatHuman</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>MeatHuman</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
 
 	<!--===================== Meals =====================-->
-	
 
 	<RecipeDef Name="CookMeal" ParentName="Cook" Abstract="True">
 		<soundWorking>Recipe_CookMeal</soundWorking>
@@ -42,14 +119,15 @@
 				<li>EggsFertilized</li>
 			</exceptedCategories>
 			<exceptedThingDefs>
-				<li>Human_Meat</li>
+				<li>MeatHuman</li>
 			</exceptedThingDefs>
 		</defaultIngredientFilter>
+		<researchPrerequisite>Cooking</researchPrerequisite>
 	</RecipeDef>
 
 
 	<RecipeDef ParentName="CookMeal">
-		<defName>CookMealSimple</defName>
+		<defName>MakeMealSimple</defName>
 		<label>cook simple meal</label>
 		<description>Cooks a straightforward meal from one ingredient.</description>
 		<jobString>Cooking simple meal.</jobString>
@@ -66,11 +144,10 @@
 				<count>0.5</count>
 			</li>
 		</ingredients>
-		<researchPrerequisite>StartPack</researchPrerequisite>
 	</RecipeDef>	
 
 	<RecipeDef ParentName="CookMeal">
-		<defName>CookMealFine</defName>
+		<defName>MakeMealFine</defName>
 		<label>cook fine meal</label>
 		<description>Cooks a somewhat complex meal from a combination of raw meat and raw plant ingredients.</description>
 		<jobString>Cooking fine meal.</jobString>
@@ -105,7 +182,7 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="CookMeal">
-		<defName>CookMealLavish</defName>
+		<defName>MakeMealLavish</defName>
 		<label>cook lavish meal</label>
 		<description>Cooks a very complex meal from a combination of raw meat and raw plant ingredients. Much of the ingredients are wasted.</description>
 		<jobString>Cooking lavish meal.</jobString>
@@ -138,17 +215,15 @@
 			</li>
 		</ingredients>
 	</RecipeDef>
-	
 
 	<!--===================== Alcohol =====================-->
-	
 
 	<RecipeDef Name="CookAlcohol" ParentName="Cook" Abstract="True">
 		<allowMixingIngredients>true</allowMixingIngredients>
 		<soundWorking>Recipe_Brewing</soundWorking>
 	</RecipeDef>
-	
-	
+
+
 	<RecipeDef ParentName="CookAlcohol">
 		<defName>MakeBrew</defName>
 		<label>make brew</label>
@@ -161,9 +236,9 @@
 			<thingDefs>
 				<li>RawBerries</li>
 			</thingDefs>
-					<categories>
-						<li>Leathers</li>
-					</categories>
+			<categories>
+				<li>Leather</li>
+			</categories>
 		</fixedIngredientFilter>
 		<ingredients>
 			<li>
@@ -177,13 +252,48 @@
 			<li>
 				<filter>
 					<categories>
-						<li>Leathers</li>
+						<li>Leather</li>
 					</categories>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>Fermentation</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="CookAlcohol">
+		<defName>MakeBeer</defName>
+		<label>make beer</label>
+		<description>Make beer.</description>
+		<jobString>Making beer.</jobString>
+		<products>
+			<Beer>5</Beer>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawHops</li>
+				<li>Bottle</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawHops</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Bottle</li>
+					</thingDefs>
 				</filter>
 				<count>5</count>
 			</li>
 		</ingredients>
 		<researchPrerequisite>Brewing</researchPrerequisite>
 	</RecipeDef>
-	
+
 </RecipeDefs>

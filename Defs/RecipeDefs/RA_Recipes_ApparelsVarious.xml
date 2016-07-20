@@ -12,18 +12,18 @@
 
 	<!-- ========================= Neolithic =========================-->
 
-	<RecipeDef  ParentName="MakeClothingNeolithic">
-		<defName>MakeBackpack</defName>
+	<RecipeDef ParentName="MakeClothingNeolithic">
+		<defName>MakeBackpackLeather</defName>
 		<label>make backpack</label>
 		<description>Makes a backpack. Can be used to carry additional weapons.</description>
 		<products>
-			<Backpack>1</Backpack>
+			<BackpackLeather>1</BackpackLeather>
 		</products>
 		<ingredients>
 			<li>
 				<filter>
 					<categories>
-						<li>Leathers</li>
+						<li>Leather</li>
 					</categories>
 				</filter>
 				<count>25</count>
@@ -31,18 +31,58 @@
 		</ingredients>
 	</RecipeDef>
 	
-	<RecipeDef  ParentName="MakeClothingNeolithic">
-		<defName>MakeToolbelt</defName>
+	<RecipeDef ParentName="MakeClothingNeolithic">
+		<defName>MakeToolbeltLeather</defName>
 		<label>make toolbelt</label>
 		<description>Makes a toolbelt. Can be used to carry additional work tools.</description>
 		<products>
-			<Toolbelt>1</Toolbelt>
+			<ToolbeltLeather>1</ToolbeltLeather>
 		</products>
 		<ingredients>
 			<li>
 				<filter>
 					<categories>
-						<li>Leathers</li>
+						<li>Leather</li>
+					</categories>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+
+	<!-- ========================= Medieval =========================-->
+
+	<RecipeDef ParentName="MakeClothingMedieval">
+		<defName>MakeBackpackCloth</defName>
+		<label>make backpack</label>
+		<description>Makes a backpack. Can be used to carry additional weapons.</description>
+		<products>
+			<BackpackCloth>1</BackpackCloth>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Cloth</li>
+					</categories>
+				</filter>
+				<count>25</count>
+			</li>
+		</ingredients>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="MakeClothingMedieval">
+		<defName>MakeToolbeltCloth</defName>
+		<label>make toolbelt</label>
+		<description>Makes a toolbelt. Can be used to carry additional work tools.</description>
+		<products>
+			<ToolbeltCloth>1</ToolbeltCloth>
+		</products>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Cloth</li>
 					</categories>
 				</filter>
 				<count>10</count>

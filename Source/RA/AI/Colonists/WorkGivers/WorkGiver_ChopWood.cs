@@ -8,24 +8,23 @@ namespace RA
 {
     public class WorkGiver_ChopWood : WorkGiver_WorkWithTools
     {
-        public WorkGiver_ChopWood()
-        {
-            workType = "Woodchopping";
-        }
+        public override string WorkType => "Woodchopping";
 
-        public Job ActualJob(Thing target)
-            => (target as Plant).HarvestableNow ? new Job(JobDefOf.Harvest, target) : new Job(JobDefOf.CutPlant, target);
+        public override Job JobWithTool(TargetInfo target)
+            => (target.Thing as Plant).HarvestableNow
+                ? new Job(JobDefOf.Harvest, target.Thing)
+                : new Job(JobDefOf.CutPlant, target.Thing);
+
+        public override List<TargetInfo> Targets(Pawn pawn) => AvailableTargets(pawn);
 
         // search things throught designations is faster than searching designations through all things
-        public static IEnumerable<Thing> AvailableTargets(Pawn pawn)
-            => Find.DesignationManager.allDesignations.FindAll(designation =>
+        public static List<TargetInfo> AvailableTargets(Pawn pawn)
+        {
+            return Find.DesignationManager.allDesignations.FindAll(designation =>
                 designation.def == DefDatabase<DesignationDef>.GetNamed("ChopWood"))
-                .Select(designation => designation.target.Thing)
-                .Where(target =>
-                    !target.IsBurning() && pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger()));
-
-        // NonScanJob performed everytime previous(current) job is completed
-        public override Job NonScanJob(Pawn pawn)
-            => DoJobWithTool(pawn, AvailableTargets(pawn), ActualJob);
+                .Select(designation => designation.target)
+                .Where(target => !target.IsBurning() &&
+                                 pawn.CanReserveAndReach(target, PathEndMode.Touch, pawn.NormalMaxDanger())).ToList();
+        }
     }
 }

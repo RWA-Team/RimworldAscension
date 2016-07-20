@@ -11,15 +11,9 @@
 		<label>metal</label>
 	</StuffCategoryDef>
 
-	<!-- can't change that due to leather generation method -->
 	<StuffCategoryDef>
-		<defName>Leathery</defName>
-		<label>leather</label>
-	</StuffCategoryDef>
-
-	<StuffCategoryDef>
-		<defName>Fabric</defName>
-		<label>fabric</label>
+		<defName>Clay</defName>
+		<label>clay</label>
 	</StuffCategoryDef>
 
 	<StuffCategoryDef>
@@ -64,6 +58,23 @@
 	<StuffCategoryDef>
 		<defName>StoneBlock</defName>
 		<label>stone</label>
+	</StuffCategoryDef>
+		
+	<!--========================= Fabric =========================-->
+
+	<StuffCategoryDef>
+		<defName>Fabric</defName>
+		<label>fabric</label>
+	</StuffCategoryDef>
+
+	<StuffCategoryDef>
+		<defName>Leather</defName>
+		<label>leather</label>
+	</StuffCategoryDef>
+
+	<StuffCategoryDef>
+		<defName>Cloth</defName>
+		<label>cloth</label>
 	</StuffCategoryDef>
 
 </Defs>

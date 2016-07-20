@@ -17,17 +17,8 @@
 	<ThingDef Name="Defence" ParentName="Building" Abstract="True">
 		<designationCategory>Defence</designationCategory>
 	</ThingDef>
-	
-	
-	<ThingDef Name="MinifiedDefence" ParentName="Minified" Abstract="True">
-		<thingCategories>
-			<li>MinifiedDefences</li>
-		</thingCategories>
-	</ThingDef>
-
 
 	<!--==================== Traps ========================-->
-
 
 	<ThingDef ParentName="Defence">
 		<defName>TrapDeadfall</defName>
@@ -48,8 +39,7 @@
 			<TrapMeleeDamage>50</TrapMeleeDamage>
 			<TrapSpringChance>0.8</TrapSpringChance>
 		</statBases>
-		<description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on his head or torso.</description>
-		<minifiedDef>TrapDeadfallMinified</minifiedDef>
+		<description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on the victim's head or torso.</description>
 		<costList>
 			<TrapDeadfall>1</TrapDeadfall>
 		</costList>
@@ -62,16 +52,8 @@
 				<shaderType>Cutout</shaderType>
 			</trapUnarmedGraphicData>
 		</building>
-	</ThingDef>
-
-	<ThingDef ParentName="MinifiedDefence">
-		<defName>TrapDeadfallMinified</defName>
-		<label>deadfall trap</label>
-		<stuffCategories>
-			<li>WoodLog</li>
-			<li>StoneCobble</li>
-			<li>Bone</li>
-		</stuffCategories>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 	</ThingDef>
 
 </ThingDefs>

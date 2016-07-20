@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ResearchProjectDefs>
 
+	<!--============== Special Research Surrogates ==============-->
+
+	<!--used to hide vanilla researches-->
 	<ResearchProjectDef Name="Blocked" Abstract="True">
 		<prerequisites>
 			<li>Blocked</li>
 		</prerequisites>		
 	</ResearchProjectDef>
 
-	<!-- ========================= Special Research Surrogates ==========================-->
-
-	<!--used to hide buldings-->
+	<!--used to hide buldings and recipes-->
 	<ResearchProjectDef ParentName="Blocked">
 		<defName>Blocked</defName>	
 	</ResearchProjectDef>
 
 	<!--used to learn the basics-->
 	<ResearchProjectDef>
-		<defName>StartPack</defName>
+		<defName>Survival</defName>
 		<description>Having studied what's left of survival guide you found, you have the basic concepts of how to survive in the harsh enviroment around you. Having no advanced tools or materials, you'll have to make your own.</description>
 		<prerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</prerequisites>
 		<researchMods>
 			<li>
@@ -28,130 +29,263 @@
 		</researchMods>
 	</ResearchProjectDef>
 
-	<!-- ========================= Neolithic Tech Level ==========================-->
+	<!-- ============== Neolithic Tech Level ===============-->
 
 	<ResearchProjectDef>
-		<defName>Carpentry</defName>
-		<label>carpentry</label>
-		<description>Allows you perform elaborate wooden carvings to make wooden trade crafts and bases for tools and weapons.</description>
+		<defName>WoodCarving</defName>
+		<label>wood carving</label>
+		<description>wood carving.</description>
 		<totalCost>100</totalCost>
 		<prerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</prerequisites>
-		<researchMods>
+<!-- 		<researchMods>
 			<li>
-				<specialAction>RA.ResearchMods.Carpentry</specialAction>
+				<specialAction>RA.ResearchMods.WoodCarving</specialAction>
 			</li>
-		</researchMods>
+		</researchMods> -->
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
-		<defName>Masonry</defName>
-		<label>masonry</label>
-		<description>Allows you to cut stone chunks into blocks and allows you perform elaborate stone carving to make stone trade crafts and sharp blades.</description>
+		<defName>StoneCutting</defName>
+		<label>stone cutting</label>
+		<description>stone cutting.</description>
 		<totalCost>125</totalCost>
 		<prerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.Masonry</specialAction>
-			</li>
-		</researchMods>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
 		<defName>BoneCarving</defName>
 		<label>bone carving</label>
-		<description>Allows you perform elaborate bone carving to make bone trade crafts and sharp blades.</description>
+		<description>bone carving.</description>
 		<totalCost>300</totalCost>
 		<prerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.BoneCarving</specialAction>
-			</li>
-		</researchMods>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
-		<defName>Tannery</defName>
-		<label>tannery</label>
-		<description>Allows you to craft apparel and various stuff from animal hides.</description>
+		<defName>Leatherworking</defName>
+		<label>leatherworking</label>
+		<description>leatherworking.</description>
 		<totalCost>250</totalCost>
 		<prerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
-		<defName>BasicFarming</defName>
-		<label>basic farming</label>
-		<description>Learn how to grow simple domestic plants.</description>
+		<defName>LandCultivation</defName>
+		<label>land cultivation</label>
+		<description>land cultivation.</description>
 		<totalCost>150</totalCost>
 		<prerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.BasicFarming</specialAction>
-			</li>
-		</researchMods>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
-		<defName>Butchering</defName>
-		<label>butchering</label>
-		<description>Learn how to process animal corpses.</description>
+		<defName>AnimalDissection</defName>
+		<label>animal dissection</label>
+		<description>animal dissection.</description>
 		<totalCost>100</totalCost>
 		<prerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.Butchering</specialAction>
-			</li>
-		</researchMods>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
-		<defName>AnimalHusbandry</defName>
-		<label>animal husbandry</label>
-		<description>Learn how to tame and control wild animals.</description>
+		<defName>AnimalTaming</defName>
+		<label>animal taming</label>
+		<description>animal taming.</description>
 		<totalCost>200</totalCost>
 		<prerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</prerequisites>
-		<researchMods>
-			<li>
-				<specialAction>RA.ResearchMods.AnimalHusbandry</specialAction>
-			</li>
-		</researchMods>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
-		<defName>Pottery</defName>
-		<label>pottery</label>
-		<description>Allows you to make ceramics out of clay.</description>
+		<defName>Firing</defName>
+		<label>firing</label>
+		<description>firing.</description>
 		<totalCost>300</totalCost>
 		<prerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef>
-		<defName>Brewing</defName>
-		<label>brewing</label>
-		<description>Allows you to make brew.</description>
+		<defName>Fermentation</defName>
+		<label>fermentation</label>
+		<description>fermentation.</description>
 		<totalCost>450</totalCost>
 		<prerequisites>
-			<li>Pottery</li>
+			<li>Firing</li>
+			<li>LandCultivation</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
+	<!-- ============== Medieval Tech Level ===============-->
 
-	<!-- ========================= Medieval Tech Level ==========================-->
+	<ResearchProjectDef>
+		<defName>LeatherHardening</defName>
+		<label>leather hardening</label>
+		<description>leather hardening.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Leatherworking</li>
+			<li>Firing</li>
+		</prerequisites>
+	</ResearchProjectDef>
 
+	<ResearchProjectDef>
+		<defName>Farming</defName>
+		<label>farming</label>
+		<description>farming.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>LandCultivation</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Cooking</defName>
+		<label>cooking</label>
+		<description>cooking.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>LandCultivation</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Breweing</defName>
+		<label>brewing</label>
+		<description>brewing.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Fermentation</li>
+			<li>Farming</li>
+			<li>GlassSmelting</li>
+			<li>Carpentry</li>
+			<li>Smithing</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Mining</defName>
+		<label>mining</label>
+		<description>mining</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Survival</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Weaving</defName>
+		<label>weaving</label>
+		<description>weaving.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Carpentry</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Tailoring</defName>
+		<label>glass smelting</label>
+		<description>glass smelting.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Weaving</li>
+			<li>Leatherworking</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>GlassSmelting</defName>
+		<label>glass smelting</label>
+		<description>glass smelting.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Survival</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>MetalSmelting</defName>
+		<label>metal smelting</label>
+		<description>metal smelting.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Mining</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Smithing</defName>
+		<label>smithing</label>
+		<description>smithing.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>MetalSmelting</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Jewelry</defName>
+		<label>jewelry</label>
+		<description>jewelry.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Smithing</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Sawing</defName>
+		<label>sawing</label>
+		<description>sawing.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Smithing</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Masonry</defName>
+		<label>masonry</label>
+		<description>masonry.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>StoneCutting</li>
+			<li>Sawing</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Carpentry</defName>
+		<label>carpentry</label>
+		<description>carpentry.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>WoodCarving</li>
+			<li>Sawing</li>
+		</prerequisites>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef>
+		<defName>Mechanics</defName>
+		<label>mechanics</label>
+		<description>mechanics.</description>
+		<totalCost>250</totalCost>
+		<prerequisites>
+			<li>Smithing</li>
+			<li>Carpentry</li>
+		</prerequisites>
+	</ResearchProjectDef>
 
 </ResearchProjectDefs>

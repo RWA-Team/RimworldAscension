@@ -49,7 +49,7 @@ namespace RA
         public override void PostExposeData()
         {
             Scribe_Values.LookValue(ref wearTicks, "wearTicks");
-            Scribe_Values.LookValue(ref Props.usedForHunting, "usedForHuntingp");
+            Scribe_Values.LookValue(ref Props.usedForHunting, "usedForHunting");
             Scribe_Values.LookValue(ref wasAutoEquipped, "wasAutoEquipped");
         }
     }

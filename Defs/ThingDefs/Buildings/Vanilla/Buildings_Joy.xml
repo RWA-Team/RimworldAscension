@@ -16,7 +16,6 @@
 				<rect>(0.3,0.3,0.4,0.4)</rect>
 			</damageData>
 		</graphicData>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<altitudeLayer>Waist</altitudeLayer>
 		<rotatable>false</rotatable>
 		<socialPropernessMatters>true</socialPropernessMatters>
@@ -62,7 +61,6 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<altitudeLayer>Waist</altitudeLayer>
 		<rotatable>false</rotatable>
 		<socialPropernessMatters>true</socialPropernessMatters>
@@ -107,7 +105,6 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<staticSunShadowHeight>0.20</staticSunShadowHeight>
 		<altitudeLayer>Waist</altitudeLayer>
 		<socialPropernessMatters>true</socialPropernessMatters>
@@ -159,7 +156,6 @@
 		<altitudeLayer>Waist</altitudeLayer>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<rotatable>true</rotatable>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<fillPercent>0.40</fillPercent>
 		<statBases>
@@ -220,7 +216,6 @@
 		<altitudeLayer>Waist</altitudeLayer>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<rotatable>true</rotatable>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<fillPercent>0.25</fillPercent>
 		<statBases>
@@ -272,7 +267,6 @@
 		<altitudeLayer>Waist</altitudeLayer>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<rotatable>true</rotatable>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<fillPercent>0.25</fillPercent>
 		<statBases>
@@ -327,7 +321,6 @@
 		<interactionCellOffset>(0,0,1)</interactionCellOffset>
 		<passability>PassThroughOnly</passability>
 		<pathCost>50</pathCost>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>

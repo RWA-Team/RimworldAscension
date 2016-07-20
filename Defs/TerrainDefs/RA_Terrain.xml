@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- ==================== Terrain Cultivated =====================-->
+
+	<TerrainDef Name="Cultivated">
+		<DefName>SoilCultivated</DefName>
+		<label>cultivated soil</label>
+		<Description>A cultivated soil.</Description>
+		<texturePath>Terrains/TerrainCultivated</texturePath>
+		<statBases>
+			<WorkToMake>2000</WorkToMake>
+			<Beauty>-3</Beauty>
+			<Cleanliness>-3</Cleanliness>
+		</statBases>
+		<EdgeType>Hard</EdgeType>
+		<RenderPrecedence>300</RenderPrecedence>
+		<PathCost>5</PathCost>
+		<ScatterType>Rocky</ScatterType>
+		<affordances>
+			<li>Light</li>
+			<li>GrowSoil</li>
+			<li>Diggable</li>
+		</affordances>
+		<TerrainFilthDef>FilthDirt</TerrainFilthDef>
+		<Fertility>1.3</Fertility>
+		<TakeFootprints>True</TakeFootprints>
+	</TerrainDef>
+
+	<TerrainDef ParentName="Cultivated">
+		<DefName>SoilRichCultivated</DefName>
+		<label>cultivated rich soil</label>
+		<Description>A cultivated rich soil.</Description>
+		<Fertility>1.7</Fertility>
+	</TerrainDef>
+
+	<TerrainDef ParentName="Cultivated">
+		<DefName>GravelCultivated</DefName>
+		<label>cultivated gravel</label>
+		<Description>A cultivated gravel.</Description>
+		<Fertility>1</Fertility>
+	</TerrainDef>
+
+	<TerrainDef ParentName="Cultivated">
+		<DefName>MossyTerrainCultivated</DefName>
+		<label>cultivated lichen-covered dirt</label>
+		<Description>A cultivated lichen-covered dirt.</Description>
+		<Fertility>1.5</Fertility>
+	</TerrainDef>
+
+	<TerrainDef ParentName="Cultivated">
+		<DefName>MarshyTerrainCultivated</DefName>
+		<label>cultivated marshy soil</label>
+		<Description>A cultivated marshy soil.</Description>
+		<Fertility>1</Fertility>
+	</TerrainDef>
+
+	<!-- ==================== Terrain Fertilized =====================-->
+
+	<TerrainDef Name="Fertilized" ParentName="Cultivated">
+		<DefName>SoilFertilized</DefName>
+		<label>fertilized soil</label>
+		<Description>A fertilized soil.</Description>
+		<texturePath>Terrains/TerrainFertilized</texturePath>
+		<statBases>
+			<WorkToMake>300</WorkToMake>
+		</statBases>
+		<Fertility>1.5</Fertility>
+	</TerrainDef>
+
+	<TerrainDef ParentName="Fertilized">
+		<DefName>SoilRichFertilized</DefName>
+		<label>fertilized rich soil</label>
+		<Description>A fertilized rich soil.</Description>
+		<Fertility>1.9</Fertility>
+	</TerrainDef>
+
+	<TerrainDef ParentName="Fertilized">
+		<DefName>GravelFertilized</DefName>
+		<label>fertilized gravel</label>
+		<Description>A fertilized gravel.</Description>
+		<Fertility>1.2</Fertility>
+	</TerrainDef>
+
+	<TerrainDef ParentName="Fertilized">
+		<DefName>MossyTerrainFertilized</DefName>
+		<label>fertilized lichen-covered dirt</label>
+		<Description>A fertilized lichen-covered dirt.</Description>
+		<Fertility>1.7</Fertility>
+	</TerrainDef>
+
+	<TerrainDef ParentName="Fertilized">
+		<DefName>MarshyTerrainFertilized</DefName>
+		<label>fertilized marshy soil</label>
+		<Description>A fertilized marshy soil.</Description>
+		<Fertility>1.2</Fertility>
+	</TerrainDef>
+
+</Defs>

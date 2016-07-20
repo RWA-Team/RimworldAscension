@@ -44,13 +44,6 @@
 		</inspectorTabs>
 	</ThingDef>
 
-
-	<ThingDef Name="MinifiedFurniture" ParentName="Minified" Abstract="True">
-		<thingCategories>
-			<li>MinifiedFurniture</li>
-		</thingCategories>
-	</ThingDef>	
-
 	<!--========================= Containers =========================-->
 
 	<ThingDef ParentName="Container">
@@ -87,17 +80,94 @@
 				<itemsCap>3</itemsCap>
 			</li>
 		</comps>
-		<minifiedDef>BasketMinified</minifiedDef>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>BasketMinified</defName>
-		<label>basket</label>
+	<ThingDef ParentName="Container">
+		<defName>Chest</defName>
+		<label>chest</label>
+		<Description>A bark fiber based basket. Used to store various things inside.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Containers/Chest/Chest</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.9,0.9)</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>100</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToMake>1000</WorkToMake>
+		</statBases>
+		<costList>
+			<Chest>1</Chest>
+		</costList>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Root</li>
+					</categories>
+					<exceptedCategories>
+						<li>Refuse</li>
+					</exceptedCategories>
+				</filter>
+			</fixedStorageSettings>
+		</building>
+		<comps>
+			<li Class="RA.CompContainer_Properties">
+				<itemsCap>3</itemsCap>
+			</li>
+		</comps>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
+		<researchPrerequisites>
+			<li>Survival</li>
+		</researchPrerequisites>
 	</ThingDef>
-
+	
+	<ThingDef ParentName="Container">
+		<defName>Barrel</defName>
+		<label>basket</label>
+		<Description>A bark fiber based basket. Used to store various things inside.</Description>
+		<graphicData>
+			<texPath>Missing</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.9,0.9)</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>100</MarketValue>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToMake>1000</WorkToMake>
+		</statBases>
+		<costList>
+			<Chest>1</Chest>
+		</costList>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Root</li>
+					</categories>
+					<exceptedCategories>
+						<li>Refuse</li>
+					</exceptedCategories>
+				</filter>
+			</fixedStorageSettings>
+		</building>
+		<comps>
+			<li Class="RA.CompContainer_Properties">
+				<itemsCap>3</itemsCap>
+			</li>
+		</comps>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
+		<researchPrerequisites>
+			<li>Survival</li>
+		</researchPrerequisites>
+	</ThingDef>
 
 	<ThingDef ParentName="Container">
 		<defName>Pot</defName>
@@ -130,15 +200,11 @@
 				<rotModifier>0.75</rotModifier>
 			</li>
 		</comps>
-		<minifiedDef>PotMinified</minifiedDef>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
-			<li>Pottery</li>
+			<li>Firing</li>
 		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>PotMinified</defName>
-		<label>pot</label>
 	</ThingDef>
 
 	<!--========================= Beds =========================-->
@@ -196,7 +262,7 @@
 	<ThingDef ParentName="Bed">
 		<defName>BedHay</defName>
 		<label>hay bed</label>
-		<Description>A makeshift bed, made of hay and small branches.</Description>
+		<Description>A makeshift bed, made of hay and small branches. Just a step above sleeping on the ground.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHay</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -216,7 +282,7 @@
 			<WoodLog>10</WoodLog>
 		</costList>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -245,14 +311,14 @@
 		</stuffCategories>
 		<costStuffCount>30</costStuffCount>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
 	<ThingDef ParentName="Bed">
 		<defName>BedHideDouble</defName>
 		<label>hide bed</label>
-		<Description>A makeshift bed, makes you feel like you're in the stone age.</Description>
+		<Description>A large makeshift bed, makes you feel like you're in the stone age. Fits two.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHideDouble/BedHideDouble</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -278,7 +344,73 @@
 		</stuffCategories>
 		<costStuffCount>75</costStuffCount>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="Bed">
+		<defName>Bed</defName>
+		<label>hide bed</label>
+		<Description>A large makeshift bed, makes you feel like you're in the stone age. Fits two.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHideDouble/BedHideDouble</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0,0.05,2,1.95)</rect>
+			</damageData>
+		</graphicData>
+		<Size>(2,2)</Size>
+		<PathCost>20</PathCost>
+		<fillPercent>0</fillPercent>
+		<statBases>
+			<Beauty>-1</Beauty>
+			<WorkToMake>100</WorkToMake>
+			<BedRestEffectiveness>0.9</BedRestEffectiveness>
+			<Comfort>0.5</Comfort>
+		</statBases>
+		<costList>
+			<WoodLog>20</WoodLog>
+		</costList>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costStuffCount>75</costStuffCount>
+		<researchPrerequisites>
+			<li>Survival</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="Bed">
+		<defName>BedDouble</defName>
+		<label>hide bed</label>
+		<Description>A large makeshift bed, makes you feel like you're in the stone age. Fits two.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHideDouble/BedHideDouble</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0,0.05,2,1.95)</rect>
+			</damageData>
+		</graphicData>
+		<Size>(2,2)</Size>
+		<PathCost>20</PathCost>
+		<fillPercent>0</fillPercent>
+		<statBases>
+			<Beauty>-1</Beauty>
+			<WorkToMake>100</WorkToMake>
+			<BedRestEffectiveness>0.9</BedRestEffectiveness>
+			<Comfort>0.5</Comfort>
+		</statBases>
+		<costList>
+			<WoodLog>20</WoodLog>
+		</costList>
+		<stuffCategories>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costStuffCount>75</costStuffCount>
+		<researchPrerequisites>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -306,7 +438,7 @@
 	<ThingDef ParentName="Bed">
 		<defName>AnimalSleepingBox</defName>
 		<label>animal hay sleeping box</label>
-		<description>A small box for animals to sleep in. Fits smaller animals like chickens, cats, or small dogs.</description>
+		<description>A small box for animals to sleep in. Fits small animals like chickens, cats, or small dogs.</description>
 		<size>(1,1)</size>
 		<rotatable>false</rotatable>
 		<graphicData>
@@ -329,7 +461,7 @@
 			<bed_maxBodySize>0.55</bed_maxBodySize>
 		</building>
 		<researchPrerequisites>
-			<li>StartPack</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -346,17 +478,16 @@
 
 
 	<ThingDef ParentName="Stool">
-		<defName>StoolNeolithic</defName>
-		<label>stool</label>
+		<defName>StoolNeolithicStone</defName>
+		<label>stone stool</label>
 		<description>A primitive simple stool you can sit on.</description>
 		<graphicData>
-			<texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithic</texPath>
+			<texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithicStone</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>Cutout</shaderType>
 			<drawSize>(0.8,0.8)</drawSize>
 		</graphicData>
 		<rotatable>false</rotatable>
-		<minifiedDef>StoolNeolithicMinified</minifiedDef>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<WorkToMake>750</WorkToMake>
@@ -364,22 +495,46 @@
 			<Comfort>0.5</Comfort>
 		</statBases>
 		<costList>
-			<StoolNeolithic>1</StoolNeolithic>
+			<StoolNeolithicStone>1</StoolNeolithicStone>
 		</costList>
 		<stuffCategories>
 			<li>StoneChunk</li>
 		</stuffCategories>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Masonry</li>
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>StoolNeolithicMinified</defName>
-		<label>stool</label>
+	<ThingDef ParentName="Stool">
+		<defName>StoolNeolithicWood</defName>
+		<label>wooden stool</label>
+		<description>A primitive simple stool you can sit on.</description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithicWood</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(0.8,0.8)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>75</MaxHitPoints>
+			<WorkToMake>750</WorkToMake>
+			<Beauty>3</Beauty>
+			<Comfort>0.5</Comfort>
+		</statBases>
+		<costList>
+			<StoolNeolithicWood>1</StoolNeolithicWood>
+		</costList>
 		<stuffCategories>
-			<li>StoneChunk</li>
+			<li>WoodLog</li>
 		</stuffCategories>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
+		<researchPrerequisites>
+			<li>Survival</li>
+		</researchPrerequisites>
 	</ThingDef>
 
 	<!--======================= Tables ==============================-->
@@ -399,10 +554,10 @@
 
 
 	<ThingDef ParentName="Table">
-		<defName>TableNeolithic</defName>
-		<label>short table</label>
+		<defName>TableNeolithicStone</defName>
+		<label>short stone table</label>
 		<graphicData>
-			<texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithic</texPath>
+			<texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithicStone</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1.2,1.2)</drawSize>
 			<damageData>
@@ -420,21 +575,40 @@
 			<li>StoneChunk</li>
 		</stuffCategories>
 		<costList>
-			<TableNeolithic>1</TableNeolithic>
+			<TableNeolithicStone>1</TableNeolithicStone>
 		</costList>
-		<minifiedDef>TableNeolithicMinified</minifiedDef>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<rotatable>false</rotatable>
 		<researchPrerequisites>
 			<li>Masonry</li>
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>TableNeolithicMinified</defName>
-		<label>short table</label>
-		<stuffCategories>
-			<li>StoneChunk</li>
-		</stuffCategories>
+	<ThingDef ParentName="Table">
+		<defName>TableNeolithicWood</defName>
+		<label>short wood table</label>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithicWood/TableNeolithicWood</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1.2,1.2)</drawSize>
+			<damageData>
+				<rect>(0.05,0.27,1.9,1.73)</rect>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<statBases>
+			<Beauty>3</Beauty>
+		</statBases>
+		<costList>
+			<TableNeolithicWood>1</TableNeolithicWood>
+		</costList>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
+		<rotatable>false</rotatable>
 	</ThingDef>
 
 </Buildings>

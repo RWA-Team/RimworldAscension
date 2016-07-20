@@ -57,7 +57,7 @@ namespace RA
                 actor.GainComfortFromCellIfPossible();
 
                 // burner support injection
-                var burner = curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
+                var burner = curJob.GetTarget(TargetIndex.A).Thing.TryGetComp<CompFueled>();
                 if (burner != null && burner.internalTemp < burner.compFueled.Properties.operatingTemp)
                 {
                     return;
@@ -75,7 +75,7 @@ namespace RA
                 var billGiverWithTickAction =
                     curJob.GetTarget(TargetIndex.A).Thing as IBillGiverWithTickAction;
                 billGiverWithTickAction?.BillTick();
-                
+
                 if (curJob.RecipeDef.workSkill != null)
                 {
                     actor.skills.GetSkill(curJob.RecipeDef.workSkill)
@@ -121,14 +121,19 @@ namespace RA
                         // scatter around all ingridients
                         foreach (var cell in building_WorkTable.IngredientStackCells)
                         {
-                            var ingridientsOnCell = Find.ThingGrid.ThingsListAtFast(cell)?.Where(thing => thing.def.category == ThingCategory.Item).ToList();
+                            var ingridientsOnCell =
+                                Find.ThingGrid.ThingsListAtFast(cell)?
+                                    .Where(thing => thing.def.category == ThingCategory.Item)
+                                    .ToList();
                             if (!ingridientsOnCell.NullOrEmpty())
                             {
                                 Thing dummy;
                                 // despawn thing to spawn again with TryPlaceThing
                                 ingridientsOnCell.FirstOrDefault().DeSpawn();
-                                if (!GenPlace.TryPlaceThing(ingridientsOnCell.FirstOrDefault(), building_WorkTable.InteractionCell,
-                                    ThingPlaceMode.Near, out dummy))
+                                if (
+                                    !GenPlace.TryPlaceThing(ingridientsOnCell.FirstOrDefault(),
+                                        building_WorkTable.InteractionCell,
+                                        ThingPlaceMode.Near, out dummy))
                                 {
                                     Log.Error("No free spot for " + ingridientsOnCell);
                                 }
@@ -165,30 +170,134 @@ namespace RA
                       curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff)
                     : Find.ResearchManager.PercentComplete(startedResearch);
             });
-            toil.FailOn(() =>
-            {
-                var burner = toil.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing as WorkTableFueled;
-                // burner fails if no more heat generation and temperature is not enough
-                return toil.actor.CurJob.bill.suspended || burner?.currentFuelBurnDuration == 0 && !burner.UsableNow;
-            });
             return toil;
+        }
+
+        // changed how prodcut stuff type is determined and made this toil assign production cost for the Thing to the CompCraftedValue
+        public static Toil FinishRecipeAndStartStoringProduct()
+        {
+            var toil = new Toil();
+            toil.initAction = delegate
+            {
+                var actor = toil.actor;
+                var curJob = actor.jobs.curJob;
+                Thing dominantIngredient;
+                var ingredients = ProcessedIngredients(curJob, out dominantIngredient);
+                var products =
+                    GenRecipe.MakeRecipeProducts(curJob.RecipeDef, actor, ingredients, dominantIngredient).ToList();
+                curJob.bill.Notify_IterationCompleted(actor);
+                RecordsUtility.Notify_BillDone(actor, products);
+
+                // set production cost for all products
+                foreach (var product in products)
+                {
+                    var compCraftedValue = product.TryGetComp<CompCraftedValue>();
+                    compCraftedValue?.SetMarketValue(curJob.RecipeDef, ingredients);
+                }
+
+                if (products.Count == 0)
+                {
+                    actor.jobs.EndCurrentJob(JobCondition.Succeeded);
+                    return;
+                }
+                if (curJob.bill.GetStoreMode() == BillStoreMode.DropOnFloor)
+                {
+                    foreach (
+                        var thing in
+                            products.Where(thing => !GenPlace.TryPlaceThing(thing, actor.Position, ThingPlaceMode.Near)))
+                    {
+                        Log.Error(string.Concat(actor, " could not drop recipe product ", thing, " near ",
+                            actor.Position));
+                    }
+                    actor.jobs.EndCurrentJob(JobCondition.Succeeded);
+                    return;
+                }
+                if (products.Count > 1)
+                {
+                    for (var j = 1; j < products.Count; j++)
+                    {
+                        if (!GenPlace.TryPlaceThing(products[j], actor.Position, ThingPlaceMode.Near))
+                        {
+                            Log.Error(string.Concat(actor, " could not drop recipe product ", products[j], " near ",
+                                actor.Position));
+                        }
+                    }
+                }
+                products[0].SetPositionDirect(actor.Position);
+                IntVec3 vec;
+                if (StoreUtility.TryFindBestBetterStoreCellFor(products[0], actor, StoragePriority.Unstored, actor.Faction,
+                    out vec))
+                {
+                    actor.carrier.TryStartCarry(products[0]);
+                    curJob.targetB = vec;
+                    curJob.targetA = products[0];
+                    curJob.maxNumToCarry = 99999;
+                    return;
+                }
+                if (!GenPlace.TryPlaceThing(products[0], actor.Position, ThingPlaceMode.Near))
+                {
+                    Log.Error(string.Concat("Bill doer could not drop product ", products[0], " near ", actor.Position));
+                }
+                actor.jobs.EndCurrentJob(JobCondition.Succeeded);
+            };
+            return toil;
+        }
+        
+        public static List<Thing> ProcessedIngredients(Job job, out Thing dominantIngredient)
+        {
+            var uft = job.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
+            if (uft != null)
+            {
+                dominantIngredient = uft.def.MadeFromStuff ? uft.ingredients.First(ing => ing.def == uft.Stuff) : null;
+                var ingredients = uft.ingredients;
+                uft.Destroy();
+                job.placedTargets = null;
+                return ingredients;
+            }
+            var list = new List<Thing>();
+            if (job.placedTargets != null)
+            {
+                foreach (var thing in job.placedTargets.Select(target => target.Thing))
+                {
+                    if (list.Contains(thing))
+                    {
+                        Log.Error("Tried to add ingredient from job placed targets twice: " + thing);
+                    }
+                    else
+                    {
+                        list.Add(thing);
+                        if (thing.Spawned)
+                        {
+                            var strippable = thing as IStrippable;
+                            strippable?.Strip();
+                        }
+                        if (job.RecipeDef.UsesUnfinishedThing)
+                        {
+                            Find.DesignationManager.RemoveAllDesignationsOn(thing);
+                            thing.DeSpawn();
+                        }
+                        else
+                        {
+                            thing.Destroy();
+                        }
+                    }
+                }
+            }
+            job.placedTargets = null;
+            dominantIngredient = list.NullOrEmpty() ? null : GetDominantIngredient(job.RecipeDef, list);
+            return list;
         }
 
         // make recipe decide what result stuff to make based on defaultIngredientFilter as blocking Stuff types one
         public static Thing GetDominantIngredient(RecipeDef recipe, List<Thing> ingredients)
         {
             // checks if there are any stuff ingredients used which are not forbidden in defaultIngredientFilter
-            // accepts any other stuff types
-            var disallowedFilter = recipe.defaultIngredientFilter;
-            if (disallowedFilter != null)
-            {
-                var dominantIngridient =
-                    ingredients.Find(ingredient => ingredient.def.IsStuff && !disallowedFilter.Allows(ingredient.def));
-                if (dominantIngridient != null)
-                    return dominantIngridient;
-            }
-            // no suitable stuff ingridient found
-            return ingredients.RandomElementByWeight(ing => ing.stackCount);
+            return recipe.products.FirstOrDefault().thingDef.MadeFromStuff
+                ? ingredients
+                    .Find(ingredient => ingredient.def.IsStuff &&
+                                        ingredient.def.stuffProps.CanMake(recipe.products.FirstOrDefault().thingDef) &&
+                                        (!recipe.defaultIngredientFilter?.Allows(ingredient.def) ?? true))
+                : ingredients.RandomElementByWeight(ing => ing.stackCount);
         }
     }
 }

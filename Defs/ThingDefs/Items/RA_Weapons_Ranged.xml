@@ -44,6 +44,12 @@
 		<weaponTags>
 			<li>RangedNeolithic</li>
 		</weaponTags>
+		<comps>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
+			</li>
+		</comps>
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
