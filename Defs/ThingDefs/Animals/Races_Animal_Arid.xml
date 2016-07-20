@@ -69,6 +69,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
+  <!-- 
   <PawnKindDef Name="Muffalo" ParentName="AnimalTech">
     <defName>Muffalo</defName>
     <label>muffalo</label>
@@ -130,8 +131,7 @@
     <defName>PackMuffalo</defName>
     <carrier>true</carrier>
   </PawnKindDef>
-
-
+-->
   <!-- ====================================================== -->
 
   <ThingDef ParentName="AnimalBalance">
@@ -198,7 +198,7 @@
     </tradeTags>
   </ThingDef>
 
-  <PawnKindDef ParentName="AnimalTech">
+ <!-- <PawnKindDef ParentName="AnimalTech">
     <defName>Gazelle</defName>
     <label>gazelle</label>
     <race>Gazelle</race>
@@ -343,6 +343,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Iguana</defName>
     <label>iguana</label>
@@ -461,6 +462,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Rhinoceros</defName>
     <label>rhinoceros</label>
@@ -595,6 +597,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
+  <!--
   <PawnKindDef ParentName="AnimalTech" Name="Dromedary">
     <defName>Dromedary</defName>
     <label>dromedary</label>
@@ -658,6 +661,6 @@
   </PawnKindDef>
 
 
-
+-->
   
 </Defs>

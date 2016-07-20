@@ -80,7 +80,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Squirrel</defName>
     <label>squirrel</label>
@@ -206,7 +206,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Alphabeaver</defName>
     <label>alphabeaver</label>
@@ -337,7 +337,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Capybara</defName>
     <label>capybara</label>
@@ -465,7 +465,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Chinchilla</defName>
     <label>chinchilla</label>
@@ -603,7 +603,7 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Boomrat</defName>
     <label>boomrat</label>
@@ -735,7 +735,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Raccoon</defName>
     <label>raccoon</label>
@@ -863,7 +863,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Rat</defName>
     <label>rat</label>
@@ -910,6 +910,6 @@
       </li>
     </lifeStages>
   </PawnKindDef>
-
+-->
 
 </Defs>

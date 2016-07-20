@@ -62,6 +62,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Elephant</defName>
     <label>elephant</label>
@@ -205,6 +206,7 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Megatherium</defName>
     <label>megatherium</label>
@@ -329,7 +331,7 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
     </race>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Thrumbo</defName>
     <label>thrumbo</label>
@@ -388,6 +390,6 @@
   </PawnKindDef>
 
   
-  
+  -->
 
 </Defs>

@@ -28,7 +28,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech" Name="BigBirdsTech" Abstract="True">
     <combatPower>155</combatPower>
     <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
@@ -101,7 +101,7 @@
       </li>
     </verbs>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="BigBirdsTech">
     <defName>Cassowary</defName>
     <label>cassowary</label>
@@ -213,7 +213,7 @@
       </li>
     </verbs>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="BigBirdsTech">
     <defName>Emu</defName>
     <label>emu</label>
@@ -326,7 +326,7 @@
       </li>
     </verbs>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="BigBirdsTech">
     <defName>Ostrich</defName>
     <label>ostrich</label>
@@ -456,7 +456,7 @@
       </li>
     </verbs>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="BigBirdsTech">
     <defName>Turkey</defName>
     <label>turkey</label>
@@ -510,5 +510,5 @@
       </li>
     </lifeStages>
   </PawnKindDef>
-
+-->
 </Defs>

@@ -61,7 +61,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef Abstract="True" ParentName="AnimalTech" Name="HareTech">
     <combatPower>25</combatPower>
     <wildSpawn_EcoSystemWeight>0.25</wildSpawn_EcoSystemWeight>
@@ -79,7 +79,7 @@
       <leatherInsulation>0.95</leatherInsulation>
     </race>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="HareTech">
     <defName>Hare</defName>
     <label>hare</label>
@@ -141,7 +141,7 @@
       <leatherInsulation>1.1</leatherInsulation>
     </race>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="HareTech">
     <defName>Snowhare</defName>
     <label>snowhare</label>
@@ -186,5 +186,5 @@
       </li>
     </lifeStages>
   </PawnKindDef>
-  
+  -->
 </Defs>

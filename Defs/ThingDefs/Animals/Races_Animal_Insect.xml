@@ -72,7 +72,7 @@
       <li>Insectoid</li>
     </tradeTags>
   </ThingDef>
-  
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Megascarab</defName>
     <label>megascarab</label>
@@ -179,7 +179,7 @@
       <li>Insectoid</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Spelopede</defName>
     <label>spelopede</label>
@@ -286,7 +286,7 @@
       <li>Insectoid</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Megaspider</defName>
     <label>megaspider</label>
@@ -334,6 +334,6 @@
       </li>
     </lifeStages>
   </PawnKindDef>
-
+-->
 
 </Defs>

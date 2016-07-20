@@ -86,6 +86,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>YorkshireTerrier</defName>
     <label>yorkshire terrier</label>
@@ -225,6 +226,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Husky</defName>
     <label>husky</label>
@@ -366,6 +368,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>LabradorRetriever</defName>
     <label>labrador retriever</label>
@@ -530,6 +533,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Cat</defName>
     <label>cat</label>
@@ -577,5 +581,5 @@
       </li>
     </lifeStages>
   </PawnKindDef>
-  
+  -->
 </Defs>

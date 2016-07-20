@@ -115,6 +115,7 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Warg</defName>
     <label>warg</label>
@@ -281,7 +282,7 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech" Name="WolfTech" Abstract="True">
     <combatPower>75</combatPower>
     <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
@@ -518,7 +519,7 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech" Name="AnimalKindBaseFox" Abstract="True">
     <combatPower>45</combatPower>
     <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
@@ -537,7 +538,7 @@
       <meatLabel>foxmeat</meatLabel>
     </race>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalKindBaseFox">
     <defName>FoxFennec</defName>
     <label>fennec fox</label>
@@ -593,7 +594,7 @@
       <useMeatFrom>FoxFennec</useMeatFrom>
     </race>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalKindBaseFox">
     <defName>FoxRed</defName>
     <label>red fox</label>
@@ -652,7 +653,7 @@
       <useMeatFrom>FoxFennec</useMeatFrom>
     </race>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalKindBaseFox">
     <defName>FoxArctic</defName>
     <label>arctic fox</label>
@@ -695,5 +696,5 @@
       </li>
     </lifeStages>
   </PawnKindDef>
-
+-->
 </Defs>

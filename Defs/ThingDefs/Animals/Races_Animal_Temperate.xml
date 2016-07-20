@@ -68,7 +68,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-  
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Deer</defName>
     <label>deer</label>
@@ -206,7 +206,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Ibex</defName>
     <label>ibex</label>
@@ -351,7 +351,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-  
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Elk</defName>
     <label>elk</label>
@@ -494,7 +494,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Caribou</defName>
     <label>caribou</label>
@@ -616,7 +616,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-  
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>WildBoar</defName>
     <label>wild boar</label>
@@ -750,7 +750,7 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Tortoise</defName>
     <label>tortoise</label>
@@ -795,6 +795,6 @@
       </li>
     </lifeStages>
   </PawnKindDef>
-  
+  -->
   
 </ThingDefs>

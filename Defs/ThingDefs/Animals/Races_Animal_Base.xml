@@ -28,10 +28,12 @@
     <drawGUIOverlay>true</drawGUIOverlay>
   </ThingDef>
 
-  <ThingDef ParentName="BasePawn" Name="AnimalThingBase" Abstract="True">
+  <ThingDef ParentName="BasePawn" Name="AnimalBalance" Abstract="True">
     <statBases>
       <Flammability>1.0</Flammability>
       <LeatherAmount>20</LeatherAmount>
+      <TallowAmount>15</TallowAmount>
+      <MeatAmount>90</MeatAmount>
     </statBases>
     <race>
       <thinkTreeMain>Animal</thinkTreeMain>
@@ -52,8 +54,8 @@
       <li>Euthanize</li>
     </recipes>
   </ThingDef>
-
-  <PawnKindDef Name="AnimalKindBase" Abstract="True">
+<!--
+  <PawnKindDef Name="AnimalTech" Abstract="True">
   </PawnKindDef>
-  
+  -->
 </Defs>

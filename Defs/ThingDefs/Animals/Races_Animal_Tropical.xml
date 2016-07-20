@@ -92,7 +92,7 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Cobra</defName>
     <label>cobra</label>
@@ -203,7 +203,7 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Monkey</defName>
     <label>monkey</label>
@@ -320,7 +320,7 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-  
+  <!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Boomalope</defName>
     <label>boomalope</label>
@@ -384,5 +384,5 @@
       </li>
     </lifeStages>
   </PawnKindDef>
-
+-->
 </Defs>

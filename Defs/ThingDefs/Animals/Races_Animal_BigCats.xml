@@ -94,7 +94,7 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech" Name="BigCatTech" Abstract="True">
     <combatPower>155</combatPower>
     <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
@@ -113,7 +113,7 @@
       <leatherColor>(177,136,112)</leatherColor>
     </race>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="BigCatTech">
     <defName>Cougar</defName>
     <label>cougar</label>
@@ -174,7 +174,7 @@
       <leatherColor>(60,60,60)</leatherColor>
     </race>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="BigCatTech">
     <defName>Panther</defName>
     <label>panther</label>
@@ -325,7 +325,7 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-
+<!--
   <PawnKindDef ParentName="AnimalTech">
     <defName>Lynx</defName>
     <label>lynx</label>
@@ -381,6 +381,6 @@
       </li>
     </lifeStages>
   </PawnKindDef>
-
+-->
 
 </Defs>
