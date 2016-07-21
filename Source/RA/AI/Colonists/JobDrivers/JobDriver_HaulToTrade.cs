@@ -14,7 +14,7 @@ namespace RA
         {
             var hauledThing = pawn.carrier.CarriedThing ?? TargetThingA;
 
-            return "ReportHaulingTo".Translate(hauledThing.LabelCap, CurJob.targetB.Thing.LabelBaseShort);
+            return "ReportHaulingTo".Translate(hauledThing.LabelCap, CurJob.targetB.Thing.LabelShort);
         }
 
         protected override IEnumerable<Toil> MakeNewToils()

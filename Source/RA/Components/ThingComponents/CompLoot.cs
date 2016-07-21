@@ -45,7 +45,7 @@ namespace RA
 
         public void DesignateForLooting()
         {
-            parent.SetFaction(Faction.OfColony);
+            parent.SetFaction(Faction.OfPlayer);
             Find.DesignationManager.AddDesignation(new Designation(parent, DesignationDefOf.Deconstruct));
         }
 

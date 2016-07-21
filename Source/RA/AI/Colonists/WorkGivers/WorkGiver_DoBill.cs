@@ -164,7 +164,7 @@ namespace RA
             Bill bill = null;
             foreach (var bill2 in billGiver.BillStack)
             {
-                if (Find.TickManager.TicksGame >= bill2.lastIngredientSearchFailTicks + ReCheckFailedBillTicksRange.RandomInRange || FloatMenuMaker.making)
+                if (Find.TickManager.TicksGame >= bill2.lastIngredientSearchFailTicks + ReCheckFailedBillTicksRange.RandomInRange || FloatMenuMakerMap.making)
                 {
                     if (bill2.ShouldDoNow())
                     {
@@ -198,7 +198,7 @@ namespace RA
                                     bill = bill2;
                                     break;
                                 }
-                                if (!FloatMenuMaker.making)
+                                if (!FloatMenuMakerMap.making)
                                 {
                                     bill2.lastIngredientSearchFailTicks = Find.TickManager.TicksGame;
                                 }

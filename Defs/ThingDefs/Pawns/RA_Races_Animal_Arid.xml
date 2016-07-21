@@ -38,10 +38,11 @@
 		<race>
 			<thinkTreeMain>Animal</thinkTreeMain>
 			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
-			<minFoodPreferability>NeverForNutrition</minFoodPreferability>
 			<hasGenders>true</hasGenders>
-			<nameGenerator>NamerAnimalGeneric</nameGenerator>
+			<nameGenerator>NamerAnimalGenericMale</nameGenerator>
+			<nameGeneratorFemale>NamerAnimalGenericFemale</nameGeneratorFemale>
 			<manhunterOnDamageChance>0.0125</manhunterOnDamageChance>
+			<manhunterOnTameFailChance>0.005</manhunterOnTameFailChance>
 			<nameOnNuzzleChance>0.5</nameOnNuzzleChance>
 			<hediffGiverSets>
 				<li>OrganicStandard</li>
@@ -62,7 +63,7 @@
 		<description>A large herding herbivore descended from buffalo and adapted for some exotic environment. Peaceful unless disturbed.</description>
 		<statBases>
 			<MoveSpeed>3.6</MoveSpeed>
-			<ComfyTemperatureMin>-45</ComfyTemperatureMin>
+			<ComfyTemperatureMin>-60</ComfyTemperatureMin>
 			<MarketValue>500</MarketValue>
 		</statBases>
 		<verbs>
@@ -98,11 +99,11 @@
 			<baseBodySize>2.0</baseBodySize>
 			<baseHealthScale>1.75</baseHealthScale>
 			<foodType>VegetarianRoughAnimal</foodType>
-			<leatherColor>(67,103,115)</leatherColor>
-			<leatherInsulation>1.5</leatherInsulation>
+			<leatherColor>(152,170,174)</leatherColor>
+			<leatherInsulation>1.0</leatherInsulation>
 			<gestationPeriodDays>30</gestationPeriodDays>
 			<wildness>0.5</wildness>
-			<nuzzleChancePerHour>0.02</nuzzleChancePerHour>
+			<nuzzleMtbHours>120</nuzzleMtbHours>
 			<lifeExpectancy>15</lifeExpectancy>
 			<lifeStageAges>
 				<li>

@@ -20,16 +20,16 @@ namespace RA
 
         public DetoursInitializer()
         {
-            LongEventHandler.ExecuteWhenFinished(() =>
-            {
-                // load assets from main thread.
-                Assets.Init();
+            //LongEventHandler.ExecuteWhenFinished(() =>
+            //{
+            //    // load assets from main thread.
+            //    Assets.Init();
 
-                InitDetours();
+            //    InitDetours();
 
-                if (Prefs.DevMode)
-                    Log.Message("Detours initialized");
-            });
+            //    if (Prefs.DevMode)
+            //        Log.Message("Detours initialized");
+            //});
         }
 
         public static bool TryGetPrivateField(Type type, object instance, string fieldName, out object value,
@@ -151,11 +151,11 @@ namespace RA
             TryDetourFromTo(vanillaSelectedUpdate, newSelectedUpdate);
 
             // changed text align to middle center
-            var vanillaButtonSubtle = typeof (WidgetsSubtle).GetMethod("ButtonSubtle",
+            var vanillaButtonTextSubtle = typeof (Widgets).GetMethod("ButtonTextSubtle",
                 BindingFlags.Static | BindingFlags.Public);
-            var newButtonSubtle = typeof (RA_WidgetsSubtle).GetMethod("ButtonSubtle",
+            var newButtonTextSubtle = typeof (RA_Widgets).GetMethod("ButtonTextSubtle",
                 BindingFlags.Static | BindingFlags.Public);
-            TryDetourFromTo(vanillaButtonSubtle, newButtonSubtle);
+            TryDetourFromTo(vanillaButtonTextSubtle, newButtonTextSubtle);
 
             // delay CheckGameOver first call
             var vanillaCheckGameOver = typeof (GameEnder).GetMethod("CheckGameOver",
@@ -185,12 +185,12 @@ namespace RA
                 BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaGameEndTick, newGameEndTick);
 
-            // changed initial game start message
-            var vanillaInitNewGeneratedMap = typeof (MapIniter_NewGame).GetMethod("InitNewGeneratedMap",
-                BindingFlags.Static | BindingFlags.Public);
-            var newInitNewGeneratedMap = typeof (RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap",
-                BindingFlags.Static | BindingFlags.Public);
-            TryDetourFromTo(vanillaInitNewGeneratedMap, newInitNewGeneratedMap);
+            //// changed initial game start message
+            //var vanillaInitNewGeneratedMap = typeof (MapIniter_NewGame).GetMethod("InitNewGeneratedMap",
+            //    BindingFlags.Static | BindingFlags.Public);
+            //var newInitNewGeneratedMap = typeof (RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap",
+            //    BindingFlags.Static | BindingFlags.Public);
+            //TryDetourFromTo(vanillaInitNewGeneratedMap, newInitNewGeneratedMap);
 
             // tries to assign existing stuff type, instead of some random one, as default
             var vanillaDefaultStuffFor = typeof (GenStuff).GetMethod("DefaultStuffFor",
@@ -199,14 +199,14 @@ namespace RA
                 BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaDefaultStuffFor, newDefaultStuffFor);
 
-            // changed initial colonists count
-            var vanillaGenerateDefaultColonistsWithFaction =
-                typeof (MapInitData).GetMethod("GenerateDefaultColonistsWithFaction",
-                    BindingFlags.Static | BindingFlags.Public);
-            var newGenerateDefaultColonistsWithFaction =
-                typeof (RA_MapInitData).GetMethod("GenerateDefaultColonistsWithFaction",
-                    BindingFlags.Static | BindingFlags.Public);
-            TryDetourFromTo(vanillaGenerateDefaultColonistsWithFaction, newGenerateDefaultColonistsWithFaction);
+            //// changed initial colonists count
+            //var vanillaGenerateDefaultColonistsWithFaction =
+            //    typeof (Find.GameInitData).GetMethod("GenerateDefaultColonistsWithFaction",
+            //        BindingFlags.Static | BindingFlags.Public);
+            //var newGenerateDefaultColonistsWithFaction =
+            //    typeof (RA_Find.GameInitData).GetMethod("GenerateDefaultColonistsWithFaction",
+            //        BindingFlags.Static | BindingFlags.Public);
+            //TryDetourFromTo(vanillaGenerateDefaultColonistsWithFaction, newGenerateDefaultColonistsWithFaction);
 
             // make recipe decide what result stuff to make based on defaultIngredientFilter as blocking Stuff types one
             var vanillaGetDominantIngredient = typeof (Toils_Recipe).GetMethod("GetDominantIngredient",
@@ -457,19 +457,19 @@ namespace RA
 
             #region MAINMENU
 
-            // detour RimWorld.MainMenuDrawer.MainMenuOnGUI
-            var vanillaDoMainMenuButtons = typeof (MainMenuDrawer).GetMethod("MainMenuOnGUI",
-                BindingFlags.Static | BindingFlags.Public);
-            var newDoMainMenuButtons = typeof (RA_MainMenuDrawer).GetMethod("MainMenuOnGUI",
-                BindingFlags.Static | BindingFlags.Public);
-            TryDetourFromTo(vanillaDoMainMenuButtons, newDoMainMenuButtons);
+            //// detour RimWorld.MainMenuDrawer.MainMenuOnGUI
+            //var vanillaDoMainMenuButtons = typeof (MainMenuDrawer).GetMethod("MainMenuOnGUI",
+            //    BindingFlags.Static | BindingFlags.Public);
+            //var newDoMainMenuButtons = typeof (RA_MainMenuDrawer).GetMethod("MainMenuOnGUI",
+            //    BindingFlags.Static | BindingFlags.Public);
+            //TryDetourFromTo(vanillaDoMainMenuButtons, newDoMainMenuButtons);
 
-            // detour RimWorld.UI_BackgroundMain.BackgroundOnGUI
-            var vanillaBackgroundOnGUI = typeof (UI_BackgroundMain).GetMethod("BackgroundOnGUI",
-                BindingFlags.Instance | BindingFlags.Public);
-            var newBackgroundOnGUI = typeof (RA_UI_BackgroundMain).GetMethod("BackgroundOnGUI",
-                BindingFlags.Instance | BindingFlags.Public);
-            TryDetourFromTo(vanillaBackgroundOnGUI, newBackgroundOnGUI);
+            //// detour RimWorld.UI_BackgroundMain.BackgroundOnGUI
+            //var vanillaBackgroundOnGUI = typeof (UI_BackgroundMain).GetMethod("BackgroundOnGUI",
+            //    BindingFlags.Instance | BindingFlags.Public);
+            //var newBackgroundOnGUI = typeof (RA_UI_BackgroundMain).GetMethod("BackgroundOnGUI",
+            //    BindingFlags.Instance | BindingFlags.Public);
+            //TryDetourFromTo(vanillaBackgroundOnGUI, newBackgroundOnGUI);
 
             #endregion
 

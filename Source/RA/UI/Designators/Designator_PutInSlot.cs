@@ -12,7 +12,6 @@ namespace RA
     {
         public static readonly Texture2D texPutInArrow = ContentFinder<Texture2D>.Get("UI/Gizmoes/PutIn");
         private static readonly Texture2D texOccupiedSlotBG = SolidColorMaterials.NewSolidColorTexture(1f, 1f, 1f, 0.1f);
-        private static readonly Texture2D BGTex = ContentFinder<Texture2D>.Get("UI/Widgets/DesButBG");
 
         public CompSlots slotsComp;
 
@@ -54,7 +53,7 @@ namespace RA
                 GUI.color = GenUI.MouseoverColor;
             }
             GUI.DrawTexture(rect, BGTex);
-            MouseoverSounds.DoRegion(rect, SoundDefOf.MouseoverButtonCommand);
+            MouseoverSounds.DoRegion(rect, SoundDefOf.MouseoverCommand);
 
             // draw thing's texture
             Widgets.ThingIcon(rect, slotsComp.parent);
@@ -72,7 +71,7 @@ namespace RA
                     Event.current.Use();
                 }
             }
-            if (Widgets.InvisibleButton(rect))
+            if (Widgets.ButtonInvisible(rect))
             {
                 gizmoActivated = true;
             }
@@ -153,7 +152,7 @@ namespace RA
                         Widgets.ThingIcon(slotRect, currentThing);
 
                         // interaction with slots
-                        if (Widgets.InvisibleButton(slotRect))
+                        if (Widgets.ButtonInvisible(slotRect))
                         {
                             // mouse button pressed
                             if (Event.current.button == 0)

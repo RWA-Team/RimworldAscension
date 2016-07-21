@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>  
+	
+	<!--================================ Sculptures ================================-->
+
+	<ThingDef ParentName="Building">
+		<defName>SculptureSmall</defName>
+		<label>small sculpture</label>
+		<description>A torso-sized piece of material sculpted into an artistic form.</description>
+	</ThingDef>
+
+	<ThingDef ParentName="Building">
+		<defName>SculptureLarge</defName>
+		<label>large sculpture</label>
+		<description>A person-sized piece of material sculpted into an artistic form.</description>
+	</ThingDef>
+
+	<ThingDef ParentName="Building">
+		<defName>SculptureGrand</defName>
+		<label>grand sculpture</label>
+		<description>A car-sized piece of material sculpted into an artistic form.</description>
+	</ThingDef>
+	
+	<!--================================ Snowman ======================================-->
+
+	<ThingDef ParentName="Building">
+		<defName>Snowman</defName>
+		<label>snowman</label>
+		<description>A set of large snowballs piled and shaped to resemble a person.</description>
+	</ThingDef>
+
+</Defs>

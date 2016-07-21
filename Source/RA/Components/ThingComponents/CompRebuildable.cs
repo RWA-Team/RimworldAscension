@@ -32,7 +32,7 @@ namespace RA
         {
             if (mode == DestroyMode.Kill && needsAutoRebuild)
                 GenConstruct.PlaceBlueprintForBuild(parent.def.entityDefToBuild, parent.Position, parent.Rotation,
-                    Faction.OfColony, parent.Stuff);
+                    Faction.OfPlayer, parent.Stuff);
         }
 
         public override void PostExposeData()

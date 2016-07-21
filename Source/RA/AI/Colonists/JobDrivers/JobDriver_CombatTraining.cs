@@ -44,7 +44,7 @@ namespace RA
                 pawn.equipment.TryStartAttack(CurJob.GetTarget(targetInd));
 
                 // if zoom is close enough and dummy is selected
-                if (Find.CameraMap.CurrentZoom == CameraZoomRange.Closest && (Find.Selector.IsSelected(CurJob.GetTarget(targetInd).Thing) || Find.Selector.IsSelected(pawn)))
+                if (Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest && (Find.Selector.IsSelected(CurJob.GetTarget(targetInd).Thing) || Find.Selector.IsSelected(pawn)))
                 {
                     var currentMeleeExperienceValue = pawn.skills.GetSkill(SkillDefOf.Melee).XpTotalEarned + pawn.skills.GetSkill(SkillDefOf.Melee).xpSinceLastLevel;
                     var currentShootingExperienceValue = pawn.skills.GetSkill(SkillDefOf.Shooting).XpTotalEarned + pawn.skills.GetSkill(SkillDefOf.Shooting).xpSinceLastLevel;

@@ -54,7 +54,7 @@ namespace RA
             var transitionToLoadGoods = new Transition(trade, loadGoods);
             transitionToLoadGoods.triggers.Add(new Trigger_TicksPassed(GenDate.TicksPerHour*4));
             transitionToLoadGoods.preActions.Add(
-                new TransitionAction_Message("MessageTraderCaravanLeaving".Translate(faction.name)));
+                new TransitionAction_Message("MessageTraderCaravanLeaving".Translate(faction.Name)));
             transitionToLoadGoods.preActions.Add(new TransitionAction_Custom(() => loadGoods.data = trade.Data));
             mainGraph.transitions.Add(transitionToLoadGoods);
 
@@ -85,7 +85,7 @@ namespace RA
             transitionToFlee.sources.AddRange(sourceLordToils);
             transitionToFlee.triggers.Add(new Trigger_ImportantCaravanPeopleLost());
             transitionToFlee.preActions.Add(new TransitionAction_Message(
-                "MessageVisitorsTakingWounded".Translate(faction.def.pawnsPlural.CapitalizeFirst(), faction.name)));
+                "MessageVisitorsTakingWounded".Translate(faction.def.pawnsPlural.CapitalizeFirst(), faction.Name)));
             transitionToFlee.preActions.Add(new TransitionAction_WakeAll());
             graph.transitions.Add(transitionToFlee);
 

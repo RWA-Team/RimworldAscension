@@ -1,48 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Plants>
 
-	<!-- 
-	- sowTags - determines where this plant can be grown
+<!--- sowTags - determines where this plant can be grown
 	- harvestTag - determine what designator allows harvesting
-	- fertilityFactorGrowthRate (0.5)
-	-->
-
-	<!--==================== Base Abstracts ========================-->
-
-	<ThingDef Name="Plant" Abstract="True">
-		<category>Plant</category>
-		<thingClass>Plant</thingClass>
-		<altitudeLayer>LowPlant</altitudeLayer>
-		<useHitPoints>True</useHitPoints>
-		<statBases>
-			<Flammability>0.8</Flammability>
-			<Beauty>1</Beauty>
-		</statBases>
-		<tickerType>Long</tickerType>
-		<selectable>true</selectable>
-		<drawerType>MapMeshOnly</drawerType>
-		<graphicData>
-			<graphicClass>Graphic_Random</graphicClass>
-			<shaderType>CutoutPlant</shaderType>
-		</graphicData>
-		<pathCost>10</pathCost>
-		<ingestible>
-			<foodType>Plant</foodType>
-			<preferability>NeverForNutrition</preferability>
-		</ingestible>
-		<plant>
-			<harvestTag>Gather</harvestTag>
-			<soundHarvesting>Harvest_Standard</soundHarvesting>
-			<soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
-			<sowWork>150</sowWork>
-			<fertilityMin>0.5</fertilityMin>
-			<topWindExposure>0.1</topWindExposure>
-			<visualSizeRange>
-				<min>0.3</min>
-				<max>1</max>
-			</visualSizeRange>
-		</plant>
-	</ThingDef>
+	- fertilityFactorGrowthRate (0.5) -->
 
 	<!--==================== Wild Harvestable ========================-->
 

@@ -93,7 +93,7 @@ namespace RA
             var pawn = Find.Reservations.FirstReserverOf(this, Faction);
 
             // if zoom is close enough and dummy is selected
-            if (Find.CameraMap.CurrentZoom == CameraZoomRange.Closest && (Find.Selector.IsSelected(this) || Find.Selector.IsSelected(pawn)))
+            if (Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest && (Find.Selector.IsSelected(this) || Find.Selector.IsSelected(pawn)))
             {
                 // throws text mote with applied damage each time damage taken
                 MoteThrower.ThrowText(new Vector3(Position.x + 0.5f, Position.y, Position.z + 1f), dinfo.Amount.ToString(), GenDate.SecondsToTicks(1));
@@ -126,7 +126,7 @@ namespace RA
                 if (attackVerb != null && attackVerb.CanHitTarget(this))
                 {
                     inspectString.AppendFormat("{0} melee skill level:\t\t{1} ({2})\n", pawn.NameStringShort, pawn.skills.GetSkill(SkillDefOf.Melee).LevelDescriptor, pawn.skills.GetSkill(SkillDefOf.Melee).level);
-                    inspectString.AppendLine("Melee hit chance:\t\t\t" + GenText.AsPercent(pawn.GetStatValue(StatDefOf.MeleeHitChance)));
+                    inspectString.AppendLine("Melee hit chance:\t\t\t" + pawn.GetStatValue(StatDefOf.MeleeHitChance).ToStringPercent());
                     inspectString.AppendLine("DPS with current accuracy:\t\t" + (pawn.GetStatValue(StatDefOf.MeleeHitChance) * pawn.GetStatValue(StatDefOf.MeleeWeapon_DamageAmount) / pawn.GetStatValue(StatDefOf.MeleeWeapon_Cooldown)).ToString("F1"));
                     if (pawn.skills.GetSkill(SkillDefOf.Shooting).level < 10)
                     {

@@ -107,7 +107,7 @@ namespace RA
         public static void AddDesignator(Designator designator, string designationCategoryDefName)
         {
             var category = DefDatabase<DesignationCategoryDef>.GetNamed(designationCategoryDefName);
-            category.resolvedDesignators.Add(designator);
+            category.specialDesignatorClasses.Add(designator.GetType());
         }
 
         // adds recipe to the bench if all or any other research prerequisites are met
@@ -120,7 +120,7 @@ namespace RA
                 // check if all prerequisites are met
                 if (
                     otherResearchPrerequisite_defNames.Any(
-                        researchName => !Find.ResearchManager.IsFinished(ResearchProjectDef.Named(researchName))))
+                        researchName => !ResearchProjectDef.Named(researchName).IsFinished))
                 {
                     return;
                 }
@@ -132,7 +132,7 @@ namespace RA
                 // check if any of prerequisites are met
                 foreach (var researchName in otherResearchPrerequisite_defNames)
                 {
-                    if (Find.ResearchManager.IsFinished(ResearchProjectDef.Named(researchName)))
+                    if (ResearchProjectDef.Named(researchName).IsFinished)
                     {
                         DefDatabase<RecipeDef>.GetNamed(recipeDefName).researchPrerequisite = null;
                     }

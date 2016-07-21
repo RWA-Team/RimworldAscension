@@ -179,8 +179,7 @@ namespace RA
         {
             if (dinfo.Part?.Part == null)
             {
-                var randomNotMissingPart = pawn.health.hediffSet.GetRandomNotMissingPart(dinfo.Part?.Height,
-                    dinfo.Part?.Depth);
+                var randomNotMissingPart = pawn.health.hediffSet.GetRandomNotMissingPart(dinfo.Def, dinfo.Part?.Height, dinfo.Part?.Depth);
                 if (randomNotMissingPart == null)
                 {
                     Log.Warning("GetRandomNotMissingPart returned null (any part).");

@@ -16,7 +16,7 @@
 	 -->
 
 	<ThingDef Name="Furniture" ParentName="Building" Abstract="True">
-		<altitudeLayer>Waist</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<designationCategory>Furniture</designationCategory>
 		<comps>
 			<li>

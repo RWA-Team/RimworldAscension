@@ -1,19 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Plants>
-
-	<!-- 
-	- sowTags - determines where this plant can be grown
-	- harvestTag - determine what designator allows harvesting
-	- harvestFailable (true) - can fail on low skill
-	-->
-
-	<!--==================== Trees ========================-->
-
+	
 	<ThingDef Name="Tree" ParentName="Plant" Abstract="True">
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
 		</statBases>
-		<altitudeLayer>BuildingTall</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<fillPercent>0.35</fillPercent>
 		<graphicData>
 			<shadowData>
@@ -24,7 +16,7 @@
 		<pathCost>130</pathCost>
 		<ingestible>
 			<foodType>Tree</foodType>
-			<preferability>Raw</preferability>
+			<preferability>RawBad</preferability>
 			<nutrition>1.50</nutrition>
 		</ingestible>
 		<plant>

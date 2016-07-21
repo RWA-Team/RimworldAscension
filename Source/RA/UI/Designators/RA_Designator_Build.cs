@@ -82,8 +82,8 @@ namespace RA
                         foreach (var minifiable in minifiables)
                         {
                             if (BlueprintPlaced(minifiable as MinifiedThing) ||
-                                Find.Reservations.IsReserved(minifiable, Faction.OfColony) ||
-                                minifiable.IsForbidden(Faction.OfColony) || minifiable.IsBurning())
+                                Find.Reservations.IsReserved(minifiable, Faction.OfPlayer) ||
+                                minifiable.IsForbidden(Faction.OfPlayer) || minifiable.IsBurning())
                                 continue;
 
                             var optionLabel = minifiable.TryGetComp<CompQuality>()?.CompInspectStringExtra() + minifiable.LabelCap;
@@ -95,7 +95,7 @@ namespace RA
                             buildOptions.Add(option);
                         }
                     }
-                    else if (Game.GodMode)
+                    else if (DebugSettings.godMode)
                     {
                         var optionLabel = thingDef.LabelCap;
                         var option = new FloatMenuOption(optionLabel, () =>
@@ -112,7 +112,7 @@ namespace RA
                     foreach (var resourceDef in Find.ResourceCounter.AllCountedAmounts.Keys)
                     {
                         if (resourceDef.IsStuff && resourceDef.stuffProps.CanMake(thingDef) &&
-                            (Game.GodMode || Find.ListerThings.ThingsOfDef(resourceDef).Count > 0))
+                            (DebugSettings.godMode || Find.ListerThings.ThingsOfDef(resourceDef).Count > 0))
                         {
                             var localStuffDef = resourceDef;
                             var labelCap = localStuffDef.LabelCap;
@@ -279,7 +279,7 @@ namespace RA
         // required to use replacement for private stuffDef in vanilla Designator_Build
         public override void DesignateSingleCell(IntVec3 c)
         {
-            if (Game.GodMode || PlacingDef.GetStatValueAbstract(StatDefOf.WorkToMake, stuffDef) == 0f)
+            if (DebugSettings.godMode || PlacingDef.GetStatValueAbstract(StatDefOf.WorkToMake, stuffDef) == 0f)
             {
                 if (PlacingDef is TerrainDef)
                 {
@@ -288,14 +288,14 @@ namespace RA
                 else
                 {
                     var thing = ThingMaker.MakeThing((ThingDef)PlacingDef, stuffDef);
-                    thing.SetFactionDirect(Faction.OfColony);
+                    thing.SetFactionDirect(Faction.OfPlayer);
                     GenSpawn.Spawn(thing, c, placingRot);
                 }
             }
             else
             {
                 GenSpawn.WipeExistingThings(c, placingRot, PlacingDef.blueprintDef, true);
-                GenConstruct.PlaceBlueprintForBuild(PlacingDef, c, placingRot, Faction.OfColony, stuffDef);
+                GenConstruct.PlaceBlueprintForBuild(PlacingDef, c, placingRot, Faction.OfPlayer, stuffDef);
             }
             MoteThrower.ThrowMetaPuffs(GenAdj.OccupiedRect(c, placingRot, PlacingDef.Size));
             if (PlacingDef == ThingDef.Named("OrbitalTradeBeacon"))

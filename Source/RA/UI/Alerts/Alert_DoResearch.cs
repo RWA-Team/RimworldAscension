@@ -10,7 +10,7 @@ namespace RA
         {
             get
             {
-                if (Find.ResearchManager.IsFinished(ResearchProjectDef.Named("Survival")) || Find.ListerBuildings.allBuildingsColonist.Any(building => building.TryGetComp<CompResearcher>() != null))
+                if (ResearchProjectDef.Named("Survival").IsFinished || Find.ListerBuildings.allBuildingsColonist.Any(building => building.TryGetComp<CompResearcher>() != null))
                 {
                     return AlertReport.Inactive;
                 }
