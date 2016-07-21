@@ -6,7 +6,7 @@ using Verse.AI;
 
 namespace RA
 {
-    public class Blueprint : ThingWithComps, IUsable
+    public class Blueprint : ThingWithComps
     {
         public ResearchProjectDef researchDef;
 
@@ -19,7 +19,7 @@ namespace RA
 
         public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn pawn)
         {
-            if (Find.ResearchManager.IsFinished(researchDef))
+            if (researchDef.IsFinished)
             {
                 yield return new FloatMenuOption("You already know everythig there", null);
             }
@@ -38,6 +38,7 @@ namespace RA
             }
         }
 
+        // TODO make it via comp usable
         public void UsedBy(Pawn pawn)
         {
             Find.ResearchManager.currentProj = researchDef;

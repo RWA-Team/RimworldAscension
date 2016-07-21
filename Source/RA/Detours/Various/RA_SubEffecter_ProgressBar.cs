@@ -21,7 +21,7 @@ namespace RA
             
             // tool part injection
             Pawn pawn;
-            if (B.HasThing && (pawn = B.Thing as Pawn) != null && pawn.Faction == Faction.OfColony)
+            if (B.HasThing && (pawn = B.Thing as Pawn) != null && pawn.Faction == Faction.OfPlayer)
             {
                 CompTool toolComp;
                 // pawn carries tool

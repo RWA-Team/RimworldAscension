@@ -4,12 +4,12 @@ using Verse.Sound;
 
 namespace RA
 {
-    public class RA_WidgetsSubtle
+    public class RA_Widgets
     {
         public static readonly Texture2D ButtonSubtleAtlas = ContentFinder<Texture2D>.Get("UI/Widgets/ButtonSubtleAtlas");
         public static readonly Texture2D ButtonBarTex = SolidColorMaterials.NewSolidColorTexture(new ColorInt(78, 109, 129, 130).ToColor);
 
-        public static bool ButtonSubtle(Rect rect, string label, float barPercent = 0f, float textLeftMargin = -1f, SoundDef mouseoverSound = null)
+        public static bool ButtonTextSubtle(Rect rect, string label, float barPercent = 0f, float textLeftMargin = -1f, SoundDef mouseoverSound = null)
         {
             var mouseOver = false;
             if (Mouse.IsOver(rect))
@@ -40,7 +40,7 @@ namespace RA
             Widgets.Label(innerRect, label);
             Text.Anchor = TextAnchor.UpperLeft;
             Text.WordWrap = true;
-            return Widgets.InvisibleButton(rect);
+            return Widgets.ButtonInvisible(rect);
         }
     }
 }

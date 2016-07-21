@@ -28,7 +28,7 @@
 			<texPath>Things/Building/Security/DeadfallArmed</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<altitudeLayer>Waist</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<drawerType>RealtimeOnly</drawerType>
 		<rotatable>false</rotatable>
 		<tickerType>Normal</tickerType>

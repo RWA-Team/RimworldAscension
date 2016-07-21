@@ -6,7 +6,7 @@ namespace RA
 {
     class JobGiver_Station : ThinkNode_JobGiver
     {
-        protected override Job TryGiveTerminalJob(Pawn pawn)
+        protected override Job TryGiveJob(Pawn pawn)
         {
             if (pawn.CurJob != null && pawn.CurJob.def == JobDefOf.Wait)
             {

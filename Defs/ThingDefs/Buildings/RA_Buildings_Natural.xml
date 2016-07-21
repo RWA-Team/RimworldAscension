@@ -20,7 +20,7 @@
 		<selectable>true</selectable>
 		<drawerType>MapMeshOnly</drawerType>
 		<filthLeaving>RockRubble</filthLeaving>
-		<altitudeLayer>BuildingTall</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
 		<castEdgeShadows>true</castEdgeShadows>
 		<fillPercent>1</fillPercent>

@@ -9,7 +9,6 @@
 	-->
 
 	<ThingDef Name="Drug" ParentName="Item" Abstract="True">
-		<thingClass>Meal</thingClass>
 		<stackLimit>10</stackLimit>
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<statBases>
@@ -45,7 +44,7 @@
 		</statBases>
 		<ingestible>
 			<preferability>NeverForNutrition</preferability>
-			<foodType>Fluid, Processed, NutritionalDrug</foodType>
+			<foodType>Fluid, Processed, Liquor</foodType>
 			<nutrition>0.08</nutrition>
 			<joy>0.17</joy>
 			<joyKind>Chemical</joyKind>
@@ -59,20 +58,6 @@
 				</li>
 			</hediffGivers>
 		</ingestible>
-		<!-- 		<ingestible>
-			<nutrition>0.08</nutrition>
-			<joy>0.17</joy>
-			<joyKind>Chemical</joyKind>
-			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
-			<soundEat>Ingest_Beer</soundEat>
-			<isPleasureDrug>true</isPleasureDrug>
-			<hediffGivers>
-				<li>
-					<chance>1</chance>
-					<hediffDef>IntoxicationBeer</hediffDef>
-				</li>
-			</hediffGivers>
-		</ingestible> -->
 	</ThingDef>
 
 </Defs>

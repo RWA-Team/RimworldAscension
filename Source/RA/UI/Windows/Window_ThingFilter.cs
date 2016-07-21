@@ -14,10 +14,10 @@ namespace RA
             closeOnEscapeKey = true;
             closeOnClickedOutside = true;
 
-            currentWindowRect.width = 280f;
-            currentWindowRect.height = 200f;
-            currentWindowRect.x = 0f;
-            currentWindowRect.y = offsetY + currentWindowRect.height;
+            windowRect.width = 280f;
+            windowRect.height = 200f;
+            windowRect.x = 0f;
+            windowRect.y = offsetY + windowRect.height;
 
             this.burner = burner;
         }
@@ -44,12 +44,12 @@ namespace RA
             Text.Font = GameFont.Tiny;
             var num = rect.width - 2f;
             var rect2 = new Rect(rect.x + 1f, rect.y + 1f, num / 2f, 24f);
-            if (Widgets.TextButton(rect2, "ClearAll".Translate()))
+            if (Widgets.ButtonText(rect2, "ClearAll".Translate()))
             {
                 filter.SetDisallowAll();
             }
             var rect3 = new Rect(rect2.xMax + 1f, rect2.y, num / 2f - 1f, 24f);
-            if (Widgets.TextButton(rect3, "AllowAll".Translate()))
+            if (Widgets.ButtonText(rect3, "AllowAll".Translate()))
             {
                 filter.SetAllowAll(parentFilter);
             }
@@ -63,7 +63,7 @@ namespace RA
             DrawQualityFilterConfig(ref num2, viewRect.width, filter);
             var num3 = num2;
             var rect4 = new Rect(0f, num2, 9999f, 9999f);
-            var listing_TreeThingFilter = new Listing_TreeThingFilter(rect4, filter, parentFilter, 210f, true);
+            var listing_TreeThingFilter = new Listing_TreeThingFilter(rect4, filter, parentFilter);
             var node = ThingCategoryNodeDatabase.RootNode;
             if (parentFilter != null)
             {
@@ -90,7 +90,7 @@ namespace RA
             }
             var rect = new Rect(20f, y, width - 20f, 26f);
             var allowedHitPointsPercents = filter.AllowedHitPointsPercents;
-            Widgets.FloatRange(rect, 1, ref allowedHitPointsPercents, 0f, 1f, ToStringStyle.PercentZero, "HitPoints");
+            Widgets.FloatRange(rect, 1, ref allowedHitPointsPercents, 0f, 1f, "HitPoints", ToStringStyle.PercentZero);
             filter.AllowedHitPointsPercents = allowedHitPointsPercents;
             y += 26f;
             y += 5f;

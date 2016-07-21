@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Verse;
 
 namespace RA
@@ -50,8 +51,8 @@ namespace RA
 
         public static void MainMenuOnGUI()
         {
-            anyWorldFiles = SavedWorldsDatabase.AllWorldFiles.Any();
-            anyMapFiles = MapFilesUtility.AllMapFiles.Any();
+            anyWorldFiles = GenFilePaths.AllWorldFiles.Any();
+            anyMapFiles = GenFilePaths.AllSavedGameFiles.Any();
 
             VersionControl.DrawInfoInCorner();
             // abstract rect in the window center
@@ -140,7 +141,7 @@ namespace RA
             OptionListingUtility.DrawOptionListing(rect, list);
             // TODO: check how to fix english lang BadText
             //GUI.BeginGroup(rect);
-            //if (Game.Mode == GameMode.Entry && Widgets.ImageButton(new Rect(0f, num + 10f, 64f, 32f), LanguageDatabase.activeLanguage.icon))
+            //if (Current.ProgramState == ProgramState.Entry && Widgets.ButtonImage(new Rect(0f, num + 10f, 64f, 32f), LanguageDatabase.activeLanguage.icon))
             //{
             //    var list3 = new List<FloatMenuOption>();
             //    foreach (var current in LanguageDatabase.AllLoadedLanguages)
@@ -162,7 +163,7 @@ namespace RA
             Text.Font = GameFont.Small;
             var list = new List<ListableOption>();
             ListableOption item;
-            if (Game.Mode == GameMode.Entry)
+            if (Current.ProgramState == ProgramState.Entry)
             {
                 item = new ListableOption("Continue", delegate
                 {
@@ -175,8 +176,8 @@ namespace RA
 
                     Action preLoadLevelAction = delegate
                     {
-                        MapInitData.Reset();
-                        MapInitData.mapToLoad = Path.GetFileNameWithoutExtension(new SaveFileInfo(MapFilesUtility.AllMapFiles.FirstOrDefault()).FileInfo.Name);
+                        Find.GameInitData.ResetWorldRelatedMapInitData();
+                        Find.GameInitData.mapToLoad = Path.GetFileNameWithoutExtension(new SaveFileInfo(GenFilePaths.AllSavedGameFiles.FirstOrDefault()).FileInfo.Name);
                     };
                     LongEventHandler.QueueLongEvent(preLoadLevelAction, "Gameplay", "LoadingLongEvent", true, null);
                 });
@@ -192,18 +193,12 @@ namespace RA
                             PlayDataLoader.LoadAllPlayData();
                         }, "LoadingLongEvent", true, null);
 
-                        Application.LoadLevel("Gameplay");
+                        SceneManager.LoadScene("Gameplay");
 
-                        Find.RootRoot.Init();
+                        Find.Root.Start();
                     });
                     list.Add(item);
                 }
-                item = new ListableOption("CreateWorld".Translate(), delegate
-                {
-                    MapInitData.Reset();
-                    Find.WindowStack.Add(new Page_CreateWorldParams());
-                });
-                list.Add(item);
                 if (anyWorldFiles)
                 {
                     item = new ListableOption("NewColony".Translate(), delegate
@@ -215,12 +210,12 @@ namespace RA
                             PlayDataLoader.LoadAllPlayData();
                         }, "LoadingLongEvent", true, null);
 
-                        Find.WindowStack.Add(new Page_SelectStoryteller());
+                        Find.WindowStack.Add(new Page_SelectScenario());
                     });
                     list.Add(item);
                 }
             }
-            if (Game.Mode == GameMode.MapPlaying)
+            if (Current.ProgramState == ProgramState.MapPlaying)
             {
                 if (backToGameButtonAction != null)
                 {
@@ -256,7 +251,7 @@ namespace RA
                 Find.WindowStack.Add(new Dialog_Options());
             });
             list.Add(item);
-            if (Game.Mode == GameMode.Entry)
+            if (Current.ProgramState == ProgramState.Entry)
             {
                 item = new ListableOption("Mods".Translate(), delegate
                 {
@@ -265,17 +260,17 @@ namespace RA
                 list.Add(item);
                 item = new ListableOption("Credits".Translate(), delegate
                 {
-                    Find.WindowStack.Add(new Page_Credits());
+                    Find.WindowStack.Add(new Screen_Credits());
                 });
                 list.Add(item);
             }
-            if (Game.Mode == GameMode.MapPlaying)
+            if (Current.ProgramState == ProgramState.MapPlaying)
             {
                 Action action = delegate
                 {
                     Find.WindowStack.Add(new Dialog_Confirm("ConfirmQuit".Translate(), delegate
                     {
-                        Application.LoadLevel("Entry");
+                        SceneManager.LoadScene("Entry");
                     }, true));
                 };
                 item = new ListableOption("QuitToMainMenu".Translate(), action);
@@ -297,7 +292,7 @@ namespace RA
 
         public static void CloseMainTab()
         {
-            if (Game.Mode == GameMode.MapPlaying)
+            if (Current.ProgramState == ProgramState.MapPlaying)
             {
                 Find.MainTabsRoot.EscapeCurrentTab(false);
             }

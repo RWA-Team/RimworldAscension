@@ -28,7 +28,7 @@
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 		</building>
-		<altitudeLayer>Waist</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<surfaceType>Item</surfaceType>
 		<Size>(3,1)</Size>
 		<fillPercent>0.5</fillPercent>

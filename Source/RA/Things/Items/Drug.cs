@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using RimWorld;
 using Verse;
 using Verse.AI;
 
 namespace RA
 {
-    public class Drug : Meal
+    public class Drug : ThingWithComps
     {
         public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn pawn)
         {

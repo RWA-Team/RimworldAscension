@@ -37,7 +37,7 @@
 	<RecipeDef ParentName="MakeResearch">
 		<defName>StoneCutting</defName>
 		<effectWorking>CutStone</effectWorking>
-		<soundWorking>Recipe_MakeBlocksStone</soundWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
 		<ingredients>
 			<li>
 				<filter>
@@ -393,7 +393,7 @@
 	<RecipeDef ParentName="MakeResearch">
 		<defName>Masonry</defName>
 		<effectWorking>CutStone</effectWorking>
-		<soundWorking>Recipe_MakeBlocksStone</soundWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
 		<ingredients>
 			<li>
 				<filter>

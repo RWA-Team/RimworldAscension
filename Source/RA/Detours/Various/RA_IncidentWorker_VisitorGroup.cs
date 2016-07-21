@@ -26,7 +26,7 @@ namespace RA
             if (list.Count == 1)
             {
                 label = "LetterLabelSingleVisitorArrives".Translate();
-                text2 = "SingleVisitorArrives".Translate(list[0].story.adulthood.title.ToLower(), parms.faction.name,
+                text2 = "SingleVisitorArrives".Translate(list[0].story.adulthood.title.ToLower(), parms.faction.Name,
                     list[0].Name, string.Empty);
                 text2 = text2.AdjustedFor(list[0]);
             }
@@ -34,7 +34,7 @@ namespace RA
             {
                 var text3 = string.Empty;
                 label = "LetterLabelGroupVisitorsArrive".Translate();
-                text2 = "GroupVisitorsArrive".Translate(parms.faction.name, text3);
+                text2 = "GroupVisitorsArrive".Translate(parms.faction.Name, text3);
             }
             Find.LetterStack.ReceiveLetter(label, text2, LetterType.Good, list[0]);
             return true;

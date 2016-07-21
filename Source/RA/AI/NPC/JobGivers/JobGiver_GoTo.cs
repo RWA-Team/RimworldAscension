@@ -6,7 +6,7 @@ namespace RA
 {
     public class JobGiver_GoTo : ThinkNode_JobGiver
     {
-        protected override Job TryGiveTerminalJob(Pawn pawn)
+        protected override Job TryGiveJob(Pawn pawn)
         {
             var cell = pawn.mindState.duty.focus.Cell;
             if (pawn.Position == cell || !pawn.CanReach(cell, PathEndMode.OnCell, pawn.NormalMaxDanger()))

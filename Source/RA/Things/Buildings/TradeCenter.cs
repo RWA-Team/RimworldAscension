@@ -49,7 +49,7 @@ namespace RA
                 from item in Find.ThingGrid.ThingsAt(cell)
                 where
                     item.def.category == ThingCategory.Item && !item.IsBurning() &&
-                    !item.IsForbidden(Faction.OfColony)
+                    !item.IsForbidden(Faction.OfPlayer)
                 select item;
 
         // draw rectangular trade area
@@ -98,7 +98,7 @@ namespace RA
                     var transferedPawn = transferedThing as Pawn;
                     if (transferedPawn != null)
                     {
-                        transferedPawn.PreSold(negotiator, trader);
+                        transferedPawn.PreTraded(TradeAction.PlayerSells, negotiator, trader);
                         trader.AddToStock(transferedPawn);
 
                         // give all your pawns and prisoners in the colony negative though about slave trading
@@ -106,7 +106,7 @@ namespace RA
                         {
                             foreach (var pawn in Find.MapPawns.FreeColonistsAndPrisoners)
                             {
-                                pawn.needs.mood.thoughts.TryGainThought(ThoughtDefOf.KnowPrisonerSold);
+                                pawn.needs.mood.thoughts.memories.TryGainMemoryThought(ThoughtDefOf.KnowPrisonerSold);
                             }
                         }
                     }
@@ -115,9 +115,10 @@ namespace RA
                 }
 
                 // transfer all bought pawns to the colony
-                foreach (Pawn pawn in traderExchangeContainer)
+                foreach (var thing in traderExchangeContainer)
                 {
-                    pawn.SetFaction(Faction.OfColony);
+                    var pawn = (Pawn) thing;
+                    pawn.SetFaction(Faction.OfPlayer);
                     trader.GiveSoldThingToBuyer(pawn, pawn);
                 }
                 // transfer all bought items around
