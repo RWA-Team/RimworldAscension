@@ -3,16 +3,15 @@
 
 	<!--============== Special Research Surrogates ==============-->
 
-	<!--used to hide vanilla researches-->
-	<ResearchProjectDef Name="Blocked" Abstract="True">
+	<!--used to hide buldings, recipes and researches-->
+	<ResearchProjectDef Name="Blocked">
+		<defName>Blocked</defName>
+		<label>blocked</label>
+		<description>Blocked.</description>
 		<prerequisites>
 			<li>Blocked</li>
-		</prerequisites>		
-	</ResearchProjectDef>
-
-	<!--used to hide buldings and recipes-->
-	<ResearchProjectDef ParentName="Blocked">
-		<defName>Blocked</defName>	
+		</prerequisites>
+		<techLevel>Neolithic</techLevel>	
 	</ResearchProjectDef>
 
 	<!--used to learn the basics-->
@@ -27,15 +26,20 @@
 				<specialAction>RA.ResearchMods.StartPack</specialAction>
 			</li>
 		</researchMods>
+		<techLevel>Neolithic</techLevel>
 	</ResearchProjectDef>
 
 	<!-- ============== Neolithic Tech Level ===============-->
 
-	<ResearchProjectDef>
+	<ResearchProjectDef Name="ResearchNeolithic" Abstract="True">
+		<techLevel>Neolithic</techLevel>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="ResearchNeolithic">
 		<defName>WoodCarving</defName>
 		<label>wood carving</label>
 		<description>wood carving.</description>
-		<totalCost>100</totalCost>
+		<baseCost>100</baseCost>
 		<prerequisites>
 			<li>Survival</li>
 		</prerequisites>
@@ -46,81 +50,81 @@
 		</researchMods> -->
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchNeolithic">
 		<defName>StoneCutting</defName>
 		<label>stone cutting</label>
 		<description>stone cutting.</description>
-		<totalCost>125</totalCost>
+		<baseCost>125</baseCost>
 		<prerequisites>
 			<li>Survival</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchNeolithic">
 		<defName>BoneCarving</defName>
 		<label>bone carving</label>
 		<description>bone carving.</description>
-		<totalCost>300</totalCost>
+		<baseCost>300</baseCost>
 		<prerequisites>
 			<li>Survival</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchNeolithic">
 		<defName>Leatherworking</defName>
 		<label>leatherworking</label>
 		<description>leatherworking.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>Survival</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchNeolithic">
 		<defName>LandCultivation</defName>
 		<label>land cultivation</label>
 		<description>land cultivation.</description>
-		<totalCost>150</totalCost>
+		<baseCost>150</baseCost>
 		<prerequisites>
 			<li>Survival</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchNeolithic">
 		<defName>AnimalDissection</defName>
 		<label>animal dissection</label>
 		<description>animal dissection.</description>
-		<totalCost>100</totalCost>
+		<baseCost>100</baseCost>
 		<prerequisites>
 			<li>Survival</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchNeolithic">
 		<defName>AnimalTaming</defName>
 		<label>animal taming</label>
 		<description>animal taming.</description>
-		<totalCost>200</totalCost>
+		<baseCost>200</baseCost>
 		<prerequisites>
 			<li>Survival</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchNeolithic">
 		<defName>Firing</defName>
 		<label>firing</label>
 		<description>firing.</description>
-		<totalCost>300</totalCost>
+		<baseCost>300</baseCost>
 		<prerequisites>
 			<li>Survival</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchNeolithic">
 		<defName>Fermentation</defName>
 		<label>fermentation</label>
 		<description>fermentation.</description>
-		<totalCost>450</totalCost>
+		<baseCost>450</baseCost>
 		<prerequisites>
 			<li>Firing</li>
 			<li>LandCultivation</li>
@@ -129,42 +133,46 @@
 
 	<!-- ============== Medieval Tech Level ===============-->
 
-	<ResearchProjectDef>
+	<ResearchProjectDef Name="ResearchMedieval" Abstract="True">
+		<techLevel>Medieval</techLevel>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>LeatherHardening</defName>
 		<label>leather hardening</label>
 		<description>leather hardening.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>Leatherworking</li>
 			<li>Firing</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Farming</defName>
 		<label>farming</label>
 		<description>farming.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>LandCultivation</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Cooking</defName>
 		<label>cooking</label>
 		<description>cooking.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>LandCultivation</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Breweing</defName>
 		<label>brewing</label>
 		<description>brewing.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>Fermentation</li>
 			<li>Farming</li>
@@ -174,114 +182,114 @@
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Mining</defName>
 		<label>mining</label>
 		<description>mining</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>Survival</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Weaving</defName>
 		<label>weaving</label>
 		<description>weaving.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>Carpentry</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Tailoring</defName>
 		<label>glass smelting</label>
 		<description>glass smelting.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>Weaving</li>
 			<li>Leatherworking</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>GlassSmelting</defName>
 		<label>glass smelting</label>
 		<description>glass smelting.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>Survival</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>MetalSmelting</defName>
 		<label>metal smelting</label>
 		<description>metal smelting.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>Mining</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Smithing</defName>
 		<label>smithing</label>
 		<description>smithing.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>MetalSmelting</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Jewelry</defName>
 		<label>jewelry</label>
 		<description>jewelry.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>Smithing</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Sawing</defName>
 		<label>sawing</label>
 		<description>sawing.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>Smithing</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Masonry</defName>
 		<label>masonry</label>
 		<description>masonry.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>StoneCutting</li>
 			<li>Sawing</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Carpentry</defName>
 		<label>carpentry</label>
 		<description>carpentry.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>WoodCarving</li>
 			<li>Sawing</li>
 		</prerequisites>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef>
+	<ResearchProjectDef ParentName="ResearchMedieval">
 		<defName>Mechanics</defName>
 		<label>mechanics</label>
 		<description>mechanics.</description>
-		<totalCost>250</totalCost>
+		<baseCost>250</baseCost>
 		<prerequisites>
 			<li>Smithing</li>
 			<li>Carpentry</li>

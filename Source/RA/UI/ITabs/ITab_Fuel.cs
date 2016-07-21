@@ -36,7 +36,7 @@ namespace RA
                 // allowed fuel types filter button
                 var filterRect = new Rect(0f, 0f, innerRect.width / 2, TextHeight);
                 {
-                    if (Widgets.TextButton(filterRect, "Fuel filter"))
+                    if (Widgets.ButtonText(filterRect, "Fuel filter"))
                     {
                         Find.WindowStack.Add(new Window_ThingFilter(burner, 105f));
                     }
@@ -51,7 +51,7 @@ namespace RA
                 // if fuel tank not empty
                 if (burner.fuelContainer.Count > 0)
                 {
-                    if (Widgets.InvisibleButton(fuelRect))
+                    if (Widgets.ButtonInvisible(fuelRect))
                     {
                         var options = new List<FloatMenuOption>
                         {

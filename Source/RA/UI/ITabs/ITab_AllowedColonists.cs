@@ -59,7 +59,7 @@ namespace RA
                 if (dummy.allowedPawns.Contains(pawn))
                     allowedFlag = true;
 
-                Widgets.LabelCheckbox(currentPawnRect, pawn.LabelCap, ref allowedFlag);
+                Widgets.CheckboxLabeled(currentPawnRect, pawn.LabelCap, ref allowedFlag);
 
                 // check if flag set to "true"
                 if (allowedFlag && !dummy.allowedPawns.Contains(pawn))

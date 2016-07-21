@@ -25,14 +25,14 @@ namespace RA
                 var inspectWindow =
                     Find.WindowStack.Windows.FirstOrDefault(window => window is MainTabWindow_Inspect);
 
-                return architectWindow?.currentWindowRect.y - InfoRectHeight ?? inspectWindow.currentWindowRect.y - (InfoRectHeight + UIUtil.ITabInvokeButtonHeight);
+                return architectWindow?.windowRect.y - InfoRectHeight ?? inspectWindow.windowRect.y - (InfoRectHeight + UIUtil.ITabInvokeButtonHeight);
             }
         }
 
         // Replace vanilla Build designators with RA ones
         public void ReassembleDesignators()
         {
-            def.resolvedDesignators.RemoveAll(
+            def.ResolvedAllowedDesignators.ToList().RemoveAll(
                 designator =>
                     designator.GetType() == typeof (Designator_Build) ||
                     designator.GetType() == typeof (RA_Designator_Build));
@@ -45,7 +45,7 @@ namespace RA
                 select buildableDef;
             foreach (var buildableDef in buildableDefs)
             {
-                def.resolvedDesignators.Add(new RA_Designator_Build(buildableDef));
+                def.ResolvedAllowedDesignators.ToList().Add(new RA_Designator_Build(buildableDef));
             }
         }
 
@@ -56,7 +56,7 @@ namespace RA
                 DesignatorManager.SelectedDesignator.DoExtraGuiControls(0f, CurrentY);
             }
             Gizmo selectedDesignator;
-            GizmoGridDrawer.DrawGizmoGrid(def.resolvedDesignators.Cast<Gizmo>(), infoTabWidth + 10f,
+            GizmoGridDrawer.DrawGizmoGrid(def.ResolvedAllowedDesignators.ToList().Cast<Gizmo>(), infoTabWidth + 10f,
                 out selectedDesignator);
             if (selectedDesignator == null && DesignatorManager.SelectedDesignator != null)
             {

@@ -19,7 +19,7 @@ namespace RA
                 maxPoints = 999999f;
             }
             return (from faction in Find.FactionManager.AllFactions
-                    where faction.HostileTo(Faction.OfColony) && faction.def.techLevel <= Faction.OfColony.def.techLevel && maxPoints >= faction.def.MinPointsToGenerateNormalPawnGroup() && GenDate.DaysPassed >= faction.def.earliestRaidDays
+                    where faction.HostileTo(Faction.OfPlayer) && faction.def.techLevel <= Faction.OfPlayer.def.techLevel && maxPoints >= faction.def.MinPointsToGenerateNormalPawnGroup() && GenDate.DaysPassed >= faction.def.earliestRaidDays
                     select faction).TryRandomElementByWeight(fac => fac.def.raidCommonality, out parms.faction);
         }
     }

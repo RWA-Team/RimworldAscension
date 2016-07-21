@@ -122,20 +122,21 @@ namespace RA
 
                 if (attackVerb != null && attackVerb.CanHitTarget(this))
                 {
-                    var hitReport = attackVerb.HitReportFor(this);
-                    inspectString.AppendFormat("{0} shooting skill:\t\t\t{1} ({2})\n", pawn.NameStringShort, pawn.skills.GetSkill(SkillDefOf.Shooting).LevelDescriptor, pawn.skills.GetSkill(SkillDefOf.Shooting).level);
-                    inspectString.AppendLine("Total hit chance at this range:\t\t" + GenText.AsPercent(hitReport.TotalHitChance));
-                    inspectString.AppendLine("Pawn stats accuracy modifier:\t\t" + GenText.AsPercent(hitReport.hitChanceThroughPawnStat));
-                    inspectString.AppendLine("Weapon stats accuracy modifier:\t" + GenText.AsPercent(hitReport.hitChanceThroughEquipment));
-                    inspectString.AppendLine("DPS with current accuracy:\t\t" + CalculateShootingDPS(hitReport, pawn.equipment.Primary.def).ToString("F1"));
-                    if (pawn.skills.GetSkill(SkillDefOf.Shooting).level < 10)
-                    {
-                        inspectString.AppendLine("ExpPS with current weapon:\t\t" + (pawn.skills.GetSkill(SkillDefOf.Shooting).LearningFactor * 10f / pawn.GetStatValue(StatDefOf.RangedWeapon_Cooldown)).ToString("F1"));
-                    }
-                    else
-                    {
-                        inspectString.AppendLine("Pawn needs real combat to progress further.");
-                    }
+                    // TODO: fix hit reports
+                    //var hitReport = attackVerb.HitReportFor(this);
+                    //inspectString.AppendFormat("{0} shooting skill:\t\t\t{1} ({2})\n", pawn.NameStringShort, pawn.skills.GetSkill(SkillDefOf.Shooting).LevelDescriptor, pawn.skills.GetSkill(SkillDefOf.Shooting).level);
+                    //inspectString.AppendLine("Total hit chance at this range:\t\t" + GenText.AsPercent(hitReport.TotalHitChance));
+                    //inspectString.AppendLine("Pawn stats accuracy modifier:\t\t" + GenText.AsPercent(hitReport.hitChanceThroughPawnStat));
+                    //inspectString.AppendLine("Weapon stats accuracy modifier:\t" + GenText.AsPercent(hitReport.hitChanceThroughEquipment));
+                    //inspectString.AppendLine("DPS with current accuracy:\t\t" + CalculateShootingDPS(hitReport, pawn.equipment.Primary.def).ToString("F1"));
+                    //if (pawn.skills.GetSkill(SkillDefOf.Shooting).level < 10)
+                    //{
+                    //    inspectString.AppendLine("ExpPS with current weapon:\t\t" + (pawn.skills.GetSkill(SkillDefOf.Shooting).LearningFactor * 10f / pawn.GetStatValue(StatDefOf.RangedWeapon_Cooldown)).ToString("F1"));
+                    //}
+                    //else
+                    //{
+                    //    inspectString.AppendLine("Pawn needs real combat to progress further.");
+                    //}
                 }
                 else
                 {
@@ -145,15 +146,15 @@ namespace RA
             return inspectString.ToString();
         }
 
-        public float CalculateShootingDPS(HitReport hitReport, ThingDef weaponDef)
-        {
-            float projectileDamage = weaponDef.Verbs[0].projectileDef?.projectile.damageAmountBase ?? 0;
-            var cooldown = weaponDef.GetStatValueAbstract(StatDefOf.RangedWeapon_Cooldown);
-            float burstCount = weaponDef.Verbs[0].burstShotCount;
-            var burstShotsInterval = weaponDef.Verbs[0].ticksBetweenBurstShots / GenDate.SecondsToTicks(1);
+        //public float CalculateShootingDPS(HitReport hitReport, ThingDef weaponDef)
+        //{
+        //    float projectileDamage = weaponDef.Verbs[0].projectileDef?.projectile.damageAmountBase ?? 0;
+        //    var cooldown = weaponDef.GetStatValueAbstract(StatDefOf.RangedWeapon_Cooldown);
+        //    float burstCount = weaponDef.Verbs[0].burstShotCount;
+        //    var burstShotsInterval = weaponDef.Verbs[0].ticksBetweenBurstShots / GenDate.SecondsToTicks(1);
 
-            return projectileDamage * burstCount * hitReport.TotalHitChance / (cooldown + (burstCount - 1) * burstShotsInterval);
-        }
+        //    return projectileDamage * burstCount * hitReport.TotalHitChance / (cooldown + (burstCount - 1) * burstShotsInterval);
+        //}
 
         public override void ExposeData()
         {

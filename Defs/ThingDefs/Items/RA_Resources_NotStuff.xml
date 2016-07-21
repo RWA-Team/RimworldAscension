@@ -16,12 +16,7 @@
 		Blunt\SharpDamageMultiplier
 	-->
 
-	<!--==================== Base Abstracts ========================-->
-
 	<ThingDef Name="Resource" ParentName="Item" Abstract="True">
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<stackLimit>75</stackLimit>
 	</ThingDef>
@@ -34,6 +29,7 @@
 		<tickerType>Rare</tickerType>
 	</ThingDef>
 	
+	<!--==================== Resources ========================-->
 
 	<ThingDef ParentName="Resource">
 		<defName>Bottle</defName>
@@ -90,8 +86,8 @@
 		<label>bark fibre</label>
 		<description>A bunch of bark fibre.</description>
 		<graphicData>
-			<shaderType>Cutout</shaderType>
-			<texPath>Things/Items/Resources/BarkFibre</texPath>
+			<texPath>Things/Items/Resources/Coal</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 			<color>(174,124,0)</color>
 		</graphicData>
 		<soundInteract>Grain_Drop</soundInteract>

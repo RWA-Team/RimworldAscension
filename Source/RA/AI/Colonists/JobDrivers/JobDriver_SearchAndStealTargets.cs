@@ -36,9 +36,10 @@ namespace RA
 
             yield return Toils_Haul.StartCarryThing(targetToSteal);
 
-            IntVec3 exitCell;
-            ExitUtility.TryFindClosestExitSpot(pawn, out exitCell);
-            CurJob.SetTarget(exitLocation, exitCell);
+            // TODO: replace properly
+            //IntVec3 exitCell;
+            //ExitUtility.TryFindClosestExitSpot(pawn, out exitCell);
+            //CurJob.SetTarget(exitLocation, exitCell);
 
             yield return Toils_Goto.GotoCell(exitLocation, PathEndMode.OnCell);
 
@@ -81,7 +82,7 @@ namespace RA
                     Predicate<Thing> validatorSteal = thing =>
                     {
                         var victim = thing as Pawn;
-                        return victim.RaceProps.Humanlike && victim.Downed && victim.Faction == Faction.OfColony &&
+                        return victim.RaceProps.Humanlike && victim.Downed && victim.Faction == Faction.OfPlayer &&
                                actor.CanReserve(victim);
                     };
                     var targetThing = GenClosest.ClosestThingReachable(actor.Position,

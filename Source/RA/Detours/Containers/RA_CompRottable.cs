@@ -9,21 +9,21 @@ namespace RA
         // container rot preservation addition
         public override void CompTickRare()
         {
-            var initialRotProgress = rotProgress;
+            var initialRotProgress = RotProgress;
 
             var container = Find.ThingGrid.ThingsListAt(parent.PositionHeld).Find(building => building is Container && building.Spawned) as Container;
             var containerRotFactor = container?.comp.Properties.rotModifier ?? 1f;
 
             var temperatureForCell = GenTemperature.GetTemperatureForCell(parent.PositionHeld);
             var temperatureRotModifier = GenTemperature.RotRateAtTemperature(temperatureForCell);
-            rotProgress += Mathf.RoundToInt(temperatureRotModifier * GenTicks.TickRareInterval) * containerRotFactor;
+            RotProgress += Mathf.RoundToInt(temperatureRotModifier * GenTicks.TickRareInterval) * containerRotFactor;
             if (Stage == RotStage.Rotting && PropsRot.rotDestroys)
             {
                 parent.Destroy();
                 return;
             }
             // if rotting progressed
-            if (Mathf.FloorToInt(initialRotProgress / GenDate.TicksPerDay) != Mathf.FloorToInt(rotProgress / GenDate.TicksPerDay))
+            if (Mathf.FloorToInt(initialRotProgress / GenDate.TicksPerDay) != Mathf.FloorToInt(RotProgress / GenDate.TicksPerDay))
             {
                 if (Stage == RotStage.Rotting && PropsRot.rotDamagePerDay > 0f)
                 {

@@ -9,10 +9,10 @@ namespace RA
     public class RA_IncidentWorker_TraderCaravanArrival : IncidentWorker_TraderCaravanArrival
     {
         // added tech level requirement
-        protected override bool IsFactionAllowed(Faction faction)
-        {
-            return base.IsFactionAllowed(faction) && faction.def.techLevel <= FactionDefOf.Colony.techLevel;
-        }
+        //protected override bool IsFactionAllowed(Faction faction)
+        //{
+        //    return base.IsFactionAllowed(faction) && faction.def.techLevel <= FactionDefOf.Colony.techLevel;
+        //}
 
         public override bool TryExecute(IncidentParms parms)
         {
@@ -35,8 +35,8 @@ namespace RA
             
             ModifyTradeGroup(ref pawns);
 
-            Find.LetterStack.ReceiveLetter("LetterLabelTraderCaravanArrival".Translate(parms.faction.name),
-                "LetterTraderCaravanArrival".Translate(parms.faction.name), LetterType.Good, pawns[0]);
+            Find.LetterStack.ReceiveLetter("LetterLabelTraderCaravanArrival".Translate(parms.faction.Name),
+                "LetterTraderCaravanArrival".Translate(parms.faction.Name), LetterType.Good, pawns[0]);
             IntVec3 chillSpot;
             RCellFinder.TryFindRandomSpotJustOutsideColony(pawns[0], out chillSpot);
             var lordJob = new RA_LordJob_TradeWithColony(parms.faction, chillSpot);

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- 
+	statBases - base stat values for the thing
+	default values:
+		- Flammability = 0
+		- MaxHitPoints = 100
+		
+	stuffProps:	
+		statOffsets - stuff based offset values
+		statFactors - stuff based multiplier values
+		stuffCommonality - weight chance to appear in trader stock	
+	
+	Work only in statBases:
+		Blunt\SharpDamageMultiplier
+	-->
+
+	<ThingDef Name="Item" Abstract="True">
+		<thingClass>ThingWithComps</thingClass>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<Flammability>1.0</Flammability>
+			<MarketValue>1</MarketValue>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+		</comps>
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<pathCost>15</pathCost>
+		<category>Item</category>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<alwaysHaulable>true</alwaysHaulable>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<tickerType>Never</tickerType>
+		<techLevel>Neolithic</techLevel>
+	</ThingDef>
+
+</Defs>

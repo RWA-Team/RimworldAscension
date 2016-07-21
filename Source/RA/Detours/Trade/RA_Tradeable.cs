@@ -45,7 +45,7 @@ namespace RA
                             tradeCenter.pendingResourcesCounters.Add(currentThing.def, offerCount);
                     }
                     // clears placed blueprints for minified things
-                    currentThing.PreSold(tradeCenter.negotiator, tradeCenter.trader);
+                    currentThing.PreTraded(TradeAction.PlayerBuys, tradeCenter.negotiator, tradeCenter.trader);
                     tradeCenter.pendingItemsCounter.Add(currentThing);
                     thingsColony.Remove(currentThing);
                 }

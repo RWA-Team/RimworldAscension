@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 using Verse;
+using static RA.Assets;
 
 namespace RA
 {
     public class ITab_Container : ITab
     {
-        public static readonly Texture2D EmptyTex = SolidColorMaterials.NewSolidColorTexture(Color.clear);
-        public static readonly Texture2D FullTexFuelCount = SolidColorMaterials.NewSolidColorTexture(new Color(0.6f, 0.6f, 0.6f));
-        
         public Vector2 scrollPosition_Container = Vector2.zero;
 
         public ITab_Container()

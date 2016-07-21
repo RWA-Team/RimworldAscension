@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- 	- fillPercent - determne cover multiplier vs projectiles
+	- castEdgeShadows - shadow aura around building
+	- staticSunShadowHeight - solid square shadow with set length
+	- drawerType:
+		- MapMeshOnly - doesn't draw from comps
+		- MapMeshAndRealTime - doesn't draw from comps
+		- RealtimeOnly - used for objects that change their texture (unsure)
+	- surfaceType:
+		- Item - allows place items
+		- Eat - allows place food to eat
+	- Building_Art class - adds beauty value stat to inpection string
+	- Building_Art_Shadowed class - allows casting of fading shadows from stuffed things
+	- terrainAffordanceNeeded - type of terrain required to be build upon (no difference in Light/Heavy in the game so far) -->
+
+	<ThingDef Name="Building" Abstract="True">
+		<thingClass>Building</thingClass>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Missing</texPath>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<category>Building</category>
+		<altitudeLayer>Building</altitudeLayer>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+		<passability>PassThroughOnly</passability>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<Flammability>1.0</Flammability>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>100</WorkToMake>
+		</statBases>
+	</ThingDef>
+
+</Defs>

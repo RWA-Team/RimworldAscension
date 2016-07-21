@@ -17,40 +17,10 @@
 	- terrainAffordanceNeeded - type of terrain required to be build upon (no difference in Light/Heavy in the game so far)
 	 -->
 
-	<!--==================== Base Abstracts ========================-->
-
-	<ThingDef Name="Building" Abstract="True">
-		<thingClass>Building</thingClass>
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-			<damageData>
-				<cornerTL>Damage/Corner</cornerTL>
-				<cornerTR>Damage/Corner</cornerTR>
-				<cornerBL>Damage/Corner</cornerBL>
-				<cornerBR>Damage/Corner</cornerBR>
-			</damageData>
-		</graphicData>
-		<category>Building</category>
-		<selectable>true</selectable>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
-		<repairEffect>Repair</repairEffect>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-		<filthLeaving>BuildingRubble</filthLeaving>
-		<passability>PassThroughOnly</passability>
-		<useHitPoints>true</useHitPoints>
-		<statBases>
-			<Flammability>1.0</Flammability>
-			<MaxHitPoints>100</MaxHitPoints>
-			<WorkToMake>100</WorkToMake>
-		</statBases>
-	</ThingDef>
-
 	<!--==================== Decorations ========================-->
 
 	<ThingDef Name="Decoration" ParentName="Building" Abstract="True">
 		<thingClass>Building_Art</thingClass>
-		<altitudeLayer>BuildingTall</altitudeLayer>
 		<rotatable>false</rotatable>
 		<fillPercent>1</fillPercent>
 		<comps>
@@ -142,7 +112,7 @@
 			</damageData>
 		</graphicData>
 		<rotatable>false</rotatable>
-		<altitudeLayer>Waist</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.20</fillPercent>
 		<statBases>
@@ -151,9 +121,6 @@
 		<costList>
 			<PlantPot>1</PlantPot>
 		</costList>
-		<inspectorTabs>
-			<li>ITab_Growing</li>
-		</inspectorTabs>
 		<description>A pot to plant decorative flowers in to improve the beauty of the room it's in.</description>
 		<comps>
 			<li Class="CompProperties_Forbiddable"/>
@@ -165,7 +132,6 @@
 			<plantsDestroyWithMe>true</plantsDestroyWithMe>
 			<sowTag>Decorative</sowTag>
 		</building>
-		<!-- actual minified def is auto generated -->
 		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Firing</li>

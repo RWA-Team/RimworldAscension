@@ -7,7 +7,7 @@
 		<defName>Firefoam</defName>
 		<label>firefoam</label>
 		<description>Allows the construction of firefoam poppers; fire-safety buildings which spread fire-retardant foam in response to encroaching flames.</description>
-		<totalCost>800</totalCost>
+		<baseCost>800</baseCost>
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
 	</ResearchProjectDef>
 
@@ -15,7 +15,7 @@
 		<defName>GeothermalPower</defName>
 		<label>geothermal power</label>
 		<description>Allows you to build geothermal power plants on top of steam geysers, for uninterrupted power.</description>
-		<totalCost>1800</totalCost>
+		<baseCost>1800</baseCost>
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
 	</ResearchProjectDef>
 
@@ -23,7 +23,7 @@
 		<defName>HospitalBed</defName>
 		<label>hospital bed</label>
 		<description>Allows colonists to construct hospital beds which increase chance of successful medical work.</description>
-		<totalCost>2000</totalCost>
+		<baseCost>2000</baseCost>
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
 	</ResearchProjectDef>
 
@@ -31,7 +31,7 @@
 		<defName>MultiAnalyzer</defName>
 		<label>multi-analyzer</label>
 		<description>Allows colonists to build multi-analyzers which increase research speed, and allow higher-level research projects, if placed near a research bench.</description>
-		<totalCost>800</totalCost>
+		<baseCost>800</baseCost>
 		<prerequisites>
 			<li>MicroelectronicsBasics</li>
 		</prerequisites>
@@ -44,7 +44,7 @@
 		<defName>VitalsMonitor</defName>
 		<label>vitals monitor</label>
 		<description>Allows colonists to build vitals monitors which increase patients treatment quality if placed next to medical beds.</description>
-		<totalCost>1600</totalCost>
+		<baseCost>1600</baseCost>
 		<prerequisites>
 			<li>MicroelectronicsBasics</li>
 			<li>HospitalBed</li>
@@ -59,7 +59,7 @@
 		<defName>Cryptosleep</defName>
 		<label>cryptosleep casket</label>
 		<description>Allows colonists to construct cryptosleep caskets, which can put living beings in a state of suspended animation.</description>
-		<totalCost>2000</totalCost>
+		<baseCost>2000</baseCost>
 		<prerequisites>
 			<li>MicroelectronicsBasics</li>
 		</prerequisites>
@@ -73,7 +73,7 @@
 		<defName>ComponentAssembly</defName>
 		<label>component assembly</label>
 		<description>Allows you to build the Component Assembly Bench, where colonists can make components from simple materials.</description>
-		<totalCost>3000</totalCost>
+		<baseCost>3000</baseCost>
 		<prerequisites>
 			<li>MicroelectronicsBasics</li>
 		</prerequisites>
@@ -87,7 +87,7 @@
 		<defName>PoweredArmor</defName>
 		<label>powered armor</label>
 		<description>Neuro-memetic robotics and advanced plasteel weaving technologies allow you to build the power armor and power armor helmets.</description>
-		<totalCost>3000</totalCost>
+		<baseCost>3000</baseCost>
 		<prerequisites>
 			<li>MicroelectronicsBasics</li>
 		</prerequisites>
@@ -101,7 +101,7 @@
 		<defName>ChargedShot</defName>
 		<label>charged shot</label>
 		<description>Understand the secrets of pulse-charged energy/projectile munitions. Allows you to build the charge rifle.</description>
-		<totalCost>3000</totalCost>
+		<baseCost>3000</baseCost>
 		<prerequisites>
 			<li>MicroelectronicsBasics</li>
 		</prerequisites>
@@ -115,7 +115,7 @@
 		<defName>MultibarrelWeapons</defName>
 		<label>multibarrel weapons</label>
 		<description>Allows you to build miniguns.</description>
-		<totalCost>3000</totalCost>
+		<baseCost>3000</baseCost>
 		<prerequisites>
 			<li>MicroelectronicsBasics</li>
 		</prerequisites>
@@ -130,7 +130,7 @@
     <defName>LargeRockets</defName>
     <label>largerockets</label>
     <description>Allows you to build doomsday rocket launchers and triple rocket launchers, one-shot assault weapons that pack a massive punch.</description>
-    <totalCost>2200</totalCost>
+    <baseCost>2200</baseCost>
     <prerequisites>
       <li>MicroelectronicsBasics</li>
     </prerequisites>

@@ -111,7 +111,7 @@
 			<WorkToMake>150</WorkToMake>
 		</statBases>
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-		<altitudeLayer>BuildingTall</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
 		<castEdgeShadows>true</castEdgeShadows>
 		<coversFloor>true</coversFloor>
@@ -227,7 +227,7 @@
 		<passability>Standable</passability>
 		<coversFloor>true</coversFloor>
 		<placingDraggableDimensions>1</placingDraggableDimensions>
-		<terrainAffordanceNeeded>Any</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 	</ThingDef>
 
 

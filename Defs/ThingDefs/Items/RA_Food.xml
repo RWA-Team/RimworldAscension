@@ -2,9 +2,7 @@
 <ThingDefs>
 
 	<ThingDef Name="Food" ParentName="Item" Abstract="True">
-		<thingClass>Meal</thingClass>
 		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(0.8, 0.8)</drawSize>
 		</graphicData>
 		<statBases>
@@ -14,6 +12,10 @@
 		<tickerType>Rare</tickerType>
 		<socialPropernessMatters>true</socialPropernessMatters>
 		<resourceReadoutPriority>Last</resourceReadoutPriority>
+		<comps>
+			<li Class="CompProperties_Ingredients" />
+			<li Class="CompProperties_FoodPoisonable" />
+		</comps>
 		<ingestible>
 			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
 		</ingestible>
@@ -39,7 +41,7 @@
 		</thingCategories>
 		<ingestible>
 			<foodType>Meat</foodType>
-			<preferability>Raw</preferability>
+			<preferability>RawBad</preferability>
 			<nutrition>0.05</nutrition>
 			<eatEffect>EatMeat</eatEffect>
 			<soundEat>RawMeat_Eat</soundEat>
@@ -79,7 +81,7 @@
 		</thingCategories>
 		<ingestible>
 			<foodType>Meat, Meal, Processed</foodType>
-			<preferability>Simple</preferability>
+			<preferability>MealSimple</preferability>
 			<eatEffect>EatMeat</eatEffect>
 			<soundEat>RawMeat_Eat</soundEat>
 		</ingestible>
@@ -182,7 +184,7 @@
 			<WorkToMake>300</WorkToMake>
 		</statBases>
 		<ingestible>
-			<preferability>Simple</preferability>
+			<preferability>MealSimple</preferability>
 			<nutrition>0.85</nutrition>
 			<joy>0.02</joy>
 		</ingestible>
@@ -201,10 +203,9 @@
 			<WorkToMake>450</WorkToMake>
 		</statBases>
 		<ingestible>
-			<preferability>Fine</preferability>
+			<preferability>MealFine</preferability>
 			<nutrition>0.90</nutrition>
 			<joy>0.045</joy>
-			<ingestedDirectThought>AteFineMeal</ingestedDirectThought>
 		</ingestible>
 	</ThingDef>
 
@@ -221,10 +222,9 @@
 			<WorkToMake>800</WorkToMake>
 		</statBases>
 		<ingestible>
-			<preferability>Lavish</preferability>
+			<preferability>MealLavish</preferability>
 			<nutrition>1.00</nutrition>
 			<joy>0.065</joy>
-			<ingestedDirectThought>AteLavishMeal</ingestedDirectThought>
 		</ingestible>
 	</ThingDef>
 
@@ -240,7 +240,7 @@
 			<MarketValue>100</MarketValue>
 		</statBases>
 		<ingestible>
-			<preferability>Fine</preferability>
+			<preferability>MealFine</preferability>
 			<nutrition>0.9</nutrition>
 			<joy>0.02</joy>
 		</ingestible>
@@ -258,10 +258,9 @@
 			<MarketValue>15</MarketValue>
 		</statBases>
 		<ingestible>
-			<preferability>Awful</preferability>
+			<preferability>MealAwful</preferability>
 			<nutrition>0.90</nutrition>
 			<joy>-0.04</joy>
-			<ingestedDirectThought>AteNutrientPasteMeal</ingestedDirectThought>
 		</ingestible>
 	</ThingDef>
 

@@ -14,37 +14,38 @@ namespace RA
 
         public override void Generate()
         {
-            foreach (var colonist in MapInitData.colonists)
-            {
-                colonist.SetFactionDirect(Faction.OfColony);
-                PawnComponentsUtility.AddAndRemoveDynamicComponents(colonist);
-                colonist.needs.mood.thoughts.TryGainThought(ThoughtDefOf.NewColonyOptimism);
-                foreach (var pawn in MapInitData.colonists)
-                {
-                    if (pawn != colonist)
-                    {
-                        var thought_SocialMemory = (Thought_SocialMemory)ThoughtMaker.MakeThought(ThoughtDefOf.CrashedTogether);
-                        thought_SocialMemory.SetOtherPawn(pawn);
-                        colonist.needs.mood.thoughts.TryGainThought(thought_SocialMemory);
-                    }
-                }
-                // damage colonists due to falling in ship wreck
-                ApplyMinorInjuries(colonist);
-            }
-            CreateInitialWorkSettings();
-            var startedDirectInEditor = MapInitData.StartedDirectInEditor;
+            // TODO: make new game start event sequence
+            //foreach (var colonist in Find.GameInitData.startingPawns)
+            //{
+            //    colonist.SetFactionDirect(Faction.OfPlayer);
+            //    PawnComponentsUtility.AddAndRemoveDynamicComponents(colonist);
+            //    colonist.needs.mood.thoughts.TryGainThought(ThoughtDefOf.NewColonyOptimism);
+            //    foreach (var pawn in Find.GameInitData.startingPawns)
+            //    {
+            //        if (pawn != colonist)
+            //        {
+            //            var thought_SocialMemory = (Thought_SocialMemory)ThoughtMaker.MakeThought(ThoughtDefOf.CrashedTogether);
+            //            thought_SocialMemory.SetOtherPawn(pawn);
+            //            colonist.needs.mood.thoughts.TryGainThought(thought_SocialMemory);
+            //        }
+            //    }
+            //    // damage colonists due to falling in ship wreck
+            //    ApplyMinorInjuries(colonist);
+            //}
+            //CreateInitialWorkSettings();
+            //var startedDirectInEditor = Find.GameInitData.StartedDirectInEditor;
 
             // list of lists to generate after ship crash
             var listsToGenerate = new List<List<Thing>>();
 
             // colonists list + pet added to that list
-            var colonists = MapInitData.colonists.Cast<Thing>().ToList();
+            var colonists = Find.GameInitData.startingPawns.Cast<Thing>().ToList();
             colonists.Add(RandomPet());
             listsToGenerate.Add(colonists);
 
-            // Create the ship impactResultThing part
-            SkyfallerUtil.MakeShipWreckCrashingAt(MapGenerator.PlayerStartSpot, listsToGenerate, 110,
-                startedDirectInEditor);
+            //// Create the ship impactResultThing part
+            //SkyfallerUtil.MakeShipWreckCrashingAt(MapGenerator.PlayerStartSpot, listsToGenerate, 110,
+            //    startedDirectInEditor);
 
             IntVec3 dropCell;
             // Create damaged drop pods with dead pawns
@@ -83,12 +84,12 @@ namespace RA
             var kindDef = (from td in DefDatabase<PawnKindDef>.AllDefs
                 where td.race.category == ThingCategory.Pawn && td.RaceProps.petness > 0f
                 select td).RandomElementByWeight(td => td.RaceProps.petness);
-            var pawn = PawnGenerator.GeneratePawn(kindDef, Faction.OfColony);
+            var pawn = PawnGenerator.GeneratePawn(kindDef, Faction.OfPlayer);
             if (pawn.Name == null || pawn.Name.Numerical)
             {
                 pawn.Name = NameGenerator.GeneratePawnName(pawn);
             }
-            var pawn2 = MapInitData.colonists.RandomElement();
+            var pawn2 = Find.GameInitData.startingPawns.RandomElement();
             pawn2.relations.AddDirectRelation(PawnRelationDefOf.Bond, pawn);
             return pawn;
         }
@@ -96,7 +97,7 @@ namespace RA
         public static void CreateInitialWorkSettings()
         {
             // disable all worktypes
-            foreach (var pawn in MapInitData.colonists)
+            foreach (var pawn in Find.GameInitData.startingPawns)
             {
                 pawn.workSettings.DisableAll();
             }
@@ -109,7 +110,7 @@ namespace RA
                     // set priority 3 to all allowed work types
                     foreach (
                         var pawn in
-                            MapInitData.colonists.Where(colonist => !colonist.story.WorkTypeIsDisabled(workType)))
+                            Find.GameInitData.startingPawns.Where(colonist => !colonist.story.WorkTypeIsDisabled(workType)))
                     {
                         pawn.workSettings.SetPriority(workType, 3);
                     }
@@ -117,7 +118,7 @@ namespace RA
                 else
                 {
                     var currentWorkTypeCapableColonistGenerated = false;
-                    foreach (var colonist in MapInitData.colonists)
+                    foreach (var colonist in Find.GameInitData.startingPawns)
                     {
                         if (!colonist.story.WorkTypeIsDisabled(workType) &&
                             colonist.skills.AverageOfRelevantSkillsFor(workType) >= 6f)
@@ -128,7 +129,7 @@ namespace RA
                     }
                     if (!currentWorkTypeCapableColonistGenerated)
                     {
-                        var pawns = MapInitData.colonists.Where(colonist => !colonist.story.WorkTypeIsDisabled(workType));
+                        var pawns = Find.GameInitData.startingPawns.Where(colonist => !colonist.story.WorkTypeIsDisabled(workType));
 
                         if (pawns.Any())
                         {

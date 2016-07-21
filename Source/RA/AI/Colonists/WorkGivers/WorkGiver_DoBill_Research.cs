@@ -60,7 +60,7 @@ namespace RA
             {
                 // clear bill stack if research is finished or changed
                 if (billGiver.BillStack[0].recipe.defName != Find.ResearchManager.currentProj.defName ||
-                    Find.ResearchManager.IsFinished(ResearchProjectDef.Named(billGiver.BillStack[0].recipe.defName)))
+                    ResearchProjectDef.Named(billGiver.BillStack[0].recipe.defName).IsFinished)
                 {
                     billGiver.BillStack.Clear();
                 }
@@ -83,7 +83,7 @@ namespace RA
 
             if (!TryFindBestBillIngredients(bill, pawn, researchBench, chosenIngridiens))
             {
-                if (FloatMenuMaker.making)
+                if (FloatMenuMakerMap.making)
                 {
                     JobFailReason.Is(MissingMaterialsTranslated);
                 }

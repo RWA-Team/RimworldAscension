@@ -33,8 +33,8 @@ namespace RA
                         toil.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing.TryGetComp<CompResearcher>();
                     if (researchComp != null)
                     {
-                        curDriver.workLeft = startedResearch.totalCost -
-                                             Find.ResearchManager.ProgressOf(startedResearch);
+                        curDriver.workLeft = startedResearch.CostApparent -
+                                             startedResearch.ProgressApparent;
                     }
                     else
                     {
@@ -113,7 +113,7 @@ namespace RA
                 {
                     if (Find.ResearchManager.currentProj != null && Find.ResearchManager.currentProj == startedResearch)
                     {
-                        Find.ResearchManager.MakeProgress(workProgress, actor);
+                        Find.ResearchManager.ResearchPerformed(workProgress, actor);
                     }
                     if (Find.ResearchManager.currentProj != startedResearch)
                     {
@@ -168,7 +168,7 @@ namespace RA
                 return researchComp == null
                     ? 1f - ((JobDriver_DoBill) actor.jobs.curDriver).workLeft/
                       curJob.bill.recipe.WorkAmountTotal(unfinishedThing?.Stuff)
-                    : Find.ResearchManager.PercentComplete(startedResearch);
+                    : startedResearch.ProgressPercent;
             });
             return toil;
         }
@@ -185,7 +185,7 @@ namespace RA
                 var ingredients = ProcessedIngredients(curJob, out dominantIngredient);
                 var products =
                     GenRecipe.MakeRecipeProducts(curJob.RecipeDef, actor, ingredients, dominantIngredient).ToList();
-                curJob.bill.Notify_IterationCompleted(actor);
+                curJob.bill.Notify_IterationCompleted(actor, ingredients);
                 RecordsUtility.Notify_BillDone(actor, products);
 
                 // set production cost for all products
@@ -251,13 +251,13 @@ namespace RA
                 dominantIngredient = uft.def.MadeFromStuff ? uft.ingredients.First(ing => ing.def == uft.Stuff) : null;
                 var ingredients = uft.ingredients;
                 uft.Destroy();
-                job.placedTargets = null;
+                job.placedThings = null;
                 return ingredients;
             }
             var list = new List<Thing>();
-            if (job.placedTargets != null)
+            if (job.placedThings != null)
             {
-                foreach (var thing in job.placedTargets.Select(target => target.Thing))
+                foreach (var thing in job.placedThings.Select(target => target.thing))
                 {
                     if (list.Contains(thing))
                     {
@@ -283,7 +283,7 @@ namespace RA
                     }
                 }
             }
-            job.placedTargets = null;
+            job.placedThings = null;
             dominantIngredient = list.NullOrEmpty() ? null : GetDominantIngredient(job.RecipeDef, list);
             return list;
         }

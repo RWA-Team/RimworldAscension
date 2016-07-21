@@ -354,7 +354,7 @@
 		<description>make leather strips.</description>
 		<efficiencyStat>RefiningEfficiency</efficiencyStat>
 		<effectWorking>CutStone</effectWorking>
-		<soundWorking>Recipe_MakeBlocksStone</soundWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
 		<workAmount>1600</workAmount>
 		<products>
 			<LeatherStrip>25</LeatherStrip>
@@ -384,7 +384,7 @@
 		<jobString>Cutting stone chunks into cobbles.</jobString>
 		<efficiencyStat>RefiningEfficiency</efficiencyStat>
 		<effectWorking>CutStone</effectWorking>
-		<soundWorking>Recipe_MakeBlocksStone</soundWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
 		<targetCountAdjustment>50</targetCountAdjustment>
 		<workAmount>1600</workAmount>
 		<fixedIngredientFilter>
@@ -416,7 +416,7 @@
 		<jobString>Cutting stone chunks into blocks.</jobString>
 		<efficiencyStat>RefiningEfficiency</efficiencyStat>
 		<effectWorking>CutStone</effectWorking>
-		<soundWorking>Recipe_MakeBlocksStone</soundWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
 		<targetCountAdjustment>50</targetCountAdjustment>
 		<workAmount>1600</workAmount>
 		<fixedIngredientFilter>

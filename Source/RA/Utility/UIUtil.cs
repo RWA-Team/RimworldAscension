@@ -84,7 +84,7 @@ namespace RA
                             GUI.color = HighlightColor;
                             GUI.DrawTexture(rowRect, TexUI.HighlightTex);
                         }
-                        if (Widgets.InvisibleButton(rowRect) && Event.current.button == 1)
+                        if (Widgets.ButtonInvisible(rowRect) && Event.current.button == 1)
                         {
                             var list = new List<FloatMenuOption>();
                             list.Add(new FloatMenuOption("ThingInfo".Translate(), () =>
