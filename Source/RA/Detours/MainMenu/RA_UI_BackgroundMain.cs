@@ -24,7 +24,7 @@ namespace RA
                 position = new Rect(0f, Screen.height/2 - num/2f, width, num);
             }
 
-            GUI.DrawTexture(position, Assets.MainMenuBackground, ScaleMode.ScaleToFit);
+            GUI.DrawTexture(position, CommonTextures.MainMenuBackground, ScaleMode.ScaleToFit);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using Verse;
-using static RA.Assets;
+using static RA.CommonTextures;
 
 namespace RA
 {

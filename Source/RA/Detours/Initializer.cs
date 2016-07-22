@@ -8,37 +8,53 @@ using Verse.AI.Group;
 
 namespace RA
 {
-    public class DetoursInitializer : ITab
+    [StaticConstructorOnStartup]
+    public class Initializer
     {
         public static List<string> sourceMethods = new List<string>();
         public static List<string> destMethods = new List<string>();
 
-        // ITab requirement
-        protected override void FillTab()
+        static Initializer()
         {
-        }
+            DoDetours();
 
-        public DetoursInitializer()
-        {
+            if (Prefs.DevMode)
+                Log.Message("Initializer initialized");
+
             //LongEventHandler.ExecuteWhenFinished(() =>
             //{
-            //    // load assets from main thread.
-            //    Assets.Init();
-
-            //    InitDetours();
-
-            //    if (Prefs.DevMode)
-            //        Log.Message("Detours initialized");
             //});
         }
 
-        public static bool TryGetPrivateField(Type type, object instance, string fieldName, out object value,
+        public static object GetHiddenValue(Type type, object instance, string fieldName, FieldInfo info,
             BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance)
         {
-            var field = type.GetField(fieldName, flags);
-            value = field?.GetValue(instance);
-            return value != null;
+            if (info == null)
+                info = type.GetField(fieldName, flags);
+
+            return info?.GetValue(instance);
         }
+
+        //public static bool SetHiddenValue(Type type, object instance, string fieldName, object value,
+        //                                       BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance)
+        //{
+        //    // get field info
+        //    FieldInfo field = type.GetField(fieldName, flags);
+        //    // failed?
+        //    if (field == null)
+        //    {
+        //        return false;
+        //    }
+        //    // try setting it.
+        //    field.SetValue(instance, value);
+        //    // test by fetching the field again. (this is highly, stupidly inefficient, but ok).
+        //    object test;
+        //    if (!TryGetPrivateField(type, instance, fieldName, out test, flags))
+        //    {
+        //        return false;
+        //    }
+        //    return test == value;
+        //}
 
         //This is a basic first implementation of the IL method 'hooks' (detours) made possible by RawCode's work;
         //https://ludeon.com/forums/index.php?topic=17143.0
@@ -73,7 +89,7 @@ namespace RA
                 *(Pointer_Raw_Source + 0x00) = 0x48;
                 *(Pointer_Raw_Source + 0x01) = 0xB8;
                 *Pointer_Raw_Address = Destination_Base;
-                    // ( Pointer_Raw_Source + 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09 )
+                // ( Pointer_Raw_Source + 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09 )
                 *(Pointer_Raw_Source + 0x0A) = 0xFF;
                 *(Pointer_Raw_Source + 0x0B) = 0xE0;
             }
@@ -104,7 +120,7 @@ namespace RA
             return true;
         }
 
-        public static void InitDetours()
+        public static void DoDetours()
         {
             #region VARIOUS
 
@@ -115,40 +131,35 @@ namespace RA
             TryDetourFromTo(vanillaSelectableNow, newSelectableNow);
 
             // added new def generators and removed redundant
-            var vanillaGenerateImpliedDefs_PreResolve = typeof(DefGenerator).GetMethod("GenerateImpliedDefs_PreResolve",
+            var vanillaGenerateImpliedDefs_PreResolve = typeof (DefGenerator).GetMethod(
+                "GenerateImpliedDefs_PreResolve",
                 BindingFlags.Static | BindingFlags.Public);
-            var newGenerateImpliedDefs_PreResolve = typeof(RA_DefGenerator).GetMethod("GenerateImpliedDefs_PreResolve",
+            var newGenerateImpliedDefs_PreResolve = typeof (RA_DefGenerator).GetMethod("GenerateImpliedDefs_PreResolve",
                 BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaGenerateImpliedDefs_PreResolve, newGenerateImpliedDefs_PreResolve);
 
             // draws hands on equipment, if corresponding Comp is specified
-            var vanillaDrawEquipmentAiming = typeof(PawnRenderer).GetMethod("DrawEquipmentAiming",
+            var vanillaDrawEquipmentAiming = typeof (PawnRenderer).GetMethod("DrawEquipmentAiming",
                 BindingFlags.Instance | BindingFlags.Public);
-            var newDrawEquipmentAiming = typeof(RA_PawnRenderer).GetMethod("DrawEquipmentAiming",
+            var newDrawEquipmentAiming = typeof (RA_PawnRenderer).GetMethod("DrawEquipmentAiming",
                 BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaDrawEquipmentAiming, newDrawEquipmentAiming);
 
             //changed inner graphic extraction for minified things
-            var vanillaExtractInnerGraphicFor = typeof(GraphicUtility).GetMethod("ExtractInnerGraphicFor",
+            var vanillaExtractInnerGraphicFor = typeof (GraphicUtility).GetMethod("ExtractInnerGraphicFor",
                 BindingFlags.Static | BindingFlags.Public);
-            var newExtractInnerGraphicFor = typeof(RA_GraphicUtility).GetMethod("ExtractInnerGraphicFor",
+            var newExtractInnerGraphicFor = typeof (RA_GraphicUtility).GetMethod("ExtractInnerGraphicFor",
                 BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaExtractInnerGraphicFor, newExtractInnerGraphicFor);
 
             // changed how prodcut stuff type is determined and made this toil assign production cost for the Thing to the CompCraftedValue
-            var vanillaFinishRecipeAndStartStoringProduct = typeof(Toils_Recipe).GetMethod("FinishRecipeAndStartStoringProduct",
-                BindingFlags.Static | BindingFlags.Public);
-            var newFinishRecipeAndStartStoringProduct = typeof(RA_Toils_Recipe).GetMethod("FinishRecipeAndStartStoringProduct",
-                BindingFlags.Static | BindingFlags.Public);
+            var vanillaFinishRecipeAndStartStoringProduct =
+                typeof (Toils_Recipe).GetMethod("FinishRecipeAndStartStoringProduct",
+                    BindingFlags.Static | BindingFlags.Public);
+            var newFinishRecipeAndStartStoringProduct =
+                typeof (RA_Toils_Recipe).GetMethod("FinishRecipeAndStartStoringProduct",
+                    BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaFinishRecipeAndStartStoringProduct, newFinishRecipeAndStartStoringProduct);
-
-            // added rectangular field edges support for trading post
-            // added Graphic_StuffBased support
-            var vanillaSelectedUpdate = typeof (Designator_Place).GetMethod("SelectedUpdate",
-                BindingFlags.Instance | BindingFlags.Public);
-            var newSelectedUpdate = typeof (RA_Designator_Place).GetMethod("SelectedUpdate",
-                BindingFlags.Instance | BindingFlags.Public);
-            TryDetourFromTo(vanillaSelectedUpdate, newSelectedUpdate);
 
             // changed text align to middle center
             var vanillaButtonTextSubtle = typeof (Widgets).GetMethod("ButtonTextSubtle",
@@ -157,17 +168,10 @@ namespace RA
                 BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaButtonTextSubtle, newButtonTextSubtle);
 
-            // delay CheckGameOver first call
-            var vanillaCheckGameOver = typeof (GameEnder).GetMethod("CheckGameOver",
-                BindingFlags.Instance | BindingFlags.Public);
-            var newCheckGameOver = typeof (RA_GameEnder).GetMethod("CheckGameOver",
-                BindingFlags.Instance | BindingFlags.Public);
-            TryDetourFromTo(vanillaCheckGameOver, newCheckGameOver);
-
             // changed butcher yields
-            var vanillaButcherProducts = typeof(Pawn).GetMethod("ButcherProducts",
+            var vanillaButcherProducts = typeof (Pawn).GetMethod("ButcherProducts",
                 BindingFlags.Instance | BindingFlags.Public);
-            var newButcherProducts = typeof(RA_Pawn).GetMethod("ButcherProducts",
+            var newButcherProducts = typeof (RA_Pawn).GetMethod("ButcherProducts",
                 BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaButcherProducts, newButcherProducts);
 
@@ -178,20 +182,6 @@ namespace RA
                 BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaTrySpawnExplosionThing, newTrySpawnExplosionThing);
 
-            // delay GameEndTick first call
-            var vanillaGameEndTick = typeof (GameEnder).GetMethod("GameEndTick",
-                BindingFlags.Instance | BindingFlags.Public);
-            var newGameEndTick = typeof (RA_GameEnder).GetMethod("GameEndTick",
-                BindingFlags.Instance | BindingFlags.Public);
-            TryDetourFromTo(vanillaGameEndTick, newGameEndTick);
-
-            //// changed initial game start message
-            //var vanillaInitNewGeneratedMap = typeof (MapIniter_NewGame).GetMethod("InitNewGeneratedMap",
-            //    BindingFlags.Static | BindingFlags.Public);
-            //var newInitNewGeneratedMap = typeof (RA_MapIniter_NewGame).GetMethod("InitNewGeneratedMap",
-            //    BindingFlags.Static | BindingFlags.Public);
-            //TryDetourFromTo(vanillaInitNewGeneratedMap, newInitNewGeneratedMap);
-
             // tries to assign existing stuff type, instead of some random one, as default
             var vanillaDefaultStuffFor = typeof (GenStuff).GetMethod("DefaultStuffFor",
                 BindingFlags.Static | BindingFlags.Public);
@@ -199,16 +189,7 @@ namespace RA
                 BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaDefaultStuffFor, newDefaultStuffFor);
 
-            //// changed initial colonists count
-            //var vanillaGenerateDefaultColonistsWithFaction =
-            //    typeof (Find.GameInitData).GetMethod("GenerateDefaultColonistsWithFaction",
-            //        BindingFlags.Static | BindingFlags.Public);
-            //var newGenerateDefaultColonistsWithFaction =
-            //    typeof (RA_Find.GameInitData).GetMethod("GenerateDefaultColonistsWithFaction",
-            //        BindingFlags.Static | BindingFlags.Public);
-            //TryDetourFromTo(vanillaGenerateDefaultColonistsWithFaction, newGenerateDefaultColonistsWithFaction);
-
-            // make recipe decide what result stuff to make based on defaultIngredientFilter as blocking Stuff types one
+            // made recipe decide what result stuff to make based on defaultIngredientFilter as blocking Stuff types one
             var vanillaGetDominantIngredient = typeof (Toils_Recipe).GetMethod("GetDominantIngredient",
                 BindingFlags.Static | BindingFlags.NonPublic);
             var newGetDominantIngredient = typeof (RA_Toils_Recipe).GetMethod("GetDominantIngredient",
@@ -244,10 +225,10 @@ namespace RA
             TryDetourFromTo(vanillaAllDesignators_Getter, newAllDesignators_Getter);
 
             // allows to select which cells of the building could be used to hold ingridients
-            var vanillaIngredientStackCells = typeof(Building_WorkTable).GetProperty("IngredientStackCells",
+            var vanillaIngredientStackCells = typeof (Building_WorkTable).GetProperty("IngredientStackCells",
                 BindingFlags.Instance | BindingFlags.Public);
             var vanillaIngredientStackCells_Getter = vanillaIngredientStackCells.GetGetMethod();
-            var newIngredientStackCells = typeof(RA_Building_WorkTable).GetProperty("IngredientStackCells",
+            var newIngredientStackCells = typeof (RA_Building_WorkTable).GetProperty("IngredientStackCells",
                 BindingFlags.Instance | BindingFlags.Public);
             var newIngredientStackCells_Getter = newIngredientStackCells.GetGetMethod();
             TryDetourFromTo(vanillaIngredientStackCells_Getter, newIngredientStackCells_Getter);
@@ -458,18 +439,18 @@ namespace RA
             #region MAINMENU
 
             //// detour RimWorld.MainMenuDrawer.MainMenuOnGUI
-            //var vanillaDoMainMenuButtons = typeof (MainMenuDrawer).GetMethod("MainMenuOnGUI",
+            //var vanillaDoMainMenuButtons = typeof(MainMenuDrawer).GetMethod("MainMenuOnGUI",
             //    BindingFlags.Static | BindingFlags.Public);
-            //var newDoMainMenuButtons = typeof (RA_MainMenuDrawer).GetMethod("MainMenuOnGUI",
+            //var newDoMainMenuButtons = typeof(RA_MainMenuDrawer).GetMethod("MainMenuOnGUI",
             //    BindingFlags.Static | BindingFlags.Public);
             //TryDetourFromTo(vanillaDoMainMenuButtons, newDoMainMenuButtons);
 
-            //// detour RimWorld.UI_BackgroundMain.BackgroundOnGUI
-            //var vanillaBackgroundOnGUI = typeof (UI_BackgroundMain).GetMethod("BackgroundOnGUI",
-            //    BindingFlags.Instance | BindingFlags.Public);
-            //var newBackgroundOnGUI = typeof (RA_UI_BackgroundMain).GetMethod("BackgroundOnGUI",
-            //    BindingFlags.Instance | BindingFlags.Public);
-            //TryDetourFromTo(vanillaBackgroundOnGUI, newBackgroundOnGUI);
+            // detour RimWorld.UI_BackgroundMain.BackgroundOnGUI
+            var vanillaBackgroundOnGUI = typeof (UI_BackgroundMain).GetMethod("BackgroundOnGUI",
+                BindingFlags.Instance | BindingFlags.Public);
+            var newBackgroundOnGUI = typeof (RA_UI_BackgroundMain).GetMethod("BackgroundOnGUI",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaBackgroundOnGUI, newBackgroundOnGUI);
 
             #endregion
 

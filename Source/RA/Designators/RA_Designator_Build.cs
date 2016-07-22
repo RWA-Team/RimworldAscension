@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -9,6 +10,8 @@ namespace RA
 {
     public class RA_Designator_Build : Designator_Build
     {
+        public static FieldInfo info;
+
         public static readonly Vector2 TerrainTextureCroppedSize = new Vector2(64f, 64f);
         public static readonly Vector2 DragPriceDrawOffset = new Vector2(19f, 17f);
         public const float DragPriceDrawNumberX = 29f;
@@ -16,6 +19,7 @@ namespace RA
         public ThingDef stuffDef;
         public ThingDef thingDef;
 
+        // assigns stuff type for minified buildables
         public RA_Designator_Build(BuildableDef entDef) : base(entDef)
         {
             thingDef = entDef as ThingDef;
@@ -32,43 +36,16 @@ namespace RA
             }
         }
 
-        // required to use replacement for private stuffDef in vanilla Designator_Build
-        protected override Color IconDrawColor => stuffDef?.stuffProps.color ?? PlacingDef.IconDrawColor;
+        // TODO required
+        // determine conditions of hiding similar gizmos
+        public override bool GroupsWith(Gizmo other) => PlacingDef == (other as Designator_Build)?.PlacingDef;
 
-        // required to use replacement for private stuffDef in vanilla Designator_Build
-        public override string Label => thingDef != null ? GenLabel.ThingLabel(thingDef, stuffDef) : entDef.label;
-
-        // determine conditions of hiding similar gizmos. Added Graphic_StuffBased support
-        public override bool GroupsWith(Gizmo other) => PlacingDef == (other as RA_Designator_Build)?.PlacingDef;
-
-        // added Graphic_StuffBased support
-        public override void SelectedUpdate()
-        {
-            base.SelectedUpdate();
-
-            // special Graphic_StuffBased implementation
-            var baseGraphic = PlacingDef.graphic as Graphic_StuffBased;
-            if (baseGraphic != null)
-                baseGraphic.currentCategory = stuffDef.stuffProps.categories[0].defName;
-
-            var intVec = Gen.MouseCell();
-            if (thingDef != null && (thingDef.EverTransmitsPower || thingDef.ConnectToPower))
-            {
-                OverlayDrawHandler.DrawPowerGridOverlayThisFrame();
-                if (thingDef.ConnectToPower)
-                {
-                    var compPower = PowerConnectionMaker.BestTransmitterForConnector(intVec);
-                    if (compPower != null)
-                    {
-                        PowerNetGraphics.RenderAnticipatedWirePieceConnecting(intVec, compPower.parent);
-                    }
-                }
-            }
-        }
-
+        // TODO required
         // use install designator instead of build for all defs with minifiable option enabled
         public override void ProcessInput(Event ev)
         {
+            var stuffDef = Initializer.GetHiddenValue(typeof(Designator_Build), this, "stuffDef", info);
+
             // select build options
             if (thingDef != null && (thingDef.MadeFromStuff || thingDef.Minifiable))
             {
@@ -106,7 +83,7 @@ namespace RA
                         buildOptions.Add(option);
                     }
                 }
-                // traditional build options
+                // vanilla build options
                 else
                 {
                     foreach (var resourceDef in Find.ResourceCounter.AllCountedAmounts.Keys)
@@ -273,34 +250,6 @@ namespace RA
                     UIUtil.ResetText();
                     num2 += 29f;
                 }
-            }
-        }
-
-        // required to use replacement for private stuffDef in vanilla Designator_Build
-        public override void DesignateSingleCell(IntVec3 c)
-        {
-            if (DebugSettings.godMode || PlacingDef.GetStatValueAbstract(StatDefOf.WorkToMake, stuffDef) == 0f)
-            {
-                if (PlacingDef is TerrainDef)
-                {
-                    Find.TerrainGrid.SetTerrain(c, (TerrainDef)PlacingDef);
-                }
-                else
-                {
-                    var thing = ThingMaker.MakeThing((ThingDef)PlacingDef, stuffDef);
-                    thing.SetFactionDirect(Faction.OfPlayer);
-                    GenSpawn.Spawn(thing, c, placingRot);
-                }
-            }
-            else
-            {
-                GenSpawn.WipeExistingThings(c, placingRot, PlacingDef.blueprintDef, true);
-                GenConstruct.PlaceBlueprintForBuild(PlacingDef, c, placingRot, Faction.OfPlayer, stuffDef);
-            }
-            MoteThrower.ThrowMetaPuffs(GenAdj.OccupiedRect(c, placingRot, PlacingDef.Size));
-            if (PlacingDef == ThingDef.Named("OrbitalTradeBeacon"))
-            {
-                ConceptDatabase.KnowledgeDemonstrated(ConceptDefOf.BuildOrbitalTradeBeacon, KnowledgeAmount.Total);
             }
         }
     }

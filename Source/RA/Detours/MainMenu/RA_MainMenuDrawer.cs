@@ -71,7 +71,7 @@ namespace RA
             // game title
             var titleRect = new Rect((Screen.width - adjust.x) / 2f + TitleShift, initialRect.y - adjust.y + TitleShift, adjust.x, adjust.y);
             //titleRect.x = Screen.width - adjust.x - 50f;
-            GUI.DrawTexture(titleRect, Assets.MainMenuTitle, ScaleMode.StretchToFill, true);
+            GUI.DrawTexture(titleRect, CommonTextures.MainMenuTitle, ScaleMode.StretchToFill, true);
 
             // tribute to tynan under the main game title
             var creditRect = titleRect;
