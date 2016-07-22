@@ -3,7 +3,7 @@ using System.Text;
 using RimWorld;
 using UnityEngine;
 using Verse;
-using static RA.Assets;
+using static RA.CommonTextures;
 
 namespace RA
 {

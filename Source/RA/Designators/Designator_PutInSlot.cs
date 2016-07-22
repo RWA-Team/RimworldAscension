@@ -8,6 +8,7 @@ using Verse.Sound;
 
 namespace RA
 {
+    [StaticConstructorOnStartup]
     public class Designator_PutInSlot : Designator
     {
         public static readonly Texture2D texPutInArrow = ContentFinder<Texture2D>.Get("UI/Gizmoes/PutIn");

@@ -3,7 +3,8 @@ using Verse;
 
 namespace RA
 {
-    public static class Assets
+    [StaticConstructorOnStartup]
+    public static class CommonTextures
     {
         #region TEXTURES
 
@@ -20,7 +21,7 @@ namespace RA
 
         #endregion
 
-        public static void Init()
+        static CommonTextures()
         {
             Missing = ContentFinder<Texture2D>.Get("Missing");
             MainMenuBackground = ContentFinder<Texture2D>.Get("UI/MainMenu/Background");
