@@ -16,7 +16,7 @@
 	- Building_Art_Shadowed class - allows casting of fading shadows from stuffed things
 	- terrainAffordanceNeeded - type of terrain required to be build upon (no difference in Light/Heavy in the game so far)
 	 -->
-
+	 
 	<!--==================== Decorations ========================-->
 
 	<ThingDef Name="Decoration" ParentName="Building" Abstract="True">
