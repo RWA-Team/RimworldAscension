@@ -9,15 +9,18 @@ namespace RA
     {
         public static ThingDef DefaultStuffFor(ThingDef def)
         {
-            if (Game.Mode != GameMode.MapPlaying || !def.MadeFromStuff)
+            if (Current.ProgramState != ProgramState.MapPlaying || !def.MadeFromStuff)
                 return null;
 
-            // TODO: might cause performance issues
+            //if (def.Minifiable)
+            //    return GenStuff.DefaultStuffFor(def.minifiedDef);
+
+            // TODO: might cause performance issues (use resources readout?)
             var existingResource =
                 Find.ListerThings.ThingsInGroup(ThingRequestGroup.HaulableEver)
                     .FirstOrDefault(thing =>
-                            thing.Spawned && thing.IsForbidden(Faction.OfColony) && thing.def.IsStuff &&
-                            def.stuffProps.CanMake(def));
+                        thing.Spawned && !thing.IsForbidden(Faction.OfPlayer) && !Find.Reservations.IsReserved(thing,Faction.OfPlayer) && thing.def.IsStuff &&
+                        def.stuffProps.CanMake(def));
 
             return existingResource != null ? existingResource.Stuff : GenStuff.RandomStuffFor(def);
         }

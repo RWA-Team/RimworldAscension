@@ -96,7 +96,7 @@
 				<offset>(0,0,-0.3)</offset>
 			</shadowData>	
 		</graphicData>
-		<altitudeLayer>Waist</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<interactionCellOffset>(0,0,1)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<statBases>
@@ -149,7 +149,7 @@
 			<drawSize>(3.2,3.2)</drawSize>
 		</graphicData>
 		<passability>Impassable</passability>
-		<altitudeLayer>BuildingTall</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<pathCost>150</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>

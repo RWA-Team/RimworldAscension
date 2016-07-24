@@ -3,8 +3,7 @@ using Verse;
 
 namespace RA
 {
-    // hand are draw only of any position shift from Vector3.zero is set like (0, 0, 0.1f)
-    // only shifts % 0.1 are accepted by game
+    // hands are draw only if any position shift from Vector3.zero is set, like (0, 0, 0.1f)
     public class CompHandsDrawer : ThingComp
     {
         public Vector3 FirstHandPosition => (props as CompHandsDrawer_Properties).firstHandPosition;

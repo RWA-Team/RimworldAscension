@@ -110,22 +110,25 @@ namespace RA
 
         public static void DoImpactExplosion(Thing instigator, float radius)
         {
-            var explosion = (Explosion)GenSpawn.Spawn(ThingDefOf.Explosion, instigator.Position);
-            explosion.radius = radius;
-            explosion.damType = DamageDefOf.Bomb;
-            explosion.instigator = instigator;
-            // damage is proportional to the size o the object
-            explosion.damAmount = Mathf.RoundToInt(DamageDefOf.Bomb.explosionDamage*radius);
-            explosion.source = instigator.def;
-            explosion.applyDamageToExplosionCellsNeighbors = true;
+            var explosion = new Explosion
+            {
+                position = instigator.Position,
+                radius = radius,
+                damType = DamageDefOf.Bomb,
+                instigator = instigator,
+                damAmount = Mathf.RoundToInt(DamageDefOf.Bomb.explosionDamage*radius),
+                source = instigator.def,
+                applyDamageToExplosionCellsNeighbors = true
+            };
 
+            // damage is proportional to the size o the object
             if (instigator.def.defName == "MeteoriteFlying")
             {
                 explosion.postExplosionSpawnChance = 0.25f;
                 explosion.postExplosionSpawnThingDef = ThingDef.Named("CobbleSlate");
             }
 
-            explosion.ExplosionStart(null);
+            Find.Map.GetComponent<ExplosionManager>().StartExplosion(explosion, null);
         }
 
         // Punch the roof, if needed

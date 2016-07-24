@@ -23,7 +23,7 @@ namespace RA
         {
             get
             {
-                if (Game.Mode == GameMode.MapPlaying)
+                if (Current.ProgramState == ProgramState.MapPlaying)
                 {
                     var items = new List<Thing>();
                     foreach (var tradeCenter in Find.ListerBuildings.AllBuildingsColonistOfClass<TradeCenter>())

@@ -502,6 +502,56 @@
 		</stuffProps>
 	</ThingDef>
 
+	<!--===================== Clay =====================-->
+
+	<ThingDef Name="Clay" ParentName="Resource" Abstract="True">
+		<statBases>
+			<Flammability>0</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>Clay</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Items/Resources/ClayClump</texPath>
+		</graphicData>
+		<stuffProps>
+			<categories>
+				<li>Clay</li>
+			</categories>
+		</stuffProps>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Clay">
+		<defName>ClayClumpGray</defName>
+		<label>gray clay clumps</label>
+		<description>Clumps of gray clay.</description>
+		<graphicData>
+			<color>(128,128,140)</color>
+		</graphicData>
+		<tradeability>Never</tradeability>
+		<stuffProps>
+			<color>(128,128,140)</color>
+			<stuffAdjective>gray clay</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
+	<ThingDef ParentName="Clay">
+		<defName>ClayClumpWhite</defName>
+		<label>white clay clumps</label>
+		<description>Clumps of white clay.</description>
+		<graphicData>
+			<color>(220,220,220)</color>
+		</graphicData>
+		<statBases>
+			<MarketValue>20</MarketValue>
+		</statBases>
+		<stuffProps>
+			<color>(220,220,220)</color>
+			<stuffAdjective>porcelain</stuffAdjective>
+		</stuffProps>
+	</ThingDef>
+
 	<!--===================== Clay Bricks ====================-->
 
 	<ThingDef Name="Brick" ParentName="Resource">

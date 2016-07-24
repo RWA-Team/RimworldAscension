@@ -54,7 +54,7 @@ namespace RA
             parent.Destroy();
             
             // NOTE: GenStuff.DefaultStuffFor require more default stuff types
-            PlaceFrameForBuild(Properties.upgradeTargetDef, parent.Position, parent.Rotation, Faction.OfColony, GenStuff.DefaultStuffFor(Properties.upgradeTargetDef));
+            PlaceFrameForBuild(Properties.upgradeTargetDef, parent.Position, parent.Rotation, Faction.OfPlayer, GenStuff.DefaultStuffFor(Properties.upgradeTargetDef));
         }
 
         public void PlaceFrameForBuild(BuildableDef sourceDef, IntVec3 center, Rot4 rotation, Faction faction, ThingDef stuff)

@@ -16,12 +16,7 @@
 		Blunt\SharpDamageMultiplier
 	-->
 
-	<!--==================== Base Abstracts ========================-->
-
 	<ThingDef Name="Resource" ParentName="Item" Abstract="True">
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
 		<resourceReadoutPriority>Middle</resourceReadoutPriority>
 		<stackLimit>75</stackLimit>
 	</ThingDef>
@@ -34,6 +29,7 @@
 		<tickerType>Rare</tickerType>
 	</ThingDef>
 	
+	<!--==================== Resources ========================-->
 
 	<ThingDef ParentName="Resource">
 		<defName>Bottle</defName>
@@ -90,8 +86,8 @@
 		<label>bark fibre</label>
 		<description>A bunch of bark fibre.</description>
 		<graphicData>
-			<shaderType>Cutout</shaderType>
-			<texPath>Things/Items/Resources/BarkFibre</texPath>
+			<texPath>Things/Items/Resources/Coal</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 			<color>(174,124,0)</color>
 		</graphicData>
 		<soundInteract>Grain_Drop</soundInteract>
@@ -207,43 +203,6 @@
 			<li>ResourcesRaw</li>
 		</thingCategories>
 		<tradeability>Never</tradeability>
-	</ThingDef>
-
-	<!--========================= Clay =========================-->
-
-	<ThingDef Name="Clay" ParentName="Resource" Abstract="True">
-		<statBases>
-			<Flammability>0</Flammability>
-		</statBases>
-		<thingCategories>
-			<li>Clay</li>
-		</thingCategories>
-		<graphicData>
-			<texPath>Things/Items/Resources/ClayClump</texPath>
-		</graphicData>
-	</ThingDef>
-
-
-	<ThingDef ParentName="Clay">
-		<defName>ClayClumpGray</defName>
-		<label>gray clay clumps</label>
-		<description>Clumps of gray clay.</description>
-		<graphicData>
-			<color>(128,128,140)</color>
-		</graphicData>
-		<tradeability>Never</tradeability>
-	</ThingDef>
-
-	<ThingDef ParentName="Clay">
-		<defName>ClayClumpWhite</defName>
-		<label>white clay clumps</label>
-		<description>Clumps of white clay.</description>
-		<graphicData>
-			<color>(220,220,220)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>20</MarketValue>
-		</statBases>
 	</ThingDef>
 
 	<!--========================= Sand =========================-->

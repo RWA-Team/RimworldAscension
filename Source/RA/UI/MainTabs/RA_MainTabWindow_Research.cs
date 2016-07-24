@@ -57,13 +57,13 @@ namespace RA
             // MainTabWindow.DoWindowContents
             if (Anchor == MainTabWindowAnchor.Left)
             {
-                currentWindowRect.x = 0f;
+                windowRect.x = 0f;
             }
             else
             {
-                currentWindowRect.x = Screen.width - currentWindowRect.width;
+                windowRect.x = Screen.width - windowRect.width;
             }
-            currentWindowRect.y = Screen.height - 35 - currentWindowRect.height;
+            windowRect.y = Screen.height - 35 - windowRect.height;
             if (def.concept != null)
             {
                 ConceptDatabase.KnowledgeDemonstrated(def.concept, KnowledgeAmount.GuiFrame);
@@ -117,7 +117,7 @@ namespace RA
             if (currentFilter != "")
             {
                 // draw clear filter text field button
-                if (Widgets.ImageButton(rectClearFilterButton, Widgets.CheckboxOffTex))
+                if (Widgets.ButtonImage(rectClearFilterButton, Widgets.CheckboxOffTex))
                 {
                     currentFilter = "";
                     RefreshList();
@@ -125,7 +125,7 @@ namespace RA
             }
 
             // draw name sorter button
-            if (Widgets.ImageButton(rectSortByNameButton, texSortByName))
+            if (Widgets.ButtonImage(rectSortByNameButton, texSortByName))
             {
                 // if other sort option was selected before
                 if (currentSortOption != SortOptions.Name)
@@ -143,7 +143,7 @@ namespace RA
                 }
             }
             // draw cost sorter button
-            if (Widgets.ImageButton(rectSortByCostButton, texSortByCost))
+            if (Widgets.ButtonImage(rectSortByCostButton, texSortByCost))
             {
                 if (currentSortOption != SortOptions.Cost)
                 {
@@ -177,7 +177,7 @@ namespace RA
                     GUI.DrawTexture(rectCurrentProject, TexUI.HighlightTex);
                 }
 
-                var text = current.LabelCap + " (" + current.totalCost.ToString("F0") + ")";
+                var text = current.LabelCap + " (" + current.CostApparent.ToString("F0") + ")";
                 var sidebarRowInner = new Rect(rectCurrentProject);
                 sidebarRowInner.x += 6f;
                 sidebarRowInner.width -= 6f;
@@ -195,7 +195,7 @@ namespace RA
                     {
                         textColor = new Color(1f, 1f, 1f);
                     }
-                    else if (!current.ResearchPrereqsFulfilled)
+                    else if (!current.PrerequisitesCompleted)
                     {
                         textColor = new Color(.6f, .6f, .6f);
                     }
@@ -208,7 +208,7 @@ namespace RA
                 {
                     textColor = new Color(.8f, .85f, 1f);
                 }
-                if (Widgets.TextButton(sidebarRowInner, text, false, true, textColor))
+                if (Widgets.ButtonText(sidebarRowInner, text, false, true, textColor))
                 {
                     SoundDefOf.Click.PlayOneShotOnCamera();
                     selectedProject = current;
@@ -302,7 +302,7 @@ namespace RA
                     Widgets.Label(rectResearchButton, "InProgress".Translate());
                     Text.Anchor = TextAnchor.UpperLeft;
                 }
-                else if (!selectedProject.ResearchPrereqsFulfilled)
+                else if (!selectedProject.PrerequisitesCompleted)
                 {
                     Widgets.DrawMenuSection(rectResearchButton);
                     Text.Anchor = TextAnchor.MiddleCenter;
@@ -311,7 +311,7 @@ namespace RA
                 }
                 else
                 {
-                    if (Widgets.TextButton(rectResearchButton, "Research".Translate()))
+                    if (Widgets.ButtonText(rectResearchButton, "Research".Translate()))
                     {
                         SoundDef.Named("ResearchStart").PlayOneShotOnCamera();
                         Find.ResearchManager.currentProj = selectedProject;
@@ -320,7 +320,7 @@ namespace RA
                     {
                         var rectInstaResearchButton = rectResearchButton;
                         rectInstaResearchButton.x += rectInstaResearchButton.width + 4f;
-                        if (Widgets.TextButton(rectInstaResearchButton, "Debug Insta-finish"))
+                        if (Widgets.ButtonText(rectInstaResearchButton, "Debug Insta-finish"))
                         {
                             Find.ResearchManager.currentProj = selectedProject;
                             Find.ResearchManager.InstantFinish(selectedProject);
@@ -329,9 +329,9 @@ namespace RA
                 }
 
                 var rectProgressBar = new Rect(15f, 450f, rectInnerDetailsPanel.width - 30f, 35f);
-                Widgets.FillableBar(rectProgressBar, selectedProject.PercentComplete, BarFillTex, BarBgTex, true);
+                Widgets.FillableBar(rectProgressBar, selectedProject.ProgressPercent, BarFillTex, BarBgTex, true);
                 Text.Anchor = TextAnchor.MiddleCenter;
-                Widgets.Label(rectProgressBar, selectedProject.ProgressNumbersString);
+                Widgets.Label(rectProgressBar, selectedProject.ProgressApparent.ToString("F0") + " / " + selectedProject.CostApparent.ToString("F0"));
                 Text.Anchor = TextAnchor.UpperLeft;
             }
             GUI.EndGroup();
@@ -346,10 +346,10 @@ namespace RA
                     researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => !projectDef.prerequisites.Contains(projectDef));
                     break;
                 case ShowResearch.Completed:
-                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => projectDef.IsFinished && projectDef.ResearchPrereqsFulfilled);
+                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => projectDef.IsFinished && projectDef.PrerequisitesCompleted);
                     break;
                 default:
-                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => !projectDef.IsFinished && projectDef.ResearchPrereqsFulfilled);
+                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => !projectDef.IsFinished && projectDef.PrerequisitesCompleted);
                     break;
             }
 
@@ -361,7 +361,7 @@ namespace RA
             switch (currentSortOption)
             {
                 case SortOptions.Cost:
-                    researchProjectsList = researchProjectsList.OrderBy(projectDef => projectDef.totalCost);
+                    researchProjectsList = researchProjectsList.OrderBy(projectDef => projectDef.CostApparent);
                     break;
                 case SortOptions.Name:
                     researchProjectsList = researchProjectsList.OrderBy(projectDef => projectDef.LabelCap);

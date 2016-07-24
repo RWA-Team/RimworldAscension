@@ -16,7 +16,7 @@
 	 -->
 
 	<ThingDef Name="Furniture" ParentName="Building" Abstract="True">
-		<altitudeLayer>Waist</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<designationCategory>Furniture</designationCategory>
 		<comps>
 			<li>
@@ -43,13 +43,6 @@
 			<li>RA.ITab_Container</li>
 		</inspectorTabs>
 	</ThingDef>
-
-
-	<ThingDef Name="MinifiedFurniture" ParentName="Minified" Abstract="True">
-		<thingCategories>
-			<li>MinifiedFurniture</li>
-		</thingCategories>
-	</ThingDef>	
 
 	<!--========================= Containers =========================-->
 
@@ -87,24 +80,19 @@
 				<itemsCap>3</itemsCap>
 			</li>
 		</comps>
-		<minifiedDef>BasketMinified</minifiedDef>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>BasketMinified</defName>
-		<label>basket</label>
-	</ThingDef>
-
-
 	<ThingDef ParentName="Container">
 		<defName>Chest</defName>
-		<label>basket</label>
+		<label>chest</label>
 		<Description>A bark fiber based basket. Used to store various things inside.</Description>
 		<graphicData>
-			<texPath>Missing</texPath>
+			<texPath>Things/Buildings/Furniture/Containers/Chest/Chest</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(0.9,0.9)</drawSize>
 		</graphicData>
@@ -133,17 +121,12 @@
 				<itemsCap>3</itemsCap>
 			</li>
 		</comps>
-		<minifiedDef>ChestMinified</minifiedDef>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
-
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>ChestMinified</defName>
-		<label>basket</label>
-	</ThingDef>
-
 	
 	<ThingDef ParentName="Container">
 		<defName>Barrel</defName>
@@ -179,17 +162,12 @@
 				<itemsCap>3</itemsCap>
 			</li>
 		</comps>
-		<minifiedDef>ChestMinified</minifiedDef>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
-
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>ChestMinified</defName>
-		<label>basket</label>
-	</ThingDef>
-	
 
 	<ThingDef ParentName="Container">
 		<defName>Pot</defName>
@@ -222,15 +200,11 @@
 				<rotModifier>0.75</rotModifier>
 			</li>
 		</comps>
-		<minifiedDef>PotMinified</minifiedDef>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Firing</li>
 		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>PotMinified</defName>
-		<label>pot</label>
 	</ThingDef>
 
 	<!--========================= Beds =========================-->
@@ -514,7 +488,6 @@
 			<drawSize>(0.8,0.8)</drawSize>
 		</graphicData>
 		<rotatable>false</rotatable>
-		<minifiedDef>StoolNeolithicStoneMinified</minifiedDef>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<WorkToMake>750</WorkToMake>
@@ -527,17 +500,11 @@
 		<stuffCategories>
 			<li>StoneChunk</li>
 		</stuffCategories>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Masonry</li>
 		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>StoolNeolithicStoneMinified</defName>
-		<label>stone stool</label>
-		<stuffCategories>
-			<li>StoneChunk</li>
-		</stuffCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="Stool">
@@ -551,7 +518,6 @@
 			<drawSize>(0.8,0.8)</drawSize>
 		</graphicData>
 		<rotatable>false</rotatable>
-		<minifiedDef>StoolNeolithicWoodMinified</minifiedDef>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<WorkToMake>750</WorkToMake>
@@ -564,17 +530,11 @@
 		<stuffCategories>
 			<li>WoodLog</li>
 		</stuffCategories>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>StoolNeolithicWoodMinified</defName>
-		<label>stool</label>
-		<stuffCategories>
-			<li>WoodLog</li>
-		</stuffCategories>
 	</ThingDef>
 
 	<!--======================= Tables ==============================-->
@@ -617,19 +577,12 @@
 		<costList>
 			<TableNeolithicStone>1</TableNeolithicStone>
 		</costList>
-		<minifiedDef>TableNeolithicStoneMinified</minifiedDef>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<rotatable>false</rotatable>
 		<researchPrerequisites>
 			<li>Masonry</li>
 		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>TableNeolithicStoneMinified</defName>
-		<label>short table</label>
-		<stuffCategories>
-			<li>StoneChunk</li>
-		</stuffCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="Table">
@@ -653,16 +606,9 @@
 		<costList>
 			<TableNeolithicWood>1</TableNeolithicWood>
 		</costList>
-		<minifiedDef>TableNeolithicWoodMinified</minifiedDef>
+		<!-- actual minified def is auto generated -->
+		<minifiedDef>Placeholder</minifiedDef>
 		<rotatable>false</rotatable>
-	</ThingDef>
-
-	<ThingDef ParentName="MinifiedFurniture">
-		<defName>TableNeolithicWoodMinified</defName>
-		<label>short table</label>
-		<stuffCategories>
-			<li>StoneChunk</li>
-		</stuffCategories>
 	</ThingDef>
 
 </Buildings>

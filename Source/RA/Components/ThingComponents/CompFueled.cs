@@ -70,7 +70,7 @@ namespace RA
             {
                 filterFuelPossible.SetAllow(thingDef, true);
             }
-            filterFuelCurrent.CopyFrom(filterFuelPossible);
+            filterFuelCurrent.CopyAllowancesFrom(filterFuelPossible);
         }
 
         public override void CompTick()

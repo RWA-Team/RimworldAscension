@@ -47,7 +47,7 @@ namespace RA
 
             // negate deal button
             var negateButtonRect = new Rect(colonyLabelRect.x, colonyLabelRect.y, 80f, colonyLabelRect.height).CenteredOnXIn(mainRect);
-            if (Widgets.TextButton(negateButtonRect, "Negate"))
+            if (Widgets.ButtonText(negateButtonRect, "Negate"))
             {
                 tradeCenter.NegateTradeDeal();
                 var currentITab = (MainTabWindow_Inspect)MainTabDefOf.Inspect.Window;

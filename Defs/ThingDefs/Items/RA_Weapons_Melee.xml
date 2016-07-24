@@ -397,7 +397,7 @@
 		</comps>
 	</ThingDef>
 
-	<!-- ========================= Midworld =========================-->
+	<!-- ========================= Industrial =========================-->
 
 	<ThingDef ParentName="WeaponMelee">
 		<defName>Multitool</defName>
@@ -429,7 +429,7 @@
 				</workTypes>
 			</li>
 		</comps>
-		<techLevel>Midworld</techLevel>
+		<techLevel>Industrial</techLevel>
 	</ThingDef>
 
 </ThingDefs>

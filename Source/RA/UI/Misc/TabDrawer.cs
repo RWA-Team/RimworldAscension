@@ -60,7 +60,7 @@ namespace RA
                         MouseoverSounds.DoRegion(rectCurrentTabHeader, SoundDefOf.MouseoverTab);
                     }
                     // categories clicked
-                    if (Widgets.InvisibleButton(rectCurrentTabHeader))
+                    if (Widgets.ButtonInvisible(rectCurrentTabHeader))
                     {
                         // select if not selected
                         if (currentTab != tabSelected && currentTab.clickedAction != null)

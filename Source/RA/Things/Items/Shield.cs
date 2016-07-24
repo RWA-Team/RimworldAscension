@@ -16,7 +16,7 @@ namespace RA
         public const int BaseAbsorbChance_Ranged = 50;
 
         // determine when to display shield texture and gizmo
-        public bool ShouldDisplay => !wearer.Dead && !wearer.Downed && wearer.Faction.HostileTo(Faction.OfColony) && (!wearer.IsPrisonerOfColony || (wearer.MentalStateDef != null && wearer.MentalStateDef.isAggro));
+        public bool ShouldDisplay => !wearer.Dead && !wearer.Downed && wearer.Faction.HostileTo(Faction.OfPlayer) && (!wearer.IsPrisonerOfColony || (wearer.MentalStateDef != null && wearer.MentalStateDef.IsAggro));
 
         // absorbs recieved damage
         public override bool CheckPreAbsorbDamage(DamageInfo dinfo)
@@ -96,7 +96,7 @@ namespace RA
             drawCenter.y = Altitudes.AltitudeFor(AltitudeLayer.Pawn);
             var s = new Vector3(1f, 1f, 1f);
 
-            if (wearer.Rotation == Rot4.North && (wearer.Faction == Faction.OfColony && !wearer.Drafted || wearer.Faction.HostileTo(Faction.OfColony)))
+            if (wearer.Rotation == Rot4.North && (wearer.Faction == Faction.OfPlayer && !wearer.Drafted || wearer.Faction.HostileTo(Faction.OfPlayer)))
             {
                 drawCenter.y += 0.1f;
             }

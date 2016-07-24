@@ -16,8 +16,6 @@ namespace RA
         public List<RA_ArchitectCategoryTab> categories;
         public RA_ArchitectCategoryTab selectedTab;
 
-        protected override float WindowPadding => 0f;
-
         public float WinHeight
             => Mathf.CeilToInt((float) (categories.Count - 2)/2)*BuildButtonHeight + DesignationButtonHeight +
                UIUtil.TextHeight*(categories.Count > 2 ? 2 : 1);
@@ -26,7 +24,7 @@ namespace RA
         {
             base.PreOpen();
             CacheTabs();
-            currentWindowRect = new Rect(0, UIUtil.MainTabsPanelHeight + WinHeight, WinWidth, WinHeight);
+            windowRect = new Rect(0, UIUtil.MainTabsPanelHeight + WinHeight, WinWidth, WinHeight);
         }
 
         // determines the DesignationCategories to show in the menu list
@@ -34,7 +32,7 @@ namespace RA
         {
             categories = new List<RA_ArchitectCategoryTab>();
             foreach (var category in DefDatabase<DesignationCategoryDef>.AllDefs
-                .Where(cat => cat.resolvedDesignators.Any(designator => designator.Visible))
+                .Where(cat => cat.ResolvedAllowedDesignators.Any(designator => designator.Visible))
                         .OrderByDescending(des => des.order))
             {
                 categories.Add(new RA_ArchitectCategoryTab(category));
@@ -64,8 +62,8 @@ namespace RA
 
                     // draw buttons
                     var buttonRect = new Rect(columnIndex*columnWidth, 0, columnWidth, DesignationButtonHeight);
-                    if (WidgetsSubtle.ButtonSubtle(buttonRect, categories[i].def.LabelCap, 0f, 8f,
-                        SoundDefOf.MouseoverButtonCategory))
+                    if (Widgets.ButtonTextSubtle(buttonRect, categories[i].def.LabelCap, 0f, 8f,
+                        SoundDefOf.MouseoverCategory))
                     {
                         ClickedCategory(categories[i]);
                     }
@@ -94,8 +92,8 @@ namespace RA
                             BuildButtonHeight);
 
                         // draw buttons
-                        if (WidgetsSubtle.ButtonSubtle(buttonRect, categories[i].def.LabelCap, 0f, 8f,
-                            SoundDefOf.MouseoverButtonCategory))
+                        if (Widgets.ButtonTextSubtle(buttonRect, categories[i].def.LabelCap, 0f, 8f,
+                            SoundDefOf.MouseoverCategory))
                         {
                             ClickedCategory(categories[i]);
                         }

@@ -62,10 +62,10 @@
 	<!--========================= Landed Skyfallers =============================-->
 
 
-	<ThingDef Name="ShipPartsLanded" Abstract="True">
-		<altitudeLayer>BuildingTall</altitudeLayer>
-		<passability>Impassable</passability>
+	<ThingDef Name="ShipPartsLanded" ParentName="Building" Abstract="True">
 		<category>Building</category>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
 		<tickerType>Normal</tickerType>
 		<selectable>true</selectable>
 		<useHitPoints>false</useHitPoints>
@@ -88,10 +88,6 @@
 			</shadowData>
 			<drawSize>(2,2)</drawSize>
 		</graphicData>
-		<statBases>
-			<!-- required for deconstruction to loot -->
-			<WorkToMake>200</WorkToMake>
-		</statBases>
 		<comps>
 			<li Class="RA.CompLoot_Properties">
 				<lootCounters>

@@ -15,9 +15,9 @@ namespace RA
         {
             get
             {
-                var x = (float)Math.Sin(Find.RealTime.timeUnpaused * ShakeFrequency) * curShakeMag;
-                var y = (float)Math.Sin(Find.RealTime.timeUnpaused * ShakeFrequency * 1.05) * curShakeMag;
-                var z = (float)Math.Sin(Find.RealTime.timeUnpaused * ShakeFrequency * 1.1) * curShakeMag;
+                var x = (float)Math.Sin(Time.realtimeSinceStartup * ShakeFrequency) * curShakeMag;
+                var y = (float)Math.Sin(Time.realtimeSinceStartup * ShakeFrequency * 1.05) * curShakeMag;
+                var z = (float)Math.Sin(Time.realtimeSinceStartup * ShakeFrequency * 1.1) * curShakeMag;
                 return new Vector3(x, y, z);
             }
         }
@@ -34,7 +34,7 @@ namespace RA
                 if (curShakeMag > MaxShakeMag)
                     curShakeMag = MaxShakeMag;
 
-                Find.CameraMap.JumpTo(Find.CameraMap.MapPosition.ToVector3Shifted() + ShakeOffset);
+                Find.CameraDriver.JumpTo(Find.CameraDriver.MapPosition.ToVector3Shifted() + ShakeOffset);
             }
         }
 

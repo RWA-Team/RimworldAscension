@@ -8,8 +8,8 @@ namespace RA
         // assign Pawn_TraderTracker based on pawn caravan role, not mindState.wantsToTradeWithColony
         public static void AddAndRemoveDynamicComponents(Pawn pawn, bool actAsIfSpawned = false)
         {
-            var flag = pawn.Faction != null && pawn.Faction.def == FactionDefOf.Colony;
-            var flag2 = pawn.HostFaction != null && pawn.HostFaction.def == FactionDefOf.Colony;
+            var flag = pawn.Faction != null && pawn.Faction.IsPlayer;
+            var flag2 = pawn.HostFaction != null && pawn.HostFaction.IsPlayer;
             if (pawn.RaceProps.Humanlike && (!pawn.Dead || actAsIfSpawned))
             {
                 if (pawn.GetCaravanRole() == TraderCaravanRole.Trader)

@@ -1,28 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="Item" Abstract="True">
-		<thingClass>ThingWithComps</thingClass>
-		<statBases>
-			<Flammability>1.0</Flammability>
-			<MarketValue>1</MarketValue>
-		</statBases>
-		<comps>
-			<li Class="CompProperties_Forbiddable"/>
-		</comps>
-		<soundInteract>Standard_Drop</soundInteract>
-		<soundDrop>Standard_Drop</soundDrop>
-		<pathCost>15</pathCost>
-		<category>Item</category>
-		<useHitPoints>true</useHitPoints>
-		<selectable>true</selectable>
-		<altitudeLayer>Item</altitudeLayer>
-		<alwaysHaulable>true</alwaysHaulable>
-		<drawGUIOverlay>true</drawGUIOverlay>
-		<tickerType>Never</tickerType>
-		<techLevel>Neolithic</techLevel>
-	</ThingDef>
-
 	<ThingDef Name="TradeGood" ParentName="Item" Abstract="True">
 		<graphicData>
 			<graphicClass>Graphic_Random</graphicClass>
