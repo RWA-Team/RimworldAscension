@@ -6,7 +6,7 @@
 		<label>crafting spot</label>
 		<Description>A plant pot.</Description>
 	</ThingDef>
-
+	
 	<ThingDef ParentName="Building">
 		<DefName>TableSculpting</DefName>
 		<label>sculptor's table</label>

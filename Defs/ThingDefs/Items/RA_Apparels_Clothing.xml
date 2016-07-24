@@ -79,7 +79,7 @@
 
 	<ThingDef Name="ClothingNeolithic" ParentName="Clothing" Abstract="True">
 		<stuffCategories>
-			<li>Leathery</li>
+			<li>Leather</li>
 		</stuffCategories>
 		<apparel>
 			<tags>

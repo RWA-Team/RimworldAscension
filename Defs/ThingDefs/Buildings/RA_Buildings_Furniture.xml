@@ -307,7 +307,7 @@
 			<WoodLog>10</WoodLog>
 		</costList>
 		<stuffCategories>
-			<li>Leathery</li>
+			<li>Leather</li>
 		</stuffCategories>
 		<costStuffCount>30</costStuffCount>
 		<researchPrerequisites>
@@ -340,7 +340,7 @@
 			<WoodLog>20</WoodLog>
 		</costList>
 		<stuffCategories>
-			<li>Leathery</li>
+			<li>Leather</li>
 		</stuffCategories>
 		<costStuffCount>75</costStuffCount>
 		<researchPrerequisites>
@@ -373,7 +373,7 @@
 			<WoodLog>20</WoodLog>
 		</costList>
 		<stuffCategories>
-			<li>Leathery</li>
+			<li>Leather</li>
 		</stuffCategories>
 		<costStuffCount>75</costStuffCount>
 		<researchPrerequisites>
@@ -406,7 +406,7 @@
 			<WoodLog>20</WoodLog>
 		</costList>
 		<stuffCategories>
-			<li>Leathery</li>
+			<li>Leather</li>
 		</stuffCategories>
 		<costStuffCount>75</costStuffCount>
 		<researchPrerequisites>

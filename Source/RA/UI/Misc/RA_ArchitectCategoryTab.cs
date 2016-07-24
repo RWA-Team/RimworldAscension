@@ -11,7 +11,8 @@ namespace RA
 
         public RA_ArchitectCategoryTab(DesignationCategoryDef def) : base(def)
         {
-            ReassembleDesignators();
+            // TODO check if needed
+            //ReassembleDesignators();
         }
 
         public new static Rect InfoRect => new Rect(0f, CurrentY, infoTabWidth, InfoRectHeight);
