@@ -15,37 +15,33 @@ namespace RA
         public static readonly Vector2 TerrainTextureCroppedSize = new Vector2(64f, 64f);
         public static readonly Vector2 DragPriceDrawOffset = new Vector2(19f, 17f);
         public const float DragPriceDrawNumberX = 29f;
-        
-        public ThingDef stuffDef;
-        public ThingDef thingDef;
 
-        // assigns stuff type for minified buildables
+        // inheritance requirement
         public RA_Designator_Build(BuildableDef entDef) : base(entDef)
         {
-            thingDef = entDef as ThingDef;
-            if (thingDef != null)
-            {
-                if (thingDef.MadeFromStuff)
-                {
-                    stuffDef = GenStuff.DefaultStuffFor(thingDef);
-                }
-                if (thingDef.Minifiable)
-                {
-                    stuffDef = GenStuff.DefaultStuffFor(thingDef.minifiedDef);
-                }
-            }
         }
 
-        // TODO required
+        // gets/sets stuff to the inner hidden stuff def
+        public ThingDef Stuff
+        {
+            get
+            {
+                return Initializer.GetHiddenValue(typeof(Designator_Build), this, "stuffDef", info) as ThingDef;
+            }
+            set
+            {
+                Initializer.SetHiddenValue(value, typeof(Designator_Build), this, "stuffDef", info);
+            }
+        }
+        
+        // TODO
         // determine conditions of hiding similar gizmos
         public override bool GroupsWith(Gizmo other) => PlacingDef == (other as Designator_Build)?.PlacingDef;
-
-        // TODO required
+        
         // use install designator instead of build for all defs with minifiable option enabled
         public override void ProcessInput(Event ev)
         {
-            var stuffDef = Initializer.GetHiddenValue(typeof(Designator_Build), this, "stuffDef", info);
-
+            var thingDef = PlacingDef as ThingDef;
             // select build options
             if (thingDef != null && (thingDef.MadeFromStuff || thingDef.Minifiable))
             {
@@ -63,11 +59,12 @@ namespace RA
                                 minifiable.IsForbidden(Faction.OfPlayer) || minifiable.IsBurning())
                                 continue;
 
-                            var optionLabel = minifiable.TryGetComp<CompQuality>()?.CompInspectStringExtra() + minifiable.LabelCap;
+                            var optionLabel = minifiable.TryGetComp<CompQuality>()?.CompInspectStringExtra() +
+                                              minifiable.LabelCap;
                             var option = new FloatMenuOption(optionLabel, () =>
                             {
                                 DesignateInstall(minifiable);
-                                stuffDef = minifiable.Stuff;
+                                Stuff = minifiable.Stuff;
                             });
                             buildOptions.Add(option);
                         }
@@ -78,7 +75,7 @@ namespace RA
                         var option = new FloatMenuOption(optionLabel, () =>
                         {
                             DesignatorManager.Select(this);
-                            stuffDef = GenStuff.RandomStuffFor(thingDef.minifiedDef);
+                            Stuff = GenStuff.RandomStuffFor(thingDef.minifiedDef);
                         });
                         buildOptions.Add(option);
                     }
@@ -97,7 +94,7 @@ namespace RA
                             {
                                 CurActivateSound?.PlayOneShotOnCamera();
                                 DesignatorManager.Select(this);
-                                stuffDef = localStuffDef;
+                                Stuff = localStuffDef;
                             });
                             buildOptions.Add(item);
                         }
@@ -135,47 +132,15 @@ namespace RA
             }
         }
 
-        public void DesignateInstall(Thing minifiable)
-        {
-            // clear previous selections
-            Find.Selector.ClearSelection();
-            // select minifiable
-            Find.Selector.Select(minifiable, true, false);
-            // set local stuff the same as minifiable has
-            stuffDef = minifiable.Stuff;
-            // calling base method
-            CurActivateSound?.PlayOneShotOnCamera();
-            // select install designator for that minifiable, instead of build
-            DesignatorManager.Select(new Designator_Install());
-        }
-
-        public bool BlueprintPlaced(MinifiedThing minifiedThing)
-        {
-            var blueprints = Find.ListerThings.ThingsMatching(ThingRequest.ForDef(minifiedThing.InnerThing.def.installBlueprintDef));
-
-            foreach (var blueprint in blueprints)
-            {
-                var blueprint_Install = blueprint as Blueprint_Install;
-                if (blueprint_Install?.MiniToInstallOrBuildingToReinstall == minifiedThing)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         // added special case for minified things
         public override void DrawPanelReadout(ref float curY, float width)
         {
-            //// special Graphic_StuffBased implementation
-            //var baseGraphic = PlacingDef.graphic as Graphic_StuffBased;
-            //if (stuffDef != null && baseGraphic != null)
-            //    icon = (Texture2D)baseGraphic.categorizedGraphics[stuffDef.stuffProps.categories[0].defName].MatSingle.mainTexture;
+            var thingDef = PlacingDef as ThingDef;
 
             // special case for minified things
             var costList = thingDef != null && thingDef.Minifiable
                 ? new List<ThingCount> { new ThingCount(thingDef, 1) }
-                : PlacingDef.CostListAdjusted(stuffDef);
+                : PlacingDef.CostListAdjusted(Stuff);
 
             UIUtil.ResetText();
             foreach (var thingCount in costList)
@@ -205,7 +170,7 @@ namespace RA
 
             if (thingDef != null)
             {
-                Widgets.InfoCardButton(0f, curY, thingDef, stuffDef);
+                Widgets.InfoCardButton(0f, curY, thingDef, Stuff);
             }
             else
             {
@@ -219,8 +184,9 @@ namespace RA
         // added special case for minified things
         public override void DrawMouseAttachments()
         {
+            var thingDef = PlacingDef as ThingDef;
             if (useMouseIcon) GenUI.DrawMouseAttachment(icon, string.Empty);
-            if (!RA_ArchitectCategoryTab.InfoRect.Contains(GenUI.AbsMousePosition()))
+            if (!ArchitectCategoryTab.InfoRect.Contains(GenUI.AbsMousePosition()))
             {
                 var dragger = DesignatorManager.Dragger;
                 var num = dragger.Dragging ? dragger.DragCells.Count : 1;
@@ -229,7 +195,7 @@ namespace RA
                 
                 var costList = thingDef != null && thingDef.Minifiable
                     ? new List<ThingCount> {new ThingCount(thingDef, 1)}
-                    : PlacingDef.CostListAdjusted(stuffDef);
+                    : PlacingDef.CostListAdjusted(Stuff);
 
                 UIUtil.ResetText();
                 foreach (var thingCount in costList)
@@ -251,6 +217,35 @@ namespace RA
                     num2 += 29f;
                 }
             }
+        }
+
+        public void DesignateInstall(Thing minifiable)
+        {
+            // clear previous selections
+            Find.Selector.ClearSelection();
+            // select minifiable
+            Find.Selector.Select(minifiable, true, false);
+            // set local stuff the same as minifiable has
+            Stuff = minifiable.Stuff;
+            // calling base method
+            CurActivateSound?.PlayOneShotOnCamera();
+            // select install designator for that minifiable, instead of build
+            DesignatorManager.Select(new Designator_Install());
+        }
+
+        public bool BlueprintPlaced(MinifiedThing minifiedThing)
+        {
+            var blueprints = Find.ListerThings.ThingsMatching(ThingRequest.ForDef(minifiedThing.InnerThing.def.installBlueprintDef));
+
+            foreach (var blueprint in blueprints)
+            {
+                var blueprint_Install = blueprint as Blueprint_Install;
+                if (blueprint_Install?.MiniToInstallOrBuildingToReinstall == minifiedThing)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

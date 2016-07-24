@@ -167,13 +167,6 @@ namespace RA
             {
                 item = new ListableOption("Continue", delegate
                 {
-                    // reloads all play data and defs
-                    LongEventHandler.QueueLongEvent(delegate
-                    {
-                        PlayDataLoader.ClearAllPlayData();
-                        PlayDataLoader.LoadAllPlayData();
-                    }, "LoadingLongEvent", true, null);
-
                     Action preLoadLevelAction = delegate
                     {
                         Find.GameInitData.ResetWorldRelatedMapInitData();
@@ -186,13 +179,6 @@ namespace RA
                 {
                     item = new ListableOption("Quick Start", delegate
                     {
-                        // reloads all play data and defs
-                        LongEventHandler.QueueLongEvent(delegate
-                        {
-                            PlayDataLoader.ClearAllPlayData();
-                            PlayDataLoader.LoadAllPlayData();
-                        }, "LoadingLongEvent", true, null);
-
                         SceneManager.LoadScene("Gameplay");
 
                         Find.Root.Start();
