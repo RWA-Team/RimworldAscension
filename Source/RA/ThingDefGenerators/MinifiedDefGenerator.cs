@@ -49,7 +49,7 @@ namespace RA
 
                 // assign new minified def to the source ThingDef
                 sourceDef.minifiedDef = newDef;
-                
+
                 yield return newDef;
             }
         }
