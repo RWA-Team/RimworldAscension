@@ -1,10 +1,11 @@
 ﻿using System.Linq;
+using System.Text;
 using RimWorld;
 using Verse;
 
 namespace RA
 {
-    public class RA_StatWorker_MarketValue : StatWorker_MarketValue
+    public class RA_StatWorker_MarketValue : StatWorker
     {
         public const float ValuePerWorkFactor = 0.004f;
 
@@ -27,7 +28,7 @@ namespace RA
             {
                 return base.GetValueUnfinalized(req);
             }
-
+            
             // market value from costList
             var marketValueFromResources = 0f;
             if (!req.Def.costList.NullOrEmpty())
@@ -49,6 +50,32 @@ namespace RA
                                       ValuePerWorkFactor;
 
             return marketValueFromResources + marketValueFromStuff + marketValueFromWork;
+        }
+
+        public override string GetExplanation(StatRequest req, ToStringNumberSense numberSense)
+        {
+            if (req.HasThing && req.Thing is Pawn)
+            {
+                var stringBuilder = new StringBuilder();
+                stringBuilder.Append(base.GetExplanation(req, numberSense));
+                var pawn = req.Thing as Pawn;
+                stringBuilder.AppendLine();
+                stringBuilder.AppendLine("StatsReport_CharacterQuality".Translate() + ": x" + PriceUtility.PawnQualityPriceFactor(pawn).ToStringPercent());
+                return stringBuilder.ToString();
+            }
+            if (req.Def.statBases.StatListContains(StatDefOf.MarketValue))
+            {
+                return base.GetExplanation(req, numberSense);
+            }
+            var stringBuilder2 = new StringBuilder();
+            stringBuilder2.AppendLine("StatsReport_MarketValueFromStuffsAndWork".Translate());
+            return stringBuilder2.ToString();
+        }
+
+        public override bool ShouldShowFor(BuildableDef def)
+        {
+            var thingDef = def as ThingDef;
+            return thingDef != null && (TradeUtility.EverTradeable(thingDef) || thingDef.category == ThingCategory.Building);
         }
     }
 }

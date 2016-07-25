@@ -21,6 +21,12 @@ namespace RA
             if (Prefs.DevMode)
                 Log.Message("Initializer initialized");
 
+            LongEventHandler.QueueLongEvent(delegate
+            {
+                PlayDataLoader.ClearAllPlayData();
+                PlayDataLoader.LoadAllPlayData();
+            }, "LoadingLongEvent", true, null);
+
             //LongEventHandler.ExecuteWhenFinished(() =>
             //{
             //});
@@ -30,31 +36,23 @@ namespace RA
             BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance)
         {
             if (info == null)
+            {
                 info = type.GetField(fieldName, flags);
+            }
 
             return info?.GetValue(instance);
         }
 
-        //public static bool SetHiddenValue(Type type, object instance, string fieldName, object value,
-        //                                       BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance)
-        //{
-        //    // get field info
-        //    FieldInfo field = type.GetField(fieldName, flags);
-        //    // failed?
-        //    if (field == null)
-        //    {
-        //        return false;
-        //    }
-        //    // try setting it.
-        //    field.SetValue(instance, value);
-        //    // test by fetching the field again. (this is highly, stupidly inefficient, but ok).
-        //    object test;
-        //    if (!TryGetPrivateField(type, instance, fieldName, out test, flags))
-        //    {
-        //        return false;
-        //    }
-        //    return test == value;
-        //}
+        public static void SetHiddenValue(object value, Type type, object instance, string fieldName, FieldInfo info,
+                                               BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Instance)
+        {
+            if (info == null)
+            {
+                info = type.GetField(fieldName, flags);
+            }
+
+            info?.SetValue(instance, value);
+        }
 
         //This is a basic first implementation of the IL method 'hooks' (detours) made possible by RawCode's work;
         //https://ludeon.com/forums/index.php?topic=17143.0
@@ -129,6 +127,13 @@ namespace RA
             var newSelectableNow = typeof (RA_ThingSelectionUtility).GetMethod("SelectableNow",
                 BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaSelectableNow, newSelectableNow);
+
+            // changes initial log window size
+            var vanillaPostOpen = typeof(EditWindow_Log).GetMethod("PostOpen",
+                BindingFlags.Instance | BindingFlags.Public);
+            var newPostOpen = typeof(RA_EditWindow_Log).GetMethod("PostOpen",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaPostOpen, newPostOpen);
 
             // added new def generators and removed redundant
             var vanillaGenerateImpliedDefs_PreResolve = typeof (DefGenerator).GetMethod(
@@ -318,6 +323,39 @@ namespace RA
                 BindingFlags.Instance | BindingFlags.Public);
             var newIsTree_Getter = newIsTree.GetGetMethod();
             TryDetourFromTo(vanillaIsTree_Getter, newIsTree_Getter);
+
+            #endregion
+
+            #region DESIGNATORS
+
+            // TODO
+            //// changes initial log window size
+            //var vanillaProcessInput = typeof(Designator_Build).GetMethod("ProcessInput",
+            //    BindingFlags.Instance | BindingFlags.Public);
+            //var newProcessInput = typeof(RA_Designator_Build).GetMethod("ProcessInput",
+            //    BindingFlags.Instance | BindingFlags.Public);
+            //TryDetourFromTo(vanillaProcessInput, newProcessInput);
+
+            // TODO
+            var vanillaDrawPanelReadout = typeof(Designator_Build).GetMethod("DrawPanelReadout",
+                BindingFlags.Instance | BindingFlags.Public);
+            var newDrawPanelReadout = typeof(RA_Designator_Build).GetMethod("DrawPanelReadout",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaDrawPanelReadout, newDrawPanelReadout);
+
+            // TODO
+            var vanillaDrawMouseAttachments = typeof(Designator_Build).GetMethod("DrawMouseAttachments",
+                BindingFlags.Instance | BindingFlags.Public);
+            var newDrawMouseAttachments = typeof(RA_Designator_Build).GetMethod("DrawMouseAttachments",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaDrawMouseAttachments, newDrawMouseAttachments);
+
+            // TODO
+            //var vanillaGroupsWith = typeof(Designator_Build).GetMethod("GroupsWith",
+            //    BindingFlags.Instance | BindingFlags.Public);
+            //var newGroupsWith = typeof(RA_Designator_Build).GetMethod("GroupsWith",
+            //    BindingFlags.Instance | BindingFlags.Public);
+            //TryDetourFromTo(vanillaGroupsWith, newGroupsWith);
 
             #endregion
 
