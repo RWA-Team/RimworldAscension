@@ -9,21 +9,23 @@ using Verse;
 
 namespace RA
 {
+    [StaticConstructorOnStartup]
     public static class RA_MainMenuDrawer
     {
-        private static bool anyWorldFiles;
-        private static bool anyMapFiles;
+        public static bool anyWorldFiles;
+        public static bool anyMapFiles;
 
-        private const float TitleShift = 15f;
+        public const float TitleShift = 15f;
 
-        private static readonly Texture2D IconBlog = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Blog");
-        private static readonly Texture2D IconForums = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Forums");
-        private static readonly Texture2D IconTwitter = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Twitter");
-        private static readonly Texture2D IconBook = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Book");
-        private static readonly Vector2 PaneSize = new Vector2(450f, 450f);
-        private static readonly Vector2 TitleSize = new Vector2(1024f, 200f);
-        private static readonly Texture2D TexLudeonLogo = ContentFinder<Texture2D>.Get("UI/HeroArt/LudeonLogoSmall");
-        private static readonly Vector2 LudeonLogoSize = new Vector2(200f, 58f);
+        public static Texture2D MainMenuTitle = ContentFinder<Texture2D>.Get("UI/MainMenu/GameTitle");
+        public static Texture2D IconBlog = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Blog");
+        public static Texture2D IconForums = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Forums");
+        public static Texture2D IconTwitter = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Twitter");
+        public static Texture2D IconBook = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Book");
+        public static Vector2 PaneSize = new Vector2(450f, 450f);
+        public static Vector2 TitleSize = new Vector2(1024f, 200f);
+        public static Texture2D TexLudeonLogo = ContentFinder<Texture2D>.Get("UI/HeroArt/LudeonLogoSmall");
+        public static Vector2 LudeonLogoSize = new Vector2(200f, 58f);
 
         //// required for drawing animation
         //public static readonly List<Texture2D> FramesList = ContentFinder<Texture2D>.GetAllInFolder("UI/MainMenu/Animation").ToList();
@@ -71,7 +73,7 @@ namespace RA
             // game title
             var titleRect = new Rect((Screen.width - adjust.x) / 2f + TitleShift, initialRect.y - adjust.y + TitleShift, adjust.x, adjust.y);
             //titleRect.x = Screen.width - adjust.x - 50f;
-            GUI.DrawTexture(titleRect, CommonTextures.MainMenuTitle, ScaleMode.StretchToFill, true);
+            GUI.DrawTexture(titleRect, MainMenuTitle, ScaleMode.StretchToFill, true);
 
             // tribute to tynan under the main game title
             var creditRect = titleRect;

@@ -327,14 +327,13 @@ namespace RA
             #endregion
 
             #region DESIGNATORS
-
-            // TODO
-            //// changes initial log window size
-            //var vanillaProcessInput = typeof(Designator_Build).GetMethod("ProcessInput",
-            //    BindingFlags.Instance | BindingFlags.Public);
-            //var newProcessInput = typeof(RA_Designator_Build).GetMethod("ProcessInput",
-            //    BindingFlags.Instance | BindingFlags.Public);
-            //TryDetourFromTo(vanillaProcessInput, newProcessInput);
+            
+           // changes initial log window size
+           var vanillaProcessInput = typeof(Designator_Build).GetMethod("ProcessInput",
+               BindingFlags.Instance | BindingFlags.Public);
+            var newProcessInput = typeof(RA_Designator_Build).GetMethod("ProcessInput",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaProcessInput, newProcessInput);
 
             // TODO
             var vanillaDrawPanelReadout = typeof(Designator_Build).GetMethod("DrawPanelReadout",

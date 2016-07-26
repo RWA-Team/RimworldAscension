@@ -1,28 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ResearchProjectDefs>
+<Defs>
 
 	<ResearchProjectDef ParentName="Blocked">
-		<defName>Pemmican</defName>
+		<defName>ShipBasics</defName>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="Blocked">
-		<defName>Devilstrand</defName>
+		<defName>ShipCryptosleep</defName>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="Blocked">
-		<defName>Stonecutting</defName>
+		<defName>ShipReactor</defName>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="Blocked">
-		<defName>CarpetMaking</defName>
+		<defName>ShipEngine</defName>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="Blocked">
-		<defName>ComplexClothing</defName>
+		<defName>ShipComputerCore</defName>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef ParentName="Blocked">
-		<defName>Electricity</defName>
-	</ResearchProjectDef>
-
-</ResearchProjectDefs>
+</Defs>

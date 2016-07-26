@@ -24,37 +24,83 @@ namespace RA
         // gets/sets stuff to the inner hidden stuff def
         public ThingDef Stuff
         {
-            get
-            {
-                return Initializer.GetHiddenValue(typeof(Designator_Build), this, "stuffDef", info) as ThingDef;
-            }
-            set
-            {
-                Initializer.SetHiddenValue(value, typeof(Designator_Build), this, "stuffDef", info);
-            }
+            get { return Initializer.GetHiddenValue(typeof (Designator_Build), this, "stuffDef", info) as ThingDef; }
+            set { Initializer.SetHiddenValue(value, typeof (Designator_Build), this, "stuffDef", info); }
         }
-        
+
         // TODO
         // determine conditions of hiding similar gizmos
         public override bool GroupsWith(Gizmo other) => PlacingDef == (other as Designator_Build)?.PlacingDef;
-        
+
         // use install designator instead of build for all defs with minifiable option enabled
         public override void ProcessInput(Event ev)
         {
+            // play click sound
+            CurActivateSound?.PlayOneShotOnCamera();
+
             var thingDef = PlacingDef as ThingDef;
             // select build options
             if (thingDef != null && (thingDef.MadeFromStuff || thingDef.Minifiable))
             {
-                var buildOptions = new List<FloatMenuOption>();
-                // minifiable things build options
-                if (thingDef.Minifiable)
+                var buildOptions = GenerateBuildOptions(thingDef);
+
+                if (buildOptions.Count > 0)
+                {
+                    // draw float menu
+                    var floatMenu = new FloatMenu(buildOptions) {vanishIfMouseDistant = true};
+                    Find.WindowStack.Add(floatMenu);
+
+                    if (thingDef.Minifiable)
+                    {
+                        // selects first option from list on pressing gizmo itself
+                        buildOptions.FirstOrDefault().action();
+                    }
+                    // current build designator for everything else
+                    else
+                    {
+                        DesignatorManager.Select(this);
+                    }
+                }
+                // no build options
+                else
+                {
+                    Messages.Message("NoStuffsToBuildWith".Translate(), MessageSound.RejectInput);
+                }
+            }
+            // select designator as it is
+            else
+            {
+                DesignatorManager.Select(this);
+            }
+        }
+
+        public List<FloatMenuOption> GenerateBuildOptions(ThingDef thingDef)
+        {
+            var buildOptions = new List<FloatMenuOption>();
+
+            // minifiables build options
+            if (thingDef.Minifiable)
+            {
+                // god mode build options
+                if (DebugSettings.godMode)
+                {
+                    var optionLabel = thingDef.LabelCap;
+                    var option = new FloatMenuOption(optionLabel, () =>
+                    {
+                        DesignatorManager.Select(this);
+                        Stuff = GenStuff.DefaultStuffFor(thingDef);
+                    });
+                    buildOptions.Add(option);
+                }
+                // search for all available minified things with proper parent def on map
+                else
                 {
                     var minifiables = Find.ListerThings.ThingsOfDef(thingDef.minifiedDef);
                     if (minifiables.Count > 0)
                     {
                         foreach (var minifiable in minifiables)
                         {
-                            if (BlueprintPlaced(minifiable as MinifiedThing) ||
+                            if (AlreadyInstalled(minifiable as MinifiedThing) ||
                                 Find.Reservations.IsReserved(minifiable, Faction.OfPlayer) ||
                                 minifiable.IsForbidden(Faction.OfPlayer) || minifiable.IsBurning())
                                 continue;
@@ -69,67 +115,28 @@ namespace RA
                             buildOptions.Add(option);
                         }
                     }
-                    else if (DebugSettings.godMode)
-                    {
-                        var optionLabel = thingDef.LabelCap;
-                        var option = new FloatMenuOption(optionLabel, () =>
-                        {
-                            DesignatorManager.Select(this);
-                            Stuff = GenStuff.RandomStuffFor(thingDef.minifiedDef);
-                        });
-                        buildOptions.Add(option);
-                    }
-                }
-                // vanilla build options
-                else
-                {
-                    foreach (var resourceDef in Find.ResourceCounter.AllCountedAmounts.Keys)
-                    {
-                        if (resourceDef.IsStuff && resourceDef.stuffProps.CanMake(thingDef) &&
-                            (DebugSettings.godMode || Find.ListerThings.ThingsOfDef(resourceDef).Count > 0))
-                        {
-                            var localStuffDef = resourceDef;
-                            var labelCap = localStuffDef.LabelCap;
-                            var item = new FloatMenuOption(labelCap, () =>
-                            {
-                                CurActivateSound?.PlayOneShotOnCamera();
-                                DesignatorManager.Select(this);
-                                Stuff = localStuffDef;
-                            });
-                            buildOptions.Add(item);
-                        }
-                    }
-                }
-
-                if (buildOptions.Count > 0)
-                {
-                    // draw float menu
-                    var floatMenu = new FloatMenu(buildOptions) { vanishIfMouseDistant = true };
-                    Find.WindowStack.Add(floatMenu);
-
-                    // call designator for pressing gizmo itself
-                    // install designator for minified
-                    if (thingDef.Minifiable)
-                    {
-                        buildOptions.FirstOrDefault().action();
-                    }
-                    // build designator for everything else
-                    else
-                    {
-                        DesignatorManager.Select(this);
-                    }
-                }
-                // no build options
-                else
-                {
-                    Messages.Message("NoStuffsToBuildWith".Translate(), MessageSound.RejectInput);
                 }
             }
-            //can't use build options selector if chosen def or stuff
+            // stuff based build options
             else
             {
-                base.ProcessInput(ev);
+                foreach (var resourceDef in Find.ResourceCounter.AllCountedAmounts.Keys)
+                {
+                    if (resourceDef.IsStuff && resourceDef.stuffProps.CanMake(thingDef) &&
+                        (DebugSettings.godMode || Find.ListerThings.ThingsOfDef(resourceDef).Count > 0))
+                    {
+                        var labelCap = resourceDef.LabelCap;
+                        var item = new FloatMenuOption(labelCap, () =>
+                        {
+                            DesignatorManager.Select(this);
+                            Stuff = resourceDef;
+                        });
+                        buildOptions.Add(item);
+                    }
+                }
             }
+
+            return buildOptions;
         }
 
         // added special case for minified things
@@ -139,7 +146,7 @@ namespace RA
 
             // special case for minified things
             var costList = thingDef != null && thingDef.Minifiable
-                ? new List<ThingCount> { new ThingCount(thingDef, 1) }
+                ? new List<ThingCount> {new ThingCount(thingDef, 1)}
                 : PlacingDef.CostListAdjusted(Stuff);
 
             UIUtil.ResetText();
@@ -192,7 +199,7 @@ namespace RA
                 var num = dragger.Dragging ? dragger.DragCells.Count : 1;
                 var num2 = 0f;
                 var vector = Event.current.mousePosition + DragPriceDrawOffset;
-                
+
                 var costList = thingDef != null && thingDef.Minifiable
                     ? new List<ThingCount> {new ThingCount(thingDef, 1)}
                     : PlacingDef.CostListAdjusted(Stuff);
@@ -225,27 +232,16 @@ namespace RA
             Find.Selector.ClearSelection();
             // select minifiable
             Find.Selector.Select(minifiable, true, false);
-            // set local stuff the same as minifiable has
-            Stuff = minifiable.Stuff;
-            // calling base method
-            CurActivateSound?.PlayOneShotOnCamera();
             // select install designator for that minifiable, instead of build
             DesignatorManager.Select(new Designator_Install());
         }
 
-        public bool BlueprintPlaced(MinifiedThing minifiedThing)
+        public bool AlreadyInstalled(MinifiedThing minifiedThing)
         {
-            var blueprints = Find.ListerThings.ThingsMatching(ThingRequest.ForDef(minifiedThing.InnerThing.def.installBlueprintDef));
-
-            foreach (var blueprint in blueprints)
-            {
-                var blueprint_Install = blueprint as Blueprint_Install;
-                if (blueprint_Install?.MiniToInstallOrBuildingToReinstall == minifiedThing)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return
+                Find.ListerThings.ThingsMatching(ThingRequest.ForDef(minifiedThing.InnerThing.def.installBlueprintDef))
+                    .Select(blueprint => blueprint as Blueprint_Install)
+                    .Any(blueprint_Install => blueprint_Install?.MiniToInstallOrBuildingToReinstall == minifiedThing);
         }
     }
 }
