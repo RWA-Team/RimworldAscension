@@ -1,11 +1,14 @@
 ﻿using RimWorld;
 using UnityEngine;
+using Verse;
 
 namespace RA
 {
+    [StaticConstructorOnStartup]
     public class RA_UI_BackgroundMain : UI_BackgroundMain
     {
-        public static readonly Vector2 MainBackgroundSize = new Vector2(2000f, 1190f);
+        public static Vector2 MainBackgroundSize = new Vector2(2000f, 1190f);
+        public static Texture2D MainMenuBackground = ContentFinder<Texture2D>.Get("UI/MainMenu/Background");
 
         public override void BackgroundOnGUI()
         {
@@ -24,7 +27,7 @@ namespace RA
                 position = new Rect(0f, Screen.height/2 - num/2f, width, num);
             }
 
-            GUI.DrawTexture(position, CommonTextures.MainMenuBackground, ScaleMode.ScaleToFit);
+            GUI.DrawTexture(position, MainMenuBackground, ScaleMode.ScaleToFit);
         }
     }
 }

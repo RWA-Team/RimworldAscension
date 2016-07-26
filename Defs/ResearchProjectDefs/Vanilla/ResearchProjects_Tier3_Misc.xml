@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ResearchProjectDef ParentName="Blocked">
+		<defName>Firefoam</defName>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="Blocked">
+		<defName>GeothermalPower</defName>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="Blocked">
+		<defName>HospitalBed</defName>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="Blocked">
+		<defName>MultiAnalyzer</defName>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="Blocked">
+		<defName>VitalsMonitor</defName>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="Blocked">
+		<defName>Cryptosleep</defName>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="Blocked">
+		<defName>ComponentAssembly</defName>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="Blocked">
+		<defName>PoweredArmor</defName>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="Blocked">
+		<defName>ChargedShot</defName>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="Blocked">
+		<defName>MultibarrelWeapons</defName>
+	</ResearchProjectDef>
+
+</Defs>

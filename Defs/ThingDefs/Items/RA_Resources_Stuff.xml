@@ -691,7 +691,7 @@
 			<categories>
 				<li>Leather</li>
 			</categories>
-			<color>(162,106,57)</color>
+			<color>(160,110,0)</color>
 			<smeltable>false</smeltable>
 			<statFactors>
 				<MarketValue>1.2</MarketValue>

@@ -13,29 +13,32 @@ namespace RA
         public const float BuildButtonHeight = 30f;
         public const float DesignationButtonHeight = 40f;
 
-        public List<RA_ArchitectCategoryTab> categories;
-        public RA_ArchitectCategoryTab selectedTab;
+        public List<ArchitectCategoryTab> categories;
+        public ArchitectCategoryTab selectedTab;
+
+        public override Vector2 InitialSize => new Vector2(WinWidth, WinHeight);
+
+        protected override float Margin => 0f;
+
+        public override void PreOpen()
+        {
+            CacheTabs();
+            base.PreOpen();
+        }
 
         public float WinHeight
             => Mathf.CeilToInt((float) (categories.Count - 2)/2)*BuildButtonHeight + DesignationButtonHeight +
                UIUtil.TextHeight*(categories.Count > 2 ? 2 : 1);
 
-        public override void PreOpen()
-        {
-            base.PreOpen();
-            CacheTabs();
-            windowRect = new Rect(0, UIUtil.MainTabsPanelHeight + WinHeight, WinWidth, WinHeight);
-        }
-
-        // determines the DesignationCategories to show in the menu list
+        // shows only categories with visible designators
         public void CacheTabs()
         {
-            categories = new List<RA_ArchitectCategoryTab>();
+            categories = new List<ArchitectCategoryTab>();
             foreach (var category in DefDatabase<DesignationCategoryDef>.AllDefs
                 .Where(cat => cat.ResolvedAllowedDesignators.Any(designator => designator.Visible))
                         .OrderByDescending(des => des.order))
             {
-                categories.Add(new RA_ArchitectCategoryTab(category));
+                categories.Add(new ArchitectCategoryTab(category));
             }
         }
 
@@ -44,9 +47,8 @@ namespace RA
             base.DoWindowContents(innerRect);
 
             var columnWidth = innerRect.width/2f;
-
-            // burning fillable bar
-            Text.Font = GameFont.Small;
+            
+            UIUtil.ResetText();
             Text.Anchor = TextAnchor.MiddleCenter;
 
             var designationsLabelRect = new Rect(0, 0f, innerRect.width, UIUtil.TextHeight);
@@ -103,7 +105,7 @@ namespace RA
             }
         }
 
-        public void ClickedCategory(RA_ArchitectCategoryTab tab)
+        public void ClickedCategory(ArchitectCategoryTab tab)
         {
             selectedTab = selectedTab != tab ? tab : null;
             SoundDefOf.ArchitectCategorySelect.PlayOneShotOnCamera();

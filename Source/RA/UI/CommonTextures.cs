@@ -15,17 +15,13 @@ namespace RA
             FullTexBurnerHight,
             EmptyTex,
             IconBGTex,
-            Missing,
-            MainMenuTitle,
-            MainMenuBackground;
+            Missing;
 
         #endregion
 
         static CommonTextures()
         {
             Missing = ContentFinder<Texture2D>.Get("Missing");
-            MainMenuBackground = ContentFinder<Texture2D>.Get("UI/MainMenu/Background");
-            MainMenuTitle = ContentFinder<Texture2D>.Get("UI/MainMenu/GameTitle");
             IconBGTex = ContentFinder<Texture2D>.Get("UI/Widgets/DesButBG");
 
             FullTexFuel = SolidColorMaterials.NewSolidColorTexture(new Color(0.7f, 0.7f, 1f));
