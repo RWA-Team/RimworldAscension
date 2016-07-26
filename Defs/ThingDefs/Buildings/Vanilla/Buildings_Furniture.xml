@@ -2,6 +2,24 @@
 <Buildings>
 
 	<ThingDef ParentName="Building">
+		<defName>TableShort</defName>
+		<label>royal bed</label>
+		<Description>A plant pot.</Description>
+	</ThingDef>
+
+	<ThingDef ParentName="Building">
+		<defName>TableLong</defName>
+		<label>royal bed</label>
+		<Description>A plant pot.</Description>
+	</ThingDef>
+
+	<ThingDef ParentName="Building">
+		<defName>DoubleBed</defName>
+		<label>royal bed</label>
+		<Description>A plant pot.</Description>
+	</ThingDef>
+
+	<ThingDef ParentName="Building">
 		<defName>RoyalBed</defName>
 		<label>royal bed</label>
 		<Description>A plant pot.</Description>

@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ResearchProjectDefs>
+<Defs>
 
 	<ResearchProjectDef ParentName="Blocked">
-		<defName>Pemmican</defName>
+		<defName>VitalsMonitor</defName>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="Blocked">
-		<defName>Devilstrand</defName>
+		<defName>ComponentAssembly</defName>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="Blocked">
-		<defName>Stonecutting</defName>
+		<defName>MultibarrelWeapons</defName>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="Blocked">
-		<defName>CarpetMaking</defName>
+		<defName>Cryptosleep</defName>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="Blocked">
-		<defName>ComplexClothing</defName>
+		<defName>PoweredArmor</defName>
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="Blocked">
-		<defName>Electricity</defName>
+		<defName>ChargedShot</defName>
 	</ResearchProjectDef>
 
-</ResearchProjectDefs>
+</Defs>
