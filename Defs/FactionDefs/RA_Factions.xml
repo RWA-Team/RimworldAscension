@@ -14,6 +14,8 @@
 		<defName>Colony</defName>
 		<label>colony</label>
 		<description>Your own community.</description>
+		<isPlayer>true</isPlayer>
+		<basicMemberKind>Colonist</basicMemberKind>
 		<pawnsPlural>colonists</pawnsPlural>
 		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
 		<techLevel>Neolithic</techLevel>
@@ -70,7 +72,7 @@
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<apparelStuffFilter>
 			<thingDefs>
-				<li>Muffalo_Leather</li>
+				<li>Leather</li>
 			</thingDefs>
 		</apparelStuffFilter>
 		<caravanTraderKinds>
@@ -79,46 +81,22 @@
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
-					<li>
-						<selectionWeight>20</selectionWeight>
-						<kind>TribalScout</kind>
-					</li>
-					<li>
-						<selectionWeight>120</selectionWeight>
-						<kind>TribalWarrior</kind>
-					</li>
-					<li>
-						<selectionWeight>100</selectionWeight>
-						<kind>TribalHunter</kind>
-					</li>
-					<li>
-						<selectionWeight>200</selectionWeight>
-						<kind>TribalWarchief</kind>
-					</li>
+					<TribalScout>20</TribalScout>
+					<TribalWarrior>60</TribalWarrior>
+					<TribalHunter>100</TribalHunter>
+					<TribalWarchief>200</TribalWarchief>
 				</options>
 			</li>
 			<li Class="PawnGroupMaker_Trader">
 				<traders>
-					<li>
-						<selectionWeight>1</selectionWeight>
-						<kind>TribalTrader</kind>
-					</li>
+					<TribalTrader>1</TribalTrader>
 				</traders>
 				<carriers>
-					<li>
-						<selectionWeight>1</selectionWeight>
-						<kind>PackMuffalo</kind>
-					</li>
+					<PackMuffalo>1</PackMuffalo>
 				</carriers>
 				<guards>
-					<li>
-						<selectionWeight>60</selectionWeight>
-						<kind>TribalWarrior</kind>
-					</li>
-					<li>
-						<selectionWeight>100</selectionWeight>
-						<kind>TribalHunter</kind>
-					</li>
+					<TribalWarrior>60</TribalWarrior>
+					<TribalHunter>100</TribalHunter>
 				</guards>
 			</li>
 		</pawnGroupMakers>
