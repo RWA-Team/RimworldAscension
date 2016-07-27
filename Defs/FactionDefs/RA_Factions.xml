@@ -2,14 +2,14 @@
 <FactionDefs>
 
 
-<!--	- selectionWeight - used to mutiply chances of spawning toughter enemies instead of massing weak, if high numbers of threat points reached (the higher the more)
+<!-- 	- selectionWeight - used to mutiply chances of spawning toughter enemies instead of massing weak, if high numbers of threat points reached (the higher the more)
 	- canMakeRandomly - determines if faction can be generated randomly by faction generator fs total faction count is less than required
 	- mustStartOneEnemy - one faction of that def should be hostile
 	- startingGoodwill - initial goodwill with other factions
 	- naturalColonyGoodwill - range of faction goodwill with colony that doesn't change due time
 	- hidden - faction is not seen in faction menu. Some interactions with faction blocked too. -->
 
-	
+
 	<FactionDef>
 		<defName>Colony</defName>
 		<label>colony</label>
