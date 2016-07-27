@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResearchProjectDefs>
+
+	<!--used to hide buldings, recipes and researches-->
+	<ResearchProjectDef Name="Blocked">
+		<defName>Blocked</defName>
+		<label>blocked</label>
+		<description>Blocked.</description>
+		<prerequisites>
+			<li>Blocked</li>
+		</prerequisites>
+		<techLevel>Neolithic</techLevel>	
+	</ResearchProjectDef>
+
+</ResearchProjectDefs>

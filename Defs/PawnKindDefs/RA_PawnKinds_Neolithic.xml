@@ -17,6 +17,7 @@
 		<defaultFactionType>Tribe</defaultFactionType>
 		<minGenerationAge>16</minGenerationAge>
 		<maxGenerationAge>40</maxGenerationAge>
+		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
 		<gearHealthRange>
 			<min>0.5</min>
 			<max>2.0</max>
@@ -37,7 +38,6 @@
 		<label>messenger</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>Headdress</li>			
 		</apparelRequired>
@@ -48,7 +48,6 @@
 		<label>merchant</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>Headdress</li>			
 		</apparelRequired>
@@ -58,7 +57,6 @@
 		<defName>TribalScout</defName>
 		<label>scout</label>
 		<combatPower>40</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -73,7 +71,6 @@
 		<defName>TribalWarrior</defName>
 		<label>warrior</label>
 		<combatPower>100</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>ShieldTribal</li>			
 		</apparelRequired>
@@ -93,7 +90,6 @@
 		<defName>TribalHunter</defName>
 		<label>hunter</label>
 		<combatPower>130</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 <!-- 		<apparelTags>
 			<li>Tribal_Armor</li>
 		</apparelTags> -->
@@ -110,7 +106,6 @@
 		<defName>TribalWarchief</defName>
 		<label>warchief</label>
 		<combatPower>250</combatPower>
-		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelMoney>
 			<min>600</min>
@@ -138,7 +133,6 @@
 		<defaultFactionType>Ferals</defaultFactionType>
 		<label>warrior</label>
 		<combatPower>150</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>ShieldBone</li>			
 		</apparelRequired>
@@ -159,7 +153,6 @@
 		<defaultFactionType>Ferals</defaultFactionType>
 		<label>hunter</label>
 		<combatPower>100</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelTags>
 			<li>ArmorBone</li>
 		</apparelTags>
@@ -177,7 +170,6 @@
 		<defaultFactionType>Ferals</defaultFactionType>
 		<label>warchief</label>
 		<combatPower>250</combatPower>
-		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelRequired>
 			<li>Headdress</li>			

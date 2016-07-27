@@ -6,6 +6,7 @@ using Verse;
 
 namespace RA
 {
+    [StaticConstructorOnStartup]
     public static class UIUtil
     {
         #region CONSTANTS
@@ -109,5 +110,28 @@ namespace RA
             });
             ResetText();
         }
+        
+        //public static readonly List<Texture2D> FramesList = ContentFinder<Texture2D>.GetAllInFolder("UI/MainMenu/Animation").ToList();
+        //public static int currentFrame = 0;
+        //public static int ticksCounter = 0;
+
+        //public static void DrawAnimation(Rect rect, int ticksPerFrame)
+        //{
+        //    GUI.DrawTexture(rect, FramesList[currentFrame], ScaleMode.StretchToFill, true);
+
+        //    if (ticksCounter >= ticksPerFrame)
+        //    {
+        //        if (currentFrame >= FramesList.Count - 1)
+        //            currentFrame = 0;
+        //        else
+        //            currentFrame++;
+
+        //        ticksCounter = 0;
+        //    }
+        //    else
+        //    {
+        //        ticksCounter++;
+        //    }
+        //}
     }
 }

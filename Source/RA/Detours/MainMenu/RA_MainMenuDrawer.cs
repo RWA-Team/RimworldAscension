@@ -17,39 +17,17 @@ namespace RA
 
         public const float TitleShift = 15f;
 
-        public static Texture2D MainMenuTitle = ContentFinder<Texture2D>.Get("UI/MainMenu/GameTitle");
+        public static Vector2 LudeonLogoSize = new Vector2(200f, 58f);
+        public static Vector2 PaneSize = new Vector2(450f, 450f);
+        public static Vector2 TitleSize = new Vector2(1024f, 200f);
+
+        public static Texture2D MainMenuTitle;
+
         public static Texture2D IconBlog = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Blog");
         public static Texture2D IconForums = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Forums");
         public static Texture2D IconTwitter = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Twitter");
         public static Texture2D IconBook = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Book");
-        public static Vector2 PaneSize = new Vector2(450f, 450f);
-        public static Vector2 TitleSize = new Vector2(1024f, 200f);
         public static Texture2D TexLudeonLogo = ContentFinder<Texture2D>.Get("UI/HeroArt/LudeonLogoSmall");
-        public static Vector2 LudeonLogoSize = new Vector2(200f, 58f);
-
-        //// required for drawing animation
-        //public static readonly List<Texture2D> FramesList = ContentFinder<Texture2D>.GetAllInFolder("UI/MainMenu/Animation").ToList();
-        //public static int currentFrame = 0;
-        //public static int ticksCounter = 0;
-
-        //public static void DrawAnimation(Rect rect, int ticksPerFrame)
-        //{
-        //    GUI.DrawTexture(rect, FramesList[currentFrame], ScaleMode.StretchToFill, true);
-
-        //    if (ticksCounter >= ticksPerFrame)
-        //    {
-        //        if (currentFrame >= FramesList.Count - 1)
-        //            currentFrame = 0;
-        //        else
-        //            currentFrame++;
-
-        //        ticksCounter = 0;
-        //    }
-        //    else
-        //    {
-        //        ticksCounter++;
-        //    }
-        //}
 
         public static void MainMenuOnGUI()
         {
@@ -58,7 +36,8 @@ namespace RA
 
             VersionControl.DrawInfoInCorner();
             // abstract rect in the window center
-            var initialRect = new Rect((Screen.width - PaneSize.x) / 2f, (Screen.height - PaneSize.y) / 2f, PaneSize.x, PaneSize.y);
+            var initialRect = new Rect((Screen.width - PaneSize.x)/2f, (Screen.height - PaneSize.y)/2f, PaneSize.x,
+                PaneSize.y);
             initialRect.y += 50f;
             //initialRect.x = Screen.width - initialRect.width - 30f;
 
@@ -66,13 +45,18 @@ namespace RA
             var adjust = TitleSize;
             if (adjust.x > Screen.width)
             {
-                adjust *= Screen.width / adjust.x;
+                adjust *= Screen.width/adjust.x;
             }
             adjust *= 0.7f;
 
             // game title
-            var titleRect = new Rect((Screen.width - adjust.x) / 2f + TitleShift, initialRect.y - adjust.y + TitleShift, adjust.x, adjust.y);
+            var titleRect = new Rect((Screen.width - adjust.x)/2f + TitleShift, initialRect.y - adjust.y + TitleShift,
+                adjust.x, adjust.y);
             //titleRect.x = Screen.width - adjust.x - 50f;
+
+            // required cause of textures references reset
+            if (MainMenuTitle == null)
+                MainMenuTitle = ContentFinder<Texture2D>.Get("UI/MainMenu/GameTitle");
             GUI.DrawTexture(titleRect, MainMenuTitle, ScaleMode.StretchToFill, true);
 
             // tribute to tynan under the main game title
@@ -113,7 +97,7 @@ namespace RA
             buttonsRect.height += 100f;
             buttonsRect.width = 175f;
             buttonsRect.y += 100f;
-            buttonsRect.x = (Screen.width - buttonsRect.width) / 2;
+            buttonsRect.x = (Screen.width - buttonsRect.width)/2;
             DoMainMenuButtons(buttonsRect, anyWorldFiles, anyMapFiles);
 
             // animation
@@ -140,24 +124,23 @@ namespace RA
             list.Add(item);
             item = new ListableOption_WebLink("HelpTranslate".Translate(), "http://ludeon.com/forums/index.php?topic=2933.0", IconForums);
             list.Add(item);
-            OptionListingUtility.DrawOptionListing(rect, list);
-            // TODO: check how to fix english lang BadText
-            //GUI.BeginGroup(rect);
-            //if (Current.ProgramState == ProgramState.Entry && Widgets.ButtonImage(new Rect(0f, num + 10f, 64f, 32f), LanguageDatabase.activeLanguage.icon))
-            //{
-            //    var list3 = new List<FloatMenuOption>();
-            //    foreach (var current in LanguageDatabase.AllLoadedLanguages)
-            //    {
-            //        var localLang = current;
-            //        list3.Add(new FloatMenuOption(localLang.FriendlyNameNative, delegate
-            //        {
-            //            LanguageDatabase.SelectLanguage(localLang);
-            //            Prefs.Save();
-            //        }));
-            //    }
-            //    Find.WindowStack.Add(new FloatMenu(list3));
-            //}
-            //GUI.EndGroup();
+            var num = OptionListingUtility.DrawOptionListing(rect, list);
+            GUI.BeginGroup(rect);
+            if (Current.ProgramState == ProgramState.Entry && Widgets.ButtonImage(new Rect(0f, num + 10f, 64f, 32f), LanguageDatabase.activeLanguage.icon))
+            {
+                var list3 = new List<FloatMenuOption>();
+                foreach (var current in LanguageDatabase.AllLoadedLanguages)
+                {
+                    var localLang = current;
+                    list3.Add(new FloatMenuOption(localLang.FriendlyNameNative, delegate
+                    {
+                        LanguageDatabase.SelectLanguage(localLang);
+                        Prefs.Save();
+                    }));
+                }
+                Find.WindowStack.Add(new FloatMenu(list3));
+            }
+            GUI.EndGroup();
         }
 
         public static void DoMainMenuButtons(Rect rect, bool anyWorldFiles, bool anyMapFiles, Action backToGameButtonAction = null)
@@ -165,73 +148,64 @@ namespace RA
             Text.Font = GameFont.Small;
             var list = new List<ListableOption>();
             ListableOption item;
+            // added "continue" and "quick start" buttons
             if (Current.ProgramState == ProgramState.Entry)
             {
-                item = new ListableOption("Continue", delegate
+                if (anyMapFiles)
                 {
-                    Action preLoadLevelAction = delegate
+                    item = new ListableOption("Continue", delegate
                     {
-                        Find.GameInitData.ResetWorldRelatedMapInitData();
-                        Find.GameInitData.mapToLoad = Path.GetFileNameWithoutExtension(new SaveFileInfo(GenFilePaths.AllSavedGameFiles.FirstOrDefault()).FileInfo.Name);
-                    };
-                    LongEventHandler.QueueLongEvent(preLoadLevelAction, "Gameplay", "LoadingLongEvent", true, null);
-                });
-                list.Add(item);
+                        Action preLoadLevelAction = delegate
+                        {
+                            Find.GameInitData.ResetWorldRelatedMapInitData();
+                            Find.GameInitData.mapToLoad =
+                                Path.GetFileNameWithoutExtension(
+                                    new SaveFileInfo(GenFilePaths.AllSavedGameFiles.FirstOrDefault()).FileInfo.Name);
+                        };
+                        LongEventHandler.QueueLongEvent(preLoadLevelAction, "Gameplay", "LoadingLongEvent", true, null);
+                    });
+                    list.Add(item);
+                }
                 if (Prefs.DevMode)
                 {
                     item = new ListableOption("Quick Start", delegate
                     {
-                        SceneManager.LoadScene("Gameplay");
-
-                        Find.Root.Start();
-                    });
-                    list.Add(item);
-                }
-                if (anyWorldFiles)
-                {
-                    item = new ListableOption("NewColony".Translate(), delegate
-                    {
-                        // reloads all play data and defs
-                        LongEventHandler.QueueLongEvent(delegate
-                        {
-                            PlayDataLoader.ClearAllPlayData();
-                            PlayDataLoader.LoadAllPlayData();
-                        }, "LoadingLongEvent", true, null);
-
-                        Find.WindowStack.Add(new Page_SelectScenario());
+                        SceneManager.LoadScene("Map");
+                        //Find.Root.Start();
                     });
                     list.Add(item);
                 }
             }
-            if (Current.ProgramState == ProgramState.MapPlaying)
+            if (Current.ProgramState == ProgramState.Entry)
             {
-                if (backToGameButtonAction != null)
+                list.Add(new ListableOption("NewColony".Translate(), delegate
                 {
-                    item = new ListableOption("BackToGame".Translate(), backToGameButtonAction);
-                    list.Add(item);
-                }
-                item = new ListableOption("Save".Translate(), delegate
+                    Find.WindowStack.Add(new Page_SelectScenario());
+                }));
+            }
+            if (Current.ProgramState == ProgramState.MapPlaying && !Current.Game.Info.permadeathMode)
+            {
+                list.Add(new ListableOption("Save".Translate(), delegate
                 {
                     CloseMainTab();
                     Find.WindowStack.Add(new Dialog_MapList_Save());
-                });
-                list.Add(item);
+                }));
             }
-            if (anyMapFiles)
+            if (anyMapFiles && (Current.ProgramState != ProgramState.MapPlaying || !Current.Game.Info.permadeathMode))
             {
-                item = new ListableOption("Load".Translate(), delegate
+                item = new ListableOption("LoadGame".Translate(), delegate
                 {
-                    // reloads all play data and defs
-                    LongEventHandler.QueueLongEvent(delegate
-                    {
-                        PlayDataLoader.ClearAllPlayData();
-                        PlayDataLoader.LoadAllPlayData();
-                    }, "LoadingLongEvent", true, null);
-
                     CloseMainTab();
                     Find.WindowStack.Add(new Dialog_MapList_Load());
                 });
                 list.Add(item);
+            }
+            if (Current.ProgramState == ProgramState.MapPlaying)
+            {
+                list.Add(new ListableOption("ReviewScenario".Translate(), delegate
+                {
+                    Find.WindowStack.Add(new Dialog_Message(Find.Scenario.GetFullInformationText(), Find.Scenario.name));
+                }));
             }
             item = new ListableOption("Options".Translate(), delegate
             {
@@ -254,26 +228,58 @@ namespace RA
             }
             if (Current.ProgramState == ProgramState.MapPlaying)
             {
-                Action action = delegate
+                if (Current.Game.Info.permadeathMode)
                 {
-                    Find.WindowStack.Add(new Dialog_Confirm("ConfirmQuit".Translate(), delegate
+                    item = new ListableOption("SaveAndQuitToMainMenu".Translate(), delegate
                     {
-                        SceneManager.LoadScene("Entry");
-                    }, true));
-                };
-                item = new ListableOption("QuitToMainMenu".Translate(), action);
-                list.Add(item);
-                Action action2 = delegate
+                        LongEventHandler.QueueLongEvent(delegate
+                        {
+                            GameDataSaveLoader.SaveGame(Current.Game.Info.permadeathModeUniqueName);
+                        }, "Entry", "SavingLongEvent", false, null);
+                    });
+                    list.Add(item);
+                    item = new ListableOption("SaveAndQuitToOS".Translate(), delegate
+                    {
+                        LongEventHandler.QueueLongEvent(delegate
+                        {
+                            GameDataSaveLoader.SaveGame(Current.Game.Info.permadeathModeUniqueName);
+                            LongEventHandler.ExecuteWhenFinished(Root.Shutdown);
+                        }, "SavingLongEvent", false, null);
+                    });
+                    list.Add(item);
+                }
+                else
                 {
-                    Find.WindowStack.Add(new Dialog_Confirm("ConfirmQuit".Translate(), Root.Shutdown, true));
-                };
-                item = new ListableOption("QuitToOS".Translate(), action2);
-                list.Add(item);
-            }
-            else
-            {
-                item = new ListableOption("QuitToOS".Translate(), Root.Shutdown);
-                list.Add(item);
+                    Action action = delegate
+                    {
+                        if (GameDataSaveLoader.CurrentMapStateIsValuable)
+                        {
+                            Find.WindowStack.Add(new Dialog_Confirm("ConfirmQuit".Translate(), delegate
+                            {
+                                SceneManager.LoadScene("Entry");
+                            }, true));
+                        }
+                        else
+                        {
+                            SceneManager.LoadScene("Entry");
+                        }
+                    };
+                    item = new ListableOption("QuitToMainMenu".Translate(), action);
+                    list.Add(item);
+                    Action action2 = delegate
+                    {
+                        if (GameDataSaveLoader.CurrentMapStateIsValuable)
+                        {
+                            Find.WindowStack.Add(new Dialog_Confirm("ConfirmQuit".Translate(), Root.Shutdown, true));
+                        }
+                        else
+                        {
+                            Root.Shutdown();
+                        }
+                    };
+                    item = new ListableOption("QuitToOS".Translate(), action2);
+                    list.Add(item);
+                }
             }
             OptionListingUtility.DrawOptionListing(rect, list);
         }
@@ -284,6 +290,12 @@ namespace RA
             {
                 Find.MainTabsRoot.EscapeCurrentTab(false);
             }
+        }
+
+        public static void GoToCreateWorld()
+        {
+            var list = new List<Page> {new Page_CreateWorldParams(), new Page_CreateWorldReview()};
+            Find.WindowStack.Add(PageUtility.StitchedPages(list));
         }
     }
 }

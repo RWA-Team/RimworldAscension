@@ -3,6 +3,7 @@ using Verse;
 
 namespace RA
 {
+    [StaticConstructorOnStartup]
     public static class RA_GenDraw
     {
         public static readonly Material AimPieMaterial = SolidColorMaterials.SimpleSolidColorMaterial(new Color(1f, 1f, 1f, 0.15f));

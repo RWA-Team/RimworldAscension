@@ -18,18 +18,11 @@ namespace RA
         {
             DoDetours();
 
-            if (Prefs.DevMode)
-                Log.Message("Initializer initialized");
-
             LongEventHandler.QueueLongEvent(delegate
             {
                 PlayDataLoader.ClearAllPlayData();
                 PlayDataLoader.LoadAllPlayData();
             }, "LoadingLongEvent", true, null);
-
-            //LongEventHandler.ExecuteWhenFinished(() =>
-            //{
-            //});
         }
 
         public static object GetHiddenValue(Type type, object instance, string fieldName, FieldInfo info,
@@ -53,7 +46,6 @@ namespace RA
 
             info?.SetValue(instance, value);
         }
-
         //This is a basic first implementation of the IL method 'hooks' (detours) made possible by RawCode's work;
         //https://ludeon.com/forums/index.php?topic=17143.0
         //Performs detours, spits out basic logs and warns if a method is sourceMethods multiple times.
@@ -475,12 +467,19 @@ namespace RA
 
             #region MAINMENU
 
-            //// detour RimWorld.MainMenuDrawer.MainMenuOnGUI
-            //var vanillaDoMainMenuButtons = typeof(MainMenuDrawer).GetMethod("MainMenuOnGUI",
-            //    BindingFlags.Static | BindingFlags.Public);
-            //var newDoMainMenuButtons = typeof(RA_MainMenuDrawer).GetMethod("MainMenuOnGUI",
-            //    BindingFlags.Static | BindingFlags.Public);
-            //TryDetourFromTo(vanillaDoMainMenuButtons, newDoMainMenuButtons);
+            // added skipping of steam requirement prompt
+            var vanillaInit = typeof(UIRoot_Entry).GetMethod("Init",
+                BindingFlags.Instance | BindingFlags.Public);
+            var newInit = typeof(RA_UIRoot_Entry).GetMethod("Init",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaInit, newInit);
+
+            // detour RimWorld.MainMenuDrawer.MainMenuOnGUI
+            var vanillaMainMenuOnGUI = typeof(MainMenuDrawer).GetMethod("MainMenuOnGUI",
+                BindingFlags.Static | BindingFlags.Public);
+            var newMainMenuOnGUI = typeof(RA_MainMenuDrawer).GetMethod("MainMenuOnGUI",
+                BindingFlags.Static | BindingFlags.Public);
+            TryDetourFromTo(vanillaMainMenuOnGUI, newMainMenuOnGUI);
 
             // detour RimWorld.UI_BackgroundMain.BackgroundOnGUI
             var vanillaBackgroundOnGUI = typeof (UI_BackgroundMain).GetMethod("BackgroundOnGUI",
@@ -535,6 +534,9 @@ namespace RA
             //TryDetourFromTo(vanillaExitMap, newExitMap);
 
             #endregion
+
+            if (Prefs.DevMode)
+                Log.Message("Detours initialized");
         }
     }
 }

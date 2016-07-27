@@ -262,12 +262,6 @@
 	</ThingCategoryDef>
 
 		<ThingCategoryDef>
-			<defName>Tools</defName>
-			<label>tools</label>
-			<parent>Equipment</parent>
-		</ThingCategoryDef>
-
-		<ThingCategoryDef>
 			<defName>Weapons</defName>
 			<label>weapons</label>
 			<parent>Equipment</parent>
@@ -278,7 +272,6 @@
 		    	<label>tools</label>
 		    	<parent>Equipment</parent>
 		</ThingCategoryDef>
-
 
 			<ThingCategoryDef>
 				<defName>WeaponsMelee</defName>
