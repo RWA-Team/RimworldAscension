@@ -8,13 +8,14 @@ using Verse.Sound;
 
 namespace RA
 {
+    [StaticConstructorOnStartup]
     public class RA_MainTabWindow_Research : MainTabWindow_Research
     {
         public Texture2D texSortByCost = ContentFinder<Texture2D>.Get("UI/Icons/SortByCost");
         public Texture2D texSortByName = ContentFinder<Texture2D>.Get("UI/Icons/SortByName");
 
-        public static readonly Texture2D BarFillTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.8f, 0.85f));
-        public static readonly Texture2D BarBgTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.1f, 0.1f, 0.1f));
+        public static Texture2D BarFillTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.8f, 0.85f));
+        public static Texture2D BarBgTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.1f, 0.1f, 0.1f));
 
         public const float LeftAreaWidth = 330f;
         public const int ModeSelectButHeight = 40;
@@ -86,14 +87,14 @@ namespace RA
             UIUtil.ResetText();
 
             var rectSidePanel = new Rect(0f, 75f, 330f, tabRect.height - 75f);
-            DrawSidePanel(rectSidePanel);
+            DrawResearchesListPanel(rectSidePanel);
 
             var rectDetailsPanel = new Rect(rectSidePanel.xMax + 10f, 45f, tabRect.width - rectSidePanel.width - 10f, tabRect.height - 45f);
             DrawDetailsPanel(rectDetailsPanel);
 
         }
 
-        public void DrawSidePanel(Rect rectSidePanel)
+        public void DrawResearchesListPanel(Rect rectSidePanel)
         {
             Widgets.DrawMenuSection(rectSidePanel, false);
 
@@ -343,10 +344,10 @@ namespace RA
             switch (showResearchedProjects)
             {
                 case ShowResearch.All:
-                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => !projectDef.prerequisites.Contains(projectDef));
+                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => projectDef.prerequisites.NullOrEmpty() || !projectDef.prerequisites.Contains(ResearchProjectDef.Named("Blocked")));
                     break;
                 case ShowResearch.Completed:
-                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => projectDef.IsFinished && projectDef.PrerequisitesCompleted);
+                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => projectDef.IsFinished);
                     break;
                 default:
                     researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => !projectDef.IsFinished && projectDef.PrerequisitesCompleted);

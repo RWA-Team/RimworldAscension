@@ -4,6 +4,7 @@ using Verse.Sound;
 
 namespace RA
 {
+    [StaticConstructorOnStartup]
     public class RA_Widgets
     {
         public static readonly Texture2D ButtonSubtleAtlas = ContentFinder<Texture2D>.Get("UI/Widgets/ButtonSubtleAtlas");
