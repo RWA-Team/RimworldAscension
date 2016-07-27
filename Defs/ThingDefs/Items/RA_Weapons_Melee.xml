@@ -15,6 +15,9 @@
 			<MaxHitPoints>100</MaxHitPoints>
 			<DeteriorationRate>0.5</DeteriorationRate>
 			<SellPriceFactor>0.1</SellPriceFactor>
+			<ArmorPenetration>0</ArmorPenetration>
+			<MeleeWeapon_DamageAmount>1</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
 		</statBases>
 		<soundInteract>InteractPistol</soundInteract>
 		<comps>
@@ -41,6 +44,11 @@
 		</thingCategories>
 	</ThingDef>
 
+   <ThingDef Name="Tools" ParentName="Weapon" Abstract="True">
+   	    <thingCategories>
+			<li>Tools</li>
+		</thingCategories>
+	</ThingDef>
 	<!-- ========================= Neolithic =========================-->
 
 	<ThingDef ParentName="WeaponMelee">
@@ -52,10 +60,10 @@
 		</graphicData>
 		<equippedAngleOffset>-35</equippedAngleOffset>
 		<statBases>
-			<MarketValue>60</MarketValue>
-			<MeleeWeapon_DamageAmount>8</MeleeWeapon_DamageAmount>
-			<ArmorPenetration>3</ArmorPenetration>
-			<MeleeWeapon_Cooldown>0.2</MeleeWeapon_Cooldown>
+			<MaxHitPoints>70</MaxHitPoints>
+			<MeleeWeapon_DamageAmount>6</MeleeWeapon_DamageAmount>
+			<ArmorPenetration>1</ArmorPenetration>
+			<MeleeWeapon_Cooldown>0.6</MeleeWeapon_Cooldown>
 		</statBases>
 		<stuffCategories>
 			<li>Bone</li>
@@ -69,6 +77,10 @@
 			</li>
 		</verbs>
 		<comps>
+		    <li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.0002</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
 			<li Class="RA.CompHandsDrawer_Properties">
 				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 			</li>
@@ -87,12 +99,14 @@
 		</graphicData>
 		<equippedAngleOffset>-65</equippedAngleOffset>
 		<statBases>
-			<MarketValue>60</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
+			<MaxHitPoints>150</MaxHitPoints>
+			<MeleeWeapon_DamageAmount>9</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
 		</statBases>
 		<stuffCategories>
 			<li>WoodLog</li>
+			<li>Bone</li>
+			<li>StoneCobble</li>
 		</stuffCategories>
 		<verbs>
 			<li>
@@ -101,6 +115,15 @@
 				<meleeDamageDef>Blunt</meleeDamageDef>
 			</li>
 		</verbs>
+		<comps>
+		   <li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.0005</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+           </li>
+		   <li Class="RA.CompHandsDrawer_Properties">
+			<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		   </li>
+		</comps>
 		<weaponTags>
 			<li>MeleeNeolithicWeak</li>
 		</weaponTags>
@@ -115,9 +138,10 @@
 		</graphicData>
 		<equippedAngleOffset>-25</equippedAngleOffset>
 		<statBases>
-			<MarketValue>60</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
+			<MaxHitPoints>100</MaxHitPoints>
+			<MeleeWeapon_DamageAmount>8</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
+			<ArmorPenetration>4</ArmorPenetration>
 		</statBases>
 		<stuffCategories>
 			<li>Bone</li>
@@ -130,6 +154,15 @@
 				<meleeDamageDef>Stab</meleeDamageDef>
 			</li>
 		</verbs>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.0036</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
+            <li Class="RA.CompHandsDrawer_Properties">
+			<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>
+		</comps>
 		<weaponTags>
 			<li>MeleeNeolithic</li>
 		</weaponTags>
@@ -147,9 +180,10 @@
 			<li>StoneCobble</li>
 		</stuffCategories>
 		<statBases>
-			<MarketValue>60</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
+			<MeleeWeapon_DamageAmount>9</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
+			<ArmorPenetration>2</ArmorPenetration>
+			<MaxHitPoints>100</MaxHitPoints>
 		</statBases>
 		<verbs>
 			<li>
@@ -157,76 +191,28 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<equippedStatOffsets>
+			<PlantWorkSpeed>-0.1</PlantWorkSpeed>
+		</equippedStatOffsets>
 		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.0002</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
 			<li Class="RA.CompTool_Properties">
-				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
+				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
 				<workTypes>
 					<li>PlantCutting</li>
 				</workTypes>
 			</li>
+			<li Class="RA.CompHandsDrawer_Properties">
+			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>
 		</comps>
 		<weaponTags>
 			<li>MeleeNeolithic</li>
 		</weaponTags>
 	</ThingDef>
-
-	<ThingDef ParentName="WeaponMelee">
-		<defName>HammerNeolithic</defName>
-		<label>improvised mallet</label>
-		<description>An improvised hammer-looking tool used for construction and repair rather than for combat purposes.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/HammerNeolithic</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<stuffCategories>
-			<li>Bone</li>
-			<li>StoneCobble</li>
-		</stuffCategories>
-		<statBases>
-			<MarketValue>60</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
-		</statBases>
-		<verbs>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<meleeDamageDef>Blunt</meleeDamageDef>
-			</li>
-		</verbs>
-		<comps>
-			<li Class="RA.CompTool_Properties">
-				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
-				<workTypes>
-					<li>Construction</li>
-				</workTypes>
-			</li>
-		</comps>
-		<weaponTags>
-			<li>MeleeNeolithic</li>
-		</weaponTags>
-	</ThingDef>	
-
-	<ThingDef ParentName="WeaponMelee">
-		<defName>Broom</defName>
-		<label>hand broom</label>
-		<description>An improvised cleaning device made out of plant fibres.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/Broom</texPath>
-			<color>(133,97,67)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>10</MarketValue>
-			<MeleeWeapon_DamageAmount>1</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
-		</statBases>
-		<verbs>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<meleeDamageDef>Blunt</meleeDamageDef>
-			</li>
-		</verbs>
-	</ThingDef>
-
 	<!-- ========================= Medieval =========================-->
 
 	<ThingDef Name="WeaponMeleeMedieval" ParentName="WeaponMelee" Abstract="True">
@@ -245,10 +231,20 @@
 		</graphicData>
 		<equippedAngleOffset>-65</equippedAngleOffset>
 		<statBases>
-			<MarketValue>60</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
+			<MeleeWeapon_DamageAmount>8</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>0.55</MeleeWeapon_Cooldown>
+			<ArmorPenetration>4</ArmorPenetration>
+			<MaxHitPoints>90</MaxHitPoints>
 		</statBases>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.0031</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
+			<li Class="RA.CompHandsDrawer_Properties">
+			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>  
+		</comps>          
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
@@ -260,39 +256,59 @@
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
 		<defName>SwordLong</defName>
-		<label>SwordLong</label>
+		<label>swordLong</label>
 		<description>SwordLong.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/SwordLong/SwordLong</texPath>
 		</graphicData>
 		<equippedAngleOffset>-65</equippedAngleOffset>
 		<statBases>
-			<MarketValue>60</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
+			<MaxHitPoints>120</MaxHitPoints>
+			<ArmorPenetration>5</ArmorPenetration>
+			<MeleeWeapon_DamageAmount>13</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>0.9</MeleeWeapon_Cooldown>
 		</statBases>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.0072</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
+			<li Class="RA.CompHandsDrawer_Properties">
+			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>  
+		</comps>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<meleeDamageDef>Cut</meleeDamageDef>
-			</li>
+			</li>		
 		</verbs>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
 		<defName>Pike</defName>
-		<label>Pike</label>
+		<label>pike</label>
 		<description>Pike.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/Pike/Pike</texPath>
 		</graphicData>
 		<equippedAngleOffset>-65</equippedAngleOffset>
 		<statBases>
-			<MarketValue>60</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
+			<MeleeWeapon_DamageAmount>12</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
+			<ArmorPenetration>9</ArmorPenetration>
+			<MaxHitPoints>80</MaxHitPoints>
 		</statBases>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.0113</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
+			<li Class="RA.CompHandsDrawer_Properties">
+			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>  
+		</comps>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
@@ -304,39 +320,33 @@
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
 		<defName>Axe</defName>
-		<label>Axe</label>
+		<label>axe</label>
 		<description>Axe.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/Axe</texPath>
 		</graphicData>
 		<equippedAngleOffset>-65</equippedAngleOffset>
 		<statBases>
-			<MarketValue>60</MarketValue>
+			<MaxHitPoints>130</MaxHitPoints>
+			<ArmorPenetration>4</ArmorPenetration>
 			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
 			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
 		</statBases>
-		<verbs>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
-				<meleeDamageDef>Cut</meleeDamageDef>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.0082</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
+			<li Class="RA.CompHandsDrawer_Properties">
+			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>  
+		  	<li Class="RA.CompTool_Properties">
+				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
+				<workTypes>
+					<li>PlantCutting</li>
+		        </workTypes>
 			</li>
-		</verbs>
-	</ThingDef>
-
-	<ThingDef ParentName="WeaponMeleeMedieval">
-		<defName>Hammer</defName>
-		<label>Hammer</label>
-		<description>Hammer.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Medieval/Hammer</texPath>
-		</graphicData>
-		<equippedAngleOffset>-65</equippedAngleOffset>
-		<statBases>
-			<MarketValue>60</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
-		</statBases>
+		</comps>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
@@ -349,16 +359,26 @@
 	<ThingDef ParentName="WeaponMeleeMedieval">
 		<defName>HammerBattle</defName>
 		<label>BattleHammer</label>
-		<description>Hammer.</description>
+		<description>BattleHammer.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/HammerBattle</texPath>
 		</graphicData>
 		<equippedAngleOffset>25</equippedAngleOffset>
 		<statBases>
-			<MarketValue>60</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
+			<MeleeWeapon_DamageAmount>20</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>1.1</MeleeWeapon_Cooldown>
+			<ArmorPenetration>2</ArmorPenetration>
+			<MaxHitPoints>150</MaxHitPoints>
 		</statBases>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.0101</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
+			<li Class="RA.CompHandsDrawer_Properties">
+			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>
+		</comps>  
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
@@ -368,46 +388,153 @@
 		</verbs>
 	</ThingDef>
 
-	<ThingDef ParentName="WeaponMelee">
+
+	<!-- =================================================Tools============================================= -->
+	<ThingDef ParentName="Tools">
+		<defName>HammerNeolithic</defName>
+		<label>improvised mallet</label>
+		<description>An improvised hammer-looking tool used for construction and repair rather than for combat purposes.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Neolithic/HammerNeolithic</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stuffCategories>
+			<li>Bone</li>
+			<li>StoneCobble</li>
+		</stuffCategories>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<meleeDamageDef>Blunt</meleeDamageDef>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.002</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
+			<li Class="RA.CompTool_Properties">
+				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
+				<workTypes>
+					<li>Construction</li>
+				</workTypes>
+			</li>
+			<li Class="RA.CompHandsDrawer_Properties">
+			    <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>
+			</comps>
+	</ThingDef>	
+
+	<ThingDef ParentName="Tools">
+		<defName>Broom</defName>
+		<label>hand broom</label>
+		<description>An improvised cleaning device made out of plant fibres.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Neolithic/Broom</texPath>
+			<color>(133,97,67)</color>
+		</graphicData>
+		<comps>
+			<li Class="RA.CompTool_Properties">
+				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
+				<workTypes>
+				<li>Cleaning</li>
+				</workTypes>
+			</li>
+            <li Class="RA.CompHandsDrawer_Properties">
+			    <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>
+		    <li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.002</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
+		</comps>
+		<equippedStatOffsets>
+			<SmoothingSpeed>0.05</SmoothingSpeed>
+		</equippedStatOffsets>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<meleeDamageDef>Blunt</meleeDamageDef>
+			</li>
+		</verbs>
+	</ThingDef>
+
+<ThingDef ParentName="Tools">
+		<defName>Hammer</defName>
+		<label>hammer</label>
+		<description>Hammer.</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Medieval/Hammer</texPath>
+		</graphicData>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<comps>
+			<li Class="RA.CompTool_Properties">
+				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
+				<workTypes>
+				<li>Construction</li>
+				</workTypes>
+			</li>
+            <li Class="RA.CompHandsDrawer_Properties">
+			    <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>
+		    <li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.002</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
+		</comps>
+		<equippedStatOffsets>
+			<ConstructionSpeed>0.1</ConstructionSpeed>
+		</equippedStatOffsets>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<meleeDamageDef>Cut</meleeDamageDef>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="Tools">
 		<defName>Pickaxe</defName>
-		<label>Pickaxe</label>
+		<label>pickaxe</label>
 		<description>Pickaxe.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/Pickaxe</texPath>
 		</graphicData>
 		<equippedAngleOffset>-65</equippedAngleOffset>
-		<statBases>
-			<MarketValue>500</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
-		</statBases>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<equippedStatOffsets>
+			<MiningSpeed>0.1</MiningSpeed>
+		</equippedStatOffsets>
 		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+	           <valuePerWorkFactor>0.002</valuePerWorkFactor>
+	           <profitFactor>0.96</profitFactor>
+            </li>
 			<li Class="RA.CompTool_Properties">
-				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
+				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
 				<workTypes>
 					<li>Mining</li>
 				</workTypes>
 			</li>
+			<li Class="RA.CompHandsDrawer_Properties">
+			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>
 		</comps>
 	</ThingDef>
-
-	<!-- ========================= Industrial =========================-->
-
-	<ThingDef ParentName="WeaponMelee">
+	
+	<ThingDef ParentName="Tools">
 		<defName>Multitool</defName>
 		<label>multitool</label>
 		<description>A survival grade hammer and axe tool used for construction and woodcutting. Performs perfectly in any environment, according to the manufacturer.</description>
 		<equippedAngleOffset>-65</equippedAngleOffset>
 		<statBases>
 			<MarketValue>500</MarketValue>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
 		</statBases>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Midworld/Multitool</texPath>
@@ -419,15 +546,22 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<equippedStatOffsets>
+			<ConstructionSpeed>0.1</ConstructionSpeed>
+			<PlantWorkSpeed>0.1</PlantWorkSpeed>
+		</equippedStatOffsets>
 		<comps>
 			<li Class="RA.CompTool_Properties">
-				<workTicksPerHealthPercent>60</workTicksPerHealthPercent>
+				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
 				<workTypes>
 					<li>Woodchopping</li>
 					<li>Construction</li>
 					<li>Digging</li>
 				</workTypes>
 			</li>
+			<li Class="RA.CompHandsDrawer_Properties">
+			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+		    </li>
 		</comps>
 		<techLevel>Industrial</techLevel>
 	</ThingDef>

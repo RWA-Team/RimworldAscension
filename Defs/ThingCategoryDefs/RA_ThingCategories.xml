@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ThingCategoryDefs>
 
 <!-- resourceReadoutRoot - toggle category display in resources list of main UI-->
@@ -206,7 +206,7 @@
 		<parent>Root</parent>
 		<iconPath>Ui/Icons/ThingCategories/Medicine</iconPath>
 	</ThingCategoryDef>
-	
+
 		<ThingCategoryDef>
 			<defName>TradeGoods</defName>
 			<label>trade goods</label>
@@ -265,6 +265,12 @@
 			<defName>Weapons</defName>
 			<label>weapons</label>
 			<parent>Equipment</parent>
+		</ThingCategoryDef>
+		   
+		<ThingCategoryDef>
+		    	<defName>Tools</defName>
+		    	<label>tools</label>
+		    	<parent>Equipment</parent>
 		</ThingCategoryDef>
 
 			<ThingCategoryDef>
