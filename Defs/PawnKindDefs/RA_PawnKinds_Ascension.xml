@@ -33,7 +33,7 @@
 	<!-- ========================= Ascended =========================-->	
 
 	<PawnKindDef ParentName="PawnAscension">
-		<defName>AscensionProvider</defName>
+		<defName>AscensionTrader</defName>
 		<label>provider</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
