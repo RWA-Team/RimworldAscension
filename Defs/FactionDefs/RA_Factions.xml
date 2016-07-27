@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <FactionDefs>
 
-	<!-- 
-	- selectionWeight - used to mutiply chances of spawning toughter enemies instead of massing weak, if high numbers of threat points reached (the higher the more)
+	<!-- - selectionWeight - used to mutiply chances of spawning toughter enemies instead of massing weak, if high numbers of threat points reached (the higher the more)
 	- canMakeRandomly - determines if faction can be generated randomly by faction generator fs total faction count is less than required
 	- mustStartOneEnemy - one faction of that def should be hostile
 	- startingGoodwill - initial goodwill with other factions
 	- naturalColonyGoodwill - range of faction goodwill with colony that doesn't change due time
-	- hidden - faction is not seen in faction menu. Some interactions with faction blocked too.
-	 -->
+	- hidden - faction is not seen in faction menu. Some interactions with faction blocked too. -->
 
 	<FactionDef>
 		<defName>Colony</defName>
@@ -30,9 +28,7 @@
 		<homeIconColor>(255,220,84)</homeIconColor>
 	</FactionDef>	
 
-
 	<!-- ========================= Neolithic =========================-->
-
 
 	<FactionDef Name="Faction" Abstract="True">
 		<canMakeRandomly>true</canMakeRandomly>
@@ -122,18 +118,9 @@
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
-					<li>
-						<selectionWeight>150</selectionWeight>
-						<kind>FeralWarrior</kind>
-					</li>
-					<li>
-						<selectionWeight>100</selectionWeight>
-						<kind>FeralHunter</kind>
-					</li>
-					<li>
-						<selectionWeight>200</selectionWeight>
-						<kind>FeralWarchief</kind>
-					</li>
+					<FeralWarrior>150</FeralWarrior>
+					<FeralHunter>100</FeralHunter>
+					<FeralWarchief>200</FeralWarchief>
 				</options>
 			</li>
 		</pawnGroupMakers>
@@ -167,46 +154,22 @@
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
-					<li>
-						<selectionWeight>20</selectionWeight>
-						<kind>MedievalSerf</kind>
-					</li>
-					<li>
-						<selectionWeight>120</selectionWeight>
-						<kind>MedievalGuard</kind>
-					</li>
-					<li>
-						<selectionWeight>100</selectionWeight>
-						<kind>MedievalKnight</kind>
-					</li>
-					<li>
-						<selectionWeight>200</selectionWeight>
-						<kind>MedievalLord</kind>
-					</li>
+					<MedievalSerf>20</MedievalSerf>
+					<MedievalGuard>120</MedievalGuard>
+					<MedievalKnight>100</MedievalKnight>
+					<MedievalLord>200</MedievalLord>
 				</options>
 			</li>
 			<li Class="PawnGroupMaker_Trader">
 				<traders>
-					<li>
-						<selectionWeight>1</selectionWeight>
-						<kind>MedievalTrader</kind>
-					</li>
+					<MedievalTrader>1</MedievalTrader>
 				</traders>
 				<carriers>
-					<li>
-						<selectionWeight>1</selectionWeight>
-						<kind>PackMuffalo</kind>
-					</li>
+					<PackMuffalo>1</PackMuffalo>
 				</carriers>
 				<guards>
-					<li>
-						<selectionWeight>60</selectionWeight>
-						<kind>MedievalGuard</kind>
-					</li>
-					<li>
-						<selectionWeight>100</selectionWeight>
-						<kind>MedievalKnight</kind>
-					</li>
+					<MedievalGuard>60</MedievalGuard>
+					<MedievalKnight>100</MedievalKnight>
 				</guards>
 			</li>
 		</pawnGroupMakers>
@@ -225,44 +188,35 @@
 		</startingGoodwill>
 		<apparelStuffFilter>
 			<thingDefs>
-				<li>Deer_Leather</li>
+				<li>Leather</li>
 			</thingDefs>
 		</apparelStuffFilter>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
-					<li>
-						<selectionWeight>100</selectionWeight>
-						<kind>BanditThug</kind>
-					</li>
-					<li>
-						<selectionWeight>150</selectionWeight>
-						<kind>BanditRanger</kind>
-					</li>
-					<li>
-						<selectionWeight>200</selectionWeight>
-						<kind>BanditChief</kind>
-					</li>
+					<BanditThug>100</BanditThug>
+					<BanditRanger>150</BanditRanger>
+					<BanditChief>200</BanditChief>
 				</options>
 			</li>
 		</pawnGroupMakers>
 	</FactionDef>
 
-	<FactionDef Name="FactionModern" ParentName="Faction" Abstract="True">
+	<FactionDef Name="FactionMidworld" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
 		<techLevel>Midworld</techLevel>
-		<backstoryCategory>Modern</backstoryCategory>
+		<backstoryCategory>Midworld</backstoryCategory>
 		<leaderTitle>President</leaderTitle>
 		<hairTags>
-			<li>Modern</li>
+			<li>Midworld</li>
 		</hairTags>
 	</FactionDef>
 
-	<FactionDef ParentName="FactionModern">
-		<defName>ModernFactionNeutral</defName>
+	<FactionDef ParentName="FactionMidworld">
+		<defName>MidworldFactionNeutral</defName>
 		<label>nation</label>
-		<description>Modern nations ride on the backs of industry and education. People work a variety of jobs and are paid for their time. Military service is mostly voluntary and a well-developed economy of import and export thrives.</description>
+		<description>Midworld nations ride on the backs of industry and education. People work a variety of jobs and are paid for their time. Military service is mostly voluntary and a well-developed economy of import and export thrives.</description>
 		<pawnsPlural>citizens</pawnsPlural>
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<apparelStuffFilter>
@@ -276,53 +230,29 @@
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
-					<li>
-						<selectionWeight>20</selectionWeight>
-						<kind>ModernWorker</kind>
-					</li>
-					<li>
-						<selectionWeight>120</selectionWeight>
-						<kind>ModernSoldier</kind>
-					</li>
-					<li>
-						<selectionWeight>100</selectionWeight>
-						<kind>ModernSpecial</kind>
-					</li>
-					<li>
-						<selectionWeight>200</selectionWeight>
-						<kind>ModernGeneral</kind>
-					</li>
+					<MidworldWorker>20</MidworldWorker>
+					<MidworldSoldier>120</MidworldSoldier>
+					<MidworldSpecial>100</MidworldSpecial>
+					<MidworldGeneral>200</MidworldGeneral>
 				</options>
 			</li>
 			<li Class="PawnGroupMaker_Trader">
 				<traders>
-					<li>
-						<selectionWeight>1</selectionWeight>
-						<kind>ModernTrader</kind>
-					</li>
+					<MidworldTrader>1</MidworldTrader>
 				</traders>
 				<carriers>
-					<li>
-						<selectionWeight>1</selectionWeight>
-						<kind>PackMuffalo</kind>
-					</li>
+					<PackMuffalo>1</PackMuffalo>
 				</carriers>
 				<guards>
-					<li>
-						<selectionWeight>60</selectionWeight>
-						<kind>ModernWorker</kind>
-					</li>
-					<li>
-						<selectionWeight>100</selectionWeight>
-						<kind>ModernMercenary</kind>
-					</li>
+					<MidworldWorker>60</MidworldWorker>
+					<MidworldMercenary>100</MidworldMercenary>
 				</guards>
 			</li>
 		</pawnGroupMakers>
 	</FactionDef>
 
-	<FactionDef ParentName="FactionModern">
-		<defName>ModernFactionHostile</defName>
+	<FactionDef ParentName="FactionMidworld">
+		<defName>MidworldFactionHostile</defName>
 		<label>separatists</label>
 		<description>Disenfranchised with their nation, separatists declare that their land secedes and becomes its own sovereign nation. These rebellions are eventually quelled by force but until such time, they pose a significant threat to the region they inhabit.</description>
 		<pawnsPlural>separatists</pawnsPlural>
@@ -334,24 +264,15 @@
 		</startingGoodwill>
 		<apparelStuffFilter>
 			<thingDefs>
-				<li>Polyester</li>
+				<li>Cloth</li>
 			</thingDefs>
 		</apparelStuffFilter>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
-					<li>
-						<selectionWeight>100</selectionWeight>
-						<kind>SeparatistAgitator</kind>
-					</li>
-					<li>
-						<selectionWeight>150</selectionWeight>
-						<kind>SeparatistGuerilla</kind>
-					</li>
-					<li>
-						<selectionWeight>200</selectionWeight>
-						<kind>SeparatistFanatic</kind>
-					</li>
+					<SeparatistAgitator>100</SeparatistAgitator>
+					<SeparatistGuerilla>150</SeparatistGuerilla>
+					<SeparatistFanatic>200</SeparatistFanatic>
 				</options>
 			</li>
 		</pawnGroupMakers>
@@ -385,42 +306,21 @@
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
-					<li>
-						<selectionWeight>20</selectionWeight>
-						<kind>AscensionDefender</kind>
-					</li>
-					<li>
-						<selectionWeight>120</selectionWeight>
-						<kind>AscensionRectifier</kind>
-					</li>
-					<li>
-						<selectionWeight>200</selectionWeight>
-						<kind>AscensionArbiter</kind>
-					</li>
+					<AscensionDefender>20</AscensionDefender>
+					<AscensionRectifier>120</AscensionRectifier>
+					<AscensionArbiter>200</AscensionArbiter>
 				</options>
 			</li>
 			<li Class="PawnGroupMaker_Trader">
 				<traders>
-					<li>
-						<selectionWeight>1</selectionWeight>
-						<kind>AscensionProvider</kind>
-					</li>
+					<AscensionTrader>1</AscensionProvider>
 				</traders>
 				<carriers>
-					<li>
-						<selectionWeight>1</selectionWeight>
-						<kind>PackMuffalo</kind>
-					</li>
+					<PackMuffalo>1</PackMuffalo>
 				</carriers>
 				<guards>
-					<li>
-						<selectionWeight>60</selectionWeight>
-						<kind>AscensionDefender</kind>
-					</li>
-					<li>
-						<selectionWeight>100</selectionWeight>
-						<kind>AscensionRectifier</kind>
-					</li>
+					<AscensionDefender>60</AscensionDefender>
+					<AscensionRectifier>100</AscensionRectifier>
 				</guards>
 			</li>
 		</pawnGroupMakers>
@@ -445,18 +345,9 @@
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
-					<li>
-						<selectionWeight>100</selectionWeight>
-						<kind>CorruptedDestroyer</kind>
-					</li>
-					<li>
-						<selectionWeight>150</selectionWeight>
-						<kind>CorruptedMindbreaker</kind>
-					</li>
-					<li>
-						<selectionWeight>200</selectionWeight>
-						<kind>CorruptedDoombringer</kind>
-					</li>
+					<CorruptedDestroyer>100</CorruptedDestroyer>
+					<CorruptedMindbreaker>150</CorruptedMindbreaker>
+					<CorruptedDoombringer>200</CorruptedDoombringer>
 				</options>
 			</li>
 		</pawnGroupMakers>
