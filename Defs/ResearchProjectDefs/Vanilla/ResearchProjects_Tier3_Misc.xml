@@ -22,6 +22,10 @@
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="Blocked">
+		<defName>MoisturePump</defName>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="Blocked">
 		<defName>Cryptosleep</defName>
 	</ResearchProjectDef>
 

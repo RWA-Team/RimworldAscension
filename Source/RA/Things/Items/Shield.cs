@@ -140,6 +140,7 @@ namespace RA
         }
     }
 
+    [StaticConstructorOnStartup]
     public class Gizmo_ShieldStatus : Gizmo
     {
         public static readonly Texture2D FullTex = SolidColorMaterials.NewSolidColorTexture(new Color(0.2f, 0.2f, 0.24f));

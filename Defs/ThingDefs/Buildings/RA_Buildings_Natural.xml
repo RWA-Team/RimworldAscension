@@ -35,7 +35,6 @@
 		<building>
 			<isInert>true</isInert>
 			<isNaturalRock>true</isNaturalRock>
-			<soundMined>CollapseRock</soundMined>
 			<canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
 			<deconstructible>false</deconstructible>
 			<mineableDropChance>0.25</mineableDropChance>
