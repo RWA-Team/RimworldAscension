@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <PawnKindDefs>
 
 	<!-- 
@@ -10,11 +10,11 @@
 	- defaultFactionType- used as precaution or debug tool if faction is not set
 	 -->
 
-	<PawnKindDef Name="PawnNeolithic" Abstract="True">
+	<PawnKindDef Name="PawnMedieval" Abstract="True">
 		<race>Human</race>
 		<backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
 		<backstoryCategory>Tribal</backstoryCategory>
-		<defaultFactionType>NeolithicFactionNeutral</defaultFactionType>
+		<defaultFactionType>MedievalFactionNeutral</defaultFactionType>
 		<minGenerationAge>16</minGenerationAge>
 		<maxGenerationAge>40</maxGenerationAge>
 		<gearHealthRange>
@@ -26,25 +26,14 @@
 			<max>1000</max>
 		</apparelMoney>
 		<apparelTags>
-			<li>ClothingNeolithic</li>
+			<li>ClothingMedieval</li>
 		</apparelTags>
 	</PawnKindDef>
 
-	<!-- ========================= Tribals =========================-->	
-	
-	<PawnKindDef ParentName="PawnNeolithic">
-		<defName>TribalMessenger</defName>
-		<label>messenger</label>
-		<combatPower>10</combatPower>
-		<isFighter>false</isFighter>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
-		<apparelRequired>
-			<li>Headdress</li>			
-		</apparelRequired>
-	</PawnKindDef>
+	<!-- ========================= Kingspeople =========================-->	
 
-	<PawnKindDef ParentName="PawnNeolithic">
-		<defName>TribalMerchant</defName>
+	<PawnKindDef ParentName="PawnMedieval">
+		<defName>MedievalTrader</defName>
 		<label>merchant</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
@@ -54,61 +43,60 @@
 		</apparelRequired>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnNeolithic">
-		<defName>TribalScout</defName>
-		<label>scout</label>
+	<PawnKindDef ParentName="PawnMedieval">
+		<defName>MedievalSerf</defName>
+		<label>serf</label>
 		<combatPower>40</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>40</baseRecruitDifficulty>
 		<weaponMoney>
-			<min>500</min>
-			<max>1000</max>
+			<min>5</min>
+			<max>10</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>MeleeNeolithicWeak</li>
-			<li>RangedNeolithicWeak</li>
+			<li>MeleeMedievalWeak</li>
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnNeolithic">
-		<defName>TribalWarrior</defName>
-		<label>warrior</label>
+	<PawnKindDef ParentName="PawnMedieval">
+		<defName>MedievalGuard</defName>
+		<label>guard</label>
 		<combatPower>100</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
-		<apparelRequired>
-			<li>ShieldTribal</li>			
-		</apparelRequired>
-<!-- 		<apparelTags>
-			<li>Tribal_Armor</li>
-		</apparelTags> -->
+		<baseRecruitDifficulty>80</baseRecruitDifficulty>
+ 		<apparelTags>
+			<li>Medieval_Armor</li>
+		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>MeleeNeolithic</li>
+			<li>MeleeMedieval</li>
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnNeolithic">
-		<defName>TribalHunter</defName>
-		<label>hunter</label>
+	<PawnKindDef ParentName="PawnMedieval">
+		<defName>MedievalKnight</defName>
+		<label>knight</label>
 		<combatPower>130</combatPower>
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
-<!-- 		<apparelTags>
-			<li>Tribal_Armor</li>
-		</apparelTags> -->
+		<apparelRequired>
+			<li>ShieldMedieval</li>			
+		</apparelRequired>
+ 		<apparelTags>
+			<li>Medieval_Armor</li>
+		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>RangedNeolithic</li>
+			<li>MeleeMedievalStrong</li>
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnNeolithic">
-		<defName>TribalWarchief</defName>
-		<label>warchief</label>
+	<PawnKindDef ParentName="PawnMedieval">
+		<defName>MedievalLord</defName>
+		<label>lord</label>
 		<combatPower>250</combatPower>
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
@@ -117,81 +105,75 @@
 			<max>1600</max>
 		</apparelMoney>
 		<apparelRequired>
-			<li>Headdress</li>			
+			<li>Crown</li>			
 		</apparelRequired>
-<!-- 		<apparelTags>
-			<li>Tribal_Armor</li>
-		</apparelTags> -->
+ 		<apparelTags>
+			<li>Medieval_Armor</li>
+		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
 			<max>1000</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>RangedNeolithicStrong</li>
+			<li>MeleeMedievalStrong</li>
 		</weaponTags>
 	</PawnKindDef>
 
-	<!-- ========================= Ferals =========================-->	
-
-	<PawnKindDef Name="PawnFeral" ParentName="PawnNeolithic" Abstract="True">
-		<defaultFactionType>NeolithicFactionHostile</defaultFactionType>
-	</PawnKindDef>
+	<!-- ========================= Bandits =========================-->	
 	
-	<PawnKindDef ParentName="PawnFeral">
-		<defName>FeralWarrior</defName>
-		<label>warrior</label>
-		<combatPower>150</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
-		<apparelRequired>
-			<li>ShieldBone</li>			
-		</apparelRequired>
+	<PawnKindDef Name="PawnBandit" ParentName="PawnMedieval" Abstract="True">
+		<defaultFactionType>MedievalFactionHostile</defaultFactionType>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnBandit">
+		<defName>BanditThug</defName>
+		<label>thug</label>
+		<combatPower>60</combatPower>
+		<baseRecruitDifficulty>70</baseRecruitDifficulty>
 		<apparelTags>
-			<li>ArmorBone</li>
+			<li>Bandit_Armor</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>MeleeNeolithic</li>
+			<li>MeleeMedieval</li>
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnFeral">
-		<defName>FeralHunter</defName>
+	<PawnKindDef ParentName="PawnBandit">
+		<defName>BanditRanger</defName>
 		<label>hunter</label>
 		<combatPower>100</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>80</baseRecruitDifficulty>
 		<apparelTags>
-			<li>ArmorBone</li>
+			<li>Bandit_Armor</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>RangedNeolithic</li>
+			<li>MeleeMedieval</li>
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnFeral">
-		<defName>FeralWarchief</defName>
-		<label>warchief</label>
+	<PawnKindDef ParentName="PawnBandit">
+		<defName>BanditChief</defName>
+		<label>chief</label>
 		<combatPower>250</combatPower>
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
-		<apparelRequired>
-			<li>Headdress</li>			
-		</apparelRequired>
 		<apparelTags>
-			<li>ArmorBone</li>
+			<li>Bandit_Armor</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
 			<max>1000</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>RangedNeolithicStrong</li>
+			<li>MeleeMedievalStrong</li>
 		</weaponTags>
 	</PawnKindDef>
 
