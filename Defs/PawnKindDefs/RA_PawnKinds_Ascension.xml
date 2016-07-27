@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PawnKindDefs>
+
+	<!-- 
+	- combatPower - used as measure of threat level points this pawn kind costs to spawn
+	- gearHealthRange - values higher than 1 decrese the chance of gear to have any damage
+	- apparelMoney - used to determine possible thing\stuff pair combinations, besides being random
+	- backstoryCryptosleepCommonality - needs to be assigned
+	- apparelRequired - special apparel types to be generated first (could be chnaged by temperature requirements though)
+	- defaultFactionType- used as precaution or debug tool if faction is not set
+	 -->
+
+	<PawnKindDef Name="PawnAscension" Abstract="True">
+		<race>Human</race>
+		<backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
+		<backstoryCategory>Tribal</backstoryCategory>
+		<defaultFactionType>AscenscionFactionNeutral</defaultFactionType>
+		<minGenerationAge>20</minGenerationAge>
+		<maxGenerationAge>120</maxGenerationAge>
+		<gearHealthRange>
+			<min>0.5</min>
+			<max>2.0</max>
+		</gearHealthRange>
+		<apparelMoney>
+			<min>500</min>
+			<max>1000</max>
+		</apparelMoney>
+		<apparelTags>
+			<li>ClothingAscension</li>
+		</apparelTags>
+	</PawnKindDef>
+
+	<!-- ========================= Ascended =========================-->	
+
+	<PawnKindDef ParentName="PawnAscension">
+		<defName>AscensionProvider</defName>
+		<label>provider</label>
+		<combatPower>10</combatPower>
+		<isFighter>false</isFighter>
+		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<apparelRequired>
+			<li>Headdress</li>			
+		</apparelRequired>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnAscension">
+		<defName>AscensionDefender</defName>
+		<label>defender</label>
+		<combatPower>60</combatPower>
+		<baseRecruitDifficulty>80</baseRecruitDifficulty>
+		<weaponMoney>
+			<min>500</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>MeleeAscension</li>
+		</weaponTags>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnAscension">
+		<defName>AscensionRectifier</defName>
+		<label>rectifier</label>
+		<combatPower>100</combatPower>
+		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+ 		<apparelTags>
+			<li>Ascension_Armor</li>
+		</apparelTags>
+		<weaponMoney>
+			<min>500</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>MeleeAscension</li>
+			<li>RangedAscension</li>
+		</weaponTags>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnAscension">
+		<defName>AscensionArbiter</defName>
+		<label>arbiter</label>
+		<combatPower>250</combatPower>
+		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<factionLeader>true</factionLeader>
+		<apparelMoney>
+			<min>600</min>
+			<max>1600</max>
+		</apparelMoney>
+ 		<apparelTags>
+			<li>Ascension_Armor</li>
+		</apparelTags>
+		<weaponMoney>
+			<min>800</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>MeleeAscensionStrong</li>
+			<li>RangedAscensionStrong</li>
+		</weaponTags>
+	</PawnKindDef>
+
+	<!-- ========================= Corrupted =========================-->	
+
+	<PawnKindDef Name="PawnCorrupted" ParentName="PawnAscension" Abstract="True">
+		<defaultFactionType>AscenscionFactionHostile</defaultFactionType>
+	</PawnKindDef>
+	
+	<PawnKindDef ParentName="PawnCorrupted">
+		<defName>CorruptedDestroyer</defName>
+		<label>destroyer</label>
+		<combatPower>150</combatPower>
+		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<apparelTags>
+			<li>Corrupted_Armor</li>
+		</apparelTags>
+		<weaponMoney>
+			<min>500</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>MeleeAscensionStrong</li>
+		</weaponTags>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnCorrupted">
+		<defName>CorruptedMindbreaker</defName>
+		<label>mindbreaker</label>
+		<combatPower>150</combatPower>
+		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<apparelTags>
+			<li>Corrupted_Armor</li>
+		</apparelTags>
+		<weaponMoney>
+			<min>500</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>RangedAscension</li>
+		</weaponTags>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnCorrupted">
+		<defName>CorruptedDoombringer</defName>
+		<label>doombringer</label>
+		<combatPower>200</combatPower>
+		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<factionLeader>true</factionLeader>
+		<apparelTags>
+			<li>Corrupted_Armor</li>
+		</apparelTags>
+		<weaponMoney>
+			<min>800</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>RangedAscensionStrong</li>
+		</weaponTags>
+	</PawnKindDef>
+
+</PawnKindDefs>

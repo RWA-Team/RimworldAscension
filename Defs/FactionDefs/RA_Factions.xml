@@ -1,21 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <FactionDefs>
 
-
-<!-- 	- selectionWeight - used to mutiply chances of spawning toughter enemies instead of massing weak, if high numbers of threat points reached (the higher the more)
+	<!-- 
+	- selectionWeight - used to mutiply chances of spawning toughter enemies instead of massing weak, if high numbers of threat points reached (the higher the more)
 	- canMakeRandomly - determines if faction can be generated randomly by faction generator fs total faction count is less than required
 	- mustStartOneEnemy - one faction of that def should be hostile
 	- startingGoodwill - initial goodwill with other factions
 	- naturalColonyGoodwill - range of faction goodwill with colony that doesn't change due time
-	- hidden - faction is not seen in faction menu. Some interactions with faction blocked too. -->
-
+	- hidden - faction is not seen in faction menu. Some interactions with faction blocked too.
+	 -->
 
 	<FactionDef>
 		<defName>Colony</defName>
 		<label>colony</label>
 		<description>Your own community.</description>
-		<isPlayer>true</isPlayer>
-		<basicMemberKind>Colonist</basicMemberKind>
 		<pawnsPlural>colonists</pawnsPlural>
 		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
 		<techLevel>Neolithic</techLevel>
@@ -28,9 +26,11 @@
 		</hairTags>
 		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
 		<homeIconColor>(255,220,84)</homeIconColor>
-	</FactionDef>
+	</FactionDef>	
+
 
 	<!-- ========================= Neolithic =========================-->
+
 
 	<FactionDef Name="Faction" Abstract="True">
 		<canMakeRandomly>true</canMakeRandomly>
@@ -62,40 +62,63 @@
 		</hairTags>
 	</FactionDef>
 
-
 	<FactionDef ParentName="FactionNeolithic">
 		<defName>Tribe</defName>
 		<label>tribe</label>
 		<description>These people have been here a very long time. Maybe their ancestors crashed here a thousand years ago. Maybe they survived some cataclysm that destroyed a technological civilization here. In any case, the tribals are mostly nomadic people who live off the land using primitive tools and weapons.\n\nSome tribes are more aggressive than others; many are open to trade and alliances, even with strange peoples like yourselves. Close coop eration or recruitment will be very difficult because of the vast sociotechnological and linguistic gap between the tribals and yourselves.\n\nDespite their apparent technological weakness, the tribals can be dangerous enemies and valuable friends because of their skill with low-tech warfare, their numbers, and their hardiness.</description>
 		<pawnsPlural>tribespeople</pawnsPlural>
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
-<!-- 		<apparelStuffFilter>
+		<apparelStuffFilter>
 			<thingDefs>
-				<li>Leather</li>
+				<li>Muffalo_Leather</li>
 			</thingDefs>
-		</apparelStuffFilter> -->
+		</apparelStuffFilter>
 		<caravanTraderKinds>
 			<li>Caravan_Neolithic</li>
 		</caravanTraderKinds>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
-					<TribalScout>20</TribalScout>
-					<TribalWarrior>60</TribalWarrior>
-					<TribalHunter>100</TribalHunter>
-					<TribalWarchief>200</TribalWarchief>
+					<li>
+						<selectionWeight>20</selectionWeight>
+						<kind>TribalScout</kind>
+					</li>
+					<li>
+						<selectionWeight>120</selectionWeight>
+						<kind>TribalWarrior</kind>
+					</li>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>TribalHunter</kind>
+					</li>
+					<li>
+						<selectionWeight>200</selectionWeight>
+						<kind>TribalWarchief</kind>
+					</li>
 				</options>
 			</li>
 			<li Class="PawnGroupMaker_Trader">
 				<traders>
-					<TribalTrader>1</TribalTrader>
+					<li>
+						<selectionWeight>1</selectionWeight>
+						<kind>TribalTrader</kind>
+					</li>
 				</traders>
 				<carriers>
-					<PackMuffalo>1</PackMuffalo>
+					<li>
+						<selectionWeight>1</selectionWeight>
+						<kind>PackMuffalo</kind>
+					</li>
 				</carriers>
 				<guards>
-					<TribalWarrior>60</TribalWarrior>
-					<TribalHunter>100</TribalHunter>
+					<li>
+						<selectionWeight>60</selectionWeight>
+						<kind>TribalWarrior</kind>
+					</li>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>TribalHunter</kind>
+					</li>
 				</guards>
 			</li>
 		</pawnGroupMakers>
@@ -114,19 +137,352 @@
 		</startingGoodwill>
 		<apparelStuffFilter>
 			<thingDefs>
-				<!-- <li>Human_Leather</li> -->
+				<li>Human_Leather</li>
 				<li>Bone</li>
 			</thingDefs>
 		</apparelStuffFilter>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
-					<FeralWarrior>150</FeralWarrior>
-					<FeralHunter>100</FeralHunter>
-					<FeralWarchief>200</FeralWarchief>
+					<li>
+						<selectionWeight>150</selectionWeight>
+						<kind>FeralWarrior</kind>
+					</li>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>FeralHunter</kind>
+					</li>
+					<li>
+						<selectionWeight>200</selectionWeight>
+						<kind>FeralWarchief</kind>
+					</li>
 				</options>
 			</li>
 		</pawnGroupMakers>
 	</FactionDef>
+	
+	<FactionDef Name="FactionMedieval" ParentName="Faction" Abstract="True">
+		<factionNameMaker>NamerFactionTribal</factionNameMaker>
+		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
+		<techLevel>Medieval</techLevel>
+		<backstoryCategory>Medieval</backstoryCategory>
+		<leaderTitle>King</leaderTitle>
+		<hairTags>
+			<li>Medieval</li>
+		</hairTags>
+	</FactionDef>
+
+	<FactionDef ParentName="FactionMedieval">
+		<defName>MedievalFactionNeutral</defName>
+		<label>kingdom</label>
+		<description>Unlike tribes of old, kingdoms have a rigidly enforced social heirarchy. At the bottom are the serfs who work the land with metal tools and domesticated livestock. Their lives are hard and they have little sympathy for anybody but their family and friends. Above them are the ruling class, either by royal blood or appointed by the king. The ruling class engages in diplomacy and subterfuge, enjoying a comfortable lifestyle funded by the king's coffers. Atop the heirarchy is the king or queen who wields supreme power. The king extracts taxes from serfs (by force if necessary) and uses it to build the kingdom their heart desires.</description>
+		<pawnsPlural>kingspeople</pawnsPlural>
+		<requiredCountAtGameStart>3</requiredCountAtGameStart>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Cloth</li>
+			</thingDefs>
+		</apparelStuffFilter>
+		<caravanTraderKinds>
+			<li>Caravan_Neolithic</li>
+		</caravanTraderKinds>
+		<pawnGroupMakers>
+			<li Class="PawnGroupMaker_Normal">
+				<options>
+					<li>
+						<selectionWeight>20</selectionWeight>
+						<kind>MedievalSerf</kind>
+					</li>
+					<li>
+						<selectionWeight>120</selectionWeight>
+						<kind>MedievalGuard</kind>
+					</li>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>MedievalKnight</kind>
+					</li>
+					<li>
+						<selectionWeight>200</selectionWeight>
+						<kind>MedievalLord</kind>
+					</li>
+				</options>
+			</li>
+			<li Class="PawnGroupMaker_Trader">
+				<traders>
+					<li>
+						<selectionWeight>1</selectionWeight>
+						<kind>MedievalTrader</kind>
+					</li>
+				</traders>
+				<carriers>
+					<li>
+						<selectionWeight>1</selectionWeight>
+						<kind>PackMuffalo</kind>
+					</li>
+				</carriers>
+				<guards>
+					<li>
+						<selectionWeight>60</selectionWeight>
+						<kind>MedievalGuard</kind>
+					</li>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>MedievalKnight</kind>
+					</li>
+				</guards>
+			</li>
+		</pawnGroupMakers>
+	</FactionDef>
+
+	<FactionDef ParentName="FactionMedieval">
+		<defName>MedievalFactionHostile</defName>
+		<label>band of bandits</label>
+		<description>Theives, murderers, rebels - outlaws that leave the kingdom to avoid their inevitable execution. They group together and live outside the kingdom's borders, raiding villages and robbing passing merchant caravans.</description>
+		<pawnsPlural>bandits</pawnsPlural>
+		<canStageAttacks>false</canStageAttacks>
+		<requiredCountAtGameStart>3</requiredCountAtGameStart>
+		<startingGoodwill>
+			<min>-100</min>
+			<max>-50</max>
+		</startingGoodwill>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Deer_Leather</li>
+			</thingDefs>
+		</apparelStuffFilter>
+		<pawnGroupMakers>
+			<li Class="PawnGroupMaker_Normal">
+				<options>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>BanditThug</kind>
+					</li>
+					<li>
+						<selectionWeight>150</selectionWeight>
+						<kind>BanditRanger</kind>
+					</li>
+					<li>
+						<selectionWeight>200</selectionWeight>
+						<kind>BanditChief</kind>
+					</li>
+				</options>
+			</li>
+		</pawnGroupMakers>
+	</FactionDef>
+
+	<FactionDef Name="FactionModern" ParentName="Faction" Abstract="True">
+		<factionNameMaker>NamerFactionTribal</factionNameMaker>
+		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
+		<techLevel>Midworld</techLevel>
+		<backstoryCategory>Modern</backstoryCategory>
+		<leaderTitle>President</leaderTitle>
+		<hairTags>
+			<li>Modern</li>
+		</hairTags>
+	</FactionDef>
+
+	<FactionDef ParentName="FactionModern">
+		<defName>ModernFactionNeutral</defName>
+		<label>nation</label>
+		<description>Modern nations ride on the backs of industry and education. People work a variety of jobs and are paid for their time. Military service is mostly voluntary and a well-developed economy of import and export thrives.</description>
+		<pawnsPlural>citizens</pawnsPlural>
+		<requiredCountAtGameStart>3</requiredCountAtGameStart>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Cloth</li>
+			</thingDefs>
+		</apparelStuffFilter>
+		<caravanTraderKinds>
+			<li>Caravan_Neolithic</li>
+		</caravanTraderKinds>
+		<pawnGroupMakers>
+			<li Class="PawnGroupMaker_Normal">
+				<options>
+					<li>
+						<selectionWeight>20</selectionWeight>
+						<kind>ModernWorker</kind>
+					</li>
+					<li>
+						<selectionWeight>120</selectionWeight>
+						<kind>ModernSoldier</kind>
+					</li>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>ModernSpecial</kind>
+					</li>
+					<li>
+						<selectionWeight>200</selectionWeight>
+						<kind>ModernGeneral</kind>
+					</li>
+				</options>
+			</li>
+			<li Class="PawnGroupMaker_Trader">
+				<traders>
+					<li>
+						<selectionWeight>1</selectionWeight>
+						<kind>ModernTrader</kind>
+					</li>
+				</traders>
+				<carriers>
+					<li>
+						<selectionWeight>1</selectionWeight>
+						<kind>PackMuffalo</kind>
+					</li>
+				</carriers>
+				<guards>
+					<li>
+						<selectionWeight>60</selectionWeight>
+						<kind>ModernWorker</kind>
+					</li>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>ModernMercenary</kind>
+					</li>
+				</guards>
+			</li>
+		</pawnGroupMakers>
+	</FactionDef>
+
+	<FactionDef ParentName="FactionModern">
+		<defName>ModernFactionHostile</defName>
+		<label>separatists</label>
+		<description>Disenfranchised with their nation, separatists declare that their land secedes and becomes its own sovereign nation. These rebellions are eventually quelled by force but until such time, they pose a significant threat to the region they inhabit.</description>
+		<pawnsPlural>separatists</pawnsPlural>
+		<canStageAttacks>false</canStageAttacks>
+		<requiredCountAtGameStart>3</requiredCountAtGameStart>
+		<startingGoodwill>
+			<min>-100</min>
+			<max>-50</max>
+		</startingGoodwill>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Polyester</li>
+			</thingDefs>
+		</apparelStuffFilter>
+		<pawnGroupMakers>
+			<li Class="PawnGroupMaker_Normal">
+				<options>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>SeparatistAgitator</kind>
+					</li>
+					<li>
+						<selectionWeight>150</selectionWeight>
+						<kind>SeparatistGuerilla</kind>
+					</li>
+					<li>
+						<selectionWeight>200</selectionWeight>
+						<kind>SeparatistFanatic</kind>
+					</li>
+				</options>
+			</li>
+		</pawnGroupMakers>
+	</FactionDef>
+	
+	<FactionDef Name="FactionAscension" ParentName="Faction" Abstract="True">
+		<factionNameMaker>NamerFactionTribal</factionNameMaker>
+		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
+		<techLevel>Transcendent</techLevel>
+		<backstoryCategory>Ascension</backstoryCategory>
+		<leaderTitle>Arbiter</leaderTitle>
+		<hairTags>
+			<li>Ascension</li>
+		</hairTags>
+	</FactionDef>
+
+	<FactionDef ParentName="FactionAscension">
+		<defName>AscenscionFactionNeutral</defName>
+		<label>collective</label>
+		<description>A group of ascended beings is called a collective. The peak of society, ascended peoples live in a state of harmony, having transcended conflict and forsaken the less constructive aspects of human nature.</description>
+		<pawnsPlural>ascended</pawnsPlural>
+		<requiredCountAtGameStart>3</requiredCountAtGameStart>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Synthread</li>
+			</thingDefs>
+		</apparelStuffFilter>
+		<caravanTraderKinds>
+			<li>Caravan_Neolithic</li>
+		</caravanTraderKinds>
+		<pawnGroupMakers>
+			<li Class="PawnGroupMaker_Normal">
+				<options>
+					<li>
+						<selectionWeight>20</selectionWeight>
+						<kind>AscensionDefender</kind>
+					</li>
+					<li>
+						<selectionWeight>120</selectionWeight>
+						<kind>AscensionRectifier</kind>
+					</li>
+					<li>
+						<selectionWeight>200</selectionWeight>
+						<kind>AscensionArbiter</kind>
+					</li>
+				</options>
+			</li>
+			<li Class="PawnGroupMaker_Trader">
+				<traders>
+					<li>
+						<selectionWeight>1</selectionWeight>
+						<kind>AscensionProvider</kind>
+					</li>
+				</traders>
+				<carriers>
+					<li>
+						<selectionWeight>1</selectionWeight>
+						<kind>PackMuffalo</kind>
+					</li>
+				</carriers>
+				<guards>
+					<li>
+						<selectionWeight>60</selectionWeight>
+						<kind>AscensionDefender</kind>
+					</li>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>AscensionRectifier</kind>
+					</li>
+				</guards>
+			</li>
+		</pawnGroupMakers>
+	</FactionDef>
+
+	<FactionDef ParentName="FactionAscension">
+		<defName>AscenscionFactionHostile</defName>
+		<label>corrupted</label>
+		<description>Not all ascended are impervious to the flaws of human nature. Some succumb to their more base instincts and wreak havoc with the superior technology that could only be developed in a highly productive Collective. Pray they do not seek you out.</description>
+		<pawnsPlural>corrupted</pawnsPlural>
+		<canStageAttacks>false</canStageAttacks>
+		<requiredCountAtGameStart>3</requiredCountAtGameStart>
+		<startingGoodwill>
+			<min>-100</min>
+			<max>-50</max>
+		</startingGoodwill>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Devilstrand</li>
+			</thingDefs>
+		</apparelStuffFilter>
+		<pawnGroupMakers>
+			<li Class="PawnGroupMaker_Normal">
+				<options>
+					<li>
+						<selectionWeight>100</selectionWeight>
+						<kind>CorruptedDestroyer</kind>
+					</li>
+					<li>
+						<selectionWeight>150</selectionWeight>
+						<kind>CorruptedMindbreaker</kind>
+					</li>
+					<li>
+						<selectionWeight>200</selectionWeight>
+						<kind>CorruptedDoombringer</kind>
+					</li>
+				</options>
+			</li>
+		</pawnGroupMakers>
+	</FactionDef>
+
 
 </FactionDefs>
