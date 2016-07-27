@@ -95,15 +95,6 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-  <!--
-  <PawnKindDef Abstract="True" ParentName="AnimalTech" Name="BearTech">
-    <combatPower>240</combatPower>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0.3</wildSpawn_EcoSystemWeight>
-  </PawnKindDef>
-
--->
-
 
   <ThingDef ParentName="BearBalance">
     <defName>GrizzlyBear</defName>
@@ -116,63 +107,7 @@
       <leatherLabel>bearskin</leatherLabel>
       <meatLabel>bear meat</meatLabel>
     </race>
-  </ThingDef>
-<!--
-  <PawnKindDef ParentName="BearTech">
-    <defName>GrizzlyBear</defName>
-    <label>grizzly bear</label>
-    <race>GrizzlyBear</race>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Bear</texPath>
-          <drawSize>1.4</drawSize>
-          <color>(112,82,65)</color>
-          <shadowData>
-            <volume>(0.4, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
-          <drawSize>1.4</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Bear</texPath>
-          <drawSize>2</drawSize>
-          <color>(112,82,65)</color>
-          <shadowData>
-            <volume>(0.6, 0.45, 0.45)</volume>
-            <offset>(0,0,-0.25)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
-          <drawSize>2</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Bear</texPath>
-          <drawSize>2.7</drawSize>
-          <color>(112,82,65)</color>
-          <shadowData>
-            <volume>(0.8, 0.6, 0.6)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
-          <drawSize>2.7</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
-  
--->  
-  
+  </ThingDef>  
   
   <ThingDef ParentName="BearBalance">
     <defName>PolarBear</defName>
@@ -190,59 +125,5 @@
       <useMeatFrom>GrizzlyBear</useMeatFrom>
     </race>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="BearTech">
-    <defName>PolarBear</defName>
-    <label>polar bear</label>
-    <race>PolarBear</race>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Bear</texPath>
-          <drawSize>1.4</drawSize>
-          <color>(180,180,180)</color>
-          <shadowData>
-            <volume>(0.4, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
-          <drawSize>1.4</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Bear</texPath>
-          <drawSize>2</drawSize>
-          <color>(180,180,180)</color>
-          <shadowData>
-            <volume>(0.6, 0.45, 0.45)</volume>
-            <offset>(0,0,-0.25)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
-          <drawSize>2</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Bear/Bear</texPath>
-          <drawSize>2.7</drawSize>
-          <color>(180,180,180)</color>
-          <shadowData>
-            <volume>(0.8, 0.6, 0.6)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
-          <drawSize>2.7</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
- --> 
   
 </Defs>

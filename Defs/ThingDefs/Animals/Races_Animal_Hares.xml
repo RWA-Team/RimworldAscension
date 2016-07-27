@@ -61,14 +61,8 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-<!--
-  <PawnKindDef Abstract="True" ParentName="AnimalTech" Name="HareTech">
-    <combatPower>25</combatPower>
-    <wildSpawn_EcoSystemWeight>0.25</wildSpawn_EcoSystemWeight>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-  </PawnKindDef>
 
-<!--================================================ -->
+  <!--================================================ -->
 
   <ThingDef ParentName="HareBalance">
     <defName>Hare</defName>
@@ -79,51 +73,6 @@
       <leatherInsulation>0.95</leatherInsulation>
     </race>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="HareTech">
-    <defName>Hare</defName>
-    <label>hare</label>
-    <race>Hare</race>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Hare/Hare</texPath>
-          <drawSize>1</drawSize>
-          <color>(130,127,106)</color>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Hare/Hare</texPath>
-          <drawSize>1.25</drawSize>
-          <color>(130,127,106)</color>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1.25</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Hare/Hare</texPath>
-          <drawSize>1.5</drawSize>
-          <color>(130,127,106)</color>
-          <shadowData>
-            <volume>(0.32, 0.35, 0.32)</volume>
-            <offset>(0,0,0)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1.15</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
 
   <!--================================================ -->
 
@@ -141,50 +90,5 @@
       <leatherInsulation>1.1</leatherInsulation>
     </race>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="HareTech">
-    <defName>Snowhare</defName>
-    <label>snowhare</label>
-    <race>Snowhare</race>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Hare/Hare</texPath>
-          <drawSize>1</drawSize>
-          <color>(180,180,180)</color>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Hare/Hare</texPath>
-          <drawSize>1.25</drawSize>
-          <color>(180,180,180)</color>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1.25</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Hare/Hare</texPath>
-          <drawSize>1.5</drawSize>
-          <color>(180,180,180)</color>
-          <shadowData>
-            <volume>(0.32, 0.35, 0.32)</volume>
-            <offset>(0,0,0)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1.35</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
-  -->
+  
 </Defs>

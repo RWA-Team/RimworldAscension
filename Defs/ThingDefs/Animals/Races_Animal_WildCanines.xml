@@ -115,64 +115,6 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-  <!--
-  <PawnKindDef ParentName="AnimalTech">
-    <defName>Warg</defName>
-    <label>warg</label>
-    <race>Warg</race>
-    <combatPower>75</combatPower>
-    <lifeStages>
-      <li>
-        <label>warg puppy</label>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Warg/Warg</texPath>
-          <drawSize>1.05</drawSize>
-          <color>(123,104,89)</color>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Warg/Warg</texPath>
-          <drawSize>1.7</drawSize>
-          <color>(123,104,89)</color>
-          <shadowData>
-            <volume>(0.25, 0.3, 0.25)</volume>
-            <offset>(0,0,-0.15)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.4</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Warg/Warg</texPath>
-          <drawSize>2.05</drawSize>
-          <color>(123,104,89)</color>
-          <shadowData>
-            <volume>(0.3, 0.4, 0.3)</volume>
-            <offset>(0,0,-0.15)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.7</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0.9</wildSpawn_EcoSystemWeight>
-    <wildSpawn_GroupSizeRange>
-      <min>2</min>
-      <max>5</max>
-    </wildSpawn_GroupSizeRange>
-  </PawnKindDef>
-
 
   <!-- ========================== Wolves ================================= -->
 
@@ -282,75 +224,6 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="AnimalTech" Name="WolfTech" Abstract="True">
-    <combatPower>75</combatPower>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0.9</wildSpawn_EcoSystemWeight>
-  </PawnKindDef>
-
-
-
-  <ThingDef ParentName="WolfBalance">
-    <defName>WolfTimber</defName>
-    <label>timber wolf</label>
-    <description>A rugged predator long feared by many ancient Earth cultures. As pack hunters, wolves have a complex social life and are fiercely intelligent.</description>
-    <race>
-      <leatherColor>(115,110,100)</leatherColor>
-      <meatLabel>wolfmeat</meatLabel>
-      <leatherLabel>timber wolfskin</leatherLabel>
-      <leatherInsulation>1.0</leatherInsulation>
-    </race>
-  </ThingDef>
-
-  <PawnKindDef ParentName="WolfTech">
-    <defName>WolfTimber</defName>
-    <label>timber wolf</label>
-    <race>WolfTimber</race>
-    <lifeStages>
-      <li>
-        <label>timber wolf puppy</label>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/WolfTimber/WolfTimber</texPath>
-          <drawSize>1.05</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/WolfTimber/WolfTimber</texPath>
-          <drawSize>1.5</drawSize>
-          <shadowData>
-            <volume>(0.25, 0.3, 0.25)</volume>
-            <offset>(0,0,-0.15)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.5</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/WolfTimber/WolfTimber</texPath>
-          <drawSize>1.95</drawSize>
-          <shadowData>
-            <volume>(0.3, 0.4, 0.3)</volume>
-            <offset>(0,0,-0.15)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.95</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
-
-
 
   <ThingDef ParentName="WolfBalance">
     <defName>WolfArctic</defName>
@@ -367,53 +240,6 @@
     </race>
   </ThingDef>
 
-  <PawnKindDef ParentName="WolfTech">
-    <defName>WolfArctic</defName>
-    <label>arctic wolf</label>
-    <race>WolfArctic</race>
-    <lifeStages>
-      <li>
-        <label>timber wolf puppy</label>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/WolfArctic/WolfArctic</texPath>
-          <drawSize>1.05</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.05</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/WolfArctic/WolfArctic</texPath>
-          <drawSize>1.5</drawSize>
-          <shadowData>
-            <volume>(0.25, 0.3, 0.25)</volume>
-            <offset>(0,0,-0.15)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.5</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/WolfArctic/WolfArctic</texPath>
-          <drawSize>1.95</drawSize>
-          <shadowData>
-            <volume>(0.3, 0.4, 0.3)</volume>
-            <offset>(0,0,-0.15)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.95</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
-  
   <!--========================== Fox base ========================-->
 
   <ThingDef Name="FoxBalance" ParentName="AnimalBalance" Abstract="True">
@@ -519,12 +345,6 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="AnimalTech" Name="AnimalKindBaseFox" Abstract="True">
-    <combatPower>45</combatPower>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0.5</wildSpawn_EcoSystemWeight>
-  </PawnKindDef>
 
   <!--========================== Fox fennec ========================-->
 
@@ -538,49 +358,6 @@
       <meatLabel>foxmeat</meatLabel>
     </race>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="AnimalKindBaseFox">
-    <defName>FoxFennec</defName>
-    <label>fennec fox</label>
-    <race>FoxFennec</race>
-    <lifeStages>
-      <li>
-        <label>fennec fox puppy</label>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/FoxFennec/FoxFennec</texPath>
-          <drawSize>0.9</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/FoxFennec/FoxFennec</texPath>
-          <drawSize>1.2</drawSize>
-          <shadowData>
-            <volume>(0.25, 0.3, 0.25)</volume>
-            <offset>(0,0,-0.15)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.2</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/FoxFennec/FoxFennec</texPath>
-          <drawSize>1.45</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.75</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
 
   <!--========================== Fox red ========================-->
 
@@ -594,49 +371,6 @@
       <useMeatFrom>FoxFennec</useMeatFrom>
     </race>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="AnimalKindBaseFox">
-    <defName>FoxRed</defName>
-    <label>red fox</label>
-    <race>FoxRed</race>
-    <lifeStages>
-      <li>
-        <label>red fox puppy</label>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/FoxRed/FoxRed</texPath>
-          <drawSize>1.0</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/FoxRed/FoxRed</texPath>
-          <drawSize>1.2</drawSize>
-          <shadowData>
-            <volume>(0.25, 0.3, 0.25)</volume>
-            <offset>(0,0,-0.15)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.2</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/FoxRed/FoxRed</texPath>
-          <drawSize>1.68</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.68</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
 
   <!--========================== Fox arctic ========================-->
   
@@ -653,48 +387,5 @@
       <useMeatFrom>FoxFennec</useMeatFrom>
     </race>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="AnimalKindBaseFox">
-    <defName>FoxArctic</defName>
-    <label>arctic fox</label>
-    <race>FoxArctic</race>
-    <lifeStages>
-      <li>
-        <label>Arctic fox puppy</label>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/FoxArctic/FoxArctic</texPath>
-          <drawSize>1.0</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/FoxArctic/FoxArctic</texPath>
-          <drawSize>1.2</drawSize>
-          <shadowData>
-            <volume>(0.25, 0.3, 0.25)</volume>
-            <offset>(0,0,-0.15)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.2</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/FoxArctic/FoxArctic</texPath>
-          <drawSize>1.75</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.75</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
--->
+  
 </Defs>
