@@ -26,7 +26,7 @@
 			<max>1000</max>
 		</apparelMoney>
 		<apparelTags>
-			<li>ClothingAscension</li>
+			<li>Clothing_Ascension</li>
 		</apparelTags>
 	</PawnKindDef>
 
@@ -39,7 +39,7 @@
 		<isFighter>false</isFighter>
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelRequired>
-			<li>Headdress</li>			
+			<li>Headdress</li>
 		</apparelRequired>
 	</PawnKindDef>
 
@@ -53,7 +53,7 @@
 			<max>1000</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>MeleeAscension</li>
+			<li>MeleeMedieval</li>
 		</weaponTags>
 	</PawnKindDef>
 
@@ -63,15 +63,15 @@
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
  		<apparelTags>
-			<li>Ascension_Armor</li>
+			<li>Armor_Ascension</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>MeleeAscension</li>
-			<li>RangedAscension</li>
+			<li>MeleeMedieval</li>
+			<li>RangedNeolithic</li>
 		</weaponTags>
 	</PawnKindDef>
 
@@ -86,15 +86,15 @@
 			<max>1600</max>
 		</apparelMoney>
  		<apparelTags>
-			<li>Ascension_Armor</li>
+			<li>Armor_Ascension</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
 			<max>1000</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>MeleeAscensionStrong</li>
-			<li>RangedAscensionStrong</li>
+			<li>MeleeMedievalStrong</li>
+			<li>RangedNeolithicStrong</li>
 		</weaponTags>
 	</PawnKindDef>
 
@@ -110,7 +110,7 @@
 		<combatPower>150</combatPower>
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<apparelTags>
-			<li>Corrupted_Armor</li>
+			<li>Armor_Corrupted</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -127,14 +127,14 @@
 		<combatPower>150</combatPower>
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<apparelTags>
-			<li>Corrupted_Armor</li>
+			<li>Armor_Corrupted</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>RangedAscension</li>
+			<li>RangedNeolithic</li>
 		</weaponTags>
 	</PawnKindDef>
 
@@ -145,14 +145,14 @@
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelTags>
-			<li>Corrupted_Armor</li>
+			<li>Armor_Corrupted</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
 			<max>1000</max>
 		</weaponMoney>
 		<weaponTags>
-			<li>RangedAscensionStrong</li>
+			<li>RangedNeolithicStrong</li>
 		</weaponTags>
 	</PawnKindDef>
 

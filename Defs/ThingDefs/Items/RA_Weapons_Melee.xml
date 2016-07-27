@@ -225,6 +225,9 @@
 				<meleeDamageDef>Blunt</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeNeolithicWeak</li>
+		</weaponTags>
 	</ThingDef>
 
 	<!-- ========================= Medieval =========================-->
@@ -256,6 +259,9 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedievalWeak</li>
+		</weaponTags>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -278,6 +284,9 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedieval</li>
+		</weaponTags>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -300,6 +309,9 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedieval</li>
+		</weaponTags>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -322,6 +334,9 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedieval</li>
+		</weaponTags>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -344,6 +359,9 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedieval</li>
+		</weaponTags>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -366,6 +384,9 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedievalStrong</li>
+		</weaponTags>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMelee">
@@ -395,6 +416,9 @@
 				</workTypes>
 			</li>
 		</comps>
+		<weaponTags>
+			<li>MeleeMedievalWeak</li>
+		</weaponTags>
 	</ThingDef>
 
 	<!-- ========================= Industrial =========================-->

@@ -26,7 +26,7 @@
 			<max>1000</max>
 		</apparelMoney>
 		<apparelTags>
-			<li>ClothingNeolithic</li>
+			<li>Clothing_Neolithic</li>
 		</apparelTags>
 	</PawnKindDef>
 
@@ -39,7 +39,7 @@
 		<isFighter>false</isFighter>
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelRequired>
-			<li>Headdress</li>			
+			<li>Headdress</li>
 		</apparelRequired>
 	</PawnKindDef>
 
@@ -49,9 +49,6 @@
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
-		<apparelRequired>
-			<li>Headdress</li>			
-		</apparelRequired>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnNeolithic">
@@ -78,7 +75,7 @@
 			<li>ShieldTribal</li>			
 		</apparelRequired>
 <!-- 		<apparelTags>
-			<li>Tribal_Armor</li>
+			<li>Armor_Neolithic</li>
 		</apparelTags> -->
 		<weaponMoney>
 			<min>500</min>
@@ -92,10 +89,10 @@
 	<PawnKindDef ParentName="PawnNeolithic">
 		<defName>TribalHunter</defName>
 		<label>hunter</label>
-		<combatPower>130</combatPower>
+		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 <!-- 		<apparelTags>
-			<li>Tribal_Armor</li>
+			<li>Armor_Neolithic</li>
 		</apparelTags> -->
 		<weaponMoney>
 			<min>500</min>
@@ -116,11 +113,11 @@
 			<min>600</min>
 			<max>1600</max>
 		</apparelMoney>
-		<apparelRequired>
+<!--		<apparelRequired>
 			<li>Headdress</li>			
 		</apparelRequired>
-<!-- 		<apparelTags>
-			<li>Tribal_Armor</li>
+ 		<apparelTags>
+			<li>Armor_Neolithic</li>
 		</apparelTags> -->
 		<weaponMoney>
 			<min>800</min>
