@@ -24,7 +24,7 @@
 
 
 	<ThingDef ParentName="WeaponRanged">
-		<defName>PrimitiveBow</defName>
+		<defName>BowPrimitive</defName>
 		<label>Primitive Bow</label>
 		<description>A simple wooden bow.</description>
 		<graphicData>
@@ -62,7 +62,6 @@
 				<projectileDef>Arrow_Small</projectileDef>
 				<warmupTicks>78</warmupTicks>
 				<range>25</range>
-				<ArmorPenetration>1</ArmorPenetration>
 				<soundCast>BowSmall</soundCast>
 			</li>
 		</verbs>
@@ -300,7 +299,7 @@
 			<li Class="RA.CompTool_Properties">
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(0.4, 0.1, 0)</firstHandPosition>
+				<firstHandPosition>(0.15,0,0.15)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.011</valuePerWorkFactor>
@@ -363,7 +362,7 @@
 			<li Class="RA.CompTool_Properties">
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.2, -0.1, 0)</firstHandPosition>
+				<firstHandPosition>(-0.1,0.2,-0.13)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.016</valuePerWorkFactor>

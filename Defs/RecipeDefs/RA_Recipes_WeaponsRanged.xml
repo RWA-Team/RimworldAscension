@@ -39,7 +39,7 @@
 		<label>make bow</label>
 		<description>Makes a simple wooden bow.</description>
 		<products>
-			<Bow>1</Bow>
+			<BowPrimitive>1</BowPrimitive>
 		</products>
 		<ingredients>
 			<li>
