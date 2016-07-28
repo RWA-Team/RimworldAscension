@@ -133,7 +133,7 @@
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
 		<techLevel>Medieval</techLevel>
-		<backstoryCategory>Medieval</backstoryCategory>
+		<backstoryCategory>Tribal</backstoryCategory>
 		<leaderTitle>King</leaderTitle>
 		<hairTags>
 			<li>Medieval</li>
@@ -152,7 +152,7 @@
 			</thingDefs>
 		</apparelStuffFilter>
 		<caravanTraderKinds>
-			<li>Caravan_Neolithic</li>
+			<li>Caravan_Medieval</li>
 		</caravanTraderKinds>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
@@ -205,21 +205,21 @@
 		</pawnGroupMakers>
 	</FactionDef>
 
-	<FactionDef Name="FactionMidworld" ParentName="Faction" Abstract="True">
+	<FactionDef Name="FactionIndustrial" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
-		<techLevel>Midworld</techLevel>
-		<backstoryCategory>Midworld</backstoryCategory>
+		<techLevel>Industrial</techLevel>
+		<backstoryCategory>Tribal</backstoryCategory>
 		<leaderTitle>President</leaderTitle>
 		<hairTags>
-			<li>Midworld</li>
+			<li>Industrial</li>
 		</hairTags>
 	</FactionDef>
 
-	<FactionDef ParentName="FactionMidworld">
-		<defName>MidworldFactionNeutral</defName>
+	<FactionDef ParentName="FactionIndustrial">
+		<defName>IndustrialFactionNeutral</defName>
 		<label>nation</label>
-		<description>Midworld nations ride on the backs of industry and education. People work a variety of jobs and are paid for their time. Military service is mostly voluntary and a well-developed economy of import and export thrives.</description>
+		<description>Industrial nations ride on the backs of industry and education. People work a variety of jobs and are paid for their time. Military service is mostly voluntary and a well-developed economy of import and export thrives.</description>
 		<pawnsPlural>citizens</pawnsPlural>
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<apparelStuffFilter>
@@ -228,34 +228,34 @@
 			</thingDefs>
 		</apparelStuffFilter>
 		<caravanTraderKinds>
-			<li>Caravan_Neolithic</li>
+			<li>Caravan_Industrial</li>
 		</caravanTraderKinds>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
-					<MidworldWorker>20</MidworldWorker>
-					<MidworldSoldier>120</MidworldSoldier>
-					<MidworldSpecial>100</MidworldSpecial>
-					<MidworldGeneral>200</MidworldGeneral>
+					<IndustrialWorker>20</IndustrialWorker>
+					<IndustrialSoldier>120</IndustrialSoldier>
+					<IndustrialSpecial>100</IndustrialSpecial>
+					<IndustrialGeneral>200</IndustrialGeneral>
 				</options>
 			</li>
 			<li Class="PawnGroupMaker_Trader">
 				<traders>
-					<MidworldTrader>1</MidworldTrader>
+					<IndustrialTrader>1</IndustrialTrader>
 				</traders>
 				<carriers>
 					<PackMuffalo>1</PackMuffalo>
 				</carriers>
 				<guards>
-					<MidworldWorker>60</MidworldWorker>
-					<MidworldMercenary>100</MidworldMercenary>
+					<IndustrialWorker>60</IndustrialWorker>
+					<IndustrialMercenary>100</IndustrialMercenary>
 				</guards>
 			</li>
 		</pawnGroupMakers>
 	</FactionDef>
 
-	<FactionDef ParentName="FactionMidworld">
-		<defName>MidworldFactionHostile</defName>
+	<FactionDef ParentName="FactionIndustrial">
+		<defName>IndustrialFactionHostile</defName>
 		<label>separatists</label>
 		<description>Disenfranchised with their nation, separatists declare that their land secedes and becomes its own sovereign nation. These rebellions are eventually quelled by force but until such time, they pose a significant threat to the region they inhabit.</description>
 		<pawnsPlural>separatists</pawnsPlural>
@@ -285,7 +285,7 @@
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
 		<techLevel>Transcendent</techLevel>
-		<backstoryCategory>Ascension</backstoryCategory>
+		<backstoryCategory>Tribal</backstoryCategory>
 		<leaderTitle>Arbiter</leaderTitle>
 		<hairTags>
 			<li>Ascension</li>
@@ -304,7 +304,7 @@
 			</thingDefs>
 		</apparelStuffFilter>
 		<caravanTraderKinds>
-			<li>Caravan_Neolithic</li>
+			<li>Caravan_Ascension</li>
 		</caravanTraderKinds>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
@@ -316,7 +316,7 @@
 			</li>
 			<li Class="PawnGroupMaker_Trader">
 				<traders>
-					<AscensionTrader>1</AscensionProvider>
+					<AscensionTrader>1</AscensionTrader>
 				</traders>
 				<carriers>
 					<PackMuffalo>1</PackMuffalo>

@@ -79,7 +79,7 @@
 			<li>ShieldTribal</li>			
 		</apparelRequired>
 <!-- 		<apparelTags>
-			<li>Armor_Neolithic</li>
+			<li>ArmorNeolithic</li>
 		</apparelTags> -->
 		<weaponMoney>
 			<min>500</min>
@@ -96,7 +96,7 @@
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 <!-- 		<apparelTags>
-			<li>Armor_Neolithic</li>
+			<li>ArmorNeolithic</li>
 		</apparelTags> -->
 		<weaponMoney>
 			<min>500</min>
@@ -119,9 +119,9 @@
 		</apparelMoney>
 <!--		<apparelRequired>
 			<li>Headdress</li>			
-		</apparelRequired>
+		</apparelRequired>-->
  		<apparelTags>
-			<li>Armor_Neolithic</li>
+			<li>ArmorNeolithic</li>
 		</apparelTags> 
 		<weaponMoney>
 			<min>800</min>
@@ -132,7 +132,7 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<!-- ========================= Ferals =========================-->	
+	<!-- ========================= Ferals ========================= -->	
 
 	<PawnKindDef Name="PawnFeral" ParentName="PawnNeolithic" Abstract="True">
 		<defaultFactionType>NeolithicFactionHostile</defaultFactionType>
