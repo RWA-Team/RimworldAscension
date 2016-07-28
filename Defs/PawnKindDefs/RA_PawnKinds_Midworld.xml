@@ -26,7 +26,7 @@
 			<max>1000</max>
 		</apparelMoney>
 		<apparelTags>
-			<li>Clothing_Industrial</li>
+			<li>ClothingIndustrial</li>
 		</apparelTags>
 	</PawnKindDef>
 
@@ -64,7 +64,7 @@
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>80</baseRecruitDifficulty>
  		<apparelTags>
-			<li>Armor_Industrial</li>
+			<li>ArmorIndustrial</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -85,7 +85,7 @@
 			<li>ShieldIndustrial</li>			
 		</apparelRequired>
  		<apparelTags>
-			<li>Armor_Industrial</li>
+			<li>ArmorIndustrial</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -107,7 +107,7 @@
 			<max>1600</max>
 		</apparelMoney>
  		<apparelTags>
-			<li>Armor_Industrial</li>
+			<li>ArmorIndustrial</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
@@ -130,7 +130,7 @@
 		<combatPower>60</combatPower>
 		<baseRecruitDifficulty>70</baseRecruitDifficulty>
 		<apparelTags>
-			<li>Armor_Separatist</li>
+			<li>ArmorSeparatist</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -147,7 +147,7 @@
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>80</baseRecruitDifficulty>
 		<apparelTags>
-			<li>Armor_Separatist</li>
+			<li>ArmorSeparatist</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -165,7 +165,7 @@
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelTags>
-			<li>Armor_Separatist</li>
+			<li>ArmorSeparatist</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
