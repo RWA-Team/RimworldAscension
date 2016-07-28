@@ -40,6 +40,17 @@
 		<thingCategories>
 			<li>Armor</li>
 		</thingCategories>
+		<apparel>
+			<tags>
+				<li>Armor_Neolithic</li>
+				<li>Armor_Medieval</li>
+				<li>Armor_Bandit</li>
+				<li>Armor_Midworld</li>
+				<li>Armor_Separatist</li>
+				<li>Armor_Ascension</li>
+				<li>Armor_Corrupted</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 	<!-- ========================= Head =========================-->
@@ -100,6 +111,9 @@
 				<li>UpperHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Neolithic/HelmetTurtle/HelmetTurtle</worngraphicPath>
+			<tags>
+				<li>Armor_Neolithic</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -122,6 +136,9 @@
 				<li>FullHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</worngraphicPath>
+			<tags>
+				<li>Armor_Medieval</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -144,6 +161,9 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
+			<tags>
+				<li>Armor_Medieval</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -166,6 +186,9 @@
 				<li>UpperHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/HelmetNasal/HelmetNasal</worngraphicPath>
+			<tags>
+				<li>Armor_Medieval</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -188,6 +211,9 @@
 				<li>FullHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Kettlehat/Kettlehat</worngraphicPath>
+			<tags>
+				<li>Armor_Medieval</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -258,6 +284,9 @@
 				<li>Shoulders</li>
 			</bodyPartGroups>
 			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
+			<tags>
+				<li>Armor_Medieval</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
@@ -287,6 +316,9 @@
 				<li>Arms</li>
 			</bodyPartGroups>
 			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
+			<tags>
+				<li>Armor_Medieval</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
@@ -316,6 +348,9 @@
 				<li>FullHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Hauberk/Hauberk</worngraphicPath>
+			<tags>
+				<li>Armor_Medieval</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
@@ -343,6 +378,9 @@
 				<li>Arms</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Gambeson/Gambeson</worngraphicPath>
+			<tags>
+				<li>Armor_Medieval</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
@@ -373,6 +411,11 @@
 		<statBases>
 			<MaxHitPoints>60</MaxHitPoints>
 		</statBases>
+		<apparel>
+			<tags>
+				<li>ShieldNeolithic</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -385,6 +428,11 @@
 		<statBases>
 			<MaxHitPoints>70</MaxHitPoints>
 		</statBases>
+		<apparel>
+			<tags>
+				<li>ShieldBone</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -400,6 +448,11 @@
 		<stuffCategories>
 			<li>Metal</li>
 		</stuffCategories>
+		<apparel>
+			<tags>
+				<li>ShieldMedieval</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -415,6 +468,13 @@
 		<stuffCategories>
 			<li>Metal</li>
 		</stuffCategories>
+		<apparel>
+			<tags>
+				<li>ShieldMedieval</li>
+				<li>ShieldMidworld</li>
+				<li>ShieldAscension</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 </ThingDefs>

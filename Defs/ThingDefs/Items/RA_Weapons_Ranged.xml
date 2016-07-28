@@ -41,7 +41,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>RangedNeolithic</li>
+			<li>RangedNeolithicWeak</li>
 		</weaponTags>
 		<comps>
 			<li Class="RA.CompTool_Properties">
