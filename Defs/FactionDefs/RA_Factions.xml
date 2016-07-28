@@ -64,7 +64,7 @@
 
 
 	<FactionDef ParentName="FactionNeolithic">
-		<defName>Tribe</defName>
+		<defName>NeolithicFactionNeutral</defName>
 		<label>tribe</label>
 		<description>These people have been here a very long time. Maybe their ancestors crashed here a thousand years ago. Maybe they survived some cataclysm that destroyed a technological civilization here. In any case, the tribals are mostly nomadic people who live off the land using primitive tools and weapons.\n\nSome tribes are more aggressive than others; many are open to trade and alliances, even with strange peoples like yourselves. Close coop eration or recruitment will be very difficult because of the vast sociotechnological and linguistic gap between the tribals and yourselves.\n\nDespite their apparent technological weakness, the tribals can be dangerous enemies and valuable friends because of their skill with low-tech warfare, their numbers, and their hardiness.</description>
 		<pawnsPlural>tribespeople</pawnsPlural>
@@ -102,7 +102,7 @@
 	</FactionDef>
 
 	<FactionDef ParentName="FactionNeolithic">
-		<defName>Ferals</defName>
+		<defName>NeolithicFactionHostile</defName>
 		<label>feral tribe</label>
 		<description>A feral uncivilized tribe of cannibals.</description>
 		<pawnsPlural>ferals</pawnsPlural>
@@ -114,7 +114,7 @@
 		</startingGoodwill>
 		<apparelStuffFilter>
 			<thingDefs>
-				<li>Human_Leather</li>
+<!--				<li>Human_Leather</li>-->
 				<li>Bone</li>
 			</thingDefs>
 		</apparelStuffFilter>
@@ -136,7 +136,7 @@
 		<backstoryCategory>Tribal</backstoryCategory>
 		<leaderTitle>King</leaderTitle>
 		<hairTags>
-			<li>Medieval</li>
+			<li>Tribal</li>
 		</hairTags>
 	</FactionDef>
 
@@ -212,7 +212,7 @@
 		<backstoryCategory>Tribal</backstoryCategory>
 		<leaderTitle>President</leaderTitle>
 		<hairTags>
-			<li>Industrial</li>
+			<li>Tribal</li>
 		</hairTags>
 	</FactionDef>
 
@@ -288,7 +288,7 @@
 		<backstoryCategory>Tribal</backstoryCategory>
 		<leaderTitle>Arbiter</leaderTitle>
 		<hairTags>
-			<li>Ascension</li>
+			<li>Punk</li>
 		</hairTags>
 	</FactionDef>
 
