@@ -100,6 +100,20 @@
 			<li>ShieldTribal</li>			
 		</apparelRequired>
 		<weaponMoney>
+		<apparelRequired>
+			<li>ShieldTribal</li>			
+		</apparelRequired>
+		<weaponMoney>
+			<min>500</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>MeleeNeolithic</li>
+		</weaponTags>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnNeolithicNeutral">
+		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
 		</weaponMoney>
@@ -113,6 +127,17 @@
 		<label>hunter</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
+		<weaponMoney>
+			<min>500</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>RangedNeolithic</li>
+		</weaponTags>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnNeolithicNeutral">
+		<defName>TribalWarchief</defName>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -145,6 +170,24 @@
 	</PawnKindDef>
 
 	<!-- ========================= Ferals ========================= -->
+
+	<PawnKindDef Name="PawnNeolithicHostile" ParentName="PawnNeolithic" Abstract="True">
+		<defaultFactionType>NeolithicFactionHostile</defaultFactionType>
+		<weaponMoney>
+			<min>800</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>RangedNeolithicStrong</li>
+		</weaponTags>
+	</PawnKindDef>
+
+	<!-- ========================= Ferals ========================= -->
+
+	<PawnKindDef Name="PawnNeolithicHostile" ParentName="PawnNeolithic" Abstract="True">
+		<defaultFactionType>NeolithicFactionHostile</defaultFactionType>
+	</PawnKindDef>
+	
 
 	<PawnKindDef Name="PawnNeolithicHostile" ParentName="PawnNeolithic" Abstract="True">
 		<defaultFactionType>NeolithicFactionHostile</defaultFactionType>
