@@ -558,7 +558,7 @@
 			<MarketValue>500</MarketValue>
 		</statBases>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Midworld/Multitool</texPath>
+			<texPath>Things/Items/Weapons/Industrial/Multitool</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<verbs>

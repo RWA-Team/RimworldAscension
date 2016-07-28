@@ -119,7 +119,7 @@
 		</apparelMoney>
 <!--		<apparelRequired>
 			<li>Headdress</li>			
-		</apparelRequired>
+		</apparelRequired>-->
  		<apparelTags>
 			<li>Armor_Neolithic</li>
 		</apparelTags> 
@@ -132,7 +132,7 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<!-- ========================= Ferals =========================-->	
+	<!-- ========================= Ferals ========================= -->	
 
 	<PawnKindDef Name="PawnFeral" ParentName="PawnNeolithic" Abstract="True">
 		<defaultFactionType>NeolithicFactionHostile</defaultFactionType>
