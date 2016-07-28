@@ -79,7 +79,7 @@
 			<li>ShieldTribal</li>			
 		</apparelRequired>
 <!-- 		<apparelTags>
-			<li>Armor_Neolithic</li>
+			<li>ArmorNeolithic</li>
 		</apparelTags> -->
 		<weaponMoney>
 			<min>500</min>
@@ -96,7 +96,7 @@
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 <!-- 		<apparelTags>
-			<li>Armor_Neolithic</li>
+			<li>ArmorNeolithic</li>
 		</apparelTags> -->
 		<weaponMoney>
 			<min>500</min>
@@ -121,7 +121,7 @@
 			<li>Headdress</li>			
 		</apparelRequired>-->
  		<apparelTags>
-			<li>Armor_Neolithic</li>
+			<li>ArmorNeolithic</li>
 		</apparelTags> 
 		<weaponMoney>
 			<min>800</min>

@@ -26,7 +26,7 @@
 			<max>1000</max>
 		</apparelMoney>
 		<apparelTags>
-			<li>Clothing_Ascension</li>
+			<li>ClothingAscension</li>
 		</apparelTags>
 	</PawnKindDef>
 
@@ -63,7 +63,7 @@
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
  		<apparelTags>
-			<li>Armor_Ascension</li>
+			<li>ArmorAscension</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -86,7 +86,7 @@
 			<max>1600</max>
 		</apparelMoney>
  		<apparelTags>
-			<li>Armor_Ascension</li>
+			<li>ArmorAscension</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
@@ -110,7 +110,7 @@
 		<combatPower>150</combatPower>
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<apparelTags>
-			<li>Armor_Corrupted</li>
+			<li>ArmorCorrupted</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -127,7 +127,7 @@
 		<combatPower>150</combatPower>
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<apparelTags>
-			<li>Armor_Corrupted</li>
+			<li>ArmorCorrupted</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -145,7 +145,7 @@
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelTags>
-			<li>Armor_Corrupted</li>
+			<li>ArmorCorrupted</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>800</min>

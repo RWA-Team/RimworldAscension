@@ -38,13 +38,13 @@
 		</thingCategories>
 		<apparel>
 			<tags>
-				<li>Armor_Neolithic</li>
-				<li>Armor_Medieval</li>
-				<li>Armor_Bandit</li>
-				<li>Armor_Industrial</li>
-				<li>Armor_Separatist</li>
-				<li>Armor_Ascension</li>
-				<li>Armor_Corrupted</li>
+				<li>ArmorNeolithic</li>
+				<li>ArmorMedieval</li>
+				<li>ArmorBandit</li>
+				<li>ArmorIndustrial</li>
+				<li>ArmorSeparatist</li>
+				<li>ArmorAscension</li>
+				<li>ArmorCorrupted</li>
 			</tags>
 		</apparel>
 	</ThingDef>
@@ -107,7 +107,7 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Neolithic/HelmetTurtle/HelmetTurtle</worngraphicPath>
 			<tags>
-				<li>Armor_Neolithic</li>
+				<li>ArmorNeolithic</li>
 			</tags>
 		</apparel>
 	</ThingDef>
@@ -131,7 +131,7 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</worngraphicPath>
 			<tags>
-				<li>Armor_Medieval</li>
+				<li>ArmorMedieval</li>
 			</tags>
 		</apparel>
 	</ThingDef>
@@ -155,7 +155,7 @@
 				<li>FullHead</li>
 			</bodyPartGroups>
 			<tags>
-				<li>Armor_Medieval</li>
+				<li>ArmorMedieval</li>
 			</tags>
 		</apparel>
 	</ThingDef>
@@ -179,7 +179,7 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/HelmetNasal/HelmetNasal</worngraphicPath>
 			<tags>
-				<li>Armor_Medieval</li>
+				<li>ArmorMedieval</li>
 			</tags>
 		</apparel>
 	</ThingDef>
@@ -203,7 +203,7 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Kettlehat/Kettlehat</worngraphicPath>
 			<tags>
-				<li>Armor_Medieval</li>
+				<li>ArmorMedieval</li>
 			</tags>
 		</apparel>
 	</ThingDef>
@@ -273,7 +273,7 @@
 			</bodyPartGroups>
 			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
 			<tags>
-				<li>Armor_Medieval</li>
+				<li>ArmorMedieval</li>
 			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
@@ -303,7 +303,7 @@
 			</bodyPartGroups>
 			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
 			<tags>
-				<li>Armor_Medieval</li>
+				<li>ArmorMedieval</li>
 			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
@@ -332,7 +332,7 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Hauberk/Hauberk</worngraphicPath>
 			<tags>
-				<li>Armor_Medieval</li>
+				<li>ArmorMedieval</li>
 			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
@@ -361,7 +361,7 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Gambeson/Gambeson</worngraphicPath>
 			<tags>
-				<li>Armor_Medieval</li>
+				<li>ArmorMedieval</li>
 			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
