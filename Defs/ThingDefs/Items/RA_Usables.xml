@@ -28,7 +28,6 @@
 				<useLabel>Study the survival guide</useLabel>
 			</li>
 			<li Class="RA.CompBlueprint_Properties">
-				<!-- <compClass>RA.CompBlueprint</compClass> -->
 				<researchName>Survival</researchName>
 			</li>
 		</comps>

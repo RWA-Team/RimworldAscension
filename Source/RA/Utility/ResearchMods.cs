@@ -9,7 +9,7 @@ namespace RA
 {
     public static class ResearchMods
     {
-        public static void StartPack()
+        public static void Survival()
         {
             TryAllowWorktables();
         }
