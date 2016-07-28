@@ -133,7 +133,7 @@
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
 		<techLevel>Medieval</techLevel>
-		<backstoryCategory>Medieval</backstoryCategory>
+		<backstoryCategory>Tribal</backstoryCategory>
 		<leaderTitle>King</leaderTitle>
 		<hairTags>
 			<li>Medieval</li>
@@ -209,7 +209,7 @@
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
 		<techLevel>Industrial</techLevel>
-		<backstoryCategory>Industrial</backstoryCategory>
+		<backstoryCategory>Tribal</backstoryCategory>
 		<leaderTitle>President</leaderTitle>
 		<hairTags>
 			<li>Industrial</li>
@@ -285,7 +285,7 @@
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
 		<techLevel>Transcendent</techLevel>
-		<backstoryCategory>Ascension</backstoryCategory>
+		<backstoryCategory>Tribal</backstoryCategory>
 		<leaderTitle>Arbiter</leaderTitle>
 		<hairTags>
 			<li>Ascension</li>
