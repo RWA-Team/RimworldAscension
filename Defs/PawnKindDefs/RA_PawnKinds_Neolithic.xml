@@ -9,31 +9,52 @@
 	- apparelRequired - special apparel types to be generated first (could be chnaged by temperature requirements though)
 	- defaultFactionType- used as precaution or debug tool if faction is not set
 	 -->
+	 
+<!--	<PawnKindDef Abstract="True" Name="PawnNeolithic">
+		<race>Human</race>
+		<combatPower>30</combatPower>
+		<baseRecruitDifficulty>0.60</baseRecruitDifficulty>
+		<isFighter>false</isFighter>
+		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<forceNormalGearQuality>true</forceNormalGearQuality>
+	</PawnKindDef>-->
 
 	<PawnKindDef Name="PawnNeolithic" Abstract="True">
 		<race>Human</race>
-		<backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
+		<combatPower>30</combatPower>
+		<baseRecruitDifficulty>0.70</baseRecruitDifficulty>
 		<backstoryCategory>Tribal</backstoryCategory>
-		<defaultFactionType>NeolithicFactionNeutral</defaultFactionType>
-		<minGenerationAge>16</minGenerationAge>
+		<invNutrition>2.55</invNutrition>
+		<invFoodDef>Pemmican</invFoodDef>
+		<backstoryCryptosleepCommonality>0.01</backstoryCryptosleepCommonality>
 		<maxGenerationAge>40</maxGenerationAge>
-		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
 		<gearHealthRange>
 			<min>0.5</min>
-			<max>2.0</max>
+			<max>1.8</max>
 		</gearHealthRange>
 		<apparelMoney>
-			<min>500</min>
-			<max>1000</max>
+			<min>180</min>
+			<max>350</max>
 		</apparelMoney>
 		<apparelTags>
-			<li>ClothingNeolithic</li>
+			<li>Spacer</li>
 		</apparelTags>
+		<weaponMoney>
+			<min>60</min>
+			<max>400</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>MeleeNeolithic</li>
+		</weaponTags>
 	</PawnKindDef>
 
-	<!-- ========================= Tribals =========================-->	
+	<!-- ========================= Tribals =========================-->
 	
-	<PawnKindDef ParentName="PawnNeolithic">
+	<PawnKindDef Name="PawnNeolithicNeutral" ParentName="PawnNeolithic" Abstract="True">
+		<defaultFactionType>NeolithicFactionNeutral</defaultFactionType>
+	</PawnKindDef>
+	
+	<PawnKindDef ParentName="PawnNeolithicNeutral">
 		<defName>TribalMessenger</defName>
 		<label>messenger</label>
 		<combatPower>10</combatPower>
@@ -44,7 +65,7 @@
 		</apparelRequired>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnNeolithic">
+	<PawnKindDef ParentName="PawnNeolithicNeutral">
 		<defName>TribalMerchant</defName>
 		<label>merchant</label>
 		<combatPower>10</combatPower>
@@ -55,7 +76,7 @@
 		</apparelRequired>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnNeolithic">
+	<PawnKindDef ParentName="PawnNeolithicNeutral">
 		<defName>TribalScout</defName>
 		<label>scout</label>
 		<combatPower>40</combatPower>
@@ -70,7 +91,7 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnNeolithic">
+	<PawnKindDef ParentName="PawnNeolithicNeutral">
 		<defName>TribalWarrior</defName>
 		<label>warrior</label>
 		<combatPower>100</combatPower>
@@ -78,9 +99,6 @@
 		<apparelRequired>
 			<li>ShieldTribal</li>			
 		</apparelRequired>
-<!-- 		<apparelTags>
-			<li>ArmorNeolithic</li>
-		</apparelTags> -->
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -90,14 +108,11 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnNeolithic">
+	<PawnKindDef ParentName="PawnNeolithicNeutral">
 		<defName>TribalHunter</defName>
 		<label>hunter</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
-<!-- 		<apparelTags>
-			<li>ArmorNeolithic</li>
-		</apparelTags> -->
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -107,7 +122,7 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnNeolithic">
+	<PawnKindDef ParentName="PawnNeolithicNeutral">
 		<defName>TribalWarchief</defName>
 		<label>warchief</label>
 		<combatPower>250</combatPower>
@@ -117,9 +132,6 @@
 			<min>600</min>
 			<max>1600</max>
 		</apparelMoney>
-<!--		<apparelRequired>
-			<li>Headdress</li>			
-		</apparelRequired>-->
  		<apparelTags>
 			<li>ArmorNeolithic</li>
 		</apparelTags> 
@@ -132,13 +144,13 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<!-- ========================= Ferals ========================= -->	
+	<!-- ========================= Ferals ========================= -->
 
-	<PawnKindDef Name="PawnFeral" ParentName="PawnNeolithic" Abstract="True">
+	<PawnKindDef Name="PawnNeolithicHostile" ParentName="PawnNeolithic" Abstract="True">
 		<defaultFactionType>NeolithicFactionHostile</defaultFactionType>
 	</PawnKindDef>
 	
-	<PawnKindDef ParentName="PawnFeral">
+	<PawnKindDef ParentName="PawnNeolithicHostile">
 		<defName>FeralWarrior</defName>
 		<label>warrior</label>
 		<combatPower>150</combatPower>
@@ -158,7 +170,7 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnFeral">
+	<PawnKindDef ParentName="PawnNeolithicHostile">
 		<defName>FeralHunter</defName>
 		<label>hunter</label>
 		<combatPower>100</combatPower>
@@ -175,7 +187,7 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnFeral">
+	<PawnKindDef ParentName="PawnNeolithicHostile">
 		<defName>FeralWarchief</defName>
 		<label>warchief</label>
 		<combatPower>250</combatPower>

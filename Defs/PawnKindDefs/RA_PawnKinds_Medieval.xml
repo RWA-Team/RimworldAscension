@@ -8,31 +8,44 @@
 	- backstoryCryptosleepCommonality - needs to be assigned
 	- apparelRequired - special apparel types to be generated first (could be chnaged by temperature requirements though)
 	- defaultFactionType- used as precaution or debug tool if faction is not set
-	 -->
+	-->
 
 	<PawnKindDef Name="PawnMedieval" Abstract="True">
 		<race>Human</race>
-		<backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
+		<combatPower>30</combatPower>
+		<baseRecruitDifficulty>0.70</baseRecruitDifficulty>
 		<backstoryCategory>Tribal</backstoryCategory>
-		<defaultFactionType>MedievalFactionNeutral</defaultFactionType>
-		<minGenerationAge>16</minGenerationAge>
+		<invNutrition>2.55</invNutrition>
+		<invFoodDef>Pemmican</invFoodDef>
+		<backstoryCryptosleepCommonality>0.01</backstoryCryptosleepCommonality>
 		<maxGenerationAge>40</maxGenerationAge>
 		<gearHealthRange>
 			<min>0.5</min>
-			<max>2.0</max>
+			<max>1.8</max>
 		</gearHealthRange>
 		<apparelMoney>
-			<min>500</min>
-			<max>1000</max>
+			<min>280</min>
+			<max>450</max>
 		</apparelMoney>
 		<apparelTags>
-			<li>ClothingMedieval</li>
+			<li>Spacer</li>
 		</apparelTags>
+		<weaponMoney>
+			<min>160</min>
+			<max>500</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>MeleeMedieval</li>
+		</weaponTags>
 	</PawnKindDef>
 
-	<!-- ========================= Kingspeople =========================-->	
+	<!-- ========================= Kingspeople =========================-->
+	
+	<PawnKindDef Name="PawnMedievalNeutral" ParentName="PawnMedieval" Abstract="True">
+		<defaultFactionType>MedievalFactionNeutral</defaultFactionType>
+	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnMedieval">
+	<PawnKindDef ParentName="PawnMedievalNeutral">
 		<defName>MedievalTrader</defName>
 		<label>merchant</label>
 		<combatPower>10</combatPower>
@@ -62,9 +75,6 @@
 		<label>guard</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>0.80</baseRecruitDifficulty>
- 		<apparelTags>
-			<li>ArmorMedieval</li>
-		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -82,9 +92,6 @@
 		<apparelRequired>
 			<li>ShieldMedieval</li>			
 		</apparelRequired>
- 		<apparelTags>
-			<li>ArmorMedieval</li>
-		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -104,12 +111,6 @@
 			<min>600</min>
 			<max>1600</max>
 		</apparelMoney>
-		<apparelRequired>
-			<li>Crown</li>			
-		</apparelRequired>
- 		<apparelTags>
-			<li>ArmorMedieval</li>
-		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
 			<max>1000</max>
