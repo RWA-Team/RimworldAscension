@@ -38,7 +38,7 @@
 		<label>messenger</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>Headdress</li>
 		</apparelRequired>
@@ -49,7 +49,7 @@
 		<label>merchant</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>Headdress</li>			
 		</apparelRequired>
@@ -59,7 +59,7 @@
 		<defName>TribalScout</defName>
 		<label>scout</label>
 		<combatPower>40</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -74,7 +74,7 @@
 		<defName>TribalWarrior</defName>
 		<label>warrior</label>
 		<combatPower>100</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>ShieldTribal</li>			
 		</apparelRequired>
@@ -94,7 +94,7 @@
 		<defName>TribalHunter</defName>
 		<label>hunter</label>
 		<combatPower>100</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
 <!-- 		<apparelTags>
 			<li>ArmorNeolithic</li>
 		</apparelTags> -->
@@ -111,7 +111,7 @@
 		<defName>TribalWarchief</defName>
 		<label>warchief</label>
 		<combatPower>250</combatPower>
-		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelMoney>
 			<min>600</min>
@@ -142,7 +142,7 @@
 		<defName>FeralWarrior</defName>
 		<label>warrior</label>
 		<combatPower>150</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>ShieldBone</li>			
 		</apparelRequired>
@@ -162,7 +162,7 @@
 		<defName>FeralHunter</defName>
 		<label>hunter</label>
 		<combatPower>100</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
 		<apparelTags>
 			<li>ArmorBone</li>
 		</apparelTags>
@@ -179,7 +179,7 @@
 		<defName>FeralWarchief</defName>
 		<label>warchief</label>
 		<combatPower>250</combatPower>
-		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelRequired>
 			<li>Headdress</li>			

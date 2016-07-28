@@ -14,7 +14,7 @@
 		<race>Human</race>
 		<backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
 		<backstoryCategory>Tribal</backstoryCategory>
-		<defaultFactionType>AscenscionFactionNeutral</defaultFactionType>
+		<defaultFactionType>AscensionFactionNeutral</defaultFactionType>
 		<minGenerationAge>20</minGenerationAge>
 		<maxGenerationAge>120</maxGenerationAge>
 		<gearHealthRange>
@@ -37,7 +37,7 @@
 		<label>provider</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>Headdress</li>
 		</apparelRequired>
@@ -47,7 +47,7 @@
 		<defName>AscensionDefender</defName>
 		<label>defender</label>
 		<combatPower>60</combatPower>
-		<baseRecruitDifficulty>80</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.80</baseRecruitDifficulty>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -61,7 +61,7 @@
 		<defName>AscensionRectifier</defName>
 		<label>rectifier</label>
 		<combatPower>100</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
  		<apparelTags>
 			<li>ArmorAscension</li>
 		</apparelTags>
@@ -79,7 +79,7 @@
 		<defName>AscensionArbiter</defName>
 		<label>arbiter</label>
 		<combatPower>250</combatPower>
-		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelMoney>
 			<min>600</min>
@@ -108,7 +108,7 @@
 		<defName>CorruptedDestroyer</defName>
 		<label>destroyer</label>
 		<combatPower>150</combatPower>
-		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<apparelTags>
 			<li>ArmorCorrupted</li>
 		</apparelTags>
@@ -125,7 +125,7 @@
 		<defName>CorruptedMindbreaker</defName>
 		<label>mindbreaker</label>
 		<combatPower>150</combatPower>
-		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<apparelTags>
 			<li>ArmorCorrupted</li>
 		</apparelTags>
@@ -142,7 +142,7 @@
 		<defName>CorruptedDoombringer</defName>
 		<label>doombringer</label>
 		<combatPower>200</combatPower>
-		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelTags>
 			<li>ArmorCorrupted</li>

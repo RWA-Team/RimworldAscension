@@ -37,7 +37,7 @@
 		<label>merchant</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>Headdress</li>
 		</apparelRequired>
@@ -47,7 +47,7 @@
 		<defName>IndustrialWorker</defName>
 		<label>worker</label>
 		<combatPower>60</combatPower>
-		<baseRecruitDifficulty>60</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.60</baseRecruitDifficulty>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -62,7 +62,7 @@
 		<defName>IndustrialSoldier</defName>
 		<label>soldier</label>
 		<combatPower>100</combatPower>
-		<baseRecruitDifficulty>80</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.80</baseRecruitDifficulty>
  		<apparelTags>
 			<li>ArmorIndustrial</li>
 		</apparelTags>
@@ -80,7 +80,7 @@
 		<defName>IndustrialSpecial</defName>
 		<label>special forces</label>
 		<combatPower>130</combatPower>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>ShieldIndustrial</li>			
 		</apparelRequired>
@@ -100,7 +100,7 @@
 		<defName>IndustrialGeneral</defName>
 		<label>general</label>
 		<combatPower>250</combatPower>
-		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelMoney>
 			<min>600</min>
@@ -128,7 +128,7 @@
 		<defName>SeparatistAgitator</defName>
 		<label>agitator</label>
 		<combatPower>60</combatPower>
-		<baseRecruitDifficulty>70</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.70</baseRecruitDifficulty>
 		<apparelTags>
 			<li>ArmorSeparatist</li>
 		</apparelTags>
@@ -145,7 +145,7 @@
 		<defName>SeparatistGuerilla</defName>
 		<label>guerilla</label>
 		<combatPower>100</combatPower>
-		<baseRecruitDifficulty>80</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.80</baseRecruitDifficulty>
 		<apparelTags>
 			<li>ArmorSeparatist</li>
 		</apparelTags>
@@ -162,7 +162,7 @@
 		<defName>SeparatistFanatic</defName>
 		<label>fanatic</label>
 		<combatPower>150</combatPower>
-		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelTags>
 			<li>ArmorSeparatist</li>
