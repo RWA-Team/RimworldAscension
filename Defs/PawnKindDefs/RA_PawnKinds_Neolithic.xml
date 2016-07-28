@@ -173,24 +173,6 @@
 
 	<PawnKindDef Name="PawnNeolithicHostile" ParentName="PawnNeolithic" Abstract="True">
 		<defaultFactionType>NeolithicFactionHostile</defaultFactionType>
-		<weaponMoney>
-			<min>800</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>RangedNeolithicStrong</li>
-		</weaponTags>
-	</PawnKindDef>
-
-	<!-- ========================= Ferals ========================= -->
-
-	<PawnKindDef Name="PawnNeolithicHostile" ParentName="PawnNeolithic" Abstract="True">
-		<defaultFactionType>NeolithicFactionHostile</defaultFactionType>
-	</PawnKindDef>
-	
-
-	<PawnKindDef Name="PawnNeolithicHostile" ParentName="PawnNeolithic" Abstract="True">
-		<defaultFactionType>NeolithicFactionHostile</defaultFactionType>
 	</PawnKindDef>
 	
 	<PawnKindDef ParentName="PawnNeolithicHostile">
