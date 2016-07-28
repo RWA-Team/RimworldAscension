@@ -21,11 +21,13 @@ namespace RA
             if (Prefs.DevMode)
                 Log.Message("Detours initialized");
 
-            LongEventHandler.QueueLongEvent(delegate
-            {
-                PlayDataLoader.ClearAllPlayData();
-                PlayDataLoader.LoadAllPlayData();
-            }, "LoadingLongEvent", true, null);
+            RA_DefGenerator.GenerateImpliedDefs_PreResolve();
+
+            //LongEventHandler.QueueLongEvent(delegate
+            //{
+            //    PlayDataLoader.ClearAllPlayData();
+            //    PlayDataLoader.LoadAllPlayData();
+            //}, "LoadingLongEvent", true, null);
         }
 
         public static object GetHiddenValue(Type type, object instance, string fieldName, FieldInfo info,
@@ -466,13 +468,13 @@ namespace RA
                 BindingFlags.Static | BindingFlags.Public);
             TryDetourFromTo(vanillaSelectableNow, newSelectableNow);
 
-            // added new def generators and removed redundant
-            var vanillaGenerateImpliedDefs_PreResolve = typeof(DefGenerator).GetMethod(
-                "GenerateImpliedDefs_PreResolve",
-                BindingFlags.Static | BindingFlags.Public);
-            var newGenerateImpliedDefs_PreResolve = typeof(RA_DefGenerator).GetMethod("GenerateImpliedDefs_PreResolve",
-                BindingFlags.Static | BindingFlags.Public);
-            TryDetourFromTo(vanillaGenerateImpliedDefs_PreResolve, newGenerateImpliedDefs_PreResolve);
+            //// added new def generators and removed redundant
+            //var vanillaGenerateImpliedDefs_PreResolve = typeof(DefGenerator).GetMethod(
+            //    "GenerateImpliedDefs_PreResolve",
+            //    BindingFlags.Static | BindingFlags.Public);
+            //var newGenerateImpliedDefs_PreResolve = typeof(RA_DefGenerator).GetMethod("GenerateImpliedDefs_PreResolve",
+            //    BindingFlags.Static | BindingFlags.Public);
+            //TryDetourFromTo(vanillaGenerateImpliedDefs_PreResolve, newGenerateImpliedDefs_PreResolve);
 
             // changed butcher yields
             var vanillaButcherProducts = typeof(Pawn).GetMethod("ButcherProducts",
