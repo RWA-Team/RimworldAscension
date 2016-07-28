@@ -346,7 +346,7 @@
 	</FactionDef>
 
 	<FactionDef ParentName="FactionAscension">
-		<defName>AscenscionFactionNeutral</defName>
+		<defName>AscensionFactionNeutral</defName>
 		<label>collective</label>
 		<description>A group of ascended beings is called a collective. The peak of society, ascended peoples live in a state of harmony, having transcended conflict and forsaken the less constructive aspects of human nature.</description>
 		<pawnsPlural>ascended</pawnsPlural>
