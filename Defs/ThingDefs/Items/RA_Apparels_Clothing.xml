@@ -81,10 +81,10 @@
 		</stuffCategories>
 		<apparel>
 			<tags>
-				<li>ClothingNeolithic</li>
-				<li>ClothingMedieval</li>
-				<li>ClothingIndustrial</li>
-				<li>ClothingAscension</li>
+				<li>Clothing_Neolithic</li>
+				<li>Clothing_Medieval</li>
+				<li>Clothing_Midworld</li>
+				<li>Clothing_Ascension</li>
 			</tags>
 		</apparel>
 	</ThingDef>
