@@ -38,6 +38,7 @@
 		<label>messenger</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
+		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>Headdress</li>
 		</apparelRequired>
@@ -48,19 +49,14 @@
 		<label>merchant</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
-<<<<<<< a11239692670c92ba8ca67632cf33d00aa2dd4bf
-		<apparelRequired>
-			<li>Headdress</li>			
-		</apparelRequired>
-=======
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
->>>>>>> added tags to weapon tags, apparel tags and pawnkind weapon/apparel tags
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnNeolithic">
 		<defName>TribalScout</defName>
 		<label>scout</label>
 		<combatPower>40</combatPower>
+		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -75,6 +71,7 @@
 		<defName>TribalWarrior</defName>
 		<label>warrior</label>
 		<combatPower>100</combatPower>
+		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>ShieldTribal</li>			
 		</apparelRequired>
@@ -93,12 +90,8 @@
 	<PawnKindDef ParentName="PawnNeolithic">
 		<defName>TribalHunter</defName>
 		<label>hunter</label>
-<<<<<<< a11239692670c92ba8ca67632cf33d00aa2dd4bf
-		<combatPower>130</combatPower>
-=======
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
->>>>>>> added tags to weapon tags, apparel tags and pawnkind weapon/apparel tags
 <!-- 		<apparelTags>
 			<li>Armor_Neolithic</li>
 		</apparelTags> -->
@@ -115,6 +108,7 @@
 		<defName>TribalWarchief</defName>
 		<label>warchief</label>
 		<combatPower>250</combatPower>
+		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelMoney>
 			<min>600</min>
@@ -123,9 +117,19 @@
 <!--		<apparelRequired>
 			<li>Headdress</li>			
 		</apparelRequired>
+<<<<<<< HEAD
+ 		<apparelTags>
+			<li>Armor_Neolithic</li>
+		</apparelTags> 
+||||||| merged common ancestors
+<!-- 		<apparelTags>
+			<li>Tribal_Armor</li>
+		</apparelTags> -->
+=======
  		<apparelTags>
 			<li>Armor_Neolithic</li>
 		</apparelTags> -->
+>>>>>>> 2a48f547d6fb9ae698c4543a38dac2e275be0cd2
 		<weaponMoney>
 			<min>800</min>
 			<max>1000</max>
@@ -145,6 +149,7 @@
 		<defName>FeralWarrior</defName>
 		<label>warrior</label>
 		<combatPower>150</combatPower>
+		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelRequired>
 			<li>ShieldBone</li>			
 		</apparelRequired>
@@ -164,6 +169,7 @@
 		<defName>FeralHunter</defName>
 		<label>hunter</label>
 		<combatPower>100</combatPower>
+		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelTags>
 			<li>ArmorBone</li>
 		</apparelTags>
@@ -180,6 +186,7 @@
 		<defName>FeralWarchief</defName>
 		<label>warchief</label>
 		<combatPower>250</combatPower>
+		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelRequired>
 			<li>Headdress</li>			

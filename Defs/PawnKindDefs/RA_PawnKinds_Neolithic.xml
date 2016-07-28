@@ -117,7 +117,7 @@
 			<min>600</min>
 			<max>1600</max>
 		</apparelMoney>
-		<apparelRequired>
+<!--		<apparelRequired>
 			<li>Headdress</li>			
 		</apparelRequired>
  		<apparelTags>
