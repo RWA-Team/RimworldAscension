@@ -94,13 +94,6 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="AnimalTech" Name="BigCatTech" Abstract="True">
-    <combatPower>155</combatPower>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0.42</wildSpawn_EcoSystemWeight>
-  </PawnKindDef>
-
 
   <!--===============================================-->
 
@@ -113,55 +106,6 @@
       <leatherColor>(177,136,112)</leatherColor>
     </race>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="BigCatTech">
-    <defName>Cougar</defName>
-    <label>cougar</label>
-    <race>Cougar</race>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Cougar</texPath>
-          <drawSize>1.1</drawSize>
-          <color>(177,136,112)</color>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Cougar</texPath>
-          <drawSize>1.4</drawSize>
-          <color>(177,136,112)</color>
-          <shadowData>
-            <volume>(0.3, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.4</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Cougar</texPath>
-          <drawSize>2.18</drawSize>
-          <color>(177,136,112)</color>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.1)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>2.18</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
 
   <!--===============================================-->
 
@@ -174,56 +118,6 @@
       <leatherColor>(60,60,60)</leatherColor>
     </race>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="BigCatTech">
-    <defName>Panther</defName>
-    <label>panther</label>
-    <race>Panther</race>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Cougar</texPath>
-          <drawSize>1.05</drawSize>
-          <color>(60,60,60)</color>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.05</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Cougar</texPath>
-          <drawSize>1.35</drawSize>
-          <color>(60,60,60)</color>
-          <shadowData>
-            <volume>(0.3, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.35</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cougar/Cougar</texPath>
-          <drawSize>2.12</drawSize>
-          <color>(60,60,60)</color>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.1)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>2.12</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
-
 
   <!--===============================================-->
 
@@ -325,62 +219,5 @@
       <li>BadassAnimal</li>
     </tradeTags>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="AnimalTech">
-    <defName>Lynx</defName>
-    <label>lynx</label>
-    <race>Lynx</race>
-    <combatPower>80</combatPower>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0.22</wildSpawn_EcoSystemWeight>
-    <lifeStages>
-      <li>
-        <label>lynx kitten</label>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Lynx/Lynx</texPath>
-          <drawSize>1.1</drawSize>
-          <color>(173,155,138)</color>
-          <shaderType>CutoutComplex</shaderType>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Lynx/Lynx</texPath>
-          <drawSize>1.4</drawSize>
-          <color>(173,155,138)</color>
-          <shaderType>CutoutComplex</shaderType>
-          <shadowData>
-            <volume>(0.3, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.4</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Lynx/Lynx</texPath>
-          <drawSize>1.6</drawSize>
-          <color>(173,155,138)</color>
-          <shaderType>CutoutComplex</shaderType>
-          <shadowData>
-            <volume>(0.3, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.1)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.6</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
--->
 
 </Defs>

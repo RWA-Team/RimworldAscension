@@ -68,77 +68,6 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-  <!--
-  <PawnKindDef ParentName="AnimalTech">
-    <defName>Deer</defName>
-    <label>deer</label>
-    <race>Deer</race>
-    <combatPower>50</combatPower>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0.7</wildSpawn_EcoSystemWeight>
-    <wildSpawn_GroupSizeRange>
-      <min>3</min>
-      <max>9</max>
-    </wildSpawn_GroupSizeRange>
-    <labelMale>buck</labelMale>
-    <labelFemale>doe</labelFemale>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Deer/DeerBaby</texPath>
-          <drawSize>1.1</drawSize>
-          <color>(140,74,41)</color>
-          <shaderType>CutoutComplex</shaderType>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.0</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Deer/DeerBaby</texPath>
-          <drawSize>1.5</drawSize>
-          <color>(140,74,41)</color>
-          <shaderType>CutoutComplex</shaderType>
-          <shadowData>
-            <volume>(0.3, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.15</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Deer/DeerMale</texPath>
-          <drawSize>3.45</drawSize>
-          <color>(156,112,62)</color>
-          <shaderType>CutoutComplex</shaderType>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <femaleGraphicData>
-          <texPath>Things/Pawn/Animal/Deer/DeerFemale</texPath>
-          <drawSize>1.55</drawSize>
-          <color>(188,146,110)</color>
-          <shaderType>CutoutComplex</shaderType>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </femaleGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.35</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
 
   <!-- ====================================================== -->
 
@@ -206,77 +135,6 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="AnimalTech">
-    <defName>Ibex</defName>
-    <label>ibex</label>
-    <race>Ibex</race>
-    <combatPower>50</combatPower>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0.7</wildSpawn_EcoSystemWeight>
-    <wildSpawn_GroupSizeRange>
-      <min>1</min>
-      <max>3</max>
-    </wildSpawn_GroupSizeRange>
-    <labelMale>ibex ram</labelMale>
-    <labelFemale>ibex doe</labelFemale>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Ibex/IbexFemale</texPath>
-          <drawSize>1.0</drawSize>
-          <color>(153,129,113)</color>
-          <shaderType>CutoutComplex</shaderType>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.0</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Ibex/IbexFemale</texPath>
-          <drawSize>1.3</drawSize>
-          <color>(153,129,113)</color>
-          <shaderType>CutoutComplex</shaderType>
-          <shadowData>
-            <volume>(0.3, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.3</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Ibex/IbexMale</texPath>
-          <drawSize>1.8</drawSize>
-          <color>(136,100,75)</color>
-          <shaderType>CutoutComplex</shaderType>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <femaleGraphicData>
-          <texPath>Things/Pawn/Animal/Ibex/IbexFemale</texPath>
-          <drawSize>1.7</drawSize>
-          <color>(153,129,113)</color>
-          <shaderType>CutoutComplex</shaderType>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </femaleGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.7</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
 
   <!-- ====================================================== -->
 
@@ -351,76 +209,6 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-  <!--
-  <PawnKindDef ParentName="AnimalTech">
-    <defName>Elk</defName>
-    <label>elk</label>
-    <race>Elk</race>
-    <combatPower>130</combatPower>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0.9</wildSpawn_EcoSystemWeight>
-    <wildSpawn_GroupSizeRange>
-      <min>3</min>
-      <max>9</max>
-    </wildSpawn_GroupSizeRange>
-    <lifeStages>
-      <li>
-        <label>elk calf</label>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Elk/ElkFemale</texPath>
-          <drawSize>1.5</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.5</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Elk/ElkMale</texPath>
-          <drawSize>2.30</drawSize>
-          <shadowData>
-            <volume>(0.375, 0.375, 0.375)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <femaleGraphicData>
-          <texPath>Things/Pawn/Animal/Elk/ElkFemale</texPath>
-          <drawSize>2.20</drawSize>
-          <shadowData>
-            <volume>(0.375, 0.375, 0.375)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </femaleGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>2.1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Elk/ElkMale</texPath>
-          <drawSize>3.1</drawSize>
-          <shadowData>
-            <volume>(0.5, 0.5, 0.5)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <femaleGraphicData>
-          <texPath>Things/Pawn/Animal/Elk/ElkFemale</texPath>
-          <drawSize>2.95</drawSize>
-          <shadowData>
-            <volume>(0.5, 0.5, 0.5)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </femaleGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>2.5</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
   
   <!-- ====================================================== -->
 
@@ -494,60 +282,6 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="AnimalTech">
-    <defName>Caribou</defName>
-    <label>caribou</label>
-    <race>Caribou</race>
-    <combatPower>140</combatPower>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0.9</wildSpawn_EcoSystemWeight>
-    <wildSpawn_GroupSizeRange>
-      <min>3</min>
-      <max>9</max>
-    </wildSpawn_GroupSizeRange>
-    <lifeStages>
-      <li>
-        <label>caribou calf</label>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Caribou/Caribou</texPath>
-          <drawSize>2.7</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Caribou/Caribou</texPath>
-          <drawSize>3.1</drawSize>
-          <shadowData>
-            <volume>(0.375, 0.375, 0.375)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.3</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Caribou/Caribou</texPath>
-          <drawSize>4.38</drawSize>
-          <shadowData>
-            <volume>(0.5, 0.5, 0.5)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>2.5</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
 
   <!-- ====================================================== -->
 
@@ -616,61 +350,6 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-  <!--
-  <PawnKindDef ParentName="AnimalTech">
-    <defName>WildBoar</defName>
-    <label>wild boar</label>
-    <race>WildBoar</race>
-    <combatPower>55</combatPower>
-    <wildSpawn_EcoSystemWeight>0.5</wildSpawn_EcoSystemWeight>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_GroupSizeRange>
-      <min>5</min>
-      <max>10</max>
-    </wildSpawn_GroupSizeRange>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/WildBoar/WildBoar</texPath>
-          <drawSize>1.5</drawSize>
-          <shadowData>
-            <volume>(0.30, 0.25, 0.20)</volume>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.5</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/WildBoar/WildBoar</texPath>
-          <drawSize>2.25</drawSize>
-          <shadowData>
-            <volume>(0.375, 0.375, 0.375)</volume>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.7</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/WildBoar/WildBoar</texPath>
-          <drawSize>2.65</drawSize>
-          <shadowData>
-            <volume>(0.5, 0.5, 0.4)</volume>
-            <offset>(0,0,-0.05)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>2</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
   
   <!-- ====================================================== -->
 
@@ -750,51 +429,5 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="AnimalTech">
-    <defName>Tortoise</defName>
-    <label>tortoise</label>
-    <race>Tortoise</race>
-    <combatPower>40</combatPower>
-    <wildSpawn_EcoSystemWeight>0.4</wildSpawn_EcoSystemWeight>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Tortoise/Tortoise</texPath>
-          <drawSize>0.9</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>0.9</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Tortoise/Tortoise</texPath>
-          <drawSize>1.2</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1.2</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Tortoise/Tortoise</texPath>
-          <drawSize>1.5</drawSize>
-          <shadowData>
-            <volume>(0.45, 0.45, 0.45)</volume>
-            <offset>(0,0,0)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1.5</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
-  -->
   
 </ThingDefs>
