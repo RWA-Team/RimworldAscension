@@ -6,7 +6,7 @@
 		<label>space slaver</label>
 		<race>Human</race>
 		<combatPower>100</combatPower>
-		<baseRecruitDifficulty>0.30</baseRecruitDifficulty>
+		<baseRecruitDifficulty>30</baseRecruitDifficulty>
 		<backstoryCategory>Civil</backstoryCategory>
 		<defaultFactionType>SpacerHostile</defaultFactionType>
 		<backstoryCryptosleepCommonality>1</backstoryCryptosleepCommonality>

@@ -252,6 +252,9 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedievalWeak</li>
+		</weaponTags>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -282,8 +285,11 @@
 				<verbClass>Verb_MeleeAttack</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<meleeDamageDef>Cut</meleeDamageDef>
-			</li>		
+			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedieval</li>
+		</weaponTags>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -316,6 +322,9 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedieval</li>
+		</weaponTags>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -354,6 +363,9 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedieval</li>
+		</weaponTags>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -386,6 +398,9 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedieval</li>
+		</weaponTags>
 	</ThingDef>
 
 
@@ -492,6 +507,9 @@
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
+		<weaponTags>
+			<li>MeleeMedievalStrong</li>
+		</weaponTags>
 	</ThingDef>
 
 	<ThingDef ParentName="Tools">
@@ -526,6 +544,9 @@
 			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 		    </li>
 		</comps>
+		<weaponTags>
+			<li>MeleeMedievalWeak</li>
+		</weaponTags>
 	</ThingDef>
 	
 	<ThingDef ParentName="Tools">
@@ -537,7 +558,7 @@
 			<MarketValue>500</MarketValue>
 		</statBases>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Midworld/Multitool</texPath>
+			<texPath>Things/Items/Weapons/Industrial/Multitool</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<verbs>

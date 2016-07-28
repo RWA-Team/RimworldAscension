@@ -19,6 +19,10 @@
 			<MaxHitPoints>100</MaxHitPoints>
 			<DeteriorationRate>0.5</DeteriorationRate>
 			<SellPriceFactor>0.1</SellPriceFactor>
+			<ArmorRating_Blunt>0</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0</ArmorRating_Sharp>
+			<ArmorRating_Heat>0</ArmorRating_Heat>
+			<ArmorRating_Electric>0</ArmorRating_Electric>
 		</statBases>
 		<comps>
 			<li>
@@ -36,6 +40,17 @@
 		<thingCategories>
 			<li>Armor</li>
 		</thingCategories>
+		<apparel>
+			<tags>
+				<li>ArmorNeolithic</li>
+				<li>ArmorMedieval</li>
+				<li>ArmorBandit</li>
+				<li>ArmorIndustrial</li>
+				<li>ArmorSeparatist</li>
+				<li>ArmorAscension</li>
+				<li>ArmorCorrupted</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 	<!-- ========================= Head =========================-->
@@ -61,10 +76,12 @@
 			<texPath>Things/Items/Apparels/Armor/Neolithic/MaskSkull/MaskSkull</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<MarketValue>50</MarketValue>
-			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+			<MaxHitPoints>120</MaxHitPoints>
+			<MarketValue>25</MarketValue>
+			<ArmorRating_Blunt>3</ArmorRating_Blunt>
+			<ArmorRating_Sharp>3</ArmorRating_Sharp>
+			<Insulation_Cold>5</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
 		</statBases>
 		<apparel>
 			<bodyPartGroups>
@@ -85,16 +102,18 @@
 			<texPath>Things/Items/Apparels/Armor/Neolithic/HelmetTurtle/HelmetTurtle</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<MarketValue>50</MarketValue>
-			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+			<MaxHitPoints>100</MaxHitPoints>
+			<ArmorRating_Blunt>2</ArmorRating_Blunt>
+			<ArmorRating_Sharp>2</ArmorRating_Sharp>
 		</statBases>
 		<apparel>
 			<bodyPartGroups>
-				<li>FullHead</li>
+				<li>UpperHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Neolithic/HelmetTurtle/HelmetTurtle</worngraphicPath>
+			<tags>
+				<li>ArmorNeolithic</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -107,15 +126,19 @@
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
-			<MarketValue>50</MarketValue>
-			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+			<ArmorRating_Blunt>5</ArmorRating_Blunt>
+			<ArmorRating_Sharp>5</ArmorRating_Sharp>
+			<Insulation_Heat>-5</Insulation_Heat>
+			<Insulation_Cold>5</Insulation_Cold>
 		</statBases>
 		<apparel>
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</worngraphicPath>
+			<tags>
+				<li>ArmorMedieval</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -128,15 +151,19 @@
 			<texPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<MarketValue>50</MarketValue>
-			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+			<MaxHitPoints>225</MaxHitPoints>
+			<ArmorRating_Blunt>6</ArmorRating_Blunt>
+			<ArmorRating_Sharp>6</ArmorRating_Sharp>
+			<Insulation_Cold>8</Insulation_Cold>
+			<Insulation_Heat>-8</Insulation_Heat>
 		</statBases>
 		<apparel>
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
+			<tags>
+				<li>ArmorMedieval</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -148,16 +175,20 @@
 			<texPath>Things/Items/Apparels/Armor/Medieval/HelmetNasal/HelmetNasal</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<MarketValue>50</MarketValue>
-			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+			<MaxHitPoints>175</MaxHitPoints>
+			<ArmorRating_Blunt>4</ArmorRating_Blunt>
+			<ArmorRating_Sharp>4</ArmorRating_Sharp>
+			<Insulation_Heat>-3</Insulation_Heat>
+			<Insulation_Cold>3</Insulation_Cold>
 		</statBases>
 		<apparel>
 			<bodyPartGroups>
-				<li>FullHead</li>
+				<li>UpperHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/HelmetNasal/HelmetNasal</worngraphicPath>
+			<tags>
+				<li>ArmorMedieval</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -170,15 +201,19 @@
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
-			<MarketValue>50</MarketValue>
-			<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+			<ArmorRating_Blunt>3</ArmorRating_Blunt>
+			<ArmorRating_Sharp>3</ArmorRating_Sharp>
+			<Insulation_Cold>2</Insulation_Cold>
+			<Insulation_Heat>-2</Insulation_Heat>
 		</statBases>
 		<apparel>
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Kettlehat/Kettlehat</worngraphicPath>
+			<tags>
+				<li>ArmorMedieval</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -204,8 +239,10 @@
 		<statBases>
 			<MaxHitPoints>200</MaxHitPoints>
 			<MarketValue>50</MarketValue>
-			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+			<ArmorRating_Blunt>4</ArmorRating_Blunt>
+			<ArmorRating_Sharp>4</ArmorRating_Sharp>
+			<Insulation_Heat>5</Insulation_Heat>
+			<Insulation_Cold>-5</Insulation_Cold>
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>-0.1</MoveSpeed>
@@ -232,10 +269,11 @@
 			<texPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<MarketValue>50</MarketValue>
-			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+			<MaxHitPoints>300</MaxHitPoints>
+			<ArmorRating_Blunt>7</ArmorRating_Blunt>
+			<ArmorRating_Sharp>7</ArmorRating_Sharp>
+			<Insulation_Cold>4</Insulation_Cold>
+			<Insulation_Heat>-4</Insulation_Heat>
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>-0.1</MoveSpeed>
@@ -246,6 +284,9 @@
 				<li>Shoulders</li>
 			</bodyPartGroups>
 			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
+			<tags>
+				<li>ArmorMedieval</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
@@ -259,20 +300,25 @@
 			<texPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<MarketValue>50</MarketValue>
-			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+			<MaxHitPoints>500</MaxHitPoints>
+			<ArmorRating_Blunt>10</ArmorRating_Blunt>
+			<ArmorRating_Sharp>8</ArmorRating_Sharp>
+			<Insulation_Heat>-10</Insulation_Heat>
+			<Insulation_Cold>10</Insulation_Cold>
 		</statBases>
 		<equippedStatOffsets>
-			<MoveSpeed>-0.1</MoveSpeed>
+			<MoveSpeed>-0.3</MoveSpeed>
 		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>
 				<li>Torso</li>
 				<li>Shoulders</li>
+				<li>Arms</li>
 			</bodyPartGroups>
 			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
+			<tags>
+				<li>ArmorMedieval</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
@@ -285,10 +331,11 @@
 			<texPath>Things/Items/Apparels/Armor/Medieval/Hauberk/Hauberk</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<MarketValue>50</MarketValue>
-			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+			<MaxHitPoints>320</MaxHitPoints>
+			<ArmorRating_Blunt>7</ArmorRating_Blunt>
+			<ArmorRating_Sharp>7</ArmorRating_Sharp>
+			<Insulation_Heat>-5</Insulation_Heat>
+			<Insulation_Cold>5</Insulation_Cold>
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>-0.1</MoveSpeed>
@@ -297,8 +344,13 @@
 			<bodyPartGroups>
 				<li>Torso</li>
 				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>FullHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Hauberk/Hauberk</worngraphicPath>
+			<tags>
+				<li>ArmorMedieval</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
@@ -311,20 +363,24 @@
 			<texPath>Things/Items/Apparels/Armor/Medieval/Gambeson/Gambeson</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
-			<MarketValue>50</MarketValue>
-			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
-			<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+			<MaxHitPoints>300</MaxHitPoints>
+			<ArmorRating_Blunt>5</ArmorRating_Blunt>
+			<ArmorRating_Sharp>5</ArmorRating_Sharp>
+			<Insulation_Cold>-10</Insulation_Cold>
 		</statBases>
 		<equippedStatOffsets>
-			<MoveSpeed>-0.1</MoveSpeed>
+			<MoveSpeed>-0.05</MoveSpeed>
 		</equippedStatOffsets>
 		<apparel>
 			<bodyPartGroups>
 				<li>Torso</li>
 				<li>Shoulders</li>
+				<li>Arms</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Gambeson/Gambeson</worngraphicPath>
+			<tags>
+				<li>ArmorMedieval</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
@@ -353,8 +409,13 @@
 			<texPath>Things/Items/Apparels/Shields/ShieldTribal</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>200</MaxHitPoints>
+			<MaxHitPoints>60</MaxHitPoints>
 		</statBases>
+		<apparel>
+			<tags>
+				<li>ShieldNeolithic</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -365,8 +426,13 @@
 			<texPath>Things/Items/Apparels/Shields/ShieldBone</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>300</MaxHitPoints>
+			<MaxHitPoints>70</MaxHitPoints>
 		</statBases>
+		<apparel>
+			<tags>
+				<li>ShieldBone</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -377,11 +443,16 @@
 			<texPath>Things/Items/Apparels/Shields/Buckler/Buckler</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>300</MaxHitPoints>
+			<MaxHitPoints>80</MaxHitPoints>
 		</statBases>
 		<stuffCategories>
 			<li>Metal</li>
 		</stuffCategories>
+		<apparel>
+			<tags>
+				<li>ShieldMedieval</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -392,11 +463,18 @@
 			<texPath>Things/Items/Apparels/Shields/ShieldKite</texPath>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>400</MaxHitPoints>
+			<MaxHitPoints>100</MaxHitPoints>
 		</statBases>
 		<stuffCategories>
 			<li>Metal</li>
 		</stuffCategories>
+		<apparel>
+			<tags>
+				<li>ShieldMedieval</li>
+				<li>ShieldIndustrial</li>
+				<li>ShieldAscension</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 </ThingDefs>
