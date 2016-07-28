@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿ы<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <ThingDef ParentName="AnimalBalance" Name="BigBirdsBalance" Abstract="True">
