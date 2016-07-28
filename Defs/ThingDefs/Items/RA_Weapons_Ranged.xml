@@ -24,7 +24,7 @@
 
 
 	<ThingDef ParentName="WeaponRanged">
-		<defName>PrimitiveBow</defName>
+		<defName>BowPrimitive</defName>
 		<label>Primitive Bow</label>
 		<description>A simple wooden bow.</description>
 		<graphicData>
@@ -44,6 +44,8 @@
 			<li>RangedNeolithic</li>
 		</weaponTags>
 		<comps>
+			<li Class="RA.CompTool_Properties">
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
 				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
@@ -60,7 +62,6 @@
 				<projectileDef>Arrow_Small</projectileDef>
 				<warmupTicks>78</warmupTicks>
 				<range>25</range>
-				<ArmorPenetration>1</ArmorPenetration>
 				<soundCast>BowSmall</soundCast>
 			</li>
 		</verbs>
@@ -106,6 +107,8 @@
 			<li>RangedNeolithic</li>
 		</weaponTags>
 		<comps>
+			<li Class="RA.CompTool_Properties">
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
 				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
@@ -167,6 +170,8 @@
 			<li>RangedNeolithicStrong</li>
 		</weaponTags>
 		<comps>
+			<li Class="RA.CompTool_Properties">
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
 				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
@@ -228,9 +233,10 @@
 			<li>RangedNeolithic</li>
 		</weaponTags>
 		<comps>
+			<li Class="RA.CompTool_Properties">
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
+				<firstHandPosition>(-0.15, 0, 0)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.032</valuePerWorkFactor>
@@ -290,9 +296,10 @@
 			<li>Hunting</li>
 		</weaponTags>
 		<comps>
+			<li Class="RA.CompTool_Properties">
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
+				<firstHandPosition>(0.15,0,0.15)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.011</valuePerWorkFactor>
@@ -352,9 +359,10 @@
 			<li>RangedNeolithic</li>
 		</weaponTags>
 		<comps>
+			<li Class="RA.CompTool_Properties">
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
+				<firstHandPosition>(-0.1,0.2,-0.13)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.016</valuePerWorkFactor>
@@ -410,8 +418,10 @@
 	    	<li>RangedMedival</li>
 	    </weaponTags>
 	    <comps>
+			<li Class="RA.CompTool_Properties">
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.3, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -469,8 +479,10 @@
 	    	<li>RangedMedival</li>
 	    </weaponTags>
 	    <comps>
+			<li Class="RA.CompTool_Properties">
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.3, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
