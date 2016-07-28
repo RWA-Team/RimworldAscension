@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
 	<ThingDef Name="WeaponRanged" ParentName="Weapon" Abstract="True">
@@ -24,8 +24,8 @@
 
 
 	<ThingDef ParentName="WeaponRanged">
-		<defName>Bow</defName>
-		<label>bow</label>
+		<defName>PrimitiveBow</defName>
+		<label>Primitive Bow</label>
 		<description>A simple wooden bow.</description>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponRanged/BowShort</texPath>
@@ -33,12 +33,11 @@
 		</graphicData>
 		<soundInteract>BowSmall</soundInteract>
 		<statBases>
-			<MarketValue>180</MarketValue>
-			<AccuracyTouch>0.93</AccuracyTouch>
-			<AccuracyShort>0.85</AccuracyShort>
-			<AccuracyMedium>0.75</AccuracyMedium>
-			<AccuracyLong>0.50</AccuracyLong>
-			<RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
+			<MaxHitPoints>80</MaxHitPoints>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.8</AccuracyShort>
+			<AccuracyMedium>0.65</AccuracyMedium>
+			<AccuracyLong>0</AccuracyLong>
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
@@ -49,14 +48,19 @@
 				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
 			</li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0041</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 		</comps>
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<projectileDef>Arrow_Small</projectileDef>
-				<warmupTicks>150</warmupTicks>
-				<range>35</range>
+				<warmupTicks>78</warmupTicks>
+				<range>25</range>
+				<ArmorPenetration>1</ArmorPenetration>
 				<soundCast>BowSmall</soundCast>
 			</li>
 		</verbs>
@@ -69,10 +73,13 @@
 			<texPath>Things/Projectile/Arrow_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<statBases>
+			<ArmorPenetration>1</ArmorPenetration>
+		</statBases>
 		<projectile>
 			<flyOverhead>false</flyOverhead>
 			<damageDef>Arrow</damageDef>
-			<DamageAmountBase>10</DamageAmountBase>
+			<DamageAmountBase>8</DamageAmountBase>
 			<Speed>70</Speed>
 		</projectile>
 	</ThingDef>
@@ -80,7 +87,7 @@
 
 	<ThingDef ParentName="WeaponRanged">
 		<defName>BowComposite</defName>
-		<label>bow</label>
+		<label>Composite bow</label>
 		<description>A advanced version of the bow, strengthened with some bone plates.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/CompositeBow</texPath>
@@ -88,24 +95,33 @@
 		</graphicData>
 		<soundInteract>BowSmall</soundInteract>
 		<statBases>
-			<MarketValue>60</MarketValue>
-			<AccuracyTouch>0.89</AccuracyTouch>
-			<AccuracyShort>0.64</AccuracyShort>
-			<AccuracyMedium>0.41</AccuracyMedium>
-			<AccuracyLong>0.22</AccuracyLong>
-			<RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
+			<MaxHitPoints>100</MaxHitPoints>
+			<AccuracyTouch>0.50</AccuracyTouch>
+			<AccuracyShort>0.80</AccuracyShort>
+			<AccuracyMedium>0.65</AccuracyMedium>
+			<AccuracyLong>0</AccuracyLong>
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
 			<li>RangedNeolithic</li>
 		</weaponTags>
+		<comps>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
+			</li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0047</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<projectileDef>Arrow_Small</projectileDef>
-				<warmupTicks>150</warmupTicks>
-				<range>29</range>
+				<warmupTicks>69</warmupTicks>
+				<range>25</range>
 				<soundCast>BowSmall</soundCast>
 			</li>
 		</verbs>
@@ -118,10 +134,13 @@
 			<texPath>Things/Projectile/Arrow_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<statBases>
+			<ArmorPenetration>2</ArmorPenetration>
+		</statBases>
 		<projectile>
 			<flyOverhead>false</flyOverhead>
 			<damageDef>Arrow</damageDef>
-			<DamageAmountBase>10</DamageAmountBase>
+			<DamageAmountBase>9</DamageAmountBase>
 			<Speed>70</Speed>
 		</projectile>
 	</ThingDef>
@@ -137,24 +156,33 @@
 		</graphicData>
 		<soundInteract>BowLarge</soundInteract>
 		<statBases>
-			<MarketValue>180</MarketValue>
-			<AccuracyTouch>0.89</AccuracyTouch>
-			<AccuracyShort>0.72</AccuracyShort>
-			<AccuracyMedium>0.6</AccuracyMedium>
-			<AccuracyLong>0.42</AccuracyLong>
-			<RangedWeapon_Cooldown>1.0</RangedWeapon_Cooldown>
+			<MaxHitPoints>200</MaxHitPoints>
+			<AccuracyTouch>0.50</AccuracyTouch>
+			<AccuracyShort>0.90</AccuracyShort>
+			<AccuracyMedium>0.75</AccuracyMedium>
+			<AccuracyLong>0.50</AccuracyLong>
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
 			<li>RangedNeolithicStrong</li>
 		</weaponTags>
+		<comps>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
+			</li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.028</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<projectileDef>Arrow_Great</projectileDef>
-				<warmupTicks>120</warmupTicks>
-				<range>45</range>
+				<warmupTicks>60</warmupTicks>
+				<range>30</range>
 				<soundCast>BowGreat</soundCast>
 			</li>
 		</verbs>
@@ -167,10 +195,13 @@
 			<texPath>Things/Projectile/Arrow_Small</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<statBases>
+			<ArmorPenetration>4</ArmorPenetration>
+		</statBases>
 		<projectile>
 			<flyOverhead>false</flyOverhead>
 			<damageDef>Arrow</damageDef>
-			<DamageAmountBase>10</DamageAmountBase>
+			<DamageAmountBase>15</DamageAmountBase>
 			<Speed>70</Speed>
 		</projectile>
 	</ThingDef>
@@ -186,24 +217,33 @@
 		</graphicData>
 		<soundInteract>Interact_BeatFire</soundInteract>
 		<statBases>
-			<MarketValue>90</MarketValue>
-			<AccuracyTouch>0.91</AccuracyTouch>
-			<AccuracyShort>0.71</AccuracyShort>
+			<MaxHitPoints>80</MaxHitPoints>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>0.8</AccuracyShort>
 			<AccuracyMedium>0.50</AccuracyMedium>
-			<AccuracyLong>0.32</AccuracyLong>
-			<RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>
+			<AccuracyLong>0</AccuracyLong>
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
 			<li>RangedNeolithic</li>
 		</weaponTags>
+		<comps>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
+			</li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.032</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>		
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<projectileDef>Pilum_Thrown</projectileDef>
-				<warmupTicks>240</warmupTicks>
-				<range>20</range>
+				<warmupTicks>72</warmupTicks>
+				<range>15</range>
 				<soundCast>Interact_BeatFire</soundCast>
 			</li>
 		</verbs>
@@ -216,10 +256,13 @@
 			<texPath>Things/Projectile/Pilum</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<statBases>
+			<ArmorPenetration>3</ArmorPenetration>
+		</statBases>
 		<projectile>
 			<flyOverhead>false</flyOverhead>
 			<damageDef>Stab</damageDef>
-			<DamageAmountBase>30</DamageAmountBase>
+			<DamageAmountBase>10</DamageAmountBase>
 			<Speed>26</Speed>
 		</projectile>
 	</ThingDef>
@@ -236,24 +279,33 @@
 		<soundInteract>BowSmall</soundInteract>
 		<techLevel>Neolithic</techLevel>
 		<statBases>
-			<MarketValue>180</MarketValue>
-			<AccuracyTouch>0.65</AccuracyTouch>
-			<AccuracyShort>0.88</AccuracyShort>
-			<AccuracyMedium>0.7</AccuracyMedium>
-			<AccuracyLong>0.35</AccuracyLong>
-			<RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
+			<MaxHitPoints>60</MaxHitPoints>
+			<AccuracyTouch>0.80</AccuracyTouch>
+			<AccuracyShort>0.70</AccuracyShort>
+			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyLong>0</AccuracyLong>
 		</statBases>
 		<weaponTags>
 			<li>RangedNeolithicWeak</li>
 			<li>Hunting</li>
 		</weaponTags>
+		<comps>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
+			</li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.011</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<projectileDef>Cobble</projectileDef>
-				<warmupTicks>60</warmupTicks>
-				<range>24</range>
+				<warmupTicks>36</warmupTicks>
+				<range>15</range>
 				<soundCast>BowSmall</soundCast>
 			</li>
 		</verbs>
@@ -266,10 +318,13 @@
 			<texPath>Things/Items/Weapons/Neolithic/Projectiles/Cobble</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
+		<statBases>
+			<ArmorPenetration>0</ArmorPenetration>
+		</statBases>
 		<projectile>
 			<flyOverhead>false</flyOverhead>
 			<damageDef>Blunt</damageDef>
-			<DamageAmountBase>4</DamageAmountBase>
+			<DamageAmountBase>5</DamageAmountBase>
 			<Speed>49</Speed>
 		</projectile>
 	</ThingDef>
@@ -286,24 +341,33 @@
 		</graphicData>
 		<soundInteract>InteractGrenade</soundInteract>
 		<statBases>
-			<MarketValue>180</MarketValue>
-			<AccuracyTouch>0.74</AccuracyTouch>
-			<AccuracyShort>0.67</AccuracyShort>
-			<AccuracyMedium>0.41</AccuracyMedium>
-			<AccuracyLong>0.28</AccuracyLong>
-			<RangedWeapon_Cooldown>2.60</RangedWeapon_Cooldown>
+			<MaxHitPoints>80</MaxHitPoints>
+			<AccuracyTouch>1</AccuracyTouch>
+			<AccuracyShort>0.80</AccuracyShort>
+			<AccuracyMedium>0.60</AccuracyMedium>
+			<AccuracyLong>0</AccuracyLong>
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
 			<li>RangedNeolithic</li>
 		</weaponTags>
+		<comps>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
+			</li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.016</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
 				<projectileDef>Tomahawk_Thrown</projectileDef>
-				<warmupTicks>120</warmupTicks>
-				<range>18</range>
+				<warmupTicks>60</warmupTicks>
+				<range>20</range>
 				<soundCast>ThrowGrenade</soundCast>
 			</li>
 		</verbs>
@@ -320,10 +384,112 @@
 		<projectile>
 			<flyOverhead>false</flyOverhead>
 			<damageDef>Cut</damageDef>
-			<DamageAmountBase>15</DamageAmountBase>
+			<DamageAmountBase>8</DamageAmountBase>
 			<Speed>25</Speed>
 		</projectile>
 	</ThingDef>
 
+	<ThingDef ParentName="WeaponRanged">
+	    <defName>crossbow</defName>
+	    <label>Crossbow</label>
+	    <description>Ancient shoota</description>
+	    <graphicData>
+	    	<texPath>Things/Items/Weapons/Medieval/Crossbow</texPath>
+	    	<graphicClass>Graphic_single</graphicClass>
+	    </graphicData>
+	    <soundInteract>BowSmall</soundInteract>
+	    <statBases>
+	    	<MaxHitPoints>120</MaxHitPoints>
+	    	<AccuracyTouch>0.4</AccuracyTouch>
+	    	<AccuracyShort>0.6</AccuracyShort>
+	    	<AccuracyMedium>0.7</AccuracyMedium>
+	    	<AccuracyLong>0</AccuracyLong>
+	    </statBases>
+	    <techLevel>Medieval</techLevel>
+	    <weaponTags>
+	    	<li>RangedMedival</li>
+	    </weaponTags>
+	    <comps>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
+			</li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.055</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<projectileDef>Crossbow_bolt</projectileDef>
+				<warmupTicks>90</warmupTicks>
+				<range>30</range>
+				<soundCast>BowGreat</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="Projectile">
+		<defName>Crossbow_bolt</defName>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_single</graphicClass>
+		</graphicData>
+		<statBases>
+			<ArmorPenetration>6</ArmorPenetration>
+		</statBases>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>Cut</damageDef>
+			<DamageAmountBase>15</DamageAmountBase>
+			<Speed>30</Speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="WeaponRanged">
+	    <defName>repetivecrossbow</defName>
+	    <label>Repetive Crossbow</label>
+	    <description>Ancient shoota</description>
+	    <graphicData>
+	    	<texPath>Things/Items/Weapons/Medieval/CrossbowRepeating</texPath>
+	    	<graphicClass>Graphic_single</graphicClass>
+	    </graphicData>
+	    <soundInteract>BowSmall</soundInteract>
+	    <statBases>
+	    	<MaxHitPoints>100</MaxHitPoints>
+	    	<AccuracyTouch>0.4</AccuracyTouch>
+	    	<AccuracyShort>0.6</AccuracyShort>
+	    	<AccuracyMedium>0.6</AccuracyMedium>
+	    	<AccuracyLong>0</AccuracyLong>
+	    </statBases>
+	    <techLevel>Medieval</techLevel>
+	    <weaponTags>
+	    	<li>RangedMedival</li>
+	    </weaponTags>
+	    <comps>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
+			</li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.045</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<projectileDef>Crossbow_bolt</projectileDef>
+				<warmupTicks>180</warmupTicks>
+				<range>28</range>
+				<soundCast>BowGreat</soundCast>
+				<burstShotCount>3</burstShotCount>
+					
+			</li>
+		</verbs>
+	</ThingDef>
 
 </ThingDefs>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿ы<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
   <ThingDef ParentName="AnimalBalance" Name="BigBirdsBalance" Abstract="True">
@@ -28,13 +28,6 @@
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="AnimalTech" Name="BigBirdsTech" Abstract="True">
-    <combatPower>155</combatPower>
-    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0.42</wildSpawn_EcoSystemWeight>
-  </PawnKindDef>
-
 
   <!--===============================================-->
 
@@ -101,52 +94,6 @@
       </li>
     </verbs>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="BigBirdsTech">
-    <defName>Cassowary</defName>
-    <label>cassowary</label>
-    <race>Cassowary</race>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cassowary/Cassowary</texPath>
-          <drawSize>1.1</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cassowary/Cassowary</texPath>
-          <drawSize>1.4</drawSize>
-          <shadowData>
-            <volume>(0.3, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.4</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Cassowary/Cassowary</texPath>
-          <drawSize>1.8</drawSize>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.8</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
 
   <!--===============================================-->
 
@@ -213,53 +160,6 @@
       </li>
     </verbs>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="BigBirdsTech">
-    <defName>Emu</defName>
-    <label>emu</label>
-    <race>Emu</race>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Emu/Emu</texPath>
-          <drawSize>1.0</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.0</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Emu/Emu</texPath>
-          <drawSize>1.3</drawSize>
-          <shadowData>
-            <volume>(0.3, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.3</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Emu/Emu</texPath>
-          <drawSize>1.6</drawSize>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.6</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
-
 
   <!--===============================================-->
 
@@ -326,69 +226,6 @@
       </li>
     </verbs>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="BigBirdsTech">
-    <defName>Ostrich</defName>
-    <label>ostrich</label>
-    <race>Ostrich</race>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Ostrich/Ostrich</texPath>
-          <drawSize>1.1</drawSize>
-          <color>(133,107,96)</color>
-          <shaderType>CutoutComplex</shaderType>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.1</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Ostrich/Ostrich</texPath>
-          <drawSize>1.4</drawSize>
-          <color>(133,107,96)</color>
-          <shaderType>CutoutComplex</shaderType>
-          <shadowData>
-            <volume>(0.3, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.4</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Ostrich/Ostrich</texPath>
-          <drawSize>1.8</drawSize>
-          <color>(62,58,66)</color>
-          <shaderType>CutoutComplex</shaderType>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <femaleGraphicData>
-          <texPath>Things/Pawn/Animal/Ostrich/Ostrich</texPath>
-          <drawSize>1.8</drawSize>
-          <color>(133,107,96)</color>
-          <shaderType>CutoutComplex</shaderType>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </femaleGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.8</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
-
 
   <!--===============================================-->
 
@@ -456,59 +293,5 @@
       </li>
     </verbs>
   </ThingDef>
-<!--
-  <PawnKindDef ParentName="BigBirdsTech">
-    <defName>Turkey</defName>
-    <label>turkey</label>
-    <race>Turkey</race>
-    <lifeStages>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Turkey/TurkeyHen</texPath>
-          <drawSize>1.0</drawSize>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.0</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Turkey/TurkeyHen</texPath>
-          <drawSize>1.2</drawSize>
-          <shadowData>
-            <volume>(0.3, 0.3, 0.3)</volume>
-            <offset>(0,0,-0.3)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.2</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Things/Pawn/Animal/Turkey/TurkeyTom</texPath>
-          <drawSize>1.4</drawSize>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <femaleGraphicData>
-          <texPath>Things/Pawn/Animal/Turkey/TurkeyHen</texPath>
-          <drawSize>1.4</drawSize>
-          <shadowData>
-            <volume>(0.4, 0.4, 0.4)</volume>
-            <offset>(0,0,-0.2)</offset>
-          </shadowData>
-        </femaleGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.4</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-    </lifeStages>
-  </PawnKindDef>
--->
+
 </Defs>
