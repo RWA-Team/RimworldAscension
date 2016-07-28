@@ -8,31 +8,44 @@
 	- backstoryCryptosleepCommonality - needs to be assigned
 	- apparelRequired - special apparel types to be generated first (could be chnaged by temperature requirements though)
 	- defaultFactionType- used as precaution or debug tool if faction is not set
-	 -->
+	-->
 
 	<PawnKindDef Name="PawnIndustrial" Abstract="True">
 		<race>Human</race>
-		<backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
+		<combatPower>30</combatPower>
+		<baseRecruitDifficulty>0.70</baseRecruitDifficulty>
 		<backstoryCategory>Tribal</backstoryCategory>
-		<defaultFactionType>IndustrialFactionNeutral</defaultFactionType>
-		<minGenerationAge>16</minGenerationAge>
+		<invNutrition>2.55</invNutrition>
+		<invFoodDef>Pemmican</invFoodDef>
+		<backstoryCryptosleepCommonality>0.01</backstoryCryptosleepCommonality>
 		<maxGenerationAge>60</maxGenerationAge>
 		<gearHealthRange>
 			<min>0.5</min>
-			<max>2.0</max>
+			<max>1.8</max>
 		</gearHealthRange>
 		<apparelMoney>
-			<min>500</min>
-			<max>1000</max>
+			<min>380</min>
+			<max>550</max>
 		</apparelMoney>
 		<apparelTags>
-			<li>ClothingIndustrial</li>
+			<li>Spacer</li>
 		</apparelTags>
+		<weaponMoney>
+			<min>260</min>
+			<max>600</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>MeleeNeolithic</li>
+		</weaponTags>
 	</PawnKindDef>
 
-	<!-- ========================= Citizens =========================-->	
+	<!-- ========================= Citizens ========================= -->
+	
+	<PawnKindDef Name="PawnIndustrialNeutral" ParentName="PawnIndustrial" Abstract="True">
+		<defaultFactionType>IndustrialFactionNeutral</defaultFactionType>
+	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnIndustrial">
+	<PawnKindDef ParentName="PawnIndustrialNeutral">
 		<defName>IndustrialTrader</defName>
 		<label>merchant</label>
 		<combatPower>10</combatPower>
@@ -43,7 +56,7 @@
 		</apparelRequired>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnIndustrial">
+	<PawnKindDef ParentName="PawnIndustrialNeutral">
 		<defName>IndustrialWorker</defName>
 		<label>worker</label>
 		<combatPower>60</combatPower>
@@ -58,14 +71,11 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnIndustrial">
+	<PawnKindDef ParentName="PawnIndustrialNeutral">
 		<defName>IndustrialSoldier</defName>
 		<label>soldier</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>0.80</baseRecruitDifficulty>
- 		<apparelTags>
-			<li>ArmorIndustrial</li>
-		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -76,17 +86,26 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnIndustrial">
+	<PawnKindDef ParentName="PawnIndustrialNeutral">
+		<defName>IndustrialMercenary</defName>
+		<label>mercenary</label>
+		<combatPower>120</combatPower>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
+		<weaponMoney>
+			<min>1000</min>
+			<max>2000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>MeleeMedievalStrong</li>
+			<li>RangedNeolithicStrong</li>
+		</weaponTags>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnIndustrialNeutral">
 		<defName>IndustrialSpecial</defName>
 		<label>special forces</label>
 		<combatPower>130</combatPower>
 		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
-		<apparelRequired>
-			<li>ShieldIndustrial</li>			
-		</apparelRequired>
- 		<apparelTags>
-			<li>ArmorIndustrial</li>
-		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -96,7 +115,7 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnIndustrial">
+	<PawnKindDef ParentName="PawnIndustrialNeutral">
 		<defName>IndustrialGeneral</defName>
 		<label>general</label>
 		<combatPower>250</combatPower>
@@ -106,9 +125,6 @@
 			<min>600</min>
 			<max>1600</max>
 		</apparelMoney>
- 		<apparelTags>
-			<li>ArmorIndustrial</li>
-		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
 			<max>1000</max>
@@ -118,20 +134,17 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<!-- ========================= Separatists =========================-->	
+	<!-- ========================= Separatists ========================= -->
 	
-	<PawnKindDef Name="PawnSeparatist" ParentName="PawnIndustrial" Abstract="True">
+	<PawnKindDef Name="PawnIndustrialHostile" ParentName="PawnIndustrial" Abstract="True">
 		<defaultFactionType>IndustrialFactionHostile</defaultFactionType>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnSeparatist">
+	<PawnKindDef ParentName="PawnIndustrialHostile">
 		<defName>SeparatistAgitator</defName>
 		<label>agitator</label>
 		<combatPower>60</combatPower>
 		<baseRecruitDifficulty>0.70</baseRecruitDifficulty>
-		<apparelTags>
-			<li>ArmorSeparatist</li>
-		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -141,14 +154,11 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnSeparatist">
+	<PawnKindDef ParentName="PawnIndustrialHostile">
 		<defName>SeparatistGuerilla</defName>
 		<label>guerilla</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>0.80</baseRecruitDifficulty>
-		<apparelTags>
-			<li>ArmorSeparatist</li>
-		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
 			<max>1000</max>
@@ -158,15 +168,12 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnSeparatist">
+	<PawnKindDef ParentName="PawnIndustrialHostile">
 		<defName>SeparatistFanatic</defName>
 		<label>fanatic</label>
 		<combatPower>150</combatPower>
 		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
-		<apparelTags>
-			<li>ArmorSeparatist</li>
-		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
 			<max>1000</max>

@@ -1,36 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <FactionDefs>
 
-
 <!-- 	- selectionWeight - used to mutiply chances of spawning toughter enemies instead of massing weak, if high numbers of threat points reached (the higher the more)
 	- canMakeRandomly - determines if faction can be generated randomly by faction generator fs total faction count is less than required
 	- mustStartOneEnemy - one faction of that def should be hostile
 	- startingGoodwill - initial goodwill with other factions
 	- naturalColonyGoodwill - range of faction goodwill with colony that doesn't change due time
 	- hidden - faction is not seen in faction menu. Some interactions with faction blocked too. -->
-
-
-	<FactionDef>
-		<defName>Colony</defName>
-		<label>colony</label>
-		<description>Your own community.</description>
-		<isPlayer>true</isPlayer>
-		<basicMemberKind>Colonist</basicMemberKind>
-		<pawnsPlural>colonists</pawnsPlural>
-		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
-		<techLevel>Neolithic</techLevel>
-		<backstoryCategory>Civil</backstoryCategory>
-		<hairTags>
-			<li>Tribal</li>
-			<li>Urban</li>
-			<li>Rural</li>
-			<li>Punk</li>
-		</hairTags>
-		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
-		<homeIconColor>(255,220,84)</homeIconColor>
-	</FactionDef>
-
-	<!-- ========================= Neolithic =========================-->
+	
+	<!-- ========================= Player =========================-->
+	
+  <FactionDef Abstract="True" Name="PlayerFactionBase">
+    <homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
+    <homeIconColor>(255,220,84)</homeIconColor>
+  </FactionDef>
+  
+  <FactionDef Parent="PlayerFactionBase">
+    <defName>Colony</defName>
+    <label>colony</label>
+    <description>Your own community.</description>
+    <isPlayer>true</isPlayer>
+    <basicMemberKind>Colonist</basicMemberKind>
+    <pawnsPlural>colonists</pawnsPlural>
+    <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+    <techLevel>Industrial</techLevel>
+    <backstoryCategory>Civil</backstoryCategory>
+    <startingResearchTags>
+      <li>ClassicStart</li>
+    </startingResearchTags>
+    <hairTags>
+      <li>Urban</li>
+    </hairTags>
+    <apparelStuffFilter>
+      <thingDefs>
+        <li>Synthread</li>
+      </thingDefs>
+    </apparelStuffFilter>
+  </FactionDef>
+  
+	<!-- ========================= Abstract =========================-->
 
 	<FactionDef Name="Faction" Abstract="True">
 		<canMakeRandomly>true</canMakeRandomly>
@@ -45,11 +53,16 @@
 			<min>-80</min>
 			<max>25</max>
 		</naturalColonyGoodwill>
+		<allowedArrivalTemperatureRange>
+			<min>-40</min>
+			<max>45</max>
+		</allowedArrivalTemperatureRange>
 		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
 		<homeIconColor>(50,200,50)</homeIconColor>
 		<!-- <hidden>true</hidden> -->
 	</FactionDef>
-
+  
+	<!-- ========================= Neolithic =========================-->
 
 	<FactionDef Name="FactionNeolithic" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
@@ -60,8 +73,12 @@
 		<hairTags>
 			<li>Tribal</li>
 		</hairTags>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Leather</li>
+			</thingDefs>
+		</apparelStuffFilter>
 	</FactionDef>
-
 
 	<FactionDef ParentName="FactionNeolithic">
 		<defName>NeolithicFactionNeutral</defName>
@@ -69,11 +86,14 @@
 		<description>These people have been here a very long time. Maybe their ancestors crashed here a thousand years ago. Maybe they survived some cataclysm that destroyed a technological civilization here. In any case, the tribals are mostly nomadic people who live off the land using primitive tools and weapons.\n\nSome tribes are more aggressive than others; many are open to trade and alliances, even with strange peoples like yourselves. Close coop eration or recruitment will be very difficult because of the vast sociotechnological and linguistic gap between the tribals and yourselves.\n\nDespite their apparent technological weakness, the tribals can be dangerous enemies and valuable friends because of their skill with low-tech warfare, their numbers, and their hardiness.</description>
 		<pawnsPlural>tribespeople</pawnsPlural>
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
-		<apparelStuffFilter>
-			<thingDefs>
-				<li>Leather</li>
-			</thingDefs>
-		</apparelStuffFilter>
+		<startingGoodwill>
+			<min>10</min>
+			<max>30</max>
+		</startingGoodwill>
+		<naturalColonyGoodwill>
+			<min>-100</min>
+			<max>10</max>
+		</naturalColonyGoodwill>
 		<caravanTraderKinds>
 			<li>Caravan_Neolithic</li>
 		</caravanTraderKinds>
@@ -106,18 +126,16 @@
 		<label>feral tribe</label>
 		<description>A feral uncivilized tribe of cannibals.</description>
 		<pawnsPlural>ferals</pawnsPlural>
-		<canStageAttacks>false</canStageAttacks>
+		<appreciative>false</appreciative>
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>-100</min>
-			<max>-50</max>
+			<max>-90</max>
 		</startingGoodwill>
-		<apparelStuffFilter>
-			<thingDefs>
-<!--				<li>Human_Leather</li>-->
-				<li>Bone</li>
-			</thingDefs>
-		</apparelStuffFilter>
+	    <naturalColonyGoodwill>
+			<min>-100</min>
+			<max>-80</max>
+		</naturalColonyGoodwill>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>
@@ -129,6 +147,8 @@
 		</pawnGroupMakers>
 	</FactionDef>
 	
+	<!-- ========================= Medieval =========================-->
+	
 	<FactionDef Name="FactionMedieval" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
@@ -138,6 +158,11 @@
 		<hairTags>
 			<li>Tribal</li>
 		</hairTags>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Cloth</li>
+			</thingDefs>
+		</apparelStuffFilter>
 	</FactionDef>
 
 	<FactionDef ParentName="FactionMedieval">
@@ -146,11 +171,14 @@
 		<description>Unlike tribes of old, kingdoms have a rigidly enforced social heirarchy. At the bottom are the serfs who work the land with metal tools and domesticated livestock. Their lives are hard and they have little sympathy for anybody but their family and friends. Above them are the ruling class, either by royal blood or appointed by the king. The ruling class engages in diplomacy and subterfuge, enjoying a comfortable lifestyle funded by the king's coffers. Atop the heirarchy is the king or queen who wields supreme power. The king extracts taxes from serfs (by force if necessary) and uses it to build the kingdom their heart desires.</description>
 		<pawnsPlural>kingspeople</pawnsPlural>
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
-		<apparelStuffFilter>
-			<thingDefs>
-				<li>Cloth</li>
-			</thingDefs>
-		</apparelStuffFilter>
+		<startingGoodwill>
+			<min>10</min>
+			<max>30</max>
+		</startingGoodwill>
+		<naturalColonyGoodwill>
+			<min>-100</min>
+			<max>10</max>
+		</naturalColonyGoodwill>
 		<caravanTraderKinds>
 			<li>Caravan_Medieval</li>
 		</caravanTraderKinds>
@@ -183,12 +211,16 @@
 		<label>band of bandits</label>
 		<description>Theives, murderers, rebels - outlaws that leave the kingdom to avoid their inevitable execution. They group together and live outside the kingdom's borders, raiding villages and robbing passing merchant caravans.</description>
 		<pawnsPlural>bandits</pawnsPlural>
-		<canStageAttacks>false</canStageAttacks>
+		<appreciative>false</appreciative>
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>-100</min>
-			<max>-50</max>
+			<max>-90</max>
 		</startingGoodwill>
+	    <naturalColonyGoodwill>
+			<min>-100</min>
+			<max>-80</max>
+		</naturalColonyGoodwill>
 		<apparelStuffFilter>
 			<thingDefs>
 				<li>Leather</li>
@@ -204,6 +236,8 @@
 			</li>
 		</pawnGroupMakers>
 	</FactionDef>
+	
+	<!-- ========================= Industrial ========================= -->
 
 	<FactionDef Name="FactionIndustrial" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
@@ -214,6 +248,11 @@
 		<hairTags>
 			<li>Tribal</li>
 		</hairTags>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Cloth</li>
+			</thingDefs>
+		</apparelStuffFilter>
 	</FactionDef>
 
 	<FactionDef ParentName="FactionIndustrial">
@@ -222,11 +261,14 @@
 		<description>Industrial nations ride on the backs of industry and education. People work a variety of jobs and are paid for their time. Military service is mostly voluntary and a well-developed economy of import and export thrives.</description>
 		<pawnsPlural>citizens</pawnsPlural>
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
-		<apparelStuffFilter>
-			<thingDefs>
-				<li>Cloth</li>
-			</thingDefs>
-		</apparelStuffFilter>
+		<startingGoodwill>
+			<min>10</min>
+			<max>30</max>
+		</startingGoodwill>
+		<naturalColonyGoodwill>
+			<min>-100</min>
+			<max>10</max>
+		</naturalColonyGoodwill>
 		<caravanTraderKinds>
 			<li>Caravan_Industrial</li>
 		</caravanTraderKinds>
@@ -259,12 +301,16 @@
 		<label>separatists</label>
 		<description>Disenfranchised with their nation, separatists declare that their land secedes and becomes its own sovereign nation. These rebellions are eventually quelled by force but until such time, they pose a significant threat to the region they inhabit.</description>
 		<pawnsPlural>separatists</pawnsPlural>
-		<canStageAttacks>false</canStageAttacks>
+		<appreciative>false</appreciative>
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>-100</min>
-			<max>-50</max>
+			<max>-90</max>
 		</startingGoodwill>
+	    <naturalColonyGoodwill>
+			<min>-100</min>
+			<max>-80</max>
+		</naturalColonyGoodwill>
 		<apparelStuffFilter>
 			<thingDefs>
 				<li>Cloth</li>
@@ -281,6 +327,8 @@
 		</pawnGroupMakers>
 	</FactionDef>
 	
+	<!-- ========================= Ascension ========================= -->
+
 	<FactionDef Name="FactionAscension" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
@@ -288,8 +336,13 @@
 		<backstoryCategory>Tribal</backstoryCategory>
 		<leaderTitle>Arbiter</leaderTitle>
 		<hairTags>
-			<li>Punk</li>
+			<li>Civil</li>
 		</hairTags>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Synthread</li>
+			</thingDefs>
+		</apparelStuffFilter>
 	</FactionDef>
 
 	<FactionDef ParentName="FactionAscension">
@@ -298,11 +351,14 @@
 		<description>A group of ascended beings is called a collective. The peak of society, ascended peoples live in a state of harmony, having transcended conflict and forsaken the less constructive aspects of human nature.</description>
 		<pawnsPlural>ascended</pawnsPlural>
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
-		<apparelStuffFilter>
-			<thingDefs>
-				<li>Synthread</li>
-			</thingDefs>
-		</apparelStuffFilter>
+		<startingGoodwill>
+			<min>10</min>
+			<max>30</max>
+		</startingGoodwill>
+		<naturalColonyGoodwill>
+			<min>-100</min>
+			<max>10</max>
+		</naturalColonyGoodwill>
 		<caravanTraderKinds>
 			<li>Caravan_Ascension</li>
 		</caravanTraderKinds>
@@ -330,16 +386,20 @@
 	</FactionDef>
 
 	<FactionDef ParentName="FactionAscension">
-		<defName>AscenscionFactionHostile</defName>
+		<defName>AscensionFactionHostile</defName>
 		<label>corrupted</label>
 		<description>Not all ascended are impervious to the flaws of human nature. Some succumb to their more base instincts and wreak havoc with the superior technology that could only be developed in a highly productive Collective. Pray they do not seek you out.</description>
 		<pawnsPlural>corrupted</pawnsPlural>
-		<canStageAttacks>false</canStageAttacks>
+		<appreciative>false</appreciative>
 		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>-100</min>
-			<max>-50</max>
+			<max>-90</max>
 		</startingGoodwill>
+	    <naturalColonyGoodwill>
+			<min>-100</min>
+			<max>-80</max>
+		</naturalColonyGoodwill>
 		<apparelStuffFilter>
 			<thingDefs>
 				<li>Devilstrand</li>
@@ -355,6 +415,5 @@
 			</li>
 		</pawnGroupMakers>
 	</FactionDef>
-
 
 </FactionDefs>
