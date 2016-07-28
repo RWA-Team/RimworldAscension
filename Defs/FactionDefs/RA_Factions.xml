@@ -152,7 +152,7 @@
 			</thingDefs>
 		</apparelStuffFilter>
 		<caravanTraderKinds>
-			<li>Caravan_Neolithic</li>
+			<li>Caravan_Medieval</li>
 		</caravanTraderKinds>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
@@ -228,7 +228,7 @@
 			</thingDefs>
 		</apparelStuffFilter>
 		<caravanTraderKinds>
-			<li>Caravan_Neolithic</li>
+			<li>Caravan_Midworld</li>
 		</caravanTraderKinds>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
@@ -304,7 +304,7 @@
 			</thingDefs>
 		</apparelStuffFilter>
 		<caravanTraderKinds>
-			<li>Caravan_Neolithic</li>
+			<li>Caravan_Ascension</li>
 		</caravanTraderKinds>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">

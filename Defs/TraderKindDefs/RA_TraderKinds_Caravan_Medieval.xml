@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DefPackage-TraderKindDef>
+
+	<!-- minified things should be placed here in their installed form -->
+
+	<TraderKindDef>
+		<defName>Caravan_Medieval</defName>
+		<label>medieval trader</label>
+		<stockGenerators>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Silver</thingDef>
+				<countRange>
+					<min>800</min>
+					<max>1300</max>
+				</countRange>
+			</li>
+		</stockGenerators>
+	</TraderKindDef>
+	
+</DefPackage-TraderKindDef>
