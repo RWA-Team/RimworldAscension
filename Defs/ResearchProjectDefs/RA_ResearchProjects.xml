@@ -5,9 +5,6 @@
 	<ResearchProjectDef>
 		<defName>Survival</defName>
 		<description>Having studied what's left of survival guide you found, you have the basic concepts of how to survive in the harsh enviroment around you. Having no advanced tools or materials, you'll have to make your own.</description>
-		<prerequisites>
-			<li>Survival</li>
-		</prerequisites>
 		<researchMods>
 			<li>
 				<specialAction>RA.ResearchMods.StartPack</specialAction>
@@ -156,7 +153,7 @@
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="ResearchMedieval">
-		<defName>Breweing</defName>
+		<defName>Brewing</defName>
 		<label>brewing</label>
 		<description>brewing.</description>
 		<baseCost>250</baseCost>
