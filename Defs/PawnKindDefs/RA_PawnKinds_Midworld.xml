@@ -10,11 +10,11 @@
 	- defaultFactionType- used as precaution or debug tool if faction is not set
 	 -->
 
-	<PawnKindDef Name="PawnIndustrial" Abstract="True">
+	<PawnKindDef Name="PawnMidworld" Abstract="True">
 		<race>Human</race>
 		<backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
 		<backstoryCategory>Tribal</backstoryCategory>
-		<defaultFactionType>IndustrialFactionNeutral</defaultFactionType>
+		<defaultFactionType>MidworldFactionNeutral</defaultFactionType>
 		<minGenerationAge>16</minGenerationAge>
 		<maxGenerationAge>60</maxGenerationAge>
 		<gearHealthRange>
@@ -26,14 +26,14 @@
 			<max>1000</max>
 		</apparelMoney>
 		<apparelTags>
-			<li>ClothingIndustrial</li>
+			<li>Clothing_Midworld</li>
 		</apparelTags>
 	</PawnKindDef>
 
 	<!-- ========================= Citizens =========================-->	
 
-	<PawnKindDef ParentName="PawnIndustrial">
-		<defName>IndustrialTrader</defName>
+	<PawnKindDef ParentName="PawnMidworld">
+		<defName>MidworldTrader</defName>
 		<label>merchant</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
@@ -43,8 +43,8 @@
 		</apparelRequired>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnIndustrial">
-		<defName>IndustrialWorker</defName>
+	<PawnKindDef ParentName="PawnMidworld">
+		<defName>MidworldWorker</defName>
 		<label>worker</label>
 		<combatPower>60</combatPower>
 		<baseRecruitDifficulty>60</baseRecruitDifficulty>
@@ -58,13 +58,13 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnIndustrial">
-		<defName>IndustrialSoldier</defName>
+	<PawnKindDef ParentName="PawnMidworld">
+		<defName>MidworldSoldier</defName>
 		<label>soldier</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>80</baseRecruitDifficulty>
  		<apparelTags>
-			<li>ArmorIndustrial</li>
+			<li>Armor_Midworld</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -76,16 +76,16 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnIndustrial">
-		<defName>IndustrialSpecial</defName>
+	<PawnKindDef ParentName="PawnMidworld">
+		<defName>MidworldSpecial</defName>
 		<label>special forces</label>
 		<combatPower>130</combatPower>
 		<baseRecruitDifficulty>90</baseRecruitDifficulty>
 		<apparelRequired>
-			<li>ShieldIndustrial</li>			
+			<li>ShieldMidworld</li>			
 		</apparelRequired>
  		<apparelTags>
-			<li>ArmorIndustrial</li>
+			<li>Armor_Midworld</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -96,8 +96,8 @@
 		</weaponTags>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="PawnIndustrial">
-		<defName>IndustrialGeneral</defName>
+	<PawnKindDef ParentName="PawnMidworld">
+		<defName>MidworldGeneral</defName>
 		<label>general</label>
 		<combatPower>250</combatPower>
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
@@ -107,7 +107,7 @@
 			<max>1600</max>
 		</apparelMoney>
  		<apparelTags>
-			<li>ArmorIndustrial</li>
+			<li>Armor_Midworld</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
@@ -120,8 +120,8 @@
 
 	<!-- ========================= Separatists =========================-->	
 	
-	<PawnKindDef Name="PawnSeparatist" ParentName="PawnIndustrial" Abstract="True">
-		<defaultFactionType>IndustrialFactionHostile</defaultFactionType>
+	<PawnKindDef Name="PawnSeparatist" ParentName="PawnMidworld" Abstract="True">
+		<defaultFactionType>MidworldFactionHostile</defaultFactionType>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnSeparatist">
@@ -130,7 +130,7 @@
 		<combatPower>60</combatPower>
 		<baseRecruitDifficulty>70</baseRecruitDifficulty>
 		<apparelTags>
-			<li>ArmorSeparatist</li>
+			<li>Armor_Separatist</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -147,7 +147,7 @@
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>80</baseRecruitDifficulty>
 		<apparelTags>
-			<li>ArmorSeparatist</li>
+			<li>Armor_Separatist</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>500</min>
@@ -165,7 +165,7 @@
 		<baseRecruitDifficulty>95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
 		<apparelTags>
-			<li>ArmorSeparatist</li>
+			<li>Armor_Separatist</li>
 		</apparelTags>
 		<weaponMoney>
 			<min>800</min>
