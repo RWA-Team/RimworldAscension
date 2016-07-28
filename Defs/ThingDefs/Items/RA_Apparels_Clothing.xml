@@ -82,9 +82,6 @@
 		<apparel>
 			<tags>
 				<li>Clothing_Neolithic</li>
-				<li>Clothing_Medieval</li>
-				<li>Clothing_Midworld</li>
-				<li>Clothing_Ascension</li>
 			</tags>
 		</apparel>
 	</ThingDef>
