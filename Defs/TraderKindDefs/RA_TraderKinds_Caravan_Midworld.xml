@@ -4,8 +4,8 @@
 	<!-- minified things should be placed here in their installed form -->
 
 	<TraderKindDef>
-		<defName>Caravan_Midworld</defName>
-		<label>midworld trader</label>
+		<defName>Caravan_Industrial</defName>
+		<label>Industrial trader</label>
 		<stockGenerators>
 			<li Class="StockGenerator_SingleDef">
 				<thingDef>Silver</thingDef>
