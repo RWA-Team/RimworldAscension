@@ -30,13 +30,6 @@
 		<apparelTags>
 			<li>Spacer</li>
 		</apparelTags>
-		<weaponMoney>
-			<min>360</min>
-			<max>700</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeNeolithic</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<!-- ========================= Ascended =========================-->
@@ -51,9 +44,6 @@
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
 		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
-		<apparelRequired>
-			<li>Headdress</li>
-		</apparelRequired>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnAscensionNeutral">
@@ -61,13 +51,6 @@
 		<label>defender</label>
 		<combatPower>60</combatPower>
 		<baseRecruitDifficulty>0.80</baseRecruitDifficulty>
-		<weaponMoney>
-			<min>500</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedieval</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnAscensionNeutral">
@@ -75,14 +58,6 @@
 		<label>rectifier</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
-		<weaponMoney>
-			<min>500</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedieval</li>
-			<li>RangedNeolithic</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnAscensionNeutral">
@@ -91,18 +66,6 @@
 		<combatPower>250</combatPower>
 		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
-		<apparelMoney>
-			<min>600</min>
-			<max>1600</max>
-		</apparelMoney>
-		<weaponMoney>
-			<min>800</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedievalStrong</li>
-			<li>RangedNeolithicStrong</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<!-- ========================= Corrupted ========================= -->
@@ -116,13 +79,6 @@
 		<label>destroyer</label>
 		<combatPower>150</combatPower>
 		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
-		<weaponMoney>
-			<min>500</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedievalStrong</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnAscensionHostile">
@@ -130,13 +86,6 @@
 		<label>mindbreaker</label>
 		<combatPower>150</combatPower>
 		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
-		<weaponMoney>
-			<min>500</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>RangedNeolithic</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnAscensionHostile">
@@ -145,13 +94,6 @@
 		<combatPower>200</combatPower>
 		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
-		<weaponMoney>
-			<min>800</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>RangedNeolithicStrong</li>
-		</weaponTags>
 	</PawnKindDef>
 
 </PawnKindDefs>

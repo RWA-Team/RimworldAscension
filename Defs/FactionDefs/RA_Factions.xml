@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <FactionDefs>
 
-<!-- 	- selectionWeight - used to mutiply chances of spawning toughter enemies instead of massing weak, if high numbers of threat points reached (the higher the more)
+	<!-- 	- selectionWeight - used to mutiply chances of spawning toughter enemies instead of massing weak, if high numbers of threat points reached (the higher the more)
 	- canMakeRandomly - determines if faction can be generated randomly by faction generator fs total faction count is less than required
 	- mustStartOneEnemy - one faction of that def should be hostile
 	- startingGoodwill - initial goodwill with other factions
@@ -10,36 +10,36 @@
 	
 	<!-- ========================= Player =========================-->
 	
-  <FactionDef Abstract="True" Name="PlayerFactionBase">
-    <homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
-    <homeIconColor>(255,220,84)</homeIconColor>
-  </FactionDef>
-  
-  <FactionDef Parent="PlayerFactionBase">
-    <defName>Colony</defName>
-    <label>colony</label>
-    <description>Your own community.</description>
-    <isPlayer>true</isPlayer>
-    <basicMemberKind>Colonist</basicMemberKind>
-    <pawnsPlural>colonists</pawnsPlural>
-    <factionNameMaker>NamerFactionOutlander</factionNameMaker>
-    <techLevel>Industrial</techLevel>
-    <backstoryCategory>Civil</backstoryCategory>
-    <startingResearchTags>
-      <li>ClassicStart</li>
-    </startingResearchTags>
-    <hairTags>
-      <li>Urban</li>
-    </hairTags>
-    <apparelStuffFilter>
-      <thingDefs>
-        <li>Synthread</li>
-      </thingDefs>
-    </apparelStuffFilter>
-  </FactionDef>
-  
-	<!-- ========================= Abstract =========================-->
-
+	<FactionDef Abstract="True" Name="PlayerFactionBase">
+		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
+		<homeIconColor>(255,220,84)</homeIconColor>
+	</FactionDef>
+	
+	<FactionDef Parent="PlayerFactionBase">
+		<defName>Colony</defName>
+		<label>colony</label>
+		<description>Your own community.</description>
+		<isPlayer>true</isPlayer>
+		<basicMemberKind>Colonist</basicMemberKind>
+		<pawnsPlural>colonists</pawnsPlural>
+		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
+		<techLevel>Industrial</techLevel>
+		<backstoryCategory>Civil</backstoryCategory>
+		<startingResearchTags>
+			<li>ClassicStart</li>
+		</startingResearchTags>
+		<hairTags>
+			<li>Urban</li>
+		</hairTags>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Synthread</li>
+			</thingDefs>
+		</apparelStuffFilter>
+	</FactionDef>
+	
+	<!-- ========================= Abstract ========================= -->
+	
 	<FactionDef Name="Faction" Abstract="True">
 		<canMakeRandomly>true</canMakeRandomly>
 		<raidCommonality>100</raidCommonality>
@@ -59,11 +59,10 @@
 		</allowedArrivalTemperatureRange>
 		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
 		<homeIconColor>(50,200,50)</homeIconColor>
-		<!-- <hidden>true</hidden> -->
 	</FactionDef>
-  
-	<!-- ========================= Neolithic =========================-->
-
+	
+	<!-- ========================= Neolithic ========================= -->
+	
 	<FactionDef Name="FactionNeolithic" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
@@ -79,7 +78,7 @@
 			</thingDefs>
 		</apparelStuffFilter>
 	</FactionDef>
-
+	
 	<FactionDef ParentName="FactionNeolithic">
 		<defName>NeolithicFactionNeutral</defName>
 		<label>tribe</label>
@@ -120,7 +119,7 @@
 			</li>
 		</pawnGroupMakers>
 	</FactionDef>
-
+	
 	<FactionDef ParentName="FactionNeolithic">
 		<defName>NeolithicFactionHostile</defName>
 		<label>feral tribe</label>
@@ -132,7 +131,7 @@
 			<min>-100</min>
 			<max>-90</max>
 		</startingGoodwill>
-	    <naturalColonyGoodwill>
+		<naturalColonyGoodwill>
 			<min>-100</min>
 			<max>-80</max>
 		</naturalColonyGoodwill>
@@ -147,7 +146,7 @@
 		</pawnGroupMakers>
 	</FactionDef>
 	
-	<!-- ========================= Medieval =========================-->
+	<!-- ========================= Medieval ========================= -->
 	
 	<FactionDef Name="FactionMedieval" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
@@ -164,7 +163,7 @@
 			</thingDefs>
 		</apparelStuffFilter>
 	</FactionDef>
-
+	
 	<FactionDef ParentName="FactionMedieval">
 		<defName>MedievalFactionNeutral</defName>
 		<label>kingdom</label>
@@ -180,7 +179,7 @@
 			<max>10</max>
 		</naturalColonyGoodwill>
 		<caravanTraderKinds>
-			<li>Caravan_Medieval</li>
+			<li>Caravan_Neolithic</li>
 		</caravanTraderKinds>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
@@ -205,7 +204,7 @@
 			</li>
 		</pawnGroupMakers>
 	</FactionDef>
-
+	
 	<FactionDef ParentName="FactionMedieval">
 		<defName>MedievalFactionHostile</defName>
 		<label>band of bandits</label>
@@ -217,7 +216,7 @@
 			<min>-100</min>
 			<max>-90</max>
 		</startingGoodwill>
-	    <naturalColonyGoodwill>
+		<naturalColonyGoodwill>
 			<min>-100</min>
 			<max>-80</max>
 		</naturalColonyGoodwill>
@@ -238,7 +237,7 @@
 	</FactionDef>
 	
 	<!-- ========================= Industrial ========================= -->
-
+	
 	<FactionDef Name="FactionIndustrial" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
@@ -254,7 +253,7 @@
 			</thingDefs>
 		</apparelStuffFilter>
 	</FactionDef>
-
+	
 	<FactionDef ParentName="FactionIndustrial">
 		<defName>IndustrialFactionNeutral</defName>
 		<label>nation</label>
@@ -270,7 +269,7 @@
 			<max>10</max>
 		</naturalColonyGoodwill>
 		<caravanTraderKinds>
-			<li>Caravan_Industrial</li>
+			<li>Caravan_Neolithic</li>
 		</caravanTraderKinds>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
@@ -295,7 +294,7 @@
 			</li>
 		</pawnGroupMakers>
 	</FactionDef>
-
+	
 	<FactionDef ParentName="FactionIndustrial">
 		<defName>IndustrialFactionHostile</defName>
 		<label>separatists</label>
@@ -307,7 +306,7 @@
 			<min>-100</min>
 			<max>-90</max>
 		</startingGoodwill>
-	    <naturalColonyGoodwill>
+		<naturalColonyGoodwill>
 			<min>-100</min>
 			<max>-80</max>
 		</naturalColonyGoodwill>
@@ -328,7 +327,7 @@
 	</FactionDef>
 	
 	<!-- ========================= Ascension ========================= -->
-
+	
 	<FactionDef Name="FactionAscension" ParentName="Faction" Abstract="True">
 		<factionNameMaker>NamerFactionTribal</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
@@ -344,7 +343,7 @@
 			</thingDefs>
 		</apparelStuffFilter>
 	</FactionDef>
-
+	
 	<FactionDef ParentName="FactionAscension">
 		<defName>AscensionFactionNeutral</defName>
 		<label>collective</label>
@@ -360,7 +359,7 @@
 			<max>10</max>
 		</naturalColonyGoodwill>
 		<caravanTraderKinds>
-			<li>Caravan_Ascension</li>
+			<li>Caravan_Neolithic</li>
 		</caravanTraderKinds>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
@@ -384,7 +383,7 @@
 			</li>
 		</pawnGroupMakers>
 	</FactionDef>
-
+	
 	<FactionDef ParentName="FactionAscension">
 		<defName>AscensionFactionHostile</defName>
 		<label>corrupted</label>
@@ -396,13 +395,13 @@
 			<min>-100</min>
 			<max>-90</max>
 		</startingGoodwill>
-	    <naturalColonyGoodwill>
+		<naturalColonyGoodwill>
 			<min>-100</min>
 			<max>-80</max>
 		</naturalColonyGoodwill>
 		<apparelStuffFilter>
 			<thingDefs>
-				<li>Devilstrand</li>
+				<li>Leather</li>
 			</thingDefs>
 		</apparelStuffFilter>
 		<pawnGroupMakers>
@@ -415,5 +414,5 @@
 			</li>
 		</pawnGroupMakers>
 	</FactionDef>
-
+	
 </FactionDefs>

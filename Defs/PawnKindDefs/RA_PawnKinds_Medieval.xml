@@ -30,13 +30,6 @@
 		<apparelTags>
 			<li>Spacer</li>
 		</apparelTags>
-		<weaponMoney>
-			<min>160</min>
-			<max>500</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedieval</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<!-- ========================= Kingspeople =========================-->
@@ -51,9 +44,6 @@
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
 		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
-		<apparelRequired>
-			<li>Headdress</li>
-		</apparelRequired>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnMedieval">
@@ -61,13 +51,6 @@
 		<label>serf</label>
 		<combatPower>40</combatPower>
 		<baseRecruitDifficulty>0.40</baseRecruitDifficulty>
-		<weaponMoney>
-			<min>5</min>
-			<max>10</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedievalWeak</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnMedieval">
@@ -75,13 +58,6 @@
 		<label>guard</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>0.80</baseRecruitDifficulty>
-		<weaponMoney>
-			<min>500</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedieval</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnMedieval">
@@ -89,16 +65,6 @@
 		<label>knight</label>
 		<combatPower>130</combatPower>
 		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
-		<apparelRequired>
-			<li>ShieldMedieval</li>			
-		</apparelRequired>
-		<weaponMoney>
-			<min>500</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedievalStrong</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnMedieval">
@@ -107,17 +73,6 @@
 		<combatPower>250</combatPower>
 		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
-		<apparelMoney>
-			<min>600</min>
-			<max>1600</max>
-		</apparelMoney>
-		<weaponMoney>
-			<min>800</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedievalStrong</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<!-- ========================= Bandits =========================-->	
@@ -131,16 +86,6 @@
 		<label>thug</label>
 		<combatPower>60</combatPower>
 		<baseRecruitDifficulty>0.70</baseRecruitDifficulty>
-		<apparelTags>
-			<li>ArmorBandit</li>
-		</apparelTags>
-		<weaponMoney>
-			<min>500</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedieval</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnBandit">
@@ -148,16 +93,6 @@
 		<label>hunter</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>0.80</baseRecruitDifficulty>
-		<apparelTags>
-			<li>ArmorBandit</li>
-		</apparelTags>
-		<weaponMoney>
-			<min>500</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedieval</li>
-		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnBandit">
@@ -166,16 +101,6 @@
 		<combatPower>250</combatPower>
 		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
-		<apparelTags>
-			<li>ArmorBandit</li>
-		</apparelTags>
-		<weaponMoney>
-			<min>800</min>
-			<max>1000</max>
-		</weaponMoney>
-		<weaponTags>
-			<li>MeleeMedievalStrong</li>
-		</weaponTags>
 	</PawnKindDef>
 
 </PawnKindDefs>

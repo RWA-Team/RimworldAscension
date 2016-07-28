@@ -13,7 +13,7 @@
   <PawnKindDef ParentName="BasePlayerPawnKind">
     <defName>Colonist</defName>
     <label>colonist</label>
-    <defaultFactionType>PlayerColony</defaultFactionType>
+    <defaultFactionType>Colony</defaultFactionType>
     <backstoryCategory>Civil</backstoryCategory>
     <apparelTags>
       <li>Spacer</li>
