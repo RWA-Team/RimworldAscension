@@ -1,5 +1,4 @@
-﻿using RimWorld;
-using UnityEngine;
+﻿using UnityEngine;
 using Verse;
 
 namespace RA
@@ -9,7 +8,7 @@ namespace RA
     {
         public static Vector2 MainBackgroundSize = new Vector2(2000f, 1190f);
 
-        public static Texture2D MainMenuBackground;
+        public static Texture2D MainMenuBackground = ContentFinder<Texture2D>.Get("UI/MainMenu/Background");
 
         public override void BackgroundOnGUI()
         {
@@ -27,9 +26,7 @@ namespace RA
                 var num = Screen.width*(MainBackgroundSize.y/MainBackgroundSize.x);
                 position = new Rect(0f, Screen.height/2 - num/2f, width, num);
             }
-
-            // required cause of textures references reset
-            if (MainMenuBackground == null) MainMenuBackground = ContentFinder<Texture2D>.Get("UI/MainMenu/Background");
+            
             GUI.DrawTexture(position, MainMenuBackground, ScaleMode.ScaleToFit);
         }
     }
