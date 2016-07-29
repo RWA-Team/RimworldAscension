@@ -490,12 +490,12 @@ namespace RA
                 BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaTrySpawnExplosionThing, newTrySpawnExplosionThing);
 
-            // tries to assign existing stuff type, instead of some random one, as default
-            var vanillaDefaultStuffFor = typeof(GenStuff).GetMethod("DefaultStuffFor",
-                BindingFlags.Static | BindingFlags.Public);
-            var newDefaultStuffFor = typeof(RA_GenStuff).GetMethod("DefaultStuffFor",
-                BindingFlags.Static | BindingFlags.Public);
-            TryDetourFromTo(vanillaDefaultStuffFor, newDefaultStuffFor);
+            //// tries to assign existing stuff type, instead of some random one, as default
+            //var vanillaDefaultStuffFor = typeof(GenStuff).GetMethod("DefaultStuffFor",
+            //    BindingFlags.Static | BindingFlags.Public);
+            //var newDefaultStuffFor = typeof(RA_GenStuff).GetMethod("DefaultStuffFor",
+            //    BindingFlags.Static | BindingFlags.Public);
+            //TryDetourFromTo(vanillaDefaultStuffFor, newDefaultStuffFor);
 
             //// CR aim pie
             //var vanillaStanceDraw = typeof(Stance_Warmup).GetMethod("StanceDraw", BindingFlags.Instance | BindingFlags.Public);

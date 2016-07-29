@@ -188,7 +188,7 @@
 				<projectileDef>Arrow_Great</projectileDef>
 				<warmupTicks>60</warmupTicks>
 				<range>30</range>
-				<soundCast>BowGreat</soundCast>
+				<soundCast>BowLarge</soundCast>
 			</li>
 		</verbs>
 	</ThingDef>
@@ -436,13 +436,14 @@
 				<projectileDef>Crossbow_bolt</projectileDef>
 				<warmupTicks>90</warmupTicks>
 				<range>30</range>
-				<soundCast>BowGreat</soundCast>
+				<soundCast>BowLarge</soundCast>
 			</li>
 		</verbs>
 	</ThingDef>
 
 	<ThingDef ParentName="Projectile">
 		<defName>Crossbow_bolt</defName>
+		<label>crossbow bolt</label>
 		<graphicData>
 			<texPath>Things/Projectile/Arrow_Small</texPath>
 			<graphicClass>Graphic_single</graphicClass>
@@ -497,7 +498,7 @@
 				<projectileDef>Crossbow_bolt</projectileDef>
 				<warmupTicks>180</warmupTicks>
 				<range>28</range>
-				<soundCast>BowGreat</soundCast>
+				<soundCast>BowLarge</soundCast>
 				<burstShotCount>3</burstShotCount>
 					
 			</li>
