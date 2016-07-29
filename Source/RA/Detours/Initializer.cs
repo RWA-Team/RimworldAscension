@@ -562,6 +562,20 @@ namespace RA
             var newIsTree_Getter = newIsTree.GetGetMethod();
             TryDetourFromTo(vanillaIsTree_Getter, newIsTree_Getter);
 
+            // delay GameEndTick first call
+            var vanillaGameEndTick = typeof(GameEnder).GetMethod("GameEndTick",
+                BindingFlags.Instance | BindingFlags.Public);
+            var newGameEndTick = typeof(RA_GameEnder).GetMethod("GameEndTick",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaGameEndTick, newGameEndTick);
+
+            // delay CheckGameOver first call
+            var vanillaCheckGameOver = typeof(GameEnder).GetMethod("CheckGameOver",
+                BindingFlags.Instance | BindingFlags.Public);
+            var newCheckGameOver = typeof(RA_GameEnder).GetMethod("CheckGameOver",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaCheckGameOver, newCheckGameOver);
+
             #endregion
         }
     }
