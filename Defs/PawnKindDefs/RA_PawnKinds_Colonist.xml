@@ -1,27 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <PawnKindDefs>
 
-	<PawnKindDef>
-		<defName>Colonist</defName>
-		<label>colonist</label>
-		<race>Human</race>
-		<combatPower>30</combatPower>
-		<defaultFactionType>PlayerColony</defaultFactionType>
-		<baseRecruitDifficulty>0.60</baseRecruitDifficulty>
-		<backstoryCategory>Civil</backstoryCategory>
-		<isFighter>false</isFighter>
-		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
-		<apparelTags>
-			<li>Starting</li>
-		</apparelTags>
-		<apparelRequired>
-			<li>SlaveShirt</li>
-			<li>SlavePants</li>
-		</apparelRequired>
-		<apparelMoney>
-			<min>1000</min>
-			<max>1000</max>
-		</apparelMoney>
-	</PawnKindDef>
+  <PawnKindDef Abstract="True" Name="BasePlayerPawnKind">
+    <race>Human</race>
+    <combatPower>30</combatPower>
+    <baseRecruitDifficulty>0.60</baseRecruitDifficulty>
+    <isFighter>false</isFighter>
+    <apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+    <forceNormalGearQuality>true</forceNormalGearQuality>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>Colonist</defName>
+    <label>colonist</label>
+    <defaultFactionType>Colony</defaultFactionType>
+    <backstoryCategory>Civil</backstoryCategory>
+    <apparelTags>
+      <li>Spacer</li>
+    </apparelTags>
+    <apparelMoney>
+      <min>1000</min>
+      <max>2400</max>
+    </apparelMoney>
+    <backstoryCryptosleepCommonality>1</backstoryCryptosleepCommonality>
+  </PawnKindDef>
 
 </PawnKindDefs>
