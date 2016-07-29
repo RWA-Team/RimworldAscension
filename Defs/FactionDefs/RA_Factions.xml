@@ -155,7 +155,7 @@
 		<requiredCountAtGameStart>1</requiredCountAtGameStart>
 		<leaderTitle>King</leaderTitle>
 		<hairTags>
-			<li>Tribal</li>
+			<li>Rural</li>
 		</hairTags>
 		<apparelStuffFilter>
 			<thingDefs>
@@ -244,7 +244,7 @@
 		<requiredCountAtGameStart>1</requiredCountAtGameStart>
 		<leaderTitle>President</leaderTitle>
 		<hairTags>
-			<li>Tribal</li>
+			<li>Punk</li>
 		</hairTags>
 		<apparelStuffFilter>
 			<thingDefs>
@@ -333,7 +333,7 @@
 		<requiredCountAtGameStart>1</requiredCountAtGameStart>
 		<leaderTitle>Arbiter</leaderTitle>
 		<hairTags>
-			<li>Civil</li>
+			<li>Urban</li>
 		</hairTags>
 		<apparelStuffFilter>
 			<thingDefs>
