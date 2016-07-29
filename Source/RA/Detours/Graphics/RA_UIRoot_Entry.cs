@@ -1,8 +1,6 @@
 ﻿using RimWorld;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using Verse;
-using Verse.Steam;
 
 namespace RA
 {
@@ -14,6 +12,7 @@ namespace RA
             UIMenuBackgroundManager.background = new UI_BackgroundMain();
             MainMenuDrawer.Init();
             QuickStarter.CheckQuickStart();
+
             //if (!SteamManager.Initialized)
             //{
             //    var text = "SteamClientMissing".Translate();

@@ -39,7 +39,7 @@ namespace RA
                 },
                 tickAction = () =>
                 {
-                    //if (burner.internalTemp > burner.compFueled.Properties.operatingTemp)
+                    //if (burner.internalTemp > burner.compFueled.Props.operatingTemp)
                     //    ReadyForNextToil();
                 }
             };

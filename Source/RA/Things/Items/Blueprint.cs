@@ -14,7 +14,7 @@ namespace RA
         {
             base.SpawnSetup();
 
-            researchDef = ResearchProjectDef.Named(this.TryGetComp<CompBlueprint>().Properties.researchName);
+            //researchDef = ResearchProjectDef.Named(this.TryGetComp<CompBlueprint>().Props.researchName);
         }
 
         public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(Pawn pawn)
@@ -37,8 +37,7 @@ namespace RA
                 yield return new FloatMenuOption("Study " + Label, action);
             }
         }
-
-        // TODO make it via comp usable
+        
         public void UsedBy(Pawn pawn)
         {
             Find.ResearchManager.currentProj = researchDef;

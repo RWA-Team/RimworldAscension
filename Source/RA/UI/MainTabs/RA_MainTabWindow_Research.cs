@@ -344,7 +344,7 @@ namespace RA
             switch (showResearchedProjects)
             {
                 case ShowResearch.All:
-                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => projectDef.prerequisites.NullOrEmpty() || !projectDef.prerequisites.Contains(ResearchProjectDef.Named("Blocked")));
+                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => !projectDef.IsFinished && !projectDef.prerequisites.Contains(ResearchProjectDef.Named("Blocked")));
                     break;
                 case ShowResearch.Completed:
                     researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => projectDef.IsFinished);

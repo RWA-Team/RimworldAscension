@@ -38,7 +38,7 @@ namespace RA
 
         //    // allowed cells changed
         //    allowedCells = new List<IntVec3>();
-        //    foreach (var cell in compWorktableExtended.Properties.ingridientCells)
+        //    foreach (var cell in compWorktableExtended.Props.ingridientCells)
         //    {
         //        if (IngredientStackCells.Contains(Position + cell))
         //            allowedCells.Add(Position + cell);

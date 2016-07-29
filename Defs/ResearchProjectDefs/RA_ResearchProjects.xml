@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ResearchProjectDefs>
+	
+	<!-- baseCost - This value is multiplied by 2500 when used in defs (2500 ticks per in-game hour) and devided by 100 (MakeProgress devides it by 100) -->
 
 	<!--used to learn the basics-->
 	<ResearchProjectDef>
 		<defName>Survival</defName>
+		<label>survival</label>
 		<description>Having studied what's left of survival guide you found, you have the basic concepts of how to survive in the harsh enviroment around you. Having no advanced tools or materials, you'll have to make your own.</description>
-		<prerequisites>
-			<li>Survival</li>
-		</prerequisites>
 		<researchMods>
 			<li>
-				<specialAction>RA.ResearchMods.StartPack</specialAction>
+				<specialAction>RA.ResearchMods.Survival</specialAction>
 			</li>
 		</researchMods>
 		<techLevel>Neolithic</techLevel>
@@ -156,7 +156,7 @@
 	</ResearchProjectDef>
 
 	<ResearchProjectDef ParentName="ResearchMedieval">
-		<defName>Breweing</defName>
+		<defName>Brewing</defName>
 		<label>brewing</label>
 		<description>brewing.</description>
 		<baseCost>250</baseCost>

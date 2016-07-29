@@ -19,9 +19,7 @@
 		</graphicData>
 	</ThingDef>
 
-
 	<!-- =================== Neolithic =================== -->
-
 
 	<ThingDef ParentName="WeaponRanged">
 		<defName>BowPrimitive</defName>
@@ -188,7 +186,7 @@
 				<projectileDef>Arrow_Great</projectileDef>
 				<warmupTicks>60</warmupTicks>
 				<range>30</range>
-				<soundCast>BowGreat</soundCast>
+				<soundCast>BowLarge</soundCast>
 			</li>
 		</verbs>
 	</ThingDef>
@@ -397,27 +395,29 @@
 		</projectile>
 	</ThingDef>
 
+	<!-- =================== Medieval =================== -->
+
 	<ThingDef ParentName="WeaponRanged">
-	    <defName>crossbow</defName>
-	    <label>Crossbow</label>
-	    <description>Ancient shoota</description>
-	    <graphicData>
-	    	<texPath>Things/Items/Weapons/Medieval/Crossbow</texPath>
-	    	<graphicClass>Graphic_single</graphicClass>
-	    </graphicData>
-	    <soundInteract>BowSmall</soundInteract>
-	    <statBases>
-	    	<MaxHitPoints>120</MaxHitPoints>
-	    	<AccuracyTouch>0.4</AccuracyTouch>
-	    	<AccuracyShort>0.6</AccuracyShort>
-	    	<AccuracyMedium>0.7</AccuracyMedium>
-	    	<AccuracyLong>0</AccuracyLong>
-	    </statBases>
-	    <techLevel>Medieval</techLevel>
-	    <weaponTags>
-	    	<li>RangedMedival</li>
-	    </weaponTags>
-	    <comps>
+		<defName>crossbow</defName>
+		<label>Crossbow</label>
+		<description>Ancient shoota</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Medieval/Crossbow</texPath>
+			<graphicClass>Graphic_single</graphicClass>
+		</graphicData>
+		<soundInteract>BowSmall</soundInteract>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<AccuracyTouch>0.4</AccuracyTouch>
+			<AccuracyShort>0.6</AccuracyShort>
+			<AccuracyMedium>0.7</AccuracyMedium>
+			<AccuracyLong>0</AccuracyLong>
+		</statBases>
+		<techLevel>Medieval</techLevel>
+		<weaponTags>
+			<li>RangedMedival</li>
+		</weaponTags>
+		<comps>
 			<li Class="RA.CompTool_Properties">
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
@@ -436,13 +436,14 @@
 				<projectileDef>Crossbow_bolt</projectileDef>
 				<warmupTicks>90</warmupTicks>
 				<range>30</range>
-				<soundCast>BowGreat</soundCast>
+				<soundCast>BowLarge</soundCast>
 			</li>
 		</verbs>
 	</ThingDef>
 
 	<ThingDef ParentName="Projectile">
 		<defName>Crossbow_bolt</defName>
+		<label>crossbow bolt</label>
 		<graphicData>
 			<texPath>Things/Projectile/Arrow_Small</texPath>
 			<graphicClass>Graphic_single</graphicClass>
@@ -459,26 +460,26 @@
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponRanged">
-	    <defName>repetivecrossbow</defName>
-	    <label>Repetive Crossbow</label>
-	    <description>Ancient shoota</description>
-	    <graphicData>
-	    	<texPath>Things/Items/Weapons/Medieval/CrossbowRepeating</texPath>
-	    	<graphicClass>Graphic_single</graphicClass>
-	    </graphicData>
-	    <soundInteract>BowSmall</soundInteract>
-	    <statBases>
-	    	<MaxHitPoints>100</MaxHitPoints>
-	    	<AccuracyTouch>0.4</AccuracyTouch>
-	    	<AccuracyShort>0.6</AccuracyShort>
-	    	<AccuracyMedium>0.6</AccuracyMedium>
-	    	<AccuracyLong>0</AccuracyLong>
-	    </statBases>
-	    <techLevel>Medieval</techLevel>
-	    <weaponTags>
-	    	<li>RangedMedival</li>
-	    </weaponTags>
-	    <comps>
+		<defName>repetivecrossbow</defName>
+		<label>Repetive Crossbow</label>
+		<description>Ancient shoota</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Medieval/CrossbowRepeating</texPath>
+			<graphicClass>Graphic_single</graphicClass>
+		</graphicData>
+		<soundInteract>BowSmall</soundInteract>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<AccuracyTouch>0.4</AccuracyTouch>
+			<AccuracyShort>0.6</AccuracyShort>
+			<AccuracyMedium>0.6</AccuracyMedium>
+			<AccuracyLong>0</AccuracyLong>
+		</statBases>
+		<techLevel>Medieval</techLevel>
+		<weaponTags>
+			<li>RangedMedival</li>
+		</weaponTags>
+		<comps>
 			<li Class="RA.CompTool_Properties">
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
@@ -497,11 +498,51 @@
 				<projectileDef>Crossbow_bolt</projectileDef>
 				<warmupTicks>180</warmupTicks>
 				<range>28</range>
-				<soundCast>BowGreat</soundCast>
-				<burstShotCount>3</burstShotCount>
-					
+				<soundCast>BowLarge</soundCast>
+				<burstShotCount>3</burstShotCount>					
 			</li>
 		</verbs>
+	</ThingDef>
+
+	<!-- =================== Industrial =================== -->
+
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>Gun_SurvivalRifle</defName>
+		<label>survival rifle</label>
+		<description>Ancient bolt-action rifle. Good range, Good power, low rate of fire.</description>
+		<graphicData>
+			<texPath>Things/Item/Equipment/WeaponRanged/SurvivalRifle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>InteractRifle</soundInteract>
+		<statBases>
+			<WorkToMake>50000</WorkToMake>
+			<MarketValue>400</MarketValue>
+			<AccuracyTouch>0.75</AccuracyTouch>
+			<AccuracyShort>0.96</AccuracyShort>
+			<AccuracyMedium>0.96</AccuracyMedium>
+			<AccuracyLong>0.90</AccuracyLong>
+			<RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
+		</statBases>
+		<costList>
+			<Steel>90</Steel>
+			<Component>3</Component>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<projectileDef>Bullet_SurvivalRifle</projectileDef>
+				<warmupTicks>150</warmupTicks>
+				<range>37</range>
+				<soundCast>ShotSurvivalRifle</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="RA.CompTool_Properties" />
+		</comps>
 	</ThingDef>
 
 </ThingDefs>
