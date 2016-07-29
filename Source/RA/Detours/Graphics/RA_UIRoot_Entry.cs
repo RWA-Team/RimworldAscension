@@ -1,4 +1,7 @@
-﻿using RimWorld;
+﻿using System;
+using System.IO;
+using System.Linq;
+using RimWorld;
 using UnityEngine.SceneManagement;
 using Verse;
 
@@ -32,17 +35,37 @@ namespace RA
 
         public static class QuickStarter
         {
-            private static bool quickStarted;
+            public static bool quickStarted;
 
             public static bool CheckQuickStart()
             {
-                if (GenCommandLine.CommandLineArgPassed("quicktest") && !quickStarted && GenScene.InEntryScene)
+                if (!quickStarted && GenScene.InEntryScene)
                 {
+                    if (GenCommandLine.CommandLineArgPassed("quicktest"))
+                    {
+                        SceneManager.LoadScene("Map");
+                    }
+
+                    if (GenCommandLine.CommandLineArgPassed("quickload"))
+                    {
+                        var latestSavePath =
+                            Path.GetFileNameWithoutExtension(GenFilePaths.AllSavedGameFiles?.FirstOrDefault()?.Name);
+                        PreLoadUtility.CheckVersionAndLoad(GenFilePaths.FilePathForSavedGame(latestSavePath),
+                            ScribeMetaHeaderUtility.ScribeHeaderMode.Map, delegate
+                            {
+                                Action preLoadLevelAction = delegate
+                                {
+                                    Current.Game = new Game {InitData = new GameInitData {mapToLoad = latestSavePath}};
+                                };
+                                LongEventHandler.QueueLongEvent(preLoadLevelAction, "Map", "LoadingLongEvent", true,
+                                    null);
+                            });
+                    }
+
                     quickStarted = true;
-                    SceneManager.LoadScene("Map");
-                    return true;
                 }
-                return false;
+
+                return quickStarted;
             }
         }
     }
