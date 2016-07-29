@@ -68,6 +68,7 @@
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
 		<techLevel>Neolithic</techLevel>
 		<backstoryCategory>Tribal</backstoryCategory>
+		<requiredCountAtGameStart>1</requiredCountAtGameStart>
 		<leaderTitle>Chief</leaderTitle>
 		<hairTags>
 			<li>Tribal</li>
@@ -84,7 +85,6 @@
 		<label>tribe</label>
 		<description>These people have been here a very long time. Maybe their ancestors crashed here a thousand years ago. Maybe they survived some cataclysm that destroyed a technological civilization here. In any case, the tribals are mostly nomadic people who live off the land using primitive tools and weapons.\n\nSome tribes are more aggressive than others; many are open to trade and alliances, even with strange peoples like yourselves. Close coop eration or recruitment will be very difficult because of the vast sociotechnological and linguistic gap between the tribals and yourselves.\n\nDespite their apparent technological weakness, the tribals can be dangerous enemies and valuable friends because of their skill with low-tech warfare, their numbers, and their hardiness.</description>
 		<pawnsPlural>tribespeople</pawnsPlural>
-		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>10</min>
 			<max>30</max>
@@ -126,7 +126,6 @@
 		<description>A feral uncivilized tribe of cannibals.</description>
 		<pawnsPlural>ferals</pawnsPlural>
 		<appreciative>false</appreciative>
-		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>-100</min>
 			<max>-90</max>
@@ -149,10 +148,11 @@
 	<!-- ========================= Medieval ========================= -->
 	
 	<FactionDef Name="FactionMedieval" ParentName="Faction" Abstract="True">
-		<factionNameMaker>NamerFactionTribal</factionNameMaker>
+		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
 		<techLevel>Medieval</techLevel>
 		<backstoryCategory>Tribal</backstoryCategory>
+		<requiredCountAtGameStart>1</requiredCountAtGameStart>
 		<leaderTitle>King</leaderTitle>
 		<hairTags>
 			<li>Tribal</li>
@@ -169,7 +169,6 @@
 		<label>kingdom</label>
 		<description>Unlike tribes of old, kingdoms have a rigidly enforced social heirarchy. At the bottom are the serfs who work the land with metal tools and domesticated livestock. Their lives are hard and they have little sympathy for anybody but their family and friends. Above them are the ruling class, either by royal blood or appointed by the king. The ruling class engages in diplomacy and subterfuge, enjoying a comfortable lifestyle funded by the king's coffers. Atop the heirarchy is the king or queen who wields supreme power. The king extracts taxes from serfs (by force if necessary) and uses it to build the kingdom their heart desires.</description>
 		<pawnsPlural>kingspeople</pawnsPlural>
-		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>10</min>
 			<max>30</max>
@@ -211,7 +210,6 @@
 		<description>Theives, murderers, rebels - outlaws that leave the kingdom to avoid their inevitable execution. They group together and live outside the kingdom's borders, raiding villages and robbing passing merchant caravans.</description>
 		<pawnsPlural>bandits</pawnsPlural>
 		<appreciative>false</appreciative>
-		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>-100</min>
 			<max>-90</max>
@@ -239,10 +237,11 @@
 	<!-- ========================= Industrial ========================= -->
 	
 	<FactionDef Name="FactionIndustrial" ParentName="Faction" Abstract="True">
-		<factionNameMaker>NamerFactionTribal</factionNameMaker>
+		<factionNameMaker>NamerFactionPirate</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
 		<techLevel>Industrial</techLevel>
 		<backstoryCategory>Tribal</backstoryCategory>
+		<requiredCountAtGameStart>1</requiredCountAtGameStart>
 		<leaderTitle>President</leaderTitle>
 		<hairTags>
 			<li>Tribal</li>
@@ -259,7 +258,6 @@
 		<label>nation</label>
 		<description>Industrial nations ride on the backs of industry and education. People work a variety of jobs and are paid for their time. Military service is mostly voluntary and a well-developed economy of import and export thrives.</description>
 		<pawnsPlural>citizens</pawnsPlural>
-		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>10</min>
 			<max>30</max>
@@ -301,7 +299,6 @@
 		<description>Disenfranchised with their nation, separatists declare that their land secedes and becomes its own sovereign nation. These rebellions are eventually quelled by force but until such time, they pose a significant threat to the region they inhabit.</description>
 		<pawnsPlural>separatists</pawnsPlural>
 		<appreciative>false</appreciative>
-		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>-100</min>
 			<max>-90</max>
@@ -329,10 +326,11 @@
 	<!-- ========================= Ascension ========================= -->
 	
 	<FactionDef Name="FactionAscension" ParentName="Faction" Abstract="True">
-		<factionNameMaker>NamerFactionTribal</factionNameMaker>
+		<factionNameMaker>NamerColony</factionNameMaker>
 		<pawnNameMaker>NamerPersonTribal</pawnNameMaker>
 		<techLevel>Transcendent</techLevel>
 		<backstoryCategory>Tribal</backstoryCategory>
+		<requiredCountAtGameStart>1</requiredCountAtGameStart>
 		<leaderTitle>Arbiter</leaderTitle>
 		<hairTags>
 			<li>Civil</li>
@@ -349,7 +347,6 @@
 		<label>collective</label>
 		<description>A group of ascended beings is called a collective. The peak of society, ascended peoples live in a state of harmony, having transcended conflict and forsaken the less constructive aspects of human nature.</description>
 		<pawnsPlural>ascended</pawnsPlural>
-		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>10</min>
 			<max>30</max>
@@ -390,7 +387,6 @@
 		<description>Not all ascended are impervious to the flaws of human nature. Some succumb to their more base instincts and wreak havoc with the superior technology that could only be developed in a highly productive Collective. Pray they do not seek you out.</description>
 		<pawnsPlural>corrupted</pawnsPlural>
 		<appreciative>false</appreciative>
-		<requiredCountAtGameStart>3</requiredCountAtGameStart>
 		<startingGoodwill>
 			<min>-100</min>
 			<max>-90</max>
