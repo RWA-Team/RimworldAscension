@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PawnKindDefs>
+
+	<!-- 
+	- combatPower - used as measure of threat level points this pawn kind costs to spawn
+	- gearHealthRange - values higher than 1 decrese the chance of gear to have any damage
+	- apparelMoney - used to determine possible thing\stuff pair combinations, besides being random
+	- backstoryCryptosleepCommonality - needs to be assigned
+	- apparelRequired - special apparel types to be generated first (could be chnaged by temperature requirements though)
+	- defaultFactionType- used as precaution or debug tool if faction is not set
+	 -->
+
+	<PawnKindDef Name="PawnAscension" Abstract="True">
+		<race>Human</race>
+		<combatPower>30</combatPower>
+		<baseRecruitDifficulty>0.70</baseRecruitDifficulty>
+		<backstoryCategory>Tribal</backstoryCategory>
+		<invNutrition>2.55</invNutrition>
+		<invFoodDef>Pemmican</invFoodDef>
+		<backstoryCryptosleepCommonality>0.01</backstoryCryptosleepCommonality>
+		<maxGenerationAge>40</maxGenerationAge>
+		<gearHealthRange>
+			<min>0.5</min>
+			<max>1.8</max>
+		</gearHealthRange>
+		<apparelMoney>
+			<min>480</min>
+			<max>650</max>
+		</apparelMoney>
+		<apparelTags>
+			<li>Spacer</li>
+		</apparelTags>
+	</PawnKindDef>
+
+	<!-- ========================= Ascended =========================-->
+	
+	<PawnKindDef Name="PawnAscensionNeutral" ParentName="PawnAscension" Abstract="True">
+		<defaultFactionType>AscensionFactionNeutral</defaultFactionType>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnAscensionNeutral">
+		<defName>AscensionTrader</defName>
+		<label>provider</label>
+		<combatPower>10</combatPower>
+		<isFighter>false</isFighter>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnAscensionNeutral">
+		<defName>AscensionDefender</defName>
+		<label>defender</label>
+		<combatPower>60</combatPower>
+		<baseRecruitDifficulty>0.80</baseRecruitDifficulty>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnAscensionNeutral">
+		<defName>AscensionRectifier</defName>
+		<label>rectifier</label>
+		<combatPower>100</combatPower>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnAscensionNeutral">
+		<defName>AscensionArbiter</defName>
+		<label>arbiter</label>
+		<combatPower>250</combatPower>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
+		<factionLeader>true</factionLeader>
+	</PawnKindDef>
+
+	<!-- ========================= Corrupted ========================= -->
+
+	<PawnKindDef Name="PawnAscensionHostile" ParentName="PawnAscension" Abstract="True">
+		<defaultFactionType>AscensionFactionHostile</defaultFactionType>
+	</PawnKindDef>
+	
+	<PawnKindDef ParentName="PawnAscensionHostile">
+		<defName>CorruptedDestroyer</defName>
+		<label>destroyer</label>
+		<combatPower>150</combatPower>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnAscensionHostile">
+		<defName>CorruptedMindbreaker</defName>
+		<label>mindbreaker</label>
+		<combatPower>150</combatPower>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="PawnAscensionHostile">
+		<defName>CorruptedDoombringer</defName>
+		<label>doombringer</label>
+		<combatPower>200</combatPower>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
+		<factionLeader>true</factionLeader>
+	</PawnKindDef>
+
+</PawnKindDefs>
