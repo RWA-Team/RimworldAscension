@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
-	<!-- 
-	- stuffCategories - specifies that weapon is made from stuff (stuff modifiers apply) and what stuff types should be used
-	-->
+
+	<!-- - stuffCategories - specifies that weapon is made from stuff (stuff modifiers apply) and what stuff types should be used -->
+	
 
 	<ThingDef Name="Weapon" ParentName="Item" Abstract="True">
 		<equipmentType>Primary</equipmentType>
@@ -44,11 +44,12 @@
 		</thingCategories>
 	</ThingDef>
 
-   <ThingDef Name="Tools" ParentName="Weapon" Abstract="True">
-   	    <thingCategories>
+	<ThingDef Name="Tools" ParentName="Weapon" Abstract="True">
+		<thingCategories>
 			<li>Tools</li>
 		</thingCategories>
 	</ThingDef>
+
 	<!-- ========================= Neolithic =========================-->
 
 	<ThingDef ParentName="WeaponMelee">
@@ -77,10 +78,10 @@
 			</li>
 		</verbs>
 		<comps>
-		    <li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.0002</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0002</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
 				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 			</li>
@@ -116,13 +117,13 @@
 			</li>
 		</verbs>
 		<comps>
-		   <li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.0005</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-           </li>
-		   <li Class="RA.CompHandsDrawer_Properties">
-			<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		   </li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0005</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>
 		</comps>
 		<weaponTags>
 			<li>MeleeNeolithicWeak</li>
@@ -156,12 +157,12 @@
 		</verbs>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.0036</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
-            <li Class="RA.CompHandsDrawer_Properties">
-			<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>
+				<valuePerWorkFactor>0.0036</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>
 		</comps>
 		<weaponTags>
 			<li>MeleeNeolithic</li>
@@ -173,7 +174,7 @@
 		<label>improvised axe</label>
 		<description>An improvised axe-looking tool designed with vegetation cutting in mind. Lacking the weight and finish of a melee weapon.</description>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/HandaxeNeolithic</texPath>
+			<texPath>Things/Items/Weapons/Neolithic/HandaxeNeolithic/HandaxeNeolithic</texPath>
 		</graphicData>
 		<stuffCategories>
 			<li>Bone</li>
@@ -196,9 +197,9 @@
 		</equippedStatOffsets>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.0002</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
+				<valuePerWorkFactor>0.0002</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
 				<workTypes>
@@ -206,8 +207,8 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>
 		</comps>
 		<weaponTags>
 			<li>MeleeNeolithic</li>
@@ -227,7 +228,7 @@
 		<label>dagger</label>
 		<description>dagger.</description>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Medieval/Dagger</texPath>
+			<texPath>Things/Items/Weapons/Medieval/Dagger/Dagger</texPath>
 		</graphicData>
 		<equippedAngleOffset>-65</equippedAngleOffset>
 		<statBases>
@@ -238,12 +239,12 @@
 		</statBases>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.0031</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
+				<valuePerWorkFactor>0.0031</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>  
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>  
 		</comps>          
 		<verbs>
 			<li>
@@ -270,12 +271,12 @@
 		</statBases>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.0072</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
+				<valuePerWorkFactor>0.0072</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>  
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>  
 		</comps>
 		<verbs>
 			<li>
@@ -302,12 +303,12 @@
 		</statBases>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.0113</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
+				<valuePerWorkFactor>0.0113</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>  
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>  
 		</comps>
 		<verbs>
 			<li>
@@ -323,7 +324,7 @@
 		<label>axe</label>
 		<description>Axe.</description>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Medieval/Axe</texPath>
+			<texPath>Things/Items/Weapons/Medieval/Axe/Axe</texPath>
 		</graphicData>
 		<equippedAngleOffset>-65</equippedAngleOffset>
 		<statBases>
@@ -334,17 +335,17 @@
 		</statBases>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.0082</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
+				<valuePerWorkFactor>0.0082</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>  
-		  	<li Class="RA.CompTool_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>  
+			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
 				<workTypes>
 					<li>PlantCutting</li>
-		        </workTypes>
+				</workTypes>
 			</li>
 		</comps>
 		<verbs>
@@ -372,12 +373,12 @@
 		</statBases>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.0101</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
+				<valuePerWorkFactor>0.0101</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>
 		</comps>  
 		<verbs>
 			<li>
@@ -389,13 +390,14 @@
 	</ThingDef>
 
 
-	<!-- =================================================Tools============================================= -->
+	<!-- ================================== Tools ================================== -->
+
 	<ThingDef ParentName="Tools">
 		<defName>HammerNeolithic</defName>
 		<label>improvised mallet</label>
 		<description>An improvised hammer-looking tool used for construction and repair rather than for combat purposes.</description>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/HammerNeolithic</texPath>
+			<texPath>Things/Items/Weapons/Neolithic/HammerNeolithic/HammerNeolithic</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<stuffCategories>
@@ -410,9 +412,9 @@
 		</verbs>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.002</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
+				<valuePerWorkFactor>0.002</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
 				<workTypes>
@@ -420,9 +422,9 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-			    <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>
-			</comps>
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>
+		</comps>
 	</ThingDef>	
 
 	<ThingDef ParentName="Tools">
@@ -437,16 +439,16 @@
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
 				<workTypes>
-				<li>Cleaning</li>
+					<li>Cleaning</li>
 				</workTypes>
 			</li>
-            <li Class="RA.CompHandsDrawer_Properties">
-			    <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>
-		    <li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.002</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.002</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 		</comps>
 		<equippedStatOffsets>
 			<SmoothingSpeed>0.05</SmoothingSpeed>
@@ -459,28 +461,28 @@
 		</verbs>
 	</ThingDef>
 
-<ThingDef ParentName="Tools">
+	<ThingDef ParentName="Tools">
 		<defName>Hammer</defName>
 		<label>hammer</label>
 		<description>Hammer.</description>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Medieval/Hammer</texPath>
+			<texPath>Things/Items/Weapons/Medieval/Hammer/Hammer</texPath>
 		</graphicData>
 		<equippedAngleOffset>-65</equippedAngleOffset>
 		<comps>
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
 				<workTypes>
-				<li>Construction</li>
+					<li>Construction</li>
 				</workTypes>
 			</li>
-            <li Class="RA.CompHandsDrawer_Properties">
-			    <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>
-		    <li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.002</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.002</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 		</comps>
 		<equippedStatOffsets>
 			<ConstructionSpeed>0.1</ConstructionSpeed>
@@ -513,9 +515,9 @@
 		</equippedStatOffsets>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
-	           <valuePerWorkFactor>0.002</valuePerWorkFactor>
-	           <profitFactor>0.96</profitFactor>
-            </li>
+				<valuePerWorkFactor>0.002</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
 				<workTypes>
@@ -523,8 +525,8 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>
 		</comps>
 	</ThingDef>
 	
@@ -560,8 +562,8 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-			     <firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-		    </li>
+				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+			</li>
 		</comps>
 		<techLevel>Industrial</techLevel>
 	</ThingDef>

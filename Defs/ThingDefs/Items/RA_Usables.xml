@@ -17,19 +17,16 @@
 
 	<ThingDef ParentName="Usable">
 		<defName>SurvivalGuide</defName>
-		<thingClass>RA.Blueprint</thingClass>
 		<label>survival guide</label>
 		<description>A shabby half-burned book. It looks like one of those military training guides to survive in the harsh enviroment. Some of its pages can still be read.</description>
 		<graphicData>
 			<texPath>Things/Items/Usables/SurvivalGuide</texPath>
 		</graphicData>
-		<statBases>
-			<MarketValue>2000</MarketValue>
-		</statBases>
-		<tradeTags>
-			<li>Exotic</li>
-		</tradeTags>
 		<comps>
+			<li Class="CompProperties_Usable">
+				<useJob>StudyBlueprint</useJob>
+				<useLabel>Study the survival guide</useLabel>
+			</li>
 			<li Class="RA.CompBlueprint_Properties">
 				<researchName>Survival</researchName>
 			</li>

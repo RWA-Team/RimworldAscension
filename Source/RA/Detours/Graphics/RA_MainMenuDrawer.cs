@@ -21,7 +21,7 @@ namespace RA
         public static Vector2 PaneSize = new Vector2(450f, 450f);
         public static Vector2 TitleSize = new Vector2(1024f, 200f);
 
-        public static Texture2D MainMenuTitle;
+        public static Texture2D MainMenuTitle = ContentFinder<Texture2D>.Get("UI/MainMenu/GameTitle");
 
         public static Texture2D IconBlog = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Blog");
         public static Texture2D IconForums = ContentFinder<Texture2D>.Get("UI/HeroArt/WebIcons/Forums");
@@ -54,9 +54,6 @@ namespace RA
                 adjust.x, adjust.y);
             //titleRect.x = Screen.width - adjust.x - 50f;
 
-            // required cause of textures references reset
-            if (MainMenuTitle == null)
-                MainMenuTitle = ContentFinder<Texture2D>.Get("UI/MainMenu/GameTitle");
             GUI.DrawTexture(titleRect, MainMenuTitle, ScaleMode.StretchToFill, true);
 
             // tribute to tynan under the main game title
@@ -105,12 +102,14 @@ namespace RA
             //DrawAnimation(animationRect, 5);
         }
 
-        public static void DoMainMenuLinks(Rect rect, bool anyWorldFiles, bool anyMapFiles, Action backToGameButtonAction = null)
+        public static void DoMainMenuLinks(Rect rect, bool anyWorldFiles, bool anyMapFiles,
+            Action backToGameButtonAction = null)
         {
             //Widgets.DrawWindowBackground(rect);
             Text.Font = GameFont.Small;
             var list = new List<ListableOption>();
-            ListableOption item = new ListableOption_WebLink("FictionPrimer".Translate(), "https://docs.google.com/document/d/1pIZyKif0bFbBWten4drrm7kfSSfvBoJPgG9-ywfN8j8/pub", IconBlog);
+            ListableOption item = new ListableOption_WebLink("FictionPrimer".Translate(),
+                "https://docs.google.com/document/d/1pIZyKif0bFbBWten4drrm7kfSSfvBoJPgG9-ywfN8j8/pub", IconBlog);
             list.Add(item);
             item = new ListableOption_WebLink("LudeonBlog".Translate(), "http://ludeon.com/blog", IconBlog);
             list.Add(item);
@@ -118,15 +117,18 @@ namespace RA
             list.Add(item);
             item = new ListableOption_WebLink("OfficialWiki".Translate(), "http://rimworldwiki.com", IconBlog);
             list.Add(item);
-            item = new ListableOption_WebLink("TynansTwitter".Translate(), "https://twitter.com/TynanSylvester", IconTwitter);
+            item = new ListableOption_WebLink("TynansTwitter".Translate(), "https://twitter.com/TynanSylvester",
+                IconTwitter);
             list.Add(item);
             item = new ListableOption_WebLink("TynansDesignBook".Translate(), "http://tynansylvester.com/book", IconBook);
             list.Add(item);
-            item = new ListableOption_WebLink("HelpTranslate".Translate(), "http://ludeon.com/forums/index.php?topic=2933.0", IconForums);
+            item = new ListableOption_WebLink("HelpTranslate".Translate(),
+                "http://ludeon.com/forums/index.php?topic=2933.0", IconForums);
             list.Add(item);
             var num = OptionListingUtility.DrawOptionListing(rect, list);
             GUI.BeginGroup(rect);
-            if (Current.ProgramState == ProgramState.Entry && Widgets.ButtonImage(new Rect(0f, num + 10f, 64f, 32f), LanguageDatabase.activeLanguage.icon))
+            if (Current.ProgramState == ProgramState.Entry &&
+                Widgets.ButtonImage(new Rect(0f, num + 10f, 64f, 32f), LanguageDatabase.activeLanguage.icon))
             {
                 var list3 = new List<FloatMenuOption>();
                 foreach (var current in LanguageDatabase.AllLoadedLanguages)
@@ -143,7 +145,8 @@ namespace RA
             GUI.EndGroup();
         }
 
-        public static void DoMainMenuButtons(Rect rect, bool anyWorldFiles, bool anyMapFiles, Action backToGameButtonAction = null)
+        public static void DoMainMenuButtons(Rect rect, bool anyWorldFiles, bool anyMapFiles,
+            Action backToGameButtonAction = null)
         {
             Text.Font = GameFont.Small;
             var list = new List<ListableOption>();
@@ -155,14 +158,18 @@ namespace RA
                 {
                     item = new ListableOption("Continue", delegate
                     {
-                        Action preLoadLevelAction = delegate
-                        {
-                            Find.GameInitData.ResetWorldRelatedMapInitData();
-                            Find.GameInitData.mapToLoad =
-                                Path.GetFileNameWithoutExtension(
-                                    new SaveFileInfo(GenFilePaths.AllSavedGameFiles.FirstOrDefault()).FileInfo.Name);
-                        };
-                        LongEventHandler.QueueLongEvent(preLoadLevelAction, "Gameplay", "LoadingLongEvent", true, null);
+                        var latestSavePath =
+                            Path.GetFileNameWithoutExtension(GenFilePaths.AllSavedGameFiles?.FirstOrDefault()?.Name);
+                        PreLoadUtility.CheckVersionAndLoad(GenFilePaths.FilePathForSavedGame(latestSavePath),
+                            ScribeMetaHeaderUtility.ScribeHeaderMode.Map, delegate
+                            {
+                                Action preLoadLevelAction = delegate
+                                {
+                                    Current.Game = new Game {InitData = new GameInitData {mapToLoad = latestSavePath}};
+                                };
+                                LongEventHandler.QueueLongEvent(preLoadLevelAction, "Map", "LoadingLongEvent", true,
+                                    null);
+                            });
                     });
                     list.Add(item);
                 }
@@ -171,7 +178,6 @@ namespace RA
                     item = new ListableOption("Quick Start", delegate
                     {
                         SceneManager.LoadScene("Map");
-                        //Find.Root.Start();
                     });
                     list.Add(item);
                 }

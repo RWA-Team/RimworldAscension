@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Verse;
+﻿using Verse;
 using Verse.AI.Group;
 
 namespace RA

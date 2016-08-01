@@ -44,6 +44,12 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Building">
+		<defName>Stool</defName>
+		<label>stool</label>
+		<Description>A plant pot.</Description>
+	</ThingDef>
+
+	<ThingDef ParentName="Building">
 		<defName>DiningChair</defName>
 		<label>dining chair</label>
 		<Description>A plant pot.</Description>

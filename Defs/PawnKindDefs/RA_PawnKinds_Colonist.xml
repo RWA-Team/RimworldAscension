@@ -6,7 +6,7 @@
 		<label>colonist</label>
 		<race>Human</race>
 		<combatPower>30</combatPower>
-		<defaultFactionType>PlayerColony</defaultFactionType>
+		<defaultFactionType>Colony</defaultFactionType>
 		<baseRecruitDifficulty>0.60</baseRecruitDifficulty>
 		<backstoryCategory>Civil</backstoryCategory>
 		<isFighter>false</isFighter>
