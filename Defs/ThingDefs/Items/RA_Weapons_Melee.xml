@@ -294,7 +294,7 @@
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/Pike/Pike</texPath>
 		</graphicData>
-		<equippedAngleOffset>-65</equippedAngleOffset>
+		<equippedAngleOffset>50</equippedAngleOffset>
 		<statBases>
 			<MeleeWeapon_DamageAmount>12</MeleeWeapon_DamageAmount>
 			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
@@ -302,13 +302,15 @@
 			<MaxHitPoints>80</MaxHitPoints>
 		</statBases>
 		<comps>
+			<li Class="RA.CompTool_Properties" />
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0113</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
-			</li>  
+				<firstHandPosition>(0.13, 0, 0.1)</firstHandPosition>
+				<secondHandPosition>(-0.26, 0, -0.3)</secondHandPosition>
+			</li>
 		</comps>
 		<verbs>
 			<li>

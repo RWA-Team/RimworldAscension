@@ -29,23 +29,25 @@ namespace RA
         public const float MainTabsPanelHeight = 35f;
         // height of row to draw thing icon with description
         public const float ThingRowHeight = 30f;
+        // size of gizmo button
+        public const float GizmoSize = 75f;
 
         #endregion
 
         #region COLORS
 
         // mouse over highlight color
-        public static readonly Color HighlightColor = new Color(0.5f, 0.5f, 0.5f);
-        public static readonly Color ThingLabelColor = new Color(0.9f, 0.9f, 0.9f);
+        public static Color HighlightColor = new Color(0.5f, 0.5f, 0.5f);
+        public static Color ThingLabelColor = new Color(0.9f, 0.9f, 0.9f);
 
         #endregion
 
         #region VANILLA_TEXTURES
 
         // mouse over highlight color
-        public static readonly Texture2D ButtonBGTexture = ContentFinder<Texture2D>.Get("UI/Widgets/ButtonBG");
-        public static readonly Texture2D ButtonBGMouseoverTexture = ContentFinder<Texture2D>.Get("UI/Widgets/ButtonBGMouseover");
-        public static readonly Texture2D ButtonBGClickTexture = ContentFinder<Texture2D>.Get("UI/Widgets/ButtonBGClick");
+        public static Texture2D ButtonBGTexture = ContentFinder<Texture2D>.Get("UI/Widgets/ButtonBG");
+        public static Texture2D ButtonBGMouseoverTexture = ContentFinder<Texture2D>.Get("UI/Widgets/ButtonBGMouseover");
+        public static Texture2D ButtonBGClickTexture = ContentFinder<Texture2D>.Get("UI/Widgets/ButtonBGClick");
 
         #endregion
 
@@ -111,7 +113,7 @@ namespace RA
             ResetText();
         }
         
-        //public static readonly List<Texture2D> FramesList = ContentFinder<Texture2D>.GetAllInFolder("UI/MainMenu/Animation").ToList();
+        //public static List<Texture2D> FramesList = ContentFinder<Texture2D>.GetAllInFolder("UI/MainMenu/Animation").ToList();
         //public static int currentFrame = 0;
         //public static int ticksCounter = 0;
 

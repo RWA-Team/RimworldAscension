@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<RA.DesignationGroupDef>
+		<defName>SubCategory_Chairs</defName>
+		<label>chairs</label>
+		<description>Assorted chairs!</description>
+		<!-- graphicData is optional, if not set the icon for the first def listed below will be borrowed. -->
+		<!-- <graphicData></graphicData> -->
+		<defNames>
+			<li>Basket</li>
+			<li>Chest</li>
+			<li>Barrel</li>
+		</defNames>
+		<designationCategory>Furniture</designationCategory>
+		<!-- Debug flag prints some extra information after map is loaded (while subcategories are being created) -->
+	</RA.DesignationGroupDef>
+
+</Defs>

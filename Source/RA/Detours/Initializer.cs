@@ -13,21 +13,14 @@ namespace RA
     {
         public static List<string> sourceMethods = new List<string>();
         public static List<string> destMethods = new List<string>();
-
+        
         static Initializer()
         {
             DoDetours();
-
-            if (Prefs.DevMode)
-                Log.Message("Detours initialized");
-
+            
             RA_DefGenerator.GenerateImpliedDefs_PreResolve();
 
-            //LongEventHandler.QueueLongEvent(delegate
-            //{
-            //    PlayDataLoader.ClearAllPlayData();
-            //    PlayDataLoader.LoadAllPlayData();
-            //}, "LoadingLongEvent", true, null);
+            DesignatorUtil.ModifyBuildDesignators();
         }
 
         public static object GetHiddenValue(Type type, object instance, string fieldName, FieldInfo info,
@@ -198,19 +191,35 @@ namespace RA
                 BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaProcessInput, newProcessInput);
 
-            // TODO
+            // added special case for minified things
             var vanillaDrawPanelReadout = typeof(Designator_Build).GetMethod("DrawPanelReadout",
                 BindingFlags.Instance | BindingFlags.Public);
             var newDrawPanelReadout = typeof(RA_Designator_Build).GetMethod("DrawPanelReadout",
                 BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaDrawPanelReadout, newDrawPanelReadout);
 
-            // TODO
+            // draws texture and build cost while building
+            // modified call for InfoRect
+            // added special case for minified things
             var vanillaDrawMouseAttachments = typeof(Designator_Build).GetMethod("DrawMouseAttachments",
                 BindingFlags.Instance | BindingFlags.Public);
             var newDrawMouseAttachments = typeof(RA_Designator_Build).GetMethod("DrawMouseAttachments",
                 BindingFlags.Instance | BindingFlags.Public);
             TryDetourFromTo(vanillaDrawMouseAttachments, newDrawMouseAttachments);
+
+            // make vanilla build gizmo open building groups
+            var vanillaGizmoOnGUI = typeof(Designator_Build).GetMethod("GizmoOnGUI",
+                BindingFlags.Instance | BindingFlags.Public);
+            var newGizmoOnGUI = typeof(RA_Designator_Build).GetMethod("GizmoOnGUI",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaGizmoOnGUI, newGizmoOnGUI);
+
+            // TODO (BindingFlags)60
+            var vanillaResolveDesignators = typeof(DesignationCategoryDef).GetMethod("ResolveDesignators",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            var newResolveDesignators = typeof(RA_DesignationCategoryDef).GetMethod("ResolveDesignators",
+                BindingFlags.Instance | BindingFlags.Public);
+            TryDetourFromTo(vanillaResolveDesignators, newResolveDesignators);
 
             // TODO
             //var vanillaGroupsWith = typeof(Designator_Build).GetMethod("GroupsWith",
@@ -339,7 +348,7 @@ namespace RA
 
             #endregion
 
-            #region GRAPHICS
+            #region UI
 
             // changes initial log window size
             var vanillaPostOpen = typeof(EditWindow_Log).GetMethod("PostOpen",
