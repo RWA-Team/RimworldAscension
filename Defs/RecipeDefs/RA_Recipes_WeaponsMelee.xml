@@ -291,11 +291,11 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="MakeWeaponMeleePrimitive">
-		<defName>MakeDagger</defName>
-		<label>make Dagger</label>
+		<defName>MakeGladius</defName>
+		<label>make gladius</label>
 		<description>Makes a Dagger</description>
 		<products>
-			<Dagger>1</Dagger>
+			<Gladius>1</Gladius>
 		</products>
 		<ingredients>
 			<li>
