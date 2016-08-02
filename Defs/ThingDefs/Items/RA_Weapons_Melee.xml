@@ -10,6 +10,7 @@
 		<graphicData>
 			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
 			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
@@ -78,6 +79,7 @@
 			</li>
 		</verbs>
 		<comps>
+			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0002</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
@@ -90,6 +92,8 @@
 			<li>MeleeNeolithicWeak</li>
 		</weaponTags>
 	</ThingDef>
+
+
 
 	<ThingDef ParentName="WeaponMelee">
 		<defName>Club</defName>
@@ -117,12 +121,13 @@
 			</li>
 		</verbs>
 		<comps>
+			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0005</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.2, 0, 0)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
@@ -132,12 +137,12 @@
 
 	<ThingDef ParentName="WeaponMelee">
 		<defName>SpearNeolithic</defName>
-		<label>spear</label>
+		<label>Primitive spear</label>
 		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/Spear</texPath>
 		</graphicData>
-		<equippedAngleOffset>-25</equippedAngleOffset>
+		<equippedAngleOffset>0</equippedAngleOffset>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<MeleeWeapon_DamageAmount>8</MeleeWeapon_DamageAmount>
@@ -156,12 +161,14 @@
 			</li>
 		</verbs>
 		<comps>
+			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0036</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.15, 0, 0)</firstHandPosition>
+
 			</li>
 		</comps>
 		<weaponTags>
@@ -175,7 +182,9 @@
 		<description>An improvised axe-looking tool designed with vegetation cutting in mind. Lacking the weight and finish of a melee weapon.</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Neolithic/HandaxeNeolithic/HandaxeNeolithic</texPath>
+			<drawSize>0.9</drawSize>
 		</graphicData>
+		<equippedAngleOffset>30</equippedAngleOffset>
 		<stuffCategories>
 			<li>Bone</li>
 			<li>StoneCobble</li>
@@ -188,6 +197,7 @@
 		</statBases>
 		<verbs>
 			<li>
+				<hasStandardCommand>true</hasStandardCommand>
 				<verbClass>Verb_MeleeAttack</verbClass>
 				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
@@ -196,6 +206,7 @@
 			<PlantWorkSpeed>-0.1</PlantWorkSpeed>
 		</equippedStatOffsets>
 		<comps>
+			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0002</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
@@ -203,11 +214,11 @@
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
 				<workTypes>
-					<li>PlantCutting</li>
+					<li>PlantCutting</li> 
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.03, 0, -0.18)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
@@ -224,13 +235,13 @@
 
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
-		<defName>Dagger</defName>
-		<label>dagger</label>
-		<description>dagger.</description>
+		<defName>Gladius</defName>
+		<label>gladius</label>
+		<description>Gladius</description>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Medieval/Dagger/Dagger</texPath>
+			<texPath>Things/Item/Equipment/WeaponMelee/Gladius</texPath>
 		</graphicData>
-		<equippedAngleOffset>-65</equippedAngleOffset>
+		<equippedAngleOffset>-45</equippedAngleOffset>
 		<statBases>
 			<MeleeWeapon_DamageAmount>8</MeleeWeapon_DamageAmount>
 			<MeleeWeapon_Cooldown>0.55</MeleeWeapon_Cooldown>
@@ -238,12 +249,13 @@
 			<MaxHitPoints>90</MaxHitPoints>
 		</statBases>
 		<comps>
+			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0031</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.18, 0, 0.03)</firstHandPosition>
 			</li>  
 		</comps>          
 		<verbs>
@@ -270,12 +282,13 @@
 			<MeleeWeapon_Cooldown>0.9</MeleeWeapon_Cooldown>
 		</statBases>
 		<comps>
+			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0072</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.34, 0, 0)</firstHandPosition>
 			</li>  
 		</comps>
 		<verbs>
@@ -294,7 +307,7 @@
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/Pike/Pike</texPath>
 		</graphicData>
-		<equippedAngleOffset>50</equippedAngleOffset>
+		<equippedAngleOffset>50	</equippedAngleOffset>
 		<statBases>
 			<MeleeWeapon_DamageAmount>12</MeleeWeapon_DamageAmount>
 			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
@@ -302,7 +315,7 @@
 			<MaxHitPoints>80</MaxHitPoints>
 		</statBases>
 		<comps>
-			<li Class="RA.CompTool_Properties" />
+			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0113</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
@@ -328,7 +341,7 @@
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/Axe/Axe</texPath>
 		</graphicData>
-		<equippedAngleOffset>-65</equippedAngleOffset>
+		<equippedAngleOffset>45</equippedAngleOffset>
 		<statBases>
 			<MaxHitPoints>130</MaxHitPoints>
 			<ArmorPenetration>4</ArmorPenetration>
@@ -341,7 +354,9 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.06, 0, 0.02)</firstHandPosition>
+				<secondHandPosition>(-0.06, 0, -0.25)</secondHandPosition>
+
 			</li>  
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
@@ -366,7 +381,7 @@
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/HammerBattle</texPath>
 		</graphicData>
-		<equippedAngleOffset>25</equippedAngleOffset>
+		<equippedAngleOffset>120</equippedAngleOffset>
 		<statBases>
 			<MeleeWeapon_DamageAmount>20</MeleeWeapon_DamageAmount>
 			<MeleeWeapon_Cooldown>1.1</MeleeWeapon_Cooldown>
@@ -374,12 +389,14 @@
 			<MaxHitPoints>150</MaxHitPoints>
 		</statBases>
 		<comps>
+			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0101</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.1, 0, 0.05)</firstHandPosition>
+				<secondHandPosition>(0.2, 0, 0.05)</secondHandPosition>
 			</li>
 		</comps>  
 		<verbs>
@@ -424,7 +441,7 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(0,0,-0.08)</firstHandPosition>
 			</li>
 		</comps>
 	</ThingDef>	
@@ -527,7 +544,7 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(0, 0, 0)</firstHandPosition>
 			</li>
 		</comps>
 	</ThingDef>
