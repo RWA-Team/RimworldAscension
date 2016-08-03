@@ -134,7 +134,7 @@
 			<li>
 				<filter>
 					<categories>
-						<li>Meat</li>
+						<li>MeatRaw</li>
 					</categories>
 				</filter>
 				<count>75</count>
@@ -327,9 +327,9 @@
 			</li>
 			<li>
 				<filter>
-					<categories>
+					<thingDefs>
 						<li>Charcoal</li>
-					</categories>
+					</thingDefs>
 				</filter>
 				<count>50</count>
 			</li>
@@ -351,9 +351,9 @@
 			</li>
 			<li>
 				<filter>
-					<categories>
+					<thingDefs>
 						<li>Charcoal</li>
-					</categories>
+					</thingDefs>
 				</filter>
 				<count>50</count>
 			</li>
@@ -375,9 +375,9 @@
 			</li>
 			<li>
 				<filter>
-					<categories>
+					<thingDefs>
 						<li>Coal</li>
-					</categories>
+					</thingDefs>
 				</filter>
 				<count>50</count>
 			</li>
