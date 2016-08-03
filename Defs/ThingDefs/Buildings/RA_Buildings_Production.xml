@@ -306,9 +306,9 @@
 		<recipes>
 			<li>MakeShiv</li>
 			<li>MakeSwordNeolithic</li>
-			<li>MakeSpearNeolithic</li>
+			<li>MakeSpear</li>
 			<li>MakeClub</li>
-			<li>MakeAxeNeolithic</li>
+			<li>MakeHandaxeNeolithic</li>
 			<li>MakeHammerNeolithic</li>
 			<li>MakeHelmetTurtle</li>
 			<li>MakeShieldTribal</li>
