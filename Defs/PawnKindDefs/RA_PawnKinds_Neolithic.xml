@@ -106,6 +106,7 @@
 		<weaponTags>
 			<li>NeolithicMelee</li>
 			<li>NeolithicRanged</li>
+			<li>NeolithicRangedStrong</li>
 		</weaponTags>
 		<apparelRequired>
 			<li>Headdress</li>

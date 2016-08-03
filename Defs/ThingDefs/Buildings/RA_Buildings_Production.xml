@@ -329,8 +329,8 @@
 		<recipes>
 			<li>MakeTrapDeadfall</li>
 			<li>MakeBow</li>
-			<li>MakeCompositeBow</li>
-			<li>MakeThrumboBow</li>
+			<li>MakeBowComposite</li>
+			<li>MakeBowThrumbo</li>
 			<li>MakeTomahawk</li>
 			<li>MakePilum</li>
 			<li>MakeSling</li>

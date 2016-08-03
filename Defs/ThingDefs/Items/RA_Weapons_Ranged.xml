@@ -85,11 +85,11 @@
 
 
 	<ThingDef ParentName="WeaponRanged">
-		<defName>CompositeBow</defName>
+		<defName>BowComposite</defName>
 		<label>Composite bow</label>
 		<description>A advanced version of the bow, strengthened with some bone plates.</description>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/CompositeBow</texPath>
+			<texPath>Things/Items/Weapons/Neolithic/BowComposite</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<soundInteract>BowSmall</soundInteract>
@@ -148,11 +148,11 @@
 
 
 	<ThingDef ParentName="WeaponRanged">
-		<defName>ThrumboBow</defName>
+		<defName>BowThrumbo</defName>
 		<label>thrumbo horn bow</label>
 		<description>An exotiс thrumbo horn bow. Unique properties of the thrumbo horn allow it to shoot arrows with immence force.</description>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/ThrumboBow</texPath>
+			<texPath>Things/Items/Weapons/Neolithic/BowThrumbo</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<soundInteract>BowLarge</soundInteract>
@@ -166,6 +166,7 @@
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
 			<li>NeolithicRanged</li>
+			<li>NeolithicRangedStrong</li>
 		</weaponTags>
 		<comps>
 			<li Class="RA.CompTool_Properties">
