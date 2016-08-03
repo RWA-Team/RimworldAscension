@@ -64,11 +64,11 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="MakeWeaponRangedNeolithic">
-		<defName>MakeBowComposite</defName>
+		<defName>MakeCompositeBow</defName>
 		<label>make composite bow</label>
 		<description>Makes an advanced composite bow.</description>
 		<products>
-			<BowComposite>1</BowComposite>
+			<CompositeBow>1</CompositeBow>
 		</products>
 		<ingredients>
 			<li>
@@ -100,11 +100,11 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="MakeWeaponRangedNeolithic">
-		<defName>MakeBowThrumbo</defName>
+		<defName>MakeThrumboBow</defName>
 		<label>make thrumbo bow</label>
 		<description>Makes a supreme bow out of thrumbo horn.</description>
 		<products>
-			<BowThrumbo>1</BowThrumbo>
+			<ThrumboBow>1</ThrumboBow>
 		</products>
 		<fixedIngredientFilter>
 			<thingDefs>			

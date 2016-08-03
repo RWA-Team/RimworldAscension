@@ -78,7 +78,7 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Neolithic/MaskSkull/MaskSkull</worngraphicPath>
 			<tags>
-				<li>ArmorBone</li>
+				<li>NeolithicArmorBone</li>
 			</tags>
 		</apparel>
 	</ThingDef>
@@ -100,6 +100,9 @@
 				<li>UpperHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Neolithic/HelmetTurtle/HelmetTurtle</worngraphicPath>
+			<tags>
+				<li>NeolithicArmor</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -122,6 +125,9 @@
 				<li>FullHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</worngraphicPath>
+			<tags>
+				<li>MedievalArmor</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -144,6 +150,9 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
+			<tags>
+				<li>MedievalArmor</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -166,6 +175,9 @@
 				<li>UpperHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/HelmetNasal/HelmetNasal</worngraphicPath>
+			<tags>
+				<li>MedievalArmor</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -188,6 +200,9 @@
 				<li>FullHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Kettlehat/Kettlehat</worngraphicPath>
+			<tags>
+				<li>MedievalArmor</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -228,7 +243,7 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Neolithic/ArmorBone/ArmorBone</worngraphicPath>
 			<tags>
-				<li>ArmorBone</li>
+				<li>NeolithicArmorBone</li>
 			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
@@ -236,8 +251,8 @@
 
 	<ThingDef ParentName="ArmorChest">
 		<defName>Chainmail</defName>
-		<label>platemail</label>
-		<description>A platemail.</description>
+		<label>chainmail</label>
+		<description>A chainmail.</description>
 		<graphicData>
 			<texPath>Missing</texPath>
 			<texPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</texPath>
@@ -257,6 +272,9 @@
 				<li>Torso</li>
 				<li>Shoulders</li>
 			</bodyPartGroups>
+			<tags>
+				<li>MedievalArmor</li>
+			</tags>
 			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
@@ -286,6 +304,9 @@
 				<li>Shoulders</li>
 				<li>Arms</li>
 			</bodyPartGroups>
+			<tags>
+				<li>MedievalArmor</li>
+			</tags>
 			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
@@ -315,6 +336,9 @@
 				<li>Arms</li>
 				<li>FullHead</li>
 			</bodyPartGroups>
+			<tags>
+				<li>MedievalArmor</li>
+			</tags>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Hauberk/Hauberk</worngraphicPath>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
@@ -342,6 +366,9 @@
 				<li>Shoulders</li>
 				<li>Arms</li>
 			</bodyPartGroups>
+			<tags>
+				<li>MedievalArmor</li>
+			</tags>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Gambeson/Gambeson</worngraphicPath>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
@@ -359,6 +386,9 @@
 				<li>Accessory</li>
 			</layers>
 			<commonality>1</commonality>
+			<tags>
+				<li>Shield</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -373,6 +403,11 @@
 		<statBases>
 			<MaxHitPoints>60</MaxHitPoints>
 		</statBases>
+		<apparel>
+			<tags>
+				<li>NeolithicShield</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -385,6 +420,11 @@
 		<statBases>
 			<MaxHitPoints>70</MaxHitPoints>
 		</statBases>
+		<apparel>
+			<tags>
+				<li>NeolithicShieldBone</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -400,6 +440,11 @@
 		<stuffCategories>
 			<li>Metal</li>
 		</stuffCategories>
+		<apparel>
+			<tags>
+				<li>MedievalShield</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -415,6 +460,11 @@
 		<stuffCategories>
 			<li>Metal</li>
 		</stuffCategories>
+		<apparel>
+			<tags>
+				<li>MedievalShield</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 </ThingDefs>

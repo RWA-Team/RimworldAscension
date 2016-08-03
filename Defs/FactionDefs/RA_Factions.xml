@@ -13,6 +13,14 @@
 	<FactionDef Abstract="True" Name="PlayerFactionBase">
 		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
 		<homeIconColor>(255,220,84)</homeIconColor>
+		<startingGoodwill>
+			<min>-10</min>
+			<max>10</max>
+		</startingGoodwill>
+		<naturalColonyGoodwill>
+			<min>-10</min>
+			<max>10</max>
+		</naturalColonyGoodwill>
 	</FactionDef>
 	
 	<FactionDef Parent="PlayerFactionBase">
@@ -44,14 +52,13 @@
 		<canMakeRandomly>true</canMakeRandomly>
 		<raidCommonality>100</raidCommonality>
 		<canStageAttacks>true</canStageAttacks>
-		<mustStartOneEnemy>true</mustStartOneEnemy>
 		<startingGoodwill>
 			<min>-10</min>
-			<max>25</max>
+			<max>10</max>
 		</startingGoodwill>
 		<naturalColonyGoodwill>
-			<min>-80</min>
-			<max>25</max>
+			<min>-10</min>
+			<max>10</max>
 		</naturalColonyGoodwill>
 		<allowedArrivalTemperatureRange>
 			<min>-40</min>
@@ -86,11 +93,11 @@
 		<description>These people have been here a very long time. Maybe their ancestors crashed here a thousand years ago. Maybe they survived some cataclysm that destroyed a technological civilization here. In any case, the tribals are mostly nomadic people who live off the land using primitive tools and weapons.\n\nSome tribes are more aggressive than others; many are open to trade and alliances, even with strange peoples like yourselves. Close coop eration or recruitment will be very difficult because of the vast sociotechnological and linguistic gap between the tribals and yourselves.\n\nDespite their apparent technological weakness, the tribals can be dangerous enemies and valuable friends because of their skill with low-tech warfare, their numbers, and their hardiness.</description>
 		<pawnsPlural>tribespeople</pawnsPlural>
 		<startingGoodwill>
-			<min>10</min>
-			<max>30</max>
+			<min>-10</min>
+			<max>10</max>
 		</startingGoodwill>
 		<naturalColonyGoodwill>
-			<min>-100</min>
+			<min>-10</min>
 			<max>10</max>
 		</naturalColonyGoodwill>
 		<caravanTraderKinds>
@@ -170,11 +177,11 @@
 		<description>Unlike tribes of old, kingdoms have a rigidly enforced social heirarchy. At the bottom are the serfs who work the land with metal tools and domesticated livestock. Their lives are hard and they have little sympathy for anybody but their family and friends. Above them are the ruling class, either by royal blood or appointed by the king. The ruling class engages in diplomacy and subterfuge, enjoying a comfortable lifestyle funded by the king's coffers. Atop the heirarchy is the king or queen who wields supreme power. The king extracts taxes from serfs (by force if necessary) and uses it to build the kingdom their heart desires.</description>
 		<pawnsPlural>kingspeople</pawnsPlural>
 		<startingGoodwill>
-			<min>10</min>
-			<max>30</max>
+			<min>-10</min>
+			<max>10</max>
 		</startingGoodwill>
 		<naturalColonyGoodwill>
-			<min>-100</min>
+			<min>-10</min>
 			<max>10</max>
 		</naturalColonyGoodwill>
 		<caravanTraderKinds>
@@ -259,11 +266,11 @@
 		<description>Industrial nations ride on the backs of industry and education. People work a variety of jobs and are paid for their time. Military service is mostly voluntary and a well-developed economy of import and export thrives.</description>
 		<pawnsPlural>citizens</pawnsPlural>
 		<startingGoodwill>
-			<min>10</min>
-			<max>30</max>
+			<min>-10</min>
+			<max>10</max>
 		</startingGoodwill>
 		<naturalColonyGoodwill>
-			<min>-100</min>
+			<min>-10</min>
 			<max>10</max>
 		</naturalColonyGoodwill>
 		<caravanTraderKinds>
@@ -348,11 +355,11 @@
 		<description>A group of ascended beings is called a collective. The peak of society, ascended peoples live in a state of harmony, having transcended conflict and forsaken the less constructive aspects of human nature.</description>
 		<pawnsPlural>ascended</pawnsPlural>
 		<startingGoodwill>
-			<min>10</min>
-			<max>30</max>
+			<min>-10</min>
+			<max>10</max>
 		</startingGoodwill>
 		<naturalColonyGoodwill>
-			<min>-100</min>
+			<min>-10</min>
 			<max>10</max>
 		</naturalColonyGoodwill>
 		<caravanTraderKinds>

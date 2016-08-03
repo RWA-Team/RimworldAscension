@@ -130,11 +130,11 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="MakeWeaponMeleeNeolithicWoodBased">
-		<defName>MakeSpearNeolithic</defName>
+		<defName>MakeSpear</defName>
 		<label>make primitive spear</label>
 		<description>Makes a crude neolithic spear.</description>
 		<products>
-			<SpearNeolithic>1</SpearNeolithic>
+			<Spear>1</Spear>
 		</products>
 		<ingredients>
 			<li>
@@ -186,11 +186,11 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="MakeWeaponMeleeNeolithicWoodBased">
-		<defName>MakeAxeNeolithic</defName>
+		<defName>MakeHandaxeNeolithic</defName>
 		<label>make primitive axe</label>
 		<description>Makes a crude neolithic axe. Can be used as tool for cutting trees as well.</description>
 		<products>
-			<AxeNeolithic>1</AxeNeolithic>
+			<HandaxeNeolithic>1</HandaxeNeolithic>
 		</products>
 		<ingredients>
 			<li>
