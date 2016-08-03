@@ -27,6 +27,11 @@
 				</li>
 			</options>
 		</colorGenerator>
+		<apparel>
+			<tags>
+				<li>Starting</li>
+			</tags>
+		</apparel>
 	</ThingDef>
 
 
@@ -47,9 +52,6 @@
 			<layers>
 				<li>OnSkin</li>
 			</layers>
-			<tags>
-				<li>Starting</li>
-			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -67,9 +69,6 @@
 			<layers>
 				<li>OnSkin</li>
 			</layers>
-			<tags>
-				<li>Starting</li>
-			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -77,11 +76,11 @@
 
 	<ThingDef Name="ClothingNeolithic" ParentName="Clothing" Abstract="True">
 		<stuffCategories>
-			<li>Leathery</li>
+			<li>Leather</li>
 		</stuffCategories>
 		<apparel>
 			<tags>
-				<li>Clothing_Neolithic</li>
+				<li>NeolithicClothing</li>
 			</tags>
 		</apparel>
 	</ThingDef>
@@ -112,6 +111,9 @@
 			<layers>
 				<li>Shell</li>
 			</layers>
+			<tags>
+				<li>NeolithicClothingCold</li>
+			</tags>
 		</apparel>
 	</ThingDef>
 
@@ -136,6 +138,9 @@
 				<li>Middle</li>
 			</layers>
 			<commonality>1</commonality>
+			<tags>
+				<li>NeolithicClothingTribal</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_Options">
 			<options>
@@ -175,6 +180,9 @@
 				<li>OnSkin</li>
 			</layers>
 			<commonality>1</commonality>
+			<tags>
+				<li>NeolithicClothingTribal</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_Options">
 			<options>
@@ -217,6 +225,9 @@
 				<li>Overhead</li>
 			</layers>
 			<commonality>1</commonality>
+			<tags>
+				<li>NeolithicClothingTribal</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_Options">
 			<options>
@@ -264,6 +275,9 @@
 				<li>Overhead</li>
 			</layers>
 			<commonality>1</commonality>
+			<tags>
+				<li>NeolithicClothingTribal</li>
+			</tags>
 		</apparel>
 		<colorGenerator Class="ColorGenerator_Options">
 			<options>

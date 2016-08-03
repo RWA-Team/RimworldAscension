@@ -23,7 +23,7 @@
 			<li>Apparel_BasicShirt</li>
 		</apparelRequired>
 		<inventoryOptions>		
-			<thingDef>Gun_SurvivalRifle</thingDef>
+			<thingDef>SurvivalRifle</thingDef>
 		</inventoryOptions>
 	</PawnKindDef>
 

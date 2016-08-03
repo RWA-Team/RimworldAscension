@@ -19,23 +19,23 @@
 		<invFoodDef>Pemmican</invFoodDef>
 		<backstoryCryptosleepCommonality>0.01</backstoryCryptosleepCommonality>
 		<maxGenerationAge>40</maxGenerationAge>
+	</PawnKindDef>
+
+	<!-- ========================= Tribals =========================-->
+
+	<PawnKindDef Name="PawnNeolithicNeutral" ParentName="PawnNeolithic" Abstract="True">
+		<defaultFactionType>NeolithicFactionNeutral</defaultFactionType>
 		<gearHealthRange>
 			<min>0.5</min>
 			<max>1.8</max>
 		</gearHealthRange>
 		<apparelMoney>
-			<min>180</min>
-			<max>350</max>
+			<min>200</min>
+			<max>500</max>
 		</apparelMoney>
 		<apparelTags>
-			<li>Spacer</li>
+			<li>NeolithicClothingTribal</li>
 		</apparelTags>
-	</PawnKindDef>
-
-	<!-- ========================= Tribals =========================-->
-	
-	<PawnKindDef Name="PawnNeolithicNeutral" ParentName="PawnNeolithic" Abstract="True">
-		<defaultFactionType>NeolithicFactionNeutral</defaultFactionType>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnNeolithicNeutral">
@@ -51,6 +51,14 @@
 		<label>scout</label>
 		<combatPower>40</combatPower>
 		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
+		<weaponMoney>
+			<min>10</min>
+			<max>200</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>NeolithicMelee</li>
+			<li>NeolithicRanged</li>
+		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnNeolithicNeutral">
@@ -58,6 +66,13 @@
 		<label>warrior</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
+		<weaponMoney>
+			<min>100</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>NeolithicMelee</li>
+		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnNeolithicNeutral">
@@ -65,6 +80,13 @@
 		<label>hunter</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>0.9</baseRecruitDifficulty>
+		<weaponMoney>
+			<min>100</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>NeolithicRanged</li>
+		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnNeolithicNeutral">
@@ -75,14 +97,38 @@
 		<factionLeader>true</factionLeader>
 		<apparelMoney>
 			<min>600</min>
-			<max>1600</max>
+			<max>2000</max>
 		</apparelMoney>
+		<weaponMoney>
+			<min>600</min>
+			<max>2000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>NeolithicMelee</li>
+			<li>NeolithicRanged</li>
+			<li>NeolithicRangedStrong</li>
+		</weaponTags>
+		<apparelRequired>
+			<li>Headdress</li>
+		</apparelRequired>
 	</PawnKindDef>
 
 	<!-- ========================= Ferals ========================= -->
 
 	<PawnKindDef Name="PawnNeolithicHostile" ParentName="PawnNeolithic" Abstract="True">
 		<defaultFactionType>NeolithicFactionHostile</defaultFactionType>
+		<gearHealthRange>
+			<min>0.8</min>
+			<max>1.5</max>
+		</gearHealthRange>
+		<apparelMoney>
+			<min>300</min>
+			<max>2000</max>
+		</apparelMoney>
+		<apparelTags>
+			<li>NeolithicClothingTribal</li>
+			<li>NeolithicArmorBone</li>
+		</apparelTags>
 	</PawnKindDef>
 	
 	<PawnKindDef ParentName="PawnNeolithicHostile">
@@ -90,6 +136,13 @@
 		<label>warrior</label>
 		<combatPower>150</combatPower>
 		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
+		<weaponMoney>
+			<min>100</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>NeolithicMelee</li>
+		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnNeolithicHostile">
@@ -97,6 +150,13 @@
 		<label>hunter</label>
 		<combatPower>100</combatPower>
 		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
+		<weaponMoney>
+			<min>100</min>
+			<max>1000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>NeolithicRanged</li>
+		</weaponTags>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="PawnNeolithicHostile">
@@ -105,6 +165,17 @@
 		<combatPower>250</combatPower>
 		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<factionLeader>true</factionLeader>
+		<weaponMoney>
+			<min>600</min>
+			<max>2000</max>
+		</weaponMoney>
+		<weaponTags>
+			<li>NeolithicMelee</li>
+			<li>NeolithicRanged</li>
+		</weaponTags>
+		<apparelRequired>
+			<li>Headdress</li>
+		</apparelRequired>
 	</PawnKindDef>
 
 </PawnKindDefs>
