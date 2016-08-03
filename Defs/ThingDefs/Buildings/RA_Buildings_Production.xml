@@ -306,9 +306,9 @@
 		<recipes>
 			<li>MakeShiv</li>
 			<li>MakeSwordNeolithic</li>
-			<li>MakeSpearNeolithic</li>
+			<li>MakeSpear</li>
 			<li>MakeClub</li>
-			<li>MakeAxeNeolithic</li>
+			<li>MakeHandaxeNeolithic</li>
 			<li>MakeHammerNeolithic</li>
 			<li>MakeHelmetTurtle</li>
 			<li>MakeShieldTribal</li>
@@ -329,8 +329,8 @@
 		<recipes>
 			<li>MakeTrapDeadfall</li>
 			<li>MakeBow</li>
-			<li>MakeBowComposite</li>
-			<li>MakeBowThrumbo</li>
+			<li>MakeCompositeBow</li>
+			<li>MakeThrumboBow</li>
 			<li>MakeTomahawk</li>
 			<li>MakePilum</li>
 			<li>MakeSling</li>

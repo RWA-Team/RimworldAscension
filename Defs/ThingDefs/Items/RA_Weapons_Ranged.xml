@@ -39,7 +39,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>RangedNeolithic</li>
+			<li>NeolithicRanged</li>
 		</weaponTags>
 		<comps>
 			<li Class="RA.CompTool_Properties">
@@ -85,7 +85,7 @@
 
 
 	<ThingDef ParentName="WeaponRanged">
-		<defName>BowComposite</defName>
+		<defName>CompositeBow</defName>
 		<label>Composite bow</label>
 		<description>A advanced version of the bow, strengthened with some bone plates.</description>
 		<graphicData>
@@ -102,7 +102,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>RangedNeolithic</li>
+			<li>NeolithicRanged</li>
 		</weaponTags>
 		<comps>
 			<li Class="RA.CompTool_Properties">
@@ -148,7 +148,7 @@
 
 
 	<ThingDef ParentName="WeaponRanged">
-		<defName>BowThrumbo</defName>
+		<defName>ThrumboBow</defName>
 		<label>thrumbo horn bow</label>
 		<description>An exotiс thrumbo horn bow. Unique properties of the thrumbo horn allow it to shoot arrows with immence force.</description>
 		<graphicData>
@@ -165,7 +165,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>RangedNeolithicStrong</li>
+			<li>NeolithicRanged</li>
 		</weaponTags>
 		<comps>
 			<li Class="RA.CompTool_Properties">
@@ -228,7 +228,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>RangedNeolithic</li>
+			<li>NeolithicRanged</li>
 		</weaponTags>
 		<comps>
 			<li Class="RA.CompTool_Properties">
@@ -290,7 +290,7 @@
 			<AccuracyLong>0</AccuracyLong>
 		</statBases>
 		<weaponTags>
-			<li>RangedNeolithicWeak</li>
+			<li>NeolithicRanged</li>
 			<li>Hunting</li>
 		</weaponTags>
 		<comps>
@@ -354,7 +354,7 @@
 		</statBases>
 		<techLevel>Neolithic</techLevel>
 		<weaponTags>
-			<li>RangedNeolithic</li>
+			<li>NeolithicRanged</li>
 		</weaponTags>
 		<comps>
 			<li Class="RA.CompTool_Properties">
@@ -398,7 +398,7 @@
 	<!-- =================== Medieval =================== -->
 
 	<ThingDef ParentName="WeaponRanged">
-		<defName>crossbow</defName>
+		<defName>Crossbow</defName>
 		<label>Crossbow</label>
 		<description>Ancient shoota</description>
 		<graphicData>
@@ -415,7 +415,7 @@
 		</statBases>
 		<techLevel>Medieval</techLevel>
 		<weaponTags>
-			<li>RangedMedival</li>
+			<li>MedivalRanged</li>
 		</weaponTags>
 		<comps>
 			<li Class="RA.CompTool_Properties">
@@ -460,8 +460,8 @@
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponRanged">
-		<defName>repetivecrossbow</defName>
-		<label>Repetive Crossbow</label>
+		<defName>CrossbowRepeating</defName>
+		<label>Repeating Crossbow</label>
 		<description>Ancient shoota</description>
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/CrossbowRepeating</texPath>
@@ -477,7 +477,7 @@
 		</statBases>
 		<techLevel>Medieval</techLevel>
 		<weaponTags>
-			<li>RangedMedival</li>
+			<li>MedivalRanged</li>
 		</weaponTags>
 		<comps>
 			<li Class="RA.CompTool_Properties">
@@ -507,7 +507,7 @@
 	<!-- =================== Industrial =================== -->
 
 	<ThingDef ParentName="BaseHumanMakeableGun">
-		<defName>Gun_SurvivalRifle</defName>
+		<defName>SurvivalRifle</defName>
 		<label>survival rifle</label>
 		<description>Ancient bolt-action rifle. Good range, Good power, low rate of fire.</description>
 		<graphicData>
@@ -524,6 +524,10 @@
 			<AccuracyLong>0.90</AccuracyLong>
 			<RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
 		</statBases>
+		<techLevel>Industrial</techLevel>
+		<weaponTags>
+			<li>IndustrialRanged</li>
+		</weaponTags>
 		<costList>
 			<Steel>90</Steel>
 			<Component>3</Component>
