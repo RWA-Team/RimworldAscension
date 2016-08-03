@@ -29,7 +29,7 @@
 						<li>WoodLog</li>
 					</thingDefs>
 				</filter>
-				<count>150</count>
+				<count>90</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -61,7 +61,7 @@
 						<li>Bone</li>
 					</thingDefs>
 				</filter>
-				<count>150</count>
+				<count>70</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -77,7 +77,7 @@
 						<li>Leather</li>
 					</thingDefs>
 				</filter>
-				<count>150</count>
+				<count>80</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -91,7 +91,7 @@
 						<li>PlantFoodRaw</li>
 					</categories>
 				</filter>
-				<count>75</count>
+				<count>40</count>
 			</li>
 			<li>
 				<filter>
@@ -122,6 +122,24 @@
 
 	<RecipeDef ParentName="MakeResearch">
 		<defName>AnimalTaming</defName>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+				</filter>
+				<count>75</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Meat</li>
+					</categories>
+				</filter>
+				<count>75</count>
+			</li>
+		</ingredients>
 	</RecipeDef>
 
 	<RecipeDef ParentName="MakeResearch">
@@ -135,34 +153,26 @@
 						<li>Clay</li>
 					</categories>
 				</filter>
-				<count>150</count>
+				<count>85</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
+
+	<!-- ========================= Medieval ==========================-->
 
 	<RecipeDef ParentName="MakeResearch">
 		<defName>Fermentation</defName>
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
-						<li>RawBerries</li>
-					</thingDefs>
+					<categories>
+						<li>PlantProductRaw</li>
+					</categories>
 				</filter>
-				<count>150</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>Pot</li>
-					</thingDefs>
-				</filter>
-				<count>2</count>
+				<count>140</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
-
-	<!-- ========================= Medieval ==========================-->
 
 	<RecipeDef ParentName="MakeResearch">
 		<defName>LeatherHardening</defName>
@@ -191,7 +201,7 @@
 						<li>PlantProductRaw</li>
 					</categories>
 				</filter>
-				<count>225</count>
+				<count>200</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -207,7 +217,7 @@
 						<li>PlantProductRaw</li>
 					</categories>
 				</filter>
-				<count>75</count>
+				<count>120</count>
 			</li>
 			<li>
 				<filter>
@@ -215,7 +225,7 @@
 						<li>MeatRaw</li>
 					</categories>
 				</filter>
-				<count>75</count>
+				<count>120</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -231,7 +241,7 @@
 						<li>RawHops</li>
 					</thingDefs>
 				</filter>
-				<count>75</count>
+				<count>100</count>
 			</li>
 			<li>
 				<filter>
@@ -239,7 +249,7 @@
 						<li>PlantProductRaw</li>
 					</categories>
 				</filter>
-				<count>75</count>
+				<count>100</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -259,11 +269,11 @@
 			</li>
 			<li>
 				<filter>
-					<categories>
-						<li>StoneChunks</li>
-					</categories>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
 				</filter>
-				<count>3</count>
+				<count>50</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -281,7 +291,7 @@
 						<li>Wool</li>
 					</thingDefs>
 				</filter>
-				<count>150</count>
+				<count>120</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -297,7 +307,7 @@
 						<li>Cloth</li>
 					</categories>
 				</filter>
-				<count>150</count>
+				<count>120</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -313,7 +323,15 @@
 						<li>Sand</li>
 					</categories>
 				</filter>
-				<count>225</count>
+				<count>60</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Charcoal</li>
+					</categories>
+				</filter>
+				<count>50</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -329,7 +347,15 @@
 						<li>OreMetal</li>
 					</categories>
 				</filter>
-				<count>225</count>
+				<count>80</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Charcoal</li>
+					</categories>
+				</filter>
+				<count>50</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -345,7 +371,15 @@
 						<li>BarsMetal</li>
 					</categories>
 				</filter>
-				<count>225</count>
+				<count>100</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>Coal</li>
+					</categories>
+				</filter>
+				<count>50</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -377,15 +411,15 @@
 						<li>WoodLog</li>
 					</thingDefs>
 				</filter>
-				<count>75</count>
+				<count>80</count>
 			</li>
 			<li>
 				<filter>
 					<categories>
-						<li>StoneChunks</li>
+						<li>BarsMetal</li>
 					</categories>
 				</filter>
-				<count>3</count>
+				<count>60</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -398,18 +432,18 @@
 			<li>
 				<filter>
 					<categories>
-						<li>StoneChunks</li>
+						<li>StoneBlocks</li>
 					</categories>
 				</filter>
-				<count>3</count>
+				<count>130</count>
 			</li>
 			<li>
 				<filter>
 					<categories>
-						<li>StoneCobbles</li>
+						<li>BarsMetal</li>
 					</categories>
 				</filter>
-				<count>75</count>
+				<count>50</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -425,7 +459,7 @@
 						<li>WoodLog</li>
 					</thingDefs>
 				</filter>
-				<count>150</count>
+				<count>120</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -441,15 +475,15 @@
 						<li>BarsMetal</li>
 					</categories>
 				</filter>
-				<count>75</count>
+				<count>100</count>
 			</li>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>WoodLog</li>
+						<li>WoodPlank</li>
 					</thingDefs>
 				</filter>
-				<count>75</count>
+				<count>100</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
