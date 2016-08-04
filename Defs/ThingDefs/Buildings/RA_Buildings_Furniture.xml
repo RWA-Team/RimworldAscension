@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
-
+	
 	<!-- 
 	- fillPercent - determne cover multiplier vs projectiles
 	- castEdgeShadows - shadow aura around building
@@ -12,8 +12,8 @@
 	- surfaceType:
 		- Item - allows place items
 		- Eat - allows place food to eat
-	- resourceReadoutPriority - determines the resource check order build designators and bills. They don't work without that parameter defined
-	 -->
+		- resourceReadoutPriority - determines the resource check order build designators and bills. They don't work without that parameter defined
+	-->
 
 	<ThingDef Name="Furniture" ParentName="Building" Abstract="True">
 		<altitudeLayer>Building</altitudeLayer>
@@ -104,6 +104,9 @@
 		<costList>
 			<Chest>1</Chest>
 		</costList>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
 		<building>
 			<fixedStorageSettings>
 				<filter>
@@ -127,13 +130,13 @@
 			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
-	
+
 	<ThingDef ParentName="Container">
 		<defName>Barrel</defName>
-		<label>basket</label>
+		<label>barrel</label>
 		<Description>A bark fiber based basket. Used to store various things inside.</Description>
 		<graphicData>
-			<texPath>Missing</texPath>
+			<texPath>Things/Buildings/Furniture/Containers/Barrel/Barrel</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(0.9,0.9)</drawSize>
 		</graphicData>
@@ -143,8 +146,11 @@
 			<WorkToMake>1000</WorkToMake>
 		</statBases>
 		<costList>
-			<Chest>1</Chest>
+			<Barrel>1</Barrel>
 		</costList>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
 		<building>
 			<fixedStorageSettings>
 				<filter>

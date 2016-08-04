@@ -8,6 +8,6 @@ namespace RA
         public List<string> defNames = new List<string>();
         public int order = 0;
         public string designationCategory = string.Empty;
-        public GraphicData graphicData;
+        public string iconPath = string.Empty;
     }
 }

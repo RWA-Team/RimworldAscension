@@ -13,8 +13,8 @@ namespace RA
         public const float BuildButtonHeight = 30f;
         public const float DesignationButtonHeight = 40f;
 
-        public List<ArchitectCategoryTab> categories;
-        public ArchitectCategoryTab selectedTab;
+        public List<RA_ArchitectCategoryTab> categories;
+        public RA_ArchitectCategoryTab selectedTab;
 
         public override Vector2 InitialSize => new Vector2(WinWidth, WinHeight);
 
@@ -33,12 +33,12 @@ namespace RA
         // shows only categories with visible designators
         public void CacheTabs()
         {
-            categories = new List<ArchitectCategoryTab>();
+            categories = new List<RA_ArchitectCategoryTab>();
             foreach (var category in DefDatabase<DesignationCategoryDef>.AllDefs
                 .Where(cat => cat.ResolvedAllowedDesignators.Any(designator => designator.Visible))
                         .OrderByDescending(des => des.order))
             {
-                categories.Add(new ArchitectCategoryTab(category));
+                categories.Add(new RA_ArchitectCategoryTab(category));
             }
         }
 
@@ -105,7 +105,7 @@ namespace RA
             }
         }
 
-        public void ClickedCategory(ArchitectCategoryTab tab)
+        public void ClickedCategory(RA_ArchitectCategoryTab tab)
         {
             selectedTab = selectedTab != tab ? tab : null;
             SoundDefOf.ArchitectCategorySelect.PlayOneShotOnCamera();

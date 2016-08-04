@@ -10,16 +10,16 @@ namespace RA
     {
         public static Vector2 TerrainTextureCroppedSize = new Vector2(64f, 64f);
 
-        public static void ModifyBuildDesignators()
+        public static void CombineBuildDesignators()
         {
-            foreach (var groupDef in DefDatabase<DesignationGroupDef>.AllDefsListForReading)
+            foreach (var group in DefDatabase<DesignationGroupDef>.AllDefsListForReading)
             {
                 var groupDesignators = new List<Designator_Build>();
-                var categoryDef = DefDatabase<DesignationCategoryDef>.GetNamed(groupDef.designationCategory);
-                var firstFoundPosition = 2;
+                var categoryDef = DefDatabase<DesignationCategoryDef>.GetNamed(group.designationCategory);
+                var firstFoundIndex = 0;
 
                 // search for designators to group
-                foreach (var defName in groupDef.defNames)
+                foreach (var defName in group.defNames)
                 {
                     var buildableDef = DefDatabase<ThingDef>.GetNamedSilentFail(defName) ??
                                        (BuildableDef) DefDatabase<TerrainDef>.GetNamed(defName);
@@ -29,50 +29,58 @@ namespace RA
                             .FirstOrDefault(designator => (designator as Designator_Build)?.PlacingDef == buildableDef)
                             as Designator_Build;
 
-                    if (firstFoundPosition == 2)
-                        firstFoundPosition = categoryDef.ResolvedDesignators().IndexOf(designatorToMove);
+                    if (firstFoundIndex == 0)
+                        firstFoundIndex = categoryDef.ResolvedDesignators().IndexOf(designatorToMove);
 
-                    // if not null, add designator to the group, and remove from main category
                     if (designatorToMove != null)
                     {
-                        groupDesignators.Add(new Designator_Build(buildableDef));
-                        categoryDef.ResolvedDesignators().Remove(designatorToMove);
+                        groupDesignators.Add(designatorToMove);
                     }
                 }
 
-                // check if any designators were added to the group
-                if (!groupDesignators.NullOrEmpty())
+                // perform grouping if required
+                if (groupDesignators.Count > 1)
                 {
+                    // remove grouped designators from original list
+                    foreach (var designator in groupDesignators)
+                    {
+                        categoryDef.ResolvedDesignators().Remove(designator);
+                    }
+
+                    var firstDef = groupDesignators.FirstOrDefault().PlacingDef;
+
                     var desGroup = new Designator_Group
                     {
                         designators = groupDesignators,
-                        defaultLabel = groupDef.label,
-                        defaultDesc = groupDef.description
+                        defaultLabel = group.label,
+                        defaultDesc = group.description,
+                        iconProportions = new Vector2(1f, 1f),
+                        iconDrawScale = 1f
                     };
 
-                    var firstDef = desGroup.designators.FirstOrDefault().PlacingDef;
-
-                    desGroup.icon = firstDef.uiIcon;
-
-                    var thingDef = firstDef as ThingDef;
-                    if (thingDef != null)
+                    if (group.iconPath != string.Empty)
                     {
-                        desGroup.iconProportions = thingDef.graphicData.drawSize;
-                        desGroup.iconDrawScale = GenUI.IconDrawScale(thingDef);
+                        desGroup.icon = ContentFinder<Texture2D>.Get(group.iconPath);
                     }
                     else
                     {
-                        desGroup.iconProportions = new Vector2(1f, 1f);
-                        desGroup.iconDrawScale = 1f;
+                        desGroup.icon = firstDef.uiIcon;
+
+                        var thingDef = firstDef as ThingDef;
+                        if (thingDef != null)
+                        {
+                            desGroup.iconProportions = thingDef.graphicData.drawSize;
+                            desGroup.iconDrawScale = GenUI.IconDrawScale(thingDef);
+                        }
+
+                        if (firstDef is TerrainDef)
+                            desGroup.iconTexCoords = new Rect(0.0f, 0.0f,
+                                TerrainTextureCroppedSize.x/desGroup.icon.width,
+                                TerrainTextureCroppedSize.y/desGroup.icon.height);
                     }
 
-                    if (firstDef is TerrainDef)
-                        desGroup.iconTexCoords = new Rect(0.0f, 0.0f,
-                            TerrainTextureCroppedSize.x/desGroup.icon.width,
-                            TerrainTextureCroppedSize.y/desGroup.icon.height);
-
                     // insert group designator at location where first designator used to be.
-                    categoryDef.ResolvedDesignators().Insert(firstFoundPosition, desGroup);
+                    categoryDef.ResolvedDesignators().Insert(firstFoundIndex, desGroup);
                 }
             }
         }

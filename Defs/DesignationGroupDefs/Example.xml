@@ -2,18 +2,16 @@
 <Defs>
 
 	<RA.DesignationGroupDef>
-		<defName>SubCategory_Chairs</defName>
-		<label>chairs</label>
-		<description>Assorted chairs!</description>
-		<!-- graphicData is optional, if not set the icon for the first def listed below will be borrowed. -->
-		<!-- <graphicData></graphicData> -->
+		<defName>SubCategory_Containers</defName>
+		<label>containers</label>
+		<description>Various container types to store multiple items inside.</description>
+		<iconPath>Things/Buildings/Furniture/Containers/Chest/Chest</iconPath>
 		<defNames>
 			<li>Basket</li>
 			<li>Chest</li>
 			<li>Barrel</li>
 		</defNames>
 		<designationCategory>Furniture</designationCategory>
-		<!-- Debug flag prints some extra information after map is loaded (while subcategories are being created) -->
 	</RA.DesignationGroupDef>
 
 </Defs>

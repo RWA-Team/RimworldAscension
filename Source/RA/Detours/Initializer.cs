@@ -19,8 +19,7 @@ namespace RA
             DoDetours();
             
             RA_DefGenerator.GenerateImpliedDefs_PreResolve();
-
-            DesignatorUtil.ModifyBuildDesignators();
+            DesignatorUtil.CombineBuildDesignators();
         }
 
         public static object GetHiddenValue(Type type, object instance, string fieldName, FieldInfo info,
@@ -415,12 +414,12 @@ namespace RA
             var newInfoRect_Getter = newInfoRect.GetGetMethod();
             TryDetourFromTo(vanillaInfoRect_Getter, newInfoRect_Getter);
 
-            // resolves reference to MainTabWindow_Architect
-            var vanillaDesignationTabOnGUI = typeof(ArchitectCategoryTab).GetMethod("DesignationTabOnGUI",
-                BindingFlags.Instance | BindingFlags.Public);
-            var newDesignationTabOnGUI = typeof(RA_ArchitectCategoryTab).GetMethod("DesignationTabOnGUI",
-                BindingFlags.Instance | BindingFlags.Public);
-            TryDetourFromTo(vanillaDesignationTabOnGUI, newDesignationTabOnGUI);
+            //// resolves reference to MainTabWindow_Architect
+            //var vanillaDesignationTabOnGUI = typeof(ArchitectCategoryTab).GetMethod("DesignationTabOnGUI",
+            //    BindingFlags.Instance | BindingFlags.Public);
+            //var newDesignationTabOnGUI = typeof(RA_ArchitectCategoryTab).GetMethod("DesignationTabOnGUI",
+            //    BindingFlags.Instance | BindingFlags.Public);
+            //TryDetourFromTo(vanillaDesignationTabOnGUI, newDesignationTabOnGUI);
 
             #endregion
 
