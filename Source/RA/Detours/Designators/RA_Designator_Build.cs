@@ -10,7 +10,7 @@ namespace RA
 {
     public class RA_Designator_Build : Designator_Build
     {
-        public static FieldInfo info;
+        public static FieldInfo infoStuff;
 
         public static readonly Vector2 TerrainTextureCroppedSize = new Vector2(64f, 64f);
         public static readonly Vector2 DragPriceDrawOffset = new Vector2(19f, 17f);
@@ -21,11 +21,14 @@ namespace RA
         {
         }
 
+        // constructor for this designator, of subdesignator is selected
+        //public RA_Designator_Build(Designator_Place designator) : base(designator.PlacingDef) { }
+
         // gets/sets stuff to the inner hidden stuff def
         public ThingDef Stuff
         {
-            get { return Initializer.GetHiddenValue(typeof (Designator_Build), this, "stuffDef", info) as ThingDef; }
-            set { Initializer.SetHiddenValue(value, typeof (Designator_Build), this, "stuffDef", info); }
+            get { return Initializer.GetHiddenValue(typeof (Designator_Build), this, "stuffDef", infoStuff) as ThingDef; }
+            set { Initializer.SetHiddenValue(value, typeof (Designator_Build), this, "stuffDef", infoStuff); }
         }
 
         // TODO
@@ -242,6 +245,78 @@ namespace RA
                 Find.ListerThings.ThingsMatching(ThingRequest.ForDef(minifiedThing.InnerThing.def.installBlueprintDef))
                     .Select(blueprint => blueprint as Blueprint_Install)
                     .Any(blueprint_Install => blueprint_Install?.MiniToInstallOrBuildingToReinstall == minifiedThing);
+        }
+
+        // make vanilla build gizmo open building groups
+        public override GizmoResult GizmoOnGUI(Vector2 topLeft)
+        {
+            // start GUI.color is the transparency set by our floatmenu parent
+            // store it, so we can apply it to all subsequent colours
+            var transparency = GUI.color;
+            
+            var buttonRect = new Rect(topLeft.x, topLeft.y, Width, 75f);
+            var mouseover = false;
+            if (Mouse.IsOver(buttonRect))
+            {
+                mouseover = true;
+                GUI.color = GenUI.MouseoverColor*transparency;
+            }
+            var tex = icon ?? BaseContent.BadTex;
+            GUI.DrawTexture(buttonRect, BGTex);
+            MouseoverSounds.DoRegion(buttonRect, SoundDefOf.MouseoverCommand);
+            GUI.color = IconDrawColor*transparency;
+            Widgets.DrawTextureFitted(new Rect(buttonRect), tex, iconDrawScale*0.85f, iconProportions, iconTexCoords);
+            GUI.color = Color.white*transparency;
+            var clicked = false;
+            var keyCode = hotKey?.MainKey ?? KeyCode.None;
+            if (keyCode != KeyCode.None && !GizmoGridDrawer.drawnHotKeys.Contains(keyCode))
+            {
+                Widgets.Label(new Rect(buttonRect.x + 5f, buttonRect.y + 5f, 16f, 18f), keyCode.ToString());
+                GizmoGridDrawer.drawnHotKeys.Add(keyCode);
+                if (hotKey.KeyDownEvent)
+                {
+                    clicked = true;
+                    Event.current.Use();
+                }
+            }
+            if (Widgets.ButtonInvisible(buttonRect))
+                clicked = true;
+            var labelCap = LabelCap;
+            if (!labelCap.NullOrEmpty())
+            {
+                var height = Text.CalcHeight(labelCap, buttonRect.width) - 2f;
+                var rect2 = new Rect(buttonRect.x, (float) (buttonRect.yMax - (double) height + 12.0), buttonRect.width,
+                    height);
+                GUI.DrawTexture(rect2, TexUI.GrayTextBG);
+                GUI.color = Color.white*transparency;
+                Text.Anchor = TextAnchor.UpperCenter;
+                Widgets.Label(rect2, labelCap);
+                Text.Anchor = TextAnchor.UpperLeft;
+            }
+            GUI.color = Color.white;
+            if (DoTooltip)
+            {
+                TipSignal tip = Desc;
+                if (disabled && !disabledReason.NullOrEmpty())
+                {
+                    var local = @tip;
+                    local.text += "\n\nDISABLED: " + disabledReason;
+                }
+                TooltipHandler.TipRegion(buttonRect, tip);
+            }
+            if (!tutorHighlightTag.NullOrEmpty())
+                TutorUIHighlighter.HighlightOpportunity(tutorHighlightTag, buttonRect);
+
+
+            if (clicked)
+            {
+                if (!disabled)
+                    return new GizmoResult(GizmoState.Interacted, Event.current);
+                if (!disabledReason.NullOrEmpty())
+                    Messages.Message(disabledReason, MessageSound.RejectInput);
+                return new GizmoResult(GizmoState.Mouseover, null);
+            }
+            return mouseover ? new GizmoResult(GizmoState.Mouseover, null) : new GizmoResult(GizmoState.Clear, null);
         }
     }
 }

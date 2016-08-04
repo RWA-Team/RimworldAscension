@@ -287,6 +287,11 @@ namespace RA
                     list.Add(item);
                 }
             }
+            else
+            {
+                item = new ListableOption("QuitToOS".Translate(), Root.Shutdown);
+                list.Add(item);
+            }
             OptionListingUtility.DrawOptionListing(rect, list);
         }
 
