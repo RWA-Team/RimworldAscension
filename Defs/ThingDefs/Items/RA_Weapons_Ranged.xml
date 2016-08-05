@@ -57,7 +57,7 @@
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<projectileDef>Arrow_Small</projectileDef>
+				<projectileDef>Arrow_Primitive</projectileDef>
 				<warmupTicks>78</warmupTicks>
 				<range>25</range>
 				<soundCast>BowSmall</soundCast>
@@ -66,7 +66,7 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Projectile">
-		<defName>Arrow_Small</defName>
+		<defName>Arrow_Primitive</defName>
 		<label>arrow</label>
 		<graphicData>
 			<texPath>Things/Projectile/Arrow_Small</texPath>
@@ -120,7 +120,7 @@
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<projectileDef>Arrow_Small</projectileDef>
+				<projectileDef>Arrow_Composite</projectileDef>
 				<warmupTicks>69</warmupTicks>
 				<range>25</range>
 				<soundCast>BowSmall</soundCast>
@@ -129,7 +129,7 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Projectile">
-		<defName>Arrow_Small</defName>
+		<defName>Arrow_Composite</defName>
 		<label>arrow</label>
 		<graphicData>
 			<texPath>Things/Projectile/Arrow_Small</texPath>
@@ -184,7 +184,7 @@
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<projectileDef>Arrow_Great</projectileDef>
+				<projectileDef>Arrow_Thrumbo</projectileDef>
 				<warmupTicks>60</warmupTicks>
 				<range>30</range>
 				<soundCast>BowLarge</soundCast>
@@ -193,7 +193,7 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Projectile">
-		<defName>Arrow_Great</defName>
+		<defName>Arrow_Thrumbo</defName>
 		<label>arrow</label>
 		<graphicData>
 			<texPath>Things/Projectile/Arrow_Small</texPath>
