@@ -173,7 +173,7 @@ namespace RA
             return toil;
         }
 
-        // changed how prodcut stuff type is determined and made this toil assign production cost for the Thing to the CompCraftedValue
+        // changed how product stuff type is determined and made this toil assign production cost for the Thing to the CompCraftedValue
         public static Toil FinishRecipeAndStartStoringProduct()
         {
             var toil = new Toil();

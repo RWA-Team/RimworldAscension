@@ -338,19 +338,19 @@ namespace RA
             GUI.EndGroup();
         }
 
-        // define, which research defs to draw
+        // define what research defs to draw
         public void RefreshList()
         {
             switch (showResearchedProjects)
             {
                 case ShowResearch.All:
-                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => !projectDef.IsFinished && !projectDef.prerequisites.Contains(ResearchProjectDef.Named("Blocked")));
+                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => !projectDef.IsFinished && projectDef.prerequisites.Contains(ResearchProjectDef.Named("Blocked")));
                     break;
                 case ShowResearch.Completed:
                     researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => projectDef.IsFinished);
                     break;
                 default:
-                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => !projectDef.IsFinished && projectDef.PrerequisitesCompleted);
+                    researchProjectsList = DefDatabase<ResearchProjectDef>.AllDefs.Where(projectDef => !projectDef.IsFinished && (projectDef.PrerequisitesCompleted || projectDef == ResearchProjectDef.Named("Survival") && Prefs.DevMode));
                     break;
             }
 
