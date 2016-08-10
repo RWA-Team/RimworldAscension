@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ThingsDef>
+
+	<ThingDef ParentName="Clothing">
+		<defName>DusterNorbal</defName>
+		<label>Norbal duster</label>
+		<description>A garment crafted without machines using neolithic tools.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Apparel/DusterNorbal/DusterNorbal</texPath>
+		</graphicData>
+		<statBases>
+			<MarketValue>150</MarketValue>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Insulation_Cold>15</Insulation_Cold>
+			<Insulation_Heat>10</Insulation_Heat>
+		</statBases>
+		<apparel>
+			<worngraphicPath>Factions/Norbals/Apparel/DusterNorbal/DusterNorbal</worngraphicPath>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Arms</li>
+				<li>Shoulders</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Shell</li>
+			</layers>
+			<commonality>1</commonality>
+			<tags>
+				<li>ClothingNorbal</li>
+			</tags>
+		</apparel>
+		<stuffCategories>
+			<li>Leather</li>
+			<li>Cloth</li>
+		</stuffCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="Clothing">
+		<defName>HatNorbal</defName>
+		<label>Norbal hat</label>
+		<description>A garment crafted without machines using neolithic tools.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Apparel/HatNorbal/HatNorbal</texPath>
+		</graphicData>
+		<statBases>
+			<MarketValue>70</MarketValue>
+			<MaxHitPoints>120</MaxHitPoints>
+			<Insulation_Cold>3</Insulation_Cold>
+			<Insulation_Heat>3</Insulation_Heat>
+		</statBases>
+		<apparel>
+			<worngraphicPath>Factions/Norbals/Apparel/HatNorbal/HatNorbal</worngraphicPath>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<commonality>1</commonality>
+			<tags>
+				<li>ClothingNorbal</li>
+			</tags>
+		</apparel>
+		<stuffCategories>
+			<li>Leather</li>
+			<li>Cloth</li>
+		</stuffCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="Clothing">
+		<defName>ShirtNorbal</defName>
+		<label>Norbal shirt</label>
+		<description>A garment crafted without machines using neolithic tools.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Apparel/ShirtNorbal/ShirtNorbal</texPath>
+		</graphicData>
+		<statBases>
+			<MarketValue>60</MarketValue>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Insulation_Cold>5</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
+		</statBases>
+		<apparel>
+			<worngraphicPath>Factions/Norbals/Apparel/ShirtNorbal/ShirtNorbal</worngraphicPath>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+			</bodyPartGroups>
+			<layers>
+				<li>OnSkin</li>
+			</layers>
+			<commonality>1</commonality>
+			<tags>
+				<li>ClothingNorbal</li>
+			</tags>
+		</apparel>
+		<stuffCategories>
+			<li>Leather</li>
+			<li>Cloth</li>
+		</stuffCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="Clothing">
+		<defName>SuspendersNorbal</defName>
+		<label>Norbal suspenders</label>
+		<description>A garment crafted without machines using neolithic tools.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Apparel/SuspendersNorbal/SuspendersNorbal</texPath>
+		</graphicData>
+		<statBases>
+			<MarketValue>70</MarketValue>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Insulation_Cold>5</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
+		</statBases>
+		<apparel>
+			<worngraphicPath>Factions/Norbals/Apparel/SuspendersNorbal/SuspendersNorbal</worngraphicPath>
+			<bodyPartGroups>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<layers>
+				<li>OnSkin</li>
+			</layers>
+			<commonality>1</commonality>
+			<tags>
+				<li>ClothingNorbal</li>
+			</tags>
+		</apparel>
+		<stuffCategories>
+			<li>Leather</li>
+			<li>Cloth</li>
+		</stuffCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="Clothing">
+		<defName>SuspendersNorbal</defName>
+		<label>Norbal suspenders</label>
+		<description>A garment crafted without machines using neolithic tools.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Apparel/SuspendersNorbal/SuspendersNorbal</texPath>
+		</graphicData>
+		<statBases>
+			<MarketValue>70</MarketValue>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Insulation_Cold>5</Insulation_Cold>
+			<Insulation_Heat>5</Insulation_Heat>
+		</statBases>
+		<apparel>
+			<worngraphicPath>Factions/Norbals/Apparel/SuspendersNorbal/SuspendersNorbal</worngraphicPath>
+			<bodyPartGroups>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<layers>
+				<li>OnSkin</li>
+			</layers>
+			<commonality>1</commonality>
+			<tags>
+				<li>ClothingNorbal</li>
+			</tags>
+		</apparel>
+		<stuffCategories>
+			<li>Leather</li>
+			<li>Cloth</li>
+		</stuffCategories>
+	</ThingDef>
+
+    <ThingDef ParentName="Clothing">
+		<defName>BootsNorbal</defName>
+		<label>Norbal boots</label>
+		<description>A garment crafted without machines using neolithic tools.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Apparel/BootsNorbal</texPath>
+		</graphicData>
+		<statBases>
+			<MarketValue>80</MarketValue>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Insulation_Cold>10</Insulation_Cold>
+			<Insulation_Heat>-2</Insulation_Heat>
+		</statBases>
+		<apparel>
+			<bodyPartGroups>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Middle</li>
+			</layers>
+			<commonality>1</commonality>
+			<tags>
+				<li>ClothingNorbal</li>
+			</tags>
+		</apparel>
+		<stuffCategories>
+			<li>Leather</li>
+			<li>Cloth</li>
+		</stuffCategories>
+	</ThingDef>
+
+
+</ThingsDef>
