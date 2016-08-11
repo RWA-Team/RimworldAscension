@@ -4,6 +4,7 @@ namespace RA
 {
     public static class RA_ThingSelectionUtility
     {
+        // removed selecting of items in containers
         public static bool SelectableNow(this Thing t)
         {
             if (!t.def.selectable || !t.Spawned || IsInContainer(t))

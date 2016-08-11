@@ -9,15 +9,14 @@ namespace RA
         // skip message prompt for research recipes
         public override void Notify_IterationCompleted(Pawn billDoer, List<Thing> ingredients)
         {
-            if (recipe.jobString == "Doing research.") return;
-
-            base.Notify_IterationCompleted(billDoer, ingredients);
             if (repeatMode == BillRepeatMode.RepeatCount)
             {
                 repeatCount--;
                 if (repeatCount == 0)
                 {
-                    Messages.Message("MessageBillComplete".Translate(LabelCap), (Thing)billStack.billGiver, MessageSound.Benefit);
+                    if (recipe.jobString == "Doing research.") return;
+                    Messages.Message("MessageBillComplete".Translate(LabelCap), (Thing) billStack.billGiver,
+                        MessageSound.Benefit);
                 }
             }
         }

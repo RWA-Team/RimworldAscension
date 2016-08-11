@@ -181,13 +181,21 @@ namespace RA
             {
                 var actor = toil.actor;
                 var curJob = actor.jobs.curJob;
+
+                var jobDriver_DoBill = (JobDriver_DoBill)actor.jobs.curDriver;
+                if (curJob.RecipeDef.workSkill != null && !curJob.RecipeDef.UsesUnfinishedThing)
+                {
+                    var xp = jobDriver_DoBill.ticksSpentDoingRecipeWork * 0.11f * curJob.RecipeDef.workSkillLearnFactor;
+                    actor.skills.GetSkill(curJob.RecipeDef.workSkill).Learn(xp);
+                }
+
                 Thing dominantIngredient;
                 var ingredients = ProcessedIngredients(curJob, out dominantIngredient);
-                var products =
-                    GenRecipe.MakeRecipeProducts(curJob.RecipeDef, actor, ingredients, dominantIngredient).ToList();
+
+                var products = GenRecipe.MakeRecipeProducts(curJob.RecipeDef, actor, ingredients, dominantIngredient).ToList();
                 curJob.bill.Notify_IterationCompleted(actor, ingredients);
                 RecordsUtility.Notify_BillDone(actor, products);
-
+                
                 // set production cost for all products
                 foreach (var product in products)
                 {
@@ -202,9 +210,8 @@ namespace RA
                 }
                 if (curJob.bill.GetStoreMode() == BillStoreMode.DropOnFloor)
                 {
-                    foreach (
-                        var thing in
-                            products.Where(thing => !GenPlace.TryPlaceThing(thing, actor.Position, ThingPlaceMode.Near)))
+                    foreach (var thing in products.Where(thing =>
+                        !GenPlace.TryPlaceThing(thing, actor.Position, ThingPlaceMode.Near)))
                     {
                         Log.Error(string.Concat(actor, " could not drop recipe product ", thing, " near ",
                             actor.Position));
@@ -225,7 +232,8 @@ namespace RA
                 }
                 products[0].SetPositionDirect(actor.Position);
                 IntVec3 vec;
-                if (StoreUtility.TryFindBestBetterStoreCellFor(products[0], actor, StoragePriority.Unstored, actor.Faction,
+                if (StoreUtility.TryFindBestBetterStoreCellFor(products[0], actor, StoragePriority.Unstored,
+                    actor.Faction,
                     out vec))
                 {
                     actor.carrier.TryStartCarry(products[0]);
@@ -242,39 +250,40 @@ namespace RA
             };
             return toil;
         }
-        
+
+        // hidden in vanilla
         public static List<Thing> ProcessedIngredients(Job job, out Thing dominantIngredient)
         {
+            var ingredients = new List<Thing>();
             var uft = job.GetTarget(TargetIndex.B).Thing as UnfinishedThing;
             if (uft != null)
             {
                 dominantIngredient = uft.def.MadeFromStuff ? uft.ingredients.First(ing => ing.def == uft.Stuff) : null;
-                var ingredients = uft.ingredients;
+                ingredients = uft.ingredients;
                 uft.Destroy();
                 job.placedThings = null;
                 return ingredients;
             }
-            var list = new List<Thing>();
             if (job.placedThings != null)
             {
-                foreach (var thing in job.placedThings.Select(target => target.thing))
+                foreach (var thing in job.placedThings.Select(stack => stack.Split()))
                 {
-                    if (list.Contains(thing))
+                    if (ingredients.Contains(thing))
                     {
                         Log.Error("Tried to add ingredient from job placed targets twice: " + thing);
                     }
                     else
                     {
-                        list.Add(thing);
-                        if (thing.Spawned)
-                        {
-                            var strippable = thing as IStrippable;
-                            strippable?.Strip();
-                        }
+                        ingredients.Add(thing);
+                        var strippable = thing as IStrippable;
+                        strippable?.Strip();
                         if (job.RecipeDef.UsesUnfinishedThing)
                         {
                             Find.DesignationManager.RemoveAllDesignationsOn(thing);
-                            thing.DeSpawn();
+                            if (thing.Spawned)
+                            {
+                                thing.DeSpawn();
+                            }
                         }
                         else
                         {
@@ -284,19 +293,22 @@ namespace RA
                 }
             }
             job.placedThings = null;
-            dominantIngredient = list.NullOrEmpty() ? null : GetDominantIngredient(job.RecipeDef, list);
-            return list;
+            dominantIngredient = ingredients.NullOrEmpty() ? null : GetDominantIngredient(job.RecipeDef, ingredients);
+            return ingredients;
         }
 
-        // make recipe decide what result stuff to make based on defaultIngredientFilter as blocking Stuff types one
+        // hidden in vanilla
         public static Thing GetDominantIngredient(RecipeDef recipe, List<Thing> ingredients)
         {
             // checks if there are any stuff ingredients used which are not forbidden in defaultIngredientFilter
-            return recipe.products.FirstOrDefault().thingDef.MadeFromStuff
-                ? ingredients
-                    .Find(ingredient => ingredient.def.IsStuff &&
-                                        ingredient.def.stuffProps.CanMake(recipe.products.FirstOrDefault().thingDef) &&
-                                        (!recipe.defaultIngredientFilter?.Allows(ingredient.def) ?? true))
+            return !recipe.products.NullOrEmpty()
+                ? (recipe.products.First().thingDef.MadeFromStuff
+                    ? ingredients.Find(
+                        ingredient =>
+                            ingredient.def.IsStuff &&
+                            ingredient.def.stuffProps.CanMake(recipe.products.FirstOrDefault().thingDef) &&
+                            (!recipe.defaultIngredientFilter?.Allows(ingredient.def) ?? true))
+                    : ingredients.RandomElementByWeight(ing => ing.stackCount))
                 : ingredients.RandomElementByWeight(ing => ing.stackCount);
         }
     }

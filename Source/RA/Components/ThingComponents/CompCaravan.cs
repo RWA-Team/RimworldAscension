@@ -4,20 +4,6 @@ using Verse;
 
 namespace RA
 {
-    public class CompCaravan_Properties : CompProperties
-    {
-        //All textures use Graphic_Multi
-        public string cartEmptyTexturePath;
-        public string cartFullTexturePath;
-        public string wheelTexturePath;
-        public string harnessTexturePath;
-
-        public CompCaravan_Properties()
-        {
-            compClass = typeof(CompCaravan);
-        }
-    }
-
     public class CompCaravan : ThingComp
     {
         public Graphic cartEmptyTexture;
@@ -171,6 +157,20 @@ namespace RA
             }
             else
                 Log.Error("Missing texture path data");
+        }
+    }
+
+    public class CompCaravan_Properties : CompProperties
+    {
+        //All textures use Graphic_Multi
+        public string cartEmptyTexturePath;
+        public string cartFullTexturePath;
+        public string wheelTexturePath;
+        public string harnessTexturePath;
+
+        public CompCaravan_Properties()
+        {
+            compClass = typeof(CompCaravan);
         }
     }
 }

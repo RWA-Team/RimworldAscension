@@ -65,7 +65,6 @@
 		</comps>
 	</ThingDef>
 
-
 	<ThingDef ParentName="Door">
 		<defName>DoorWoodLog</defName>
 		<label>woodlog door</label>

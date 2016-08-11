@@ -8,11 +8,13 @@ namespace RA
 {
     public class RA_IncidentWorker_TraderCaravanArrival : IncidentWorker_TraderCaravanArrival
     {
-        // added tech level requirement
-        //protected override bool IsFactionAllowed(Faction faction)
-        //{
-        //    return base.IsFactionAllowed(faction) && faction.def.techLevel <= FactionDefOf.Colony.techLevel;
-        //}
+        // added tech level requirement of player faction tech level +-1
+        protected override bool FactionCanBeGroupSource(Faction faction, bool desperate = false)
+        {
+            return base.FactionCanBeGroupSource(faction, desperate) &&
+                   faction.def.techLevel <= Faction.OfPlayer.def.techLevel + 1 &&
+                   faction.def.techLevel >= Faction.OfPlayer.def.techLevel - 1;
+        }
 
         public override bool TryExecute(IncidentParms parms)
         {
@@ -21,19 +23,16 @@ namespace RA
                 return false;
             }
             var pawns = SpawnPawns(parms);
-            if (pawns.Count == 0)
+            if (!pawns.Any())
             {
                 return false;
             }
-            foreach (var pawn in pawns)
+            foreach (var pawn in pawns.Where(pawn => pawn.needs?.food != null))
             {
-                if (pawn.needs?.food != null)
-                {
-                    pawn.needs.food.CurLevel = pawn.needs.food.MaxLevel;
-                }
+                pawn.needs.food.CurLevel = pawn.needs.food.MaxLevel;
             }
             
-            ModifyTradeGroup(ref pawns);
+            ModifycaravanGroup(ref pawns);
 
             Find.LetterStack.ReceiveLetter("LetterLabelTraderCaravanArrival".Translate(parms.faction.Name),
                 "LetterTraderCaravanArrival".Translate(parms.faction.Name), LetterType.Good, pawns[0]);
@@ -45,7 +44,7 @@ namespace RA
         }
 
         // disable initial readyness for trade and remove all but one muffalo, transferring all goods there
-        public void ModifyTradeGroup(ref List<Pawn> pawns)
+        public void ModifycaravanGroup(ref List<Pawn> pawns)
         {
             var muffaloChosen = false;
             var firstMuffalo = new Pawn();
@@ -54,7 +53,7 @@ namespace RA
             {
                 // disable initial readyness to trade
                 pawn.mindState.wantsToTradeWithColony = false;
-
+                
                 // transfer all items from other muffaloes to the main one
                 if (pawn.kindDef == PawnKindDef.Named("PackMuffalo"))
                 {

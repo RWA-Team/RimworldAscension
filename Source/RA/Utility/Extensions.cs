@@ -8,9 +8,9 @@ namespace RA
     {
         #region STATIC INFOS
 
-        public static FieldInfo listsByGroupInfo = typeof(ListerThings).GetField("listsByGroup", BindingFlags.Instance | BindingFlags.NonPublic);
+        public static FieldInfo listsByGroupInfo = typeof(ListerThings).GetField("listsByGroup", GenGeneric.BindingFlagsAll);
 
-        public static FieldInfo resolvedDesignatorsInfo = typeof(DesignationCategoryDef).GetField("resolvedDesignators", BindingFlags.NonPublic | BindingFlags.Instance);
+        public static FieldInfo resolvedDesignatorsInfo = typeof(DesignationCategoryDef).GetField("resolvedDesignators", GenGeneric.BindingFlagsAll);
 
         #endregion
 
