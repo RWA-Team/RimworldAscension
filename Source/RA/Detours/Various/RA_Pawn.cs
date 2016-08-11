@@ -18,10 +18,17 @@ namespace RA
         // changed butcher yields
         public override IEnumerable<Thing> ButcherProducts(Pawn butcher, float efficiency)
         {
-            //Return additional butcher products
-            foreach (var t in base.ButcherProducts(butcher, efficiency))
-                yield return t;
-
+            // return base.ButcherProducts
+            if (def.butcherProducts != null)
+            {
+                foreach (var thingCount in def.butcherProducts)
+                {
+                    var thing = ThingMaker.MakeThing(thingCount.thingDef);
+                    thing.stackCount = thingCount.count;
+                    yield return thing;
+                }
+            }
+            
             //Return available sheer products
             var compShearable = this.TryGetComp<CompShearable>();
             if (compShearable != null && compShearable.ActiveAndFull)
@@ -36,20 +43,20 @@ namespace RA
                     yield return thing;
                 }
             }
-
+            
             //Return meat
             var meatCount = GenMath.RoundRandom(this.GetStatValue(StatDefOf.MeatAmount)*efficiency);
             if (meatCount > 0)
             {
                 var meat = ThingMaker.MakeThing(RaceProps.Humanlike
-                    ? DefDatabase<ThingDef>.GetNamedSilentFail("MeatHumanRaw")
+                    ? DefDatabase<ThingDef>.GetNamedSilentFail("MeatHuman")
                     : RaceProps.baseBodySize < 0.7f
-                        ? DefDatabase<ThingDef>.GetNamedSilentFail("MeatSmallRaw")
-                        : DefDatabase<ThingDef>.GetNamedSilentFail("MeatRaw"));
+                        ? DefDatabase<ThingDef>.GetNamedSilentFail("MeatSmall")
+                        : DefDatabase<ThingDef>.GetNamedSilentFail("Meat"));
                 meat.stackCount = meatCount;
                 yield return meat;
             }
-
+            
             //Return leather
             var leatherCount = GenMath.RoundRandom(this.GetStatValue(StatDefOf.LeatherAmount)*efficiency);
             if (leatherCount > 0)
@@ -58,7 +65,7 @@ namespace RA
                 leather.stackCount = leatherCount;
                 yield return leather;
             }
-
+            
             //Return bones
             var bonesCount = GenMath.RoundRandom(this.GetStatValue(StatDef.Named("BoneAmount"))*efficiency);
             if (bonesCount > 0)
@@ -67,7 +74,7 @@ namespace RA
                 bones.stackCount = bonesCount;
                 yield return bones;
             }
-
+            
             //Return tallow
             var tallowCount = GenMath.RoundRandom(this.GetStatValue(StatDef.Named("TallowAmount"))*efficiency);
             if (tallowCount > 0)

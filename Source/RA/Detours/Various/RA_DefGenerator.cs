@@ -6,7 +6,7 @@ namespace RA
     public static class RA_DefGenerator
     {
         // added new def generators and removed redundant
-        public static void GenerateImpliedDefs_PreResolve()
+        public static void GenerateDefs()
         {
             var defGenerators = MinifiedDefGenerator.ImpliedMinifiedDefs().Concat(UnfinishedDefGenerator.ImpliedUnfinishedDefs());
 

@@ -43,6 +43,7 @@
 		<label>merchant</label>
 		<combatPower>10</combatPower>
 		<isFighter>false</isFighter>
+		<trader>true</trader>
 		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
 	</PawnKindDef>
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<PawnKindDefs>
+
+	<PawnKindDef ParentName="Muffalo">
+		<defName>PackMuffalo</defName>
+		<race>PackMuffalo</race>
+		<carrier>true</carrier>
+	</PawnKindDef>
+
+</PawnKindDefs>

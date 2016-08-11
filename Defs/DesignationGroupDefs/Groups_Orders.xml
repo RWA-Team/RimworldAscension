@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<RA.DesignationGroupDef Name="OrdersGroup" Abstract="True">
+		<designationCategory>Orders</designationCategory>
+	</RA.DesignationGroupDef>
+
+<!-- 	<RA.DesignationGroupDef ParentName="OrdersGroup">
+		<defName>Plants</defName>
+		<label>plant work</label>
+		<description>Various stool types for pawns to sit on.</description>
+		<iconPath>UI/Gizmoes/Groups/Stools</iconPath>
+		<defNames>
+			<li>Designator_PlantsCut</li>
+			<li>Designator_PlantsHarvest</li>
+			<li>RA.Designator_ChopWood</li>
+		</defNames>
+	</RA.DesignationGroupDef> -->
+
+</Defs>

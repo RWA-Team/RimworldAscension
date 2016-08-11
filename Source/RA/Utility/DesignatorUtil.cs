@@ -14,32 +14,39 @@ namespace RA
         {
             foreach (var group in DefDatabase<DesignationGroupDef>.AllDefsListForReading)
             {
-                var groupDesignators = new List<Designator_Build>();
+                var groupDesignators = new List<Designator>();
                 var categoryDef = DefDatabase<DesignationCategoryDef>.GetNamed(group.designationCategory);
-                var firstFoundIndex = 0;
 
                 // search for designators to group
                 foreach (var defName in group.defNames)
                 {
                     var buildableDef = DefDatabase<ThingDef>.GetNamedSilentFail(defName) ??
-                                       (BuildableDef) DefDatabase<TerrainDef>.GetNamed(defName);
+                                       (BuildableDef) DefDatabase<TerrainDef>.GetNamedSilentFail(defName);
 
-                    var designatorToMove =
-                        categoryDef.ResolvedDesignators()?
-                            .FirstOrDefault(designator => (designator as Designator_Build)?.PlacingDef == buildableDef)
-                            as Designator_Build;
-
-                    if (firstFoundIndex == 0)
-                        firstFoundIndex = categoryDef.ResolvedDesignators().IndexOf(designatorToMove);
-
-                    if (designatorToMove != null)
+                    Designator designatorToGroup = null;
+                    if (buildableDef != null)
                     {
-                        groupDesignators.Add(designatorToMove);
+                        designatorToGroup =
+                            categoryDef.ResolvedDesignators()?
+                                .FirstOrDefault(designator
+                                    => (designator as Designator_Build)?.PlacingDef == buildableDef);
+                    }
+                    else
+                    {
+                        designatorToGroup =
+                            categoryDef.ResolvedDesignators()?
+                                .FirstOrDefault(designator
+                                    => GenTypes.GetTypeInAnyAssembly(defName) == designator.GetType());
+                    }
+
+                    if (designatorToGroup != null)
+                    {
+                        groupDesignators.Add(designatorToGroup);
                     }
                 }
 
                 // perform grouping if required
-                if (groupDesignators.Count > 1)
+                if (groupDesignators.Any())
                 {
                     // remove grouped designators from original list
                     foreach (var designator in groupDesignators)
@@ -47,7 +54,7 @@ namespace RA
                         categoryDef.ResolvedDesignators().Remove(designator);
                     }
 
-                    var firstDef = groupDesignators.FirstOrDefault().PlacingDef;
+                    //var firstDef = groupDesignators.FirstOrDefault().PlacingDef;
 
                     var desGroup = new Designator_Group
                     {
@@ -62,25 +69,24 @@ namespace RA
                     {
                         desGroup.icon = ContentFinder<Texture2D>.Get(group.iconPath);
                     }
-                    else
-                    {
-                        desGroup.icon = firstDef.uiIcon;
+                    //else
+                    //{
+                    //    desGroup.icon = firstDef.uiIcon;
 
-                        var thingDef = firstDef as ThingDef;
-                        if (thingDef != null)
-                        {
-                            desGroup.iconProportions = thingDef.graphicData.drawSize;
-                            desGroup.iconDrawScale = GenUI.IconDrawScale(thingDef);
-                        }
+                    //    var thingDef = firstDef as ThingDef;
+                    //    if (thingDef != null)
+                    //    {
+                    //        desGroup.iconProportions = thingDef.graphicData.drawSize;
+                    //        desGroup.iconDrawScale = GenUI.IconDrawScale(thingDef);
+                    //    }
 
-                        if (firstDef is TerrainDef)
-                            desGroup.iconTexCoords = new Rect(0.0f, 0.0f,
-                                TerrainTextureCroppedSize.x/desGroup.icon.width,
-                                TerrainTextureCroppedSize.y/desGroup.icon.height);
-                    }
+                    //    if (firstDef is TerrainDef)
+                    //        desGroup.iconTexCoords = new Rect(0.0f, 0.0f,
+                    //            TerrainTextureCroppedSize.x/desGroup.icon.width,
+                    //            TerrainTextureCroppedSize.y/desGroup.icon.height);
+                    //}
 
-                    // insert group designator at location where first designator used to be.
-                    categoryDef.ResolvedDesignators().Insert(firstFoundIndex, desGroup);
+                    categoryDef.ResolvedDesignators().Add(desGroup);
                 }
             }
         }

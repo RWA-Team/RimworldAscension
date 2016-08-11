@@ -12,17 +12,16 @@ namespace RA
     {
         public static Texture2D GroupIndicatorTexture = ContentFinder<Texture2D>.Get("UI/Icons/GroupIndicator");
         public static Vector2 GroupIndicatorSize = new Vector2(16f, 16f);
-        public static PropertyInfo colorInfo = typeof(Designator_Build).GetProperty("IconDrawColor",
-            BindingFlags.NonPublic | BindingFlags.Instance);
+        //public static PropertyInfo colorInfo = typeof(Designator_Build).GetProperty("IconDrawColor", BindingFlags.NonPublic | BindingFlags.Instance);
 
-        public List<Designator_Build> designators = new List<Designator_Build>();
+        public List<Designator> designators = new List<Designator>();
 
         public override AcceptanceReport CanDesignateCell(IntVec3 loc) => false;
 
         // can't stack with other gizmoes
         public override bool GroupsWith(Gizmo other) => false;
 
-        protected override Color IconDrawColor => (Color) colorInfo.GetValue(designators.First(), null);
+        //protected override Color IconDrawColor => (Color) colorInfo.GetValue(designators.First(), null);
 
         public override bool Visible => designators.Any(designator => designator.Visible);
 

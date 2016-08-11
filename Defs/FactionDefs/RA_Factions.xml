@@ -10,40 +10,24 @@
 	
 	<!-- ========================= Player =========================-->
 	
-	<FactionDef Abstract="True" Name="PlayerFactionBase">
-		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
-		<homeIconColor>(255,220,84)</homeIconColor>
-		<startingGoodwill>
-			<min>-10</min>
-			<max>10</max>
-		</startingGoodwill>
-		<naturalColonyGoodwill>
-			<min>-10</min>
-			<max>10</max>
-		</naturalColonyGoodwill>
-	</FactionDef>
-	
-	<FactionDef Parent="PlayerFactionBase">
-		<defName>Colony</defName>
+	<FactionDef>
+		<defName>PlayerColony</defName>
 		<label>colony</label>
 		<description>Your own community.</description>
 		<isPlayer>true</isPlayer>
 		<basicMemberKind>Colonist</basicMemberKind>
 		<pawnsPlural>colonists</pawnsPlural>
 		<factionNameMaker>NamerFactionOutlander</factionNameMaker>
-		<techLevel>Industrial</techLevel>
+		<techLevel>Neolithic</techLevel>
 		<backstoryCategory>Civil</backstoryCategory>
-		<startingResearchTags>
-			<li>ClassicStart</li>
-		</startingResearchTags>
 		<hairTags>
+			<li>Tribal</li>
 			<li>Urban</li>
+			<li>Rural</li>
+			<li>Punk</li>
 		</hairTags>
-		<apparelStuffFilter>
-			<thingDefs>
-				<li>Synthread</li>
-			</thingDefs>
-		</apparelStuffFilter>
+		<homeIconPath>World/FactionHomes/DefaultHome</homeIconPath>
+		<homeIconColor>(255,220,84)</homeIconColor>
 	</FactionDef>
 	
 	<!-- ========================= Abstract ========================= -->
@@ -164,11 +148,6 @@
 		<hairTags>
 			<li>Rural</li>
 		</hairTags>
-		<apparelStuffFilter>
-			<thingDefs>
-				<li>Cloth</li>
-			</thingDefs>
-		</apparelStuffFilter>
 	</FactionDef>
 	
 	<FactionDef ParentName="FactionMedieval">
@@ -225,11 +204,11 @@
 			<min>-100</min>
 			<max>-80</max>
 		</naturalColonyGoodwill>
-		<apparelStuffFilter>
+<!-- 		<apparelStuffFilter>
 			<thingDefs>
 				<li>Leather</li>
 			</thingDefs>
-		</apparelStuffFilter>
+		</apparelStuffFilter> -->
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
 				<options>

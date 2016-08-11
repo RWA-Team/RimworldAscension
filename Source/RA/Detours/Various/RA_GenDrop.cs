@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using System;
+using Verse;
 using Verse.Sound;
 
 namespace RA
@@ -6,7 +7,7 @@ namespace RA
     public static class RA_GenDrop
     {
         // resets wasAutoEquipped value for picked up tools
-        public static bool TryDropSpawn(Thing thing, IntVec3 dropCell, ThingPlaceMode mode, out Thing resultingThing)
+        public static bool TryDropSpawn(Thing thing, IntVec3 dropCell, ThingPlaceMode mode, out Thing resultingThing, Action<Thing, int> placedAction = null)
         {
             if (!dropCell.InBounds())
             {
@@ -26,7 +27,7 @@ namespace RA
             var compTool = thing.TryGetComp<CompTool>();
             if (compTool != null) compTool.wasAutoEquipped = false;
 
-            return GenPlace.TryPlaceThing(thing, dropCell, mode, out resultingThing);
+            return GenPlace.TryPlaceThing(thing, dropCell, mode, out resultingThing, placedAction);
         }
     }
 }
