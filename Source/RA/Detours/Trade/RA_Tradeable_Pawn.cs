@@ -16,7 +16,7 @@ namespace RA
                 foreach (var pawn in colonyPrisoners)
                 {
                     tradeCenter.colonyExchangeContainer.TryAdd(pawn);
-                    tradeCenter.colonyGoodsCost += tradeCenter.ThingTypeFinalCost(pawn, ActionToDo);
+                    tradeCenter.colonyGoodsCost += new Tradeable(pawn, pawn).PriceFor(ActionToDo);
                 }
             }
             else if (ActionToDo == TradeAction.PlayerBuys)
@@ -25,7 +25,7 @@ namespace RA
                 foreach (var pawn in traderPrisoners)
                 {
                     tradeCenter.traderExchangeContainer.TryAdd(pawn);
-                    tradeCenter.traderGoodsCost += tradeCenter.ThingTypeFinalCost(pawn, ActionToDo);
+                    tradeCenter.traderGoodsCost += new Tradeable(pawn, pawn).PriceFor(ActionToDo);
                 }
             }
         }

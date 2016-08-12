@@ -4,12 +4,13 @@ using Verse;
 
 namespace RA
 {
+    [StaticConstructorOnStartup]
     public class CompCaravan : ThingComp
     {
-        public Graphic cartEmptyTexture;
-        public Graphic cartFullTexture;
-        public Graphic wheelTexture;
-        public Graphic harnessTexture;
+        public static Graphic cartEmptyTexture = GraphicDatabase.Get<Graphic_Multi>("Things/Special/CaravanCart/CartEmpty", ShaderDatabase.Transparent, new Vector2(2f, 2f), Color.white);
+        public static Graphic cartFullTexture = GraphicDatabase.Get<Graphic_Multi>("Things/Special/CaravanCart/CartFull", ShaderDatabase.Transparent, new Vector2(2f, 2f), Color.white);
+        public static Graphic wheelTexture = GraphicDatabase.Get<Graphic_Multi>("Things/Special/CaravanCart/Wheel", ShaderDatabase.Transparent, new Vector2(2f, 2f), Color.white);
+        public static Graphic harnessTexture = GraphicDatabase.Get<Graphic_Multi>("Things/Special/CaravanCart/Harness", ShaderDatabase.Transparent, new Vector2(2f, 2f), Color.white);
 
         public Pawn carrier;
 
@@ -29,8 +30,6 @@ namespace RA
         public float num4;
         public float num5;
 
-        public CompCaravan_Properties Properties => (CompCaravan_Properties)props;
-
         public override void Initialize(CompProperties props)
         {
             base.Initialize(props);
@@ -39,13 +38,6 @@ namespace RA
         }
 
         public bool SpawnedAndWell => carrier.Spawned && !carrier.Downed;
-
-        public override void PostSpawnSetup()
-        {
-            base.PostSpawnSetup();
-
-            LoadTextures();
-        }
 
         public override void CompTick()
         {
@@ -145,29 +137,10 @@ namespace RA
                 }
             }
         }
-
-        public void LoadTextures()
-        {
-            if (!string.IsNullOrEmpty(Properties.cartEmptyTexturePath) && !string.IsNullOrEmpty(Properties.cartFullTexturePath) && !string.IsNullOrEmpty(Properties.wheelTexturePath) && !string.IsNullOrEmpty(Properties.harnessTexturePath))
-            {
-                cartEmptyTexture = GraphicDatabase.Get<Graphic_Multi>(Properties.cartEmptyTexturePath, ShaderDatabase.Transparent, new Vector2(2f, 2f), Color.white);
-                cartFullTexture = GraphicDatabase.Get<Graphic_Multi>(Properties.cartFullTexturePath, ShaderDatabase.Transparent, new Vector2(2f, 2f), Color.white);
-                wheelTexture = GraphicDatabase.Get<Graphic_Multi>(Properties.wheelTexturePath, ShaderDatabase.Transparent, new Vector2(2f, 2f), Color.white);
-                harnessTexture = GraphicDatabase.Get<Graphic_Multi>(Properties.harnessTexturePath, ShaderDatabase.Transparent, new Vector2(2f, 2f), Color.white);
-            }
-            else
-                Log.Error("Missing texture path data");
-        }
     }
 
     public class CompCaravan_Properties : CompProperties
     {
-        //All textures use Graphic_Multi
-        public string cartEmptyTexturePath;
-        public string cartFullTexturePath;
-        public string wheelTexturePath;
-        public string harnessTexturePath;
-
         public CompCaravan_Properties()
         {
             compClass = typeof(CompCaravan);

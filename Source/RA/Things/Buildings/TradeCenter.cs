@@ -177,49 +177,6 @@ namespace RA
 
         public float TradeBalance => colonyGoodsCost - traderGoodsCost;
 
-        public float ThingTypeFinalCost(Thing thing, TradeAction tradeAction, int preferedCount = -1)
-        {
-            if (thing.def == ThingDefOf.Silver) return preferedCount == -1 ? thing.stackCount : preferedCount;
-
-            var priceTypeFactor = trader.TraderKind.PriceTypeFor(thing.def, tradeAction).PriceMultiplier();
-            // additional sell price reduction based on SellPriceFactor stat
-            var priceSellFactor = thing.GetStatValue(StatDefOf.SellPriceFactor);
-            var priceNegotiatorFactor = negotiator.GetStatValue(StatDefOf.TradePriceImprovement);
-            // additional sell price reduction based on difficulty baseSellPriceFactor stat
-            var priceDifficultyFactor = Find.Storyteller.difficulty.baseSellPriceFactor;
-            // small random (seed is TraderKind based) price diviation for variety of values (x0.9-x1.1 multiplier)
-            var priceRandomFactor = TradeUtil.RandomPriceFactorFor(trader.RandomPriceFactorSeed, thing.def);
-            
-            // same price base for selling/buying
-            var price = thing.MarketValue * priceTypeFactor * priceRandomFactor;
-
-            if (tradeAction == TradeAction.PlayerSells)
-            {
-                price *= priceDifficultyFactor * priceSellFactor * priceNegotiatorFactor;
-
-                price *= TradeUtil.TradePricePostFactorCurve.Evaluate(price);
-                price = Mathf.Max(price, 0.01f);
-
-                var buyPrice = ThingTypeFinalCost(thing, TradeAction.PlayerBuys);
-                if (price > buyPrice)
-                {
-                    Log.ErrorOnce("Skill of negotitator trying to put sell price above buy price.", 65387);
-                    price = buyPrice;
-                }
-            }
-            else
-            {
-                price /= priceNegotiatorFactor;
-            }
-            
-            // TODO: check rounding for massive trade deals (equalizing trade balance)
-            price = (float) Math.Round(price, 2);
-
-            price *= preferedCount == -1 ? thing.stackCount : preferedCount;
-
-            return price;
-        }
-
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
             if (trader != null)
