@@ -205,10 +205,10 @@ namespace RA
             DetourMethod("Tradeable", "ResolveTrade");
             // resolve trade for pawns
             DetourMethod("Tradeable_Pawn", "ResolveTrade");
-            // adjusted price calculation
-            DetourMethod("Tradeable", "PriceFor");
             // make trade sessions individual per trade center
             DetourMethod("TradeSession", "SetupWith");
+            // assign Pawn_TraderTracker based on pawn caravan role, not mindState.wantsToTradeWithColony
+            DetourMethod("PawnComponentsUtility", "AddAndRemoveDynamicComponents");
 
             #endregion
 
