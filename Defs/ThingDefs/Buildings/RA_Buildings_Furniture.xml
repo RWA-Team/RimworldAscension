@@ -56,7 +56,6 @@
 			<drawSize>(0.9,0.9)</drawSize>
 		</graphicData>
 		<statBases>
-			<MarketValue>100</MarketValue>
 			<MaxHitPoints>50</MaxHitPoints>
 			<WorkToMake>1000</WorkToMake>
 		</statBases>

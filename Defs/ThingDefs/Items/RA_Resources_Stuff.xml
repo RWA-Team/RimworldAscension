@@ -651,18 +651,6 @@
 	</ThingDef>
 
 	<ThingDef ParentName="Metal">
-		<defName>MetalBarBronze</defName>
-		<label>bronze bars</label>
-		<graphicData>
-			<color>(130,100,45)</color>
-		</graphicData>
-		<stuffProps>
-			<color>(130,100,45)</color>
-			<stuffAdjective>bronze</stuffAdjective>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="Metal">
 		<defName>MetalBarSteel</defName>
 		<label>steel bars</label>
 		<graphicData>

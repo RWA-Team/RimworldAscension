@@ -66,6 +66,7 @@
 		</defaultIngredientFilter>
 	</RecipeDef>
 
+<!-- ===================================================================================== -->
 
 	<RecipeDef ParentName="MakeWeaponMeleePrimitive">
 		<defName>MakeShiv</defName>
@@ -92,7 +93,7 @@
 						<li>Bone</li>
 					</thingDefs>
 				</filter>
-				<count>5</count>
+				<count>15</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -116,7 +117,7 @@
 						<li>StoneCobbles</li>
 					</categories>
 				</filter>
-				<count>5</count>
+				<count>15</count>
 			</li>
 			<li>
 				<filter>
@@ -124,7 +125,7 @@
 						<li>WoodLog</li>
 					</thingDefs>
 				</filter>
-				<count>10</count>
+				<count>25</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -134,7 +135,7 @@
 		<label>make primitive spear</label>
 		<description>Makes a crude neolithic spear.</description>
 		<products>
-			<Spear>1</Spear>
+			<SpearNeolithic>1</SpearNeolithic>
 		</products>
 		<ingredients>
 			<li>
@@ -146,7 +147,7 @@
 						<li>Bone</li>
 					</thingDefs>
 				</filter>
-				<count>5</count>
+				<count>10</count>
 			</li>
 			<li>
 				<filter>
@@ -154,7 +155,7 @@
 						<li>WoodLog</li>
 					</thingDefs>
 				</filter>
-				<count>20</count>
+				<count>15</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -170,18 +171,17 @@
 		<ingredients>
 			<li>
 				<filter>
+					<categories>
+						<li>StoneCobbles</li>
+					</categories>
 					<thingDefs>
 						<li>WoodLog</li>
+						<li>Bone</li>
 					</thingDefs>
 				</filter>
 				<count>15</count>
 			</li>
 		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>			
-				<li>WoodLog</li>
-			</thingDefs>
-		</fixedIngredientFilter>
 		<researchPrerequisite>WoodCarving</researchPrerequisite>
 	</RecipeDef>
 
@@ -202,7 +202,7 @@
 						<li>Bone</li>
 					</thingDefs>
 				</filter>
-				<count>10</count>
+				<count>20</count>
 			</li>
 			<li>
 				<filter>
@@ -232,7 +232,7 @@
 						<li>Bone</li>
 					</thingDefs>
 				</filter>
-				<count>10</count>
+				<count>20</count>
 			</li>
 			<li>
 				<filter>
@@ -240,7 +240,7 @@
 						<li>WoodLog</li>
 					</thingDefs>
 				</filter>
-				<count>15</count>
+				<count>10</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
@@ -265,6 +265,7 @@
 				<filter>
 					<thingDefs>
 						<li>WoodLog</li>
+						<li>WoodPlank</li>
 					</thingDefs>
 				</filter>
 				<count>20</count>
@@ -290,7 +291,7 @@
 		</fixedIngredientFilter>
 	</RecipeDef>
 
-	<RecipeDef ParentName="MakeWeaponMeleePrimitive">
+	<RecipeDef ParentName="MakeWeaponMeleeMedieval">
 		<defName>MakeGladius</defName>
 		<label>make gladius</label>
 		<description>Makes a Dagger</description>
@@ -304,12 +305,12 @@
 						<li>BarsMetal</li>
 					</categories>
 				</filter>
-				<count>5</count>
+				<count>25</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
 
-	<RecipeDef ParentName="MakeWeaponMeleePrimitive">
+	<RecipeDef ParentName="MakeWeaponMeleeMedieval">
 		<defName>MakeSwordLong</defName>
 		<label>make SwordLong</label>
 		<description>Makes a SwordLong</description>
@@ -323,12 +324,12 @@
 						<li>BarsMetal</li>
 					</categories>
 				</filter>
-				<count>25</count>
+				<count>35</count>
 			</li>
 		</ingredients>
 	</RecipeDef>
 
-	<RecipeDef ParentName="MakeWeaponMeleePrimitive">
+	<RecipeDef ParentName="MakeWeaponMeleeMedieval">
 		<defName>MakeAxe</defName>
 		<label>make Axe</label>
 		<description>Makes a Axe</description>
@@ -347,13 +348,10 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>WoodLog</li>
+						<li>WoodPlank</li>
 					</thingDefs>
-					<categories>
-						<li>BarsMetal</li>
-					</categories>
 				</filter>
-				<count>10</count>
+				<count>15</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
@@ -363,7 +361,7 @@
 		</fixedIngredientFilter>
 	</RecipeDef>
 
-	<RecipeDef ParentName="MakeWeaponMeleePrimitive">
+	<RecipeDef ParentName="MakeWeaponMeleeMedieval">
 		<defName>MakePickaxe</defName>
 		<label>make Pickaxe</label>
 		<description>Makes a Pickaxe</description>
@@ -377,15 +375,16 @@
 						<li>BarsMetal</li>
 					</categories>
 				</filter>
-				<count>10</count>
+				<count>25</count>
 			</li>
 			<li>
 				<filter>
 					<thingDefs>
+						<li>WoodPlank</li>
 						<li>WoodLog</li>
 					</thingDefs>
 				</filter>
-				<count>10</count>
+				<count>15</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
@@ -395,8 +394,8 @@
 		</fixedIngredientFilter>
 	</RecipeDef>
 
-	<RecipeDef ParentName="MakeWeaponMeleePrimitive">
-		<defName>MakeHammer</defName>
+	<RecipeDef ParentName="MakeWeaponMeleeMedieval">
+		<defName>MakeHammerWar</defName>
 		<label>make Hammer</label>
 		<description>Makes a Hammer</description>
 		<products>
@@ -405,19 +404,22 @@
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
-						<li>BarkFibre</li>
-					</thingDefs>
+					<categories>
+						<li>BarsMetal</li>
+					</categories>
 				</filter>
-				<count>25</count>
+				<count>35</count>
 			</li>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>WoodLog</li>
+						<li>WoodPlank</li>
 					</thingDefs>
+					<categories>
+						<li>BarsMetal</li>
+					</categories>
 				</filter>
-				<count>20</count>
+				<count>15</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
@@ -427,7 +429,7 @@
 		</fixedIngredientFilter>
 	</RecipeDef>
 
-	<RecipeDef ParentName="MakeWeaponMeleePrimitive">
+	<RecipeDef ParentName="MakeWeaponMeleeMedieval">
 		<defName>MakePike</defName>
 		<label>make Pike</label>
 		<description>Makes a Pike</description>
@@ -437,19 +439,19 @@
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
-						<li>BarkFibre</li>
-					</thingDefs>
+					<categories>
+						<li>BarsMetal</li>
+					</categories>
 				</filter>
 				<count>25</count>
 			</li>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>WoodLog</li>
+						<li>WoodPlank</li>
 					</thingDefs>
 				</filter>
-				<count>20</count>
+				<count>25</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>

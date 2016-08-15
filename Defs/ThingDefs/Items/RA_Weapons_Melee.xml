@@ -67,10 +67,6 @@
 			<ArmorPenetration>1</ArmorPenetration>
 			<MeleeWeapon_Cooldown>0.6</MeleeWeapon_Cooldown>
 		</statBases>
-		<stuffCategories>
-			<li>Bone</li>
-			<li>StoneCobble</li>
-		</stuffCategories>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
@@ -85,19 +81,26 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.1, 1, 0)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
 			<li>NeolithicMelee</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>Bone</li>
+			<li>StoneCobble</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>WeaponsMeleeNeolithic</li>
+		</thingCategories>
 	</ThingDef>
 
 
 
 	<ThingDef ParentName="WeaponMelee">
 		<defName>Club</defName>
-		<label>club</label>
+		<label>The club</label>
 		<description>The oldest human weapon - a shaped piece of wood for bashing enemies to death. Neolithic but effective.</description>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/Club</texPath>
@@ -108,11 +111,6 @@
 			<MeleeWeapon_DamageAmount>9</MeleeWeapon_DamageAmount>
 			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
 		</statBases>
-		<stuffCategories>
-			<li>WoodLog</li>
-			<li>Bone</li>
-			<li>StoneCobble</li>
-		</stuffCategories>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
@@ -127,16 +125,24 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.2, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.2, 1, 0)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
 			<li>NeolithicMelee</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>WoodLog</li>
+			<li>Bone</li>
+			<li>StoneCobble</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>WeaponsMeleeNeolithic</li>
+		</thingCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMelee">
-		<defName>Spear</defName>
+		<defName>SpearNeolithic</defName>
 		<label>Primitive spear</label>
 		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
 		<graphicData>
@@ -150,10 +156,6 @@
 			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
 			<ArmorPenetration>4</ArmorPenetration>
 		</statBases>
-		<stuffCategories>
-			<li>Bone</li>
-			<li>StoneCobble</li>
-		</stuffCategories>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
@@ -168,13 +170,20 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.15, -0.01, 0)</firstHandPosition>
+				<firstHandPosition>(-0.15, 1, 0)</firstHandPosition>
 
 			</li>
 		</comps>
 		<weaponTags>
 			<li>NeolithicMelee</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>Bone</li>
+			<li>StoneCobble</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>WeaponsMeleeNeolithic</li>
+		</thingCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMelee">
@@ -186,10 +195,6 @@
 			<drawSize>0.9</drawSize>
 		</graphicData>
 		<equippedAngleOffset>30</equippedAngleOffset>
-		<stuffCategories>
-			<li>Bone</li>
-			<li>StoneCobble</li>
-		</stuffCategories>
 		<statBases>
 			<MeleeWeapon_DamageAmount>9</MeleeWeapon_DamageAmount>
 			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
@@ -219,13 +224,70 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.03, 0, -0.18)</firstHandPosition>
+				<firstHandPosition>(-0.03, 1, -0.18)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
 			<li>NeolithicMelee</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>Bone</li>
+			<li>StoneCobble</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>WeaponsMeleeNeolithic</li>
+		</thingCategories>
 	</ThingDef>
+
+	<ThingDef ParentName="WeaponMelee">
+		<defName>SwordNeolithic</defName>
+		<label>Neolithic sword</label>
+		<description>blabla</description>
+		<graphicData>
+			<texPath>Things/Items/Weapons/Neolithic/SwordNeolithic/SwordNeolithic</texPath>
+		</graphicData>
+		<equippedAngleOffset>125</equippedAngleOffset>
+		<statBases>
+			<MeleeWeapon_DamageAmount>10</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>0.95</MeleeWeapon_Cooldown>
+			<ArmorPenetration>2</ArmorPenetration>
+			<MaxHitPoints>110</MaxHitPoints>
+		</statBases>
+		<verbs>
+			<li>
+				<hasStandardCommand>true</hasStandardCommand>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<meleeDamageDef>Cut</meleeDamageDef>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="RA.CompTool_Properties"/>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0082</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+			<li Class="RA.CompTool_Properties">
+				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
+				<workTypes>
+					<li>PlantCutting</li> 
+				</workTypes>
+			</li>
+			<li Class="RA.CompHandsDrawer_Properties">
+				<firstHandPosition>(0.2, 1, 0.05)</firstHandPosition>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>NeolithicMelee</li>
+		</weaponTags>
+		<stuffCategories>
+			<li>Bone</li>
+			<li>StoneCobble</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>WeaponsMeleeNeolithic</li>
+		</thingCategories>
+	</ThingDef>
+
 	<!-- ========================= Medieval =========================-->
 
 	<ThingDef Name="WeaponMeleeMedieval" ParentName="WeaponMelee" Abstract="True">
@@ -252,11 +314,11 @@
 		<comps>
 			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompCraftedValue_Properties">
-				<valuePerWorkFactor>0.0031</valuePerWorkFactor>
+				<valuePerWorkFactor>0.0077</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.18, 0, 0.03)</firstHandPosition>
+				<firstHandPosition>(-0.18, 1, 0.03)</firstHandPosition>
 			</li>  
 		</comps>          
 		<verbs>
@@ -269,6 +331,12 @@
 		<weaponTags>
 			<li>MedievalMelee</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>WeaponsMeleeMedieval</li>
+		</thingCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -292,7 +360,7 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.34, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.34, 1, 0)</firstHandPosition>
 			</li>  
 		</comps>
 		<verbs>
@@ -305,6 +373,12 @@
 		<weaponTags>
 			<li>MedievalMelee</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>WeaponsMeleeMedieval</li>
+		</thingCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -328,8 +402,8 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(0.13, 0, 0.1)</firstHandPosition>
-				<secondHandPosition>(-0.26, 0, -0.3)</secondHandPosition>
+				<firstHandPosition>(0.13, 1, 0.1)</firstHandPosition>
+				<secondHandPosition>(-0.26, 1, -0.3)</secondHandPosition>
 			</li>
 		</comps>
 		<verbs>
@@ -342,6 +416,12 @@
 		<weaponTags>
 			<li>MedievalMelee</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>WeaponsMeleeMedieval</li>
+		</thingCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -364,8 +444,8 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.06, 0, 0.02)</firstHandPosition>
-				<secondHandPosition>(-0.06, 0, -0.25)</secondHandPosition>
+				<firstHandPosition>(-0.06, 1, 0.02)</firstHandPosition>
+				<secondHandPosition>(-0.06, 1, -0.25)</secondHandPosition>
 
 			</li>  
 			<li Class="RA.CompTool_Properties">
@@ -385,6 +465,13 @@
 		<weaponTags>
 			<li>MedievalMelee</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>WeaponsMeleeMedieval</li>
+			<li>ToolsMedieval</li>
+		</thingCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="WeaponMeleeMedieval">
@@ -408,8 +495,8 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0.05)</firstHandPosition>
-				<secondHandPosition>(0.2, 0, 0.05)</secondHandPosition>
+				<firstHandPosition>(-0.1, 1, 0.05)</firstHandPosition>
+				<secondHandPosition>(0.2, 1, 0.05)</secondHandPosition>
 			</li>
 		</comps>  
 		<verbs>
@@ -422,6 +509,12 @@
 		<weaponTags>
 			<li>MedievalMelee</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>WeaponsMeleeMedieval</li>
+		</thingCategories>
 	</ThingDef>
 
 
@@ -435,10 +528,6 @@
 			<texPath>Things/Items/Weapons/Neolithic/HammerNeolithic/HammerNeolithic</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<stuffCategories>
-			<li>Bone</li>
-			<li>StoneCobble</li>
-		</stuffCategories>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
@@ -457,12 +546,19 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(0,0,-0.08)</firstHandPosition>
+				<firstHandPosition>(0,1,-0.08)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
 			<li>NeolithicTool</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>Bone</li>
+			<li>StoneCobble</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>ToolsNeolithic</li>
+		</thingCategories>
 	</ThingDef>	
 
 	<ThingDef ParentName="Tools">
@@ -481,7 +577,7 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.1, 1, 0)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.002</valuePerWorkFactor>
@@ -500,6 +596,11 @@
 		<weaponTags>
 			<li>NeolithicTool</li>
 		</weaponTags>
+		<thingCategories>
+			<li>ToolsNeolithic</li>
+			<li>ToolsMedieval</li>
+		</thingCategories>
+
 	</ThingDef>
 
 	<ThingDef ParentName="Tools">
@@ -518,7 +619,7 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(0, 1, 0.02)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.002</valuePerWorkFactor>
@@ -538,6 +639,12 @@
 		<weaponTags>
 			<li>MedievalTool</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>ToolsMedieval</li>
+		</thingCategories>
 	</ThingDef>
 
 	<ThingDef ParentName="Tools">
@@ -569,12 +676,18 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(0, 0, 0)</firstHandPosition>
+				<firstHandPosition>(0, 1, 0)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
 			<li>MedievalTool</li>
 		</weaponTags>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<thingCategories>
+			<li>ToolsMedieval</li>
+		</thingCategories>
 	</ThingDef>
 	
 	<ThingDef ParentName="Tools">
@@ -609,7 +722,7 @@
 				</workTypes>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.1, 1, 0)</firstHandPosition>
 			</li>
 		</comps>
 		<techLevel>Industrial</techLevel>

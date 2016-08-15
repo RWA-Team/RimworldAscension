@@ -30,8 +30,8 @@
 		<comps>
 			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.03, 0, 0)</firstHandPosition>
-				<secondHandPosition>(0.30, 0, -0.02)</secondHandPosition>
+				<firstHandPosition>(-0.03, 1, 0)</firstHandPosition>
+				<secondHandPosition>(0.30, 1, -0.02)</secondHandPosition>
 
 			</li>
 		</comps>
@@ -68,7 +68,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(0.16, 0, 0.05)</firstHandPosition>
+				<firstHandPosition>(0.16, 1, 0.05)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
@@ -104,7 +104,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(0.13, 0, -0.03)</firstHandPosition>
+				<firstHandPosition>(0.13, 1, -0.03)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
@@ -139,7 +139,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(0.3, 0, 0.03)</firstHandPosition>
+				<firstHandPosition>(0.3, 1, 0.03)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
@@ -175,7 +175,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(0.22, 0, 0.03)</firstHandPosition>
+				<firstHandPosition>(0.22, 1, 0.03)</firstHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
@@ -207,7 +207,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.1, 1, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, -0.15, 0)</secondHandPosition>
 			</li>
 		</comps>
@@ -267,7 +267,7 @@
 			<li Class="RA.CompTool_Properties">
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.3, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.3, 1, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, -1, 0)</secondHandPosition>
 			</li>
 		</comps>

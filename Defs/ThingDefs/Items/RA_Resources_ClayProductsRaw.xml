@@ -33,9 +33,17 @@
 		<description>An unfired pot.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
-			<color>(147,135,106)</color>
 		</graphicData>
 		<stackLimit>1</stackLimit>
+		<stuffCategories>
+			<li>Clay</li>
+		</stuffCategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.004</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="ClayProductRaw">
@@ -44,9 +52,17 @@
 		<description>An unfired plant pot.</description>
 		<graphicData>
 			<texPath>Things/Building/Furniture/PlantPot</texPath>
-			<color>(147,135,106)</color>
 		</graphicData>
 		<stackLimit>1</stackLimit>
+		<stuffCategories>
+			<li>Clay</li>
+		</stuffCategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0003</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="ClayProductRaw">
@@ -56,9 +72,17 @@
 		<graphicData>
 			<texPath>Things/Items/Tradeables/Ceramics</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
-			<color>(198,255,255)</color>
 		</graphicData>
 		<stackLimit>1</stackLimit>
+		<stuffCategories>
+			<li>Clay</li>
+		</stuffCategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0007</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 	
 	<!-- raw clay brick -->
@@ -69,8 +93,16 @@
 		<description>A pile of unfired bricks.</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/BrickRaw</texPath>
-			<color>(170,70,0)</color>
 		</graphicData>
+		<stuffCategories>
+			<li>Clay</li>
+		</stuffCategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0019</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="BrickRaw">
@@ -78,8 +110,14 @@
 		<label>raw adobe brick</label>
 		<description>A pile of unfired adobe bricks.</description>
 		<graphicData>
-			<color>(127,106,0)</color>
+            <texPath>Things/Items/Resources/BrickRaw</texPath>
 		</graphicData>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0041</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 </Defs>
