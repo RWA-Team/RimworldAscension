@@ -1,4 +1,6 @@
-﻿using RimWorld;
+﻿using System;
+using System.Collections.Generic;
+using RimWorld;
 using Verse;
 
 namespace RA
@@ -6,10 +8,14 @@ namespace RA
     public static class RA_GenPlace
     {
         // allows to place items to container stacks
-        public static bool TryPlaceDirect(Thing thing, IntVec3 loc, out Thing resultingThing)
+        public static bool TryPlaceDirect(Thing thing, IntVec3 loc, out Thing resultingThing,
+            Action<Thing, int> placedAction = null)
         {
-            // container code part
-            var container = Find.ThingGrid.ThingsListAt(loc).Find(building => building is Container && building.Spawned) as Container;
+            #region CONTAINER CASE
+
+            var container =
+                Find.ThingGrid.ThingsListAt(loc).Find(building => building is Container && building.Spawned) as
+                    Container;
             if (container != null)
             {
                 // stackables (like resources)
@@ -37,9 +43,13 @@ namespace RA
                 return true;
             }
 
-            // boolean success indicator
+#endregion
+
+            #region VANILLA CASE
+
+            // used to keep original thing reference
+            var initialThing = thing;
             var flag = false;
-            // vanilla code part
             if (thing.stackCount > thing.def.stackLimit)
             {
                 thing = thing.SplitOff(thing.def.stackLimit);
@@ -51,30 +61,40 @@ namespace RA
                 var i = 0;
                 while (i < thingList.Count)
                 {
-                    var thing2 = thingList[i];
-                    if (!thing2.CanStackWith(thing))
+                    var thing3 = thingList[i];
+                    if (!thing3.CanStackWith(thing))
                     {
                         i++;
                     }
                     else
                     {
-                        // Required, because thing reference is changed to the absorber, if absorbed
-                        if (thing2.TryAbsorbStack(thing, true))
+                        var stackCount = thing.stackCount;
+                        if (thing3.TryAbsorbStack(thing, true))
                         {
-                            resultingThing = thing2;
+                            resultingThing = thing3;
+                            placedAction?.Invoke(thing3, stackCount);
                             return !flag;
                         }
                         resultingThing = null;
+                        if (placedAction != null && stackCount != thing.stackCount)
+                        {
+                            placedAction(thing3, stackCount - thing.stackCount);
+                        }
+                        if (initialThing != thing)
+                        {
+                            initialThing.TryAbsorbStack(thing, false);
+                        }
                         return false;
                     }
                 }
             }
-
             resultingThing = GenSpawn.Spawn(thing, loc);
-
-            var slotGroup1 = loc.GetSlotGroup();
-            slotGroup1?.parent?.Notify_ReceivedThing(resultingThing);
+            placedAction?.Invoke(thing, thing.stackCount);
+            var slotGroup = loc.GetSlotGroup();
+            slotGroup?.parent?.Notify_ReceivedThing(resultingThing);
             return !flag;
+
+            #endregion
         }
     }
 }

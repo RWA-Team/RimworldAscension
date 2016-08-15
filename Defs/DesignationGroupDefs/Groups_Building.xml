@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!--========================= Furniture =========================-->
+
+	<RA.DesignationGroupDef Name="FurnitureGroup" Abstract="True">
+		<designationCategory>Furniture</designationCategory>
+	</RA.DesignationGroupDef>
+
+	<RA.DesignationGroupDef ParentName="FurnitureGroup">
+		<defName>Stools</defName>
+		<label>stools</label>
+		<description>Various stool types for pawns to sit on.</description>
+		<iconPath>UI/Gizmoes/Groups/Stools</iconPath>
+		<defNames>
+			<li>StoolNeolithicWood</li>
+			<li>StoolNeolithicStone</li>
+		</defNames>
+	</RA.DesignationGroupDef>
+
+	<RA.DesignationGroupDef ParentName="FurnitureGroup">
+		<defName>Tables</defName>
+		<label>tables</label>
+		<description>Various table types for pawns to sit at.</description>
+		<iconPath>UI/Gizmoes/Groups/Tables</iconPath>
+		<defNames>
+			<li>TableNeolithicWood</li>
+			<li>TableNeolithicStone</li>
+		</defNames>
+	</RA.DesignationGroupDef>
+
+	<RA.DesignationGroupDef ParentName="FurnitureGroup">
+		<defName>Containers</defName>
+		<label>containers</label>
+		<description>Various container types to store multiple items inside.</description>
+		<iconPath>UI/Gizmoes/Groups/Containers</iconPath>
+		<defNames>
+			<li>Basket</li>
+			<li>Chest</li>
+			<li>Barrel</li>
+			<li>Pot</li>
+		</defNames>
+	</RA.DesignationGroupDef>
+
+	<RA.DesignationGroupDef ParentName="FurnitureGroup">
+		<defName>Beds</defName>
+		<label>beds</label>
+		<description>Various bed types for pawns to sleep on.</description>
+		<iconPath>UI/Gizmoes/Groups/Beds</iconPath>
+		<defNames>
+			<li>SleepingSpot</li>
+			<li>BedHay</li>
+			<li>BedHide</li>
+			<li>BedHideDouble</li>
+			<li>Bed</li>
+			<li>BedDouble</li>
+		</defNames>
+	</RA.DesignationGroupDef>
+
+	<RA.DesignationGroupDef ParentName="FurnitureGroup">
+		<defName>BedsAnimal</defName>
+		<label>animal beds</label>
+		<description>Various bed types for animals to sleep on.</description>
+		<iconPath>UI/Gizmoes/Groups/BedsAnimal</iconPath>
+		<defNames>
+			<li>AnimalSleepingSpot</li>
+			<li>AnimalSleepingBox</li>
+		</defNames>
+	</RA.DesignationGroupDef>
+
+	<!--========================= Structure =========================-->
+
+	<RA.DesignationGroupDef Name="StructureGroup" Abstract="True">
+		<designationCategory>Structure</designationCategory>
+	</RA.DesignationGroupDef>
+
+	<RA.DesignationGroupDef ParentName="StructureGroup">
+		<defName>Doors</defName>
+		<label>doors</label>
+		<description>Various door types for passage protection.</description>
+		<iconPath>UI/Gizmoes/Groups/Doors</iconPath>
+		<defNames>
+			<li>DoorWoodLog</li>
+		</defNames>
+	</RA.DesignationGroupDef>
+
+	<RA.DesignationGroupDef ParentName="StructureGroup">
+		<defName>Walls</defName>
+		<label>walls</label>
+		<description>Various wall types for area protection.</description>
+		<iconPath>UI/Gizmoes/Groups/Walls</iconPath>
+		<defNames>
+			<li>Palisade</li>
+			<li>WallLog</li>
+			<li>Wall</li>
+		</defNames>
+	</RA.DesignationGroupDef>
+
+</Defs>

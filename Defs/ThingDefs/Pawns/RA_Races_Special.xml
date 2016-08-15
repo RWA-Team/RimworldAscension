@@ -86,12 +86,7 @@
 				<shearIntervalDays>30</shearIntervalDays>
 				<woolAmount>100</woolAmount>
 			</li>
-			<li Class="RA.CompCaravan_Properties">
-				<cartEmptyTexturePath>Things/Special/CaravanCart/CartEmpty</cartEmptyTexturePath>
-				<cartFullTexturePath>Things/Special/CaravanCart/CartFull</cartFullTexturePath>
-				<wheelTexturePath>Things/Special/CaravanCart/Wheel</wheelTexturePath>
-				<harnessTexturePath>Things/Special/CaravanCart/Harness</harnessTexturePath>
-			</li>
+			<li Class="RA.CompCaravan_Properties"/>
 		</comps>
 		<race>
 			<herdAnimal>true</herdAnimal>

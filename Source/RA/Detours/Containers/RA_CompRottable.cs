@@ -6,7 +6,7 @@ namespace RA
 {
     public class RA_CompRottable : CompRottable
     {
-        // container rot preservation addition
+        // modifies rotting speed based on container stats
         public override void CompTickRare()
         {
             var initialRotProgress = RotProgress;

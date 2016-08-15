@@ -8,7 +8,7 @@ namespace RA
 {
     public class CompCraftedValue : ThingComp
     {
-        public float marketValue;
+        public float marketValue = 1000;
 
         public float ValuePerWork => (props as CompCraftedValue_Properties).valuePerWorkFactor;
         public float ProfitFactor => (props as CompCraftedValue_Properties).profitFactor;

@@ -141,6 +141,7 @@
 		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
 		<graphicData>
 			<texPath>Things/Item/Equipment/WeaponMelee/Spear</texPath>
+			<drawSize>(0.2,0.2)</drawSize>
 		</graphicData>
 		<equippedAngleOffset>0</equippedAngleOffset>
 		<statBases>
@@ -167,7 +168,7 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.15, 0, 0)</firstHandPosition>
+				<firstHandPosition>(-0.15, -0.01, 0)</firstHandPosition>
 
 			</li>
 		</comps>

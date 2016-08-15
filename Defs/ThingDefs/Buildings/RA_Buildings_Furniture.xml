@@ -482,7 +482,6 @@
 		</building>
 	</ThingDef>
 
-
 	<ThingDef ParentName="Stool">
 		<defName>StoolNeolithicStone</defName>
 		<label>stone stool</label>
