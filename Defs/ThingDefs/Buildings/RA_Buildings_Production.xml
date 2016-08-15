@@ -541,7 +541,7 @@
 			<li>MakeSwordLong</li>
 			<li>MakeAxe</li>
 			<li>MakePickaxe</li>
-			<li>MakeHammer</li>
+			<li>MakeHammerWar</li>
 		</recipes>
 		<researchPrerequisites>
 			<li>Smithing</li>

@@ -114,7 +114,7 @@
 		<label>make raw adobe bricks</label>
 		<description>Mix clay and hay into raw adobe bricks.</description>
 		<jobString>Making raw adobe bricks.</jobString>
-		<workAmount>300</workAmount>
+		<workAmount>400</workAmount>
 		<targetCountAdjustment>50</targetCountAdjustment>
 		<ingredients>
 			<li>
@@ -131,7 +131,7 @@
 						<li>Hay</li>
 					</thingDefs>
 				</filter>
-				<count>25</count>
+				<count>40</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
@@ -155,17 +155,17 @@
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
-						<li>ClayClumpGray</li>
-					</thingDefs>
+					<categories>
+						<li>Clay</li>
+					</categories>
 				</filter>
 				<count>25</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
-			<thingDefs>
-				<li>ClayClumpGray</li>
-			</thingDefs>
+			<categories>
+				<li>Clay</li>
+			</categories>
 		</fixedIngredientFilter>
 		<products>
 			<BrickRaw>25</BrickRaw>
@@ -180,17 +180,17 @@
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
-						<li>ClayClumpGray</li>
-					</thingDefs>
+					<categories>
+						<li>Clay</li>
+					</categories>
 				</filter>
-				<count>20</count>
+				<count>80</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
-			<thingDefs>
-				<li>ClayClumpGray</li>
-			</thingDefs>
+			<categories>
+				<li>Clay</li>
+			</categories>
 		</fixedIngredientFilter>
 		<products>
 			<PotRaw>1</PotRaw>
@@ -205,17 +205,17 @@
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
-						<li>ClayClumpGray</li>
-					</thingDefs>
+					<categories>
+						<li>Clay</li>
+					</categories>
 				</filter>
 				<count>5</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
-			<thingDefs>
-				<li>ClayClumpGray</li>
-			</thingDefs>
+			<categories>
+				<li>Clay</li>
+			</categories>
 		</fixedIngredientFilter>
 		<products>
 			<PotPlantRaw>1</PotPlantRaw>
@@ -230,17 +230,17 @@
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
-						<li>ClayClumpWhite</li>
-					</thingDefs>
+					<categories>
+						<li>Clay</li>
+					</categories>
 				</filter>
-				<count>10</count>
+				<count>50</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
-			<thingDefs>
-				<li>ClayClumpWhite</li>
-			</thingDefs>
+			<categories>
+				<li>Clay</li>
+			</categories>
 		</fixedIngredientFilter>
 		<products>
 			<CeramicsRaw>1</CeramicsRaw>

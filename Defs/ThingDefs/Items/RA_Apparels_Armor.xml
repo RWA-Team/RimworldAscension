@@ -72,15 +72,21 @@
 			<Insulation_Cold>5</Insulation_Cold>
 			<Insulation_Heat>5</Insulation_Heat>
 		</statBases>
+		<stuffCategories>
+			<li>Bone</li>
+		</stuffCategories>
 		<apparel>
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Neolithic/MaskSkull/MaskSkull</worngraphicPath>
 			<tags>
-				<li>NeolithicArmorBone</li>
+				<li>ArmorNeolithicFeral</li>
 			</tags>
 		</apparel>
+		<thingcategories>
+			<li>ArmorNeolithic</li>
+		</thingcategories>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorHead">
@@ -104,6 +110,15 @@
 				<li>NeolithicArmor</li>
 			</tags>
 		</apparel>
+		<thingcategories>
+			<li>ArmorNeolithic</li>
+		</thingcategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0003</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorHead">
@@ -126,9 +141,21 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</worngraphicPath>
 			<tags>
-				<li>MedievalArmor</li>
+				<li>ArmorMedievalMedium</li>
 			</tags>
 		</apparel>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<thingcategories>
+			<li>ArmorMedieval</li>
+		</thingcategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0014</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorHead">
@@ -137,7 +164,7 @@
 		<description>A full helmet.</description>
 		<graphicData>
 			<texPath>Missing</texPath>
-			<texPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</texPath>
+			<texPath>Things/Items/Apparels/Armor/Medieval/HelmetFull/HelmetFull</texPath>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>225</MaxHitPoints>
@@ -151,9 +178,22 @@
 				<li>FullHead</li>
 			</bodyPartGroups>
 			<tags>
-				<li>MedievalArmor</li>
+				<li>ArmorMedievalHeavy</li>
 			</tags>
+			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/HelmetFull/HelmetFull</worngraphicPath>
 		</apparel>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<thingcategories>
+			<li>ArmorMedieval</li>
+		</thingcategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0017</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorHead">
@@ -176,9 +216,21 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/HelmetNasal/HelmetNasal</worngraphicPath>
 			<tags>
-				<li>MedievalArmor</li>
+				<li>ArmorMedievalLight</li>
 			</tags>
 		</apparel>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<thingcategories>
+			<li>ArmorMedieval</li>
+		</thingcategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0014</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorHead">
@@ -201,9 +253,21 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Kettlehat/Kettlehat</worngraphicPath>
 			<tags>
-				<li>MedievalArmor</li>
+				<li>ArmorMedievalLight</li>
 			</tags>
 		</apparel>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<thingcategories>
+			<li>ArmorMedieval</li>
+		</thingcategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0011</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<!-- ========================= Chest =========================-->
@@ -243,9 +307,12 @@
 			</bodyPartGroups>
 			<worngraphicPath>Things/Items/Apparels/Armor/Neolithic/ArmorBone/ArmorBone</worngraphicPath>
 			<tags>
-				<li>NeolithicArmorBone</li>
+				<li>ArmorNeolithicFeral</li>
 			</tags>
 		</apparel>
+		<thingcategories>
+			<li>ArmorNeolithic</li>
+		</thingcategories>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
 
@@ -273,10 +340,22 @@
 				<li>Shoulders</li>
 			</bodyPartGroups>
 			<tags>
-				<li>MedievalArmor</li>
+				<li>ArmorMedievalMedium</li>
 			</tags>
 			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
 		</apparel>
+		<thingcategories>
+			<li>ArmorMedieval</li>
+		</thingcategories>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0031</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
 
@@ -286,7 +365,7 @@
 		<description>A platemail.</description>
 		<graphicData>
 			<texPath>Missing</texPath>
-			<texPath>Things/Items/Apparels/Armor/Medieval/Bascinet/Bascinet</texPath>
+			<texPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</texPath>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>500</MaxHitPoints>
@@ -305,42 +384,22 @@
 				<li>Arms</li>
 			</bodyPartGroups>
 			<tags>
-				<li>MedievalArmor</li>
+				<li>MedievalArmorHeavy</li>
 			</tags>
-			<!-- <worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath> -->
+			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Platemail/Platemail</worngraphicPath>
 		</apparel>
-		<colorGenerator Class="ColorGenerator_StandardApparel" />
-	</ThingDef>
-
-	<ThingDef ParentName="ArmorChest">
-		<defName>Hauberk</defName>
-		<label>hauberk</label>
-		<description>A hauberk.</description>
-		<graphicData>
-			<texPath>Things/Items/Apparels/Armor/Medieval/Hauberk/Hauberk</texPath>
-		</graphicData>
-		<statBases>
-			<MaxHitPoints>320</MaxHitPoints>
-			<ArmorRating_Blunt>7</ArmorRating_Blunt>
-			<ArmorRating_Sharp>7</ArmorRating_Sharp>
-			<Insulation_Heat>-5</Insulation_Heat>
-			<Insulation_Cold>5</Insulation_Cold>
-		</statBases>
-		<equippedStatOffsets>
-			<MoveSpeed>-0.1</MoveSpeed>
-		</equippedStatOffsets>
-		<apparel>
-			<bodyPartGroups>
-				<li>Torso</li>
-				<li>Shoulders</li>
-				<li>Arms</li>
-				<li>FullHead</li>
-			</bodyPartGroups>
-			<tags>
-				<li>MedievalArmor</li>
-			</tags>
-			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Hauberk/Hauberk</worngraphicPath>
-		</apparel>
+		<thingcategories>
+			<li>ArmorMedieval</li>
+		</thingcategories>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0028</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
 	</ThingDef>
 
@@ -367,11 +426,63 @@
 				<li>Arms</li>
 			</bodyPartGroups>
 			<tags>
-				<li>MedievalArmor</li>
+				<li>MedievalArmorLight</li>
 			</tags>
 			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/Gambeson/Gambeson</worngraphicPath>
 		</apparel>
+		<thingcategories>
+			<li>ArmorMedieval</li>
+		</thingcategories>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0046</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 		<colorGenerator Class="ColorGenerator_StandardApparel" />
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorChest">
+		<defName>ArmorLeather</defName>
+		<label>Leather armor</label>
+		<description>Armor made of animal or human leather</description>
+		<graphicData>
+			<texPath>Things/Items/Apparels/Armor/Medieval/ArmorLeather/ArmorLeather</texPath>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<ArmorRating_Sharp>5</ArmorRating_Sharp>
+			<ArmorRating_Blunt>5</ArmorRating_Blunt>
+			<Insulation_Heat>5</Insulation_Heat>
+			<Insulation_Cold>10</Insulation_Cold>
+		</statBases>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+			</bodyPartGroups>
+			<tags>
+				<li>MedievalArmorLight</li>
+			</tags>
+			<worngraphicPath>Things/Items/Apparels/Armor/Medieval/ArmorLeather/ArmorLeather</worngraphicPath>
+		</apparel>
+		<thingcategories>
+			<li>ArmorMedieval</li>
+		</thingcategories>
+		<stuffCategories>
+			<li>Leather</li>
+		</stuffCategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0080</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
+
 	</ThingDef>
 
 	<!-- ========================= Shields =========================-->
@@ -405,9 +516,18 @@
 		</statBases>
 		<apparel>
 			<tags>
-				<li>NeolithicShield</li>
+				<li>ShieldNeolithic</li>
 			</tags>
 		</apparel>
+		<thingcategories>
+			<li>ArmorNeolithic</li>
+		</thingcategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0059</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -418,13 +538,20 @@
 			<texPath>Things/Items/Apparels/Shields/ShieldBone</texPath>
 		</graphicData>
 		<statBases>
+			<MarketValue>30</MarketValue>
 			<MaxHitPoints>70</MaxHitPoints>
 		</statBases>
 		<apparel>
 			<tags>
-				<li>NeolithicShieldBone</li>
+				<li>ArmorNeolithicFeral</li>
 			</tags>
 		</apparel>
+		<stuffCategories>
+			<li>Bone</li>
+		</stuffCategories>
+		<thingcategories>
+			<li>ArmorNeolithic</li>
+		</thingcategories>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -437,14 +564,23 @@
 		<statBases>
 			<MaxHitPoints>80</MaxHitPoints>
 		</statBases>
+		<apparel>
+			<tags>
+				<li>ShieldMedieval</li>
+			</tags>
+		</apparel>
 		<stuffCategories>
 			<li>Metal</li>
 		</stuffCategories>
-		<apparel>
-			<tags>
-				<li>MedievalShield</li>
-			</tags>
-		</apparel>
+        <thingcategories>
+			<li>ArmorMedieval</li>
+        </thingcategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0019</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorShield">
@@ -452,19 +588,31 @@
 		<label>kite shield</label>
 		<description>A kite shield.</description>
 		<graphicData>
-			<texPath>Things/Items/Apparels/Shields/ShieldKite</texPath>
+			<texPath>Things/Items/Apparels/Shields/ShieldKite/ShieldKite</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		    <shaderType>CutoutComplex</shaderType>
+		    <colorTwo>(223,44,44)</colorTwo>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 		</statBases>
+		<apparel>
+			<tags>
+				<li>ShieldMedieval</li>
+			</tags>
+		</apparel>
 		<stuffCategories>
 			<li>Metal</li>
 		</stuffCategories>
-		<apparel>
-			<tags>
-				<li>MedievalShield</li>
-			</tags>
-		</apparel>
+		<thingcategories>
+			<li>ArmorMedieval</li>
+		</thingcategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0021</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 </ThingDefs>
