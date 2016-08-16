@@ -146,7 +146,7 @@
 		<label>Primitive spear</label>
 		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
 		<graphicData>
-			<texPath>Things/Item/Equipment/WeaponMelee/Spear</texPath>
+			<texPath>Things/Items/Weapons/Neolithic/SpearPrimitive/SpearPrimitive</texPath>
 			<drawSize>(0.2,0.2)</drawSize>
 		</graphicData>
 		<equippedAngleOffset>0</equippedAngleOffset>
@@ -170,8 +170,8 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(-0.15, 1, 0)</firstHandPosition>
-
+				<firstHandPosition>(0, 1, 0)</firstHandPosition>
+				<secondHandPosition>(-0.25,1,-0.29)</secondHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
