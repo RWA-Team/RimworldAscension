@@ -11,7 +11,7 @@ namespace RA
         {
             foreach (var sourceDef in DefDatabase<RecipeDef>.AllDefs
                 .Where(def => def.UsesUnfinishedThing
-                              && def.unfinishedThingDef.defName == "Placeholder").ToList())
+                              && def.unfinishedThingDef.defName == "UnfinishedThing").ToList())
             {
                 var firstProductDef = sourceDef.products.FirstOrDefault().thingDef;
 

@@ -25,7 +25,7 @@ namespace RA
             {
                 CompTool toolComp;
                 // pawn carries tool
-                if ((toolComp = pawn.equipment.Primary.TryGetComp<CompTool>()) != null)
+                if ((toolComp = pawn.equipment.Primary?.TryGetComp<CompTool>()) != null)
                 {
                     // tool is used for the corresponding job
                     if (toolComp.Allows("Mining") && MineUtility.MineableInCell(A.Cell) != null ||
