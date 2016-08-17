@@ -11,7 +11,7 @@ namespace RA
         {
             foreach (var sourceDef in DefDatabase<ThingDef>.AllDefs
                 .Where(def => def.Minifiable
-                              && def.minifiedDef.defName == "Placeholder").ToList())
+                              && def.minifiedDef.defName == "MinifiedThing").ToList())
             {
                 var newDef = new ThingDef
                 {
