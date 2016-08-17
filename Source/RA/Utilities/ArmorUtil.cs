@@ -11,8 +11,8 @@ namespace RA
         // flat damage reduction armor system and armor penetration
         public static int GetAfterArmorDamage(Pawn pawn, DamageInfo dInfo, BodyPartRecord bPart)
         {
-            //Log.Message(Format("BodyPart hit = {0}", bPart.def.LabelCap));
-
+            Log.Message("****************************************");
+            Log.Message(Format("BodyPart hit = {0}", bPart.def.LabelCap));
             var armorStat = dInfo.Def.armorCategory.DeflectionStat();
 
             var remainingDamage = (float) dInfo.Amount;
@@ -52,17 +52,17 @@ namespace RA
         public static void ApplyDamageReduction(ref float DMG, ref float AP, float AR,
             Thing armorThing, DamageInfo dInfo)
         {
-            //Log.Message(Format("Initial AR of {0} = {1}", armorThing, AR));
-            //Log.Message(Format("AP of {0} = {1}", dInfo.Source, AP));
+            Log.Message(Format("Initial AR of {0} = {1}", armorThing, AR));
+            Log.Message(Format("AP of {0} = {1}", dInfo.Source, AP));
             // limit armor value after AP is applied to 0
             AR = Mathf.Clamp(AR - AP, 0, AR);
-            //Log.Message(Format("Actual AR after AP applied = {0}", AR));
+            Log.Message(Format("Actual AR after AP applied = {0}", AR));
             var blockedDamage = Mathf.Min(DMG, AR);
-            //Log.Message(Format("Initial DMG = {0}", DMG));
-            //Log.Message(Format("Blocked DMG = {0}", blockedDamage));
+            Log.Message(Format("Initial DMG = {0}", DMG));
+            Log.Message(Format("Blocked DMG = {0}", blockedDamage));
             armorThing?.TakeDamage(new DamageInfo(dInfo.Def, Mathf.RoundToInt(blockedDamage), null, null));
             DMG -= blockedDamage;
-            //Log.Message(Format("Result DMG = {0}", DMG));
+            Log.Message(Format("Result DMG = {0}", DMG));
         }
     }
 }

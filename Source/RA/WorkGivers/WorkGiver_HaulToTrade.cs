@@ -36,13 +36,16 @@ namespace RA
 
         public override Job NonScanJob(Pawn pawn)
         {
-            Log.Message("1");
             var numToCarry = 1;
             if (closestSellable.stackCount > 1)
             {
                 Log.Message("sellable " + closestSellable.def);
-                Log.Message("count " + closestTradeCenter.pendingResourcesCounters?.Count);
+                Log.Message("count 0 " + closestTradeCenter.pendingResourcesCounters?.Count);
                 Log.Message("count 1 " + closestSellable.stackCount);
+                foreach (var counter in closestTradeCenter.pendingResourcesCounters)
+                {
+                    Log.Message("stored " + counter.Key.defName + counter.Value);
+                }
                 Log.Message("count 2 " + closestTradeCenter.pendingResourcesCounters[closestSellable.def]);
                 Log.Message("count 3 " + pawn.carrier?.AvailableStackSpace(closestSellable.def));
                 Log.Message("2");
