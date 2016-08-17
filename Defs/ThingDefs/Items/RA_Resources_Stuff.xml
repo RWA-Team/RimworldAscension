@@ -30,9 +30,10 @@
 			<li>ResourcesProcessed</li>
 		</thingCategories>
 		<statBases>
-			<MarketValue>5</MarketValue>
-			<SharpDamageMultiplier>1.2</SharpDamageMultiplier>
-			<BluntDamageMultiplier>0.8</BluntDamageMultiplier>
+			<MarketValue>0.9</MarketValue>
+			<SharpDamageMultiplier>1.15</SharpDamageMultiplier>
+			<BluntDamageMultiplier>0.9</BluntDamageMultiplier>
+			<Cleanliness>-1.5</Cleanliness>
 		</statBases>
 		<stuffProps>
 			<categories>
@@ -44,18 +45,19 @@
 			<soundMeleeHitBlunt>MeleeHit_Wood</soundMeleeHitBlunt>
 			<smeltable>false</smeltable>
 			<statOffsets>
-				<Beauty>3</Beauty>
+				<Beauty>-1</Beauty>
 			</statOffsets>
 			<statFactors>
+				<ArmorPenetration>1.2</ArmorPenetration>
 				<Flammability>0.5</Flammability>
 				<MaxHitPoints>0.8</MaxHitPoints>
 				<WorkToMake>0.8</WorkToMake>
-				<MarketValue>1.2</MarketValue>
-				<Comfort>1.2</Comfort>
+				<Comfort>1</Comfort>
 				<Beauty>1.2</Beauty>
 				<TrapMeleeDamage>1.2</TrapMeleeDamage>
 				<MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
 			</statFactors>
+			<stuffCommonality>1</stuffCommonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -66,8 +68,9 @@
 		<soundDrop>Wood_Drop</soundDrop>
 		<statBases>
 			<DeteriorationRate>2</DeteriorationRate>
-			<SharpDamageMultiplier>0.5</SharpDamageMultiplier>
-			<MaxBurningTempCelsius>1000</MaxBurningTempCelsius>
+			<BluntDamageMultiplier>1</BluntDamageMultiplier>
+			<SharpDamageMultiplier>0.9</SharpDamageMultiplier>
+			<MaxBurningTempCelsius>450</MaxBurningTempCelsius>
 			<BurnDurationHours>1</BurnDurationHours>
 		</statBases>
 		<stuffProps>
@@ -81,9 +84,10 @@
 			<soundMeleeHitSharp>MeleeHit_Wood</soundMeleeHitSharp>
 			<soundMeleeHitBlunt>MeleeHit_Wood</soundMeleeHitBlunt>
 			<statOffsets>
-				<Beauty>2</Beauty>
+				<Beauty>0</Beauty>
 			</statOffsets>
 			<statFactors>
+				<ArmorPenetration>1</ArmorPenetration>
 				<MaxHitPoints>1</MaxHitPoints>
 				<Beauty>1</Beauty>
 				<Flammability>1</Flammability>
@@ -107,7 +111,7 @@
 			<li>ResourcesRaw</li>
 		</thingCategories>
 		<statBases>
-			<MarketValue>1.4</MarketValue>
+			<MarketValue>1.2</MarketValue>
 			<MaxHitPoints>120</MaxHitPoints>
 		</statBases>
 		<stuffProps>
@@ -133,14 +137,24 @@
 			<li>ResourcesProcessed</li>
 		</thingCategories>
 		<statBases>
-			<MarketValue>1.4</MarketValue>
 			<MaxHitPoints>120</MaxHitPoints>
+			<BurnDurationHours>0.66</BurnDurationHours>
 		</statBases>
 		<stuffProps>
+			<statFactors>
+				<MaxHitPoints>0.7</MaxHitPoints>
+				<Beauty>1.05</Beauty>
+			</statFactors>
 			<categories>
 				<li>WoodPlank</li>
 			</categories>
 		</stuffProps>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0022</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<!--===================== Stone =====================-->
@@ -148,7 +162,8 @@
 	<ThingDef Name="Stone" ParentName="Resource" Abstract="True">
 		<statBases>
 			<Flammability>0</Flammability>
-			<BluntDamageMultiplier>1.25</BluntDamageMultiplier>
+			<BluntDamageMultiplier>1.15</BluntDamageMultiplier>
+			<SharpDamageMultiplier>0.8</SharpDamageMultiplier>
 		</statBases>
 		<soundInteract>Stone_Drop</soundInteract>
 		<soundDrop>Stone_Drop</soundDrop>
@@ -160,15 +175,15 @@
 			<soundMeleeHitSharp>MeleeHit_Stone</soundMeleeHitSharp>
 			<soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
 			<statFactors>
+				<ArmorPenetration>0.8</ArmorPenetration>
 				<Flammability>0.3</Flammability>
-				<MaxHitPoints>1.5</MaxHitPoints>
-				<WorkToMake>2.5</WorkToMake>
-				<MarketValue>1.2</MarketValue>
+				<MaxHitPoints>1.2</MaxHitPoints>
+				<WorkToMake>1</WorkToMake>
 				<Comfort>0.5</Comfort>
-				<Beauty>0.8</Beauty>
+				<Beauty>1</Beauty>
 				<DoorOpenSpeed>0.7</DoorOpenSpeed>
-				<MeleeWeapon_Cooldown>1.2</MeleeWeapon_Cooldown>
-				<TrapMeleeDamage>1.5</TrapMeleeDamage>
+				<MeleeWeapon_Cooldown>1.1</MeleeWeapon_Cooldown>
+				<TrapMeleeDamage>1.2</TrapMeleeDamage>
 			</statFactors>
 		</stuffProps>
 	</ThingDef>
@@ -184,6 +199,7 @@
 			<MaxHitPoints>300</MaxHitPoints>
 			<Beauty>-10</Beauty>
 			<Cleanliness>-2</Cleanliness>
+			<MarketValue>8</MarketValue>
 		</statBases>
 		<fillPercent>0.4</fillPercent>
 		<soundDrop>ChunkRock_Drop</soundDrop>
@@ -202,7 +218,6 @@
 				<li>StoneChunk</li>
 			</categories>
 			<statOffsets>
-				<Beauty>-10</Beauty>
 				<Cleanliness>-2</Cleanliness>
 			</statOffsets>
 		</stuffProps>
@@ -308,11 +323,8 @@
 			<color>(100,90,125)</color>
 			<stuffAdjective>obsidian</stuffAdjective>
 		</stuffProps>
-		<butcherProducts>
-			<BlockObsidian>20</BlockObsidian>  
-		</butcherProducts>
 		<smeltProducts>
-			<CobbleObsidian>20</CobbleObsidian>
+			<Obsidian>3</Obsidian>
 		</smeltProducts>
 	</ThingDef>
 
@@ -332,6 +344,12 @@
 				<li>StoneCobble</li>
 			</categories>
 		</stuffProps>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0022</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 
@@ -396,14 +414,27 @@
 	</ThingDef>
 
 	<ThingDef ParentName="StoneCobbles">
-		<defName>CobbleObsidian</defName>
+		<defName>Obsidian</defName>
 		<label>obsidian cobbles</label>
 		<graphicData>
 			<color>(100,90,125)</color>
 		</graphicData>
+		<statBases>
+			<MarketValue>12</MarketValue>
+			<SharpDamageMultiplier>1.35</SharpDamageMultiplier>
+			<BluntDamageMultiplier>0.85</BluntDamageMultiplier>
+		</statBases>
 		<stuffProps>
 			<color>(100,90,125)</color>
 			<stuffAdjective>obsidian</stuffAdjective>
+			<statFactors>
+				<ArmorPenetration>1.5</ArmorPenetration>
+				<MaxHitPoints>0.6</MaxHitPoints>
+				<WorkToMake>1.2</WorkToMake>
+				<Beauty>1.4</Beauty>
+				<MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
+				<TrapMeleeDamage>1.2</TrapMeleeDamage>
+			</statFactors>
 		</stuffProps>
 	</ThingDef>
 
@@ -427,6 +458,12 @@
 				<Beauty>1</Beauty>
 			</statOffsets>
 		</stuffProps>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0015</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 
@@ -490,18 +527,6 @@
 		</stuffProps>
 	</ThingDef>
 
-	<ThingDef ParentName="StoneBlock">
-		<defName>BlockObsidian</defName>
-		<label>obsidian blocks</label>
-		<graphicData>
-			<color>(100,90,125)</color>
-		</graphicData>
-		<stuffProps>
-			<color>(100,90,125)</color>
-			<stuffAdjective>obsidian</stuffAdjective>
-		</stuffProps>
-	</ThingDef>
-
 	<!--===================== Clay =====================-->
 
 	<ThingDef Name="Clay" ParentName="Resource" Abstract="True">
@@ -529,8 +554,14 @@
 		<graphicData>
 			<color>(128,128,140)</color>
 		</graphicData>
+		<statBases>
+			<MarketValue>0.27</MarketValue>
+		</statBases>
 		<tradeability>Never</tradeability>
 		<stuffProps>
+			<statFactors>
+				<Beauty>1.05</Beauty>
+			</statFactors>
 			<color>(128,128,140)</color>
 			<stuffAdjective>gray clay</stuffAdjective>
 		</stuffProps>
@@ -544,9 +575,12 @@
 			<color>(220,220,220)</color>
 		</graphicData>
 		<statBases>
-			<MarketValue>20</MarketValue>
+			<MarketValue>1.67</MarketValue>
 		</statBases>
 		<stuffProps>
+			<statFactors>
+				<Beauty>1.6</Beauty>
+			</statFactors>
 			<color>(220,220,220)</color>
 			<stuffAdjective>porcelain</stuffAdjective>
 		</stuffProps>
@@ -556,7 +590,7 @@
 
 	<ThingDef Name="Brick" ParentName="Resource">
 		<defName>Brick</defName>
-		<label>brick</label>
+		<label>Clay brick</label>
 		<description>A simple red brick. Can be used for contruction</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/Block</texPath>
@@ -576,7 +610,16 @@
 			</categories>
 			<color>(127,51,0)</color>
 			<stuffAdjective>brick</stuffAdjective>
+			<statFactors>
+				<MaxHitPoints>0.8</MaxHitPoints>
+			</statFactors>
 		</stuffProps>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0019</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="Brick">
@@ -589,7 +632,16 @@
 		<stuffProps>
 			<color>(127,106,0)</color>
 			<stuffAdjective>adobe</stuffAdjective>
+			<statFactors>
+				<MaxHitPoints>0.85</MaxHitPoints>
+			</statFactors>
 		</stuffProps>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0041</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<!--===================== Metal =====================-->
@@ -603,8 +655,6 @@
 		<statBases>
 			<MaxHitPoints>300</MaxHitPoints>
 			<Flammability>0</Flammability>
-			<BluntDamageMultiplier>1.25</BluntDamageMultiplier>
-			<SharpDamageMultiplier>1.25</SharpDamageMultiplier>
 		</statBases>
 		<soundInteract>Metal_Drop</soundInteract>
 		<soundDrop>Metal_Drop</soundDrop>
@@ -620,11 +670,72 @@
 			<soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
 			<soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
 			<statFactors>
-				<MarketValue>1.2</MarketValue>
+				<Flammability>0.4</Flammability>
 			</statFactors>
 		</stuffProps>
 	</ThingDef>
-	
+
+	<ThingDef ParentName="Metal">
+		<defName>MetalBarGold</defName>
+		<label>Gold bars</label>
+		<graphicData>
+			<color>(255,215,0)</color>
+		</graphicData>
+		<statBases>
+			<SharpDamageMultiplier>0.8</SharpDamageMultiplier>
+			<BluntDamageMultiplier>0.8</BluntDamageMultiplier>
+		</statBases>
+		<stuffProps>
+			<color>(255,215,0)</color>
+			<stuffAdjective>Silver</stuffAdjective>
+			<statFactors>
+				<MaxHitPoints>0.4</MaxHitPoints>
+				<ArmorPenetration>0.3</ArmorPenetration>
+				<Insulation_Heat>1.7</Insulation_Heat>
+				<Insulation_Cold>1.7</Insulation_Cold>
+				<ArmorRating_Blunt>1</ArmorRating_Blunt>
+				<ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+				<Beauty>1.8</Beauty>
+			</statFactors>
+		</stuffProps>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0137</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="Metal">
+		<defName>MetalBarSilver</defName>
+		<label>Silver bars</label>
+		<graphicData>
+			<color>(192,192,192)</color>
+		</graphicData>
+		<statBases>
+			<SharpDamageMultiplier>0.8</SharpDamageMultiplier>
+			<BluntDamageMultiplier>0.8</BluntDamageMultiplier>
+		</statBases>
+		<stuffProps>
+			<color>(192,192,192)</color>
+			<stuffAdjective>Silver</stuffAdjective>
+			<statFactors>
+				<MaxHitPoints>0.8</MaxHitPoints>
+				<ArmorPenetration>0.5</ArmorPenetration>
+				<Insulation_Heat>1.5</Insulation_Heat>
+				<Insulation_Cold>1.5</Insulation_Cold>
+				<ArmorRating_Blunt>1</ArmorRating_Blunt>
+				<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+				<Beauty>1.4</Beauty>
+			</statFactors>
+		</stuffProps>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0085</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
+	</ThingDef>
 
 	<ThingDef ParentName="Metal">
 		<defName>MetalBarCopper</defName>
@@ -632,10 +743,29 @@
 		<graphicData>
 			<color>(142,75,50)</color>
 		</graphicData>
+		<statBases>
+			<SharpDamageMultiplier>0.9</SharpDamageMultiplier>
+			<BluntDamageMultiplier>0.9</BluntDamageMultiplier>
+		</statBases>
 		<stuffProps>
 			<color>(142,75,50)</color>
 			<stuffAdjective>copper</stuffAdjective>
+			<statFactors>
+				<MaxHitPoints>0.9</MaxHitPoints>
+				<ArmorPenetration>0.9</ArmorPenetration>
+				<Insulation_Heat>2</Insulation_Heat>
+				<Insulation_Cold>2</Insulation_Cold>
+				<ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+				<ArmorRating_Sharp>0.9</ArmorRating_Sharp>
+				<Beauty>1.1</Beauty>
+			</statFactors>
 		</stuffProps>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0014</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="Metal">
@@ -644,10 +774,28 @@
 		<graphicData>
 			<color>(75,75,75)</color>
 		</graphicData>
+		<statBases>
+			<SharpDamageMultiplier>1</SharpDamageMultiplier>
+			<BluntDamageMultiplier>1</BluntDamageMultiplier>
+		</statBases>
 		<stuffProps>
 			<color>(75,75,75)</color>
 			<stuffAdjective>iron</stuffAdjective>
+			<statFactors>
+				<ArmorPenetration>1</ArmorPenetration>
+				<Insulation_Heat>1.6</Insulation_Heat>
+				<Insulation_Cold>1.6</Insulation_Cold>
+				<ArmorRating_Blunt>1</ArmorRating_Blunt>
+				<ArmorRating_Sharp>1</ArmorRating_Sharp>
+				<Beauty>1</Beauty>
+			</statFactors>
 		</stuffProps>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0015</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="Metal">
@@ -656,10 +804,29 @@
 		<graphicData>
 			<color>(125,125,125)</color>
 		</graphicData>
+		<statBases>
+			<MaxHitPoints>1.2</MaxHitPoints>
+			<SharpDamageMultiplier>1</SharpDamageMultiplier>
+			<BluntDamageMultiplier>1</BluntDamageMultiplier>
+		</statBases>
 		<stuffProps>
 			<color>(125,125,125)</color>
 			<stuffAdjective>steel</stuffAdjective>
+			<statFactors>
+				<ArmorPenetration>1.2</ArmorPenetration>
+				<Insulation_Heat>1.4</Insulation_Heat>
+				<Insulation_Cold>1.4</Insulation_Cold>
+				<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+				<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				<Beauty>1</Beauty>
+			</statFactors>
 		</stuffProps>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0053</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<!--===================== Fabric ====================-->
@@ -682,13 +849,12 @@
 			<color>(160,110,0)</color>
 			<smeltable>false</smeltable>
 			<statFactors>
-				<MarketValue>1.2</MarketValue>
 				<Comfort>1.2</Comfort>
 				<Beauty>1.2</Beauty>
 			</statFactors>
 		</stuffProps>
 	</ThingDef>
-	
+
 
 	<ThingDef Name="Cloth" ParentName="ResourceOrganic" Abstract="True">
 		<graphicData>
