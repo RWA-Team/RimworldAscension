@@ -30,6 +30,9 @@
 				<li>ClothingNorbal</li>
 			</tags>
 		</apparel>
+		<thingcategories>
+			<li>ClothingNorbal</li>
+		</thingcategories>
 		<stuffCategories>
 			<li>Leather</li>
 			<li>Cloth</li>
@@ -62,6 +65,9 @@
 				<li>ClothingNorbal</li>
 			</tags>
 		</apparel>
+		<thingcategories>
+			<li>ClothingNorbal</li>
+		</thingcategories>
 		<stuffCategories>
 			<li>Leather</li>
 			<li>Cloth</li>
@@ -95,6 +101,9 @@
 				<li>ClothingNorbal</li>
 			</tags>
 		</apparel>
+		<thingcategories>
+			<li>ClothingNorbal</li>
+		</thingcategories>
 		<stuffCategories>
 			<li>Leather</li>
 			<li>Cloth</li>
@@ -127,6 +136,9 @@
 				<li>ClothingNorbal</li>
 			</tags>
 		</apparel>
+		<thingcategories>
+			<li>ClothingNorbal</li>
+		</thingcategories>
 		<stuffCategories>
 			<li>Leather</li>
 			<li>Cloth</li>
@@ -159,6 +171,9 @@
 				<li>ClothingNorbal</li>
 			</tags>
 		</apparel>
+		<thingcategories>
+			<li>ClothingNorbal</li>
+		</thingcategories>
 		<stuffCategories>
 			<li>Leather</li>
 			<li>Cloth</li>
@@ -190,9 +205,33 @@
 				<li>ClothingNorbal</li>
 			</tags>
 		</apparel>
+		<thingcategories>
+			<li>ClothingNorbal</li>
+		</thingcategories>
 		<stuffCategories>
 			<li>Leather</li>
 			<li>Cloth</li>
+		</stuffCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="ArmorShield">
+		<defName>ShieldNorbal</defName>
+		<label>Norbal Shield</label>
+		<description>Well made wooden shield</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Apparel/ShieldNorbal/ShieldNorbal</texPath>
+		</graphicData>
+		<statBases>
+			<MarketValue>45</MarketValue>
+			<MaxHitPoints>95</MaxHitPoints>
+		</statBases>
+		<apparel>
+			<tags>
+				<li>ShieldNorbal</li>
+			</tags>
+		</apparel>
+		<stuffCategories>
+			<li>Metal</li>
 		</stuffCategories>
 	</ThingDef>
 

@@ -213,6 +213,18 @@
 			<parent>Items</parent>
 		</ThingCategoryDef>
 
+		     <ThingCategoryDef>
+		     	<defName>TradeGoodsNeolithic</defName>
+		     	<label>Tribes goods</label>
+		     	<parent>TradeGoods</parent>
+		     </ThingCategoryDef>
+
+		     <ThingCategoryDef>
+		     	<defName>TradeGoodsMedieval</defName>
+		     	<label>Medival goods</label>
+		     	<parent>TradeGoods</parent>
+		     </ThingCategoryDef>
+
 		<ThingCategoryDef>
 			<defName>MinifiedThings</defName>
 			<label>minified things</label>
@@ -262,25 +274,12 @@
 	</ThingCategoryDef>
 
 		<ThingCategoryDef>
-			<defName>Tools</defName>
-			<label>tools</label>
-			<parent>Equipment</parent>
-		</ThingCategoryDef>
-
-		<ThingCategoryDef>
 			<defName>Weapons</defName>
 			<label>weapons</label>
 			<parent>Equipment</parent>
 		</ThingCategoryDef>
-		   
-		<ThingCategoryDef>
-		    	<defName>Tools</defName>
-		    	<label>tools</label>
-		    	<parent>Equipment</parent>
-		</ThingCategoryDef>
-
-
-			<ThingCategoryDef>
+		    
+		    			<ThingCategoryDef>
 				<defName>WeaponsMelee</defName>
 				<label>melee weapons</label>
 				<parent>Weapons</parent>
@@ -289,6 +288,12 @@
 				<ThingCategoryDef>
 					<defName>WeaponsMeleeNeolithic</defName>
 					<label>neolithic melee weapons</label>
+					<parent>WeaponsMelee</parent>
+				</ThingCategoryDef>
+
+				<ThingCategoryDef>
+					<defName>WeaponsMeleeMedieval</defName>
+					<label>Medieval melee weapons</label>
 					<parent>WeaponsMelee</parent>
 				</ThingCategoryDef>
 
@@ -303,6 +308,28 @@
 					<label>neolithic ranged weapons</label>
 					<parent>WeaponsRanged</parent>
 				</ThingCategoryDef>	
+
+		<ThingCategoryDef>
+		    	<defName>Tools</defName>
+		    	<label>tools</label>
+		    	<parent>Equipment</parent>
+		</ThingCategoryDef>
+
+		     <ThingCategoryDef>
+		     	<defName>ToolsNeolithic</defName>
+		     	<label>Neolithic tools</label>
+		     	<parent>Tools</parent>
+		     </ThingCategoryDef>
+
+		     <ThingCategoryDef>
+		     	<defName>ToolsMedieval</defName>
+		     	<label>Medieval tools</label>
+		     	<parent>Tools</parent>
+		     </ThingCategoryDef>
+
+
+		
+
 
 		<ThingCategoryDef>
 			<defName>Apparel</defName>
@@ -322,11 +349,48 @@
 				<parent>Apparel</parent>
 			</ThingCategoryDef>
 
+			     <ThingCategoryDef>
+			     	<defName>ClothingNorbal</defName>
+			     	<label>Norbal clothes</label>
+			     	<parent>Clothing</parent>
+			     </ThingCategoryDef>
+
 			<ThingCategoryDef>
 				<defName>Armor</defName>
 				<label>armor</label>
 				<parent>Apparel</parent>
 			</ThingCategoryDef>
+
+			     <ThingCategoryDef>
+			     	<defName>ArmorNeolithic</defName>
+			     	<label>Neolithic armor</label>
+			     	<parent>Armor</parent>
+			     </ThingCategoryDef>
+
+			     <ThingCategoryDef>
+			     	<defName>ArmorMedieval</defName>
+			     	<label>Medival armor</label>
+			     	<parent>Armor</parent>
+			     </ThingCategoryDef>
+
+			          <ThingCategoryDef>
+			          	<defName>ArmorMedievalLight</defName>
+			          	<label>Light Medieval armor</label>
+			          	<parent>ArmorMedieval</parent>
+			          </ThingCategoryDef>
+
+			          <ThingCategoryDef>
+			          	<defName>ArmorMedivalMedium</defName>
+			          	<label>Medium Medieval armor</label>
+			          	<parent>ArmorMedieval</parent>
+			          </ThingCategoryDef>
+
+			          <ThingCategoryDef>
+			          	<defName>ArmorMedievalHeavy</defName>
+			          	<label>Heavy Medieval armor</label>
+			          	<parent>ArmorMedieval</parent>
+			          </ThingCategoryDef>
+
 
 			<ThingCategoryDef>
 				<defName>ApparelVarious</defName>
