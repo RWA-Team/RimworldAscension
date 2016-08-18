@@ -34,6 +34,7 @@ namespace RA
                         // if thing is a stackable resource
                         if (currentThing.def.stackLimit > 1)
                         {
+                            Log.Message(String.Format("added {0} {1}", ThingDef, offerCount));
                             // make counter for deal resolve (control group)
                             if (tradeCenter.pendingResourcesCounters.ContainsKey(ThingDef))
                                 tradeCenter.pendingResourcesCounters[ThingDef] += offerCount;
@@ -41,7 +42,7 @@ namespace RA
                                 tradeCenter.pendingResourcesCounters.Add(currentThing.def, offerCount);
                         }
                         // clears placed blueprints for minified things
-                        currentThing.PreTraded(ActionToDo, tradeCenter.negotiator, tradeCenter.trader);
+                        if (!(currentThing is Pawn)) currentThing.PreTraded(ActionToDo, tradeCenter.negotiator, tradeCenter.trader);
                         tradeCenter.pendingItemsCounter.Add(currentThing);
                         thingsColony.Remove(currentThing);
                     }
@@ -67,7 +68,6 @@ namespace RA
                             // remove thing from current tradeable list
                             thingsTrader.Remove(currentThing);
                         }
-                        transferedThing.PreTraded(TradeAction.PlayerBuys, tradeCenter.negotiator, tradeCenter.trader);
                         // trasfer sellable to the trader exchange container
                         tradeCenter.traderStock.TransferToContainer(transferedThing, tradeCenter.traderExchangeContainer, transferedThing.stackCount);
                         // update trader goods total cost

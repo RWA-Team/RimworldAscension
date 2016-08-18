@@ -84,6 +84,7 @@ namespace RA
         {
             if (trader != null && pendingItemsCounter.NullOrEmpty() && traderExchangeContainer.Any() && TradeBalance >= 0)
             {
+                Log.Message("10");
                 pendingItemsCounter.Clear();
                 pendingResourcesCounters.Clear();
 
@@ -111,16 +112,22 @@ namespace RA
                         }
                     }
 
+                    Log.Message("11");
                     colonyExchangeContainer.TransferToContainer(transferedThing, traderStock, transferedThing.stackCount);
                 }
 
+                Log.Message("12");
                 // transfer all bought pawns to the colony
                 foreach (var thing in traderExchangeContainer)
                 {
-                    var pawn = (Pawn) thing;
-                    pawn.SetFaction(Faction.OfPlayer);
-                    trader.GiveSoldThingToBuyer(pawn, pawn);
+                    var pawn = thing as Pawn;
+                    if (pawn!=null)
+                    {
+                        pawn.PreTraded(TradeAction.PlayerBuys, negotiator, trader);
+                        trader.GiveSoldThingToBuyer(pawn, pawn);
+                    }
                 }
+                Log.Message("13");
                 // transfer all bought items around
                 traderExchangeContainer.TryDropAll(InteractionCell, ThingPlaceMode.Near);
 

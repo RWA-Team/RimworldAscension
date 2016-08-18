@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -39,16 +40,6 @@ namespace RA
             var numToCarry = 1;
             if (closestSellable.stackCount > 1)
             {
-                Log.Message("sellable " + closestSellable.def);
-                Log.Message("count 0 " + closestTradeCenter.pendingResourcesCounters?.Count);
-                Log.Message("count 1 " + closestSellable.stackCount);
-                foreach (var counter in closestTradeCenter.pendingResourcesCounters)
-                {
-                    Log.Message("stored " + counter.Key.defName + counter.Value);
-                }
-                Log.Message("count 2 " + closestTradeCenter.pendingResourcesCounters[closestSellable.def]);
-                Log.Message("count 3 " + pawn.carrier?.AvailableStackSpace(closestSellable.def));
-                Log.Message("2");
                 numToCarry = Mathf.Min(closestSellable.stackCount,
                     closestTradeCenter.pendingResourcesCounters[closestSellable.def],
                     pawn.carrier.AvailableStackSpace(closestSellable.def));
@@ -57,16 +48,13 @@ namespace RA
                 if (closestTradeCenter.pendingResourcesCounters[closestSellable.def] <= 0)
                     closestTradeCenter.pendingResourcesCounters.Remove(closestSellable.def);
             }
-            Log.Message("2");
 
             // if taking whole remaining stack or required partial bit of it, consider item being hauled and remove it from pending list
             if (numToCarry == closestSellable.stackCount || !closestTradeCenter.pendingResourcesCounters.ContainsKey(closestSellable.def))
             {
-                Log.Message("3");
                 closestTradeCenter.pendingItemsCounter.Remove(closestSellable);
             }
-
-            Log.Message("4");
+            
             return new Job(DefDatabase<JobDef>.GetNamed("HaulToTrade"), closestSellable, closestTradeCenter)
             {
                 maxNumToCarry = numToCarry
