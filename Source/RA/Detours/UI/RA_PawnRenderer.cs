@@ -43,10 +43,6 @@ namespace RA
                 }
                 var b = new Vector3(0f, 0f, 0.4f).RotatedBy(angle);
 
-                // adjusts aiming angle position, if specified
-                var compHandsDrawer = Pawn.equipment.Primary.TryGetComp<CompHandsDrawer>();
-                if (compHandsDrawer != null) angle += compHandsDrawer.AimingAngleOffset;
-
                 DrawEquipmentAiming(Pawn.equipment.Primary, rootLoc + b, angle);
             }
             else if (CarryWeaponOpenly())
@@ -80,9 +76,15 @@ namespace RA
             return (Pawn.carrier?.CarriedThing == null) && (Pawn.Drafted || (Pawn.CurJob != null && Pawn.CurJob.def.alwaysShowWeapon) || (Pawn.mindState.duty != null && Pawn.mindState.duty.def.alwaysShowWeapon));
         }
 
-        // draws hands on equipment, if corresponding Comp is specified
+        // draws hands on equipment and adjusts aiming angle position, if corresponding Comp is specified
         public new void DrawEquipmentAiming(Thing equipment, Vector3 drawLoc, float aimAngle)
         {
+            var angleOffset = equipment.def.equippedAngleOffset;
+
+            var compHandsDrawer = Pawn.equipment.Primary.TryGetComp<CompHandsDrawer>();
+            // adjusts aiming angle position
+            if (compHandsDrawer != null) angleOffset += compHandsDrawer.AimingAngleOffset;
+
             // used to draw weapon beneath the Pawn when facing north and west
             var drawingOffset = Pawn.Rotation == Rot4.West || Pawn.Rotation == Rot4.North
                 ? new Vector3(0, -0.5f, 0)
@@ -94,19 +96,19 @@ namespace RA
             if (aimAngle > 20f && aimAngle < 160f)
             {
                 mesh = MeshPool.plane10;
-                turnAngle += equipment.def.equippedAngleOffset;
+                turnAngle += angleOffset;
             }
             else if (aimAngle > 200f && aimAngle < 340f)
             {
                 mesh = MeshPool.plane10Flip;
                 turnAngle -= 180f;
-                turnAngle -= equipment.def.equippedAngleOffset;
+                turnAngle -= angleOffset;
                 flipped = true;
             }
             else
             {
                 mesh = MeshPool.plane10;
-                turnAngle += equipment.def.equippedAngleOffset;
+                turnAngle += angleOffset;
             }
             turnAngle %= 360f;
 
@@ -119,7 +121,6 @@ namespace RA
             Graphics.DrawMesh(mesh, drawLoc + drawingOffset, Quaternion.AngleAxis(turnAngle, Vector3.up), weaponMat, 0);
 
             // draws hands on equipment, if corresponding Comp is specified
-            var compHandsDrawer = equipment.TryGetComp<CompHandsDrawer>();
             if (compHandsDrawer != null)
             {
                 var handMat = GraphicDatabase.Get<Graphic_Single>("Overlays/Hand", ShaderDatabase.CutoutSkin, Vector2.one, Pawn.story.SkinColor).MatSingle;
