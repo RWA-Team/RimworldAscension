@@ -6,13 +6,6 @@ namespace RA
 {
     public static class TradeUtil
     {
-        public static readonly SimpleCurve TradePricePostFactorCurve = new SimpleCurve
-        {
-            new CurvePoint(2000f, 1f),
-            new CurvePoint(12000f, 0.5f),
-            new CurvePoint(200000f, 0.2f)
-        };
-
         public static TradeCenter FindOccupiedTradeCenter(Pawn negotiatior = null)
         {
             return Find.ListerBuildings.AllBuildingsColonistOfClass<TradeCenter>()
@@ -32,16 +25,6 @@ namespace RA
                 }
                 return null;
             }
-        }
-
-        public static float RandomPriceFactorFor(int priceSeed, ThingDef tringDef)
-        {
-            var thingDefIndex = DefDatabase<ThingDef>.AllDefsListForReading.IndexOf(tringDef);
-            Rand.PushSeed();
-            Rand.Seed = priceSeed * thingDefIndex;
-            var result = Rand.Range(0.9f, 1.1f);
-            Rand.PopSeed();
-            return result;
         }
     }
 }

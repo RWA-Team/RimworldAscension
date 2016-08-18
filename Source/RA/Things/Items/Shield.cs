@@ -11,6 +11,8 @@ namespace RA
     {
         public static readonly SoundDef SoundAbsorbDamage = SoundDef.Named("PersonalShieldAbsorbDamage");
         public static readonly SoundDef SoundBreak = SoundDef.Named("PersonalShieldBroken");
+        
+        public const float ShieldDrawOffset = 0.5f;
 
         public const int BaseAbsorbChance_Melee = 25;
         public const int BaseAbsorbChance_Ranged = 50;
@@ -19,28 +21,30 @@ namespace RA
         public bool ShouldDisplay => !wearer.Dead && !wearer.Downed && wearer.Faction.HostileTo(Faction.OfPlayer) && (!wearer.IsPrisonerOfColony || (wearer.MentalStateDef != null && wearer.MentalStateDef.IsAggro));
 
         // absorbs recieved damage
-        public override bool CheckPreAbsorbDamage(DamageInfo dinfo)
+        public override bool CheckPreAbsorbDamage(DamageInfo dInfo)
         {
-            if (dinfo.Instigator != null)
+            if (dInfo.Instigator != null &&
+                (dInfo.Def.armorCategory == DamageArmorCategory.Blunt ||
+                 dInfo.Def.armorCategory == DamageArmorCategory.Sharp))
             {
                 var meleeSkill = wearer.skills.GetSkill(SkillDefOf.Melee);
                 float hitRoll = new Random().Next(1, 100);
 
                 // instigator is melee and damage not explosive
-                if (dinfo.Instigator.Position.AdjacentTo8WayOrInside(wearer.Position) && !dinfo.Def.isExplosive)
+                if (dInfo.Instigator.Position.AdjacentTo8WayOrInside(wearer.Position) && !dInfo.Def.isExplosive)
                 {
-                    if (hitRoll <= BaseAbsorbChance_Melee + meleeSkill.level * 2)
+                    if (hitRoll <= BaseAbsorbChance_Melee + meleeSkill.level*2)
                     {
-                        return TryAbsorbDamage(dinfo);
+                        return TryAbsorbDamage(dInfo);
                     }
                 }
 
                 // instigator is ranged and damage not explosive
-                if (!dinfo.Instigator.Position.AdjacentTo8WayOrInside(wearer.Position) && !dinfo.Def.isExplosive)
+                if (!dInfo.Instigator.Position.AdjacentTo8WayOrInside(wearer.Position) && !dInfo.Def.isExplosive)
                 {
-                    if (hitRoll <= BaseAbsorbChance_Ranged + meleeSkill.level * 2)
+                    if (hitRoll <= BaseAbsorbChance_Ranged + meleeSkill.level*2)
                     {
-                        return TryAbsorbDamage(dinfo);
+                        return TryAbsorbDamage(dInfo);
                     }
                 }
             }
@@ -98,26 +102,26 @@ namespace RA
 
             if (wearer.Rotation == Rot4.North && (wearer.Faction == Faction.OfPlayer && !wearer.Drafted || wearer.Faction.HostileTo(Faction.OfPlayer)))
             {
-                drawCenter.y += 0.1f;
+                drawCenter.y += ShieldDrawOffset;
             }
 
             if (wearer.Rotation == Rot4.South)
             {
-                drawCenter.y += 0.1f;
+                drawCenter.y += ShieldDrawOffset;
                 drawCenter.x += 0.2f;
                 drawCenter.z -= 0.2f;
             }
 
             if (wearer.Rotation == Rot4.East)
             {
-                drawCenter.y -= 0.1f;
+                drawCenter.y -= ShieldDrawOffset;
                 drawCenter.z -= 0.2f;
                 turnAngle = 60f;
             }
 
             if (wearer.Rotation == Rot4.West)
             {
-                drawCenter.y += 0.1f;
+                drawCenter.y += ShieldDrawOffset;
                 drawCenter.z -= 0.2f;
                 turnAngle = 300f;
             }

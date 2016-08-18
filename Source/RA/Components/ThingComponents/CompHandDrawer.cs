@@ -8,12 +8,14 @@ namespace RA
     {
         public Vector3 FirstHandPosition => (props as CompHandsDrawer_Properties).firstHandPosition;
         public Vector3 SecondHandPosition => (props as CompHandsDrawer_Properties).secondHandPosition;
+        public float AimingAngleOffset => (props as CompHandsDrawer_Properties).aimingAngleOffset;
     }
 
     public class CompHandsDrawer_Properties : CompProperties
     {
         public Vector3 firstHandPosition = Vector3.zero;
         public Vector3 secondHandPosition = Vector3.zero;
+        public float aimingAngleOffset = 0;
 
         public CompHandsDrawer_Properties()
         {

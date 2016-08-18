@@ -9,70 +9,72 @@ namespace RA
     {
         public TradeCenter tradeCenter;
 
-        public new virtual void ResolveTrade()
+        public override void ResolveTrade()
         {
-            if (tradeCenter == null) tradeCenter = TradeUtil.FindOccupiedTradeCenter(TradeSession.playerNegotiator);
+            tradeCenter = TradeUtil.FindOccupiedTradeCenter(TradeSession.playerNegotiator);
+
             // goods offered by colony
-            if (ActionToDo == TradeAction.PlayerSells)
+            switch (ActionToDo)
             {
-                // offerLeftover - current amount of tradeable type to offer
-                var exportLeftover = Math.Abs(countToDrop);
-                while (exportLeftover > 0)
-                {
-                    if (thingsColony.Count == 0)
+                case TradeAction.PlayerSells:
+                    // offerLeftover - current amount of tradeable type to offer
+                    var exportLeftover = Math.Abs(countToDrop);
+                    while (exportLeftover > 0)
                     {
-                        Log.Error("Nothing left to give to trader for " + this);
-                        return;
+                        if (thingsColony.Count == 0)
+                        {
+                            Log.Error("Nothing left to give to trader for " + this);
+                            return;
+                        }
+                        // thingsColony used as a stack of the same type things. We always deal with the first thing in this stack
+                        var currentThing = FirstThingColony;
+                        var offerCount = Mathf.Min(exportLeftover, currentThing.stackCount);
+                        exportLeftover -= offerCount;
+                        currentThing.SetForbidden(true);
+                        // if thing is a stackable resource
+                        if (currentThing.def.stackLimit > 1)
+                        {
+                            Log.Message(String.Format("added {0} {1}", ThingDef, offerCount));
+                            // make counter for deal resolve (control group)
+                            if (tradeCenter.pendingResourcesCounters.ContainsKey(ThingDef))
+                                tradeCenter.pendingResourcesCounters[ThingDef] += offerCount;
+                            else
+                                tradeCenter.pendingResourcesCounters.Add(currentThing.def, offerCount);
+                        }
+                        // clears placed blueprints for minified things
+                        if (!(currentThing is Pawn)) currentThing.PreTraded(ActionToDo, tradeCenter.negotiator, tradeCenter.trader);
+                        tradeCenter.pendingItemsCounter.Add(currentThing);
+                        thingsColony.Remove(currentThing);
                     }
-                    // thingsColony used as a stack of the same type things. We always deal with the first thing in this stack
-                    var currentThing = FirstThingColony;
-                    var offerCount = Mathf.Min(exportLeftover, currentThing.stackCount);
-                    exportLeftover -= offerCount;
-                    currentThing.SetForbidden(true);
-                    // if thing is a stackable resource
-                    if (currentThing.def.stackLimit > 1)
+                    break;
+                case TradeAction.PlayerBuys:
+                    // offerLeftover - current amount of tradeable type to offer
+                    var importLeftover = Math.Abs(countToDrop);
+                    while (importLeftover > 0)
                     {
-                        // make counter for deal resolve (control group)
-                        if (tradeCenter.pendingResourcesCounters.ContainsKey(ThingDef))
-                            tradeCenter.pendingResourcesCounters[ThingDef] += offerCount;
-                        else
-                            tradeCenter.pendingResourcesCounters.Add(currentThing.def, offerCount);
+                        if (thingsTrader.Count == 0)
+                        {
+                            Log.Error("Nothing left to take from trader for " + this);
+                            return;
+                        }
+                        var currentThing = FirstThingTrader;
+                        var transferCount = Mathf.Min(importLeftover, currentThing.stackCount);
+                        // make new thing\stack by splitting required amount of another stack (can take it whole)
+                        var transferedThing = currentThing.SplitOff(transferCount);
+                        importLeftover -= transferCount;
+                        // check for full thing transfer
+                        if (transferedThing == currentThing)
+                        {
+                            // remove thing from current tradeable list
+                            thingsTrader.Remove(currentThing);
+                        }
+                        // trasfer sellable to the trader exchange container
+                        tradeCenter.traderStock.TransferToContainer(transferedThing, tradeCenter.traderExchangeContainer, transferedThing.stackCount);
+                        // update trader goods total cost
+                        tradeCenter.traderGoodsCost += new Tradeable(transferedThing, transferedThing).PriceFor(ActionToDo);
+                        CheckTeachOpportunity(transferedThing);
                     }
-                    // clears placed blueprints for minified things
-                    currentThing.PreTraded(ActionToDo, tradeCenter.negotiator, tradeCenter.trader);
-                    tradeCenter.pendingItemsCounter.Add(currentThing);
-                    thingsColony.Remove(currentThing);
-                }
-            }
-            // goods offered by trader
-            else if (ActionToDo == TradeAction.PlayerBuys)
-            {
-                // offerLeftover - current amount of tradeable type to offer
-                var importLeftover = Math.Abs(countToDrop);
-                while (importLeftover > 0)
-                {
-                    if (thingsTrader.Count == 0)
-                    {
-                        Log.Error("Nothing left to take from trader for " + this);
-                        return;
-                    }
-                    var currentThing = FirstThingTrader;
-                    var transferCount = Mathf.Min(importLeftover, currentThing.stackCount);
-                    // make new thing\stack by splitting required amount of another stack (can take it whole)
-                    var transferedThing = currentThing.SplitOff(transferCount);
-                    importLeftover -= transferCount;
-                    // check for full thing transfer
-                    if (transferedThing == currentThing)
-                    {
-                        // remove thing from current tradeable list
-                        thingsTrader.Remove(currentThing);
-                    }
-                    // trasfer sellable to the trader exchange container
-                    tradeCenter.traderStock.TransferToContainer(transferedThing, tradeCenter.traderExchangeContainer, transferedThing.stackCount);
-                    // update trader goods total cost
-                    tradeCenter.traderGoodsCost += new Tradeable(transferedThing, transferedThing).PriceFor(ActionToDo);
-                    CheckTeachOpportunity(transferedThing);
-                }
+                    break;
             }
         }
 

@@ -184,8 +184,8 @@ namespace RA
 
             #region JOBS
 
-            // fixes decreased carry capacity
-            DetourMethod("JobDriver_DoBill", "JumpToCollectNextIntoHandsForBill");
+            //// TODO fixes decreased carry capacity
+            //DetourMethod("JobDriver_DoBill", "JumpToCollectNextIntoHandsForBill");
             // changed how prodcut stuff type is determined and made this toil assign production cost for the Thing to the CompCraftedValue
             DetourMethod("Toils_Recipe", "FinishRecipeAndStartStoringProduct");
             // added support for fuel burners
@@ -285,6 +285,8 @@ namespace RA
             DetourMethod("GameEnder", "GameEndTick");
             // delay CheckGameOver first call
             DetourMethod("GameEnder", "CheckGameOver");
+            // assign first stuff type possible, instead of random
+            DetourMethod("GenStuff", "DefaultStuffFor");
 
             #endregion
         }

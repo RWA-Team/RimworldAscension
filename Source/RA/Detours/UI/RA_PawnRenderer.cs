@@ -33,13 +33,20 @@ namespace RA
             if (stance_Busy != null && !stance_Busy.neverAimWeapon && stance_Busy.focusTarg.IsValid)
             {
                 Vector3 targetPos;
-                targetPos = stance_Busy.focusTarg.HasThing ? stance_Busy.focusTarg.Thing.DrawPos : stance_Busy.focusTarg.Cell.ToVector3Shifted();
+                targetPos = stance_Busy.focusTarg.HasThing
+                    ? stance_Busy.focusTarg.Thing.DrawPos
+                    : stance_Busy.focusTarg.Cell.ToVector3Shifted();
                 var angle = 0f;
                 if ((targetPos - Pawn.DrawPos).MagnitudeHorizontalSquared() > 0.001f)
                 {
                     angle = (targetPos - Pawn.DrawPos).AngleFlat();
                 }
                 var b = new Vector3(0f, 0f, 0.4f).RotatedBy(angle);
+
+                // adjusts aiming angle position, if specified
+                var compHandsDrawer = Pawn.equipment.Primary.TryGetComp<CompHandsDrawer>();
+                if (compHandsDrawer != null) angle += compHandsDrawer.AimingAngleOffset;
+
                 DrawEquipmentAiming(Pawn.equipment.Primary, rootLoc + b, angle);
             }
             else if (CarryWeaponOpenly())
