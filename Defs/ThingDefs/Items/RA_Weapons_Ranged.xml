@@ -550,7 +550,7 @@
 				<firstHandPosition>(-0.25, 0, -0.05)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
 			</li>
-			<!-- <li Class="RA.CompTool_Properties" /> -->
+			<li Class="RA.CompTool_Properties" />
 		</comps>
 	</ThingDef>
 
