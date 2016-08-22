@@ -27,7 +27,7 @@
 			<color>(216,220,216)</color>
 		</graphicData>
 		<thingCategories>
-			<li>Bones</li>
+			<li>ResourcesProcessed</li>
 		</thingCategories>
 		<statBases>
 			<MarketValue>0.9</MarketValue>
@@ -58,50 +58,6 @@
 				<MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
 			</statFactors>
 			<stuffCommonality>1</stuffCommonality>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceOrganic">
-		<defName>BoneHumanlike</defName>
-		<label>Humanlike bone</label>
-		<description>Bone that once belong to some humanlike creature</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/Bone</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-			<color>(216,220,216)</color>
-		</graphicData>
-		<thingCategories>
-			<li>Bones</li>
-		</thingCategories>
-		<statBases>
-			<MarketValue>0.9</MarketValue>
-			<SharpDamageMultiplier>1.15</SharpDamageMultiplier>
-			<BluntDamageMultiplier>0.9</BluntDamageMultiplier>
-			<Cleanliness>-1.5</Cleanliness>
-		</statBases>
-		<stuffProps>
-			<categories>
-				<li>Bone</li>
-			</categories>
-			<color>(216,220,216)</color>
-			<soundImpactStuff>BulletImpactWood</soundImpactStuff>
-			<soundMeleeHitSharp>MeleeHit_Wood</soundMeleeHitSharp>
-			<soundMeleeHitBlunt>MeleeHit_Wood</soundMeleeHitBlunt>
-			<smeltable>false</smeltable>
-			<statOffsets>
-				<Beauty>-1</Beauty>
-			</statOffsets>
-			<statFactors>
-				<ArmorPenetration>1.2</ArmorPenetration>
-				<Flammability>0.5</Flammability>
-				<MaxHitPoints>0.8</MaxHitPoints>
-				<WorkToMake>0.8</WorkToMake>
-				<Comfort>1</Comfort>
-				<Beauty>1.2</Beauty>
-				<TrapMeleeDamage>1.2</TrapMeleeDamage>
-				<MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
-			</statFactors>
-			<stuffCommonality>0.1</stuffCommonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -157,8 +113,6 @@
 		<statBases>
 			<MarketValue>1.2</MarketValue>
 			<MaxHitPoints>120</MaxHitPoints>
-			<BurnDurationHours>1</BurnDurationHours>
-			<MaxBurningTempCelsius>400</MaxBurningTempCelsius>
 		</statBases>
 		<stuffProps>
 			<categories>
@@ -185,7 +139,6 @@
 		<statBases>
 			<MaxHitPoints>120</MaxHitPoints>
 			<BurnDurationHours>0.66</BurnDurationHours>
-			<MaxBurningTempCelsius>400</MaxBurningTempCelsius>
 		</statBases>
 		<stuffProps>
 			<statFactors>
@@ -482,7 +435,6 @@
 				<MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
 				<TrapMeleeDamage>1.2</TrapMeleeDamage>
 			</statFactors>
-			<stuffCommonality>0.1</stuffCommonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -612,15 +564,13 @@
 			</statFactors>
 			<color>(128,128,140)</color>
 			<stuffAdjective>gray clay</stuffAdjective>
-			<stuffCommonality>1</stuffCommonality>
 		</stuffProps>
-
 	</ThingDef>
 
 	<ThingDef ParentName="Clay">
 		<defName>ClayClumpWhite</defName>
 		<label>white clay clumps</label>
-		<description>Clumps of rare white clay.</description>
+		<description>Clumps of white clay.</description>
 		<graphicData>
 			<color>(220,220,220)</color>
 		</graphicData>
@@ -633,7 +583,6 @@
 			</statFactors>
 			<color>(220,220,220)</color>
 			<stuffAdjective>porcelain</stuffAdjective>
-			<stuffCommonality>1</stuffCommonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -676,7 +625,7 @@
 	<ThingDef ParentName="Brick">
 		<defName>BrickAdobe</defName>
 		<label>adobe brick</label>
-		<description>A fired adobe brick adding of hay make it better than ordinary brick.</description>
+		<description>A fired adobe brick. Can be used for contruction</description>
 		<graphicData>
 			<color>(127,106,0)</color>
 		</graphicData>
@@ -686,7 +635,6 @@
 			<statFactors>
 				<MaxHitPoints>0.85</MaxHitPoints>
 			</statFactors>
-			<stuffCommonality>0.8</stuffCommonality>
 		</stuffProps>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -730,7 +678,6 @@
 	<ThingDef ParentName="Metal">
 		<defName>MetalBarGold</defName>
 		<label>Gold bars</label>
-		<description>Shiny bar made of gold ore</description>
 		<graphicData>
 			<color>(255,215,0)</color>
 		</graphicData>
@@ -750,7 +697,6 @@
 				<ArmorRating_Sharp>0.4</ArmorRating_Sharp>
 				<Beauty>1.8</Beauty>
 			</statFactors>
-			<stuffCommonality>0.1</stuffCommonality>
 		</stuffProps>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -763,7 +709,6 @@
 	<ThingDef ParentName="Metal">
 		<defName>MetalBarSilver</defName>
 		<label>Silver bars</label>
-		<description>Bar made of silver ore.</description>
 		<graphicData>
 			<color>(192,192,192)</color>
 		</graphicData>
@@ -783,7 +728,6 @@
 				<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
 				<Beauty>1.4</Beauty>
 			</statFactors>
-			<stuffCommonality>0.2</stuffCommonality>
 		</stuffProps>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -796,8 +740,6 @@
 	<ThingDef ParentName="Metal">
 		<defName>MetalBarCopper</defName>
 		<label>copper bars</label>
-		<description>Metal bar made from copper ore.</description>
-
 		<graphicData>
 			<color>(142,75,50)</color>
 		</graphicData>
@@ -817,7 +759,6 @@
 				<ArmorRating_Sharp>0.9</ArmorRating_Sharp>
 				<Beauty>1.1</Beauty>
 			</statFactors>
-			<stuffCommonality>0.8</stuffCommonality>
 		</stuffProps>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -830,7 +771,6 @@
 	<ThingDef ParentName="Metal">
 		<defName>MetalBarIron</defName>
 		<label>iron bars</label>
-		<description>Metal bar made from iron ore.</description>
 		<graphicData>
 			<color>(75,75,75)</color>
 		</graphicData>
@@ -861,7 +801,6 @@
 	<ThingDef ParentName="Metal">
 		<defName>MetalBarSteel</defName>
 		<label>steel bars</label>
-		<description>Bar of low quality steel.</description>
 		<graphicData>
 			<color>(125,125,125)</color>
 		</graphicData>
@@ -892,107 +831,29 @@
 
 	<!--===================== Fabric ====================-->
 
-	<ThingDef Name ="Leather" ParentName="ResourceOrganic" Abstract="true">
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Leather</defName>
+		<label>leather</label>
+		<description>Leather.</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/Leather</texPath>
 			<drawSize>(0.8, 0.8)</drawSize>
-			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<statBases>
-			<Flammability>0.8</Flammability>
-			<MaxHitPoints>110</MaxHitPoints>
-			<DeteriorationRate>2.5</DeteriorationRate>
-			<Cleanliness>-1</Cleanliness>
-		</statBases>
 		<thingCategories>
-			<li>Leather</li>
+			<li>ResourcesRaw</li>
 		</thingCategories>
 		<stuffProps>
 			<categories>
 				<li>Leather</li>
 			</categories>
+			<color>(160,110,0)</color>
 			<smeltable>false</smeltable>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName ="Leather">
-		<defName>LeatherAnimal</defName>
-		<label>Animal leather</label>
-		<description>Roll of animal leather.</description>
-		<graphicData>
-			<color>(160,110,0)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>0.8</MarketValue>
-		</statBases>
-		<stuffProps>
-			<color>(160,110,0)</color>
 			<statFactors>
-				<Insulation_Cold>1</Insulation_Cold>
-				<Insulation_Heat>1</Insulation_Heat>
-				<ArmorRating_Sharp>1</ArmorRating_Sharp>
-				<ArmorRating_Blunt>1</ArmorRating_Blunt>
-				<Comfort>1</Comfort>
-				<Beauty>1.1</Beauty>
+				<Comfort>1.2</Comfort>
+				<Beauty>1.2</Beauty>
 			</statFactors>
-			<stuffCommonality>1</stuffCommonality>
 		</stuffProps>
 	</ThingDef>
-
-	<ThingDef ParentName="Leather">
-		<defName>LeatherHumanlike</defName>
-		<label>Humanlike leather</label>
-		<description>Roll of leather, that previously belong to some humanlike creature.</description>
-		<graphicData>
-			<color>(255,223,196)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>0.9</MarketValue>
-		</statBases>
-		<stuffProps>
-			<color>(255,223,196)</color>
-			<statFactors>
-				<Insulation_Cold>1</Insulation_Cold>
-				<Insulation_Heat>1</Insulation_Heat>
-				<ArmorRating_Sharp>1</ArmorRating_Sharp>
-				<ArmorRating_Blunt>1</ArmorRating_Blunt>
-				<Comfort>1</Comfort>
-				<Beauty>0.7</Beauty>
-				<BedRestEffectiveness>0.8</BedRestEffectiveness>
-			</statFactors>
-			<stuffCommonality>0</stuffCommonality>
-		</stuffProps>
-	</ThingDef>
-
-	<ThingDef ParentName="Leather">
-		<defName>LeatherThrumbo</defName>
-		<label>Thrumbo leather</label>
-		<description>Roll of Thrumbo leather.</description>
-		<graphicData>
-			<color>(145,153,177)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.5</MarketValue>
-		</statBases>
-		<stuffProps>
-			<color>(145, 153, 177)</color>
-			<statFactors>
-				<MaxHitPoints>2.5</MaxHitPoints>
-				<Insulation_Cold>1.5</Insulation_Cold>
-				<Insulation_Heat>1.5</Insulation_Heat>
-				<ArmorRating_Sharp>2</ArmorRating_Sharp>
-				<ArmorRating_Blunt>2</ArmorRating_Blunt>
-				<Comfort>1.4</Comfort>
-				<Beauty>1.4</Beauty>
-				<BedRestEffectiveness>1.3</BedRestEffectiveness>
-				<ImmunityGainSpeed>1.3</ImmunityGainSpeed>
-			</statFactors>
-			<stuffCommonality>0.05</stuffCommonality>
-		</stuffProps>
-	</ThingDef>
-
-
-
 
 
 	<ThingDef Name="Cloth" ParentName="ResourceOrganic" Abstract="True">
@@ -1001,171 +862,61 @@
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
+			<MarketValue>10.5</MarketValue>
 			<Flammability>1.0</Flammability>
 			<DeteriorationRate>2</DeteriorationRate>
 		</statBases>
-		<thingCategories>
-			<li>Cloth</li>
-		</thingCategories>
 		<stuffProps>
 			<categories>
 				<li>Cloth</li>
 			</categories>
+			<color>(162,106,57)</color>
 			<smeltable>false</smeltable>
+			<statFactors>
+				<MarketValue>1.2</MarketValue>
+				<Comfort>1.2</Comfort>
+				<Beauty>1.2</Beauty>
+			</statFactors>
 		</stuffProps>
+		<thingCategories>
+			<li>Cloth</li>
+		</thingCategories>
 	</ThingDef>	
 
 	<ThingDef ParentName="Cloth">
 		<defName>ClothLinen</defName>
-		<label>Linen cloth</label>
-		<description>Cloth made of linen fibres.</description>
+		<label>linen cloth</label>
+		<description>linen cloth.</description>
 		<graphicData>
 			<color>(255,242,212)</color>
 		</graphicData>
 		<stuffProps>
 			<color>(255,242,212)</color>
-			<statFactors>
-				<Insulation_Cold>1</Insulation_Cold>
-				<Insulation_Heat>1</Insulation_Heat>
-				<ArmorRating_Sharp>1</ArmorRating_Sharp>
-				<ArmorRating_Blunt>1</ArmorRating_Blunt>
-				<Comfort>1.1</Comfort>
-				<Beauty>1</Beauty>
-				<BedRestEffectiveness>1</BedRestEffectiveness>
-				<ImmunityGainSpeed>1</ImmunityGainSpeed>
-			</statFactors>
 		</stuffProps>
-		<comps>
-			<li Class="RA.CompCraftedValue_Properties">
-				<valuePerWorkFactor>0.0033</valuePerWorkFactor>
-				<profitFactor>0.96</profitFactor>
-			</li>
-		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="Cloth">
 		<defName>ClothCotton</defName>
-		<label>Cotton cloth</label>
-		<description>Cloth made of cotton fibres</description>
+		<label>cotton cloth</label>
+		<description>cotton cloth.</description>
 		<graphicData>
 			<color>(205,204,210)</color>
 		</graphicData>
 		<stuffProps>
 			<color>(205,204,210)</color>
-			<statFactors>
-				<MaxHitPoints>1.1</MaxHitPoints>
-				<Insulation_Cold>1.1</Insulation_Cold>
-				<Insulation_Heat>1.1</Insulation_Heat>
-				<ArmorRating_Sharp>1.1</ArmorRating_Sharp>
-				<ArmorRating_Blunt>1.1</ArmorRating_Blunt>
-				<Comfort>1.2</Comfort>
-				<Beauty>1.1</Beauty>
-				<BedRestEffectiveness>1.1</BedRestEffectiveness>
-				<ImmunityGainSpeed>1.1</ImmunityGainSpeed>
-
-			</statFactors>
-			<stuffCommonality>0.8</stuffCommonality>
 		</stuffProps>
-		<comps>
-			<li Class="RA.CompCraftedValue_Properties">
-				<valuePerWorkFactor>0.0039</valuePerWorkFactor>
-				<profitFactor>0.96</profitFactor>
-			</li>
-		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="Cloth">
-		<defName>ClothWoolMuffalo</defName>
-		<label>Muffalo Wool cloth</label>
-		<description>Warm cloth made of Muffalo wool.</description>
+		<defName>ClothWool</defName>
+		<label>wool cloth</label>
+		<description>wool cloth.</description>
 		<graphicData>
 			<color>(141,158,186)</color>
 		</graphicData>
-		<statBases>
-			<DeteriorationRate>1.5</DeteriorationRate>
-			<MaxHitPoints>120</MaxHitPoints>
-			<Flammability>1.3</Flammability>
-		</statBases>
 		<stuffProps>
 			<color>(141,158,186)</color>
-			<statFactors>
-				<MaxHitPoints>1.2</MaxHitPoints>
-				<Insulation_Cold>1.6</Insulation_Cold>
-				<Insulation_Heat>1</Insulation_Heat>
-				<ArmorRating_Sharp>1.25</ArmorRating_Sharp>
-				<ArmorRating_Blunt>1.25</ArmorRating_Blunt>
-				<BedRestEffectiveness>1.1</BedRestEffectiveness>
-				<ImmunityGainSpeed>1.1</ImmunityGainSpeed>
-				<Comfort>1.2</Comfort>
-				<Beauty>1.1</Beauty>
-			</statFactors>
-			<stuffCommonality>0.3</stuffCommonality>
-		</stuffProps>
-		<comps>
-			<li Class="RA.CompCraftedValue_Properties">
-				<valuePerWorkFactor>0.0039</valuePerWorkFactor>
-				<profitFactor>0.96</profitFactor>
-			</li>
-		</comps>
-	</ThingDef>
-
-	<ThingDef ParentName="Cloth">
-		<defName>ClothWoolCamel</defName>
-		<label>Camel wool cloth</label>
-		<description>Cloth made of camel wool, protect well against high temperatures</description>
-		<graphicData>
-			<color>(145, 123, 90)</color>
-		</graphicData>
-		<statBases>
-			<DeteriorationRate>1.5</DeteriorationRate>
-			<MaxHitPoints>120</MaxHitPoints>
-			<Flammability>1.3</Flammability>
-		</statBases>
-		<stuffProps>
-			<color>(145,123,90)</color>
-			<statFactors>
-				<MaxHitPoints>1.2</MaxHitPoints>
-				<Insulation_Cold>1</Insulation_Cold>
-				<Insulation_Heat>1.6</Insulation_Heat>
-				<ArmorRating_Sharp>1.25</ArmorRating_Sharp>
-				<ArmorRating_Blunt>1.25</ArmorRating_Blunt>
-				<BedRestEffectiveness>1.1</BedRestEffectiveness>
-				<ImmunityGainSpeed>1.1</ImmunityGainSpeed>
-				<Comfort>1.2</Comfort>
-				<Beauty>1.1</Beauty>
-			</statFactors>
-			<stuffCommonality>0.3</stuffCommonality>
 		</stuffProps>
 	</ThingDef>
-
-	<ThingDef ParentName="Cloth">
-		<defName>ClothWoolMegatherium</defName>
-		<label>MegatheriumWool cloth</label>
-		<description>Cloth made of Megatherium wool, best natural cloth you can ever get</description>
-		<graphicData>
-			<color>(145,153,177)</color>
-		</graphicData>
-		<statBases>
-			<DeteriorationRate>0.5</DeteriorationRate>
-			<MaxHitPoints>160</MaxHitPoints>
-			<Flammability>0.6</Flammability>
-		</statBases>
-		<stuffProps>
-			<color>(145,153,177)</color>
-			<statFactors>
-				<MaxHitPoints>1.4</MaxHitPoints>
-				<Insulation_Heat>2</Insulation_Heat>
-				<Insulation_Cold>2</Insulation_Cold>
-				<ArmorRating_Blunt>1.4</ArmorRating_Blunt>
-				<ArmorRating_Sharp>1.4</ArmorRating_Sharp>
-				<BedRestEffectiveness>1.3</BedRestEffectiveness>
-				<ImmunityGainSpeed>1.3</ImmunityGainSpeed>
-				<Comfort>1.4</Comfort>
-				<Beauty>1.3</Beauty>
-			</statFactors>
-			<stuffCommonality>0.01</stuffCommonality>
-		</stuffProps>
-	</ThingDef>
-
 
 </Defs>
