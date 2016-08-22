@@ -99,45 +99,6 @@
 	</ThingDef>
 
 	<ThingDef ParentName="ResourceOrganic">
-		<defName>Coal</defName>
-		<label>coal</label>
-		<description>Coal.</description>
-		<graphicData>
-			<shaderType>Cutout</shaderType>
-			<texPath>Things/Items/Resources/Coal</texPath>
-		</graphicData>
-		<statBases>
-			<MaxBurningTempCelsius>1500</MaxBurningTempCelsius>
-			<BurnDurationHours>4</BurnDurationHours>
-		</statBases>
-		<soundInteract>Grain_Drop</soundInteract>
-		<soundDrop>Grain_Drop</soundDrop>
-		<thingCategories>
-			<li>ResourcesRaw</li>
-		</thingCategories>
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceOrganic">
-		<defName>Charcoal</defName>
-		<label>charcoal</label>
-		<description>Charcoal.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/Charcoal</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-			<shaderType>Cutout</shaderType>
-		</graphicData>
-		<statBases>
-			<MaxBurningTempCelsius>1000</MaxBurningTempCelsius>
-			<BurnDurationHours>8</BurnDurationHours>
-		</statBases>
-		<soundInteract>Grain_Drop</soundInteract>
-		<soundDrop>Grain_Drop</soundDrop>
-		<thingCategories>
-			<li>ResourcesRaw</li>
-		</thingCategories>
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceOrganic">
 		<defName>Mulch</defName>
 		<label>mulch</label>
 		<description>Mulch.</description>
@@ -168,24 +129,6 @@
 		</thingCategories>
 	</ThingDef>
 
-	<ThingDef ParentName="ResourceOrganic">
-		<defName>Tallow</defName>
-		<label>tallow</label>
-		<description>Tallow.</description>
-		<graphicData>
-			<shaderType>Cutout</shaderType>
-			<texPath>Things/Items/Resources/Tallow</texPath>
-		</graphicData>
-		<statBases>
-			<MaxBurningTempCelsius>200</MaxBurningTempCelsius>
-			<BurnDurationHours>1</BurnDurationHours>
-		</statBases>
-		<soundInteract>Grain_Drop</soundInteract>
-		<soundDrop>Grain_Drop</soundDrop>
-		<thingCategories>
-			<li>ResourcesRaw</li>
-		</thingCategories>
-	</ThingDef>
 
 	<ThingDef ParentName="ResourceOrganic">
 		<defName>TurtleShell</defName>
@@ -245,42 +188,144 @@
 	</ThingDef>
 	
 	<!--========================= Raw Cloth =========================-->
-
-	<ThingDef Name="PlantResources" ParentName="ResourceOrganic" Abstract="True">
+	
+	<ThingDef Name="ClothRaw" ParentName="Resource" Abstract="true">
 		<thingCategories>
-			<li>PlantResources</li>
+			<li>ClothRaw</li>
 		</thingCategories>
 	</ThingDef>
-	
 
-	<ThingDef ParentName="PlantResources">
+	<ThingDef ParentName="ClothRaw">
 		<defName>Linen</defName>
 		<label>linen</label>
-		<description>linen.</description>
+		<description>Raw linen.</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/Linen</texPath>
 		</graphicData>
+		<statBases>
+			<MarketValue>0.9</MarketValue>
+		</statBases>
 	</ThingDef>
 
-	<ThingDef ParentName="PlantResources">
+	<ThingDef ParentName="ClothRaw">
 		<defName>Cotton</defName>
 		<label>cotton</label>
-		<description>cotton.</description>
+		<description>Raw cotton.</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/Cotton</texPath>
 		</graphicData>
+		<statBases>
+			<MarketValue>1.05</MarketValue>
+		</statBases>
 	</ThingDef>
 
-	<ThingDef ParentName="Resource">
-		<defName>Wool</defName>
-		<label>wool</label>
-		<description>wool.</description>
+	<ThingDef ParentName="ClothRaw">
+		<defName>WoolMuffalo</defName>
+		<label>Muffalo wool</label>
+		<description>Wool which Muffalo will miss in cold Rimworld winters.</description>
 		<graphicData>
-			<texPath>Missing</texPath>
+			<texPath>Things/Item/Resource/Wool</texPath>
+			<color>(141,158,186)</color>
 		</graphicData>
+		<statBases>
+			<MarketValue>2.5</MarketValue>
+		</statBases>
+	</ThingDef>
+
+	<ThingDef ParentName="ClothRaw">
+		<defName>Camelhair</defName>
+		<label>Camelhair RA</label>
+		<description>Camelhair, it was too hot anyway</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/Wool</texPath>
+			<color>(145,123,90)</color>
+		</graphicData>
+		<statBases>
+			<MarketValue>2.5</MarketValue>
+		</statBases>
+	</ThingDef>
+
+	<ThingDef ParentName="ClothRaw">
+		<defName>WoolMegatherium</defName>
+		<label>Megatherium wool RA</label>
+		<description>Megatherium wool......stinky</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/Wool</texPath>
+			<color>(145,153,177)</color>
+		</graphicData>
+		<statBases>
+			<MarketValue>4</MarketValue>
+		</statBases>
+	</ThingDef>
+
+	<!-- =============================Fuel============================================= -->
+
+	<ThingDef Name="Fuel" ParentName="Resource" Abstract="True">
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Coal</defName>
+		<label>coal</label>
+		<description>Black,dirty,hard to get. Still you can do steel without it.</description>
+		<graphicData>
+			<shaderType>Cutout</shaderType>
+			<texPath>Things/Items/Resources/Coal</texPath>
+		</graphicData>
+		<statBases>
+			<MaxBurningTempCelsius>800</MaxBurningTempCelsius>
+			<BurnDurationHours>4</BurnDurationHours>
+			<MarketValue>1.40</MarketValue>
+		</statBases>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
 		<thingCategories>
-			<li>ResourcesRaw</li>
+			<li>Fuel</li>
 		</thingCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Tallow</defName>
+		<label>tallow</label>
+		<description>Tallow.</description>
+		<graphicData>
+			<shaderType>Cutout</shaderType>
+			<texPath>Things/Items/Resources/Tallow</texPath>
+		</graphicData>
+		<statBases>
+			<MaxBurningTempCelsius>200</MaxBurningTempCelsius>
+			<BurnDurationHours>1</BurnDurationHours>
+		</statBases>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>Fuel</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceOrganic">
+		<defName>Charcoal</defName>
+		<label>charcoal</label>
+		<description>Charcoal.</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/Charcoal</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<shaderType>Cutout</shaderType>
+		</graphicData>
+		<statBases>
+			<MaxBurningTempCelsius>800</MaxBurningTempCelsius>
+			<BurnDurationHours>8</BurnDurationHours>
+		</statBases>
+		<soundInteract>Grain_Drop</soundInteract>
+		<soundDrop>Grain_Drop</soundDrop>
+		<thingCategories>
+			<li>Fuel</li>
+		</thingCategories>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0017</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 </Defs>
