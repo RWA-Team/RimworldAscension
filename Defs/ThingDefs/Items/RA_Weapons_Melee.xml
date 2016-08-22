@@ -170,9 +170,8 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompHandsDrawer_Properties">
-				<firstHandPosition>(0, -0,01, 0)</firstHandPosition>
-				<secondHandPosition>(-0.25,0,1,-0.29)</secondHandPosition>
-				<aimingAngleOffset>50</aimingAngleOffset>
+				<firstHandPosition>(0, 1, 0)</firstHandPosition>
+				<secondHandPosition>(-0.25,1,-0.29)</secondHandPosition>
 			</li>
 		</comps>
 		<weaponTags>
