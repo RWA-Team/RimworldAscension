@@ -39,8 +39,7 @@
 			<li>Alcohol</li>
 		</thingCategories>
 		<statBases>
-			<DeteriorationRate>0</DeteriorationRate>
-			<MarketValue>9</MarketValue>
+			<DeteriorationRate>0.2</DeteriorationRate>
 		</statBases>
 		<ingestible>
 			<preferability>NeverForNutrition</preferability>
@@ -58,6 +57,12 @@
 				</li>
 			</hediffGivers>
 		</ingestible>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0079</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 </Defs>

@@ -46,7 +46,7 @@
 		<defName>Totem</defName>
 		<label>totem</label>
 		<size>(1,2)</size>
-		<description>A person-sized piece of material sculpted into an artistic form.</description>
+		<description>Several meters high wood totem, with images of ancient gods painted on it. We dont know where did they get dye.</description>
 		<graphicData>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
@@ -60,12 +60,12 @@
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>
 			<Beauty>40</Beauty>
-			<WorkToMake>48000</WorkToMake>
+			<WorkToMake>9000</WorkToMake>
 		</statBases>
 		<stuffCategories>
 			<li>WoodLog</li>
 		</stuffCategories>
-		<costStuffCount>75</costStuffCount>
+		<costStuffCount>100</costStuffCount>
 		<researchPrerequisites>
 			<li>WoodCarving</li>
 		</researchPrerequisites>
@@ -74,7 +74,7 @@
 	<ThingDef ParentName="Decoration">
 		<defName>Cairn</defName>
 		<label>cairn</label>
-		<description>A cairn.</description>
+		<description>Complex engineering structure, that definetly can be defined as piece of art. Even gods dont know why its stay still.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Decoration/Cairn</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -86,12 +86,13 @@
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>150</MaxHitPoints>
-			<Beauty>40</Beauty>
-			<WorkToMake>48000</WorkToMake>
+			<Beauty>25</Beauty>
+			<WorkToMake>9600</WorkToMake>
 		</statBases>
 		<stuffCategories>
 			<li>StoneCobble</li>
 		</stuffCategories>
+		<costStuffCount>50</costStuffCount>
 		<researchPrerequisites>
 			<li>StoneCutting</li>
 		</researchPrerequisites>
@@ -100,6 +101,7 @@
 	<ThingDef ParentName="Furniture">
 		<defName>PlantPot</defName>
 		<label>plant pot</label>
+		<description>Small pot with just perfect size for flower, or weed, since we got drug system in A15!</description>
 		<thingClass>Building_PlantGrower</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Furniture/PlantPot</texPath>
@@ -121,7 +123,6 @@
 		<costList>
 			<PlantPot>1</PlantPot>
 		</costList>
-		<description>A pot to plant decorative flowers in to improve the beauty of the room it's in.</description>
 		<comps>
 			<li Class="CompProperties_Forbiddable"/>
 		</comps>
@@ -163,6 +164,7 @@
 		<size>(1,1)</size>
 		<costList>
 			<WoodLog>1</WoodLog>
+			<Tallow>20</Tallow>
 		</costList>
 		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
 		<designationCategory>Furniture</designationCategory>
@@ -170,6 +172,14 @@
 		<researchPrerequisites>
 			<li>AnimalDissection</li>
 		</researchPrerequisites>
+		<comps>
+			  <li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(252,187,113,0)</glowColor>
+		      </li>
+	    </comps>
+
+
 	</ThingDef>
 
 </ThingDefs>

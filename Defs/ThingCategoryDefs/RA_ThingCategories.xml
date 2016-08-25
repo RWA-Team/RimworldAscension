@@ -106,6 +106,12 @@
 		<label>resources</label>
 		<parent>Root</parent>
 	</ThingCategoryDef>
+
+	    <ThingCategoryDef>
+	    	<defName>Fertilizers</defName>
+	    	<label>Different kind of fertilizers</label>
+	    	<parent>Resources</parent>
+	    </ThingCategoryDef>
 			
 		<ThingCategoryDef>
 			<defName>ResourcesProcessed</defName>
@@ -197,6 +203,24 @@
 			<ThingCategoryDef>
 				<defName>PlantResources</defName>
 				<label>plant resources</label>
+				<parent>ResourcesRaw</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>Bones</defName>
+				<label>Bones of different creatures</label>
+				<parent>ResourcesRaw</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>ClothRaw</defName>
+				<label>Different fibers sutable to make cloth</label>
+				<parent>ResourcesRaw</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>Fuel</defName>
+				<label>Everything that can BURN!!!</label>
 				<parent>ResourcesRaw</parent>
 			</ThingCategoryDef>
 				

@@ -73,9 +73,9 @@
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
+					<categories>
 						<li>Leather</li>
-					</thingDefs>
+					</categories>
 				</filter>
 				<count>80</count>
 			</li>
@@ -181,9 +181,9 @@
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
+					<categories>
 						<li>Leather</li>
-					</thingDefs>
+					</categories>
 				</filter>
 				<count>150</count>
 			</li>
@@ -285,11 +285,9 @@
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
-						<li>Cotton</li>
-						<li>Linen</li>
-						<li>Wool</li>
-					</thingDefs>
+					<categories>
+						<li>RawCloth</li>
+					</categories>
 				</filter>
 				<count>120</count>
 			</li>

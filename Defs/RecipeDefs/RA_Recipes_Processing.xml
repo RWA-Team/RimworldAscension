@@ -321,9 +321,9 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>MuffaloWool</li>
-						<li>AlpacaWool</li>
-					</thingDefs>
+						<li>WoolMuffalo</li>
+						<li>WoolMegatherium</li>
+						<li>Camelhair</li>
 				</filter>
 				<count>25</count>
 			</li>
@@ -360,16 +360,16 @@
 			<LeatherStrip>25</LeatherStrip>
 		</products>
 		<fixedIngredientFilter>
-			<thingDefs>
+			<categories>
 				<li>Leather</li>
-			</thingDefs>
+			</categories>
 		</fixedIngredientFilter>
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
+					<categories>
 						<li>Leather</li>
-					</thingDefs>
+					</categories>
 				</filter>
 				<count>5</count>
 			</li>
