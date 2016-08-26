@@ -7,7 +7,7 @@
 		<description>Determine if tools is required to work with this thing. 0 - no tool needed, 1 - tool is prefereable, 2 - tool is required.</description>
 		<category>Basics</category>
 		<workerClass>RA.StatWorker_HiddenValue</workerClass>
-		<defaultBaseValue>0</defaultBaseValue>
+		<defaultBaseValue>2</defaultBaseValue>
 		<toStringStyle>Integer</toStringStyle>
 		<showIfUndefined>false</showIfUndefined>
 	</StatDef>

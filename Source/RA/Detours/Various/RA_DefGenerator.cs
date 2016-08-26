@@ -8,7 +8,7 @@ namespace RA
         // added new def generators and removed redundant
         public static void GenerateDefs()
         {
-            var defGenerators = MinifiedDefGenerator.ImpliedMinifiedDefs().Concat(UnfinishedDefGenerator.ImpliedUnfinishedDefs());
+            var defGenerators = UnfinishedDefGenerator.ImpliedUnfinishedDefs();
 
             foreach (var thingDef in defGenerators)
             {
