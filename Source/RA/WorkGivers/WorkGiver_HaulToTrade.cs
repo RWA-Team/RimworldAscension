@@ -22,11 +22,12 @@ namespace RA
                 closestTradeCenter = GenClosest.ClosestThing_Global_Reachable(pawn.Position,
                     pendingTradeCenters.Cast<Thing>(), PathEndMode.Touch, TraverseParms.For(pawn)) as TradeCenter;
 
-                if (closestTradeCenter!=null)
+                if (closestTradeCenter != null)
                 {
                     closestSellable = GenClosest.ClosestThing_Global_Reachable(pawn.Position,
                         closestTradeCenter.pendingItemsCounter, PathEndMode.ClosestTouch, TraverseParms.For(pawn), 9999,
-                        sellable => pawn.CanReserve(sellable) && !sellable.IsBurning());
+                        sellable =>
+                            pawn.CanReserve(sellable) && !sellable.IsBurning());
 
                     if (closestSellable != null)
                         return false;
@@ -46,9 +47,14 @@ namespace RA
 
                 closestTradeCenter.pendingResourcesCounters[closestSellable.def] -= numToCarry;
                 if (closestTradeCenter.pendingResourcesCounters[closestSellable.def] <= 0)
+                {
                     closestTradeCenter.pendingResourcesCounters.Remove(closestSellable.def);
+                    // unforbid all remaining pending resources
+                    closestTradeCenter.pendingItemsCounter.ForEach(thing => thing.SetForbidden(false));
+                    closestTradeCenter.pendingItemsCounter.RemoveAll(resource => resource.def == closestSellable.def);
+                } 
             }
-
+            
             // if taking whole remaining stack or required partial bit of it, consider item being hauled and remove it from pending list
             if (numToCarry == closestSellable.stackCount || !closestTradeCenter.pendingResourcesCounters.ContainsKey(closestSellable.def))
             {

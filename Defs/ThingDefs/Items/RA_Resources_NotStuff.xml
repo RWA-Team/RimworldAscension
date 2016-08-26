@@ -86,7 +86,7 @@
 		<label>bark fibre</label>
 		<description>A bunch of bark fibre.</description>
 		<graphicData>
-			<texPath>Things/Items/Resources/Coal</texPath>
+			<texPath>Things/Items/Resources/BarkFibre</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<color>(174,124,0)</color>
 		</graphicData>

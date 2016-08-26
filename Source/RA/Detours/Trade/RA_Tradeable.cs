@@ -71,7 +71,7 @@ namespace RA
                         // trasfer sellable to the trader exchange container
                         tradeCenter.traderStock.TransferToContainer(transferedThing, tradeCenter.traderExchangeContainer, transferedThing.stackCount);
                         // update trader goods total cost
-                        tradeCenter.traderGoodsCost += new Tradeable(transferedThing, transferedThing).PriceFor(ActionToDo);
+                        tradeCenter.traderGoodsCost += PriceFor(ActionToDo)* transferedThing.stackCount;
                         CheckTeachOpportunity(transferedThing);
                     }
                     break;

@@ -80,7 +80,7 @@
 			</li>
 		</comps>
 		<!-- actual minified def is auto generated -->
-		<minifiedDef>Placeholder</minifiedDef>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>
@@ -505,7 +505,7 @@
 			<li>StoneChunk</li>
 		</stuffCategories>
 		<!-- actual minified def is auto generated -->
-		<minifiedDef>Placeholder</minifiedDef>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<researchPrerequisites>
 			<li>Masonry</li>
 		</researchPrerequisites>

@@ -39,12 +39,20 @@ namespace RA
                     : (ToolRequirementLevel) closestAvailableTarget.Cell.GetTerrain()
                         .GetStatValueAbstract(StatDef.Named("ToolRequirementLevel"));
 
-                // if proper tool equipped, do the job, otherwise try to find the tool for work, if needed
-                return targetTRL == ToolRequirementLevel.NoToolRequired || IsProperTool(pawn.equipment.Primary)
-                    ? JobWithTool(closestAvailableTarget)
-                    : targetTRL == ToolRequirementLevel.ToolPreferable
-                        ? TryEquipTool(pawn) ?? JobWithTool(closestAvailableTarget)
-                        : JobWithTool(closestAvailableTarget);
+                // if needs proper tool equipped, do the job, otherwise try to find the tool for work, if needed
+                switch (targetTRL)
+                {
+                    case ToolRequirementLevel.ToolRequired:
+                        return IsProperTool(pawn.equipment.Primary)
+                            ? JobWithTool(closestAvailableTarget)
+                            : TryEquipTool(pawn);
+                    case ToolRequirementLevel.ToolPreferable:
+                        return IsProperTool(pawn.equipment.Primary)
+                            ? JobWithTool(closestAvailableTarget)
+                            : TryEquipTool(pawn) ?? JobWithTool(closestAvailableTarget);
+                    default:
+                        return JobWithTool(closestAvailableTarget);
+                }
             }
 
             // drop tool and haul it to stockpile, if necessary
@@ -196,8 +204,10 @@ namespace RA
             return null;
         }
 
-        public bool PawnCarriedWeaponBefore(Pawn pawn) => pawn.equipment.Primary != null && previousPawnWeapons.ContainsKey(pawn.equipment.Primary) &&
-                                                          previousPawnWeapons[pawn.equipment.Primary] == pawn;
+        public bool PawnCarriedWeaponBefore(Pawn pawn) =>
+            pawn.equipment.Primary != null
+            && previousPawnWeapons.ContainsKey(pawn.equipment.Primary)
+            && previousPawnWeapons[pawn.equipment.Primary] == pawn;
 
         // drop tool and haul it to stockpile, if necessary
         public Job TryReturnTool(Pawn pawn)

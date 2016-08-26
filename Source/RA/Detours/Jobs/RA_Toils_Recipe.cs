@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using Verse;
@@ -252,6 +253,25 @@ namespace RA
         }
 
         // hidden in vanilla
+        public static Thing GetDominantIngredient(RecipeDef recipe, List<Thing> ingredients)
+        {
+            // checks if there are any stuff ingredients used which are not forbidden in defaultIngredientFilter
+            if (!recipe.products.NullOrEmpty())
+            {
+                var firstProductDef = recipe.products.First().thingDef;
+                if (recipe.products.First().thingDef.MadeFromStuff)
+                {
+                    return ingredients.Find(
+                        ingredient =>
+                            ingredient.def.IsStuff
+                            && ingredient.def.stuffProps.CanMake(firstProductDef)
+                            && (!recipe.defaultIngredientFilter?.Allows(ingredient.def) ?? true));
+                }
+            }
+            return null;
+        }
+
+        // hidden in vanilla
         public static List<Thing> ProcessedIngredients(Job job, out Thing dominantIngredient)
         {
             var ingredients = new List<Thing>();
@@ -295,21 +315,6 @@ namespace RA
             job.placedThings = null;
             dominantIngredient = ingredients.NullOrEmpty() ? null : GetDominantIngredient(job.RecipeDef, ingredients);
             return ingredients;
-        }
-
-        // hidden in vanilla
-        public static Thing GetDominantIngredient(RecipeDef recipe, List<Thing> ingredients)
-        {
-            // checks if there are any stuff ingredients used which are not forbidden in defaultIngredientFilter
-            return !recipe.products.NullOrEmpty()
-                ? (recipe.products.First().thingDef.MadeFromStuff
-                    ? ingredients.Find(
-                        ingredient =>
-                            ingredient.def.IsStuff &&
-                            ingredient.def.stuffProps.CanMake(recipe.products.FirstOrDefault().thingDef) &&
-                            (!recipe.defaultIngredientFilter?.Allows(ingredient.def) ?? true))
-                    : ingredients.RandomElementByWeight(ing => ing.stackCount))
-                : ingredients.RandomElementByWeight(ing => ing.stackCount);
         }
     }
 }
