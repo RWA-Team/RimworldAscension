@@ -238,12 +238,6 @@
 			</ThingCategoryDef>
 
 			<ThingCategoryDef>
-				<defName>MinifiedDecorations</defName>
-				<label>minified decorations</label>
-				<parent>MinifiedThings</parent>
-			</ThingCategoryDef>
-
-			<ThingCategoryDef>
 				<defName>MinifiedDefences</defName>
 				<label>minified defences</label>
 				<parent>MinifiedThings</parent>

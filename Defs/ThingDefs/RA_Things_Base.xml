@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- 
+	statBases - base stat values for the thing
+	default values:
+		- MarketValue		= -
+		- Flammability		= 0
+		- MaxHitPoints		= 100
+		- WorkToMake		= 1
+		- DeteriorationRate	= 0
+	-->
+
+	<ThingDef Name="Thing" Abstract="True">
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Missing</texPath>
+		</graphicData>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<tickerType>Never</tickerType>
+	</ThingDef>
+
+</Defs>

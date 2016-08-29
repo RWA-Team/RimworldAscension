@@ -86,13 +86,12 @@ namespace RA
                 var minifiedThing = boughtThing as MinifiedThing;
                 if (minifiedThing != null)
                 {
-                    building = minifiedThing.InnerThing as Building;
+                    building = (minifiedThing.InnerThing as Building);
                 }
             }
             if (building?.def.building?.boughtConceptLearnOpportunity != null)
             {
-                ConceptDecider.TeachOpportunity(building.def.building.boughtConceptLearnOpportunity,
-                    OpportunityType.GoodToKnow);
+                LessonAutoActivator.TeachOpportunity(building.def.building.boughtConceptLearnOpportunity, OpportunityType.GoodToKnow);
             }
         }
     }

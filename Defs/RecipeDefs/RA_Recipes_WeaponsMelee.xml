@@ -415,9 +415,6 @@
 					<thingDefs>
 						<li>WoodPlank</li>
 					</thingDefs>
-					<categories>
-						<li>BarsMetal</li>
-					</categories>
 				</filter>
 				<count>15</count>
 			</li>

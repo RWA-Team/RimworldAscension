@@ -53,7 +53,7 @@ namespace RA
                     if (currentMeleeExperienceValue - lastMeleeExperienceValue >= 1f)
                     {
                         var expGained = currentMeleeExperienceValue - lastMeleeExperienceValue;
-                        MoteThrower.ThrowText(new Vector3(pawn.Position.x + 0.5f, pawn.Position.y, pawn.Position.z + 1f), expGained.ToString("F0") + " XP", Color.green, GenDate.SecondsToTicks(1));
+                        MoteMaker.ThrowText(new Vector3(pawn.Position.x + 0.5f, pawn.Position.y, pawn.Position.z + 1f), expGained.ToString("F0") + " XP", Color.green, GenDate.SecondsToTicks(1));
                         lastMeleeExperienceValue = currentMeleeExperienceValue;
                     }
 
@@ -61,7 +61,7 @@ namespace RA
                     if (currentShootingExperienceValue - lastShootingExperienceValue >= 1f)
                     {
                         var expGained = currentShootingExperienceValue - lastShootingExperienceValue;
-                        MoteThrower.ThrowText(new Vector3(pawn.Position.x + 0.5f, pawn.Position.y, pawn.Position.z + 1f), expGained.ToString("F0") + " XP", Color.green, GenDate.SecondsToTicks(1));
+                        MoteMaker.ThrowText(new Vector3(pawn.Position.x + 0.5f, pawn.Position.y, pawn.Position.z + 1f), expGained.ToString("F0") + " XP", Color.green, GenDate.SecondsToTicks(1));
                         lastShootingExperienceValue = currentShootingExperienceValue;
                     }
                 }

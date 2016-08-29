@@ -3,11 +3,17 @@ using Verse;
 
 namespace RA
 {
-    [StaticConstructorOnStartup]
     public class RA_UnfinishedThing: UnfinishedThing
     {
-        public static Graphic crateFrontGraphic = GraphicDatabase.Get<Graphic_Single>("UI/Icons/UnfinishedBorder", ShaderDatabase.Transparent, new Vector2(1.1f, 1.1f), new Color(1, 1, 1, 0.5f));
-        //public static Graphic crateFrontGraphic = GraphicDatabase.Get<Graphic_Single>("UI/Icons/UnfinishedIndicator", ShaderDatabase.Transparent, new Vector2(0.65f, 0.65f), new Color(1, 1, 1, 0.7f));
+        public Graphic crateFrontGraphic;
+
+        public override void PostMapInit()
+        {
+            crateFrontGraphic = GraphicDatabase.Get<Graphic_Single>("Overlays/UnfinishedBorder",
+                ShaderDatabase.Transparent, new Vector2(RotatedSize.x + 0.1f, RotatedSize.z + 0.1f),
+                new Color(1, 1, 1, 0.5f));
+            //crateFrontGraphic = GraphicDatabase.Get<Graphic_Single>("UI/Icons/UnfinishedIndicator", ShaderDatabase.Transparent, new Vector2(0.65f, 0.65f), new Color(1, 1, 1, 0.7f));
+        }
 
         public override void DrawAt(Vector3 drawLoc)
         {

@@ -96,7 +96,7 @@ namespace RA
             if (Find.CameraDriver.CurrentZoom == CameraZoomRange.Closest && (Find.Selector.IsSelected(this) || Find.Selector.IsSelected(pawn)))
             {
                 // throws text mote with applied damage each time damage taken
-                MoteThrower.ThrowText(new Vector3(Position.x + 0.5f, Position.y, Position.z + 1f), dinfo.Amount.ToString(), GenDate.SecondsToTicks(1));
+                MoteMaker.ThrowText(new Vector3(Position.x + 0.5f, Position.y, Position.z + 1f), dinfo.Amount.ToString(), GenDate.SecondsToTicks(1));
             }
         }
 

@@ -125,6 +125,8 @@
 					</categories>
 				</filter>
 				<count>5</count>
+			</li>
+			<li>
 				<filter>
 					<categories>
 						<li>BarsMetal</li>
@@ -157,6 +159,8 @@
 					</categories>
 				</filter>
 				<count>5</count>
+			</li>
+			<li>
 				<filter>
 					<categories>
 						<li>BarsMetal</li>

@@ -77,11 +77,11 @@ namespace RA
             for (var i = 0; i < 6; i++)
             {
                 var loc = skyfaller.TrueCenter() + Gen.RandomHorizontalVector(1f);
-                MoteThrower.ThrowDustPuff(loc, 1.2f);
+                MoteMaker.ThrowDustPuff(loc, 1.2f);
             }
 
             // Throw a quick flash
-            MoteThrower.ThrowLightningGlow(skyfaller.TrueCenter(), impactRadius);
+            MoteMaker.ThrowLightningGlow(skyfaller.TrueCenter(), impactRadius);
 
             // Spawn the crater
             var crater = (Crater)ThingMaker.MakeThing(ThingDef.Named("Crater"));

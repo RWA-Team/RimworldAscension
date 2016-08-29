@@ -72,8 +72,8 @@ namespace RA
         {
             SoundAbsorbDamage.PlayOneShot(wearer.Position);
             var loc = wearer.TrueCenter() + Vector3Utility.HorizontalVectorFromAngle(dinfo.Angle).RotatedBy(180f) * 0.5f;
-            MoteThrower.ThrowStatic(loc, ThingDefOf.Mote_ShotHit_Spark);
-            MoteThrower.ThrowText(loc, "Blocked");
+            MoteMaker.ThrowMicroSparks(loc);
+            MoteMaker.ThrowText(loc, "Blocked");
         }
 
         public void Break()

@@ -158,7 +158,7 @@ namespace RA
             };
             toil.defaultCompleteMode = ToilCompleteMode.Never;
             toil.WithEffect(() => toil.actor.CurJob.bill.recipe.effectWorking, TargetIndex.A);
-            toil.WithSustainer(() => toil.actor.CurJob.bill.recipe.soundWorking);
+            toil.PlaySustainerOrSound(() => toil.actor.CurJob.bill.recipe.soundWorking);
             toil.WithProgressBar(TargetIndex.A, () =>
             {
                 var actor = toil.actor;
