@@ -10,11 +10,11 @@ namespace RA
         {
             if (!loc.ShouldSpawnMotesAt()) return;
 
-            var moteThrown = (MoteThrown) ThingMaker.MakeThing(ThingDef.Named(moteDefName));
-            moteThrown.ScaleUniform = Rand.Range(1.5f, 2.5f)*size;
-            moteThrown.exactRotationRate = Rand.Range(-0.5f, 0.5f);
+            var moteThrown = (MoteThrown)ThingMaker.MakeThing(ThingDefOf.Mote_Smoke);
+            moteThrown.Scale = Rand.Range(1.5f, 2.5f) * size;
+            moteThrown.rotationRate = Rand.Range(-30f, 30f);
             moteThrown.exactPosition = loc;
-            moteThrown.SetVelocityAngleSpeed(Rand.Range(30, 40), Rand.Range(0.008f, 0.012f));
+            moteThrown.SetVelocity(Rand.Range(30, 40), Rand.Range(0.5f, 0.7f));
             GenSpawn.Spawn(moteThrown, loc.ToIntVec3());
         }
 

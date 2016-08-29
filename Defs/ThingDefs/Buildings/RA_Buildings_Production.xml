@@ -212,6 +212,7 @@
 			<Cleanliness>-1</Cleanliness>
 		</statBases>
 		<recipes>
+			<li>MakeTorch</li>
 			<li>MakeBasket</li>
 			<li>MakeFigurine</li>
 			<li>MakeBrickRaw</li>

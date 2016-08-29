@@ -9,7 +9,7 @@
 	stuffProps:	
 		statOffsets - stuff based offset values
 		statFactors - stuff based multiplier values
-		stuffCommonality - weight chance to appear in trader stock		
+		commonality - weight chance to appear in trader stock		
 	Work only in statBases:
 		Blunt\SharpDamageMultiplier
 	Special Products used to aquire stuff based resources of the same stuff type, without making new recipes for each subtype
@@ -57,7 +57,7 @@
 				<TrapMeleeDamage>1.2</TrapMeleeDamage>
 				<MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
 			</statFactors>
-			<stuffCommonality>1</stuffCommonality>
+			<commonality>1</commonality>
 		</stuffProps>
 	</ThingDef>
 

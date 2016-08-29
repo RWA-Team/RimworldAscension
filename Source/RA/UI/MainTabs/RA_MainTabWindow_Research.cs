@@ -65,10 +65,6 @@ namespace RA
                 windowRect.x = Screen.width - windowRect.width;
             }
             windowRect.y = Screen.height - 35 - windowRect.height;
-            if (def.concept != null)
-            {
-                ConceptDatabase.KnowledgeDemonstrated(def.concept, KnowledgeAmount.GuiFrame);
-            }
 
             // throws message if no research bench is build yet
             if (!noBenchWarned)

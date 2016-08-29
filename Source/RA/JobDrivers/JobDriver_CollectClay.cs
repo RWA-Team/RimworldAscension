@@ -89,7 +89,7 @@ namespace RA
             toil.defaultCompleteMode = ToilCompleteMode.Never;
             toil.FailOnCellMissingDesignation(CellInd, DefDatabase<DesignationDef>.GetNamed("CollectClay"));
             toil.WithEffect(() => EffecterDef.Named("CutStone"), CellInd);
-            toil.WithSustainer(() => DefDatabase<SoundDef>.GetNamedSilentFail("Recipe_Surgery"));
+            toil.PlaySustainerOrSound(() => DefDatabase<SoundDef>.GetNamedSilentFail("Recipe_Surgery"));
             toil.WithProgressBar(CellInd, () => 1f - (float) pawn.jobs.curDriver.ticksLeftThisToil/totalWork);
             return toil;
         }

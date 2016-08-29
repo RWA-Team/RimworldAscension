@@ -14,7 +14,7 @@ namespace RA
         {
             if (mote == null)
             {
-                mote = (MoteProgressBar)MoteThrower.MakeInteractionOverlay(def.moteDef, A, B);
+                mote = (MoteProgressBar)MoteMaker.MakeInteractionOverlay(def.moteDef, A, B);
                 mote.exactScale.x = 0.68f;
                 mote.exactScale.z = 0.12f;
             }

@@ -14,6 +14,7 @@
 		<workSkillLearnFactor>0.1</workSkillLearnFactor>
 		<effectWorking>Sculpt</effectWorking>
 		<soundWorking>Recipe_Sculpt</soundWorking>
+		<unfinishedThingDef>UnfinishedThing</unfinishedThingDef>
 	</RecipeDef>
 
 
@@ -23,7 +24,6 @@
 		<description>Make bark fiber basket.</description>
 		<jobString>Making basket.</jobString>
 		<workSpeedStat>WeavingSpeed</workSpeedStat>
-		<unfinishedThingDef>Placeholder</unfinishedThingDef>
 		<products>
 			<Basket>1</Basket>
 		</products>
@@ -46,6 +46,52 @@
 	</RecipeDef>
 
 	<!--===================== Neolithic =====================-->
+
+	<RecipeDef ParentName="MakeFurniture">
+		<defName>MakeTorch</defName>
+		<label>make torch</label>
+		<description>Make a torch.</description>
+		<jobString>Making torch.</jobString>
+		<products>
+			<Torch>1</Torch>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+				<li>Tallow</li>
+				<li>BarkFibre</li>
+				<li>LeatherStrip</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BarkFibre</li>
+						<li>LeatherStrip</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Tallow</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<researchPrerequisite>AnimalDissection</researchPrerequisite>
+	</RecipeDef>
 
 	<RecipeDef ParentName="MakeFurniture">
 		<defName>MakeStoolNeolithicStone</defName>
@@ -153,11 +199,6 @@
 
 	<!--===================== Medieval =====================-->
 
-
-
-	Chest
-	Barrel
-
 	<RecipeDef ParentName="MakeFurniture">
 		<defName>MakeTableShort</defName>
 		<label>make short table</label>
@@ -216,7 +257,7 @@
 		<description>Make long table.</description>
 		<jobString>Making long table.</jobString>
 		<products>
-			<TableLong>1</TableLong>
+			<Stool>1</Stool>
 		</products>
 		<fixedIngredientFilter>
 			<thingDefs>
@@ -353,7 +394,7 @@
 		<description>Make barrel.</description>
 		<jobString>Making barrel.</jobString>
 		<products>
-			<Barrel>1</Barrel>
+			<Chest>1</Chest>
 		</products>
 		<fixedIngredientFilter>
 			<thingDefs>

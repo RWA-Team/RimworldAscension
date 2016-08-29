@@ -43,8 +43,8 @@
 			<foodType>Meat</foodType>
 			<preferability>RawBad</preferability>
 			<nutrition>0.05</nutrition>
-			<eatEffect>EatMeat</eatEffect>
-			<soundEat>RawMeat_Eat</soundEat>
+			<ingestEffect>EatMeat</ingestEffect>
+			<ingestSound>RawMeat_Eat</ingestSound>
 		</ingestible>
 		<comps>
 			<li Class="CompProperties_Rottable">
@@ -82,8 +82,8 @@
 		<ingestible>
 			<foodType>Meat, Meal, Processed</foodType>
 			<preferability>MealSimple</preferability>
-			<eatEffect>EatMeat</eatEffect>
-			<soundEat>RawMeat_Eat</soundEat>
+			<ingestEffect>EatMeat</ingestEffect>
+			<ingestSound>RawMeat_Eat</ingestSound>
 		</ingestible>
 	</ThingDef>
 
@@ -165,8 +165,8 @@
 		</thingCategories>
 		<ingestible>
 			<foodType>Meal, Processed</foodType>
-			<eatEffect>EatVegetarian</eatEffect>
-			<soundEat>Meal_Eat</soundEat>
+			<ingestEffect>EatVegetarian</ingestEffect>
+			<ingestSound>Meal_Eat</ingestSound>
 		</ingestible>
 	</ThingDef>
 
@@ -186,7 +186,6 @@
 		<ingestible>
 			<preferability>MealSimple</preferability>
 			<nutrition>0.85</nutrition>
-			<joy>0.02</joy>
 		</ingestible>
 	</ThingDef>
 
@@ -205,7 +204,6 @@
 		<ingestible>
 			<preferability>MealFine</preferability>
 			<nutrition>0.90</nutrition>
-			<joy>0.045</joy>
 		</ingestible>
 	</ThingDef>
 
@@ -224,7 +222,6 @@
 		<ingestible>
 			<preferability>MealLavish</preferability>
 			<nutrition>1.00</nutrition>
-			<joy>0.065</joy>
 		</ingestible>
 	</ThingDef>
 
@@ -242,7 +239,6 @@
 		<ingestible>
 			<preferability>MealFine</preferability>
 			<nutrition>0.9</nutrition>
-			<joy>0.02</joy>
 		</ingestible>
 	</ThingDef>
 
@@ -260,7 +256,6 @@
 		<ingestible>
 			<preferability>MealAwful</preferability>
 			<nutrition>0.90</nutrition>
-			<joy>-0.04</joy>
 		</ingestible>
 	</ThingDef>
 

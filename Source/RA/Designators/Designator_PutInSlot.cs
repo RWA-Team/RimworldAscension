@@ -99,9 +99,10 @@ namespace RA
                 }
                 TooltipHandler.TipRegion(rect, tip);
             }
-            if (!tutorHighlightTag.NullOrEmpty())
+            if (!HighlightTag.NullOrEmpty() &&
+                (Find.WindowStack.FloatMenu == null || !Find.WindowStack.FloatMenu.windowRect.Overlaps(rect)))
             {
-                TutorUIHighlighter.HighlightOpportunity(tutorHighlightTag, rect);
+                UIHighlighter.HighlightOpportunity(rect, HighlightTag);
             }
             if (gizmoActivated)
             {
@@ -262,7 +263,7 @@ namespace RA
         public override void DesignateThing(Thing thing)
         {
             // throws puffs to indicate that thigns were selected
-            MoteThrower.ThrowMetaPuffs(thing);
+            MoteMaker.ThrowMetaPuffs(thing);
         }
 
         // called when designator successfuly selects at least one thing

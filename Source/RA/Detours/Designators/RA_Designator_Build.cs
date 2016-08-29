@@ -27,7 +27,10 @@ namespace RA
         // gets/sets stuff to the inner hidden stuff def
         public ThingDef Stuff
         {
-            get { return Initializer.GetHiddenValue(typeof (Designator_Build), this, "stuffDef", infoStuff) as ThingDef; }
+            get
+            {
+                return Initializer.GetHiddenValue(typeof (Designator_Build), this, "stuffDef", infoStuff) as ThingDef;
+            }
             set { Initializer.SetHiddenValue(value, typeof (Designator_Build), this, "stuffDef", infoStuff); }
         }
 
@@ -253,7 +256,7 @@ namespace RA
             // start GUI.color is the transparency set by our floatmenu parent
             // store it, so we can apply it to all subsequent colours
             var transparency = GUI.color;
-            
+
             var buttonRect = new Rect(topLeft.x, topLeft.y, Width, 75f);
             var mouseover = false;
             if (Mouse.IsOver(buttonRect))
@@ -304,8 +307,11 @@ namespace RA
                 }
                 TooltipHandler.TipRegion(buttonRect, tip);
             }
-            if (!tutorHighlightTag.NullOrEmpty())
-                TutorUIHighlighter.HighlightOpportunity(tutorHighlightTag, buttonRect);
+            if (!HighlightTag.NullOrEmpty() &&
+                (Find.WindowStack.FloatMenu == null || !Find.WindowStack.FloatMenu.windowRect.Overlaps(buttonRect)))
+            {
+                UIHighlighter.HighlightOpportunity(buttonRect, HighlightTag);
+            }
 
 
             if (clicked)
