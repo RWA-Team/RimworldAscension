@@ -19,15 +19,15 @@ namespace RA
         public override IEnumerable<Thing> ButcherProducts(Pawn butcher, float efficiency)
         {
             // return base.ButcherProducts
-            if (def.butcherProducts != null)
-            {
-                foreach (var thingCount in def.butcherProducts)
-                {
-                    var thing = ThingMaker.MakeThing(thingCount.thingDef);
-                    thing.stackCount = thingCount.count;
-                    yield return thing;
-                }
-            }
+            //if (def.butcherProducts != null)
+            //{
+            //    foreach (var thingCount in def.butcherProducts)
+            //    {
+            //        var thing = ThingMaker.MakeThing(thingCount.thingDef);
+            //        thing.stackCount = thingCount.count;
+            //        yield return thing;
+            //    }
+            //}
             
             //Return available sheer products
             var compShearable = this.TryGetComp<CompShearable>();
@@ -61,7 +61,9 @@ namespace RA
             var leatherCount = GenMath.RoundRandom(this.GetStatValue(StatDefOf.LeatherAmount)*efficiency);
             if (leatherCount > 0)
             {
-                var leather = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamedSilentFail("Leather"));
+                var leather = ThingMaker.MakeThing(RaceProps.Humanlike
+                    ? DefDatabase<ThingDef>.GetNamedSilentFail("LeatherHuman")
+                    : DefDatabase<ThingDef>.GetNamedSilentFail("LeatherAnimal"));
                 leather.stackCount = leatherCount;
                 yield return leather;
             }
@@ -70,7 +72,9 @@ namespace RA
             var bonesCount = GenMath.RoundRandom(this.GetStatValue(StatDef.Named("BoneAmount"))*efficiency);
             if (bonesCount > 0)
             {
-                var bones = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamedSilentFail("Bone"));
+                var bones = ThingMaker.MakeThing(RaceProps.Humanlike
+                    ? DefDatabase<ThingDef>.GetNamedSilentFail("BoneHuman")
+                    : DefDatabase<ThingDef>.GetNamedSilentFail("BoneAnimal"));
                 bones.stackCount = bonesCount;
                 yield return bones;
             }
