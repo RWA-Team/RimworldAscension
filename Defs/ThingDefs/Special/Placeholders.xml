@@ -30,6 +30,8 @@
 		<defName>UnfinishedThing</defName>
 		<label>unfinished thing</label>
 		<thingClass>UnfinishedThing</thingClass>
+		<menuHidden>true</menuHidden>
+		<destroyOnDrop>true</destroyOnDrop>
 	</ThingDef>
 
 </Buildings>

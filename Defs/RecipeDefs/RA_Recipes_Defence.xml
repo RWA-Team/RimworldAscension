@@ -37,8 +37,7 @@
 	<RecipeDef ParentName="MakeTrapNeolithic">
 		<defName>MakeTrapDeadfall</defName>
 		<label>make deadfall trap</label>
-		<description>Make deadfall trap.</description>
-		<jobString>Making deadfall trap.</jobString>
+		<description>Make a deadfall trap.</description>
 		<products>
 			<TrapDeadfall>1</TrapDeadfall>
 		</products>
@@ -60,8 +59,8 @@
 
 	<RecipeDef ParentName="MakeTrapNeolithic">
 		<defName>MakeBalista</defName>
-		<label>make broom</label>
-		<description>Makes a simple broom. Used for sweeping floors</description>
+		<label>make balista</label>
+		<description>Makes a balista.</description>
 		<products>
 			<Broom>1</Broom>
 		</products>

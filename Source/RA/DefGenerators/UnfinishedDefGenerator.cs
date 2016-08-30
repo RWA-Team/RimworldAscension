@@ -37,7 +37,7 @@ namespace RA
                 newDef.graphicData.CopyFrom(firstProductDef.graphicData);
                  
                 // assigns MinifiedThings ThingCategory
-                CrossRefLoader.RegisterListWantsCrossRef(newDef.thingCategories, "UnfinishedGoods");
+                CrossRefLoader.RegisterListWantsCrossRef(newDef.thingCategories, "UnfinishedThings");
 
                 newDef.comps.Add(new CompProperties_Forbiddable());
 
