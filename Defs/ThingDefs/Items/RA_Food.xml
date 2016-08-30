@@ -32,7 +32,7 @@
 		</graphicData>
 		<statBases>
 			<DeteriorationRate>10</DeteriorationRate>
-			<MarketValue>30</MarketValue>
+			<MarketValue>1.2</MarketValue>
 			<Beauty>-30</Beauty>
 		</statBases>
 		<stackLimit>75</stackLimit>
@@ -43,8 +43,8 @@
 			<foodType>Meat</foodType>
 			<preferability>RawBad</preferability>
 			<nutrition>0.05</nutrition>
-			<ingestEffect>EatMeat</ingestEffect>
-			<ingestSound>RawMeat_Eat</ingestSound>
+			<eatEffect>EatMeat</eatEffect>
+			<soundEat>RawMeat_Eat</soundEat>
 		</ingestible>
 		<comps>
 			<li Class="CompProperties_Rottable">
@@ -69,9 +69,6 @@
 		<graphicData>
 			<texPath>Things/Item/Resource/MeatFoodRaw/MeatHuman</texPath>
 		</graphicData>
-		<ingestible>
-			<sourceDef>Human</sourceDef>
-		</ingestible>
 	</ThingDef>
 
 
@@ -85,8 +82,8 @@
 		<ingestible>
 			<foodType>Meat, Meal, Processed</foodType>
 			<preferability>MealSimple</preferability>
-			<ingestEffect>EatMeat</ingestEffect>
-			<ingestSound>RawMeat_Eat</ingestSound>
+			<eatEffect>EatMeat</eatEffect>
+			<soundEat>RawMeat_Eat</soundEat>
 		</ingestible>
 	</ThingDef>
 
@@ -97,10 +94,9 @@
 		<description>A piece of roasted meat.</description>
 		<statBases>
 			<DeteriorationRate>7</DeteriorationRate>
-			<MarketValue>50</MarketValue>
 		</statBases>
 		<ingestible>
-			<nutrition>0.8</nutrition>
+			<nutrition>0.55</nutrition>
 		</ingestible>
 		<comps>
 			<li Class="CompProperties_Rottable">
@@ -123,9 +119,6 @@
 			<texPath>Things/Item/Resource/MeatFoodRaw/MeatHuman</texPath>
 			<color>(127,106,0)</color>
 		</graphicData>
-		<ingestible>
-			<sourceDef>Human</sourceDef>
-		</ingestible>
 	</ThingDef>
 
 
@@ -139,8 +132,11 @@
 			<color>(127,70,0)</color>
 		</graphicData>
 		<ingestible>
-			<nutrition>0.7</nutrition>
+			<nutrition>0.07</nutrition>
 		</ingestible>
+		<statBases>
+			<MarketValue>1.4</MarketValue>
+		</statBases>
 		<comps>
 			<li Class="CompProperties_Rottable">
 				<daysToRotStart>7</daysToRotStart>
@@ -161,9 +157,6 @@
 		<graphicData>
 			<texPath>Things/Item/Resource/MeatFoodRaw/MeatHuman</texPath>
 		</graphicData>
-		<ingestible>
-			<sourceDef>Human</sourceDef>
-		</ingestible>
 	</ThingDef>
 
 	<!-- ======================== Meals =========================-->
@@ -174,8 +167,8 @@
 		</thingCategories>
 		<ingestible>
 			<foodType>Meal, Processed</foodType>
-			<ingestEffect>EatVegetarian</ingestEffect>
-			<ingestSound>Meal_Eat</ingestSound>
+			<eatEffect>EatVegetarian</eatEffect>
+			<soundEat>Meal_Eat</soundEat>
 		</ingestible>
 	</ThingDef>
 
@@ -189,13 +182,18 @@
 		</graphicData>
 		<statBases>
 			<DeteriorationRate>20</DeteriorationRate>
-			<MarketValue>25</MarketValue>
-			<WorkToMake>300</WorkToMake>
 		</statBases>
 		<ingestible>
 			<preferability>MealSimple</preferability>
-			<nutrition>0.85</nutrition>
+			<nutrition>0.8</nutrition>
+			<joy>0.03</joy>
 		</ingestible>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0022</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="Meal">
@@ -207,13 +205,18 @@
 		</graphicData>
 		<statBases>
 			<DeteriorationRate>20</DeteriorationRate>
-			<MarketValue>28</MarketValue>
-			<WorkToMake>450</WorkToMake>
 		</statBases>
 		<ingestible>
 			<preferability>MealFine</preferability>
 			<nutrition>0.90</nutrition>
+			<joy>0.05</joy>
 		</ingestible>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0031</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="Meal">
@@ -225,13 +228,18 @@
 		</graphicData>
 		<statBases>
 			<DeteriorationRate>20</DeteriorationRate>
-			<MarketValue>40</MarketValue>
-			<WorkToMake>800</WorkToMake>
 		</statBases>
 		<ingestible>
 			<preferability>MealLavish</preferability>
 			<nutrition>1.00</nutrition>
+			<joy>0.065</joy>
 		</ingestible>
+		<comps>
+			<li Class="RA.CompCraftedValue_Properties">
+				<valuePerWorkFactor>0.0022</valuePerWorkFactor>
+				<profitFactor>0.96</profitFactor>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="Meal">
@@ -243,11 +251,12 @@
 		</graphicData>
 		<statBases>
 			<DeteriorationRate>0.5</DeteriorationRate>
-			<MarketValue>100</MarketValue>
+			<MarketValue>50</MarketValue>
 		</statBases>
 		<ingestible>
 			<preferability>MealFine</preferability>
 			<nutrition>0.9</nutrition>
+			<joy>0.02</joy>
 		</ingestible>
 	</ThingDef>
 
@@ -260,11 +269,12 @@
 		</graphicData>
 		<statBases>
 			<DeteriorationRate>20</DeteriorationRate>
-			<MarketValue>15</MarketValue>
+			<MarketValue>1</MarketValue>
 		</statBases>
 		<ingestible>
 			<preferability>MealAwful</preferability>
 			<nutrition>0.90</nutrition>
+			<joy>-0.04</joy>
 		</ingestible>
 	</ThingDef>
 

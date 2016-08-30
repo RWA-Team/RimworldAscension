@@ -287,7 +287,7 @@
       <foodType>VegetarianRoughAnimal</foodType>
       <leatherLabel>chinchilla fur</leatherLabel>
       <leatherInsulation>1.1</leatherInsulation>
-      <leatherMarketValueFactor>10.0</leatherMarketValueFactor>
+      <leatherMarketValue>10.0</leatherMarketValue>
       <leatherColor>178,170,158</leatherColor>
       <wildness>0.60</wildness>
       <mateMtbHours>5</mateMtbHours>

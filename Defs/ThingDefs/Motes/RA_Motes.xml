@@ -23,9 +23,9 @@
 			<texPath>Overlays/Motes/SmokeBlack</texPath>
 		</graphicData>
 		<mote>
-			<fadeInTime>30</fadeInTime>
-			<solidTime>400</solidTime>
-			<fadeOutTime>200</fadeOutTime>
+			<fadeinDuration>30</fadeinDuration>
+			<ticksBeforeStartFadeout>400</ticksBeforeStartFadeout>
+			<fadeoutDuration>200</fadeoutDuration>
 			<growthRate>0.005</growthRate>
 		</mote>
 	</ThingDef>
@@ -44,7 +44,7 @@
 	<ThingDef ParentName="MoteSmoke">
 		<defName>Mote_SmokeBlack_Signal</defName>
 		<mote>
-			<solidTime>600</solidTime>
+			<ticksBeforeStartFadeout>600</ticksBeforeStartFadeout>
 		</mote>
 	</ThingDef>
 
@@ -52,9 +52,9 @@
 
 	<ThingDef Name="MoteJob" ParentName="Mote" Abstract="True">
 		<mote>
-			<fadeInTime>5</fadeInTime>
-			<solidTime>20</solidTime>
-			<fadeOutTime>15</fadeOutTime>
+			<fadeinDuration>5</fadeinDuration>
+			<ticksBeforeStartFadeout>20</ticksBeforeStartFadeout>
+			<fadeoutDuration>15</fadeoutDuration>
 		</mote>
 	</ThingDef>
 	

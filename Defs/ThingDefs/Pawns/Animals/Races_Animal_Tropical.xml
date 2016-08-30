@@ -194,7 +194,7 @@
       <foodType>VegetarianRoughAnimal</foodType>
       <leatherColor>(176,150,106)</leatherColor>
       <leatherInsulation>0.9</leatherInsulation>
-      <leatherMarketValueFactor>10.0</leatherMarketValueFactor>
+      <leatherMarketValue>10.0</leatherMarketValue>
       <wildness>0.6</wildness>
       <canBePredatorPrey>false</canBePredatorPrey>
       <gestationPeriodDays>30</gestationPeriodDays>

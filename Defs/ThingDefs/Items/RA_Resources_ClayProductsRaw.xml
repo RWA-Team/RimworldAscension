@@ -10,7 +10,7 @@
 	stuffProps:	
 		statOffsets - stuff based offset values
 		statFactors - stuff based multiplier values
-		commonality - weight chance to appear in trader stock	
+		stuffCommonality - weight chance to appear in trader stock	
 	
 	Work only in statBases:
 		Blunt\SharpDamageMultiplier

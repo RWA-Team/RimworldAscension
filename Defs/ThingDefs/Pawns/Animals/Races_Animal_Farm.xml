@@ -101,7 +101,7 @@
       <baseHealthScale>0.95</baseHealthScale>
       <foodType>OmnivoreRoughAnimal</foodType>
       <leatherColor>(174,150,126)</leatherColor>
-      <leatherMarketValueFactor>4</leatherMarketValueFactor>
+      <leatherMarketValue>4</leatherMarketValue>
       <leatherLabel>pigskin</leatherLabel>
       <leatherStatFactors>
         <MarketValue>1.45</MarketValue>
