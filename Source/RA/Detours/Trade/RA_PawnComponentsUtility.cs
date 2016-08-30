@@ -32,6 +32,10 @@ namespace RA
                     {
                         pawn.outfits = new Pawn_OutfitTracker(pawn);
                     }
+                    if (pawn.drugs == null)
+                    {
+                        pawn.drugs = new Pawn_DrugPolicyTracker(pawn);
+                    }
                     if (pawn.timetable == null)
                     {
                         pawn.timetable = new Pawn_TimetableTracker();

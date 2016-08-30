@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ThingsDef>
+	<!-- ===================================Norbals=========================================================-->
+	<ThingDef ParentName="WeaponMelee">
+		<defName>AxeNorbal</defName>
+		<label>Norbal axe</label>
+		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Weapons/AxeNorbal/AxeNorbal</texPath>
+			<drawSize>0.7</drawSize>
+		</graphicData>
+		<equippedAngleOffset>120</equippedAngleOffset>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<MeleeWeapon_DamageAmount>15</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
+			<ArmorPenetration>4</ArmorPenetration>
+		</statBases>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<meleeDamageDef>Cut</meleeDamageDef>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="RA.CompTool_Properties"/>
+			<li Class="RA.CompWeaponExtensions_Properties">
+				<firstHandPosition>(-0.03, 1, 0)</firstHandPosition>
+				<secondHandPosition>(0.30, 1, -0.02)</secondHandPosition>
+
+			</li>
+		</comps>
+		<weaponTags>
+			<li>NorbalMelee</li>
+		</weaponTags>
+	</ThingDef>
+
+	<ThingDef ParentName="WeaponMelee">
+		<defName>AxeNorbalElite</defName>
+		<label>Norbal elite axe</label>
+		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Weapons/AxeNorbalElite/AxeNorbalElite</texPath>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<equippedAngleOffset>120</equippedAngleOffset>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<MeleeWeapon_DamageAmount>18</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>0.9</MeleeWeapon_Cooldown>
+			<ArmorPenetration>5</ArmorPenetration>
+		</statBases>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<meleeDamageDef>Cut</meleeDamageDef>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="RA.CompTool_Properties"/>
+			<li Class="RA.CompWeaponExtensions_Properties">
+				<firstHandPosition>(0.16, 1, 0.05)</firstHandPosition>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>NorbalMeleeElite</li>
+		</weaponTags>
+	</ThingDef>
+
+	<ThingDef ParentName="WeaponMelee">
+		<defName>BattlehammerNorbal</defName>
+		<label>Norbal battlehammer </label>
+		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Weapons/BattlehammerNorbal/BattlehammerNorbal</texPath>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<equippedAngleOffset>120</equippedAngleOffset>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<MeleeWeapon_DamageAmount>20</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>1.05</MeleeWeapon_Cooldown>
+			<ArmorPenetration>2</ArmorPenetration>
+		</statBases>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<meleeDamageDef>Blunt</meleeDamageDef>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="RA.CompTool_Properties"/>
+			<li Class="RA.CompWeaponExtensions_Properties">
+				<firstHandPosition>(0.13, 1, -0.03)</firstHandPosition>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>NorbalMelee</li>
+		</weaponTags>
+	</ThingDef>
+	<ThingDef ParentName="WeaponMelee">
+		<defName>SwordNorbal</defName>
+		<label>Norbal sword</label>
+		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Weapons/SwordNorbal/SwordNorbal</texPath>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<equippedAngleOffset>120</equippedAngleOffset>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<MeleeWeapon_DamageAmount>13</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
+			<ArmorPenetration>5</ArmorPenetration>
+		</statBases>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<meleeDamageDef>Cut</meleeDamageDef>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="RA.CompTool_Properties"/>
+			<li Class="RA.CompWeaponExtensions_Properties">
+				<firstHandPosition>(0.3, 1, 0.03)</firstHandPosition>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>NorbalMelee</li>
+		</weaponTags>
+	</ThingDef>
+
+	<ThingDef ParentName="WeaponMelee">
+		<defName>SwordNorbalElite</defName>
+		<label>Norbal elite sword</label>
+		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Weapons/SwordNorbalElite/SwordNorbalElite</texPath>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<equippedAngleOffset>130</equippedAngleOffset>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<MeleeWeapon_DamageAmount>15</MeleeWeapon_DamageAmount>
+			<MeleeWeapon_Cooldown>0.9</MeleeWeapon_Cooldown>
+			<ArmorPenetration>7</ArmorPenetration>
+		</statBases>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<meleeDamageDef>Stab</meleeDamageDef>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="RA.CompTool_Properties"/>
+			<li Class="RA.CompWeaponExtensions_Properties">
+				<firstHandPosition>(0.22, 1, 0.03)</firstHandPosition>
+			</li>
+		</comps>
+		<weaponTags>
+			<li>NorbalMeleeElite</li>
+		</weaponTags>
+	</ThingDef>
+
+	<ThingDef ParentName="WeaponRanged">
+		<defName>BowNorbal</defName>
+		<label>Norbal Bow</label>
+		<description>A simple wooden bow.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Weapons/BowNorbal/BowNorbal</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.4</drawSize>
+		</graphicData>
+		<soundInteract>BowSmall</soundInteract>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<AccuracyTouch>0.2</AccuracyTouch>
+			<AccuracyShort>0.6</AccuracyShort>
+			<AccuracyMedium>0.8</AccuracyMedium>
+			<AccuracyLong>0</AccuracyLong>
+		</statBases>
+		<techLevel>Medieval</techLevel>
+		<weaponTags>
+			<li>NorbalRanged</li>
+		</weaponTags>
+		<comps>
+			<li Class="RA.CompTool_Properties"/>
+			<li Class="RA.CompWeaponExtensions_Properties">
+				<firstHandPosition>(-0.1, 1, 0)</firstHandPosition>
+				<secondHandPosition>(0.15, -0.15, 0)</secondHandPosition>
+			</li>
+		</comps>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<projectileDef>Arrow_Norbal</projectileDef>
+				<warmupTicks>78</warmupTicks>
+				<range>30</range>
+				<soundCast>BowSmall</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Projectile">
+		<defName>Arrow_Norbal</defName>
+		<label>crossbow bolt</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_single</graphicClass>
+		</graphicData>
+		<statBases>
+			<ArmorPenetration>4</ArmorPenetration>
+		</statBases>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>Stab</damageDef>
+			<DamageAmountBase>15</DamageAmountBase>
+			<Speed>45</Speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="WeaponRanged">
+		<defName>CrossbowNorbal</defName>
+		<label>Norbal crossbow</label>
+		<description>A simple wooden bow.</description>
+		<graphicData>
+			<texPath>Factions/Norbals/Weapons/CrossbowNorbal/CrossbowNorbal</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.4</drawSize>
+		</graphicData>
+		<soundInteract>BowSmall</soundInteract>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<AccuracyTouch>0.4</AccuracyTouch>
+			<AccuracyShort>0.6</AccuracyShort>
+			<AccuracyMedium>0.7</AccuracyMedium>
+			<AccuracyLong>0</AccuracyLong>
+		</statBases>
+		<techLevel>Medieval</techLevel>
+		<weaponTags>
+			<li>NorbalRanged</li>
+		</weaponTags>
+		<comps>
+			<li Class="RA.CompTool_Properties">
+			</li>
+			<li Class="RA.CompWeaponExtensions_Properties">
+				<firstHandPosition>(-0.3, 1, 0)</firstHandPosition>
+				<secondHandPosition>(0.15, -1, 0)</secondHandPosition>
+			</li>
+		</comps>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<projectileDef>Arrow_Norbal</projectileDef>
+				<warmupTicks>78</warmupTicks>
+				<range>30</range>
+				<soundCast>BowSmall</soundCast>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="Projectile">
+		<defName>Bolt_Norbal</defName>
+		<label>crossbow bolt</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_single</graphicClass>
+		</graphicData>
+		<statBases>
+			<ArmorPenetration>6</ArmorPenetration>
+		</statBases>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>Stab</damageDef>
+			<DamageAmountBase>15</DamageAmountBase>
+			<Speed>45</Speed>
+		</projectile>
+	</ThingDef>
+</ThingsDef>

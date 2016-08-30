@@ -118,11 +118,4 @@
 		<order>50</order>
 	</DesignationCategoryDef>
 
-	<DesignationCategoryDef>
-		<DefName>Decoration</DefName>
-		<label>decorations</label>
-		<description>Make your colony a sweet place</description>
-		<order>25</order>
-	</DesignationCategoryDef>
-
 </Defs>

@@ -18,7 +18,7 @@ namespace RA
                     defName = sourceDef.defName + "Minified",
                     label = "minified " + sourceDef.label,
                     description = "Minified " + sourceDef.label + ".",
-                    thingClass = typeof (MinifiedThing),
+                    thingClass = typeof(MinifiedThing),
                     category = ThingCategory.Item,
                     altitudeLayer = AltitudeLayer.Item,
                     stackLimit = 1,
@@ -30,7 +30,6 @@ namespace RA
                     thingCategories = new List<ThingCategoryDef>(),
                     stuffCategories = sourceDef.stuffCategories
                 };
-
                 // assigns MinifiedThings ThingCategory
                 CrossRefLoader.RegisterListWantsCrossRef(newDef.thingCategories, "MinifiedThings");
 

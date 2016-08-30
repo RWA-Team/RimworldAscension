@@ -105,7 +105,7 @@
 		</building>
 		<statBases>
 			<MaxHitPoints>50</MaxHitPoints>
-			<WorkToMake>1200</WorkToMake>
+			<WorkToMake>200</WorkToMake>
 		</statBases>
 		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
 		<stuffCategories>
@@ -125,7 +125,7 @@
 				<heatPushMaxTemperature>28</heatPushMaxTemperature>
 			</li>
 			<li Class="RA.CompFueled_Properties">
-				<operatingTemp>400</operatingTemp>
+				<operatingTemp>500</operatingTemp>
 				<fireDrawOffset>(0,0,0.1)</fireDrawOffset>
 				<smokeDrawOffset>(0,0,0.1)</smokeDrawOffset>
 				<fuelDrawOffset>(0,0,0.01)</fuelDrawOffset>
@@ -185,8 +185,11 @@
 		<label>research table</label>
 		<description>Study surrounding materials here to research new things.</description>
 		<graphicData>
-			<texPath>Things/Buildings/Production/TableResea`zrch/Neolithic/TableResearchNeolithic</texPath>
+			<texPath>Things/Buildings/Production/TableResearch/Neolithic/TableResearchNeolithic</texPath>
 		</graphicData>
+		<!-- 		<statBases>
+			<ResearchSpeedFactor>0.5</ResearchSpeedFactor>
+		</statBases> -->
 		<comps>
 			<li>
 				<compClass>RA.CompResearcher</compClass>
@@ -209,6 +212,7 @@
 			<Cleanliness>-1</Cleanliness>
 		</statBases>
 		<recipes>
+			<li>MakeTorch</li>
 			<li>MakeBasket</li>
 			<li>MakeFigurine</li>
 			<li>MakeBrickRaw</li>
@@ -217,10 +221,6 @@
 			<li>MakePotPlantRaw</li>
 			<li>MakeCeramicsRaw</li>
 			<li>MakeBroom</li>
-			<li>MakeStoolNeolithicStone</li>
-			<li>MakeStoolNeolithicWood</li>
-			<li>MakeTableNeolithicStone</li>
-			<li>MakeTableNeolithicWood</li>
 		</recipes>
 		<researchPrerequisites>
 			<li>Survival</li>
@@ -271,6 +271,29 @@
 		</recipes>
 		<researchPrerequisites>
 			<li>StoneCutting</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTableNeolithic">
+		<DefName>TableFurnitureMakerNeolithic</DefName>
+		<label>furniture table</label>
+		<Description>furniture maker table.</Description>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Missing</texPath>
+		</graphicData>
+		<statBases>
+			<Cleanliness>-5</Cleanliness>
+		</statBases>
+		<recipes>
+			<li>MakeStoolNeolithicStone</li>
+			<li>MakeStoolNeolithicWood</li>
+			<li>MakeTableNeolithicStone</li>
+			<li>MakeTableNeolithicWood</li>
+		</recipes>
+		<!-- allowed via research mods -->
+		<researchPrerequisites>
+			<li>Blocked</li>
 		</researchPrerequisites>
 	</ThingDef>
 

@@ -145,6 +145,7 @@
 			<li>TableWeaponMeleeNeolithic</li>
 			<li>TableWeaponRangedNeolithic</li>
 			<li>TableTailorNeolithic</li>
+			<li>TableFurnitureMakerNeolithic</li>
 			<li>Kiln</li>
 		</fixedBillGiverDefs>
 	</WorkGiverDef>

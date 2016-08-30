@@ -1,26 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
-	
-	<!-- 
-	- fillPercent - determne cover multiplier vs projectiles
+
+	<!--
+	- fillPercent - determine cover multiplier vs projectiles
+	- terrainAffordanceNeeded - type of terrain required to be build upon:
+		- Light - light objects like firniture can be build on any light supporting surface (like sand)
+		- Heavy - require solid surface below (for structures)
 	- castEdgeShadows - shadow aura around building
 	- staticSunShadowHeight - solid square shadow with set length
 	- drawerType:
-		- MapMeshOnly - doesn't draw from comps
-		- MapMeshAndRealTime - doesn't draw from comps
-		- RealtimeOnly - used for objects that change their texture
+		- MapMeshOnly - static texture, doesn't draw from comps
+		- MapMeshAndRealTime - ?
+		- RealtimeOnly - used for objects that change their texture (unsure)
+	- repairEffect:
+		- Repair - default repair effect of smoke puffs
+		- Welding - welding sparks and sound for repairing advanced metal buildings
+	- damageData:
+		- cornerX - draws corner cracks or other mentioned overlay on selected corner
+		- edgeX - draws edge cracks or other mentioned overlay on selected edge
+		- rect - manually redefines damage overlay area rectangle (defauls is based on building size)
+		- rectX - individual damage rect, to define multiple damage areas for complex buildings and furniture
 	- surfaceType:
 		- Item - allows place items
-		- Eat - allows place food to eat
-		- resourceReadoutPriority - determines the resource check order build designators and bills. They don't work without that parameter defined
+		- Eat - allows place food to eat 
 	-->
 
 	<ThingDef Name="Furniture" ParentName="Building" Abstract="True">
-		<altitudeLayer>Building</altitudeLayer>
 		<designationCategory>Furniture</designationCategory>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+	</ThingDef>
+
+	<ThingDef Name="Furniture" ParentName="FurnitureExotic" Abstract="True">
 		<comps>
 			<li>
 				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>ArtName_Furniture</nameMaker>
+				<descriptionMaker>ArtDescription_Furniture</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
 			</li>
 		</comps>
 	</ThingDef>
@@ -28,16 +46,14 @@
 	<ThingDef Name="Container" ParentName="Furniture" Abstract="True">
 		<thingClass>RA.Container</thingClass>
 		<drawerType>RealtimeOnly</drawerType>
-		<Size>(1,1)</Size>
-		<building>
-			<preventDeterioration>true</preventDeterioration>
-			<deconstructible>false</deconstructible>
-		</building>
-		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<rotatable>false</rotatable>
 		<AltitudeLayer>ItemImportant</AltitudeLayer>
 		<surfaceType>Item</surfaceType>
 		<hasTooltip>true</hasTooltip>
+		<building>
+			<preventDeterioration>true</preventDeterioration>
+			<deconstructible>false</deconstructible>
+		</building>
 		<inspectorTabs>
 			<li>ITab_Storage</li>
 			<li>RA.ITab_Container</li>
@@ -49,15 +65,14 @@
 	<ThingDef ParentName="Container">
 		<defName>Basket</defName>
 		<label>basket</label>
-		<Description>A bark fiber based basket. Used to store various things inside.</Description>
+		<Description>A bark fiber basket. Can hold a few items inside.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Containers/Basket/Basket</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(0.9,0.9)</drawSize>
 		</graphicData>
 		<statBases>
 			<MaxHitPoints>50</MaxHitPoints>
-			<WorkToMake>1000</WorkToMake>
+			<WorkToMake>2500</WorkToMake>
 		</statBases>
 		<costList>
 			<Basket>1</Basket>
@@ -79,96 +94,6 @@
 				<itemsCap>3</itemsCap>
 			</li>
 		</comps>
-		<!-- actual minified def is auto generated -->
-		<minifiedDef>Placeholder</minifiedDef>
-		<researchPrerequisites>
-			<li>Survival</li>
-		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="Container">
-		<defName>Chest</defName>
-		<label>chest</label>
-		<Description>A bark fiber based basket. Used to store various things inside.</Description>
-		<graphicData>
-			<texPath>Things/Buildings/Furniture/Containers/Chest/Chest</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(0.9,0.9)</drawSize>
-		</graphicData>
-		<statBases>
-			<MarketValue>100</MarketValue>
-			<MaxHitPoints>50</MaxHitPoints>
-			<WorkToMake>1000</WorkToMake>
-		</statBases>
-		<costList>
-			<Chest>1</Chest>
-		</costList>
-		<stuffCategories>
-			<li>Metal</li>
-		</stuffCategories>
-		<building>
-			<fixedStorageSettings>
-				<filter>
-					<categories>
-						<li>Root</li>
-					</categories>
-					<exceptedCategories>
-						<li>Refuse</li>
-					</exceptedCategories>
-				</filter>
-			</fixedStorageSettings>
-		</building>
-		<comps>
-			<li Class="RA.CompContainer_Properties">
-				<itemsCap>3</itemsCap>
-			</li>
-		</comps>
-		<!-- actual minified def is auto generated -->
-		<minifiedDef>Placeholder</minifiedDef>
-		<researchPrerequisites>
-			<li>Survival</li>
-		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="Container">
-		<defName>Barrel</defName>
-		<label>barrel</label>
-		<Description>A bark fiber based basket. Used to store various things inside.</Description>
-		<graphicData>
-			<texPath>Things/Buildings/Furniture/Containers/Barrel/Barrel</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(0.9,0.9)</drawSize>
-		</graphicData>
-		<statBases>
-			<MarketValue>100</MarketValue>
-			<MaxHitPoints>50</MaxHitPoints>
-			<WorkToMake>1000</WorkToMake>
-		</statBases>
-		<costList>
-			<Barrel>1</Barrel>
-		</costList>
-		<stuffCategories>
-			<li>Metal</li>
-		</stuffCategories>
-		<building>
-			<fixedStorageSettings>
-				<filter>
-					<categories>
-						<li>Root</li>
-					</categories>
-					<exceptedCategories>
-						<li>Refuse</li>
-					</exceptedCategories>
-				</filter>
-			</fixedStorageSettings>
-		</building>
-		<comps>
-			<li Class="RA.CompContainer_Properties">
-				<itemsCap>3</itemsCap>
-			</li>
-		</comps>
-		<!-- actual minified def is auto generated -->
-		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>
@@ -180,7 +105,6 @@
 		<Description>A big clay pot used to preserve food. Slightly slows rotting process.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Containers/Pot/Pot</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
 			<color>(141,86,65)</color>
 		</graphicData>
 		<statBases>
@@ -205,10 +129,87 @@
 				<rotModifier>0.75</rotModifier>
 			</li>
 		</comps>
-		<!-- actual minified def is auto generated -->
-		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Firing</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="Container">
+		<defName>Chest</defName>
+		<label>chest</label>
+		<Description>A solid chest. Has more inner capacity than simple basket.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Containers/Chest/Chest</texPath>
+			<drawSize>(0.9,0.9)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>10</MaxHitPoints>
+			<WorkToMake>7500</WorkToMake>
+		</statBases>
+		<costList>
+			<Chest>1</Chest>
+		</costList>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Root</li>
+					</categories>
+					<exceptedCategories>
+						<li>Refuse</li>
+					</exceptedCategories>
+				</filter>
+			</fixedStorageSettings>
+		</building>
+		<comps>
+			<li Class="RA.CompContainer_Properties">
+				<itemsCap>5</itemsCap>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>Smithing</li>
+			<li>Carpentry</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="Container">
+		<defName>Barrel</defName>
+		<label>barrel</label>
+		<Description>A wooden barrel. Not only can hold various food types, but also preserves them for spoiling for a longer duration.</Description>
+		<graphicData>
+			<texPath>Things/Buildings/Furniture/Containers/Barrel/Barrel</texPath>
+			<drawSize>(0.9,0.9)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<WorkToMake>6000</WorkToMake>
+		</statBases>
+		<costList>
+			<Barrel>1</Barrel>
+		</costList>
+		<stuffCategories>
+			<li>Metal</li>
+		</stuffCategories>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<categories>
+						<li>Food</li>
+					</categories>
+				</filter>
+			</fixedStorageSettings>
+		</building>
+		<comps>
+			<li Class="RA.CompContainer_Properties">
+				<itemsCap>5</itemsCap>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>Smithing</li>
+			<li>Carpentry</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -505,7 +506,7 @@
 			<li>StoneChunk</li>
 		</stuffCategories>
 		<!-- actual minified def is auto generated -->
-		<minifiedDef>Placeholder</minifiedDef>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<researchPrerequisites>
 			<li>Masonry</li>
 		</researchPrerequisites>

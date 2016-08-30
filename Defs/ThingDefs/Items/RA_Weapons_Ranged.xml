@@ -44,7 +44,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties">
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
 			</li>
@@ -107,7 +107,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties">
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
 			</li>
@@ -171,7 +171,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties">
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
 			</li>
@@ -234,7 +234,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties">
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.15, 0, 0)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -297,7 +297,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties">
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(0.15,0,0.15)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -360,7 +360,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties">
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.1,0.2,-0.13)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -421,7 +421,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties">
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.3, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
 			</li>
@@ -483,7 +483,7 @@
 		<comps>
 			<li Class="RA.CompTool_Properties">
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.3, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
 			</li>
@@ -546,11 +546,11 @@
 			</li>
 		</verbs>
 		<comps>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.25, 0, -0.05)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
 			</li>
-			<li Class="RA.CompTool_Properties" />
+			<!-- <li Class="RA.CompTool_Properties" /> -->
 		</comps>
 	</ThingDef>
 

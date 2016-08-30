@@ -71,7 +71,7 @@ namespace RA
                         // trasfer sellable to the trader exchange container
                         tradeCenter.traderStock.TransferToContainer(transferedThing, tradeCenter.traderExchangeContainer, transferedThing.stackCount);
                         // update trader goods total cost
-                        tradeCenter.traderGoodsCost += new Tradeable(transferedThing, transferedThing).PriceFor(ActionToDo);
+                        tradeCenter.traderGoodsCost += PriceFor(ActionToDo)* transferedThing.stackCount;
                         CheckTeachOpportunity(transferedThing);
                     }
                     break;
@@ -86,13 +86,12 @@ namespace RA
                 var minifiedThing = boughtThing as MinifiedThing;
                 if (minifiedThing != null)
                 {
-                    building = minifiedThing.InnerThing as Building;
+                    building = (minifiedThing.InnerThing as Building);
                 }
             }
             if (building?.def.building?.boughtConceptLearnOpportunity != null)
             {
-                ConceptDecider.TeachOpportunity(building.def.building.boughtConceptLearnOpportunity,
-                    OpportunityType.GoodToKnow);
+                LessonAutoActivator.TeachOpportunity(building.def.building.boughtConceptLearnOpportunity, OpportunityType.GoodToKnow);
             }
         }
     }

@@ -14,72 +14,18 @@
 				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
 				<moteDef>Mote_DustPuff</moteDef>
 				<ChancePerTick>0.035</ChancePerTick>
-				<startScale>
+				<scale>
 					<min>0.9</min>
 					<max>1.3</max>
-				</startScale>
+				</scale>
 				<rotationRate>
-					<min>-1</min>
-					<max>1</max>
+					<min>-60</min>
+					<max>60</max>
 				</rotationRate>
-				<velocity>
-					<min>0.01</min>
-					<max>0.03</max>
-				</velocity>
-			</li>
-		</children>
-	</EffecterDef>	
-
-	<EffecterDef>
-		<defName>ConstructWood</defName>
-		<children>
-			<li>
-				<subEffecterClass>SubEffecter_Sustainer</subEffecterClass>
-				<soundDef>Interact_ConstructWood</soundDef>
-			</li>
-			<li>
-				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
-				<moteDef>Mote_DustPuff</moteDef>
-				<ChancePerTick>0.035</ChancePerTick>
-				<startScale>
-					<min>0.9</min>
-					<max>1.2</max>
-				</startScale>
-				<rotationRate>
-					<min>-1</min>
-					<max>1</max>
-				</rotationRate>
-				<velocity>
-					<min>0.01</min>
-					<max>0.03</max>
-				</velocity>
-			</li>
-		</children>
-	</EffecterDef>	
-
-	<EffecterDef>
-		<defName>ConstructDirt</defName>
-		<children>
-			<li>
-				<subEffecterClass>SubEffecter_Sustainer</subEffecterClass>
-				<soundDef>Interact_ConstructDirt</soundDef>
-			</li>
-			<li>
-				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
-				<moteDef>Mote_DustPuff</moteDef>
-				<ChancePerTick>0.035</ChancePerTick>
-				<startScale>
-					<min>0.9</min>
-					<max>1.2</max>
-				</startScale>
-				<rotationRate>
-					<min>-1</min>
-					<max>1</max>
-				</rotationRate>
-				<velocity>
-					<min>0.01</min>
-					<max>0.03</max>
-				</velocity>
+				<speed>
+					<min>0.6</min>
+					<max>1.8</max>
+				</speed>
 			</li>
 		</children>
 	</EffecterDef>
@@ -98,31 +44,21 @@
 				<subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
 				<moteDef>Mote_DustPuff</moteDef>
 				<ChancePerTick>0.035</ChancePerTick>
-				<startScale>
+				<scale>
 					<min>0.9</min>
 					<max>1.3</max>
-				</startScale>
+				</scale>
 				<rotationRate>
-					<min>-1</min>
-					<max>1</max>
+					<min>-60</min>
+					<max>60</max>
 				</rotationRate>
-				<velocity>
-					<min>0.01</min>
-					<max>0.03</max>
-				</velocity>
+				<speed>
+					<min>0.6</min>
+					<max>1.8</max>
+				</speed>
 			</li>
 		</children>
 	</EffecterDef>
-
-<!-- 	<EffecterDef>
-		<defName>Sow</defName>
-		<children>
-			<li>
-				<subEffecterClass>SubEffecter_InteractSymbol</subEffecterClass>
-				<moteDef>Mote_Sow</moteDef>
-			</li>
-		</children>
-	</EffecterDef> -->
 
 	<EffecterDef>
 		<defName>Harvest</defName>
@@ -132,32 +68,12 @@
 				<moteDef>Mote_StoneBit</moteDef>
 				<ticksBetweenMotes>10</ticksBetweenMotes>
 				<spawnLocType>RandomCellOnTarget</spawnLocType>
-				<startScale>
+				<scale>
 					<min>0.5</min>
 					<max>0.7</max>
-				</startScale>
+				</scale>
 			</li>
 		</children>
 	</EffecterDef>
-
-<!-- 	<EffecterDef>
-		<defName>Clean</defName>
-		<children>
-			<li>
-				<subEffecterClass>SubEffecter_InteractSymbol</subEffecterClass>
-				<moteDef>Mote_Clean</moteDef>
-			</li>
-		</children>
-	</EffecterDef> -->
-
-<!-- 	<EffecterDef>
-		<defName>ClearSnow</defName>
-		<children>
-			<li>
-				<subEffecterClass>SubEffecter_InteractSymbol</subEffecterClass>
-				<moteDef>Mote_ClearSnow</moteDef>
-			</li>
-		</children>
-	</EffecterDef> -->
 
 </EffecterDefs>

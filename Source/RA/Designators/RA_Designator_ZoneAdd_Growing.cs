@@ -16,7 +16,7 @@ namespace RA
             LongEventHandler.ExecuteWhenFinished(
                 () => icon = ContentFinder<Texture2D>.Get("UI/Designators/ZoneCreate_Growing"));
             hotKey = KeyBindingDefOf.Misc2;
-            tutorHighlightTag = "DesignatorZoneCreateGrowing";
+            tutorTag = "ZoneAdd_Growing";
         }
 
         public override AcceptanceReport CanDesignateCell(IntVec3 c)
@@ -30,7 +30,7 @@ namespace RA
 
         protected override Zone MakeNewZone()
         {
-            ConceptDatabase.KnowledgeDemonstrated(ConceptDefOf.GrowingFood, KnowledgeAmount.Total);
+            PlayerKnowledgeDatabase.KnowledgeDemonstrated(ConceptDefOf.GrowingFood, KnowledgeAmount.Total);
             return new RA_Zone_Growing();
         }
     }

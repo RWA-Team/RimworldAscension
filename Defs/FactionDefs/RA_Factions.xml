@@ -65,7 +65,9 @@
 			<li>Tribal</li>
 		</hairTags>
 		<apparelStuffFilter>
-			<ThingsDefs>Leather</ThingsDefs>
+			<thingDefs>
+				<li>Leather</li>
+			</thingDefs>
 		</apparelStuffFilter>
 	</FactionDef>
 	
