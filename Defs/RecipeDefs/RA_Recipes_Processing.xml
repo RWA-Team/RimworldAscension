@@ -8,517 +8,520 @@
 	- fixedIngredientFilter - determine ingridient set to choose from	
 	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
 	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complex recipes. Changed to allowed ones via reseach mods.
-	-->
+-->
 
-	<RecipeDef Name="UnspecifiedCrating" Abstract="True">
-		<workSpeedStat>UnspecifiedCratingSpeed</workSpeedStat>
-		<workSkill>Crafting</workSkill>
-		<workSkillLearnFactor>0.1</workSkillLearnFactor>
-		<effectWorking>Tailor</effectWorking>
-		<soundWorking>Recipe_Tailor</soundWorking>
-	</RecipeDef>
-
-
-	<RecipeDef ParentName="UnspecifiedCrating">
-		<defName>MakeCharcoal</defName>
-		<label>make charcoal</label>
-		<description>make charcoal.</description>
-		<jobString>making charcoal.</jobString>
-		<workAmount>2000</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>WoodLog</li>
-					</thingDefs>
-				</filter>
-				<count>25</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>WoodLog</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<Charcoal>25</Charcoal>
-		</products>
-	</RecipeDef>
-
-	<RecipeDef ParentName="UnspecifiedCrating">
-		<defName>MakeBottle</defName>
-		<label>make bottle</label>
-		<description>make bottle.</description>
-		<jobString>making bottle.</jobString>
-		<workAmount>2000</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>SandYellow</li>
-					</thingDefs>
-				</filter>
-				<count>25</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>SandYellow</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<Bottle>5</Bottle>
-		</products>
-	</RecipeDef>
-
-	<RecipeDef ParentName="UnspecifiedCrating">
-		<defName>MakeLeatherHardened</defName>
-		<label>make bottle</label>
-		<description>make bottle.</description>
-		<jobString>making bottle.</jobString>
-		<workAmount>2000</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>SandYellow</li>
-					</thingDefs>
-				</filter>
-				<count>25</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>SandYellow</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<Bottle>5</Bottle>
-		</products>
-	</RecipeDef>
-
-	<!--===================== Moulding =====================-->
-
-	<RecipeDef Name="Moulding" Abstract="True">
-		<workSpeedStat>MouldingSpeed</workSpeedStat>
-		<workSkill>Crafting</workSkill>
-		<workSkillLearnFactor>0.1</workSkillLearnFactor>
-		<effectWorking>Sculpt</effectWorking>
-		<soundWorking>Recipe_Sculpt</soundWorking>
-		<researchPrerequisite>Firing</researchPrerequisite>
-	</RecipeDef>
+<RecipeDef Name="UnspecifiedCrating" Abstract="True">
+	<workSpeedStat>UnspecifiedCratingSpeed</workSpeedStat>
+	<workSkill>Crafting</workSkill>
+	<workSkillLearnFactor>0.1</workSkillLearnFactor>
+	<effectWorking>Tailor</effectWorking>
+	<soundWorking>Recipe_Tailor</soundWorking>
+</RecipeDef>
 
 
-	<RecipeDef ParentName="Moulding">
-		<defName>MakeBrickAdobeRaw</defName>
-		<label>make raw adobe bricks</label>
-		<description>Mix clay and hay into raw adobe bricks.</description>
-		<jobString>Making raw adobe bricks.</jobString>
-		<workAmount>400</workAmount>
-		<targetCountAdjustment>50</targetCountAdjustment>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>ClayClumpGray</li>
-					</thingDefs>
-				</filter>
-				<count>25</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>Hay</li>
-					</thingDefs>
-				</filter>
-				<count>40</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>ClayClumpGray</li>
-				<li>Hay</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<BrickAdobeRaw>25</BrickAdobeRaw>
-		</products>
-	</RecipeDef>
+<RecipeDef ParentName="UnspecifiedCrating">
+	<defName>MakeCharcoal</defName>
+	<label>make charcoal</label>
+	<description>make charcoal.</description>
+	<jobString>making charcoal.</jobString>
+	<workAmount>2000</workAmount>
+	<ingredients>
+		<li>
+			<filter>
+				<thingDefs>
+					<li>WoodLog</li>
+				</thingDefs>
+			</filter>
+			<count>25</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>WoodLog</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<products>
+		<Charcoal>25</Charcoal>
+	</products>
+</RecipeDef>
 
-	<RecipeDef ParentName="Moulding">
-		<defName>MakeBrickRaw</defName>
-		<label>make raw brick</label>
-		<description>Turn clay into raw brick.</description>
-		<jobString>Making raw brick.</jobString>
-		<workAmount>500</workAmount>
-		<targetCountAdjustment>50</targetCountAdjustment>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>Clay</li>
-					</categories>
-				</filter>
-				<count>25</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<categories>
-				<li>Clay</li>
-			</categories>
-		</fixedIngredientFilter>
-		<products>
-			<BrickRaw>25</BrickRaw>
-		</products>
-	</RecipeDef>
+<RecipeDef ParentName="UnspecifiedCrating">
+	<defName>MakeBottle</defName>
+	<label>make bottle</label>
+	<description>make bottle.</description>
+	<jobString>making bottle.</jobString>
+	<workAmount>2000</workAmount>
+	<ingredients>
+		<li>
+			<filter>
+				<thingDefs>
+					<li>SandYellow</li>
+				</thingDefs>
+			</filter>
+			<count>25</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>SandYellow</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<products>
+		<Bottle>5</Bottle>
+	</products>
+</RecipeDef>
 
-	<RecipeDef ParentName="Moulding">
-		<defName>MakePotRaw</defName>
-		<label>make raw pot</label>
-		<description>Turn clay into raw pot.</description>
-		<jobString>Shaping pot.</jobString>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>Clay</li>
-					</categories>
-				</filter>
-				<count>80</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<categories>
-				<li>Clay</li>
-			</categories>
-		</fixedIngredientFilter>
-		<products>
-			<PotRaw>1</PotRaw>
-		</products>
-	</RecipeDef>
+<RecipeDef ParentName="UnspecifiedCrating">
+	<defName>MakeLeatherHardened</defName>
+	<label>make bottle</label>
+	<description>make bottle.</description>
+	<jobString>making bottle.</jobString>
+	<workAmount>2000</workAmount>
+	<ingredients>
+		<li>
+			<filter>
+				<thingDefs>
+					<li>SandYellow</li>
+				</thingDefs>
+			</filter>
+			<count>25</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>SandYellow</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<products>
+		<Bottle>5</Bottle>
+	</products>
+</RecipeDef>
 
-	<RecipeDef ParentName="Moulding">
-		<defName>MakePotPlantRaw</defName>
-		<label>make raw plant pot</label>
-		<description>Turn clay into raw plant pot.</description>
-		<jobString>Shaping plant pot.</jobString>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>Clay</li>
-					</categories>
-				</filter>
-				<count>5</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<categories>
-				<li>Clay</li>
-			</categories>
-		</fixedIngredientFilter>
-		<products>
-			<PotPlantRaw>1</PotPlantRaw>
-		</products>
-	</RecipeDef>
+<!--===================== Moulding =====================-->
 
-	<RecipeDef ParentName="Moulding">
-		<defName>MakeCeramicsRaw</defName>
-		<label>make raw ceramics</label>
-		<description>Turn clay into raw ceramic goods.</description>
-		<jobString>Making raw ceramics.</jobString>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>Clay</li>
-					</categories>
-				</filter>
-				<count>50</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<categories>
-				<li>Clay</li>
-			</categories>
-		</fixedIngredientFilter>
-		<products>
-			<CeramicsRaw>1</CeramicsRaw>
-		</products>
-	</RecipeDef>
-
-	<!--===================== Weaving =====================-->
-
-	<RecipeDef Name="Weaving" Abstract="True">
-		<workSpeedStat>WeavingSpeed</workSpeedStat>
-		<workSkill>Crafting</workSkill>
-		<workSkillLearnFactor>0.1</workSkillLearnFactor>
-		<effectWorking>Tailor</effectWorking>
-		<soundWorking>Recipe_Tailor</soundWorking>
-		<researchPrerequisite>Weaving</researchPrerequisite>
-	</RecipeDef>
+<RecipeDef Name="Moulding" Abstract="True">
+	<workSpeedStat>MouldingSpeed</workSpeedStat>
+	<workSkill>Crafting</workSkill>
+	<workSkillLearnFactor>0.1</workSkillLearnFactor>
+	<effectWorking>Sculpt</effectWorking>
+	<soundWorking>Recipe_Sculpt</soundWorking>
+	<researchPrerequisite>Firing</researchPrerequisite>
+</RecipeDef>
 
 
-	<RecipeDef ParentName="Weaving">
-		<defName>MakeCotton</defName>
-		<label>weave cotton cloth</label>
-		<description>Turn cotton into a sheet of cotton cloth.</description>
-		<jobString>Weaving cotton.</jobString>
-		<workAmount>2000</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>Cotton</li>
-					</thingDefs>
-				</filter>
-				<count>25</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>Cotton</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<ClothCotton>1</ClothCotton>
-		</products>
-	</RecipeDef>
+<RecipeDef ParentName="Moulding">
+	<defName>MakeBrickAdobeRaw</defName>
+	<label>make raw adobe bricks</label>
+	<description>Mix clay and hay into raw adobe bricks.</description>
+	<jobString>Making raw adobe bricks.</jobString>
+	<workAmount>400</workAmount>
+	<targetCountAdjustment>50</targetCountAdjustment>
+	<ingredients>
+		<li>
+			<filter>
+				<thingDefs>
+					<li>ClayClumpGray</li>
+				</thingDefs>
+			</filter>
+			<count>25</count>
+		</li>
+		<li>
+			<filter>
+				<thingDefs>
+					<li>Hay</li>
+				</thingDefs>
+			</filter>
+			<count>40</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>ClayClumpGray</li>
+			<li>Hay</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<products>
+		<BrickAdobeRaw>25</BrickAdobeRaw>
+	</products>
+</RecipeDef>
 
-	<RecipeDef ParentName="Weaving">
-		<defName>MakeLinen</defName>
-		<label>weave linen cloth</label>
-		<description>Turn linen into a sheet of linen cloth.</description>
-		<jobString>Weaving linen.</jobString>
-		<workAmount>2000</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>Linen</li>
-					</thingDefs>
-				</filter>
-				<count>25</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>Linen</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<ClothLinen>1</ClothLinen>
-		</products>
-	</RecipeDef>
+<RecipeDef ParentName="Moulding">
+	<defName>MakeBrickRaw</defName>
+	<label>make raw brick</label>
+	<description>Turn clay into raw brick.</description>
+	<jobString>Making raw brick.</jobString>
+	<workAmount>500</workAmount>
+	<targetCountAdjustment>50</targetCountAdjustment>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>Clay</li>
+				</categories>
+			</filter>
+			<count>25</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<categories>
+			<li>Clay</li>
+		</categories>
+	</fixedIngredientFilter>
+	<products>
+		<BrickRaw>25</BrickRaw>
+	</products>
+</RecipeDef>
 
-	<RecipeDef ParentName="Weaving">
-		<defName>MakeWool</defName>
-		<label>weave woolen cloth</label>
-		<description>Turn wool into a sheet of woolen cloth.</description>
-		<jobString>Weaving wool.</jobString>
-		<workAmount>2000</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>MuffaloWool</li>
-						<li>AlpacaWool</li>
-					</thingDefs>
-				</filter>
-				<count>25</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>MuffaloWool</li>
-				<li>AlpacaWool</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<ClothWool>1</ClothWool>
-		</products>
-	</RecipeDef>
+<RecipeDef ParentName="Moulding">
+	<defName>MakePotRaw</defName>
+	<label>make raw pot</label>
+	<description>Turn clay into raw pot.</description>
+	<jobString>Shaping pot.</jobString>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>Clay</li>
+				</categories>
+			</filter>
+			<count>80</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<categories>
+			<li>Clay</li>
+		</categories>
+	</fixedIngredientFilter>
+	<products>
+		<PotRaw>1</PotRaw>
+	</products>
+</RecipeDef>
 
-	<!--===================== Disassembling =====================-->
+<RecipeDef ParentName="Moulding">
+	<defName>MakePotPlantRaw</defName>
+	<label>make raw plant pot</label>
+	<description>Turn clay into raw plant pot.</description>
+	<jobString>Shaping plant pot.</jobString>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>Clay</li>
+				</categories>
+			</filter>
+			<count>5</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<categories>
+			<li>Clay</li>
+		</categories>
+	</fixedIngredientFilter>
+	<products>
+		<PotPlantRaw>1</PotPlantRaw>
+	</products>
+</RecipeDef>
 
-	<RecipeDef Name="Disassembling" Abstract="True">
-		<workSpeedStat>DisassemblingSpeed</workSpeedStat>
-		<workSkill>Crafting</workSkill>
-		<workSkillLearnFactor>0.1</workSkillLearnFactor>
-	</RecipeDef>
+<RecipeDef ParentName="Moulding">
+	<defName>MakeCeramicsRaw</defName>
+	<label>make raw ceramics</label>
+	<description>Turn clay into raw ceramic goods.</description>
+	<jobString>Making raw ceramics.</jobString>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>Clay</li>
+				</categories>
+			</filter>
+			<count>50</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<categories>
+			<li>Clay</li>
+		</categories>
+	</fixedIngredientFilter>
+	<products>
+		<CeramicsRaw>1</CeramicsRaw>
+	</products>
+</RecipeDef>
+
+<!--===================== Weaving =====================-->
+
+<RecipeDef Name="Weaving" Abstract="True">
+	<workSpeedStat>WeavingSpeed</workSpeedStat>
+	<workSkill>Crafting</workSkill>
+	<workSkillLearnFactor>0.1</workSkillLearnFactor>
+	<effectWorking>Tailor</effectWorking>
+	<soundWorking>Recipe_Tailor</soundWorking>
+	<researchPrerequisite>Weaving</researchPrerequisite>
+</RecipeDef>
 
 
-	<RecipeDef ParentName="Disassembling">
-		<defName>MakeLeatherStrip</defName>
-		<label>make leather strips</label>
-		<description>make leather strips.</description>
-		<efficiencyStat>RefiningEfficiency</efficiencyStat>
-		<effectWorking>CutStone</effectWorking>
-		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
-		<workAmount>1600</workAmount>
-		<products>
-			<LeatherStrip>25</LeatherStrip>
-		</products>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>Leather</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>Leather</li>
-					</thingDefs>
-				</filter>
-				<count>5</count>
-			</li>
-		</ingredients>
-		<researchPrerequisite>StoneCutting</researchPrerequisite>
-	</RecipeDef>
+<RecipeDef ParentName="Weaving">
+	<defName>MakeCotton</defName>
+	<label>weave cotton cloth</label>
+	<description>Turn cotton into a sheet of cotton cloth.</description>
+	<jobString>Weaving cotton.</jobString>
+	<workAmount>2000</workAmount>
+	<ingredients>
+		<li>
+			<filter>
+				<thingDefs>
+					<li>Cotton</li>
+				</thingDefs>
+			</filter>
+			<count>25</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>Cotton</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<products>
+		<ClothCotton>1</ClothCotton>
+	</products>
+</RecipeDef>
 
-	<RecipeDef ParentName="Disassembling">
-		<defName>MakeStoneCobble</defName>
-		<label>make stone cobbles</label>
-		<description>Cuts rock chunks into saller stone cobbles.</description>
-		<jobString>Cutting stone chunks into cobbles.</jobString>
-		<efficiencyStat>RefiningEfficiency</efficiencyStat>
-		<effectWorking>CutStone</effectWorking>
-		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
-		<targetCountAdjustment>50</targetCountAdjustment>
-		<workAmount>1600</workAmount>
-		<fixedIngredientFilter>
-			<categories>
-				<li>StoneChunks</li>
-			</categories>
-		</fixedIngredientFilter>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>StoneChunks</li>
-					</categories>
-				</filter>
-				<count>1</count>
-			</li>
-		</ingredients>
-		<!-- used to get cobbles of the same stuff type -->
-		<specialProducts>
-			<li>Butchery</li>
-		</specialProducts>
-		<researchPrerequisite>StoneCutting</researchPrerequisite>
-	</RecipeDef>
+<RecipeDef ParentName="Weaving">
+	<defName>MakeLinen</defName>
+	<label>weave linen cloth</label>
+	<description>Turn linen into a sheet of linen cloth.</description>
+	<jobString>Weaving linen.</jobString>
+	<workAmount>2000</workAmount>
+	<ingredients>
+		<li>
+			<filter>
+				<thingDefs>
+					<li>Linen</li>
+				</thingDefs>
+			</filter>
+			<count>25</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>Linen</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<products>
+		<ClothLinen>1</ClothLinen>
+	</products>
+</RecipeDef>
 
-	<RecipeDef ParentName="Disassembling">
-		<defName>MakeStoneBlock</defName>
-		<label>make stone blocks</label>
-		<description>Cuts rock chunks into usable stone blocks.</description>
-		<jobString>Cutting stone chunks into blocks.</jobString>
-		<efficiencyStat>RefiningEfficiency</efficiencyStat>
-		<effectWorking>CutStone</effectWorking>
-		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
-		<targetCountAdjustment>50</targetCountAdjustment>
-		<workAmount>1600</workAmount>
-		<fixedIngredientFilter>
-			<categories>
-				<li>StoneChunks</li>
-			</categories>
-		</fixedIngredientFilter>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>StoneChunks</li>
-					</categories>
-				</filter>
-				<count>1</count>
-			</li>
-		</ingredients>
-		<!-- used to get blocks of the same stuff type -->
-		<specialProducts>
-			<li>Smelted</li>
-		</specialProducts>
-		<researchPrerequisite>Masonry</researchPrerequisite>
-	</RecipeDef>
+<RecipeDef ParentName="Weaving">
+	<defName>MakeWool</defName>
+	<label>weave woolen cloth</label>
+	<description>With alot of hard work and a little magic this pile of wool become cloth.</description>
+	<jobString>Weaving wool.</jobString>
+	<workAmount>600</workAmount>
+	<ingredients>
+		<li>
+			<filter>
+				<thingDefs>
+					<li>WoolMuffalo</li>
+					<li>WoolMegatherium</li>
+					<li>Camelhair</li>
+				</thingDefs>
+			</filter>
+			<count>25</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>WoolMuffalo</li>
+			<li>WoolMegatherium</li>
+			<li>Camelhair</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<specialProducts>
+		<li>Butchery</li>
+	</specialProducts>
+</RecipeDef>
 
-	<RecipeDef ParentName="Disassembling">
-		<defName>ButcherCorpse</defName>
-		<label>butcher corpse</label>
-		<description>Butchers a corpse to obtain its usable components.</description>
-		<jobString>Butchering.</jobString>
-		<efficiencyStat>ButcheringEfficiency</efficiencyStat>
-		<effectWorking>ButcherFlesh</effectWorking>
-		<soundWorking>Recipe_ButcherCorpseFlesh</soundWorking>
-		<workAmount>450</workAmount>
-		<specialProducts>
-			<li>Butchery</li>
-		</specialProducts>
-		<fixedIngredientFilter>
-			<categories>
-				<li>Corpses</li>
-			</categories>
-			<exceptedCategories>
-				<li>CorpsesMechanoid</li>
-			</exceptedCategories>
-			<specialFiltersToDisallow>
-				<li>AllowRotten</li>
-			</specialFiltersToDisallow>
-		</fixedIngredientFilter>
-		<defaultIngredientFilter>
-			<categories>
-				<li>CorpsesAnimal</li>
-			</categories>
-		</defaultIngredientFilter>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>Corpses</li>
-					</categories>
-				</filter>
-				<count>1</count>
-			</li>
-		</ingredients>
-		<researchPrerequisite>Survival</researchPrerequisite>
-	</RecipeDef>
+<!--===================== Disassembling =====================-->
 
-	<RecipeDef ParentName="Disassembling">
-		<defName>DisassembleMechanoid</defName>
-		<label>disassemble mechanoid</label>
-		<description>Disassembles a dead mechanoid into its component parts.</description>
-		<jobString>Disassembling mechanoid.</jobString>
-		<efficiencyStat>DisassemblingEfficiency</efficiencyStat>
-		<effectWorking>ButcherMechanoid</effectWorking>
-		<soundWorking>Recipe_ButcherCorpseMechanoid</soundWorking>
-		<workAmount>300</workAmount>
-		<specialProducts>
-			<li>Butchery</li>
-		</specialProducts>
-		<ingredients>
-			<li>
-				<filter>
-					<categories>
-						<li>Corpses</li>
-					</categories>
-				</filter>
-				<count>1</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<categories>
-				<li>CorpsesMechanoid</li>
-			</categories>
-		</fixedIngredientFilter>
-	</RecipeDef>
+<RecipeDef Name="Disassembling" Abstract="True">
+	<workSpeedStat>DisassemblingSpeed</workSpeedStat>
+	<workSkill>Crafting</workSkill>
+	<workSkillLearnFactor>0.1</workSkillLearnFactor>
+</RecipeDef>
 
-	<!--===================== Smelting =====================-->
 
-	<RecipeDef Name="Smelting" Abstract="True">
-		<workSpeedStat>SmeltingSpeed</workSpeedStat>
-		<workSkill>Crafting</workSkill>
-		<workSkillLearnFactor>0.1</workSkillLearnFactor>
-		<effectWorking>Smelt</effectWorking>
-		<soundWorking>Recipe_Smelt</soundWorking>
+<RecipeDef ParentName="Disassembling">
+	<defName>MakeLeatherStrip</defName>
+	<label>make leather strips</label>
+	<description>make leather strips.</description>
+	<efficiencyStat>RefiningEfficiency</efficiencyStat>
+	<effectWorking>CutStone</effectWorking>
+	<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+	<workAmount>1600</workAmount>
+	<products>
+		<LeatherStrip>25</LeatherStrip>
+	</products>
+	<fixedIngredientFilter>
+		<thingDefs>
+			<li>LeatherAnimal</li>
+			<li>LeatherHumanlike</li>
+		</thingDefs>
+	</fixedIngredientFilter>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>Leather</li>
+				</categories>
+			</filter>
+			<count>5</count>
+		</li>
+	</ingredients>
+	<researchPrerequisite>StoneCutting</researchPrerequisite>
+</RecipeDef>
+
+<RecipeDef ParentName="Disassembling">
+	<defName>MakeStoneCobble</defName>
+	<label>make stone cobbles</label>
+	<description>Cuts rock chunks into saller stone cobbles.</description>
+	<jobString>Cutting stone chunks into cobbles.</jobString>
+	<efficiencyStat>RefiningEfficiency</efficiencyStat>
+	<effectWorking>CutStone</effectWorking>
+	<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+	<targetCountAdjustment>50</targetCountAdjustment>
+	<workAmount>1600</workAmount>
+	<fixedIngredientFilter>
+		<categories>
+			<li>StoneChunks</li>
+		</categories>
+	</fixedIngredientFilter>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>StoneChunks</li>
+				</categories>
+			</filter>
+			<count>1</count>
+		</li>
+	</ingredients>
+	<!-- used to get cobbles of the same stuff type -->
+	<specialProducts>
+		<li>Butchery</li>
+	</specialProducts>
+	<researchPrerequisite>StoneCutting</researchPrerequisite>
+</RecipeDef>
+
+<RecipeDef ParentName="Disassembling">
+	<defName>MakeStoneBlock</defName>
+	<label>make stone blocks</label>
+	<description>Cuts rock chunks into usable stone blocks.</description>
+	<jobString>Cutting stone chunks into blocks.</jobString>
+	<efficiencyStat>RefiningEfficiency</efficiencyStat>
+	<effectWorking>CutStone</effectWorking>
+	<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+	<targetCountAdjustment>50</targetCountAdjustment>
+	<workAmount>1600</workAmount>
+	<fixedIngredientFilter>
+		<categories>
+			<li>StoneChunks</li>
+		</categories>
+	</fixedIngredientFilter>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>StoneChunks</li>
+				</categories>
+			</filter>
+			<count>1</count>
+		</li>
+	</ingredients>
+	<!-- used to get blocks of the same stuff type -->
+	<specialProducts>
+		<li>Smelted</li>
+	</specialProducts>
+	<researchPrerequisite>Masonry</researchPrerequisite>
+</RecipeDef>
+
+<RecipeDef ParentName="Disassembling">
+	<defName>ButcherCorpse</defName>
+	<label>butcher corpse</label>
+	<description>Butchers a corpse to obtain its usable components.</description>
+	<jobString>Butchering.</jobString>
+	<efficiencyStat>ButcheringEfficiency</efficiencyStat>
+	<effectWorking>ButcherFlesh</effectWorking>
+	<soundWorking>Recipe_ButcherCorpseFlesh</soundWorking>
+	<workAmount>450</workAmount>
+	<specialProducts>
+		<li>Butchery</li>
+	</specialProducts>
+	<fixedIngredientFilter>
+		<categories>
+			<li>Corpses</li>
+		</categories>
+		<exceptedCategories>
+			<li>CorpsesMechanoid</li>
+		</exceptedCategories>
+		<specialFiltersToDisallow>
+			<li>AllowRotten</li>
+		</specialFiltersToDisallow>
+	</fixedIngredientFilter>
+	<defaultIngredientFilter>
+		<categories>
+			<li>CorpsesAnimal</li>
+		</categories>
+	</defaultIngredientFilter>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>Corpses</li>
+				</categories>
+			</filter>
+			<count>1</count>
+		</li>
+	</ingredients>
+	<researchPrerequisite>Survival</researchPrerequisite>
+</RecipeDef>
+
+<RecipeDef ParentName="Disassembling">
+	<defName>DisassembleMechanoid</defName>
+	<label>disassemble mechanoid</label>
+	<description>Disassembles a dead mechanoid into its component parts.</description>
+	<jobString>Disassembling mechanoid.</jobString>
+	<efficiencyStat>DisassemblingEfficiency</efficiencyStat>
+	<effectWorking>ButcherMechanoid</effectWorking>
+	<soundWorking>Recipe_ButcherCorpseMechanoid</soundWorking>
+	<workAmount>300</workAmount>
+	<specialProducts>
+		<li>Butchery</li>
+	</specialProducts>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>Corpses</li>
+				</categories>
+			</filter>
+			<count>1</count>
+		</li>
+	</ingredients>
+	<fixedIngredientFilter>
+		<categories>
+			<li>CorpsesMechanoid</li>
+		</categories>
+	</fixedIngredientFilter>
+</RecipeDef>
+
+<!--===================== Smelting =====================-->
+
+<RecipeDef Name="Smelting" Abstract="True">
+	<workSpeedStat>SmeltingSpeed</workSpeedStat>
+	<workSkill>Crafting</workSkill>
+	<workSkillLearnFactor>0.1</workSkillLearnFactor>
+	<effectWorking>Smelt</effectWorking>
+	<soundWorking>Recipe_Smelt</soundWorking>
 		<!-- 		<recipeUsers>
 			<li>CraftsmanTable</li>
 		</recipeUsers>

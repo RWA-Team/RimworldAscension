@@ -99,7 +99,7 @@
 		</building>
 		<statBases>
 			<MaxHitPoints>50</MaxHitPoints>
-			<WorkToMake>200</WorkToMake>
+			<WorkToMake>1200</WorkToMake>
 		</statBases>
 		<stuffCategories>
 			<li>StoneCobble</li>
@@ -118,7 +118,7 @@
 				<heatPushMaxTemperature>28</heatPushMaxTemperature>
 			</li>
 			<li Class="RA.CompFueled_Properties">
-				<operatingTemp>500</operatingTemp>
+				<operatingTemp>400</operatingTemp>
 				<fireDrawOffset>(0,0,0.1)</fireDrawOffset>
 				<smokeDrawOffset>(0,0,0.1)</smokeDrawOffset>
 				<fuelDrawOffset>(0,0,0.01)</fuelDrawOffset>
@@ -178,9 +178,6 @@
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableResearch/Neolithic/TableResearchNeolithic</texPath>
 		</graphicData>
-		<!-- 		<statBases>
-			<ResearchSpeedFactor>0.5</ResearchSpeedFactor>
-		</statBases> -->
 		<comps>
 			<li>
 				<compClass>RA.CompResearcher</compClass>
@@ -203,7 +200,6 @@
 			<Cleanliness>-1</Cleanliness>
 		</statBases>
 		<recipes>
-			<li>MakeTorch</li>
 			<li>MakeBasket</li>
 			<li>MakeFigurine</li>
 			<li>MakeBrickRaw</li>
@@ -212,6 +208,10 @@
 			<li>MakePotPlantRaw</li>
 			<li>MakeCeramicsRaw</li>
 			<li>MakeBroom</li>
+			<li>MakeStoolNeolithicStone</li>
+			<li>MakeStoolNeolithicWood</li>
+			<li>MakeTableNeolithicStone</li>
+			<li>MakeTableNeolithicWood</li>
 		</recipes>
 		<researchPrerequisites>
 			<li>Survival</li>

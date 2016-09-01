@@ -1,40 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
-	<!--
-	- fillPercent - determine cover multiplier vs projectiles
-	- terrainAffordanceNeeded - type of terrain required to be build upon:
-		- Light - light objects like firniture can be build on any light supporting surface (like sand)
-		- Heavy - require solid surface below (for structures)
+	<!-- 
+	- fillPercent - determne cover multiplier vs projectiles
 	- castEdgeShadows - shadow aura around building
 	- staticSunShadowHeight - solid square shadow with set length
 	- drawerType:
-		- MapMeshOnly - static texture, doesn't draw from comps
-		- MapMeshAndRealTime - ?
+		- MapMeshOnly - doesn't draw from comps
+		- MapMeshAndRealTime - doesn't draw from comps
 		- RealtimeOnly - used for objects that change their texture (unsure)
-	- repairEffect:
-		- Repair - default repair effect of smoke puffs
-		- Welding - welding sparks and sound for repairing advanced metal buildings
-	- damageData:
-		- cornerX - draws corner cracks or other mentioned overlay on selected corner
-		- edgeX - draws edge cracks or other mentioned overlay on selected edge
-		- rect - manually redefines damage overlay area rectangle (defauls is based on building size)
-		- rectX - individual damage rect, to define multiple damage areas for complex buildings and furniture
 	- surfaceType:
 		- Item - allows place items
 		- Eat - allows place food to eat
-	- shaderType: (default - Cutout)
-		- Cutout - just draws texture
-		- CutoutPlant - makes texture jiggle like a plant
-		- CutoutComplex - supports color masks
-		- Transparent - supports color transparancy
-	- WorkToMake - amount of work in ticks to make this building (used in crafting)
-		(2500 ticks per hour, 60000 ticks per day)
-	-->
+	- Building_Art class - adds beauty value stat to inpection string
+	- Building_Art_Shadowed class - allows casting of fading shadows from stuffed things
+	- terrainAffordanceNeeded - type of terrain required to be build upon (no difference in Light/Heavy in the game so far)
+	 -->
+	 
+	<!--==================== Decorations ========================-->
 
 	<ThingDef Name="Decoration" ParentName="Building" Abstract="True">
 		<thingClass>Building_Art</thingClass>
 		<rotatable>false</rotatable>
+		<fillPercent>1</fillPercent>
 		<comps>
 			<li>
 				<compClass>CompQuality</compClass>
@@ -42,39 +30,42 @@
 			<li Class="CompProperties_Art">
 				<nameMaker>ArtName_Sculpture</nameMaker>
 				<descriptionMaker>ArtDescription_Sculpture</descriptionMaker>
+			</li> 
+			<li>
+				<compClass>RA.CompFadingShadowThrower</compClass>
 			</li>
 		</comps>
 		<inspectorTabs>
 			<li>ITab_Art</li>
 		</inspectorTabs>
 		<DesignationCategory>Decoration</DesignationCategory>
-	</ThingDef>	
+	</ThingDef>
+	
 
 	<ThingDef ParentName="Decoration">
 		<defName>Totem</defName>
 		<label>totem</label>
-		<description>A monumental sculpture representing local beliefs. It's beatuful looks makes it a popular meeting spot for you people.</description>
+		<size>(1,2)</size>
+		<description>Several meters high wood totem, with images of ancient gods painted on it. We dont know where did they get dye.</description>
 		<graphicData>
-			<texPath>Things/Buildings/Decoration/Totem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
+			<texPath>Things/Buildings/Decoration/Totem</texPath>
 			<drawSize>(2.1,2.1)</drawSize>
-			<color>(133,97,67)</color>
 			<shadowData>
 				<volume>(0.45, 0.85, 0.45)</volume>
 				<offset>(0,0,-0.60)</offset>
 			</shadowData>
 		</graphicData>
 		<statBases>
-			<Flammability>1.0</Flammability>
 			<MaxHitPoints>150</MaxHitPoints>
 			<Beauty>40</Beauty>
-			<WorkToMake>15000</WorkToMake>
+			<WorkToMake>9000</WorkToMake>
 		</statBases>
-		<size>(1,2)</size>
-		<fillPercent>0.5</fillPercent>
-		<costList>
-			<WoodLog>75</WoodLog>
-		</costList>
+		<stuffCategories>
+			<li>WoodLog</li>
+		</stuffCategories>
+		<costStuffCount>100</costStuffCount>
 		<researchPrerequisites>
 			<li>WoodCarving</li>
 		</researchPrerequisites>
@@ -83,22 +74,21 @@
 	<ThingDef ParentName="Decoration">
 		<defName>Cairn</defName>
 		<label>cairn</label>
-		<description>A peculiar stack of stones. Some say it symbolizes something, but it's true meaning is long forgotten. Still, benefits to the looks of surroundings.</description>
+		<description>Complex engineering structure, that definetly can be defined as piece of art. Even gods dont know why its stay still.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Decoration/Cairn</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
+			<shaderType>Cutout</shaderType>
 			<shadowData>
 				<volume>(0.45, 0.85, 0.45)</volume>
 				<offset>(0,0,-0.60)</offset>
 			</shadowData>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>30</MaxHitPoints>
-			<Beauty>10</Beauty>
-			<WorkToMake>2500</WorkToMake>
+			<MaxHitPoints>150</MaxHitPoints>
+			<Beauty>25</Beauty>
+			<WorkToMake>9600</WorkToMake>
 		</statBases>
-		<fillPercent>0.4</fillPercent>
-		<pathCost>40</pathCost>
 		<stuffCategories>
 			<li>StoneCobble</li>
 		</stuffCategories>
@@ -108,13 +98,14 @@
 		</researchPrerequisites>
 	</ThingDef>
 
-	<ThingDef ParentName="Decoration">
+	<ThingDef ParentName="Furniture">
 		<defName>PlantPot</defName>
 		<label>plant pot</label>
-		<description>A pot to plant decorative flowers in to improve the beauty of the room it's in.</description>
+		<description>Small pot with just perfect size for flower, or weed, since we got drug system in A15!</description>
 		<thingClass>Building_PlantGrower</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Furniture/PlantPot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 			<shadowData>
 				<volume>(0.3, 0.6, 0.3)</volume>
 			</shadowData>
@@ -122,83 +113,73 @@
 				<rect>(0.2,0.2,0.6,0.6)</rect>
 			</damageData>
 		</graphicData>
+		<rotatable>false</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.20</fillPercent>
 		<statBases>
-			<MaxHitPoints>30</MaxHitPoints>
-			<WorkToMake>5000</WorkToMake>
+			<WorkToMake>495</WorkToMake>
 		</statBases>
-		<fillPercent>0.2</fillPercent>
 		<costList>
 			<PlantPot>1</PlantPot>
 		</costList>
-		<pathCost>20</pathCost>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
 		<fertility>1.0</fertility>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<building>
 			<defaultPlantToGrow>PlantDaylily</defaultPlantToGrow>
 			<plantsDestroyWithMe>true</plantsDestroyWithMe>
 			<sowTag>Decorative</sowTag>
 		</building>
+		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Firing</li>
 		</researchPrerequisites>
 	</ThingDef>
 
-	<!--==================== Light Sources ====================-->
-	
-	<ThingDef ParentName="Building">
+	<!--======================= Light Sources =======================-->
+
+	<ThingDef ParentName="Furniture">
 		<defName>Torch</defName>
-		<label>torch</label>
-		<description>A temporary light source which burns for a few days. Can be automatically refueled with tallow. Produces a small amount of heat.</description>
+		<label>wood torch</label>
+		<description>A temporary light source which burns for a few days.</description>
+		<thingClass>Building</thingClass>
+		<category>Building</category>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Lights/Torch</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
-		<statBases>
-			<MaxHitPoints>40</MaxHitPoints>
-			<WorkToMake>250</WorkToMake>
-			<Flammability>1</Flammability>
-		</statBases>
-		<rotatable>false</rotatable>
 		<altitudeLayer>FloorEmplacement</altitudeLayer>
-		<pathCost>20</pathCost>
+		<pathCost>50</pathCost>
+		<constructEffect>ConstructDirt</constructEffect>
 		<tickerType>Normal</tickerType>
 		<drawerType>RealtimeOnly</drawerType>
+		<statBases>
+			<MaxHitPoints>20</MaxHitPoints>
+			<WorkToMake>1</WorkToMake>
+		</statBases>
+		<selectable>true</selectable>
+		<size>(1,1)</size>
 		<costList>
-			<Torch>1</Torch>
+			<WoodLog>1</WoodLog>
+			<Tallow>20</Tallow>
 		</costList>
-		<minifiedDef>MinifiedFurniture</minifiedDef>
-		<placeWorkers>
-			<li>PlaceWorker_Heater</li>
-		</placeWorkers>
-		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
-		<comps>
-			<li Class="CompProperties_Refuelable">
-				<fuelConsumptionRate>1.0</fuelConsumptionRate>
-				<fuelCapacity>20.0</fuelCapacity>
-				<fuelConsumptionPerTickInRain>0.045</fuelConsumptionPerTickInRain>
-				<fuelFilter>
-					<thingDefs>
-						<li>Tallow</li>
-					</thingDefs>
-				</fuelFilter>
-				<destroyOnNoFuel>true</destroyOnNoFuel>
-			</li>
-			<li Class="CompProperties_Glower">
-				<glowRadius>10</glowRadius>
-				<glowColor>(252,187,113,0)</glowColor>
-			</li>
-			<li Class="CompProperties_HeatPusher">
-				<heatPerSecond>5</heatPerSecond>
-				<heatPushMaxTemperature>23</heatPushMaxTemperature>
-			</li>
-			<li Class="CompProperties_FireOverlay">
-				<fireSize>0.4</fireSize>
-				<offset>(0,0,0.2)</offset>
-			</li>
-		</comps>
-		<DesignationCategory>Decoration</DesignationCategory>
+		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
+		<designationCategory>Furniture</designationCategory>
+		<rotatable>false</rotatable>
 		<researchPrerequisites>
 			<li>AnimalDissection</li>
 		</researchPrerequisites>
+		<comps>
+			  <li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(252,187,113,0)</glowColor>
+		      </li>
+	    </comps>
+
+
 	</ThingDef>
 
 </ThingDefs>

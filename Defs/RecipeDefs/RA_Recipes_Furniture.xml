@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <RecipeDefs>
 
-<!-- - workAmount - should never be used (cause not affected by stuff). specify WorkToMake baseStat in product def instead
+	<!-- 
+	- workAmount - should never be used (cause not affected by stuff). specify WorkToMake baseStat in product def instead
 	- specialProducts - Butchery\Smelted return from processed thing
 	- targetCountAdjustment - adjust target resource count in repeat mode by this amount via +\- button
 	- fixedIngredientFilter - determine ingridient set to choose from	
 	- defaultIngredientFilter - determine ingridiens set to be enabled by default (blocks all others); used as a special case to disallow stuff types of the result products
-	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complex recipes. Changed to allowed ones via reseach mods. -->
+	- exceptedCategories\exceptedThingDefs - used in RA to specify research based available ingridiens in complex recipes. Changed to allowed ones via reseach mods.
+	-->
 
 	<RecipeDef Name="MakeFurniture" Abstract="True">
 		<workSkill>Crafting</workSkill>
@@ -14,7 +16,6 @@
 		<workSkillLearnFactor>0.1</workSkillLearnFactor>
 		<effectWorking>Sculpt</effectWorking>
 		<soundWorking>Recipe_Sculpt</soundWorking>
-		<unfinishedThingDef>UnfinishedThing</unfinishedThingDef>
 	</RecipeDef>
 
 
@@ -48,52 +49,6 @@
 	<!--===================== Neolithic =====================-->
 
 	<RecipeDef ParentName="MakeFurniture">
-		<defName>MakeTorch</defName>
-		<label>make torch</label>
-		<description>Make a torch.</description>
-		<jobString>Making torch.</jobString>
-		<products>
-			<Torch>1</Torch>
-		</products>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>WoodLog</li>
-				<li>Tallow</li>
-				<li>BarkFibre</li>
-				<li>LeatherStrip</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>WoodLog</li>
-					</thingDefs>
-				</filter>
-				<count>1</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BarkFibre</li>
-						<li>LeatherStrip</li>
-					</thingDefs>
-				</filter>
-				<count>5</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>Tallow</li>
-					</thingDefs>
-				</filter>
-				<count>5</count>
-			</li>
-		</ingredients>
-		<researchPrerequisite>AnimalDissection</researchPrerequisite>
-	</RecipeDef>
-
-	<RecipeDef ParentName="MakeFurniture">
 		<defName>MakeStoolNeolithicStone</defName>
 		<label>make primitive stone stool</label>
 		<description>Make primitive stone stool.</description>
@@ -113,7 +68,7 @@
 						<li>StoneChunks</li>
 					</categories>
 				</filter>
-				<count>1</count>
+				<count>2</count>
 			</li>
 		</ingredients>
 		<researchPrerequisite>StoneCutting</researchPrerequisite>
@@ -199,6 +154,11 @@
 
 	<!--===================== Medieval =====================-->
 
+
+
+	Chest
+	Barrel
+
 	<RecipeDef ParentName="MakeFurniture">
 		<defName>MakeTableShort</defName>
 		<label>make short table</label>
@@ -257,7 +217,7 @@
 		<description>Make long table.</description>
 		<jobString>Making long table.</jobString>
 		<products>
-			<Stool>1</Stool>
+			<TableLong>1</TableLong>
 		</products>
 		<fixedIngredientFilter>
 			<thingDefs>
@@ -394,7 +354,7 @@
 		<description>Make barrel.</description>
 		<jobString>Making barrel.</jobString>
 		<products>
-			<Chest>1</Chest>
+			<Barrel>1</Barrel>
 		</products>
 		<fixedIngredientFilter>
 			<thingDefs>
