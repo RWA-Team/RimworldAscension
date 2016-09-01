@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<!--
-	- fillPercent - determine cover multiplier vs projectiles
-	- terrainAffordanceNeeded - type of terrain required to be build upon:
-		- Light - light objects like firniture can be build on any light supporting surface (like sand)
-		- Heavy - require solid surface below (for structures)
+<!-- 	- fillPercent - determne cover multiplier vs projectiles
 	- castEdgeShadows - shadow aura around building
 	- staticSunShadowHeight - solid square shadow with set length
 	- drawerType:
-		- MapMeshOnly - static texture, doesn't draw from comps
-		- MapMeshAndRealTime - ?
+		- MapMeshOnly - doesn't draw from comps
+		- MapMeshAndRealTime - doesn't draw from comps
 		- RealtimeOnly - used for objects that change their texture (unsure)
-	- repairEffect:
-		- Repair - default repair effect of smoke puffs
-		- Welding - welding sparks and sound for repairing advanced metal buildings
-	- damageData:
-		- cornerX - draws corner cracks or other mentioned overlay on selected corner
-		- edgeX - draws edge cracks or other mentioned overlay on selected edge
-		- rect - manually redefines damage overlay area rectangle (defauls is based on building size)
-		- rectX - individual damage rect, to define multiple damage areas for complex buildings and furniture
 	- surfaceType:
 		- Item - allows place items
-		- Eat - allows place food to eat 
-	-->
+		- Eat - allows place food to eat
+	- Building_Art class - adds beauty value stat to inpection string
+	- Building_Art_Shadowed class - allows casting of fading shadows from stuffed things
+	- terrainAffordanceNeeded - type of terrain required to be build upon (no difference in Light/Heavy in the game so far) -->
 
-	<ThingDef Name="Building" ParentName="Item" Abstract="True">
+	<ThingDef Name="Building" Abstract="True">
 		<thingClass>Building</thingClass>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<texPath>Missing</texPath>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
 		<category>Building</category>
 		<altitudeLayer>Building</altitudeLayer>
+		<selectable>true</selectable>
 		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<repairEffect>Repair</repairEffect>
-		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
 		<filthLeaving>BuildingRubble</filthLeaving>
 		<passability>PassThroughOnly</passability>
-		<pathCost>50</pathCost>
-		<comps>
-			<li>
-				<compClass>RA.CompFadingShadowThrower</compClass>
-			</li>
-		</comps>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<Flammability>1.0</Flammability>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToMake>100</WorkToMake>
+		</statBases>
 	</ThingDef>
 
 </Defs>

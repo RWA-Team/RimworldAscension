@@ -100,13 +100,19 @@
 				<label>alcohol</label>
 				<parent>Drugs</parent>
 			</ThingCategoryDef>
-
+					
 	<ThingCategoryDef>
 		<defName>Resources</defName>
 		<label>resources</label>
 		<parent>Root</parent>
 	</ThingCategoryDef>
 
+	    <ThingCategoryDef>
+	    	<defName>Fertilizers</defName>
+	    	<label>Different kind of fertilizers</label>
+	    	<parent>Resources</parent>
+	    </ThingCategoryDef>
+			
 		<ThingCategoryDef>
 			<defName>ResourcesProcessed</defName>
 			<label>processed resources</label>
@@ -199,6 +205,24 @@
 				<label>plant resources</label>
 				<parent>ResourcesRaw</parent>
 			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>Bones</defName>
+				<label>Bones of different creatures</label>
+				<parent>ResourcesRaw</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>ClothRaw</defName>
+				<label>Different fibers sutable to make cloth</label>
+				<parent>ResourcesRaw</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
+				<defName>Fuel</defName>
+				<label>Everything that can BURN!!!</label>
+				<parent>ResourcesRaw</parent>
+			</ThingCategoryDef>
 				
 	<ThingCategoryDef>
 		<defName>Items</defName>
@@ -213,17 +237,17 @@
 			<parent>Items</parent>
 		</ThingCategoryDef>
 
-			<ThingCategoryDef>
-				<defName>TradeGoodsNeolithic</defName>
-				<label>Tribes goods</label>
-				<parent>TradeGoods</parent>
-			</ThingCategoryDef>
+		     <ThingCategoryDef>
+		     	<defName>TradeGoodsNeolithic</defName>
+		     	<label>Tribes goods</label>
+		     	<parent>TradeGoods</parent>
+		     </ThingCategoryDef>
 
-			<ThingCategoryDef>
-				<defName>TradeGoodsMedieval</defName>
-				<label>Medival goods</label>
-				<parent>TradeGoods</parent>
-			</ThingCategoryDef>
+		     <ThingCategoryDef>
+		     	<defName>TradeGoodsMedieval</defName>
+		     	<label>Medival goods</label>
+		     	<parent>TradeGoods</parent>
+		     </ThingCategoryDef>
 
 		<ThingCategoryDef>
 			<defName>MinifiedThings</defName>
@@ -238,21 +262,27 @@
 			</ThingCategoryDef>
 
 			<ThingCategoryDef>
+				<defName>MinifiedDecorations</defName>
+				<label>minified decorations</label>
+				<parent>MinifiedThings</parent>
+			</ThingCategoryDef>
+
+			<ThingCategoryDef>
 				<defName>MinifiedDefences</defName>
 				<label>minified defences</label>
 				<parent>MinifiedThings</parent>
 			</ThingCategoryDef>
 
 		<ThingCategoryDef>
-			<defName>UnfinishedThings</defName>
-			<label>unfinished things</label>
-			<parent>Items</parent>
+		  <defName>UnfinishedGoods</defName>
+		  <label>unfinished goods</label>
+		  <parent>Items</parent>
 		</ThingCategoryDef>
 	
 			<ThingCategoryDef>
 				<defName>ClayProductsRaw</defName>
 				<label>unfired clay products</label>
-				<parent>UnfinishedThings</parent>
+				<parent>UnfinishedGoods</parent>
 			</ThingCategoryDef>
 			
 		<ThingCategoryDef>
@@ -272,8 +302,8 @@
 			<label>weapons</label>
 			<parent>Equipment</parent>
 		</ThingCategoryDef>
-		
-			<ThingCategoryDef>
+		    
+		    			<ThingCategoryDef>
 				<defName>WeaponsMelee</defName>
 				<label>melee weapons</label>
 				<parent>Weapons</parent>
@@ -301,25 +331,29 @@
 					<defName>WeaponsRangedNeolithic</defName>
 					<label>neolithic ranged weapons</label>
 					<parent>WeaponsRanged</parent>
-				</ThingCategoryDef>
+				</ThingCategoryDef>	
 
 		<ThingCategoryDef>
-			<defName>Tools</defName>
-			<label>tools</label>
-			<parent>Equipment</parent>
+		    	<defName>Tools</defName>
+		    	<label>tools</label>
+		    	<parent>Equipment</parent>
 		</ThingCategoryDef>
 
-			<ThingCategoryDef>
-				<defName>ToolsNeolithic</defName>
-				<label>Neolithic tools</label>
-				<parent>Tools</parent>
-			</ThingCategoryDef>
+		     <ThingCategoryDef>
+		     	<defName>ToolsNeolithic</defName>
+		     	<label>Neolithic tools</label>
+		     	<parent>Tools</parent>
+		     </ThingCategoryDef>
 
-			<ThingCategoryDef>
-				<defName>ToolsMedieval</defName>
-				<label>Medieval tools</label>
-				<parent>Tools</parent>
-			</ThingCategoryDef>
+		     <ThingCategoryDef>
+		     	<defName>ToolsMedieval</defName>
+		     	<label>Medieval tools</label>
+		     	<parent>Tools</parent>
+		     </ThingCategoryDef>
+
+
+		
+
 
 		<ThingCategoryDef>
 			<defName>Apparel</defName>
@@ -339,11 +373,11 @@
 				<parent>Apparel</parent>
 			</ThingCategoryDef>
 
-				<ThingCategoryDef>
-					<defName>ClothingNorbal</defName>
-					<label>Norbal clothes</label>
-					<parent>Clothing</parent>
-				</ThingCategoryDef>
+			     <ThingCategoryDef>
+			     	<defName>ClothingNorbal</defName>
+			     	<label>Norbal clothes</label>
+			     	<parent>Clothing</parent>
+			     </ThingCategoryDef>
 
 			<ThingCategoryDef>
 				<defName>Armor</defName>
@@ -351,35 +385,36 @@
 				<parent>Apparel</parent>
 			</ThingCategoryDef>
 
-				<ThingCategoryDef>
-					<defName>ArmorNeolithic</defName>
-					<label>Neolithic armor</label>
-					<parent>Armor</parent>
-				</ThingCategoryDef>
+			     <ThingCategoryDef>
+			     	<defName>ArmorNeolithic</defName>
+			     	<label>Neolithic armor</label>
+			     	<parent>Armor</parent>
+			     </ThingCategoryDef>
 
-				<ThingCategoryDef>
-					<defName>ArmorMedieval</defName>
-					<label>Medival armor</label>
-					<parent>Armor</parent>
-				</ThingCategoryDef>
+			     <ThingCategoryDef>
+			     	<defName>ArmorMedieval</defName>
+			     	<label>Medival armor</label>
+			     	<parent>Armor</parent>
+			     </ThingCategoryDef>
 
-					<ThingCategoryDef>
-						<defName>ArmorMedievalLight</defName>
-						<label>Light Medieval armor</label>
-						<parent>ArmorMedieval</parent>
-					</ThingCategoryDef>
+			          <ThingCategoryDef>
+			          	<defName>ArmorMedievalLight</defName>
+			          	<label>Light Medieval armor</label>
+			          	<parent>ArmorMedieval</parent>
+			          </ThingCategoryDef>
 
-					<ThingCategoryDef>
-						<defName>ArmorMedivalMedium</defName>
-						<label>Medium Medieval armor</label>
-						<parent>ArmorMedieval</parent>
-					</ThingCategoryDef>
+			          <ThingCategoryDef>
+			          	<defName>ArmorMedivalMedium</defName>
+			          	<label>Medium Medieval armor</label>
+			          	<parent>ArmorMedieval</parent>
+			          </ThingCategoryDef>
 
-					<ThingCategoryDef>
-						<defName>ArmorMedievalHeavy</defName>
-						<label>Heavy Medieval armor</label>
-						<parent>ArmorMedieval</parent>
-					</ThingCategoryDef>
+			          <ThingCategoryDef>
+			          	<defName>ArmorMedievalHeavy</defName>
+			          	<label>Heavy Medieval armor</label>
+			          	<parent>ArmorMedieval</parent>
+			          </ThingCategoryDef>
+
 
 			<ThingCategoryDef>
 				<defName>ApparelVarious</defName>

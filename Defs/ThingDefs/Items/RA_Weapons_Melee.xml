@@ -170,8 +170,9 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompWeaponExtensions_Properties">
-				<firstHandPosition>(0, 1, 0)</firstHandPosition>
-				<secondHandPosition>(-0.25,1,-0.29)</secondHandPosition>
+				<firstHandPosition>(0, -0,01, 0)</firstHandPosition>
+				<secondHandPosition>(-0.25,0,1,-0.29)</secondHandPosition>
+				<aimingAngleOffset>50</aimingAngleOffset>
 			</li>
 		</comps>
 		<weaponTags>
@@ -388,7 +389,7 @@
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/Pike/Pike</texPath>
 		</graphicData>
-		<equippedAngleOffset>-50</equippedAngleOffset>
+		<equippedAngleOffset>50	</equippedAngleOffset>
 		<statBases>
 			<MeleeWeapon_DamageAmount>12</MeleeWeapon_DamageAmount>
 			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
@@ -402,17 +403,15 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompWeaponExtensions_Properties">
-				<firstHandPosition>(0.13, 0.01, 0.1)</firstHandPosition>
-				<secondHandPosition>(-0.26, -0.01, -0.3)</secondHandPosition>
-				<weaponPositionOffset>(-0.3, 0, -0.15)</weaponPositionOffset>
-				<aimingAngleOffset>100</aimingAngleOffset>
+				<firstHandPosition>(0.13, 1, 0.1)</firstHandPosition>
+				<secondHandPosition>(-0.26, 1, -0.3)</secondHandPosition>
 			</li>
 		</comps>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<meleeDamageDef>Stab</meleeDamageDef>
+				<meleeDamageDef>Cut</meleeDamageDef>
 			</li>
 		</verbs>
 		<weaponTags>
