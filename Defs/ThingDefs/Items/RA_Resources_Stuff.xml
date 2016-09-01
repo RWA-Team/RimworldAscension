@@ -344,12 +344,6 @@
 				<li>StoneCobble</li>
 			</categories>
 		</stuffProps>
-		<comps>
-			<li Class="RA.CompCraftedValue_Properties">
-				<valuePerWorkFactor>0.0022</valuePerWorkFactor>
-				<profitFactor>0.96</profitFactor>
-			</li>
-		</comps>
 	</ThingDef>
 
 
@@ -458,12 +452,6 @@
 				<Beauty>1</Beauty>
 			</statOffsets>
 		</stuffProps>
-		<comps>
-			<li Class="RA.CompCraftedValue_Properties">
-				<valuePerWorkFactor>0.0015</valuePerWorkFactor>
-				<profitFactor>0.96</profitFactor>
-			</li>
-		</comps>
 	</ThingDef>
 
 

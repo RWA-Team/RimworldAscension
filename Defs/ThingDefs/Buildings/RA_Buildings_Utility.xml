@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
-	<!-- 
-	- fillPercent - determne cover multiplier vs projectiles
+	<!--
+	- fillPercent - determine cover multiplier vs projectiles
+	- terrainAffordanceNeeded - type of terrain required to be build upon:
+		- Light - light objects like firniture can be build on any light supporting surface (like sand)
+		- Heavy - require solid surface below (for structures)
 	- castEdgeShadows - shadow aura around building
 	- staticSunShadowHeight - solid square shadow with set length
 	- drawerType:
-		- MapMeshOnly - doesn't draw from comps
-		- MapMeshAndRealTime - doesn't draw from comps
-		- RealTimeOnly - used for objects that need to change their textures on difference circustances (otherwise require manual map mesh redraw)
+		- MapMeshOnly - static texture, doesn't draw from comps
+		- MapMeshAndRealTime - ?
+		- RealtimeOnly - used for objects that change their texture (unsure)
+	- repairEffect:
+		- Repair - default repair effect of smoke puffs
+		- Welding - welding sparks and sound for repairing advanced metal buildings
+	- damageData:
+		- cornerX - draws corner cracks or other mentioned overlay on selected corner
+		- edgeX - draws edge cracks or other mentioned overlay on selected edge
+		- rect - manually redefines damage overlay area rectangle (defauls is based on building size)
+		- rectX - individual damage rect, to define multiple damage areas for complex buildings and furniture
 	- surfaceType:
 		- Item - allows place items
-		- Eat - allows place food to eat
-	 -->
+		- Eat - allows place food to eat 
+	-->
 
 	<ThingDef Name="BuildingUtility" ParentName="Building" Abstract="True">
-		<designationCategory>Utility</designationCategory>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>
+		<designationCategory>Utility</designationCategory>
 	</ThingDef>
-
 
 	<ThingDef ParentName="BuildingUtility">
 		<defName>Grave</defName>
@@ -51,9 +61,9 @@
 				<graphicClass>Graphic_Multi</graphicClass>
 				<drawSize>(3,4)</drawSize>
 				<shadowData>
-				 <volume>(0.45, 0.5, 0.45)</volume>
-				 <offset>(0,0,-0.60)</offset>
-			    </shadowData>	
+					<volume>(0.45, 0.5, 0.45)</volume>
+					<offset>(0,0,-0.60)</offset>
+				</shadowData>	
 			</fullGraveGraphicData>
 			<fixedStorageSettings>
 				<filter>
@@ -73,14 +83,8 @@
 		<inspectorTabs>
 			<li>ITab_Storage</li>
 		</inspectorTabs>
-		<comps>
-			<li>
-				<compClass>CompQuality</compClass>
-			</li>
-		</comps>
 		<terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
 	</ThingDef>
-
 
 	<ThingDef Name="BuildingUtilityTarget" ParentName="BuildingUtility">
 		<defName>Dummy</defName>
@@ -101,8 +105,7 @@
 		<hasInteractionCell>true</hasInteractionCell>
 		<statBases>
 			<WorkToMake>500</WorkToMake>
-		</statBases>
-		
+		</statBases>		
 		<fillPercent>0.5</fillPercent>
 		<useHitPoints>false</useHitPoints>
 		<tickerType>Normal</tickerType>
@@ -135,7 +138,6 @@
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<fillPercent>0.3</fillPercent>
 	</ThingDef>
-
 
 	<ThingDef ParentName="BuildingUtility">
 		<defName>TradingPost</defName>

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace RA
@@ -35,7 +36,8 @@ namespace RA
                 };
 
                 newDef.graphicData.CopyFrom(firstProductDef.graphicData);
-                 
+                newDef.graphicData.drawSize = Vector2.one;
+
                 // assigns MinifiedThings ThingCategory
                 CrossRefLoader.RegisterListWantsCrossRef(newDef.thingCategories, "UnfinishedThings");
 

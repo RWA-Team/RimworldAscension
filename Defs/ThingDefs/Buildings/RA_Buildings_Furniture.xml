@@ -27,7 +27,6 @@
 
 	<ThingDef Name="Furniture" ParentName="Building" Abstract="True">
 		<designationCategory>Furniture</designationCategory>
-		<!-- <minifiedDef>MinifiedFurniture</minifiedDef> -->
 	</ThingDef>
 
 	<ThingDef Name="FurnitureExotic" ParentName="Furniture" Abstract="True">
@@ -58,6 +57,7 @@
 			<li>ITab_Storage</li>
 			<li>RA.ITab_Container</li>
 		</inspectorTabs>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
 	</ThingDef>
 
 	<!--========================= Containers =========================-->
@@ -377,7 +377,7 @@
 
 	<ThingDef ParentName="BedHide">
 		<defName>BedHideDouble</defName>
-		<label>hide bed</label>
+		<label>double hide bed</label>
 		<Description>A large makeshift bed, makes you feel like you're in the stone age. Fits two.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Beds/Neolithic/BedHideDouble/BedHideDouble</texPath>
@@ -416,12 +416,13 @@
 			<li>Carpentry</li>
 			<li>Tailoring</li>
 		</researchPrerequisites>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
 	</ThingDef>
 
 	<ThingDef ParentName="BedModern">
 		<defName>BedDouble</defName>
-		<label>hide bed</label>
-		<Description>A large makeshift bed, makes you feel like you're in the stone age. Fits two.</Description>
+		<label>double bed</label>
+		<Description>A cozy mattress and sheets on a frame for resting. Fits two.</Description>
 		<graphicData>
 			<texPath>Things/Building/Furniture/Bed/DoubleBed</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -441,29 +442,30 @@
 	<!--======================= Stools ==============================-->
 
 	<ThingDef Name="Stool" ParentName="Furniture" Abstract="True">
+		<graphicData>
+			<drawSize>(0.8,0.8)</drawSize>
+		</graphicData>
 		<socialPropernessMatters>true</socialPropernessMatters>
-		<pathCost>30</pathCost>
 		<fillPercent>0.30</fillPercent>
+		<pathCost>30</pathCost>
 		<building>
 			<isSittable>true</isSittable>
 		</building>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
 	</ThingDef>
 
 	<ThingDef ParentName="Stool">
 		<defName>StoolNeolithicStone</defName>
-		<label>stone stool</label>
+		<label>primitive stone stool</label>
 		<description>A primitive simple stool you can sit on.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithicStone</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>Cutout</shaderType>
-			<drawSize>(0.8,0.8)</drawSize>
 		</graphicData>
 		<rotatable>false</rotatable>
 		<statBases>
-			<MaxHitPoints>75</MaxHitPoints>
-			<WorkToMake>750</WorkToMake>
-			<Beauty>3</Beauty>
+			<MaxHitPoints>150</MaxHitPoints>
+			<WorkToMake>1500</WorkToMake>
+			<Beauty>2</Beauty>
 			<Comfort>0.5</Comfort>
 		</statBases>
 		<costList>
@@ -479,27 +481,22 @@
 
 	<ThingDef ParentName="Stool">
 		<defName>StoolNeolithicWood</defName>
-		<label>wooden stool</label>
+		<label>primitive wooden stool</label>
 		<description>A primitive simple stool you can sit on.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Stools/Neolithic/StoolNeolithicWood</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>Cutout</shaderType>
-			<drawSize>(0.8,0.8)</drawSize>
+			<color>(133,97,67)</color>
 		</graphicData>
 		<rotatable>false</rotatable>
 		<statBases>
 			<MaxHitPoints>75</MaxHitPoints>
 			<WorkToMake>750</WorkToMake>
-			<Beauty>3</Beauty>
-			<Comfort>0.5</Comfort>
+			<Beauty>1</Beauty>
+			<Comfort>0.75</Comfort>
 		</statBases>
 		<costList>
 			<StoolNeolithicWood>1</StoolNeolithicWood>
 		</costList>
-		<stuffCategories>
-			<li>WoodLog</li>
-		</stuffCategories>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>
@@ -509,6 +506,9 @@
 
 	<ThingDef Name="Table" ParentName="Furniture" Abstract="True">
 		<description>People eat off tables when chairs are placed facing them.</description>
+		<graphicData>
+			<drawSize>(1.2,1.2)</drawSize>
+		</graphicData>
 		<pathCost>60</pathCost>
 		<fillPercent>0.4</fillPercent>
 		<socialPropernessMatters>true</socialPropernessMatters>
@@ -518,6 +518,7 @@
 				<compClass>CompGatherSpot</compClass>
 			</li>
 		</comps>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
 	</ThingDef>
 
 
@@ -526,15 +527,6 @@
 		<label>short stone table</label>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithicStone</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(1.2,1.2)</drawSize>
-			<damageData>
-				<rect>(0.05,0.27,1.9,1.73)</rect>
-				<cornerTL>Damage/Corner</cornerTL>
-				<cornerTR>Damage/Corner</cornerTR>
-				<cornerBL>Damage/Corner</cornerBL>
-				<cornerBR>Damage/Corner</cornerBR>
-			</damageData>
 		</graphicData>
 		<statBases>
 			<Beauty>3</Beauty>
@@ -556,15 +548,6 @@
 		<label>short wood table</label>
 		<graphicData>
 			<texPath>Things/Buildings/Furniture/Tables/Neolithic/TableNeolithicWood/TableNeolithicWood</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(1.2,1.2)</drawSize>
-			<damageData>
-				<rect>(0.05,0.27,1.9,1.73)</rect>
-				<cornerTL>Damage/Corner</cornerTL>
-				<cornerTR>Damage/Corner</cornerTR>
-				<cornerBL>Damage/Corner</cornerBL>
-				<cornerBR>Damage/Corner</cornerBR>
-			</damageData>
 		</graphicData>
 		<statBases>
 			<Beauty>3</Beauty>
@@ -573,6 +556,9 @@
 			<TableNeolithicWood>1</TableNeolithicWood>
 		</costList>
 		<rotatable>false</rotatable>
+		<researchPrerequisites>
+			<li>Survival</li>
+		</researchPrerequisites>
 	</ThingDef>
 
 </Buildings>

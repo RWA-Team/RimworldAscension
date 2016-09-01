@@ -103,6 +103,9 @@
 			<li>StoneCobble</li>
 		</stuffCategories>
 		<costStuffCount>10</costStuffCount>
+		<researchPrerequisites>
+			<li>Survival</li>
+		</researchPrerequisites>
 	</ThingDef>
 
 	<ThingDef ParentName="Decoration">
