@@ -9,7 +9,7 @@
 	stuffProps:	
 		statOffsets - stuff based offset values
 		statFactors - stuff based multiplier values
-		stuffCommonality - weight chance to appear in trader stock		
+		commonality - weight chance to appear in trader stock		
 	Work only in statBases:
 		Blunt\SharpDamageMultiplier
 	Special Products used to aquire stuff based resources of the same stuff type, without making new recipes for each subtype
@@ -57,7 +57,7 @@
 				<TrapMeleeDamage>1.2</TrapMeleeDamage>
 				<MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
 			</statFactors>
-			<stuffCommonality>1</stuffCommonality>
+			<commonality>1</commonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -101,7 +101,7 @@
 				<TrapMeleeDamage>1.2</TrapMeleeDamage>
 				<MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
 			</statFactors>
-			<stuffCommonality>0.1</stuffCommonality>
+			<commonality>0.1</commonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -482,7 +482,7 @@
 				<MeleeWeapon_Cooldown>0.8</MeleeWeapon_Cooldown>
 				<TrapMeleeDamage>1.2</TrapMeleeDamage>
 			</statFactors>
-			<stuffCommonality>0.1</stuffCommonality>
+			<commonality>0.1</commonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -612,7 +612,7 @@
 			</statFactors>
 			<color>(128,128,140)</color>
 			<stuffAdjective>gray clay</stuffAdjective>
-			<stuffCommonality>1</stuffCommonality>
+			<commonality>1</commonality>
 		</stuffProps>
 
 	</ThingDef>
@@ -633,7 +633,7 @@
 			</statFactors>
 			<color>(220,220,220)</color>
 			<stuffAdjective>porcelain</stuffAdjective>
-			<stuffCommonality>1</stuffCommonality>
+			<commonality>1</commonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -686,7 +686,7 @@
 			<statFactors>
 				<MaxHitPoints>0.85</MaxHitPoints>
 			</statFactors>
-			<stuffCommonality>0.8</stuffCommonality>
+			<commonality>0.8</commonality>
 		</stuffProps>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -750,7 +750,7 @@
 				<ArmorRating_Sharp>0.4</ArmorRating_Sharp>
 				<Beauty>1.8</Beauty>
 			</statFactors>
-			<stuffCommonality>0.1</stuffCommonality>
+			<commonality>0.1</commonality>
 		</stuffProps>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -783,7 +783,7 @@
 				<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
 				<Beauty>1.4</Beauty>
 			</statFactors>
-			<stuffCommonality>0.2</stuffCommonality>
+			<commonality>0.2</commonality>
 		</stuffProps>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -817,7 +817,7 @@
 				<ArmorRating_Sharp>0.9</ArmorRating_Sharp>
 				<Beauty>1.1</Beauty>
 			</statFactors>
-			<stuffCommonality>0.8</stuffCommonality>
+			<commonality>0.8</commonality>
 		</stuffProps>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -935,7 +935,7 @@
 				<Comfort>1</Comfort>
 				<Beauty>1.1</Beauty>
 			</statFactors>
-			<stuffCommonality>1</stuffCommonality>
+			<commonality>1</commonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -960,7 +960,7 @@
 				<Beauty>0.7</Beauty>
 				<BedRestEffectiveness>0.8</BedRestEffectiveness>
 			</statFactors>
-			<stuffCommonality>0</stuffCommonality>
+			<commonality>0</commonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -987,7 +987,7 @@
 				<BedRestEffectiveness>1.3</BedRestEffectiveness>
 				<ImmunityGainSpeed>1.3</ImmunityGainSpeed>
 			</statFactors>
-			<stuffCommonality>0.05</stuffCommonality>
+			<commonality>0.05</commonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -1064,7 +1064,7 @@
 				<ImmunityGainSpeed>1.1</ImmunityGainSpeed>
 
 			</statFactors>
-			<stuffCommonality>0.8</stuffCommonality>
+			<commonality>0.8</commonality>
 		</stuffProps>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -1099,7 +1099,7 @@
 				<Comfort>1.2</Comfort>
 				<Beauty>1.1</Beauty>
 			</statFactors>
-			<stuffCommonality>0.3</stuffCommonality>
+			<commonality>0.3</commonality>
 		</stuffProps>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -1134,7 +1134,7 @@
 				<Comfort>1.2</Comfort>
 				<Beauty>1.1</Beauty>
 			</statFactors>
-			<stuffCommonality>0.3</stuffCommonality>
+			<commonality>0.3</commonality>
 		</stuffProps>
 	</ThingDef>
 
@@ -1163,7 +1163,7 @@
 				<Comfort>1.4</Comfort>
 				<Beauty>1.3</Beauty>
 			</statFactors>
-			<stuffCommonality>0.01</stuffCommonality>
+			<commonality>0.01</commonality>
 		</stuffProps>
 	</ThingDef>
 

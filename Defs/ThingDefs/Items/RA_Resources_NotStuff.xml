@@ -10,7 +10,7 @@
 	stuffProps:	
 		statOffsets - stuff based offset values
 		statFactors - stuff based multiplier values
-		stuffCommonality - weight chance to appear in trader stock	
+		commonality - weight chance to appear in trader stock	
 	
 	Work only in statBases:
 		Blunt\SharpDamageMultiplier
@@ -198,7 +198,7 @@
 
 	<ThingDef ParentName="ClothRaw">
 		<defName>WoolMuffalo</defName>
-		<label>Muffalo wool</label>
+		<label>Muffalo wool RA</label>
 		<description>Wool which Muffalo will miss in cold Rimworld winters.</description>
 		<graphicData>
 			<texPath>Things/Items/Resources/WoolRaw/WoolRaw</texPath>
@@ -209,6 +209,9 @@
 		<statBases>
 			<MarketValue>2.5</MarketValue>
 		</statBases>
+		<butcherProducts>
+			<ClothWoolMuffalo>20</ClothWoolMuffalo>
+		</butcherProducts>
 	</ThingDef>
 
 	<ThingDef ParentName="ClothRaw">
@@ -224,6 +227,9 @@
 		<statBases>
 			<MarketValue>2.5</MarketValue>
 		</statBases>
+		<butcherProducts>
+			<ClothWoolCamel>20</ClothWoolCamel>
+		</butcherProducts>
 	</ThingDef>
 
 	<ThingDef ParentName="ClothRaw">
@@ -239,6 +245,9 @@
 		<statBases>
 			<MarketValue>4</MarketValue>
 		</statBases>
+		<butcherProducts>
+			<ClothWoolMegatherium>20</ClothWoolMegatherium>
+		</butcherProducts>
 	</ThingDef>
 
 	<!-- =============================Fuel============================================= -->

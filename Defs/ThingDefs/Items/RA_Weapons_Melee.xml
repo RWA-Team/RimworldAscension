@@ -80,7 +80,7 @@
 				<valuePerWorkFactor>0.0002</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.1, 1, 0)</firstHandPosition>
 			</li>
 		</comps>
@@ -124,7 +124,7 @@
 				<valuePerWorkFactor>0.0005</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.2, 1, 0)</firstHandPosition>
 			</li>
 		</comps>
@@ -169,7 +169,7 @@
 				<valuePerWorkFactor>0.0036</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(0, -0,01, 0)</firstHandPosition>
 				<secondHandPosition>(-0.25,0,1,-0.29)</secondHandPosition>
 				<aimingAngleOffset>50</aimingAngleOffset>
@@ -224,7 +224,7 @@
 					<li>PlantCutting</li> 
 				</workTypes>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.03, 1, -0.18)</firstHandPosition>
 			</li>
 		</comps>
@@ -273,7 +273,7 @@
 					<li>PlantCutting</li> 
 				</workTypes>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(0.2, 1, 0.05)</firstHandPosition>
 			</li>
 		</comps>
@@ -318,7 +318,7 @@
 				<valuePerWorkFactor>0.0077</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.18, 1, 0.03)</firstHandPosition>
 			</li>  
 		</comps>          
@@ -360,7 +360,7 @@
 				<valuePerWorkFactor>0.0072</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.34, 1, 0)</firstHandPosition>
 			</li>  
 		</comps>
@@ -402,7 +402,7 @@
 				<valuePerWorkFactor>0.0113</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(0.13, 1, 0.1)</firstHandPosition>
 				<secondHandPosition>(-0.26, 1, -0.3)</secondHandPosition>
 			</li>
@@ -444,7 +444,7 @@
 				<valuePerWorkFactor>0.0082</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.06, 1, 0.02)</firstHandPosition>
 				<secondHandPosition>(-0.06, 1, -0.25)</secondHandPosition>
 
@@ -495,7 +495,7 @@
 				<valuePerWorkFactor>0.0101</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.1, 1, 0.05)</firstHandPosition>
 				<secondHandPosition>(0.2, 1, 0.05)</secondHandPosition>
 			</li>
@@ -546,7 +546,7 @@
 					<li>Construction</li>
 				</workTypes>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(0,1,-0.08)</firstHandPosition>
 			</li>
 		</comps>
@@ -577,7 +577,7 @@
 					<li>Cleaning</li>
 				</workTypes>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.1, 1, 0)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -619,7 +619,7 @@
 					<li>Construction</li>
 				</workTypes>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(0, 1, 0.02)</firstHandPosition>
 			</li>
 			<li Class="RA.CompCraftedValue_Properties">
@@ -676,7 +676,7 @@
 					<li>Mining</li>
 				</workTypes>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(0, 1, 0)</firstHandPosition>
 			</li>
 		</comps>
@@ -722,7 +722,7 @@
 					<li>Digging</li>
 				</workTypes>
 			</li>
-			<li Class="RA.CompHandsDrawer_Properties">
+			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.1, 1, 0)</firstHandPosition>
 			</li>
 		</comps>

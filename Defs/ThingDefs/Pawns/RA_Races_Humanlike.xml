@@ -39,7 +39,6 @@
 			<leatherColor>(211,194,143)</leatherColor>
 			<leatherCommonalityFactor>0.01</leatherCommonalityFactor>
 			<leatherInsulation>0.70</leatherInsulation>
-			<leatherMarketValue>15</leatherMarketValue>
 			<nameCategory>HumanStandard</nameCategory>
 			<body>Human</body>
 			<baseBodySize>1</baseBodySize>

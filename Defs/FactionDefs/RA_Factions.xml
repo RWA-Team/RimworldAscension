@@ -65,9 +65,9 @@
 			<li>Tribal</li>
 		</hairTags>
 		<apparelStuffFilter>
-			<thingDefs>
+			<categories>
 				<li>Leather</li>
-			</thingDefs>
+			</categories>
 		</apparelStuffFilter>
 	</FactionDef>
 	
@@ -382,9 +382,9 @@
 			<max>-80</max>
 		</naturalColonyGoodwill>
 		<apparelStuffFilter>
-			<thingDefs>
+			<categories>
 				<li>Leather</li>
-			</thingDefs>
+			</categories>
 		</apparelStuffFilter>
 		<pawnGroupMakers>
 			<li Class="PawnGroupMaker_Normal">
