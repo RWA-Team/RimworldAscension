@@ -1,52 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
-	<!-- 
-	- fillPercent - determne cover multiplier vs projectiles
+	<!--
+	- fillPercent - determine cover multiplier vs projectiles
+	- terrainAffordanceNeeded - type of terrain required to be build upon:
+		- Light - light objects like firniture can be build on any light supporting surface (like sand)
+		- Heavy - require solid surface below (for structures)
 	- castEdgeShadows - shadow aura around building
 	- staticSunShadowHeight - solid square shadow with set length
 	- drawerType:
-		- MapMeshOnly - doesn't draw from comps
-		- MapMeshAndRealTime - doesn't draw from comps
+		- MapMeshOnly - static texture, doesn't draw from comps
+		- MapMeshAndRealTime - ?
 		- RealtimeOnly - used for objects that change their texture (unsure)
+	- repairEffect:
+		- Repair - default repair effect of smoke puffs
+		- Welding - welding sparks and sound for repairing advanced metal buildings
+	- damageData:
+		- cornerX - draws corner cracks or other mentioned overlay on selected corner
+		- edgeX - draws edge cracks or other mentioned overlay on selected edge
+		- rect - manually redefines damage overlay area rectangle (defauls is based on building size)
+		- rectX - individual damage rect, to define multiple damage areas for complex buildings and furniture
 	- surfaceType:
 		- Item - allows place items
-		- Eat - allows place food to eat
-	- sowTag - allows to grow plants there
-	 -->
+		- Eat - allows place food to eat 
+	-->
 
 	<ThingDef Name="WorkTable" ParentName="Building" Abstract="True">
 		<thingClass>RA.RA_Building_WorkTable</thingClass>
 		<graphicData>
-			<shaderType>CutoutComplex</shaderType>
 			<graphicClass>Graphic_Multi</graphicClass>
-			<shadowData>
-				<volume>(3, 0.5, 1)</volume>
-				<offset>(0,0,-0.1)</offset>
-			</shadowData>
+			<shaderType>CutoutComplex</shaderType>
 		</graphicData>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 		</building>
-		<altitudeLayer>Building</altitudeLayer>
 		<surfaceType>Item</surfaceType>
-		<Size>(3,1)</Size>
 		<fillPercent>0.5</fillPercent>
-		<passability>PassThroughOnly</passability>
 		<pathCost>70</pathCost>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
-		<DesignationCategory>Production</DesignationCategory>
-		<comps>
-			<li>
-				<compClass>RA.CompFadingShadowThrower</compClass>
-			</li>
-		</comps>
 		<inspectorTabs>
 			<li>ITab_Bills</li>
 		</inspectorTabs>
+		<DesignationCategory>Production</DesignationCategory>
 	</ThingDef>
-
 
 	<ThingDef Name="WorkTableFueled" ParentName="WorkTable" Abstract="True">
 		<thingClass>RA.WorkTableFueled</thingClass>
@@ -60,11 +57,13 @@
 		<!-- 		<comps>
 			<li Class="CompProperties_Flickable"/>
 		</comps> -->
+		<placeWorkers>
+			<li>PlaceWorker_Heater</li>
+		</placeWorkers>
 		<inspectorTabs>
 			<li>RA.ITab_Fuel</li>
 		</inspectorTabs>
 	</ThingDef>
-
 
 	<!-- ==================== Neolithic Tables =====================-->
 
@@ -75,9 +74,10 @@
 				<volume>(2.9, 0.5, 0.9)</volume>
 			</shadowData>
 		</graphicData>
+		<Size>(3,1)</Size>
 		<statBases>
 			<MaxHitPoints>500</MaxHitPoints>
-			<WorkToMake>500</WorkToMake>
+			<WorkToMake>1000</WorkToMake>
 			<Cleanliness>-3</Cleanliness>
 		</statBases>
 		<stuffCategories>
@@ -86,20 +86,14 @@
 		<costStuffCount>3</costStuffCount>
 	</ThingDef>
 
-
 	<ThingDef ParentName="WorkTableFueled">
 		<defName>Campfire</defName>
 		<label>campfire</label>
 		<description>Cooks meals and produces heat. As with all heat sources, it must be placed indoors so it has a closed space to heat.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/Campfire</texPath>
-			<shaderType>Cutout</shaderType>
 			<drawSize>(1.1,1.1)</drawSize>
-			<shadowData>
-				<volume>(0, 0, 0)</volume>
-			</shadowData>
 		</graphicData>
-		<Size>(1,1)</Size>
 		<building>
 			<isMealSource>true</isMealSource>
 		</building>
@@ -107,7 +101,6 @@
 			<MaxHitPoints>50</MaxHitPoints>
 			<WorkToMake>1200</WorkToMake>
 		</statBases>
-		<soundImpactDefault>BulletImpactGround</soundImpactDefault>
 		<stuffCategories>
 			<li>StoneCobble</li>
 		</stuffCategories>
@@ -145,12 +138,11 @@
 
 	<ThingDef ParentName="Building">
 		<defName>DryingRack</defName>
-		<label>DryingRack</label>
-		<description>DryingRack.</description>
+		<label>drying rack</label>
+		<description>A simple drying rack. Dries stored meat over time to preserve it for long.</description>
 		<thingClass>RA.DryingRack</thingClass>
 		<graphicData>
 			<texPath>Things/Buildings/Production/DryingRack</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<tickerType>Long</tickerType>
 		<rotatable>false</rotatable>
@@ -174,7 +166,6 @@
 		<inspectorTabs>
 			<li>ITab_Storage</li>
 		</inspectorTabs>
-		<DesignationCategory>Production</DesignationCategory>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>
@@ -183,7 +174,7 @@
 	<ThingDef ParentName="WorkTableNeolithic">
 		<defName>TableResearchNeolithic</defName>
 		<label>research table</label>
-		<description>Study surrounding materials here to research new things.</description>
+		<description>An improvised table to study and dissect your surroundings.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableResearch/Neolithic/TableResearchNeolithic</texPath>
 		</graphicData>
@@ -201,7 +192,7 @@
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableCraftsmanNeolithic</DefName>
 		<label>craftsman table</label>
-		<Description>A table with tools to craft various things.</Description>
+		<Description>A work table with tools to craft various things.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableCraftsman/Neolithic/TableCraftsmanNeolithic</texPath>
 		</graphicData>
@@ -230,7 +221,7 @@
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableButcherNeolithic</DefName>
 		<label>butcher table</label>
-		<Description>A heavy table for butchering dead creatures into pieces of raw meat and hide.</Description>
+		<Description>A worktable for butchering dead creatures into useful resources.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableButcher/Neolithic/TableButcherNeolithic</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -275,9 +266,32 @@
 	</ThingDef>
 
 	<ThingDef ParentName="WorkTableNeolithic">
+		<DefName>TableFurnitureMakerNeolithic</DefName>
+		<label>furniture maker table</label>
+		<Description>A work table to make various primitive furniture types.</Description>
+		<graphicData>
+			<texPath>Missing</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<Cleanliness>-5</Cleanliness>
+		</statBases>
+		<recipes>
+			<li>MakeStoolNeolithicStone</li>
+			<li>MakeStoolNeolithicWood</li>
+			<li>MakeTableNeolithicStone</li>
+			<li>MakeTableNeolithicWood</li>
+		</recipes>
+		<!-- allowed via research mods -->
+		<researchPrerequisites>
+			<li>Blocked</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableWeaponMeleeNeolithic</DefName>
 		<label>warrior table</label>
-		<Description>A worktable with tools to make primitive melee weapons.</Description>
+		<Description>A work table with tools to make primitive melee weapons and armor.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableWeaponMelee/Neolithic/TableWeaponMeleeNeolithic</texPath>
 		</graphicData>
@@ -300,7 +314,7 @@
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableWeaponRangedNeolithic</DefName>
 		<label>hunter table</label>
-		<Description>A worktable with tools to make primitive ranged weapons.</Description>
+		<Description>A work table with tools to make primitive ranged weapons.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableWeaponRanged/Neolithic/TableWeaponRangedNeolithic</texPath>
 		</graphicData>
@@ -344,7 +358,7 @@
 	<ThingDef ParentName="WorkTableNeolithic">
 		<DefName>TableBrewerNeolithic</DefName>
 		<label>brewer table</label>
-		<Description>A work station with all the equipment needed to make brew.</Description>
+		<Description>A work table with all the equipment needed to brew simple booze.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/TableBrewer/Neolithic/TableBrewerNeolithic</texPath>
 			<drawSize>(3.7,1.4)</drawSize>
@@ -360,14 +374,10 @@
 	<ThingDef ParentName="WorkTableFueled">
 		<defName>Kiln</defName>
 		<label>kiln</label>
-		<description>An impovised kiln used to produce ceramics and building blocks out of raw mud.</description>
+		<description>An impovised kiln used to produce ceramics and building blocks out of clay.</description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/Kiln/Kiln</texPath>
 			<drawSize>(3.1,3.1)</drawSize>
-			<shadowData>
-				<volume/>
-				<offset/>
-			</shadowData>
 		</graphicData>
 		<Size>(3,3)</Size>
 		<interactionCellOffset>(0, 0, -2)</interactionCellOffset>
@@ -419,10 +429,9 @@
 	<ThingDef ParentName="WorkTableFueled">
 		<DefName>Furnace</DefName>
 		<label>furnace</label>
-		<Description>furnace.</Description>
+		<Description>A place to melt sand and ore into useful materials.</Description>
 		<graphicData>
 			<texPath>Things/Buildings/Production/Furnace</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(3.1,3.1)</drawSize>
 		</graphicData>
 		<Size>(3,3)</Size>
@@ -466,7 +475,7 @@
 	<ThingDef ParentName="WorkTable">
 		<DefName>TableCookFueled</DefName>
 		<label>cooking table</label>
-		<Description>cooking table.</Description>
+		<Description>A cooking table to make proper meals.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableStoveFueled</texPath>
 			<drawSize>(3.5,1.5)</drawSize>
@@ -487,7 +496,7 @@
 	<ThingDef ParentName="WorkTable">
 		<DefName>TableBrewerMedieval</DefName>
 		<label>brewery</label>
-		<Description>brewery.</Description>
+		<Description>A fine brewery table.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableStoveFueled</texPath>
 			<drawSize>(3.5,1.5)</drawSize>
@@ -503,7 +512,7 @@
 	<ThingDef ParentName="WorkTable">
 		<DefName>TableWeaponMeleeMedieval</DefName>
 		<label>blacksmith bench</label>
-		<Description>blacksmith bench.</Description>
+		<Description>A blacksmith bench. Various types of metal weapons and armor can be crafted here.</Description>
 		<graphicData>
 			<texPath>Things/Building/Production/TableSmithingFueled</texPath>
 			<drawSize>(3.5,1.5)</drawSize>
@@ -529,10 +538,10 @@
 	<ThingDef ParentName="WorkTable">
 		<DefName>TableWeaponRangedMedieval</DefName>
 		<label>marksman bench</label>
-		<Description>marksman bench.</Description>
+		<Description>A bench for making mechanical shooting tools.</Description>
 		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
 			<texPath>Missing</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(3.5,1.5)</drawSize>
 		</graphicData>
 		<recipes>
@@ -548,10 +557,10 @@
 	<ThingDef ParentName="WorkTable">
 		<DefName>Loom</DefName>
 		<label>loom</label>
-		<Description>loom.</Description>
+		<Description>A place to weave raw resources into cloth.</Description>
 		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
 			<texPath>Missing</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<recipes>
 			<li>MakeLinen</li>
@@ -566,10 +575,10 @@
 	<ThingDef ParentName="WorkTable">
 		<DefName>TableFurnitureMakerMedieval</DefName>
 		<label>carpenter table</label>
-		<Description>carpenter table.</Description>
+		<Description>A place for carpenter to craft your furniture.</Description>
 		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
 			<texPath>Missing</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<recipes>
 			<li>MakeStool</li>

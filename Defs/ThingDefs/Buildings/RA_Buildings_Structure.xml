@@ -1,23 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
-	<!-- 
-	- fillPercent - determne cover multiplier vs projectiles
+	<!--
+	- fillPercent - determine cover multiplier vs projectiles
+	- terrainAffordanceNeeded - type of terrain required to be build upon:
+		- Light - light objects like firniture can be build on any light supporting surface (like sand)
+		- Heavy - require solid surface below (for structures)
 	- castEdgeShadows - shadow aura around building
 	- staticSunShadowHeight - solid square shadow with set length
 	- drawerType:
-		- MapMeshOnly - doesn't draw from comps
-		- MapMeshAndRealTime - doesn't draw from comps
-		- RealTimeOnly - used for objects that change their texture (unsure)
+		- MapMeshOnly - static texture, doesn't draw from comps
+		- MapMeshAndRealTime - ?
+		- RealtimeOnly - used for objects that change their texture (unsure)
+	- repairEffect:
+		- Repair - default repair effect of smoke puffs
+		- Welding - welding sparks and sound for repairing advanced metal buildings
+	- damageData:
+		- cornerX - draws corner cracks or other mentioned overlay on selected corner
+		- edgeX - draws edge cracks or other mentioned overlay on selected edge
+		- rect - manually redefines damage overlay area rectangle (defauls is based on building size)
+		- rectX - individual damage rect, to define multiple damage areas for complex buildings and furniture
 	- surfaceType:
 		- Item - allows place items
-		- Eat - allows place food to eat
+		- Eat - allows place food to eat 
 	- linkFlags:
 		- Custom1 - linker for roads
 	 -->
 
 	<ThingDef Name="Structure" ParentName="Building" Abstract="True">
-		<fillPercent>1</fillPercent>
 		<rotatable>false</rotatable>
 		<holdsRoof>true</holdsRoof>
 		<blockLight>true</blockLight>
@@ -50,8 +60,9 @@
 		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
 		<tickerType>Normal</tickerType>
 		<drawerType>RealtimeOnly</drawerType>
+		<fillPercent>1</fillPercent>
 		<statBases>
-			<MaxHitPoints>250</MaxHitPoints>
+			<MaxHitPoints>200</MaxHitPoints>
 		</statBases>
 		<building>
 			<soundDoorOpenPowered>DoorOpenPowered</soundDoorOpenPowered>
@@ -109,13 +120,11 @@
 			<MaxHitPoints>350</MaxHitPoints>
 			<WorkToMake>150</WorkToMake>
 		</statBases>
-		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
 		<castEdgeShadows>true</castEdgeShadows>
 		<coversFloor>true</coversFloor>
 		<placingDraggableDimensions>1</placingDraggableDimensions>
-		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<fillPercent>1</fillPercent>
 		<building>
 			<isInert>true</isInert>
 		</building>
@@ -191,6 +200,7 @@
 			<li>Brick</li>
 		</stuffCategories>
 		<costStuffCount>5</costStuffCount>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<researchPrerequisites>
 			<li>Firing</li>
 		</researchPrerequisites>

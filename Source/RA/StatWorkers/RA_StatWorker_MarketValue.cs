@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace RA
@@ -9,7 +8,7 @@ namespace RA
         public override float GetValueUnfinalized(StatRequest req, bool applyPostProcess = true)
         {
             // market value for crafted things
-            var compCraftedValue = req.Thing.TryGetComp<CompCraftedValue>();
+            var compCraftedValue = req.Thing?.TryGetComp<CompCraftedValue>();
             if (compCraftedValue != null)
             {
                 return compCraftedValue.marketValue != -1
