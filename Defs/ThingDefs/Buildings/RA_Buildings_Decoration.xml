@@ -92,9 +92,9 @@
 		<stuffCategories>
 			<li>StoneCobble</li>
 		</stuffCategories>
-		<costStuffCount>50</costStuffCount>
+		<costStuffCount>10</costStuffCount>
 		<researchPrerequisites>
-			<li>StoneCutting</li>
+			<li>Survival</li>
 		</researchPrerequisites>
 	</ThingDef>
 
