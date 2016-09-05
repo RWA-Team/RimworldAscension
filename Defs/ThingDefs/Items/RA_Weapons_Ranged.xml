@@ -341,7 +341,7 @@
 		<label>tomahawk</label>
 		<description>An axe, made for throwing, deadly if it hits.</description>
 		<graphicData>
-			<texPath>Things/Items/Weapons/Neolithic/Tomahawk</texPath>
+			<texPath>Things/Items/Weapons/Neolithic/Tomahawk/Tomahawk</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>CutoutComplex</shaderType>
 		</graphicData>

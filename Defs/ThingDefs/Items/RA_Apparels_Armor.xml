@@ -12,7 +12,6 @@
 	<ThingDef Name="Apparel" ParentName="Item" Abstract="True">
 		<thingClass>Apparel</thingClass>
 		<graphicData>
-			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<statBases>

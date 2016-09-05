@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
 <ThingsDef>
-	<!-- ===================================Norbals=========================================================-->
+
 	<ThingDef ParentName="WeaponMelee">
 		<defName>AxeNorbal</defName>
 		<label>Norbal axe</label>
 		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
 		<graphicData>
 			<texPath>Factions/Norbals/Weapons/AxeNorbal/AxeNorbal</texPath>
-			<drawSize>0.7</drawSize>
 		</graphicData>
 		<equippedAngleOffset>120</equippedAngleOffset>
 		<statBases>
@@ -30,9 +28,10 @@
 		<comps>
 			<li Class="RA.CompTool_Properties"/>
 			<li Class="RA.CompWeaponExtensions_Properties">
-				<firstHandPosition>(-0.03, 1, 0)</firstHandPosition>
-				<secondHandPosition>(0.30, 1, -0.02)</secondHandPosition>
-
+				<firstHandPosition>(-0.03, 0.1, 0)</firstHandPosition>
+				<secondHandPosition>(0.30, -0.05, -0.02)</secondHandPosition>
+				<weaponPositionOffset>(-0.1, 0, -0.2)</weaponPositionOffset>
+				<attackAngleOffset>50</attackAngleOffset>
 			</li>
 		</comps>
 		<weaponTags>
@@ -111,6 +110,7 @@
 			<li>NorbalMelee</li>
 		</weaponTags>
 	</ThingDef>
+
 	<ThingDef ParentName="WeaponMelee">
 		<defName>SwordNorbal</defName>
 		<label>Norbal sword</label>
@@ -223,7 +223,6 @@
 		</verbs>
 	</ThingDef>
 
-
 	<ThingDef ParentName="Projectile">
 		<defName>Arrow_Norbal</defName>
 		<label>crossbow bolt</label>
@@ -300,4 +299,5 @@
 			<Speed>45</Speed>
 		</projectile>
 	</ThingDef>
+
 </ThingsDef>
