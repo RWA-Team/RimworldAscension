@@ -434,7 +434,7 @@
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/Axe/Axe</texPath>
 		</graphicData>
-		<equippedAngleOffset>65</equippedAngleOffset>
+		<equippedAngleOffset>35</equippedAngleOffset>
 		<statBases>
 			<MaxHitPoints>130</MaxHitPoints>
 			<ArmorPenetration>4</ArmorPenetration>
@@ -447,10 +447,10 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompWeaponExtensions_Properties">
-				<firstHandPosition>(-0.1b, 0.001, 0.05)</firstHandPosition>
-				<!-- <secondHandPosition>(-0.26, -0.001, -0.3)</secondHandPosition> -->
-				<weaponPositionOffset>(0.1, 0, -0.1)</weaponPositionOffset>
-				<attackAngleOffset>90</attackAngleOffset>
+				<firstHandPosition>(0.1, 0.001, 0.05)</firstHandPosition>
+				<secondHandPosition>(-0.3, -0.001, 0.05)</secondHandPosition>
+				<weaponPositionOffset>(1, 0, -0.1)</weaponPositionOffset>
+				<attackAngleOffset>-135</attackAngleOffset>
 			</li>
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
