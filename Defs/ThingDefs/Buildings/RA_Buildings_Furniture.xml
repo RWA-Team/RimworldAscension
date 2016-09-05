@@ -83,8 +83,6 @@
 				<itemsCap>3</itemsCap>
 			</li>
 		</comps>
-		<!-- actual minified def is auto generated -->
-		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>
@@ -124,11 +122,9 @@
 		</building>
 		<comps>
 			<li Class="RA.CompContainer_Properties">
-				<itemsCap>3</itemsCap>
+				<itemsCap>5</itemsCap>
 			</li>
 		</comps>
-		<!-- actual minified def is auto generated -->
-		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>
@@ -168,11 +164,9 @@
 		</building>
 		<comps>
 			<li Class="RA.CompContainer_Properties">
-				<itemsCap>3</itemsCap>
+				<itemsCap>5</itemsCap>
 			</li>
 		</comps>
-		<!-- actual minified def is auto generated -->
-		<minifiedDef>Placeholder</minifiedDef>
 		<researchPrerequisites>
 			<li>Survival</li>
 		</researchPrerequisites>

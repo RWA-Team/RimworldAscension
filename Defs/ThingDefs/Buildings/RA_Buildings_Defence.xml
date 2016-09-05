@@ -12,7 +12,7 @@
 	- surfaceType:
 		- Item - allows place items
 		- Eat - allows place food to eat
-	 -->
+	-->
 
 	<ThingDef Name="Defence" ParentName="Building" Abstract="True">
 		<designationCategory>Defence</designationCategory>
@@ -22,7 +22,8 @@
 
 	<ThingDef ParentName="Defence">
 		<defName>TrapDeadfall</defName>
-		<label>deadfall trap</label>
+		<label>Deadfall trap</label>
+		<description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on the victim's head or torso.</description>
 		<thingClass>Building_TrapRearmable</thingClass>
 		<graphicData>
 			<texPath>Things/Building/Security/DeadfallArmed</texPath>
@@ -37,9 +38,9 @@
 			<WorkToMake>3000</WorkToMake>
 			<Beauty>-4</Beauty>
 			<TrapMeleeDamage>50</TrapMeleeDamage>
-			<TrapSpringChance>0.8</TrapSpringChance>
+			<TrapSpringChance>0.9</TrapSpringChance>
 		</statBases>
-		<description>A suspended spiked weight held up by a delicate trigger. When the victim disturbs the trigger, the weight is released and falls on the victim's head or torso.</description>
+		
 		<costList>
 			<TrapDeadfall>1</TrapDeadfall>
 		</costList>

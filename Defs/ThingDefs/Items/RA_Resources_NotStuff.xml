@@ -359,6 +359,28 @@
 		</thingCategories>
 	</ThingDef>
 
+	<!-- =====================Ores===================================== -->
 
+	<ThingDef Name="Ores" ParentName="Resource" Abstract="True">
+		<graphicData>
+			<texPath>Things/Items/Resources/Ores/OreMetal</texPath>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+			<thingCategories>
+				<li>Ores</li>
+			</thingCategories>
+		</ThingDef>
 
-</Defs>
+		<ThingDef ParentName="Ores">
+			<defName>OreCopper</defName>
+			<label>Ore Copper</label>
+			<description>Chunk of copper ore.</description>
+			<graphicData>
+				<drawSize>0.85</drawSize>
+			</graphicData>
+			<statBases>
+				<MarketValue>0.8</MarketValue>
+			</statBases>
+		</ThingDef>
+
+	</Defs>
