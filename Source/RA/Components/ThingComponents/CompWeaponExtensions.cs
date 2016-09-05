@@ -9,7 +9,7 @@ namespace RA
         public Vector3 FirstHandPosition => (props as CompWeaponExtensions_Properties).firstHandPosition;
         public Vector3 SecondHandPosition => (props as CompWeaponExtensions_Properties).secondHandPosition;
         public Vector3 WeaponPositionOffset => (props as CompWeaponExtensions_Properties).weaponPositionOffset;
-        public float AimingAngleOffset => (props as CompWeaponExtensions_Properties).aimingAngleOffset;
+        public float AttackAngleOffset => (props as CompWeaponExtensions_Properties).attackAngleOffset;
     }
 
     public class CompWeaponExtensions_Properties : CompProperties
@@ -17,7 +17,7 @@ namespace RA
         public Vector3 firstHandPosition = Vector3.zero;
         public Vector3 secondHandPosition = Vector3.zero;
         public Vector3 weaponPositionOffset = Vector3.zero;
-        public int aimingAngleOffset = 0;
+        public int attackAngleOffset = 0;
 
         public CompWeaponExtensions_Properties()
         {

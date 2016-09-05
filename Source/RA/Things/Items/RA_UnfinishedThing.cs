@@ -3,6 +3,7 @@ using Verse;
 
 namespace RA
 {
+    [StaticConstructorOnStartup]
     public class RA_UnfinishedThing : UnfinishedThing
     {
         public static Graphic unfinishedOverlayGraphic;
