@@ -29,64 +29,55 @@ namespace RA
         // draws hands on equipment and adjusts aiming angle position, if corresponding Comp is specified
         public new void DrawEquipmentAiming(Thing equipment, Vector3 weaponDrawLoc, float aimAngle)
         {
-            var weaponAngleOffset = 0f;
-            var weaponPositionOffset = new Vector3();
+            var compWeaponExtensions = Pawn.equipment.Primary.TryGetComp<CompWeaponExtensions>();
 
-            // resets vanilla weapon angle to 0
+            float weaponAngle = 0;
             if (!Aiming())
             {
-                aimAngle = 0;
-            }
-
-            // weapon angle offset when facing north and west
-            if (Pawn.Rotation == Rot4.West || Pawn.Rotation == Rot4.North)
-            {
-                weaponPositionOffset += new Vector3(0, -0.5f, 0);
-                weaponAngleOffset += equipment.def.equippedAngleOffset;
+                // resets vanilla carry weapon angle to 0°
+                if (Pawn.Rotation == Rot4.West || Pawn.Rotation == Rot4.North)
+                    aimAngle = 270;
             }
             else
             {
-                // weapon angle offset based on <equippedAngleOffset> param
-                weaponAngleOffset -= equipment.def.equippedAngleOffset;
+                // default weapon angle axis is upward, but all weapons are facing right, so we turn base weapon angle by 90°
+                weaponAngle = aimAngle - 90;
+                weaponAngle += compWeaponExtensions?.AttackAngleOffset ?? 0;
             }
+            
+            var weaponPositionOffset = compWeaponExtensions?.WeaponPositionOffset ?? Vector3.zero;
 
+            // weapon angle and position offsets based on current attack animation sequence
+            AttackAnimationOffsets(ref weaponAngle, ref weaponPositionOffset, compWeaponExtensions);
 
-            // weapon angle and position offsets based on CompWeaponExtensions params
-            var compWeaponExtensions = Pawn.equipment.Primary.TryGetComp<CompWeaponExtensions>();
-            if (compWeaponExtensions != null)
-            {
-                weaponPositionOffset += compWeaponExtensions.WeaponPositionOffset;
-                if (Aiming()) weaponAngleOffset += compWeaponExtensions.AttackAngleOffset;
-            }
-
-            AttackAnimationOffsets(ref weaponAngleOffset, ref weaponPositionOffset, compWeaponExtensions);
-
-            var turnAngle = aimAngle;
-            var flipped = false;
             Mesh weaponMesh;
-            Log.Message("aimAngle " + aimAngle);
-            Log.Message("turnAngle " + turnAngle);
-            Log.Message("weaponAngleOffset " + weaponAngleOffset);
-            if (aimAngle > 20f && aimAngle < 160f)
+            var flipped = false;
+            if (aimAngle > 200 && aimAngle< 340)
             {
-                weaponMesh = MeshPool.GridPlane(equipment.Graphic.drawSize);
-                turnAngle += weaponAngleOffset;
-                Log.Message("turnAngle result: " + turnAngle);
-                Log.Message("**********************");
-            }
-            else if (aimAngle > 200f && aimAngle < 340f)
-            {
-                weaponMesh = MeshPool.GridPlaneFlip(equipment.Graphic.drawSize);
-                //turnAngle -= 180f;
-                turnAngle -= weaponAngleOffset;
                 flipped = true;
+                // flip weapon texture
+                weaponMesh = MeshPool.GridPlaneFlip(equipment.Graphic.drawSize);
+                // draw weapon beneath the pawn
+                weaponPositionOffset += new Vector3(0, -0.5f, 0);
             }
             else
             {
                 weaponMesh = MeshPool.GridPlane(equipment.Graphic.drawSize);
-                turnAngle += weaponAngleOffset;
             }
-            turnAngle %= 360f;
+
+            // adjust flipped weapon rotation
+            if (Aiming())
+            {
+                weaponAngle += flipped
+                    ? compWeaponExtensions?.AttackAngleOffset ?? 0
+                    : -compWeaponExtensions?.AttackAngleOffset ?? 0;
+            }
+            else
+            {
+                weaponAngle += flipped
+                    ? equipment.def.equippedAngleOffset
+                    : -equipment.def.equippedAngleOffset;
+            }
 
             var graphic_StackCount = equipment.Graphic as Graphic_StackCount;
             var weaponMat = graphic_StackCount != null
@@ -94,7 +85,7 @@ namespace RA
                 : equipment.Graphic.MatSingle;
 
             // draw weapon
-            Graphics.DrawMesh(weaponMesh, weaponDrawLoc + weaponPositionOffset, Quaternion.AngleAxis(turnAngle, Vector3.up),
+            Graphics.DrawMesh(weaponMesh, weaponDrawLoc + weaponPositionOffset, Quaternion.AngleAxis(weaponAngle, Vector3.up),
                 weaponMat, 0);
 
             // draw hands on equipment, if CompWeaponExtensions defines them
@@ -104,25 +95,33 @@ namespace RA
                     GraphicDatabase.Get<Graphic_Single>("Overlays/Hand", ShaderDatabase.CutoutSkin, Vector2.one,
                         Pawn.story.SkinColor).MatSingle;
 
-                var handsMesh = MeshPool.plane10;
+                var handsMesh = MeshPool.GridPlane(Vector2.one);
 
                 if (compWeaponExtensions.FirstHandPosition != Vector3.zero)
                 {
                     var handPosition = compWeaponExtensions.FirstHandPosition;
-                    if (flipped) handPosition = -handPosition;
-
+                    if (flipped)
+                    {
+                        handPosition = -handPosition;
+                        handPosition.z = -handPosition.z;
+                    }
+                    
                     Graphics.DrawMesh(handsMesh,
-                        weaponDrawLoc + weaponPositionOffset + handPosition.RotatedBy(turnAngle),
-                        Quaternion.AngleAxis(turnAngle, Vector3.up), handMat, 0);
+                        weaponDrawLoc + weaponPositionOffset + handPosition.RotatedBy(weaponAngle),
+                        Quaternion.AngleAxis(weaponAngle, Vector3.up), handMat, 0);
                 }
                 if (compWeaponExtensions.SecondHandPosition != Vector3.zero)
                 {
-                    var handPosition = compWeaponExtensions.FirstHandPosition;
-                    if (flipped) handPosition = -handPosition;
+                    var handPosition = compWeaponExtensions.SecondHandPosition;
+                    if (flipped)
+                    {
+                        handPosition = -handPosition;
+                        handPosition.z = -handPosition.z;
+                    }
 
                     Graphics.DrawMesh(handsMesh,
-                        weaponDrawLoc + weaponPositionOffset + handPosition.RotatedBy(turnAngle),
-                        Quaternion.AngleAxis(turnAngle, Vector3.up), handMat, 0);
+                        weaponDrawLoc + weaponPositionOffset + handPosition.RotatedBy(weaponAngle),
+                        Quaternion.AngleAxis(weaponAngle, Vector3.up), handMat, 0);
                 }
             }
         }
@@ -134,8 +133,9 @@ namespace RA
             {
                 if (damageDef == DamageDefOf.Stab)
                 {
-                    var swingAngle = Mathf.Abs(compWeaponExtensions.AttackAngleOffset - 90);
-                    weaponAngle += Jitterer.CurrentJitterOffset.magnitude/Jitterer.JitterMax*
+                    // total angle weapon changes during animation sequence
+                    var swingAngle = Mathf.Abs(compWeaponExtensions?.AttackAngleOffset ?? 45);
+                    weaponAngle -= Jitterer.CurrentJitterOffset.magnitude/Jitterer.JitterMax*
                                                 swingAngle;
 
                     weaponPosition += Jitterer.CurrentJitterOffset +
@@ -144,8 +144,8 @@ namespace RA
                 }
                 else if (damageDef == DamageDefOf.Blunt || damageDef == DamageDefOf.Cut)
                 {
-                    var swingAngle = Mathf.Abs(Pawn.equipment.Primary.def.equippedAngleOffset + compWeaponExtensions.AttackAngleOffset - 90);
-                    weaponAngle += Jitterer.CurrentJitterOffset.magnitude/Jitterer.JitterMax*swingAngle;
+                    var swingAngle = Mathf.Abs(compWeaponExtensions?.AttackAngleOffset ?? 135);
+                    weaponAngle -= Jitterer.CurrentJitterOffset.magnitude/Jitterer.JitterMax*swingAngle;
 
                     weaponPosition += Jitterer.CurrentJitterOffset +
                                       new Vector3(0, 0,
