@@ -267,7 +267,7 @@ namespace RA
                             && (!recipe.defaultIngredientFilter?.Allows(ingredient.def) ?? true));
                 }
             }
-            return null;
+            return ingredients.RandomElement();
         }
 
         // hidden in vanilla

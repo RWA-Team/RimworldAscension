@@ -222,7 +222,7 @@ namespace RA
             // detour RimWorld.UI_BackgroundMain.BackgroundOnGUI
             DetourMethod("UI_BackgroundMain", "BackgroundOnGUI");
             // draws hands on equipment, if corresponding Comp is specified
-            DetourMethod("PawnRenderer", "DrawEquipmentAiming");
+            DetourMethod("PawnRenderer", "DrawEquipment");
             //changed inner graphic extraction for minified things
             DetourMethod("GraphicUtility", "ExtractInnerGraphicFor");
             // changed text align to middle center
