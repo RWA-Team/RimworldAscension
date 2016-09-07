@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
-	<!-- 
-	- stuffCategories - specifies that weapon is made from stuff (stuff modifiers apply) and what stuff types should be used
-	- onGroundRandomRotateAngle - breaks drawSize parameter
-	-->
+
+<!-- 	- stuffCategories - specifies that weapon is made from stuff (stuff modifiers apply) and what stuff types should be used
+	- onGroundRandomRotateAngle - breaks drawSize parameter -->
+	
 
 	<ThingDef Name="Weapon" ParentName="Item" Abstract="True">
 		<equipmentType>Primary</equipmentType>
@@ -434,7 +434,7 @@
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/Axe/Axe</texPath>
 		</graphicData>
-		<equippedAngleOffset>35</equippedAngleOffset>
+		<equippedAngleOffset>-35</equippedAngleOffset>
 		<statBases>
 			<MaxHitPoints>130</MaxHitPoints>
 			<ArmorPenetration>4</ArmorPenetration>
