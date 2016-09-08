@@ -78,13 +78,13 @@ namespace RA
                 }
                 else if (Pawn.Rotation == Rot4.East)
                 {
-                    var drawLoc4 = rootLoc + new Vector3(0.2f, 0f, -0.22f);
+                    var drawLoc4 = rootLoc + new Vector3(0f, 0f, -0.22f);
                     drawLoc4.y += 0.04f;
                     DrawEquipmentAiming(Pawn.equipment.Primary, drawLoc4, 0f);
                 }
                 else if (Pawn.Rotation == Rot4.West)
                 {
-                    var drawLoc5 = rootLoc + new Vector3(-0.2f, 0f, -0.22f);
+                    var drawLoc5 = rootLoc + new Vector3(0f, 0f, -0.22f);
                     drawLoc5.y += 0.04f;
                     DrawEquipmentAiming(Pawn.equipment.Primary, drawLoc5, 180f);
                 }
@@ -97,7 +97,7 @@ namespace RA
             var compWeaponExtensions = Pawn.equipment.Primary.TryGetComp<CompWeaponExtensions>();
 
             float weaponAngle;
-            Vector3 weaponPositionOffset;
+            var weaponPositionOffset = compWeaponExtensions?.WeaponPositionOffset ?? Vector3.zero;
 
             Mesh weaponMesh;
             bool flipped;
@@ -109,9 +109,8 @@ namespace RA
                 // flip weapon texture
                 weaponMesh = MeshPool.GridPlaneFlip(equipment.Graphic.drawSize);
 
-                weaponPositionOffset = compWeaponExtensions?.WeaponPositionOffset ?? Vector3.zero;
-                // draw weapon beneath the pawn
-                weaponPositionOffset += new Vector3(0, -0.5f, 0);
+                // flip x position offset
+                weaponPositionOffset.x = -weaponPositionOffset.x;
 
                 weaponAngle = aimAngle - 180f;
                 weaponAngle -= !aiming
@@ -124,12 +123,18 @@ namespace RA
 
                 weaponMesh = MeshPool.GridPlane(equipment.Graphic.drawSize);
 
-                weaponPositionOffset = -compWeaponExtensions?.WeaponPositionOffset ?? Vector3.zero;
+                weaponPositionOffset = compWeaponExtensions?.WeaponPositionOffset ?? Vector3.zero;
 
                 weaponAngle = aimAngle;
                 weaponAngle += !aiming
                     ? equipment.def.equippedAngleOffset
                     : (compWeaponExtensions?.AttackAngleOffset ?? 0);
+            }
+
+            if (Pawn.Rotation == Rot4.West || Pawn.Rotation == Rot4.North)
+            {
+                // draw weapon beneath the pawn
+                weaponPositionOffset += new Vector3(0, -0.5f, 0);
             }
 
             // weapon angle and position offsets based on current attack animation sequence
@@ -154,7 +159,7 @@ namespace RA
 
         public void DoAttackAnimationOffsets(ref float weaponAngle, ref Vector3 weaponPosition, bool flipped)
         {
-            var damageDef = Pawn.VerbTracker?.PrimaryVerb?.verbProps?.meleeDamageDef;
+            var damageDef = Pawn.equipment?.PrimaryEq?.PrimaryVerb?.verbProps?.meleeDamageDef;
             if (damageDef != null)
             {
                 // total weapon angle change during animation sequence
@@ -162,13 +167,12 @@ namespace RA
                 var animationPhasePercent = Jitterer.CurrentJitterOffset.magnitude/Jitterer.JitterMax;
                 if (damageDef == DamageDefOf.Stab)
                 {
-                    totalSwingAngle = 180;
-                    weaponPosition += Jitterer.CurrentJitterOffset +
-                                      new Vector3(0, 0, Mathf.Pow(Jitterer.CurrentJitterOffset.magnitude, 0.5f));
+                    totalSwingAngle = 25;
+                    weaponPosition += Jitterer.CurrentJitterOffset; // + new Vector3(0, 0, Mathf.Pow(Jitterer.CurrentJitterOffset.magnitude, 0.25f))/2;
                 }
                 else if (damageDef == DamageDefOf.Blunt || damageDef == DamageDefOf.Cut)
                 {
-                    totalSwingAngle = 45;
+                    totalSwingAngle = 120;
                     weaponPosition += Jitterer.CurrentJitterOffset +
                                       new Vector3(0, 0,
                                           Mathf.Sin(Jitterer.CurrentJitterOffset.magnitude*Mathf.PI/Jitterer.JitterMax)/
