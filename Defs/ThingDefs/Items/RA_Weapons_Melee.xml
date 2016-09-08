@@ -408,7 +408,7 @@
 			<drawSize>(1.8,1.8)</drawSize>
 		</graphicData>
 		<stackLimit>1</stackLimit>
-		<equippedAngleOffset>35</equippedAngleOffset>
+		<equippedAngleOffset>-25</equippedAngleOffset>
 		<statBases>
 			<MeleeWeapon_DamageAmount>12</MeleeWeapon_DamageAmount>
 			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
@@ -422,10 +422,10 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompWeaponExtensions_Properties">
-				<firstHandPosition>(0.13, 0.001, 0.1)</firstHandPosition>
-				<secondHandPosition>(-0.26, -1, -0.3)</secondHandPosition>
-				<weaponPositionOffset>(0, 0, -0.1)</weaponPositionOffset>
-				<attackAngleOffset>0</attackAngleOffset>
+				<firstHandPosition>(0.1, 0.001, 0.05)</firstHandPosition>
+				<secondHandPosition>(-0.3, -0.001, 0.05)</secondHandPosition>
+				<weaponPositionOffset>(0.1, 0, -0.15)</weaponPositionOffset>
+				<attackAngleOffset>-25</attackAngleOffset>
 			</li>
 		</comps>
 		<verbs>
@@ -453,7 +453,7 @@
 		<graphicData>
 			<texPath>Things/Items/Weapons/Medieval/Axe/Axe</texPath>
 		</graphicData>
-		<equippedAngleOffset>-35</equippedAngleOffset>
+		<equippedAngleOffset>-25</equippedAngleOffset>
 		<statBases>
 			<MaxHitPoints>130</MaxHitPoints>
 			<ArmorPenetration>4</ArmorPenetration>
@@ -466,9 +466,9 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompWeaponExtensions_Properties">
-				<firstHandPosition>(0.1, 0.001, 0.05)</firstHandPosition>
-				<secondHandPosition>(-0.3, -0.001, 0.05)</secondHandPosition>
-				<weaponPositionOffset>(1, 0, -0.1)</weaponPositionOffset>
+				<firstHandPosition>(0.1, -0.001, 0.05)</firstHandPosition>
+				<secondHandPosition>(-0.3, 0.001, 0.05)</secondHandPosition>
+				<weaponPositionOffset>(0.2, 0, -0.1)</weaponPositionOffset>
 				<attackAngleOffset>-135</attackAngleOffset>
 			</li>
 			<li Class="RA.CompTool_Properties">

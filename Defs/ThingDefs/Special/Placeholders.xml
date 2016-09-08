@@ -1,12 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Buildings>
 
-	<ThingDef>
-		<defName>Placeholder</defName>
-		<label>placeholder</label>
-		<description>placeholder</description>
-		<category>Item</category>
-		<thingClass>Thing</thingClass>
+	<ThingDef Name="Minified" ParentName="Item" Abstract="True">
+		<thingClass>MinifiedThing</thingClass>
+		<canMakeOnMapGen>false</canMakeOnMapGen>
+	</ThingDef>
+
+	<ThingDef ParentName="Minified">
+		<defName>MinifiedFurniture</defName>
+		<label>minified furniture</label>
+		<thingCategories>
+			<li>MinifiedFurniture</li>
+		</thingCategories>
+		<inspectorTabs>
+			<li>ITab_Art</li>
+		</inspectorTabs>
+	</ThingDef>
+
+	<ThingDef ParentName="Minified">
+		<defName>MinifiedDefences</defName>
+		<label>minified defences</label>
+		<thingCategories>
+			<li>MinifiedDefences</li>
+		</thingCategories>
+	</ThingDef>
+
+
+	<ThingDef ParentName="Item">
+		<defName>UnfinishedThing</defName>
+		<label>unfinished thing</label>
+		<thingClass>UnfinishedThing</thingClass>
 		<menuHidden>true</menuHidden>
 		<destroyOnDrop>true</destroyOnDrop>
 	</ThingDef>

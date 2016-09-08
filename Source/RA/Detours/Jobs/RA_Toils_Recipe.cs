@@ -257,17 +257,18 @@ namespace RA
             // checks if there are any stuff ingredients used which are not forbidden in defaultIngredientFilter
             if (!recipe.products.NullOrEmpty())
             {
-                var firstProductDef = recipe.products.First().thingDef;
-                if (recipe.products.First().thingDef.MadeFromStuff)
+                var stuffBasedProduct =
+                    recipe.products.FirstOrDefault(product => product.thingDef.MadeFromStuff).thingDef;
+                if (stuffBasedProduct != null)
                 {
                     return ingredients.Find(
                         ingredient =>
                             ingredient.def.IsStuff
-                            && ingredient.def.stuffProps.CanMake(firstProductDef)
+                            && ingredient.def.stuffProps.CanMake(stuffBasedProduct)
                             && (!recipe.defaultIngredientFilter?.Allows(ingredient.def) ?? true));
                 }
             }
-            return null;
+            return ingredients.MaxBy(product => product.stackCount);
         }
 
         // hidden in vanilla
