@@ -41,6 +41,194 @@
 		</building>
 	</ThingDef>
 
+	<ThingDef ParentName="NaturalWall">
+		<defName>MineableSilver</defName>
+		<label>Silver ore deposite</label>
+		<graphicData>
+			<texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<color>(89,83,68)</color>
+			<colorTwo>(147,144,134)</colorTwo>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>1500</MaxHitPoints>
+		</statBases>
+		<description>Rock containing silver ore.</description>
+		<building>
+			<isResourceRock>true</isResourceRock>
+			<mineableThing>OreSilver</mineableThing>
+			<mineableYield>800</mineableYield>
+			<mineableScatterCommonality>0.2</mineableScatterCommonality>
+			<mineableScatterLumpSizeRange>
+				<min>1</min>
+				<max>3</max>
+			</mineableScatterLumpSizeRange>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="NaturalWall">
+		<defName>MineableSteel</defName>
+		<label>Iron ore deposite</label>
+		<graphicData>
+			<texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<color>(114,92,83)</color>
+			<colorTwo>(155,133,107)</colorTwo>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>800</MaxHitPoints>
+		</statBases>
+		<description>Rock containing iron ore.</description>
+		<building>
+			<isResourceRock>true</isResourceRock>
+			<mineableThing>OreIron</mineableThing>
+			<mineableYield>800</mineableYield>
+			<mineableScatterCommonality>0.6</mineableScatterCommonality>
+			<mineableScatterLumpSizeRange>
+				<min>2</min>
+				<max>4</max>
+			</mineableScatterLumpSizeRange>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="NaturalWall">
+		<defName>MineableCopper</defName>
+		<label>Copper ore deposite</label>
+		<graphicData>
+			<texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<color>(114,92,83)</color>
+			<colorTwo>(180, 99, 0)</colorTwo>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>1500</MaxHitPoints>
+		</statBases>
+		<description>Rock containing copper ore.</description>
+		<building>
+			<isResourceRock>true</isResourceRock>
+			<mineableThing>OreCopper</mineableThing>
+			<mineableYield>800</mineableYield>
+			<mineableScatterCommonality>0.6</mineableScatterCommonality>
+			<mineableScatterLumpSizeRange>
+				<min>2</min>
+				<max>4</max>
+			</mineableScatterLumpSizeRange>
+		</building>
+	</ThingDef>
+
+	<ThingDef ParentName="RockBase">
+		<defName>MineableGold</defName>
+		<label>Gold ore deposite</label>
+		<graphicData>
+			<texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<color>(89,83,68)</color>
+			<colorTwo>(187,173,25)</colorTwo>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>1500</MaxHitPoints>
+		</statBases>
+		<description>Rock containing bits of gold.</description>
+		<building>
+			<isResourceRock>true</isResourceRock>
+			<mineableThing>Gold</mineableThing>
+			<mineableYield>800</mineableYield>
+			<mineableScatterCommonality>0.15</mineableScatterCommonality>
+			<mineableScatterLumpSizeRange>
+				<min>1</min>
+				<max>2</max>
+			</mineableScatterLumpSizeRange>
+		</building>
+	</ThingDef>
+
+	<!-- =================Unused======================= -->
+
+	<ThingDef ParentName="RockBase">
+    <defName>MineableUranium</defName>
+    <label>uranium ore</label>
+    <graphicData>
+      <texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(114,114,114)</color>
+      <colorTwo>(70,70,70)</colorTwo>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>4000</MaxHitPoints>
+    </statBases>
+    <description>Rock containing bits of uranium.</description>
+    <building>
+      <isResourceRock>true</isResourceRock>
+      <mineableThing>Uranium</mineableThing>
+      <mineableYield>35</mineableYield>
+      <mineableScatterCommonality>0</mineableScatterCommonality>
+      <mineableScatterLumpSizeRange>
+        <min>1</min>
+        <max>6</max>
+      </mineableScatterLumpSizeRange>
+    </building>
+  </ThingDef>
+
+
+
+  <ThingDef ParentName="RockBase">
+    <defName>MineablePlasteel</defName>
+    <label>compacted plasteel</label>
+    <graphicData>
+      <texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <color>(110,118,118)</color>
+      <colorTwo>(134,166,166)</colorTwo>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>10000</MaxHitPoints>
+    </statBases>
+    <description>Ancient compacted rubble rich in plasteel.</description>
+    <building>
+      <isResourceRock>true</isResourceRock>
+      <mineableThing>Plasteel</mineableThing>
+      <mineableYield>35</mineableYield>
+      <mineableScatterCommonality>0</mineableScatterCommonality>
+      <mineableScatterLumpSizeRange>
+        <min>10</min>
+        <max>50</max>
+      </mineableScatterLumpSizeRange>
+    </building>
+  </ThingDef>
+
+    <ThingDef ParentName="RockBase">
+    <defName>MineableComponents</defName>
+    <label>compacted machinery</label>
+    <graphicData>
+      <texPath>Things/Building/Linked/CompactedMachinery_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>2000</MaxHitPoints>
+    </statBases>
+    <description>Ancient machinery, compacted over time. Can be mined for useful components.</description>
+    <building>
+      <isResourceRock>true</isResourceRock>
+      <mineableThing>Component</mineableThing>
+      <mineableYield>2</mineableYield>
+      <mineableScatterCommonality>0</mineableScatterCommonality> <!-- as often as steel, with smaller blotches -->
+      <mineableScatterLumpSizeRange>
+        <min>3</min>
+        <max>6</max>
+      </mineableScatterLumpSizeRange>
+    </building>
+  </ThingDef>
+
+
+
+<!-- =======================Rock walls============================= -->
+	
 
 	<ThingDef ParentName="NaturalWall">
 		<defName>Sandstone</defName>

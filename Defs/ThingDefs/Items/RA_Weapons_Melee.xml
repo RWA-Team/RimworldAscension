@@ -3,8 +3,41 @@
 
 
 <!-- 	- stuffCategories - specifies that weapon is made from stuff (stuff modifiers apply) and what stuff types should be used
-	- onGroundRandomRotateAngle - breaks drawSize parameter -->
-	
+- onGroundRandomRotateAngle - breaks drawSize parameter -->
+
+<ThingDef Name="Weapon" ParentName="Item" Abstract="True">
+	<equipmentType>Primary</equipmentType>
+	<graphicData>
+		<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>CutoutComplex</shaderType>
+	</graphicData>
+	<statBases>
+		<MaxHitPoints>100</MaxHitPoints>
+		<DeteriorationRate>0.5</DeteriorationRate>
+		<SellPriceFactor>0.1</SellPriceFactor>
+		<ArmorPenetration>0</ArmorPenetration>
+		<MeleeWeapon_DamageAmount>1</MeleeWeapon_DamageAmount>
+		<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
+	</statBases>
+	<soundInteract>InteractPistol</soundInteract>
+	<comps>
+		<li>
+			<compClass>CompEquippable</compClass>
+		</li>
+		<li>
+			<compClass>CompQuality</compClass>
+		</li>
+		<li Class="CompProperties_Art">
+			<nameMaker>ArtName_WeaponMelee</nameMaker>
+			<descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+			<minQualityForArtistic>Excellent</minQualityForArtistic>
+		</li>
+	</comps>
+	<inspectorTabs>
+		<li>ITab_Art</li>
+	</inspectorTabs>
+</ThingDef>
 
 <ThingDef Name="WeaponMelee" ParentName="Weapon" Abstract="True">
 	<thingCategories>
@@ -399,103 +432,103 @@
 	</thingCategories>
 </ThingDef>
 
-	<ThingDef ParentName="WeaponMeleeMedieval">
-		<defName>Pike</defName>
-		<label>pike</label>
-		<description>Pike.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Medieval/Pike/Pike</texPath>
-			<drawSize>(1.8,1.8)</drawSize>
-		</graphicData>
-		<stackLimit>1</stackLimit>
-		<equippedAngleOffset>-25</equippedAngleOffset>
-		<statBases>
-			<MeleeWeapon_DamageAmount>12</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
-			<ArmorPenetration>9</ArmorPenetration>
-			<MaxHitPoints>80</MaxHitPoints>
-		</statBases>
-		<comps>
-			<li Class="RA.CompTool_Properties"/>
-			<li Class="RA.CompCraftedValue_Properties">
-				<valuePerWorkFactor>0.0113</valuePerWorkFactor>
-				<profitFactor>0.96</profitFactor>
-			</li>
-			<li Class="RA.CompWeaponExtensions_Properties">
-				<firstHandPosition>(0.1, 0.001, 0.05)</firstHandPosition>
-				<secondHandPosition>(-0.3, -0.001, 0.05)</secondHandPosition>
-				<weaponPositionOffset>(0.1, 0, -0.15)</weaponPositionOffset>
-				<attackAngleOffset>-25</attackAngleOffset>
-			</li>
-		</comps>
-		<verbs>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
-				<meleeDamageDef>Stab</meleeDamageDef>
-			</li>
-		</verbs>
-		<weaponTags>
-			<li>MedievalMelee</li>
-		</weaponTags>
-		<stuffCategories>
-			<li>Metal</li>
-		</stuffCategories>
-		<thingCategories>
-			<li>WeaponsMeleeMedieval</li>
-		</thingCategories>
-	</ThingDef>
+<ThingDef ParentName="WeaponMeleeMedieval">
+	<defName>Pike</defName>
+	<label>pike</label>
+	<description>Pike.</description>
+	<graphicData>
+		<texPath>Things/Items/Weapons/Medieval/Pike/Pike</texPath>
+		<drawSize>(1.8,1.8)</drawSize>
+	</graphicData>
+	<stackLimit>1</stackLimit>
+	<equippedAngleOffset>-25</equippedAngleOffset>
+	<statBases>
+		<MeleeWeapon_DamageAmount>12</MeleeWeapon_DamageAmount>
+		<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
+		<ArmorPenetration>9</ArmorPenetration>
+		<MaxHitPoints>80</MaxHitPoints>
+	</statBases>
+	<comps>
+		<li Class="RA.CompTool_Properties"/>
+		<li Class="RA.CompCraftedValue_Properties">
+			<valuePerWorkFactor>0.0113</valuePerWorkFactor>
+			<profitFactor>0.96</profitFactor>
+		</li>
+		<li Class="RA.CompWeaponExtensions_Properties">
+			<firstHandPosition>(0.1, 0.001, 0.05)</firstHandPosition>
+			<secondHandPosition>(-0.3, -0.001, 0.05)</secondHandPosition>
+			<weaponPositionOffset>(0.1, 0, -0.15)</weaponPositionOffset>
+			<attackAngleOffset>-25</attackAngleOffset>
+		</li>
+	</comps>
+	<verbs>
+		<li>
+			<verbClass>Verb_MeleeAttack</verbClass>
+			<hasStandardCommand>true</hasStandardCommand>
+			<meleeDamageDef>Stab</meleeDamageDef>
+		</li>
+	</verbs>
+	<weaponTags>
+		<li>MedievalMelee</li>
+	</weaponTags>
+	<stuffCategories>
+		<li>Metal</li>
+	</stuffCategories>
+	<thingCategories>
+		<li>WeaponsMeleeMedieval</li>
+	</thingCategories>
+</ThingDef>
 
-	<ThingDef ParentName="WeaponMeleeMedieval">
-		<defName>Axe</defName>
-		<label>axe</label>
-		<description>Axe.</description>
-		<graphicData>
-			<texPath>Things/Items/Weapons/Medieval/Axe/Axe</texPath>
-		</graphicData>
-		<equippedAngleOffset>-25</equippedAngleOffset>
-		<statBases>
-			<MaxHitPoints>130</MaxHitPoints>
-			<ArmorPenetration>4</ArmorPenetration>
-			<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
-			<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
-		</statBases>
-		<comps>
-			<li Class="RA.CompCraftedValue_Properties">
-				<valuePerWorkFactor>0.0082</valuePerWorkFactor>
-				<profitFactor>0.96</profitFactor>
-			</li>
-			<li Class="RA.CompWeaponExtensions_Properties">
-				<firstHandPosition>(0.1, -0.001, 0.05)</firstHandPosition>
-				<secondHandPosition>(-0.3, 0.001, 0.05)</secondHandPosition>
-				<weaponPositionOffset>(0.2, 0, -0.1)</weaponPositionOffset>
-				<attackAngleOffset>-135</attackAngleOffset>
-			</li>
-			<li Class="RA.CompTool_Properties">
-				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
-				<workTypes>
-					<li>PlantCutting</li>
-				</workTypes>
-			</li>
-		</comps>
-		<verbs>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
-				<meleeDamageDef>Cut</meleeDamageDef>
-			</li>
-		</verbs>
-		<weaponTags>
-			<li>MedievalMelee</li>
-		</weaponTags>
-		<stuffCategories>
-			<li>Metal</li>
-		</stuffCategories>
-		<thingCategories>
-			<li>WeaponsMeleeMedieval</li>
-			<li>ToolsMedieval</li>
-		</thingCategories>
-	</ThingDef>
+<ThingDef ParentName="WeaponMeleeMedieval">
+	<defName>Axe</defName>
+	<label>axe</label>
+	<description>Axe.</description>
+	<graphicData>
+		<texPath>Things/Items/Weapons/Medieval/Axe/Axe</texPath>
+	</graphicData>
+	<equippedAngleOffset>-25</equippedAngleOffset>
+	<statBases>
+		<MaxHitPoints>130</MaxHitPoints>
+		<ArmorPenetration>4</ArmorPenetration>
+		<MeleeWeapon_DamageAmount>5</MeleeWeapon_DamageAmount>
+		<MeleeWeapon_Cooldown>1.66</MeleeWeapon_Cooldown>
+	</statBases>
+	<comps>
+		<li Class="RA.CompCraftedValue_Properties">
+			<valuePerWorkFactor>0.0082</valuePerWorkFactor>
+			<profitFactor>0.96</profitFactor>
+		</li>
+		<li Class="RA.CompWeaponExtensions_Properties">
+			<firstHandPosition>(0.1, -0.001, 0.05)</firstHandPosition>
+			<secondHandPosition>(-0.3, 0.001, 0.05)</secondHandPosition>
+			<weaponPositionOffset>(0.2, 0, -0.1)</weaponPositionOffset>
+			<attackAngleOffset>-135</attackAngleOffset>
+		</li>
+		<li Class="RA.CompTool_Properties">
+			<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
+			<workTypes>
+				<li>PlantCutting</li>
+			</workTypes>
+		</li>
+	</comps>
+	<verbs>
+		<li>
+			<verbClass>Verb_MeleeAttack</verbClass>
+			<hasStandardCommand>true</hasStandardCommand>
+			<meleeDamageDef>Cut</meleeDamageDef>
+		</li>
+	</verbs>
+	<weaponTags>
+		<li>MedievalMelee</li>
+	</weaponTags>
+	<stuffCategories>
+		<li>Metal</li>
+	</stuffCategories>
+	<thingCategories>
+		<li>WeaponsMeleeMedieval</li>
+		<li>ToolsMedieval</li>
+	</thingCategories>
+</ThingDef>
 
 <ThingDef ParentName="WeaponMeleeMedieval">
 	<defName>HammerBattle</defName>

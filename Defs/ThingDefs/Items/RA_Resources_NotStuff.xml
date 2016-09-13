@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
 	<!-- 
@@ -119,268 +119,341 @@
 		<tradeability>Never</tradeability>
 	</ThingDef>
 
-	<!--========================= Sand =========================-->
-
-	<ThingDef Name="Sand" ParentName="Resource" Abstract="True">
-		<statBases>
-			<Flammability>0</Flammability>
-		</statBases>
+	<ThingDef ParentName="Resource">
+		<defName>IronSpongey</defName>
+		<label>Spongey iron</label>
+		<description>Pile of porous iron used as main component for steel production</description>
+		<graphicData>
+			<texPath>Things/Items/Resources/StoneCobble</texPath>
+			<color>(169,169,169)</color>
+			<drawSize>0.8</drawSize>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
 		<thingCategories>
-			<li>Sand</li>
-		</thingCategories>
-		<graphicData>
-			<texPath>Things/Items/Resources/Sand/Sand</texPath>
-			<shaderType>CutoutComplex</shaderType>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-	</ThingDef>
-	
-
-	<ThingDef ParentName="Sand">
-		<defName>SandYellow</defName>
-		<label>sand yellow</label>
-		<description>A bag of yellow sand.</description>
-		<graphicData>
-			<color>(184,184,26)</color>
-		</graphicData>
-		<tradeability>Never</tradeability>
-		<statBases>
-			<MarketValue>0.23</MarketValue>
-		</statBases>
-	</ThingDef>
-
-	<ThingDef ParentName="Sand">
-		<defName>SandWhite</defName>
-		<label>white sand</label>
-		<description>A bag of white sand.</description>
-		<graphicData>
-			<color>(220,220,220)</color>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.5</MarketValue>
-		</statBases>
-	</ThingDef>
-	
-	<!--========================= Raw Cloth =========================-->
-	
-	<ThingDef Name="ClothRaw" ParentName="Resource" Abstract="true">
-		<graphicData>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<thingCategories>
-			<li>ClothRaw</li>
-		</thingCategories>
-	</ThingDef>
-
-	<ThingDef ParentName="ClothRaw">
-		<defName>Linen</defName>
-		<label>linen</label>
-		<description>Raw linen.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/Linen</texPath>
-		</graphicData>
-		<statBases>
-			<MarketValue>0.9</MarketValue>
-		</statBases>
-	</ThingDef>
-
-	<ThingDef ParentName="ClothRaw">
-		<defName>Cotton</defName>
-		<label>cotton</label>
-		<description>Raw cotton.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/Cotton</texPath>
-		</graphicData>
-		<statBases>
-			<MarketValue>1.05</MarketValue>
-		</statBases>
-	</ThingDef>
-
-	<ThingDef ParentName="ClothRaw">
-		<defName>WoolMuffalo</defName>
-		<label>Muffalo wool RA</label>
-		<description>Wool which Muffalo will miss in cold Rimworld winters.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/WoolRaw/WoolRaw</texPath>
-			<color>(141,158,186)</color>
-			<drawSize>0.9</drawSize>
-			<shaderType>CutoutComplex</shaderType>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.5</MarketValue>
-		</statBases>
-		<butcherProducts>
-			<ClothWoolMuffalo>20</ClothWoolMuffalo>
-		</butcherProducts>
-	</ThingDef>
-
-	<ThingDef ParentName="ClothRaw">
-		<defName>Camelhair</defName>
-		<label>Camelhair RA</label>
-		<description>Camelhair, it was too hot anyway</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/WoolRaw/WoolRaw</texPath>
-			<color>(157,123,90)</color>
-			<drawSize>0.9</drawSize>
-			<shaderType>CutoutComplex</shaderType>
-		</graphicData>
-		<statBases>
-			<MarketValue>2.5</MarketValue>
-		</statBases>
-		<butcherProducts>
-			<ClothWoolCamel>20</ClothWoolCamel>
-		</butcherProducts>
-	</ThingDef>
-
-	<ThingDef ParentName="ClothRaw">
-		<defName>WoolMegatherium</defName>
-		<label>Megatherium wool RA</label>
-		<description>Megatherium wool......stinky</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/WoolRaw/WoolRaw</texPath>
-			<color>(183, 163, 152)</color>
-			<drawSize>0.9</drawSize>
-			<shaderType>CutoutComplex</shaderType>
-		</graphicData>
-		<statBases>
-			<MarketValue>4</MarketValue>
-		</statBases>
-		<butcherProducts>
-			<ClothWoolMegatherium>20</ClothWoolMegatherium>
-		</butcherProducts>
-	</ThingDef>
-
-	<!-- =============================Fuel============================================= -->
-
-	<ThingDef Name="Fuel" ParentName="Resource" Abstract="True">
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceOrganic">
-		<defName>Coal</defName>
-		<label>coal</label>
-		<description>Black,dirty,hard to get. Still you can do steel without it.</description>
-		<graphicData>
-			<shaderType>Cutout</shaderType>
-			<texPath>Things/Items/Resources/Coal</texPath>
-		</graphicData>
-		<statBases>
-			<MaxBurningTempCelsius>800</MaxBurningTempCelsius>
-			<BurnDurationHours>4</BurnDurationHours>
-			<MarketValue>1.40</MarketValue>
-		</statBases>
-		<soundInteract>Grain_Drop</soundInteract>
-		<soundDrop>Grain_Drop</soundDrop>
-		<thingCategories>
-			<li>Fuel</li>
-		</thingCategories>
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceOrganic">
-		<defName>Tallow</defName>
-		<label>tallow</label>
-		<description>Tallow.</description>
-		<graphicData>
-			<shaderType>Cutout</shaderType>
-			<texPath>Things/Items/Resources/Tallow</texPath>
-		</graphicData>
-		<statBases>
-			<MaxBurningTempCelsius>200</MaxBurningTempCelsius>
-			<BurnDurationHours>1</BurnDurationHours>
-		</statBases>
-		<soundInteract>Grain_Drop</soundInteract>
-		<soundDrop>Grain_Drop</soundDrop>
-		<thingCategories>
-			<li>Fuel</li>
-		</thingCategories>
-	</ThingDef>
-
-	<ThingDef ParentName="ResourceOrganic">
-		<defName>Charcoal</defName>
-		<label>charcoal</label>
-		<description>Charcoal.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/Charcoal</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-			<shaderType>Cutout</shaderType>
-		</graphicData>
-		<statBases>
-			<MaxBurningTempCelsius>800</MaxBurningTempCelsius>
-			<BurnDurationHours>8</BurnDurationHours>
-		</statBases>
-		<soundInteract>Grain_Drop</soundInteract>
-		<soundDrop>Grain_Drop</soundDrop>
-		<thingCategories>
-			<li>Fuel</li>
+			<li>ResourcesProcessed</li>
 		</thingCategories>
 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
-				<valuePerWorkFactor>0.0017</valuePerWorkFactor>
+				<valuePerWorkFactor>0.0038</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
 		</comps>
-	</ThingDef>
+		</ThingDef>
 
-	<!--=============================Ferilizers=======================================-->
 
-	<ThingDef ParentName="ResourceOrganic">
-		<defName>Ash</defName>
-		<label>ash</label>
-		<description>Byproduct of metal and ceramic manufacture.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/Ash</texPath>
-			<color>(200,200,200)</color>
-			<shaderType>Cutout</shaderType>
-		</graphicData>
-		<soundInteract>Grain_Drop</soundInteract>
-		<soundDrop>Grain_Drop</soundDrop>
-		<statBases>
-			<MarketValue>0.8</MarketValue>
-		</statBases>
-		<thingCategories>
-			<li>Fertilizers</li>
-		</thingCategories>
-	</ThingDef>
+		<!--========================= Sand =========================-->
 
-	<ThingDef ParentName="ResourceOrganic">
-		<defName>Mulch</defName>
-		<label>mulch</label>
-		<description>Decaying leaves, bark, compost, your plants favorite food.</description>
-		<graphicData>
-			<texPath>Things/Items/Resources/Mulch</texPath>
-			<shaderType>Cutout</shaderType>
-		</graphicData>
-		<soundInteract>Grain_Drop</soundInteract>
-		<soundDrop>Grain_Drop</soundDrop>
-		<statBases>
-			<MarketValue>1.3</MarketValue>
-		</statBases>
-		<thingCategories>
-			<li>Fertilizers</li>
-		</thingCategories>
-	</ThingDef>
-
-	<!-- =====================Ores===================================== -->
-
-	<ThingDef Name="Ores" ParentName="Resource" Abstract="True">
-		<graphicData>
-			<texPath>Things/Items/Resources/Ores/OreMetal</texPath>
-			<shaderType>CutoutComplex</shaderType>
-		</graphicData>
+		<ThingDef Name="Sand" ParentName="Resource" Abstract="True">
+			<statBases>
+				<Flammability>0</Flammability>
+			</statBases>
 			<thingCategories>
-				<li>Ores</li>
+				<li>Sand</li>
+			</thingCategories>
+			<graphicData>
+				<texPath>Things/Items/Resources/Sand/Sand</texPath>
+				<shaderType>CutoutComplex</shaderType>
+				<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+		</ThingDef>
+
+
+		<ThingDef ParentName="Sand">
+			<defName>SandYellow</defName>
+			<label>sand yellow</label>
+			<description>A bag of yellow sand.</description>
+			<graphicData>
+				<color>(184,184,26)</color>
+			</graphicData>
+			<tradeability>Never</tradeability>
+			<statBases>
+				<MarketValue>0.23</MarketValue>
+			</statBases>
+		</ThingDef>
+
+		<ThingDef ParentName="Sand">
+			<defName>SandWhite</defName>
+			<label>white sand</label>
+			<description>A bag of white sand.</description>
+			<graphicData>
+				<color>(220,220,220)</color>
+			</graphicData>
+			<statBases>
+				<MarketValue>2.5</MarketValue>
+			</statBases>
+		</ThingDef>
+
+		<!--========================= Raw Cloth =========================-->
+
+		<ThingDef Name="ClothRaw" ParentName="Resource" Abstract="true">
+			<graphicData>
+				<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<thingCategories>
+				<li>ClothRaw</li>
+			</thingCategories>
+		</ThingDef>
+
+		<ThingDef ParentName="ClothRaw">
+			<defName>Linen</defName>
+			<label>linen</label>
+			<description>Raw linen.</description>
+			<graphicData>
+				<texPath>Things/Items/Resources/Linen</texPath>
+			</graphicData>
+			<statBases>
+				<MarketValue>0.9</MarketValue>
+			</statBases>
+		</ThingDef>
+
+		<ThingDef ParentName="ClothRaw">
+			<defName>Cotton</defName>
+			<label>cotton</label>
+			<description>Raw cotton.</description>
+			<graphicData>
+				<texPath>Things/Items/Resources/Cotton</texPath>
+			</graphicData>
+			<statBases>
+				<MarketValue>1.05</MarketValue>
+			</statBases>
+		</ThingDef>
+
+		<ThingDef ParentName="ClothRaw">
+			<defName>WoolMuffalo</defName>
+			<label>Muffalo wool RA</label>
+			<description>Wool which Muffalo will miss in cold Rimworld winters.</description>
+			<graphicData>
+				<texPath>Things/Items/Resources/WoolRaw/WoolRaw</texPath>
+				<color>(141,158,186)</color>
+				<drawSize>0.9</drawSize>
+				<shaderType>CutoutComplex</shaderType>
+			</graphicData>
+			<statBases>
+				<MarketValue>2.5</MarketValue>
+			</statBases>
+			<butcherProducts>
+				<ClothWoolMuffalo>20</ClothWoolMuffalo>
+			</butcherProducts>
+		</ThingDef>
+
+		<ThingDef ParentName="ClothRaw">
+			<defName>Camelhair</defName>
+			<label>Camelhair RA</label>
+			<description>Camelhair, it was too hot anyway</description>
+			<graphicData>
+				<texPath>Things/Items/Resources/WoolRaw/WoolRaw</texPath>
+				<color>(157,123,90)</color>
+				<drawSize>0.9</drawSize>
+				<shaderType>CutoutComplex</shaderType>
+			</graphicData>
+			<statBases>
+				<MarketValue>2.5</MarketValue>
+			</statBases>
+			<butcherProducts>
+				<ClothWoolCamel>20</ClothWoolCamel>
+			</butcherProducts>
+		</ThingDef>
+
+		<ThingDef ParentName="ClothRaw">
+			<defName>WoolMegatherium</defName>
+			<label>Megatherium wool RA</label>
+			<description>Megatherium wool......stinky</description>
+			<graphicData>
+				<texPath>Things/Items/Resources/WoolRaw/WoolRaw</texPath>
+				<color>(183, 163, 152)</color>
+				<drawSize>0.9</drawSize>
+				<shaderType>CutoutComplex</shaderType>
+			</graphicData>
+			<statBases>
+				<MarketValue>4</MarketValue>
+			</statBases>
+			<butcherProducts>
+				<ClothWoolMegatherium>20</ClothWoolMegatherium>
+			</butcherProducts>
+		</ThingDef>
+
+		<!-- =============================Fuel============================================= -->
+
+		<ThingDef Name="Fuel" ParentName="Resource" Abstract="True">
+		</ThingDef>
+
+		<ThingDef ParentName="ResourceOrganic">
+			<defName>Coal</defName>
+			<label>coal</label>
+			<description>Black,dirty,hard to get. Still you can do steel without it.</description>
+			<graphicData>
+				<shaderType>Cutout</shaderType>
+				<texPath>Things/Items/Resources/Coal</texPath>
+			</graphicData>
+			<statBases>
+				<MaxBurningTempCelsius>800</MaxBurningTempCelsius>
+				<BurnDurationHours>4</BurnDurationHours>
+				<MarketValue>1.40</MarketValue>
+			</statBases>
+			<soundInteract>Grain_Drop</soundInteract>
+			<soundDrop>Grain_Drop</soundDrop>
+			<thingCategories>
+				<li>Fuel</li>
+			</thingCategories>
+		</ThingDef>
+
+		<ThingDef ParentName="ResourceOrganic">
+			<defName>Tallow</defName>
+			<label>tallow</label>
+			<description>Tallow.</description>
+			<graphicData>
+				<shaderType>Cutout</shaderType>
+				<texPath>Things/Items/Resources/Tallow</texPath>
+			</graphicData>
+			<statBases>
+				<MaxBurningTempCelsius>200</MaxBurningTempCelsius>
+				<BurnDurationHours>1</BurnDurationHours>
+			</statBases>
+			<soundInteract>Grain_Drop</soundInteract>
+			<soundDrop>Grain_Drop</soundDrop>
+			<thingCategories>
+				<li>Fuel</li>
+			</thingCategories>
+		</ThingDef>
+
+		<ThingDef ParentName="ResourceOrganic">
+			<defName>Charcoal</defName>
+			<label>charcoal</label>
+			<description>Charcoal.</description>
+			<graphicData>
+				<texPath>Things/Items/Resources/Charcoal</texPath>
+				<graphicClass>Graphic_StackCount</graphicClass>
+				<shaderType>Cutout</shaderType>
+			</graphicData>
+			<statBases>
+				<MaxBurningTempCelsius>800</MaxBurningTempCelsius>
+				<BurnDurationHours>8</BurnDurationHours>
+			</statBases>
+			<soundInteract>Grain_Drop</soundInteract>
+			<soundDrop>Grain_Drop</soundDrop>
+			<thingCategories>
+				<li>Fuel</li>
+			</thingCategories>
+			<comps>
+				<li Class="RA.CompCraftedValue_Properties">
+					<valuePerWorkFactor>0.0017</valuePerWorkFactor>
+					<profitFactor>0.96</profitFactor>
+				</li>
+			</comps>
+		</ThingDef>
+
+		<!--=============================Ferilizers=======================================-->
+
+		<ThingDef ParentName="ResourceOrganic">
+			<defName>Ash</defName>
+			<label>ash</label>
+			<description>Byproduct of metal and ceramic manufacture.</description>
+			<graphicData>
+				<texPath>Things/Items/Resources/Ash</texPath>
+				<color>(200,200,200)</color>
+				<shaderType>Cutout</shaderType>
+			</graphicData>
+			<soundInteract>Grain_Drop</soundInteract>
+			<soundDrop>Grain_Drop</soundDrop>
+			<statBases>
+				<MarketValue>0.8</MarketValue>
+			</statBases>
+			<thingCategories>
+				<li>Fertilizers</li>
+			</thingCategories>
+		</ThingDef>
+
+		<ThingDef ParentName="ResourceOrganic">
+			<defName>Mulch</defName>
+			<label>mulch</label>
+			<description>Decaying leaves, bark, compost, your plants favorite food.</description>
+			<graphicData>
+				<texPath>Things/Items/Resources/Mulch</texPath>
+				<shaderType>Cutout</shaderType>
+			</graphicData>
+			<soundInteract>Grain_Drop</soundInteract>
+			<soundDrop>Grain_Drop</soundDrop>
+			<statBases>
+				<MarketValue>1.3</MarketValue>
+			</statBases>
+			<thingCategories>
+				<li>Fertilizers</li>
+			</thingCategories>
+		</ThingDef>
+
+		<!-- =====================Ores===================================== -->
+
+		<ThingDef Name="Ores" ParentName="Resource" Abstract="True">
+			<graphicData>
+				<texPath>Things/Items/Resources/Ores/OreMetal</texPath>
+				<shaderType>CutoutComplex</shaderType>
+				<drawSize>0.9</drawSize>
+			</graphicData>
+			<soundDrop>ChunkRock_Drop</soundDrop>
+			<thingCategories>
+				<li>OreMetal</li>
 			</thingCategories>
 		</ThingDef>
 
 		<ThingDef ParentName="Ores">
 			<defName>OreCopper</defName>
 			<label>Ore Copper</label>
-			<description>Chunk of copper ore.</description>
+			<description>A chunk of copper ore can be smelted for copper bars in furnance.</description>
 			<graphicData>
-				<drawSize>0.85</drawSize>
+				<color>(238, 99, 0)</color>
 			</graphicData>
 			<statBases>
 				<MarketValue>0.8</MarketValue>
 			</statBases>
+			<butcherProducts>
+				<MetalBarCopper>8</MetalBarCopper>
+			</butcherProducts>
+		</ThingDef>
+
+		<ThingDef ParentName="Ores">
+			<defName>OreIron</defName>
+			<label>Ore iron</label>
+			<description>A chunk of iron ore can be smelted for iron bars or spongey iron in the furnace.</description>
+			<graphicData>
+				<color>(117,54,52)</color>
+			</graphicData>
+			<statBases>
+				<MarketValue>0.9</MarketValue>
+			</statBases>
+			<smeltProducts>
+				<MetalBarIron>8</MetalBarIron>
+				<IronSpongey>2</IronSpongey>
+			</smeltProducts>
+		</ThingDef>
+
+		<ThingDef ParentName="Ores">
+			<defName>OreGold</defName>
+			<label>Ore gold</label>
+			<description>A chunk of gold ore can be smelted for gold bars in furnace.</description>
+			<graphicData>
+				<color>(255,215,0)</color>
+			</graphicData>
+			<statBases>
+				<MarketValue>8</MarketValue>
+			</statBases>
+			<smeltProducts>
+				<MetalBarGold>8</MetalBarGold>
+			</smeltProducts>
+		</ThingDef>
+
+		<ThingDef ParentName="Ores">
+			<defName>OreSilver</defName>
+			<label>Ore silver</label>
+			<description>A chunk of silver ore can be smelted for silver bars in furnace.</description>
+			<graphicData>
+				<color>(192,192,192)</color>
+			</graphicData>
+			<statBases>
+				<MarketValue>5</MarketValue>
+			</statBases>
+			<smeltProducts>
+				<MetalBarSilver>8</MetalBarSilver>
+			</smeltProducts>
 		</ThingDef>
 
 	</Defs>
