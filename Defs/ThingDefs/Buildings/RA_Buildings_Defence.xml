@@ -44,7 +44,7 @@
 			<WorkToMake>3000</WorkToMake>
 			<Beauty>-4</Beauty>
 			<TrapMeleeDamage>50</TrapMeleeDamage>
-			<TrapSpringChance>0.8</TrapSpringChance>
+			<TrapSpringChance>0.9</TrapSpringChance>
 		</statBases>
 		<drawerType>RealtimeOnly</drawerType>
 		<tickerType>Normal</tickerType>

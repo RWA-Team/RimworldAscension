@@ -561,24 +561,24 @@
 		<description>make metal bars</description>
 		<jobString>making metal bars.</jobString>
 		<workAmount>1600</workAmount>
-		<products>
-			<GlassPebble>5</GlassPebble>
-		</products>
 		<ingredients>
 			<li>
 				<filter>
-					<thingDefs>
-						<li>SandWhite</li>
-					</thingDefs>
+					<categories>
+						<li>OreMetal</li>
+					</categories>
 				</filter>
 				<count>25</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
-			<thingDefs>
-				<li>SandWhite</li>
-			</thingDefs>
+			<categories>
+				<li>OreMetal</li>
+			</categories>
 		</fixedIngredientFilter>
+		<specialProducts>
+			<li>Smelted</li>
+		</specialProducts>
 	</RecipeDef>
 
 </RecipeDefs>
