@@ -164,10 +164,10 @@
 		</verbs>
 		<comps>
 			<li Class="RA.CompTool_Properties"/>
-			<li Class="RA.CompCraftedValue_Properties">
+<!-- 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0036</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
-			</li>
+			</li> -->
 			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(0, -0,01, 0)</firstHandPosition>
 				<secondHandPosition>(-0.25,0,1,-0.29)</secondHandPosition>
@@ -389,7 +389,7 @@
 			<drawSize>(1.8,1.8)</drawSize>
 		</graphicData>
 		<stackLimit>1</stackLimit>
-		<equippedAngleOffset>-25</equippedAngleOffset>
+		<equippedAngleOffset>-45</equippedAngleOffset>
 		<statBases>
 			<MeleeWeapon_DamageAmount>12</MeleeWeapon_DamageAmount>
 			<MeleeWeapon_Cooldown>1</MeleeWeapon_Cooldown>
@@ -406,7 +406,6 @@
 				<firstHandPosition>(0.1, 0.001, 0.05)</firstHandPosition>
 				<secondHandPosition>(-0.3, -0.001, 0.05)</secondHandPosition>
 				<weaponPositionOffset>(0.1, 0, -0.15)</weaponPositionOffset>
-				<attackAngleOffset>-25</attackAngleOffset>
 			</li>
 		</comps>
 		<verbs>
@@ -447,10 +446,10 @@
 				<profitFactor>0.96</profitFactor>
 			</li>
 			<li Class="RA.CompWeaponExtensions_Properties">
-				<firstHandPosition>(0.1, -0.001, 0.05)</firstHandPosition>
-				<secondHandPosition>(-0.3, 0.001, 0.05)</secondHandPosition>
+				<firstHandPosition>(0.1, 0.001, 0.05)</firstHandPosition>
+				<secondHandPosition>(-0.3, -0.001, 0.05)</secondHandPosition>
 				<weaponPositionOffset>(0.2, 0, -0.1)</weaponPositionOffset>
-				<attackAngleOffset>-135</attackAngleOffset>
+				<attackAngleOffset>-120</attackAngleOffset>
 			</li>
 			<li Class="RA.CompTool_Properties">
 				<workTicksPerHealthPercent>100</workTicksPerHealthPercent>
@@ -494,10 +493,10 @@
 		</statBases>
 		<comps>
 			<li Class="RA.CompTool_Properties"/>
-			<li Class="RA.CompCraftedValue_Properties">
+<!-- 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0101</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
-			</li>
+			</li> -->
 			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(-0.1, 1, 0.05)</firstHandPosition>
 				<secondHandPosition>(0.2, 1, 0.05)</secondHandPosition>
@@ -625,10 +624,10 @@
 			<li Class="RA.CompWeaponExtensions_Properties">
 				<firstHandPosition>(0, 1, 0.02)</firstHandPosition>
 			</li>
-			<li Class="RA.CompCraftedValue_Properties">
+<!-- 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.002</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
-			</li>
+			</li> -->
 		</comps>
 		<equippedStatOffsets>
 			<ConstructionSpeed>0.1</ConstructionSpeed>

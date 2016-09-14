@@ -208,10 +208,8 @@
 			<li>MakePotPlantRaw</li>
 			<li>MakeCeramicsRaw</li>
 			<li>MakeBroom</li>
-			<li>MakeStoolNeolithicStone</li>
-			<li>MakeStoolNeolithicWood</li>
-			<li>MakeTableNeolithicStone</li>
 			<li>MakeTableNeolithicWood</li>
+			<li>MakeStoolNeolithicWood</li>
 		</recipes>
 		<researchPrerequisites>
 			<li>Survival</li>
@@ -259,32 +257,11 @@
 		</statBases>
 		<recipes>
 			<li>MakeStoneCobble</li>
+			<li>MakeStoolNeolithicStone</li>
+			<li>MakeTableNeolithicStone</li>
 		</recipes>
 		<researchPrerequisites>
 			<li>StoneCutting</li>
-		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="WorkTableNeolithic">
-		<DefName>TableFurnitureMakerNeolithic</DefName>
-		<label>furniture maker table</label>
-		<Description>A work table to make various primitive furniture types.</Description>
-		<graphicData>
-			<texPath>Missing</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
-		<statBases>
-			<Cleanliness>-5</Cleanliness>
-		</statBases>
-		<recipes>
-			<li>MakeStoolNeolithicStone</li>
-			<li>MakeStoolNeolithicWood</li>
-			<li>MakeTableNeolithicStone</li>
-			<li>MakeTableNeolithicWood</li>
-		</recipes>
-		<!-- allowed via research mods -->
-		<researchPrerequisites>
-			<li>Blocked</li>
 		</researchPrerequisites>
 	</ThingDef>
 
@@ -536,25 +513,6 @@
 	</ThingDef>
 
 	<ThingDef ParentName="WorkTable">
-		<DefName>TableWeaponRangedMedieval</DefName>
-		<label>marksman bench</label>
-		<Description>A bench for making mechanical shooting tools.</Description>
-		<graphicData>
-			<texPath>Missing</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(3.5,1.5)</drawSize>
-		</graphicData>
-		<recipes>
-			<li>MakeCrossbow</li>
-			<li>MakeCrossbowRepeating</li>
-			<li>MakeBalista</li>
-		</recipes>
-		<researchPrerequisites>
-			<li>Mechanics</li>
-		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="WorkTable">
 		<DefName>Loom</DefName>
 		<label>loom</label>
 		<Description>A place to weave raw resources into cloth.</Description>
@@ -573,13 +531,18 @@
 	</ThingDef>
 
 	<ThingDef ParentName="WorkTable">
-		<DefName>TableFurnitureMakerMedieval</DefName>
+		<DefName>TableCarpenter</DefName>
 		<label>carpenter table</label>
 		<Description>A place for carpenter to craft your furniture.</Description>
 		<graphicData>
-			<texPath>Missing</texPath>
+			<texPath>Things/Buildings/Production/TableCarpenter</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,1)</drawSize>
+			<shadowData>
+				<volume>(2.9, 0.5, 0.9)</volume>
+			</shadowData>
 		</graphicData>
+		<size>(3,1)</size>
 		<recipes>
 			<li>MakeStool</li>
 			<li>MakeTableShort</li>
@@ -588,6 +551,9 @@
 			<li>MakeBedDouble</li>
 			<li>MakeChest</li>
 			<li>MakeBarrel</li>
+			<li>MakeCrossbow</li>
+			<li>MakeCrossbowRepeating</li>
+			<li>MakeBalista</li>
 		</recipes>
 		<researchPrerequisites>
 			<li>Carpentry</li>

@@ -281,10 +281,10 @@
 			<stuffAdjective>sandstone</stuffAdjective>
 		</stuffProps>
 		<butcherProducts>
-			<BlockSandstone>20</BlockSandstone>  
+			<CobbleSandstone>20</CobbleSandstone>
 		</butcherProducts>
 		<smeltProducts>
-			<CobbleSandstone>20</CobbleSandstone>
+			<BlockSandstone>20</BlockSandstone>
 		</smeltProducts>
 	</ThingDef>
 
