@@ -23,8 +23,10 @@ namespace RA
             if (closestBurner != null)
             {
                 var availableFuel = from fuel in Find.ListerThings.ThingsInGroup(ThingRequestGroup.HaulableEver)
-                                                   where fuel.GetStatValue(StatDef.Named("BurnDurationHours")) > 0f && HaulAIUtility.PawnCanAutomaticallyHaul(pawn, fuel) && closestBurner.filterFuelCurrent.Allows(fuel)
-                                                   select fuel;
+                    where fuel.GetStatValue(StatDef.Named("BurnDurationHours")) > 0f
+                          && closestBurner.filterFuelCurrent.Allows(fuel)
+                          && HaulAIUtility.PawnCanAutomaticallyHaul(pawn, fuel)
+                    select fuel;
 
                 if (availableFuel.Any())
                 {
@@ -43,10 +45,13 @@ namespace RA
                         numToCarry = closestBurner.fuelContainer[0].def.stackLimit - closestBurner.fuelContainer[0].stackCount;
                     }
 
-                    return new Job(DefDatabase<JobDef>.GetNamed("RefuelBurner"), closestFuel, closestBurner.parent)
+                    if (closestFuel != null)
                     {
-                        maxNumToCarry = numToCarry
-                    };
+                        return new Job(DefDatabase<JobDef>.GetNamed("RefuelBurner"), closestFuel, closestBurner.parent)
+                        {
+                            maxNumToCarry = numToCarry
+                        };
+                    }
                 }
             }
             return null;

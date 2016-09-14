@@ -48,10 +48,10 @@
 				<firstHandPosition>(-0.1, 0, 0)</firstHandPosition>
 				<secondHandPosition>(0.15, 0, 0)</secondHandPosition>
 			</li>
-			<li Class="RA.CompCraftedValue_Properties">
+<!-- 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0041</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
-			</li>
+			</li> -->
 		</comps>
 		<verbs>
 			<li>

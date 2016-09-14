@@ -97,7 +97,7 @@ namespace RA
             var compWeaponExtensions = Pawn.equipment.Primary.TryGetComp<CompWeaponExtensions>();
 
             float weaponAngle;
-            var weaponPositionOffset = compWeaponExtensions?.WeaponPositionOffset ?? Vector3.zero;
+            var weaponPositionOffset = Vector3.zero;
 
             Mesh weaponMesh;
             bool flipped;
@@ -109,8 +109,12 @@ namespace RA
                 // flip weapon texture
                 weaponMesh = MeshPool.GridPlaneFlip(equipment.Graphic.drawSize);
 
-                // flip x position offset
-                weaponPositionOffset.x = -weaponPositionOffset.x;
+                if (!aiming && compWeaponExtensions != null)
+                {
+                    weaponPositionOffset += compWeaponExtensions.WeaponPositionOffset;
+                    // flip x position offset
+                    weaponPositionOffset.x = -weaponPositionOffset.x;
+                }
 
                 weaponAngle = aimAngle - 180f;
                 weaponAngle -= !aiming
@@ -122,8 +126,9 @@ namespace RA
                 flipped = false;
 
                 weaponMesh = MeshPool.GridPlane(equipment.Graphic.drawSize);
-
-                weaponPositionOffset = compWeaponExtensions?.WeaponPositionOffset ?? Vector3.zero;
+                
+                if (!aiming && compWeaponExtensions != null)
+                    weaponPositionOffset += compWeaponExtensions.WeaponPositionOffset;
 
                 weaponAngle = aimAngle;
                 weaponAngle += !aiming
@@ -167,8 +172,8 @@ namespace RA
                 var animationPhasePercent = Jitterer.CurrentJitterOffset.magnitude/Jitterer.JitterMax;
                 if (damageDef == DamageDefOf.Stab)
                 {
-                    totalSwingAngle = 25;
-                    weaponPosition += Jitterer.CurrentJitterOffset; // + new Vector3(0, 0, Mathf.Pow(Jitterer.CurrentJitterOffset.magnitude, 0.25f))/2;
+                    weaponPosition += Jitterer.CurrentJitterOffset;
+                        // + new Vector3(0, 0, Mathf.Pow(Jitterer.CurrentJitterOffset.magnitude, 0.25f))/2;
                 }
                 else if (damageDef == DamageDefOf.Blunt || damageDef == DamageDefOf.Cut)
                 {
@@ -179,8 +184,8 @@ namespace RA
                                           10);
                 }
                 weaponAngle += flipped
-                    ? -animationPhasePercent * totalSwingAngle
-                    : animationPhasePercent * totalSwingAngle;
+                    ? -animationPhasePercent*totalSwingAngle
+                    : animationPhasePercent*totalSwingAngle;
             }
         }
 
@@ -221,6 +226,14 @@ namespace RA
                     weaponPosition + handPosition.RotatedBy(weaponAngle),
                     Quaternion.AngleAxis(weaponAngle, Vector3.up), handMat, 0);
             }
+
+            //// for debug
+            //var centerMat =
+            //    GraphicDatabase.Get<Graphic_Single>("Overlays/Hand", ShaderDatabase.CutoutSkin, Vector2.one,
+            //        Color.red).MatSingle;
+
+            //Graphics.DrawMesh(handsMesh, weaponPosition + new Vector3(0, 0.001f, 0),
+            //    Quaternion.AngleAxis(weaponAngle, Vector3.up), centerMat, 0);
         }
     }
 }

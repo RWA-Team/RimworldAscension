@@ -149,12 +149,12 @@
 		<thingcategories>
 			<li>ArmorMedieval</li>
 		</thingcategories>
-		<comps>
+<!-- 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0014</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
-		</comps>
+		</comps> -->
 	</ThingDef>
 
 	<ThingDef ParentName="ArmorHead">
@@ -261,12 +261,12 @@
 		<thingcategories>
 			<li>ArmorMedieval</li>
 		</thingcategories>
-		<comps>
+<!-- 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0011</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
-		</comps>
+		</comps> -->
 	</ThingDef>
 
 	<!-- ========================= Chest =========================-->
@@ -475,12 +475,12 @@
 		<stuffCategories>
 			<li>Leather</li>
 		</stuffCategories>
-		<comps>
+<!-- 		<comps>
 			<li Class="RA.CompCraftedValue_Properties">
 				<valuePerWorkFactor>0.0080</valuePerWorkFactor>
 				<profitFactor>0.96</profitFactor>
 			</li>
-		</comps>
+		</comps> -->
 
 	</ThingDef>
 
