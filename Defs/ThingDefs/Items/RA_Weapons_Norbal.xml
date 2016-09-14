@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingsDef>
 
-	<ThingDef ParentName="WeaponMelee">
+	<ThingDef ParentName="Weapon">
 		<defName>AxeNorbal</defName>
 		<label>Norbal axe</label>
 		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
@@ -39,7 +39,7 @@
 		</weaponTags>
 	</ThingDef>
 
-	<ThingDef ParentName="WeaponMelee">
+	<ThingDef ParentName="Weapon">
 		<defName>AxeNorbalElite</defName>
 		<label>Norbal elite axe</label>
 		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
@@ -75,7 +75,7 @@
 		</weaponTags>
 	</ThingDef>
 
-	<ThingDef ParentName="WeaponMelee">
+	<ThingDef ParentName="Weapon">
 		<defName>BattlehammerNorbal</defName>
 		<label>Norbal battlehammer </label>
 		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
@@ -111,7 +111,7 @@
 		</weaponTags>
 	</ThingDef>
 
-	<ThingDef ParentName="WeaponMelee">
+	<ThingDef ParentName="Weapon">
 		<defName>SwordNorbal</defName>
 		<label>Norbal sword</label>
 		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
@@ -147,7 +147,7 @@
 		</weaponTags>
 	</ThingDef>
 
-	<ThingDef ParentName="WeaponMelee">
+	<ThingDef ParentName="Weapon">
 		<defName>SwordNorbalElite</defName>
 		<label>Norbal elite sword</label>
 		<description>A polearm tipped with a sharp point for stabbing opponents in melee combat.</description>
