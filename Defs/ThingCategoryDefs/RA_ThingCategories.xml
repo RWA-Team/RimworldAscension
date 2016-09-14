@@ -16,27 +16,21 @@
 		
 		<ThingCategoryDef>
 			<defName>Food</defName>
-			<label>food</label>
+			<label>Food</label>
 			<parent>Ingestibles</parent>
 		</ThingCategoryDef>
 		
 			<ThingCategoryDef>
 				<defName>FoodPrepared</defName>
-				<label>preprared food</label>
+				<label>Preprared food</label>
 				<parent>Food</parent>
 				<resourceReadoutRoot>true</resourceReadoutRoot>
 				<iconPath>Ui/Icons/ThingCategories/FoodMeals</iconPath>
 			</ThingCategoryDef>
 
 				<ThingCategoryDef>
-					<defName>MeatPrepared</defName>
-					<label>prepared meat</label>
-					<parent>FoodPrepared</parent>
-				</ThingCategoryDef>
-
-				<ThingCategoryDef>
 					<defName>Meals</defName>
-					<label>meals</label>
+					<label>Meals </label>
 					<parent>FoodPrepared</parent>
 				</ThingCategoryDef>
 
@@ -89,17 +83,17 @@
 			<iconPath>Ui/Icons/ThingCategories/Medicine</iconPath>
 		</ThingCategoryDef>
 
-		<ThingCategoryDef>
-			<defName>Drugs</defName>
-			<label>drugs</label>
-			<parent>Ingestibles</parent>
-		</ThingCategoryDef>
+		    <ThingCategoryDef>
+			   <defName>Drugs</defName>
+			   <label>drugs</label>
+			   <parent>Ingestibles</parent>
+		    </ThingCategoryDef>
 		
-			<ThingCategoryDef>
+		<ThingCategoryDef>
 				<defName>Alcohol</defName>
 				<label>alcohol</label>
 				<parent>Drugs</parent>
-			</ThingCategoryDef>
+		</ThingCategoryDef>
 					
 	<ThingCategoryDef>
 		<defName>Resources</defName>
